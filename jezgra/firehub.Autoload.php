@@ -123,8 +123,6 @@ $datoteka = static function (string $auto_objekt) use ($datotekaFireHub, $datote
     // putanja datoteke (ukloni zadnju komponentu)
     array_pop($putanja_niz);
 
-    var_dump('x');
-
     // registriraj datoteku
     if ($namespace === 'FireHub') { // firehub datoteka
 
