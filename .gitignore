@@ -1,2 +1,25 @@
 # JetBrains
 .idea/
+
+#phpDocumentor
+.phpdoc/
+
+#log
+log/*
+!log/phpunit/.gitkeep
+
+#sesije
+sesije/*
+!sesije/.gitkeep
+
+#temp
+temp/*
+!temp/.gitkeep
+
+#vendor
+vendor/*
+!vendor/.gitkeep
+
+#predmemorija
+predmemorija/phpunit/*
+!predmemorija/phpunit/.gitkeep
