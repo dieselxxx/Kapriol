@@ -18,24 +18,11 @@
 namespace FireHub\Jezgra;
 
 use Exception;
+use FireHub\Jezgra\HTTP\Enumeratori\Prefiks;
+use FireHub\Jezgra\HTTP\Enumeratori\Sufiks;
 
-/**
- * ### Dopuštene vrste autoload objekata
- *
- * Lista vrsta objekata koje autoload smije učitati, uz izuzev praznih naziva.
- * - Format naziva datoteka treba biti primjer: firehub.NazivObjekta.VrstaDatoteke.php.
- * - Format naziva objekta treba biti primjer: NazivObjekta_VrstaDatoteke.
- * @since 0.2.1.pre-alpha.M2
- *
- * @name string[]
- */
-const VRSTE_DATOTEKA = [
-    'Tvornica', 'Graditelj', 'Kontejner', 'SuperKlasa', 'Modul',
-    'Funkcija', 'Abstrakt', 'Interface',
-    'Adapter', 'Atribut', 'Generator', 'Enumerator',
-    'Kolekcija', 'Kontroler', 'Osobina', 'Posrednik',
-    'Posluzitelj', 'Model', 'Servis', 'PodServis', 'Greska'
-];
+require __DIR__.'/../jezgra/enumeratori/firehub.Prefiks.php';
+require __DIR__.'/../jezgra/enumeratori/firehub.Sufiks.php';
 
 /**
  * ### Datoteka koja pripada FireHub aplikaciji
@@ -62,16 +49,18 @@ $datotekaFireHub = static function (array $putanja_niz, string $objekt):string {
 
     // vrsta datoteke
     $datoteka_komponente = explode('_', $objekt);
-    $ime = $datoteka_komponente[0];
+    $ime = $datoteka_komponente[0] ?? '';
     count($datoteka_komponente) > 1 ? $vrsta = $datoteka_komponente[1] : $vrsta = false;
 
-    if ($vrsta && !in_array($vrsta, VRSTE_DATOTEKA, true)) { // provjeri ispravnost ekstenzije datoteke
+    if ($vrsta && (!Sufiks::tryFrom($vrsta) || isset(Prefiks::cases()[0]) === false)) { // provjeri ispravnost ekstenzije datoteke
 
         throw new Exception(_('Ne mogu pokrenuti sustav, obratite se administratoru.'));
 
     }
 
-    $naziv_objekta = $vrsta ? 'firehub.' . $ime . '.' . $vrsta . '.php' : 'firehub.' . $ime . '.' . $vrsta . 'php';
+    $naziv_objekta = $vrsta
+        ? Prefiks::cases()[0]->value . '.' . $ime . '.' . $vrsta . '.php'
+        : Prefiks::cases()[0]->value . '.' . $ime . '.' . $vrsta . 'php';
 
     return DIRECTORY_SEPARATOR . $putanja . DIRECTORY_SEPARATOR . $naziv_objekta;
 
@@ -126,27 +115,31 @@ $datoteka = static function (string $auto_objekt) use ($datotekaFireHub, $datote
     // registriraj datoteku
     if ($namespace === 'FireHub') { // firehub datoteka
 
-        // ako ne postoji datoteka
-        if (!is_file(realpath($_SERVER['DOCUMENT_ROOT']) . DIRECTORY_SEPARATOR . $datotekaFireHub($putanja_niz, $objekt))) {
+        $datoteka = $datotekaFireHub($putanja_niz, $objekt);
 
-            throw new Exception(sprintf(_('Dogodila se greška prilikom izvođenja aplikacije zbog datoteke: %s!'), $datotekaFireHub($putanja_niz, $objekt)));
+        // ako ne postoji datoteka
+        if (!is_file(realpath($_SERVER['DOCUMENT_ROOT']) . DIRECTORY_SEPARATOR . $datoteka)) {
+
+            throw new Exception(sprintf(_('Dogodila se greška prilikom izvođenja aplikacije zbog datoteke: %s!'), $datoteka));
 
         }
 
-        return $datotekaFireHub($putanja_niz, $objekt);
+        return $datoteka;
 
     }
 
     if ($namespace === 'Bibliteka') { // datoteka iz biblioteke
 
-        // ako ne postoji datoteka
-        if (!is_file(realpath($_SERVER['DOCUMENT_ROOT']) . DIRECTORY_SEPARATOR . $datotekaBiblioteka($putanja_niz, $objekt))) {
+        $datoteka = $datotekaBiblioteka($putanja_niz, $objekt);
 
-            throw new Exception(sprintf(_('Dogodila se greška prilikom izvođenja aplikacije zbog datoteke: %s!'), $datotekaBiblioteka($putanja_niz, $objekt)));
+        // ako ne postoji datoteka
+        if (!is_file(realpath($_SERVER['DOCUMENT_ROOT']) . DIRECTORY_SEPARATOR . $datoteka)) {
+
+            throw new Exception(sprintf(_('Dogodila se greška prilikom izvođenja aplikacije zbog datoteke: %s!'), $datoteka));
 
         }
 
-        return $datotekaBiblioteka($putanja_niz, $objekt);
+        return $datoteka;
 
     }
 
@@ -167,7 +160,11 @@ $datoteka = static function (string $auto_objekt) use ($datotekaFireHub, $datote
  */
 $autoload = static function (string $auto_objekt) use ($datoteka):int|false {
 
-    return is_string(realpath($_SERVER['DOCUMENT_ROOT']) . DIRECTORY_SEPARATOR . $datoteka($auto_objekt)) ? include realpath($_SERVER['DOCUMENT_ROOT']) . DIRECTORY_SEPARATOR . $datoteka($auto_objekt) : false;
+    $objekt = $datoteka($auto_objekt);
+
+    return is_string(realpath($_SERVER['DOCUMENT_ROOT']) . DIRECTORY_SEPARATOR . $objekt) // da li je string
+        ? include realpath($_SERVER['DOCUMENT_ROOT']) . DIRECTORY_SEPARATOR . $objekt // include objektovu datoteku
+        : false;
 
 };
 
