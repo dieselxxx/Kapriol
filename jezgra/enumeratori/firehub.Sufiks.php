@@ -12,7 +12,7 @@
  * @package Sustav\Jezgra
  */
 
-namespace FireHub\Jezgra\HTTP\Enumeratori;
+namespace FireHub\Jezgra\Enumeratori;
 
 /**
  * ### Enumerator za dostupne vrste sufiksa datoteka

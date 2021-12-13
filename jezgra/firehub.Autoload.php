@@ -18,8 +18,8 @@
 namespace FireHub\Jezgra;
 
 use Exception;
-use FireHub\Jezgra\HTTP\Enumeratori\Prefiks;
-use FireHub\Jezgra\HTTP\Enumeratori\Sufiks;
+use FireHub\Jezgra\Enumeratori\Prefiks;
+use FireHub\Jezgra\Enumeratori\Sufiks;
 
 require __DIR__.'/../jezgra/enumeratori/firehub.Prefiks.php';
 require __DIR__.'/../jezgra/enumeratori/firehub.Sufiks.php';
