@@ -1,0 +1,11 @@
+@startuml
+
+package HTTP <<Node>> #FBE9E7 {
+    namespace FireHub\Jezgra\HTTP {
+        class Kernel #00897B;line:00796B {
+            + pokreni ():self
+        }
+    }
+}
+
+@enduml
