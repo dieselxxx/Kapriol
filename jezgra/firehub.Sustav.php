@@ -18,6 +18,7 @@
 namespace FireHub\Jezgra;
 
 use FireHub\Jezgra\Enumeratori\Kernel AS Kernel_Enumerator;
+use FireHub\Jezgra\HTTP\Zahtjev as HTTP_Zahtjev;
 use Error;
 
 /**
@@ -102,7 +103,9 @@ final class Sustav {
     private function kernel (Kernel_Enumerator $kernel):Kernel {
 
         // pokreni Kernel
-        return (new $kernel->value)->pokreni();
+        return (new $kernel->value (
+            new ($kernel->zahtjev()))
+        )->pokreni();
 
     }
 

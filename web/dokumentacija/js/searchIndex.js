@@ -46,15 +46,30 @@ Search.appendIndex(
             "summary": "\u0023\u0023\u0023\u0020Osnovna\u0020klasa\u0020Kernel\u0020za\u0020pokretanje\u0020HTTP\u0020upita",
             "url": "classes/FireHub-Jezgra-HTTP-Kernel.html"
         },                {
+            "fqsen": "\\FireHub\\Jezgra\\HTTP\\Kernel\u003A\u003A__construct\u0028\u0029",
+            "name": "__construct",
+            "summary": "Konstruktor.",
+            "url": "classes/FireHub-Jezgra-HTTP-Kernel.html#method___construct"
+        },                {
             "fqsen": "\\FireHub\\Jezgra\\HTTP\\Kernel\u003A\u003Apokreni\u0028\u0029",
             "name": "pokreni",
             "summary": "\u0023\u0023\u0023\u0020Pokreni\u0020Kernel",
             "url": "classes/FireHub-Jezgra-HTTP-Kernel.html#method_pokreni"
         },                {
+            "fqsen": "\\FireHub\\Jezgra\\HTTP\\Kernel\u003A\u003A\u0024http_zahtjev",
+            "name": "http_zahtjev",
+            "summary": "",
+            "url": "classes/FireHub-Jezgra-HTTP-Kernel.html#property_http_zahtjev"
+        },                {
             "fqsen": "\\FireHub\\Jezgra\\Konzola\\Kernel",
             "name": "Kernel",
             "summary": "\u0023\u0023\u0023\u0020Osnovna\u0020klasa\u0020Kernel\u0020za\u0020upita\u0020konzole",
             "url": "classes/FireHub-Jezgra-Konzola-Kernel.html"
+        },                {
+            "fqsen": "\\FireHub\\Jezgra\\Konzola\\Kernel\u003A\u003A__construct\u0028\u0029",
+            "name": "__construct",
+            "summary": "Konstruktor.",
+            "url": "classes/FireHub-Jezgra-Konzola-Kernel.html#method___construct"
         },                {
             "fqsen": "\\FireHub\\Jezgra\\Konzola\\Kernel\u003A\u003Apokreni\u0028\u0029",
             "name": "pokreni",
@@ -105,6 +120,11 @@ Search.appendIndex(
             "name": "kernel",
             "summary": "Kernel",
             "url": "classes/FireHub-Jezgra-Test-Sustav-Test.html#property_kernel"
+        },                {
+            "fqsen": "\\FireHub\\Jezgra\\Konzola\\Zahtjev",
+            "name": "Zahtjev",
+            "summary": "\u0023\u0023\u0023\u0020Konzola\u0020zahtjev",
+            "url": "classes/FireHub-Jezgra-Konzola-Zahtjev.html"
         },                {
             "fqsen": "\\",
             "name": "\\",

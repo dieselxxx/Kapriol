@@ -15,6 +15,7 @@
 namespace FireHub\Jezgra\Konzola;
 
 use FireHub\Jezgra\Kernel as OsnovniKernel;
+use FireHub\Jezgra\Konzola\Zahtjev as Konzola_Zahtjev;
 use Throwable;
 
 /**
@@ -24,6 +25,18 @@ use Throwable;
  * @package Sustav\Konzola
  */
 final class Kernel extends OsnovniKernel {
+
+    /**
+     * Konstruktor.
+     * @since 0.2.3.pre-alpha.M2
+     *
+     * @param Konzola_Zahtjev $http_zahtjev <p>
+     * Konzola zahtjev.
+     * </p>
+     */
+    public function __construct (Konzola_Zahtjev $http_zahtjev) {
+
+    }
 
     /**
      * @inheritDoc

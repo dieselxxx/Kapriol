@@ -27,7 +27,7 @@ abstract class Kernel {
      *
      * Ova metoda služi za pokretanje sustava i jedina je
      * metoda izložena datotekama koje pokreću sustav.
-     * @since 0.2.3.pre-alpha.M2
+     * @since 0.2.3.pre-alpha.M3
      *
      * @return self Instanca objekta.
      */
