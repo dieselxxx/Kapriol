@@ -94,7 +94,7 @@ final class Sustav {
      * @since 0.2.3.pre-alpha.M2
      *
      * @param Kernel_Enumerator $kernel <p>
-     * Odabrai Kernel iz enumeratora.
+     * Odaberi Kernel iz enumeratora.
      * </p>
      *
      * @return Odgovor Instanca Odgovora.
