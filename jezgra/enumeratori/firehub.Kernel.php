@@ -32,7 +32,7 @@ enum Kernel:string {
      * ### Klasa za obradu zahtjeva Kernela.
      * @since 0.2.3.pre-alpha.M2
      *
-     * @return string FQN FireHub\Jezgra\Zahtjev::class.
+     * @return string FQN Zahtjev.
      */
     public function zahtjev ():string {
 
