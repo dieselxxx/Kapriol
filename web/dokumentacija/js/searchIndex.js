@@ -26,6 +26,41 @@ Search.appendIndex(
             "summary": "\u0023\u0023\u0023\u0020U\u010Ditaj\u0020autoload\u0020datoteku",
             "url": "classes/FireHub-Jezgra-Sustav.html#method_autoload"
         },                {
+            "fqsen": "\\FireHub\\Jezgra\\Sustav\u003A\u003Akernel\u0028\u0029",
+            "name": "kernel",
+            "summary": "\u0023\u0023\u0023\u0020Pokreni\u0020Kernel",
+            "url": "classes/FireHub-Jezgra-Sustav.html#method_kernel"
+        },                {
+            "fqsen": "\\FireHub\\Jezgra\\Kernel",
+            "name": "Kernel",
+            "summary": "\u0023\u0023\u0023\u0020Osnovna\u0020klasa\u0020Kernel\u0020za\u0020pokretanje\u0020upita",
+            "url": "classes/FireHub-Jezgra-Kernel.html"
+        },                {
+            "fqsen": "\\FireHub\\Jezgra\\Kernel\u003A\u003Apokreni\u0028\u0029",
+            "name": "pokreni",
+            "summary": "\u0023\u0023\u0023\u0020Pokreni\u0020Kernel",
+            "url": "classes/FireHub-Jezgra-Kernel.html#method_pokreni"
+        },                {
+            "fqsen": "\\FireHub\\Jezgra\\HTTP\\Kernel",
+            "name": "Kernel",
+            "summary": "\u0023\u0023\u0023\u0020Osnovna\u0020klasa\u0020Kernel\u0020za\u0020pokretanje\u0020HTTP\u0020upita",
+            "url": "classes/FireHub-Jezgra-HTTP-Kernel.html"
+        },                {
+            "fqsen": "\\FireHub\\Jezgra\\HTTP\\Kernel\u003A\u003Apokreni\u0028\u0029",
+            "name": "pokreni",
+            "summary": "\u0023\u0023\u0023\u0020Pokreni\u0020Kernel",
+            "url": "classes/FireHub-Jezgra-HTTP-Kernel.html#method_pokreni"
+        },                {
+            "fqsen": "\\FireHub\\Jezgra\\Konzola\\Kernel",
+            "name": "Kernel",
+            "summary": "\u0023\u0023\u0023\u0020Osnovna\u0020klasa\u0020Kernel\u0020za\u0020upita\u0020konzole",
+            "url": "classes/FireHub-Jezgra-Konzola-Kernel.html"
+        },                {
+            "fqsen": "\\FireHub\\Jezgra\\Konzola\\Kernel\u003A\u003Apokreni\u0028\u0029",
+            "name": "pokreni",
+            "summary": "\u0023\u0023\u0023\u0020Pokreni\u0020Kernel",
+            "url": "classes/FireHub-Jezgra-Konzola-Kernel.html#method_pokreni"
+        },                {
             "fqsen": "\\",
             "name": "\\",
             "summary": "",
@@ -40,5 +75,15 @@ Search.appendIndex(
             "name": "FireHub",
             "summary": "",
             "url": "namespaces/firehub.html"
+        },                {
+            "fqsen": "\\FireHub\\Jezgra\\HTTP",
+            "name": "HTTP",
+            "summary": "",
+            "url": "namespaces/firehub-jezgra-http.html"
+        },                {
+            "fqsen": "\\FireHub\\Jezgra\\Konzola",
+            "name": "Konzola",
+            "summary": "",
+            "url": "namespaces/firehub-jezgra-konzola.html"
         }            ]
 );
