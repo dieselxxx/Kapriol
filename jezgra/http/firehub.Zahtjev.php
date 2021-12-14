@@ -16,6 +16,7 @@
 
 namespace FireHub\Jezgra\HTTP;
 
+use FireHub\Jezgra\Zahtjev as Zahtjev_Interface;
 use FireHub\Jezgra\HTTP\Enumeratori\Metoda as HTTP_Metoda;
 
 /**
@@ -27,7 +28,7 @@ use FireHub\Jezgra\HTTP\Enumeratori\Metoda as HTTP_Metoda;
  *
  * @package Sustav\HTTP
  */
-final class Zahtjev {
+final class Zahtjev implements Zahtjev_Interface {
 
     /**
      * ### Trenutni URL

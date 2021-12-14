@@ -27,10 +27,10 @@ abstract class Kernel {
      *
      * Ova metoda služi za pokretanje sustava i jedina je
      * metoda izložena datotekama koje pokreću sustav.
-     * @since 0.2.3.pre-alpha.M3
+     * @since 0.2.3.pre-alpha.M2
      *
-     * @return self Instanca objekta.
+     * @return Odgovor Instanca Odgovora.
      */
-    abstract public function pokreni ():self;
+    abstract public function pokreni ():Odgovor;
 
 }

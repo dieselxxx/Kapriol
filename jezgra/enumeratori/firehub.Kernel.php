@@ -30,7 +30,7 @@ enum Kernel:string {
 
     /**
      * ### Klasa za obradu zahtjeva Kernela.
-     * @since 0.2.3.pre-alpha.M2
+     * @since 0.2.5.pre-alpha.M2
      *
      * @return string FQN Zahtjev.
      */

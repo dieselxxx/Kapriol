@@ -16,6 +16,7 @@ namespace FireHub\Jezgra\HTTP;
 
 use FireHub\Jezgra\Kernel as OsnovniKernel;
 use FireHub\Jezgra\HTTP\Zahtjev as HTTP_Zahtjev;
+use FireHub\Jezgra\HTTP\Odgovor as HTTP_Odgovor;
 use Throwable;
 
 /**
@@ -27,33 +28,42 @@ use Throwable;
 final class Kernel extends OsnovniKernel {
 
     /**
-     * Konstruktor.
+     * ### Konstruktor.
      * @since 0.2.3.pre-alpha.M2
      *
      * @param HTTP_Zahtjev $http_zahtjev <p>
      * HTTP zahtjev.
      * </p>
      */
-    public function __construct (private HTTP_Zahtjev $http_zahtjev) {
-
-        var_dump($http_zahtjev);
-
-    }
+    public function __construct (private HTTP_Zahtjev $http_zahtjev) {}
 
     /**
      * @inheritDoc
      */
-    public function pokreni ():self {
+    public function pokreni ():HTTP_Odgovor {
 
         try {
 
-            return $this;
+            return $this
+                ->odgovor();
 
         } catch (Throwable $objekt) {
 
             var_dump($objekt);
 
         }
+
+    }
+
+    /**
+     * ### HTTP odgovor.
+     * @since 0.2.6.pre-alpha.M2
+     *
+     * @return HTTP_Odgovor Odgovor za HTTP.
+     */
+    private function odgovor ():HTTP_Odgovor {
+
+        return (new HTTP_Odgovor());
 
     }
 

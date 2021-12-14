@@ -116,7 +116,7 @@
         <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="jezgra/http/firehub.Kernel.php"><a href="files/jezgra-http-firehub-kernel.html"><abbr title="jezgra/http/firehub.Kernel.php">firehub.Kernel.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">27</span>
+    <span class="phpdocumentor-element-found-in__line">28</span>
 
     </aside>
 
@@ -162,14 +162,21 @@
     <span>
                         &nbsp;: mixed    </span>
 </dt>
-<dd>Konstruktor.</dd>
+<dd>### Konstruktor.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
     <a href="classes/FireHub-Jezgra-HTTP-Kernel.html#method_pokreni">pokreni()</a>
     <span>
-                        &nbsp;: self    </span>
+                        &nbsp;: <a href="classes/FireHub-Jezgra-Odgovor.html"><abbr title="\FireHub\Jezgra\Odgovor">Odgovor</abbr></a>    </span>
 </dt>
 <dd>### Pokreni Kernel</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -private">
+    <a href="classes/FireHub-Jezgra-HTTP-Kernel.html#method_odgovor">odgovor()</a>
+    <span>
+                        &nbsp;: <a href="classes/FireHub-Jezgra-HTTP-Odgovor.html"><abbr title="\FireHub\Jezgra\HTTP\Odgovor">Odgovor</abbr></a>    </span>
+</dt>
+<dd>### HTTP odgovor.</dd>
 
         </dl>
 
@@ -199,7 +206,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="jezgra/http/firehub.Kernel.php"><a href="files/jezgra-http-firehub-kernel.html"><abbr title="jezgra/http/firehub.Kernel.php">firehub.Kernel.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">37</span>
+    <span class="phpdocumentor-element-found-in__line">38</span>
 
     </aside>
 
@@ -237,11 +244,11 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="jezgra/http/firehub.Kernel.php"><a href="files/jezgra-http-firehub-kernel.html"><abbr title="jezgra/http/firehub.Kernel.php">firehub.Kernel.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">37</span>
+    <span class="phpdocumentor-element-found-in__line">38</span>
 
     </aside>
 
-        <p class="phpdocumentor-summary">Konstruktor.</p>
+        <p class="phpdocumentor-summary">### Konstruktor.</p>
 
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
@@ -298,7 +305,7 @@ HTTP zahtjev.
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="jezgra/http/firehub.Kernel.php"><a href="files/jezgra-http-firehub-kernel.html"><abbr title="jezgra/http/firehub.Kernel.php">firehub.Kernel.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">46</span>
+    <span class="phpdocumentor-element-found-in__line">43</span>
 
     </aside>
 
@@ -306,7 +313,7 @@ HTTP zahtjev.
 
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
-                <span class="phpdocumentor-signature__name">pokreni</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">self</span></code>
+                <span class="phpdocumentor-signature__name">pokreni</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type"><a href="classes/FireHub-Jezgra-Odgovor.html"><abbr title="\FireHub\Jezgra\Odgovor">Odgovor</abbr></a></span></code>
 
     
     
@@ -326,9 +333,58 @@ HTTP zahtjev.
                         </dl>
 
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-    <span class="phpdocumentor-signature__response_type">self</span>
+    <span class="phpdocumentor-signature__response_type"><a href="classes/FireHub-Jezgra-Odgovor.html"><abbr title="\FireHub\Jezgra\Odgovor">Odgovor</abbr></a></span>
             &mdash;
-            <section class="phpdocumentor-description"><p>Instanca objekta.</p>
+            <section class="phpdocumentor-description"><p>Instanca Odgovora.</p>
+</section>
+
+    
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -private
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="method_odgovor">
+        odgovor()
+        <a href="classes/FireHub-Jezgra-HTTP-Kernel.html#method_odgovor" class="headerlink"><i class="fas fa-link"></i></a>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="jezgra/http/firehub.Kernel.php"><a href="files/jezgra-http-firehub-kernel.html"><abbr title="jezgra/http/firehub.Kernel.php">firehub.Kernel.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">64</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">### HTTP odgovor.</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">private</span>
+                <span class="phpdocumentor-signature__name">odgovor</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type"><a href="classes/FireHub-Jezgra-HTTP-Odgovor.html"><abbr title="\FireHub\Jezgra\HTTP\Odgovor">Odgovor</abbr></a></span></code>
+
+    
+    
+    
+    <h5 class="phpdocumentor-tag-list__heading" id="tags">
+        Tags
+        <a href="#tags" class="headerlink"><i class="fas fa-link"></i></a>
+    </h5>
+    <dl class="phpdocumentor-tag-list">
+                                    <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">since</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                            <span class="phpdocumentor-tag-link">0.2.6.pre-alpha.M2</span>
+                                                                                
+                                             
+                                    </dd>
+                        </dl>
+
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+    <span class="phpdocumentor-signature__response_type"><a href="classes/FireHub-Jezgra-HTTP-Odgovor.html"><abbr title="\FireHub\Jezgra\HTTP\Odgovor">Odgovor</abbr></a></span>
+            &mdash;
+            <section class="phpdocumentor-description"><p>Odgovor za HTTP.</p>
 </section>
 
     

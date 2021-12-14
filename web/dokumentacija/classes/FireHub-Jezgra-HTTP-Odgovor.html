@@ -91,33 +91,40 @@
                     <ul class="phpdocumentor-breadcrumbs">
             <li class="phpdocumentor-breadcrumb"><a href="namespaces/firehub.html">FireHub</a></li>
             <li class="phpdocumentor-breadcrumb"><a href="namespaces/firehub-jezgra.html">Jezgra</a></li>
+            <li class="phpdocumentor-breadcrumb"><a href="namespaces/firehub-jezgra-http.html">HTTP</a></li>
     </ul>
 
     <article class="phpdocumentor-element -class">
         <h2 class="phpdocumentor-content__title">
-    Kernel
+    Odgovor
 
     
             <div class="phpdocumentor-element__package">
             in package
             <ul class="phpdocumentor-breadcrumbs">
                                     <li class="phpdocumentor-breadcrumb"><a href="packages/Sustav.html">Sustav</a></li>
-                                    <li class="phpdocumentor-breadcrumb"><a href="packages/Sustav-Jezgra.html">Jezgra</a></li>
+                                    <li class="phpdocumentor-breadcrumb"><a href="packages/Sustav-HTTP.html">HTTP</a></li>
                             </ul>
         </div>
     
+            <span class="phpdocumentor-element__implements">
+            implements
+                            <a href="classes/FireHub-Jezgra-Odgovor.html"><abbr title="\FireHub\Jezgra\Odgovor">Odgovor</abbr></a>                    </span>
     
     </h2>
 
         <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="jezgra/firehub.Kernel.php"><a href="files/jezgra-firehub-kernel.html"><abbr title="jezgra/firehub.Kernel.php">firehub.Kernel.php</abbr></a></abbr>
+    <abbr class="phpdocumentor-element-found-in__file" title="jezgra/http/firehub.Odgovor.php"><a href="files/jezgra-http-firehub-odgovor.html"><abbr title="jezgra/http/firehub.Odgovor.php">firehub.Odgovor.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">23</span>
+    <span class="phpdocumentor-element-found-in__line">30</span>
 
     </aside>
 
-            <p class="phpdocumentor-summary">### Osnovna klasa Kernel za pokretanje upita</p>
+            <p class="phpdocumentor-summary">### HTTP odgovor</p>
 
+    <section class="phpdocumentor-description"><p>Klasa namjenjana za upravljenje i obrađivanje svih
+HTTP odgovora od sustava i aplikacije.</p>
+</section>
 
 
     <h5 class="phpdocumentor-tag-list__heading" id="tags">
@@ -129,7 +136,7 @@
                     <span class="phpdocumentor-tag__name">since</span>
                 </dt>
                 <dd class="phpdocumentor-tag-list__definition">
-                                            <span class="phpdocumentor-tag-link">0.2.3.pre-alpha.M2</span>
+                                            <span class="phpdocumentor-tag-link">0.2.6.pre-alpha.M2</span>
                                                                                 
                                              
                                     </dd>
@@ -138,22 +145,19 @@
 
 
 
-
-
-<h3 id="toc">
-    Table of Contents
-    <a href="#toc" class="headerlink"><i class="fas fa-link"></i></a>
+<h3 id="interfaces_class_traits">
+    Interfaces, Classes and Traits
+    <a href="#interfaces_class_traits" class="headerlink"><i class="fas fa-link"></i></a>
 </h3>
 
 <dl class="phpdocumentor-table-of-contents">
-                    <dt class="phpdocumentor-table-of-contents__entry -method -public">
-    <a href="classes/FireHub-Jezgra-Kernel.html#method_pokreni">pokreni()</a>
-    <span>
-                        &nbsp;: <a href="classes/FireHub-Jezgra-Odgovor.html"><abbr title="\FireHub\Jezgra\Odgovor">Odgovor</abbr></a>    </span>
-</dt>
-<dd>### Pokreni Kernel</dd>
+            <dt class="phpdocumentor-table-of-contents__entry -interface"><a href="classes/FireHub-Jezgra-Odgovor.html"><abbr title="\FireHub\Jezgra\Odgovor">Odgovor</abbr></a></dt>
+        <dd>### Odgovor</dd>
+    
+    
+    </dl>
 
-        </dl>
+
 
 
 
@@ -161,65 +165,7 @@
 
         
 
-            <section class="phpdocumentor-methods">
-        <h3 class="phpdocumentor-elements__header" id="methods">
-            Methods
-            <a href="classes/FireHub-Jezgra-Kernel.html#methods" class="headerlink"><i class="fas fa-link"></i></a>
-        </h3>
-                    <article
-        class="phpdocumentor-element
-            -method
-            -public
-                        -abstract                                "
->
-    <h4 class="phpdocumentor-element__name" id="method_pokreni">
-        pokreni()
-        <a href="classes/FireHub-Jezgra-Kernel.html#method_pokreni" class="headerlink"><i class="fas fa-link"></i></a>
-    </h4>
-    <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="jezgra/firehub.Kernel.php"><a href="files/jezgra-firehub-kernel.html"><abbr title="jezgra/firehub.Kernel.php">firehub.Kernel.php</abbr></a></abbr>
-    :
-    <span class="phpdocumentor-element-found-in__line">34</span>
-
-    </aside>
-
-        <p class="phpdocumentor-summary">### Pokreni Kernel</p>
-
-    <code class="phpdocumentor-code phpdocumentor-signature ">
-    <span class="phpdocumentor-signature__visibility">public</span>
-    <span class="phpdocumentor-signature__abstract">abstract</span>            <span class="phpdocumentor-signature__name">pokreni</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type"><a href="classes/FireHub-Jezgra-Odgovor.html"><abbr title="\FireHub\Jezgra\Odgovor">Odgovor</abbr></a></span></code>
-
-        <section class="phpdocumentor-description"><p>Ova metoda služi za pokretanje sustava i jedina je
-metoda izložena datotekama koje pokreću sustav.</p>
-</section>
-
-    
-    
-    <h5 class="phpdocumentor-tag-list__heading" id="tags">
-        Tags
-        <a href="#tags" class="headerlink"><i class="fas fa-link"></i></a>
-    </h5>
-    <dl class="phpdocumentor-tag-list">
-                                    <dt class="phpdocumentor-tag-list__entry">
-                    <span class="phpdocumentor-tag__name">since</span>
-                </dt>
-                <dd class="phpdocumentor-tag-list__definition">
-                                            <span class="phpdocumentor-tag-link">0.2.3.pre-alpha.M2</span>
-                                                                                
-                                             
-                                    </dd>
-                        </dl>
-
-        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-    <span class="phpdocumentor-signature__response_type"><a href="classes/FireHub-Jezgra-Odgovor.html"><abbr title="\FireHub\Jezgra\Odgovor">Odgovor</abbr></a></span>
-            &mdash;
-            <section class="phpdocumentor-description"><p>Instanca Odgovora.</p>
-</section>
-
-    
-</article>
-            </section>
-
+        
         
     <script type="text/javascript">
         function loadExternalCodeSnippets(line) {
@@ -296,7 +242,7 @@ metoda izložena datotekama koje pokreću sustav.</p>
 </section>
             </div>
         </div>
-        <a href="classes/FireHub-Jezgra-Kernel.html#top" class="phpdocumentor-back-to-top"><i class="fas fa-chevron-circle-up"></i></a>
+        <a href="classes/FireHub-Jezgra-HTTP-Odgovor.html#top" class="phpdocumentor-back-to-top"><i class="fas fa-chevron-circle-up"></i></a>
 
     </main>
 

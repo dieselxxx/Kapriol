@@ -18,7 +18,6 @@
 namespace FireHub\Jezgra;
 
 use FireHub\Jezgra\Enumeratori\Kernel AS Kernel_Enumerator;
-use FireHub\Jezgra\HTTP\Zahtjev as HTTP_Zahtjev;
 use Error;
 
 /**
@@ -58,9 +57,9 @@ final class Sustav {
      * Odabrai Kernel iz enumeratora.
      * </p>
      *
-     * @return Kernel Instanca Kernela.
+     * @return Odgovor Instanca Odgovora.
      */
-    public function pokreni (Kernel_Enumerator $kernel):Kernel {
+    public function pokreni (Kernel_Enumerator $kernel):Odgovor {
 
         return $this->autoload()
             ->kernel($kernel);
@@ -98,9 +97,9 @@ final class Sustav {
      * Odabrai Kernel iz enumeratora.
      * </p>
      *
-     * @return Kernel Instanca Kernela.
+     * @return Odgovor Instanca Odgovora.
      */
-    private function kernel (Kernel_Enumerator $kernel):Kernel {
+    private function kernel (Kernel_Enumerator $kernel):Odgovor {
 
         // pokreni Kernel
         return (new $kernel->value (

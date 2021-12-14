@@ -1,10 +1,10 @@
 <?php declare(strict_types = 1);
 
 /**
- * Datoteka za Konzola zahtjev
+ * Datoteka za Konzola odgovor
  *
- * Ova datoteka prikuplja i obrađuje sve informacije o HTTP zahjevu.
- * @since 0.2.5.pre-alpha.M2
+ * Ova datoteka prikuplja i obrađuje sve informacije o HTTP odgovoru.
+ * @since 0.2.6.pre-alpha.M2
  *
  * @author Danijel Galić
  * @copyright 2022 FireHub Web Application Framework
@@ -16,17 +16,17 @@
 
 namespace FireHub\Jezgra\Konzola;
 
-use FireHub\Jezgra\Zahtjev as Zahtjev_Interface;
+use FireHub\Jezgra\Odgovor as Odgovor_Interface;
 
 /**
- * ### Konzola zahtjev
+ * ### Konzola odgovor
  *
  * Klasa namjenjana za upravljenje i obrađivanje svih
- * Konzola zahtjeva prema sustavu i aplikacijama.
- * @since 0.2.5.pre-alpha.M2
+ * Konzola odgovora od sustava i aplikacije.
+ * @since 0.2.6.pre-alpha.M2
  *
  * @package Sustav\Konzola
  */
-final class Zahtjev implements Zahtjev_Interface {
+final class Odgovor implements Odgovor_Interface {
 
 }
