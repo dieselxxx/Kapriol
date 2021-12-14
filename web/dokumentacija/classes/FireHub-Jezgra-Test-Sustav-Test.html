@@ -91,22 +91,22 @@
                     <ul class="phpdocumentor-breadcrumbs">
             <li class="phpdocumentor-breadcrumb"><a href="namespaces/firehub.html">FireHub</a></li>
             <li class="phpdocumentor-breadcrumb"><a href="namespaces/firehub-jezgra.html">Jezgra</a></li>
-            <li class="phpdocumentor-breadcrumb"><a href="namespaces/firehub-jezgra-konzola.html">Konzola</a></li>
+            <li class="phpdocumentor-breadcrumb"><a href="namespaces/firehub-jezgra-test.html">Test</a></li>
     </ul>
 
     <article class="phpdocumentor-element -class">
         <h2 class="phpdocumentor-content__title">
-    Kernel
+    Sustav_Test
 
         <span class="phpdocumentor-element__extends">
-        extends <a href="classes/FireHub-Jezgra-Kernel.html"><abbr title="\FireHub\Jezgra\Kernel">Kernel</abbr></a>
+        extends <abbr title="\PHPUnit\Framework\TestCase">TestCase</abbr>
     </span>
     
             <div class="phpdocumentor-element__package">
             in package
             <ul class="phpdocumentor-breadcrumbs">
                                     <li class="phpdocumentor-breadcrumb"><a href="packages/Sustav.html">Sustav</a></li>
-                                    <li class="phpdocumentor-breadcrumb"><a href="packages/Sustav-Konzola.html">Konzola</a></li>
+                                    <li class="phpdocumentor-breadcrumb"><a href="packages/Sustav-Test.html">Test</a></li>
                             </ul>
         </div>
     
@@ -114,13 +114,13 @@
     </h2>
 
         <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="jezgra/konzola/firehub.Kernel.php"><a href="files/jezgra-konzola-firehub-kernel.html"><abbr title="jezgra/konzola/firehub.Kernel.php">firehub.Kernel.php</abbr></a></abbr>
+    <abbr class="phpdocumentor-element-found-in__file" title="jezgra/test/Sustav_Test.php"><a href="files/jezgra-test-sustav-test.html"><abbr title="jezgra/test/Sustav_Test.php">Sustav_Test.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">26</span>
+    <span class="phpdocumentor-element-found-in__line">28</span>
 
     </aside>
 
-            <p class="phpdocumentor-summary">### Osnovna klasa Kernel za upita konzole</p>
+            <p class="phpdocumentor-summary">### Klasa za testiranje pokretanja sustava</p>
 
 
 
@@ -133,7 +133,7 @@
                     <span class="phpdocumentor-tag__name">since</span>
                 </dt>
                 <dd class="phpdocumentor-tag-list__definition">
-                                            <span class="phpdocumentor-tag-link">0.2.3.pre-alpha.M2</span>
+                                            <span class="phpdocumentor-tag-link">0.2.4.pre-alpha.M2</span>
                                                                                 
                                              
                                     </dd>
@@ -150,12 +150,33 @@
 </h3>
 
 <dl class="phpdocumentor-table-of-contents">
-                    <dt class="phpdocumentor-table-of-contents__entry -method -public">
-    <a href="classes/FireHub-Jezgra-Konzola-Kernel.html#method_pokreni">pokreni()</a>
+                <dt class="phpdocumentor-table-of-contents__entry -property -private">
+    <a href="classes/FireHub-Jezgra-Test-Sustav-Test.html#property_kernel">$kernel</a>
     <span>
-                        &nbsp;: self    </span>
+                &nbsp;: <a href="classes/FireHub-Jezgra-Kernel.html"><abbr title="\FireHub\Jezgra\Kernel">Kernel</abbr></a>            </span>
 </dt>
-<dd>### Pokreni Kernel</dd>
+<dd>Kernel</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -property -private">
+    <a href="classes/FireHub-Jezgra-Test-Sustav-Test.html#property_sustav">$sustav</a>
+    <span>
+                &nbsp;: <a href="classes/FireHub-Jezgra-Sustav.html"><abbr title="\FireHub\Jezgra\Sustav">Sustav</abbr></a>            </span>
+</dt>
+<dd>### Sustav</dd>
+
+                <dt class="phpdocumentor-table-of-contents__entry -method -public">
+    <a href="classes/FireHub-Jezgra-Test-Sustav-Test.html#method_SetUp">SetUp()</a>
+    <span>
+                        &nbsp;: void    </span>
+</dt>
+<dd></dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -public">
+    <a href="classes/FireHub-Jezgra-Test-Sustav-Test.html#method_testPokreniSustav">testPokreniSustav()</a>
+    <span>
+                        &nbsp;: void    </span>
+</dt>
+<dd>### Test postavljanja status koda HTTP odgovora</dd>
 
         </dl>
 
@@ -164,11 +185,83 @@
         
 
         
+    <section class="phpdocumentor-properties">
+        <h3 class="phpdocumentor-elements__header" id="properties">
+            Properties
+            <a href="classes/FireHub-Jezgra-Test-Sustav-Test.html#properties" class="headerlink"><i class="fas fa-link"></i></a>
+        </h3>
+                    <article
+        class="
+            phpdocumentor-element
+            -property
+            -private
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="property_kernel">
+        $kernel
+        <a href="classes/FireHub-Jezgra-Test-Sustav-Test.html#property_kernel" class="headerlink"><i class="fas fa-link"></i></a>
+        <span class="phpdocumentor-element__modifiers">
+                                </span>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="jezgra/test/Sustav_Test.php"><a href="files/jezgra-test-sustav-test.html"><abbr title="jezgra/test/Sustav_Test.php">Sustav_Test.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">40</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">Kernel</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">private</span>
+        <span class="phpdocumentor-signature__type"><a href="classes/FireHub-Jezgra-Kernel.html"><abbr title="\FireHub\Jezgra\Kernel">Kernel</abbr></a></span>
+    <span class="phpdocumentor-signature__name">$kernel</span>
+    </code>
+
+    
+    
+    
+
+</article>
+                    <article
+        class="
+            phpdocumentor-element
+            -property
+            -private
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="property_sustav">
+        $sustav
+        <a href="classes/FireHub-Jezgra-Test-Sustav-Test.html#property_sustav" class="headerlink"><i class="fas fa-link"></i></a>
+        <span class="phpdocumentor-element__modifiers">
+                                </span>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="jezgra/test/Sustav_Test.php"><a href="files/jezgra-test-sustav-test.html"><abbr title="jezgra/test/Sustav_Test.php">Sustav_Test.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">34</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">### Sustav</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">private</span>
+        <span class="phpdocumentor-signature__type"><a href="classes/FireHub-Jezgra-Sustav.html"><abbr title="\FireHub\Jezgra\Sustav">Sustav</abbr></a></span>
+    <span class="phpdocumentor-signature__name">$sustav</span>
+    </code>
+
+    
+    
+    
+
+</article>
+            </section>
 
             <section class="phpdocumentor-methods">
         <h3 class="phpdocumentor-elements__header" id="methods">
             Methods
-            <a href="classes/FireHub-Jezgra-Konzola-Kernel.html#methods" class="headerlink"><i class="fas fa-link"></i></a>
+            <a href="classes/FireHub-Jezgra-Test-Sustav-Test.html#methods" class="headerlink"><i class="fas fa-link"></i></a>
         </h3>
                     <article
         class="phpdocumentor-element
@@ -176,22 +269,21 @@
             -public
                                                         "
 >
-    <h4 class="phpdocumentor-element__name" id="method_pokreni">
-        pokreni()
-        <a href="classes/FireHub-Jezgra-Konzola-Kernel.html#method_pokreni" class="headerlink"><i class="fas fa-link"></i></a>
+    <h4 class="phpdocumentor-element__name" id="method_SetUp">
+        SetUp()
+        <a href="classes/FireHub-Jezgra-Test-Sustav-Test.html#method_SetUp" class="headerlink"><i class="fas fa-link"></i></a>
     </h4>
     <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="jezgra/konzola/firehub.Kernel.php"><a href="files/jezgra-konzola-firehub-kernel.html"><abbr title="jezgra/konzola/firehub.Kernel.php">firehub.Kernel.php</abbr></a></abbr>
+    <abbr class="phpdocumentor-element-found-in__file" title="jezgra/test/Sustav_Test.php"><a href="files/jezgra-test-sustav-test.html"><abbr title="jezgra/test/Sustav_Test.php">Sustav_Test.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">31</span>
+    <span class="phpdocumentor-element-found-in__line">45</span>
 
     </aside>
 
-        <p class="phpdocumentor-summary">### Pokreni Kernel</p>
-
+    
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
-                <span class="phpdocumentor-signature__name">pokreni</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">self</span></code>
+                <span class="phpdocumentor-signature__name">SetUp</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">void</span></code>
 
     
     
@@ -211,11 +303,56 @@
                         </dl>
 
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-    <span class="phpdocumentor-signature__response_type">self</span>
+    <span class="phpdocumentor-signature__response_type">void</span>
             &mdash;
-            <section class="phpdocumentor-description"><p>Instanca objekta.</p>
-</section>
+        
+    
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -public
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="method_testPokreniSustav">
+        testPokreniSustav()
+        <a href="classes/FireHub-Jezgra-Test-Sustav-Test.html#method_testPokreniSustav" class="headerlink"><i class="fas fa-link"></i></a>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="jezgra/test/Sustav_Test.php"><a href="files/jezgra-test-sustav-test.html"><abbr title="jezgra/test/Sustav_Test.php">Sustav_Test.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">57</span>
 
+    </aside>
+
+        <p class="phpdocumentor-summary">### Test postavljanja status koda HTTP odgovora</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+                <span class="phpdocumentor-signature__name">testPokreniSustav</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">void</span></code>
+
+    
+    
+    
+    <h5 class="phpdocumentor-tag-list__heading" id="tags">
+        Tags
+        <a href="#tags" class="headerlink"><i class="fas fa-link"></i></a>
+    </h5>
+    <dl class="phpdocumentor-tag-list">
+                                    <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">since</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                            <span class="phpdocumentor-tag-link">0.2.4.pre-alpha.M2</span>
+                                                                                
+                                             
+                                    </dd>
+                        </dl>
+
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+    <span class="phpdocumentor-signature__response_type">void</span>
+            &mdash;
+        
     
 </article>
             </section>
@@ -296,7 +433,7 @@
 </section>
             </div>
         </div>
-        <a href="classes/FireHub-Jezgra-Konzola-Kernel.html#top" class="phpdocumentor-back-to-top"><i class="fas fa-chevron-circle-up"></i></a>
+        <a href="classes/FireHub-Jezgra-Test-Sustav-Test.html#top" class="phpdocumentor-back-to-top"><i class="fas fa-chevron-circle-up"></i></a>
 
     </main>
 

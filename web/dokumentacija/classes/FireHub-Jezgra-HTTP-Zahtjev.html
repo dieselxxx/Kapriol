@@ -91,22 +91,19 @@
                     <ul class="phpdocumentor-breadcrumbs">
             <li class="phpdocumentor-breadcrumb"><a href="namespaces/firehub.html">FireHub</a></li>
             <li class="phpdocumentor-breadcrumb"><a href="namespaces/firehub-jezgra.html">Jezgra</a></li>
-            <li class="phpdocumentor-breadcrumb"><a href="namespaces/firehub-jezgra-konzola.html">Konzola</a></li>
+            <li class="phpdocumentor-breadcrumb"><a href="namespaces/firehub-jezgra-http.html">HTTP</a></li>
     </ul>
 
     <article class="phpdocumentor-element -class">
         <h2 class="phpdocumentor-content__title">
-    Kernel
+    Zahtjev
 
-        <span class="phpdocumentor-element__extends">
-        extends <a href="classes/FireHub-Jezgra-Kernel.html"><abbr title="\FireHub\Jezgra\Kernel">Kernel</abbr></a>
-    </span>
     
             <div class="phpdocumentor-element__package">
             in package
             <ul class="phpdocumentor-breadcrumbs">
                                     <li class="phpdocumentor-breadcrumb"><a href="packages/Sustav.html">Sustav</a></li>
-                                    <li class="phpdocumentor-breadcrumb"><a href="packages/Sustav-Konzola.html">Konzola</a></li>
+                                    <li class="phpdocumentor-breadcrumb"><a href="packages/Sustav-HTTP.html">HTTP</a></li>
                             </ul>
         </div>
     
@@ -114,14 +111,17 @@
     </h2>
 
         <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="jezgra/konzola/firehub.Kernel.php"><a href="files/jezgra-konzola-firehub-kernel.html"><abbr title="jezgra/konzola/firehub.Kernel.php">firehub.Kernel.php</abbr></a></abbr>
+    <abbr class="phpdocumentor-element-found-in__file" title="jezgra/http/firehub.Zahtjev.php"><a href="files/jezgra-http-firehub-zahtjev.html"><abbr title="jezgra/http/firehub.Zahtjev.php">firehub.Zahtjev.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">26</span>
+    <span class="phpdocumentor-element-found-in__line">30</span>
 
     </aside>
 
-            <p class="phpdocumentor-summary">### Osnovna klasa Kernel za upita konzole</p>
+            <p class="phpdocumentor-summary">### HTTP zahtjev</p>
 
+    <section class="phpdocumentor-description"><p>Klasa namjenjana za upravljenje i obrađivanje svih
+HTTP zahtjeva prema sustavu i aplikacijama.</p>
+</section>
 
 
     <h5 class="phpdocumentor-tag-list__heading" id="tags">
@@ -133,7 +133,7 @@
                     <span class="phpdocumentor-tag__name">since</span>
                 </dt>
                 <dd class="phpdocumentor-tag-list__definition">
-                                            <span class="phpdocumentor-tag-link">0.2.3.pre-alpha.M2</span>
+                                            <span class="phpdocumentor-tag-link">0.2.5.pre-alpha.M2</span>
                                                                                 
                                              
                                     </dd>
@@ -151,11 +151,25 @@
 
 <dl class="phpdocumentor-table-of-contents">
                     <dt class="phpdocumentor-table-of-contents__entry -method -public">
-    <a href="classes/FireHub-Jezgra-Konzola-Kernel.html#method_pokreni">pokreni()</a>
+    <a href="classes/FireHub-Jezgra-HTTP-Zahtjev.html#method_metoda">metoda()</a>
     <span>
-                        &nbsp;: self    </span>
+                        &nbsp;: string    </span>
 </dt>
-<dd>### Pokreni Kernel</dd>
+<dd>### Dohvati HTTP metodu zahtjeva</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -public">
+    <a href="classes/FireHub-Jezgra-HTTP-Zahtjev.html#method_url">url()</a>
+    <span>
+                        &nbsp;: string    </span>
+</dt>
+<dd>### Trenutni URL</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -public">
+    <a href="classes/FireHub-Jezgra-HTTP-Zahtjev.html#method_urlKomponente">urlKomponente()</a>
+    <span>
+                        &nbsp;: array&lt;string|int, string&gt;    </span>
+</dt>
+<dd>### Razbijanje URL-a u niz odvojen karakterom {/}</dd>
 
         </dl>
 
@@ -168,7 +182,7 @@
             <section class="phpdocumentor-methods">
         <h3 class="phpdocumentor-elements__header" id="methods">
             Methods
-            <a href="classes/FireHub-Jezgra-Konzola-Kernel.html#methods" class="headerlink"><i class="fas fa-link"></i></a>
+            <a href="classes/FireHub-Jezgra-HTTP-Zahtjev.html#methods" class="headerlink"><i class="fas fa-link"></i></a>
         </h3>
                     <article
         class="phpdocumentor-element
@@ -176,22 +190,22 @@
             -public
                                                         "
 >
-    <h4 class="phpdocumentor-element__name" id="method_pokreni">
-        pokreni()
-        <a href="classes/FireHub-Jezgra-Konzola-Kernel.html#method_pokreni" class="headerlink"><i class="fas fa-link"></i></a>
+    <h4 class="phpdocumentor-element__name" id="method_metoda">
+        metoda()
+        <a href="classes/FireHub-Jezgra-HTTP-Zahtjev.html#method_metoda" class="headerlink"><i class="fas fa-link"></i></a>
     </h4>
     <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="jezgra/konzola/firehub.Kernel.php"><a href="files/jezgra-konzola-firehub-kernel.html"><abbr title="jezgra/konzola/firehub.Kernel.php">firehub.Kernel.php</abbr></a></abbr>
+    <abbr class="phpdocumentor-element-found-in__file" title="jezgra/http/firehub.Zahtjev.php"><a href="files/jezgra-http-firehub-zahtjev.html"><abbr title="jezgra/http/firehub.Zahtjev.php">firehub.Zahtjev.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">31</span>
+    <span class="phpdocumentor-element-found-in__line">62</span>
 
     </aside>
 
-        <p class="phpdocumentor-summary">### Pokreni Kernel</p>
+        <p class="phpdocumentor-summary">### Dohvati HTTP metodu zahtjeva</p>
 
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
-                <span class="phpdocumentor-signature__name">pokreni</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">self</span></code>
+                <span class="phpdocumentor-signature__name">metoda</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">string</span></code>
 
     
     
@@ -202,18 +216,117 @@
     </h5>
     <dl class="phpdocumentor-tag-list">
                                     <dt class="phpdocumentor-tag-list__entry">
-                    <span class="phpdocumentor-tag__name">inheritDoc</span>
+                    <span class="phpdocumentor-tag__name">since</span>
                 </dt>
                 <dd class="phpdocumentor-tag-list__definition">
+                                            <span class="phpdocumentor-tag-link">0.2.5.pre-alpha.M2</span>
                                                                                 
                                              
                                     </dd>
                         </dl>
 
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-    <span class="phpdocumentor-signature__response_type">self</span>
+    <span class="phpdocumentor-signature__response_type">string</span>
             &mdash;
-            <section class="phpdocumentor-description"><p>Instanca objekta.</p>
+            <section class="phpdocumentor-description"><p>Vrsta tražene metode.</p>
+</section>
+
+    
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -public
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="method_url">
+        url()
+        <a href="classes/FireHub-Jezgra-HTTP-Zahtjev.html#method_url" class="headerlink"><i class="fas fa-link"></i></a>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="jezgra/http/firehub.Zahtjev.php"><a href="files/jezgra-http-firehub-zahtjev.html"><abbr title="jezgra/http/firehub.Zahtjev.php">firehub.Zahtjev.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">38</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">### Trenutni URL</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+                <span class="phpdocumentor-signature__name">url</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">string</span></code>
+
+    
+    
+    
+    <h5 class="phpdocumentor-tag-list__heading" id="tags">
+        Tags
+        <a href="#tags" class="headerlink"><i class="fas fa-link"></i></a>
+    </h5>
+    <dl class="phpdocumentor-tag-list">
+                                    <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">since</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                            <span class="phpdocumentor-tag-link">0.2.5.pre-alpha.M2</span>
+                                                                                
+                                             
+                                    </dd>
+                        </dl>
+
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+    <span class="phpdocumentor-signature__response_type">string</span>
+            &mdash;
+            <section class="phpdocumentor-description"><p>trenutni URI.</p>
+</section>
+
+    
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -public
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="method_urlKomponente">
+        urlKomponente()
+        <a href="classes/FireHub-Jezgra-HTTP-Zahtjev.html#method_urlKomponente" class="headerlink"><i class="fas fa-link"></i></a>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="jezgra/http/firehub.Zahtjev.php"><a href="files/jezgra-http-firehub-zahtjev.html"><abbr title="jezgra/http/firehub.Zahtjev.php">firehub.Zahtjev.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">50</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">### Razbijanje URL-a u niz odvojen karakterom {/}</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+                <span class="phpdocumentor-signature__name">urlKomponente</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">array&lt;string|int, string&gt;</span></code>
+
+    
+    
+    
+    <h5 class="phpdocumentor-tag-list__heading" id="tags">
+        Tags
+        <a href="#tags" class="headerlink"><i class="fas fa-link"></i></a>
+    </h5>
+    <dl class="phpdocumentor-tag-list">
+                                    <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">since</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                            <span class="phpdocumentor-tag-link">0.2.5.pre-alpha.M2</span>
+                                                                                
+                                             
+                                    </dd>
+                        </dl>
+
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+    <span class="phpdocumentor-signature__response_type">array&lt;string|int, string&gt;</span>
+            &mdash;
+            <section class="phpdocumentor-description"><p>Niz komponenti odvojenih karakterom {/}.</p>
 </section>
 
     
@@ -296,7 +409,7 @@
 </section>
             </div>
         </div>
-        <a href="classes/FireHub-Jezgra-Konzola-Kernel.html#top" class="phpdocumentor-back-to-top"><i class="fas fa-chevron-circle-up"></i></a>
+        <a href="classes/FireHub-Jezgra-HTTP-Zahtjev.html#top" class="phpdocumentor-back-to-top"><i class="fas fa-chevron-circle-up"></i></a>
 
     </main>
 

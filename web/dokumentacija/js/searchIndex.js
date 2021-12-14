@@ -61,6 +61,51 @@ Search.appendIndex(
             "summary": "\u0023\u0023\u0023\u0020Pokreni\u0020Kernel",
             "url": "classes/FireHub-Jezgra-Konzola-Kernel.html#method_pokreni"
         },                {
+            "fqsen": "\\FireHub\\Jezgra\\HTTP\\Zahtjev",
+            "name": "Zahtjev",
+            "summary": "\u0023\u0023\u0023\u0020HTTP\u0020zahtjev",
+            "url": "classes/FireHub-Jezgra-HTTP-Zahtjev.html"
+        },                {
+            "fqsen": "\\FireHub\\Jezgra\\HTTP\\Zahtjev\u003A\u003Aurl\u0028\u0029",
+            "name": "url",
+            "summary": "\u0023\u0023\u0023\u0020Trenutni\u0020URL",
+            "url": "classes/FireHub-Jezgra-HTTP-Zahtjev.html#method_url"
+        },                {
+            "fqsen": "\\FireHub\\Jezgra\\HTTP\\Zahtjev\u003A\u003AurlKomponente\u0028\u0029",
+            "name": "urlKomponente",
+            "summary": "\u0023\u0023\u0023\u0020Razbijanje\u0020URL\u002Da\u0020u\u0020niz\u0020odvojen\u0020karakterom\u0020\u007B\/\u007D",
+            "url": "classes/FireHub-Jezgra-HTTP-Zahtjev.html#method_urlKomponente"
+        },                {
+            "fqsen": "\\FireHub\\Jezgra\\HTTP\\Zahtjev\u003A\u003Ametoda\u0028\u0029",
+            "name": "metoda",
+            "summary": "\u0023\u0023\u0023\u0020Dohvati\u0020HTTP\u0020metodu\u0020zahtjeva",
+            "url": "classes/FireHub-Jezgra-HTTP-Zahtjev.html#method_metoda"
+        },                {
+            "fqsen": "\\FireHub\\Jezgra\\Test\\Sustav_Test",
+            "name": "Sustav_Test",
+            "summary": "\u0023\u0023\u0023\u0020Klasa\u0020za\u0020testiranje\u0020pokretanja\u0020sustava",
+            "url": "classes/FireHub-Jezgra-Test-Sustav-Test.html"
+        },                {
+            "fqsen": "\\FireHub\\Jezgra\\Test\\Sustav_Test\u003A\u003ASetUp\u0028\u0029",
+            "name": "SetUp",
+            "summary": "",
+            "url": "classes/FireHub-Jezgra-Test-Sustav-Test.html#method_SetUp"
+        },                {
+            "fqsen": "\\FireHub\\Jezgra\\Test\\Sustav_Test\u003A\u003AtestPokreniSustav\u0028\u0029",
+            "name": "testPokreniSustav",
+            "summary": "\u0023\u0023\u0023\u0020Test\u0020postavljanja\u0020status\u0020koda\u0020HTTP\u0020odgovora",
+            "url": "classes/FireHub-Jezgra-Test-Sustav-Test.html#method_testPokreniSustav"
+        },                {
+            "fqsen": "\\FireHub\\Jezgra\\Test\\Sustav_Test\u003A\u003A\u0024sustav",
+            "name": "sustav",
+            "summary": "\u0023\u0023\u0023\u0020Sustav",
+            "url": "classes/FireHub-Jezgra-Test-Sustav-Test.html#property_sustav"
+        },                {
+            "fqsen": "\\FireHub\\Jezgra\\Test\\Sustav_Test\u003A\u003A\u0024kernel",
+            "name": "kernel",
+            "summary": "Kernel",
+            "url": "classes/FireHub-Jezgra-Test-Sustav-Test.html#property_kernel"
+        },                {
             "fqsen": "\\",
             "name": "\\",
             "summary": "",
@@ -85,5 +130,10 @@ Search.appendIndex(
             "name": "Konzola",
             "summary": "",
             "url": "namespaces/firehub-jezgra-konzola.html"
+        },                {
+            "fqsen": "\\FireHub\\Jezgra\\Test",
+            "name": "Test",
+            "summary": "",
+            "url": "namespaces/firehub-jezgra-test.html"
         }            ]
 );
