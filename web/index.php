@@ -6,11 +6,14 @@
  *
  * @package Sustav\Jezgra
  */
+
 use FireHub\Jezgra\Sustav;
+use FireHub\Jezgra\Enumeratori\Kernel;
 
 /**
  * Pokreni sustav
  */
 require __DIR__.'/../jezgra/firehub.Sustav.php';
+require __DIR__.'/../jezgra/enumeratori/firehub.Kernel.php';
 $sustav = new Sustav();
-$sustav->pokreni();
+$sustav->pokreni(Kernel::HTTP);

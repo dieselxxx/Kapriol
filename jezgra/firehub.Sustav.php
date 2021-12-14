@@ -17,6 +17,7 @@
 
 namespace FireHub\Jezgra;
 
+use FireHub\Jezgra\Enumeratori\Kernel AS Kernel_Enumerator;
 use Error;
 
 /**
@@ -52,11 +53,16 @@ final class Sustav {
      * metoda izložena datotekama koje pokreću sustav.
      * @since 0.2.2.pre-alpha.M2
      *
-     * @return $this Trenutni objekt.
+     * @param Kernel_Enumerator $kernel <p>
+     * Odabrai Kernel iz enumeratora.
+     * </p>
+     *
+     * @return Kernel Instanca Kernela.
      */
-    public function pokreni ():self {
+    public function pokreni (Kernel_Enumerator $kernel):Kernel {
 
-        return $this->autoload();
+        return $this->autoload()
+            ->kernel($kernel);
 
     }
 
@@ -80,6 +86,23 @@ final class Sustav {
         }
 
         return $this;
+
+    }
+
+    /**
+     * ### Pokreni Kernel
+     * @since 0.2.3.pre-alpha.M2
+     *
+     * @param Kernel_Enumerator $kernel <p>
+     * Odabrai Kernel iz enumeratora.
+     * </p>
+     *
+     * @return Kernel Instanca Kernela.
+     */
+    private function kernel (Kernel_Enumerator $kernel):Kernel {
+
+        // pokreni Kernel
+        return (new $kernel->value)->pokreni();
 
     }
 
