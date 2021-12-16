@@ -3,7 +3,9 @@
 package Konzola <<Node>> #FBE9E7 {
     namespace FireHub\Jezgra\Konzola {
         class Kernel #00897B;line:00796B {
-            + pokreni ():self
+            + __construct (private Zahtjev $zahtjev):void
+            + pokreni ():Konzola_Odgovor
+            - odgovor ():Konzola_Odgovor
         }
     }
 }

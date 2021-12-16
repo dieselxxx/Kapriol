@@ -20,7 +20,6 @@ use FireHub\Jezgra\Odgovor as Odgovor_Interface;
 use FireHub\Jezgra\HTTP\Enumeratori\StatusKod as HTTP_StatusKod;
 use FireHub\Jezgra\HTTP\Enumeratori\Vrsta as HTTP_Vrsta;
 use FireHub\Jezgra\HTTP\Enumeratori\Predmemorija as HTTP_Predmemorija;
-use FireHub\Jezgra\HTTP\Greske\Odgovor_Greska as HTTP_Odgovor_Greska;
 
 /**
  * ### HTTP odgovor
@@ -71,15 +70,103 @@ final class Odgovor implements Odgovor_Interface {
         public readonly string $jezik = 'hr',
         public readonly array $predmemorija = [HTTP_Predmemorija::BEZ_SPREMANJA, HTTP_Predmemorija::BEZ_PREDMEMORIJE, HTTP_Predmemorija::MORA_PONOVNO_POTVRDITI],
         public readonly int $predmemorija_vrijeme = 31536000,
-        public readonly string $sadrzaj = ''
-    ) {}
+        private string $sadrzaj = ''
+    ) {
+
+        // postavi HTTP zaglavlja
+        $this
+            ->postaviStatus()
+            ->postaviVrstu()
+            ->postaviJezik()
+            ->postaviPredmemoriju()
+            ->poweredBy();
+
+    }
 
     /**
      * @inheritDoc
      */
     public function sadrzaj ():string {
 
-        return '<b>'.round(memory_get_peak_usage()/1048576, 2) . ' mb</b>';
+        ob_start('ob_gzhandler');
+
+        return $this->sadrzaj . '<b>'.round(memory_get_peak_usage()/1048576, 2) . ' mb</b>';
+
+    }
+
+    /**
+     * ### Status HTTP odgovora
+     *
+     * Status kodova HTTP odgovora odlučuju da li je
+     * HTTP zahtjev uspješno obrađen.
+     * @since 0.2.6.pre-alpha.M2
+     *
+     * @return $this Trenutni objekt.
+     */
+    private function postaviStatus ():self {
+
+        header('HTTP/1.1 ' . $this->kod->value . ' ' . $this->kod->statusNaziv());
+
+        return $this;
+
+    }
+
+    /**
+     * ### Vrsta HTTP odgovora
+     *
+     * Naznačuje media tip resursa.
+     * @since 0.2.6.pre-alpha.M2
+     *
+     * @return $this Trenutni objekt.
+     */
+    private function postaviVrstu ():self {
+
+        header('Content-Type: ' . $this->vrsta->value . '; charset=' . $this->karakteri);
+        header('X-Content-Type-Options: nosniff');
+
+        return $this;
+
+    }
+
+    /**
+     * ### Dodaj potrebni HTTP jezik
+     *
+     * Namijenjena publika za sadržaj.
+     * @since 0.2.6.pre-alpha.M2
+     *
+     * @return $this Trenutni objekt.
+     */
+    private function postaviJezik ():self {
+
+        header('Content-language: ' . $this->jezik);
+
+        return $this;
+
+    }
+
+    /**
+     * ### Dodaj potrebnu HTTP predmemoriju
+     * @since 0.2.6.pre-alpha.M2
+     *
+     * @return $this Trenutni objekt.
+     */
+    private function postaviPredmemoriju ():self {
+
+        return $this;
+
+    }
+
+    /**
+     * ### Zaglavlje X-Powered-By
+     *
+     * Označava sustav na kojem radi trenutni aplikacija.
+     * @since 0.2.6.pre-alpha.M2
+     *
+     * @return $this Trenutni objekt.
+     */
+    private function poweredBy ():self {
+
+        return $this;
 
     }
 

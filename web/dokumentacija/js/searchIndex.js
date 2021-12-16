@@ -36,6 +36,11 @@ Search.appendIndex(
             "summary": "\u0023\u0023\u0023\u0020Osnovna\u0020klasa\u0020Kernel\u0020za\u0020pokretanje\u0020upita",
             "url": "classes/FireHub-Jezgra-Kernel.html"
         },                {
+            "fqsen": "\\FireHub\\Jezgra\\Kernel\u003A\u003A__construct\u0028\u0029",
+            "name": "__construct",
+            "summary": "\u0023\u0023\u0023\u0020Konstruktor.",
+            "url": "classes/FireHub-Jezgra-Kernel.html#method___construct"
+        },                {
             "fqsen": "\\FireHub\\Jezgra\\Kernel\u003A\u003Apokreni\u0028\u0029",
             "name": "pokreni",
             "summary": "\u0023\u0023\u0023\u0020Pokreni\u0020Kernel",
@@ -61,10 +66,10 @@ Search.appendIndex(
             "summary": "\u0023\u0023\u0023\u0020HTTP\u0020odgovor.",
             "url": "classes/FireHub-Jezgra-HTTP-Kernel.html#method_odgovor"
         },                {
-            "fqsen": "\\FireHub\\Jezgra\\HTTP\\Kernel\u003A\u003A\u0024http_zahtjev",
-            "name": "http_zahtjev",
+            "fqsen": "\\FireHub\\Jezgra\\HTTP\\Kernel\u003A\u003A\u0024zahtjev",
+            "name": "zahtjev",
             "summary": "",
-            "url": "classes/FireHub-Jezgra-HTTP-Kernel.html#property_http_zahtjev"
+            "url": "classes/FireHub-Jezgra-HTTP-Kernel.html#property_zahtjev"
         },                {
             "fqsen": "\\FireHub\\Jezgra\\Konzola\\Kernel",
             "name": "Kernel",
@@ -83,13 +88,13 @@ Search.appendIndex(
         },                {
             "fqsen": "\\FireHub\\Jezgra\\Konzola\\Kernel\u003A\u003Aodgovor\u0028\u0029",
             "name": "odgovor",
-            "summary": "\u0023\u0023\u0023\u0020KOnzola\u0020odgovor.",
+            "summary": "\u0023\u0023\u0023\u0020Konzola\u0020odgovor.",
             "url": "classes/FireHub-Jezgra-Konzola-Kernel.html#method_odgovor"
         },                {
-            "fqsen": "\\FireHub\\Jezgra\\Konzola\\Kernel\u003A\u003A\u0024http_zahtjev",
-            "name": "http_zahtjev",
+            "fqsen": "\\FireHub\\Jezgra\\Konzola\\Kernel\u003A\u003A\u0024zahtjev",
+            "name": "zahtjev",
             "summary": "",
-            "url": "classes/FireHub-Jezgra-Konzola-Kernel.html#property_http_zahtjev"
+            "url": "classes/FireHub-Jezgra-Konzola-Kernel.html#property_zahtjev"
         },                {
             "fqsen": "\\FireHub\\Jezgra\\HTTP\\Zahtjev",
             "name": "Zahtjev",
@@ -146,20 +151,35 @@ Search.appendIndex(
             "summary": "\u0023\u0023\u0023\u0020Odgovor",
             "url": "classes/FireHub-Jezgra-Odgovor.html"
         },                {
+            "fqsen": "\\FireHub\\Jezgra\\Odgovor\u003A\u003Asadrzaj\u0028\u0029",
+            "name": "sadrzaj",
+            "summary": "\u0023\u0023\u0023\u0020Sadr\u017Eaj\u0020odgovora",
+            "url": "classes/FireHub-Jezgra-Odgovor.html#method_sadrzaj"
+        },                {
             "fqsen": "\\FireHub\\Jezgra\\Zahtjev",
             "name": "Zahtjev",
             "summary": "\u0023\u0023\u0023\u0020Zahtjev",
             "url": "classes/FireHub-Jezgra-Zahtjev.html"
         },                {
-            "fqsen": "\\FireHub\\Jezgra\\HTTP\\Odgovor",
-            "name": "Odgovor",
-            "summary": "\u0023\u0023\u0023\u0020HTTP\u0020odgovor",
-            "url": "classes/FireHub-Jezgra-HTTP-Odgovor.html"
-        },                {
             "fqsen": "\\FireHub\\Jezgra\\Konzola\\Odgovor",
             "name": "Odgovor",
             "summary": "\u0023\u0023\u0023\u0020Konzola\u0020odgovor",
             "url": "classes/FireHub-Jezgra-Konzola-Odgovor.html"
+        },                {
+            "fqsen": "\\FireHub\\Jezgra\\Konzola\\Odgovor\u003A\u003Asadrzaj\u0028\u0029",
+            "name": "sadrzaj",
+            "summary": "\u0023\u0023\u0023\u0020Sadr\u017Eaj\u0020odgovora",
+            "url": "classes/FireHub-Jezgra-Konzola-Odgovor.html#method_sadrzaj"
+        },                {
+            "fqsen": "\\FireHub\\Jezgra\\Greske\\Greska",
+            "name": "Greska",
+            "summary": "\u0023\u0023\u0023\u0020Klasa\u0020za\u0020slanje\u0020gre\u0161aka",
+            "url": "classes/FireHub-Jezgra-Greske-Greska.html"
+        },                {
+            "fqsen": "\\FireHub\\Jezgra\\HTTP\\Greske\\Odgovor_Greska",
+            "name": "Odgovor_Greska",
+            "summary": "\u0023\u0023\u0023\u0020HTTP\u0020odgovor\u0020gre\u0161ke",
+            "url": "classes/FireHub-Jezgra-HTTP-Greske-Odgovor-Greska.html"
         },                {
             "fqsen": "\\",
             "name": "\\",
@@ -176,10 +196,20 @@ Search.appendIndex(
             "summary": "",
             "url": "namespaces/firehub.html"
         },                {
+            "fqsen": "\\FireHub\\Jezgra\\Greske",
+            "name": "Greske",
+            "summary": "",
+            "url": "namespaces/firehub-jezgra-greske.html"
+        },                {
             "fqsen": "\\FireHub\\Jezgra\\HTTP",
             "name": "HTTP",
             "summary": "",
             "url": "namespaces/firehub-jezgra-http.html"
+        },                {
+            "fqsen": "\\FireHub\\Jezgra\\HTTP\\Greske",
+            "name": "Greske",
+            "summary": "",
+            "url": "namespaces/firehub-jezgra-http-greske.html"
         },                {
             "fqsen": "\\FireHub\\Jezgra\\Konzola",
             "name": "Konzola",
