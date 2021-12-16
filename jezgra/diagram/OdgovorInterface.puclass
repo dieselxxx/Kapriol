@@ -1,0 +1,11 @@
+@startuml
+
+package Kernel <<Node>> #FBE9E7 {
+    namespace FireHub\Jezgra {
+        interface Odgovor #00897B;line:00796B {
+            + sadrzaj ():string
+        }
+    }
+}
+
+@enduml
