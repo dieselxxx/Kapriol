@@ -50,7 +50,6 @@ enum Vrsta:string {
     case JSON = 'application/json';
     case JSONLD = 'application/ld+json';
     case MIDI = 'audio/midi audio/x-midi';
-    case MJS = 'text/javascript';
     case MP3 = 'audio/mpeg';
     case MP4 = 'video/mp4';
     case MPEG = 'video/mpeg';
