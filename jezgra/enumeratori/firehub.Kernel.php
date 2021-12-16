@@ -14,6 +14,8 @@
 
 namespace FireHub\Jezgra\Enumeratori;
 
+use FireHub\Jezgra\HTTP\Kernel as HTTP_Kernel;
+use FireHub\Jezgra\Konzola\Kernel as HTTP_Konzola;
 use FireHub\Jezgra\HTTP\Zahtjev as HTTP_Zahtjev;
 use FireHub\Jezgra\Konzola\Zahtjev as Konzola_Zahtjev;
 
@@ -23,10 +25,25 @@ use FireHub\Jezgra\Konzola\Zahtjev as Konzola_Zahtjev;
  *
  * @package Sustav\Jezgra
  */
-enum Kernel:string {
+enum Kernel {
 
-    case HTTP = '\\FireHub\\Jezgra\\HTTP\\Kernel';
-    case KONZOLA = '\\FireHub\\Jezgra\\Konzola\\Kernel';
+    case HTTP;
+    case KONZOLA;
+
+    /**
+     * ### Klasa za pokt.
+     * @since 0.2.5.pre-alpha.M2
+     *
+     * @return string FQN Kernel.
+     */
+    public function kernel ():string {
+
+        return match ($this) {
+            self::HTTP => HTTP_Kernel::class,
+            self::KONZOLA => HTTP_Konzola::class
+        };
+
+    }
 
     /**
      * ### Klasa za obradu zahtjeva Kernela.

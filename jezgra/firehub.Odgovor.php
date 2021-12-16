@@ -22,4 +22,12 @@ namespace FireHub\Jezgra;
  */
 interface Odgovor {
 
+    /**
+     * ### Sadržaj odgovora
+     * @since 0.2.6.pre-alpha.M2
+     *
+     * @return string Sadržaj za prikazati.
+     */
+    public function sadrzaj ():string;
+
 }

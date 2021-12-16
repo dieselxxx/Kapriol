@@ -102,7 +102,7 @@ final class Sustav {
     private function kernel (Kernel_Enumerator $kernel):Odgovor {
 
         // pokreni Kernel
-        return (new $kernel->value (
+        return (new ($kernel->kernel()) (
             new ($kernel->zahtjev()))
         )->pokreni();
 

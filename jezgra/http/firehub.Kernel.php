@@ -15,7 +15,7 @@
 namespace FireHub\Jezgra\HTTP;
 
 use FireHub\Jezgra\Kernel as OsnovniKernel;
-use FireHub\Jezgra\HTTP\Zahtjev as HTTP_Zahtjev;
+use FireHub\Jezgra\Zahtjev;
 use FireHub\Jezgra\HTTP\Odgovor as HTTP_Odgovor;
 use Throwable;
 
@@ -28,14 +28,9 @@ use Throwable;
 final class Kernel extends OsnovniKernel {
 
     /**
-     * ### Konstruktor.
-     * @since 0.2.3.pre-alpha.M2
-     *
-     * @param HTTP_Zahtjev $http_zahtjev <p>
-     * HTTP zahtjev.
-     * </p>
+     * @inheritDoc
      */
-    public function __construct (private HTTP_Zahtjev $http_zahtjev) {}
+    public function __construct (private Zahtjev $zahtjev) {}
 
     /**
      * @inheritDoc

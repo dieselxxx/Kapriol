@@ -15,7 +15,7 @@
 namespace FireHub\Jezgra\Konzola;
 
 use FireHub\Jezgra\Kernel as OsnovniKernel;
-use FireHub\Jezgra\Konzola\Zahtjev as Konzola_Zahtjev;
+use FireHub\Jezgra\Zahtjev;
 use FireHub\Jezgra\Konzola\Odgovor as Konzola_Odgovor;
 use Throwable;
 
@@ -28,14 +28,9 @@ use Throwable;
 final class Kernel extends OsnovniKernel {
 
     /**
-     * ### Konstruktor.
-     * @since 0.2.3.pre-alpha.M2
-     *
-     * @param Konzola_Zahtjev $http_zahtjev <p>
-     * Konzola zahtjev.
-     * </p>
+     * @inheritDoc
      */
-    public function __construct (private Konzola_Zahtjev $http_zahtjev) {}
+    public function __construct (private Zahtjev $zahtjev) {}
 
     /**
      * @inheritDoc
@@ -56,7 +51,7 @@ final class Kernel extends OsnovniKernel {
     }
 
     /**
-     * ### KOnzola odgovor.
+     * ### Konzola odgovor.
      * @since 0.2.6.pre-alpha.M2
      *
      * @return Konzola_Odgovor Odgovor za konzolu.

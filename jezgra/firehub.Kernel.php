@@ -14,6 +14,7 @@
 
 namespace FireHub\Jezgra;
 
+
 /**
  * ### Osnovna klasa Kernel za pokretanje upita
  * @since 0.2.3.pre-alpha.M2
@@ -21,6 +22,16 @@ namespace FireHub\Jezgra;
  * @package Sustav\Jezgra
  */
 abstract class Kernel {
+
+    /**
+     * ### Konstruktor.
+     * @since 0.2.3.pre-alpha.M2
+     *
+     * @param Zahtjev $zahtjev <p>
+     * Zahtjev.
+     * </p>
+     */
+    abstract function __construct (Zahtjev $zahtjev);
 
     /**
      * ### Pokreni Kernel

@@ -29,4 +29,13 @@ use FireHub\Jezgra\Odgovor as Odgovor_Interface;
  */
 final class Odgovor implements Odgovor_Interface {
 
+    /**
+     * @inheritDoc
+     */
+    public function sadrzaj ():string {
+
+        return round(memory_get_peak_usage()/1048576, 2) . ' mb';
+
+    }
+
 }
