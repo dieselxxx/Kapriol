@@ -92,8 +92,13 @@ final class Servis_Kontejner extends Kontejner {
      */
     private function servis ():string {
 
-        // provjeri postoji li unaprijed postavljeni servis, ako jest provjeri da li ima odgovorajući servis interface
-        if (!is_null($this->posluzitelj->postavljeniServis()) && !is_a($this->posluzitelj->postavljeniServis(), Servis_Interface::class, true)) {
+        if (
+            !is_null($this->posluzitelj->postavljeniServis()) && // postoji unaprijed postavljeni servis
+            (
+                array_key_exists($this->posluzitelj->postavljeniServis(), $this->posluzitelji()[$this->posluzitelj::class]['servisi']) !== true // postavljeni servis postoji kao servis kod trenutnog poslužitelja
+                || !is_a($this->posluzitelj->postavljeniServis(), Servis_Interface::class, true) // postavljeni servis ima interface za servise
+            )
+        ) {
 
             throw new Kontejner_Greska(_('Ne mogu pokrenuti sustav, obratite se administratoru'));
 
