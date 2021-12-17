@@ -138,7 +138,7 @@ abstract class Kontejner {
     final protected function autozicaObjekt ():array {
 
         return $this->autozica(
-            $this->parametriFiltar($this->refleksija()?->getConstructor()?->getParameters() ?? [])
+            $this->refleksijaParametriFiltar($this->refleksija()?->getConstructor()?->getParameters() ?? [])
         );
 
     }
@@ -160,7 +160,7 @@ abstract class Kontejner {
     final public function autozicaMetoda (string $metoda):array {
 
         return $this->autozica(
-            $this->parametriFiltar((new ReflectionMethod($this->naziv, $metoda))->getParameters())
+            $this->refleksijaParametriFiltar((new ReflectionMethod($this->naziv, $metoda))->getParameters())
         );
 
     }
@@ -202,7 +202,7 @@ abstract class Kontejner {
      *
      * @return ReflectionParameter[] Filtrirani parametri.
      */
-    private function parametriFiltar (array $parametri):array {
+    private function refleksijaParametriFiltar (array $parametri):array {
 
         return array_filter(
             $parametri, // parameteri autozice
@@ -312,7 +312,7 @@ abstract class Kontejner {
                     // obradi atribut
                     $obradi_atribut = $atribut_instanca->obradi(
                         ...$this->autozica(
-                            $this->parametriFiltar((new ReflectionMethod($atribut_instanca, 'obradi'))->getParameters())
+                            $this->refleksijaParametriFiltar((new ReflectionMethod($atribut_instanca, 'obradi'))->getParameters())
                         )
                     );
 
