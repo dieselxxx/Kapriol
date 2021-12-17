@@ -53,7 +53,7 @@ abstract class Kontejner {
      * ### Dohvati novi objekt iz kontejnera
      * @since 0.3.0.pre-alpha.M3
      *
-     * @throws Kontejner_Greska Ako ne postoji objekt sa nazivom klas ili ukoliko nije uspješno obrađen atribut.
+     * @throws Kontejner_Greska Ako ne postoji objekt sa nazivom klase ili ukoliko nije uspješno obrađen atribut.
      *
      * @return object Objekt iz kontajnera.
      */
@@ -231,7 +231,7 @@ abstract class Kontejner {
      * ### Provjera da li je trenutni objekt singleton
      * @since 0.3.0.pre-alpha.M3
      *
-     * @throws Kontejner_Greska Ako ne postoji objekt sa nazivom klas ili ukoliko nije uspješno obrađen atribut
+     * @throws Kontejner_Greska Ako ne postoji objekt sa nazivom klase ili ukoliko nije uspješno obrađen atribut
      *
      * @return bool Da li je objekt singleton.
      */
@@ -252,7 +252,7 @@ abstract class Kontejner {
      * ### Atributi objekta
      * @since 0.3.0.pre-alpha.M3
      *
-     * @throws Kontejner_Greska Ako ne postoji objekt sa nazivom klas ili ukoliko nije uspješno obrađen atribut.
+     * @throws Kontejner_Greska Ako ne postoji objekt sa nazivom klase ili ukoliko nije uspješno obrađen atribut.
      *
      * @return Atribut[] Atributi objekta koji implementiraju Atribut interface.
      */
@@ -272,7 +272,7 @@ abstract class Kontejner {
      * Naziv metode objekta.
      * </p>
      *
-     * @throws Kontejner_Greska Ako ne postoji objekt sa nazivom klas ili ukoliko nije uspješno obrađen atribut.
+     * @throws Kontejner_Greska Ako ne postoji objekt sa nazivom klase ili ukoliko nije uspješno obrađen atribut.
      * @throws ReflectionException Ukoliko ne postoji klasa ili metoda.
      *
      * @return Atribut[] Lista atributa metode koji implementiraju Atribut interface.
