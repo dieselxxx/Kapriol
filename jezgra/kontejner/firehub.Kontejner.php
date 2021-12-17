@@ -144,6 +144,28 @@ abstract class Kontejner {
     }
 
     /**
+     * ### Autožica za metodu
+     *
+     * Prikupljanje zavisnih parametara objekta iz metode te automatsko pozivanje istih.
+     * @since 0.3.0.pre-alpha.M3
+     *
+     * @param string $metoda <p>
+     * Metoda za koju je namijenjena autožica.
+     * </p>
+     *
+     * @throws ReflectionException Ako ne postoji objekt sa nazivom klase.
+     *
+     * @return object[] Lista objekata iz trenutne metode.
+     */
+    final public function autozicaMetoda (string $metoda):array {
+
+        return $this->autozica(
+            $this->parametriFiltar((new ReflectionMethod($this->naziv, $metoda))->getParameters())
+        );
+
+    }
+
+    /**
      * ### Autožica
      *
      * Automatsko pokretanje objekata iz parametra pronađenih u refleksiji
@@ -238,6 +260,27 @@ abstract class Kontejner {
 
         return $this->obradiAtribute(
             $this->refleksija()->getAttributes(Atribut::class, ReflectionAttribute::IS_INSTANCEOF)
+        );
+
+    }
+
+    /**
+     * ### Atributi metode objekta
+     * @since 0.3.0.pre-alpha.M3
+     *
+     * @param string $metoda <p>
+     * Naziv metode objekta.
+     * </p>
+     *
+     * @throws Kontejner_Greska Ako ne postoji objekt sa nazivom klas ili ukoliko nije uspješno obrađen atribut.
+     * @throws ReflectionException Ukoliko ne postoji klasa ili metoda.
+     *
+     * @return Atribut[] Lista atributa metode koji implementiraju Atribut interface.
+     */
+    final public function atributiMetoda (string $metoda):array {
+
+        return $this->obradiAtribute(
+            (new ReflectionMethod($this->naziv, $metoda))->getAttributes(Atribut::class, ReflectionAttribute::IS_INSTANCEOF)
         );
 
     }
