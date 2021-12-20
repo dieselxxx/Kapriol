@@ -19,7 +19,15 @@ use FireHub\Jezgra\Kontejner\Greske\Servis_Posluzitelj_Greska;
 
 /**
  * ### Osnovna abstraktna klasa za sve poslužitelje servisa
+ *
+ * - Protected metode su metode koje se mogu samo pročitati, te se upisuje property-read DocBlock za njih radi čitanja IDEA-a. Ovo omogućava magična metoda __get.
+ * - Public metode su metode koje se mogu promijeniti bilo gdje unutar aplikacije, uključujući i servis pripadajućeg poslužitelja.
+ * - Private metode su namijenjene samo za pripadajućeg poslužitelja.
+ * - Sva protected i public svojstva automatski dobivaju metode za osnovno postavljanje svojstva, Za njih se upisuje method DocBlock radi čitanja IDEA-a.
+ * - Staičke metode servisa se mogu pozivati preko poslužitelja ili preko servisa.
  * @since 0.3.0.pre-alpha.M3
+ *
+ * @method self servis(string $servis) Postavi servis na poslužitelju
  *
  * @package Sustav\Jezgra
  */
@@ -30,24 +38,6 @@ abstract class Servis_Posluzitelj {
      * @var ?string $servis
      */
     protected ?string $servis = null;
-
-    /**
-     * ### Postavi servis na poslužitelju
-     * @since 0.3.0.pre-alpha.M3
-     *
-     * @param $servis <p>
-     * Ručno postavljeni servis na poslužitelju
-     * </p>
-     *
-     * @return $this Trenutni objekt.
-     */
-    public function servis ($servis):self {
-
-        $this->servis = $servis;
-
-        return $this;
-
-    }
 
     /**
      * ### Pročitaj ručno postavljeni servis na poslužitelju
@@ -110,6 +100,27 @@ abstract class Servis_Posluzitelj {
         );
 
         return $this;
+
+    }
+
+    /**
+     * ### Automatsko postavljanje statičkih metoda servisa
+     * @since 0.3.0.pre-alpha.M3
+     *
+     * @param string $metoda <p>
+     * Naziv metode.
+     * </p>
+     * @param array $argumenti <p>
+     * Argumenti metode.
+     * </p>
+     *
+     * @throws Kontejner_Greska Ukoliko se ne može spremiti instanca objekta.
+     *
+     * @return mixed Vrijednost iz statičke metode servisa.
+     */
+    public static function __callStatic (string $metoda, array $argumenti):mixed {
+
+        return (new Servis_Kontejner(new static()))->singleton()::$metoda(...$argumenti);
 
     }
 
