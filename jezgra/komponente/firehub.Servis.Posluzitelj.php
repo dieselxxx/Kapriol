@@ -134,9 +134,17 @@ abstract class Servis_Posluzitelj {
      * Naziv svojstva.
      * </p>
      *
+     * @throws Servis_Posluzitelj_Greska Ukoliko ne postoji ili nije inicializirano svojstvo u poslužitelju.
+     *
      * @return mixed Vrijednost svojstva.
      */
     public function &__get (string $svojstvo_naziv):mixed {
+
+        if (!isset($this->$svojstvo_naziv)) {
+
+            throw new Servis_Posluzitelj_Greska(_('Ne mogu pokrenuti sustav, obratite se administratoru'));
+
+        }
 
         return $this->$svojstvo_naziv;
 
