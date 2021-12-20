@@ -181,10 +181,85 @@ Search.appendIndex(
             "summary": "\u0023\u0023\u0023\u0020HTTP\u0020odgovor\u0020gre\u0161ke",
             "url": "classes/FireHub-Jezgra-HTTP-Greske-Odgovor-Greska.html"
         },                {
+            "fqsen": "\\FireHub\\Jezgra\\Atributi\\Atribut",
+            "name": "Atribut",
+            "summary": "\u0023\u0023\u0023\u0020Interface\u0020za\u0020sve\u0020atribute",
+            "url": "classes/FireHub-Jezgra-Atributi-Atribut.html"
+        },                {
+            "fqsen": "\\FireHub\\Jezgra\\Atributi\\Atribut\u003A\u003Aobradi\u0028\u0029",
+            "name": "obradi",
+            "summary": "\u0023\u0023\u0023\u0020Obradi\u0020atribut",
+            "url": "classes/FireHub-Jezgra-Atributi-Atribut.html#method_obradi"
+        },                {
+            "fqsen": "\\FireHub\\Jezgra\\Komponente\\Servis_Interface",
+            "name": "Servis_Interface",
+            "summary": "\u0023\u0023\u0023\u0020Osnovni\u0020interface\u0020za\u0020sve\u0020servise",
+            "url": "classes/FireHub-Jezgra-Komponente-Servis-Interface.html"
+        },                {
+            "fqsen": "\\FireHub\\Jezgra\\Komponente\\Servis_Kontejner",
+            "name": "Servis_Kontejner",
+            "summary": "\u0023\u0023\u0023\u0020Upravljanje\u0020ovisnostima\u0020definicija\u0020i\u0020dependency\u0020injection\u0020za\u0020servise",
+            "url": "classes/FireHub-Jezgra-Komponente-Servis-Kontejner.html"
+        },                {
+            "fqsen": "\\FireHub\\Jezgra\\Komponente\\Servis_Kontejner\u003A\u003A__construct\u0028\u0029",
+            "name": "__construct",
+            "summary": "\u0023\u0023\u0023\u0020Konstruktor",
+            "url": "classes/FireHub-Jezgra-Komponente-Servis-Kontejner.html#method___construct"
+        },                {
+            "fqsen": "\\FireHub\\Jezgra\\Komponente\\Servis_Kontejner\u003A\u003Aparameteri\u0028\u0029",
+            "name": "parameteri",
+            "summary": "\u007B\u0040inheritDoc\u007D",
+            "url": "classes/FireHub-Jezgra-Komponente-Servis-Kontejner.html#method_parameteri"
+        },                {
+            "fqsen": "\\FireHub\\Jezgra\\Komponente\\Servis_Kontejner\u003A\u003Aservis\u0028\u0029",
+            "name": "servis",
+            "summary": "\u0023\u0023\u0023\u0020FQN\u0020naziv\u0020trenutog\u0020servisa",
+            "url": "classes/FireHub-Jezgra-Komponente-Servis-Kontejner.html#method_servis"
+        },                {
+            "fqsen": "\\FireHub\\Jezgra\\Komponente\\Servis_Kontejner\u003A\u003AzadaniServis\u0028\u0029",
+            "name": "zadaniServis",
+            "summary": "\u0023\u0023\u0023\u0020Pro\u010Ditaj\u0020zadani\u0020servis\u0020iz\u0020konfiguracije\u0020servisa",
+            "url": "classes/FireHub-Jezgra-Komponente-Servis-Kontejner.html#method_zadaniServis"
+        },                {
+            "fqsen": "\\FireHub\\Jezgra\\Komponente\\Servis_Kontejner\u003A\u003APOSLUZITELJI",
+            "name": "POSLUZITELJI",
+            "summary": "Putanja\u0020do\u0020konfiguracijske\u0020datoteke\u0020posluzitelja",
+            "url": "classes/FireHub-Jezgra-Komponente-Servis-Kontejner.html#constant_POSLUZITELJI"
+        },                {
+            "fqsen": "\\FireHub\\Jezgra\\Komponente\\Servis_Kontejner\u003A\u003A\u0024posluzitelji",
+            "name": "posluzitelji",
+            "summary": "\u0023\u0023\u0023\u0020Lista\u0020posluzitelja",
+            "url": "classes/FireHub-Jezgra-Komponente-Servis-Kontejner.html#property_posluzitelji"
+        },                {
+            "fqsen": "\\FireHub\\Jezgra\\Komponente\\Servis_Kontejner\u003A\u003A\u0024posluzitelj",
+            "name": "posluzitelj",
+            "summary": "",
+            "url": "classes/FireHub-Jezgra-Komponente-Servis-Kontejner.html#property_posluzitelj"
+        },                {
+            "fqsen": "\\FireHub\\Jezgra\\Kontejner\\Greske\\Servis_Kontejner_Greska",
+            "name": "Servis_Kontejner_Greska",
+            "summary": "\u0023\u0023\u0023\u0020Servis\u0020Kontejner\u0020gre\u0161ke",
+            "url": "classes/FireHub-Jezgra-Kontejner-Greske-Servis-Kontejner-Greska.html"
+        },                {
+            "fqsen": "\\FireHub\\Jezgra\\Kontejner\\Greske\\Servis_Posluzitelj_Greska",
+            "name": "Servis_Posluzitelj_Greska",
+            "summary": "\u0023\u0023\u0023\u0020Servis\u0020Poslu\u017Eitelj\u0020gre\u0161ke",
+            "url": "classes/FireHub-Jezgra-Kontejner-Greske-Servis-Posluzitelj-Greska.html"
+        },                {
+            "fqsen": "\\FireHub\\Jezgra\\Kontejner\\Greske\\Kontejner_Greska",
+            "name": "Kontejner_Greska",
+            "summary": "\u0023\u0023\u0023\u0020Kontejner\u0020gre\u0161ke",
+            "url": "classes/FireHub-Jezgra-Kontejner-Greske-Kontejner-Greska.html"
+        },                {
             "fqsen": "\\",
             "name": "\\",
             "summary": "",
             "url": "namespaces/default.html"
+        },                {
+            "fqsen": "\\FireHub\\Jezgra\\Atributi",
+            "name": "Atributi",
+            "summary": "",
+            "url": "namespaces/firehub-jezgra-atributi.html"
         },                {
             "fqsen": "\\FireHub\\Jezgra",
             "name": "Jezgra",
@@ -210,6 +285,21 @@ Search.appendIndex(
             "name": "Greske",
             "summary": "",
             "url": "namespaces/firehub-jezgra-http-greske.html"
+        },                {
+            "fqsen": "\\FireHub\\Jezgra\\Komponente",
+            "name": "Komponente",
+            "summary": "",
+            "url": "namespaces/firehub-jezgra-komponente.html"
+        },                {
+            "fqsen": "\\FireHub\\Jezgra\\Kontejner\\Greske",
+            "name": "Greske",
+            "summary": "",
+            "url": "namespaces/firehub-jezgra-kontejner-greske.html"
+        },                {
+            "fqsen": "\\FireHub\\Jezgra\\Kontejner",
+            "name": "Kontejner",
+            "summary": "",
+            "url": "namespaces/firehub-jezgra-kontejner.html"
         },                {
             "fqsen": "\\FireHub\\Jezgra\\Konzola",
             "name": "Konzola",
