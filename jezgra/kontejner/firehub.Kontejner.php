@@ -18,6 +18,7 @@ namespace FireHub\Jezgra\Kontejner;
 
 use FireHub\Jezgra\Atributi\Atribut;
 use FireHub\Jezgra\Atributi\Singleton;
+use FireHub\Jezgra\Komponente\Log\Enumeratori\Level;
 use FireHub\Jezgra\Kontejner\Greske\Kontejner_Greska;
 use ReflectionClass, ReflectionMethod, ReflectionNamedType, ReflectionParameter, ReflectionAttribute, ReflectionException;
 use Generator;
@@ -70,6 +71,7 @@ abstract class Kontejner {
         // napravi novu instancu objekta
         if (!$this->spremiNovuInstancu()) {
 
+            zapisnik(Level::KRITICNO, sprintf(_('Ne mogu spremiti instancu: %s, u kontejner!'), $this->naziv));
             throw new Kontejner_Greska(_('Ne mogu pokrenuti sustav, obratite se administratoru'));
 
         }
@@ -88,9 +90,10 @@ abstract class Kontejner {
      */
     final public function singleton ():object {
 
-        // ako ne postoji instanca objekta napravi novu
+        // ako ne postoji instanca objekta i ne može se spremiit nova
         if (!isset(self::$instance[$this->naziv]) && !$this->spremiNovuInstancu()) {
 
+            zapisnik(Level::KRITICNO, sprintf(_('Ne mogu spremiti instancu: %s, u kontejner!'), $this->naziv));
             throw new Kontejner_Greska(_('Ne mogu pokrenuti sustav, obratite se administratoru'));
 
         }
@@ -333,6 +336,7 @@ abstract class Kontejner {
 
                     if ($obradi_atribut === false) {
 
+                        zapisnik(Level::KRITICNO, sprintf(_('Ne mogu obraditi atribut: %s u objektu: %s!'), $atribut, $this->naziv));
                         throw new Kontejner_Greska(_('Ne mogu pokrenuti sustav, obratite se administratoru'));
 
                     }
@@ -345,6 +349,7 @@ abstract class Kontejner {
 
         } catch (ReflectionException) {
 
+            zapisnik(Level::KRITICNO, sprintf(_('Ne mogu obraditi atribute objekta: %s, radi greške u čitanju refleksije!'), $this->naziv));
             throw new Kontejner_Greska(_('Ne mogu pokrenuti sustav, obratite se administratoru'));
 
         }
@@ -369,6 +374,7 @@ abstract class Kontejner {
 
         } catch (ReflectionException) {
 
+            zapisnik(Level::KRITICNO, sprintf(_('Ne mogu učitati refleksiju objekta: %s!'), $this->naziv));
             throw new Kontejner_Greska(_('Ne mogu pokrenuti sustav, obratite se administratoru'));
 
         }
