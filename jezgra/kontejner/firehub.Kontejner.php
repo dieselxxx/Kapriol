@@ -20,6 +20,7 @@ use FireHub\Jezgra\Atributi\Atribut;
 use FireHub\Jezgra\Atributi\Singleton;
 use FireHub\Jezgra\Kontejner\Greske\Kontejner_Greska;
 use ReflectionClass, ReflectionMethod, ReflectionNamedType, ReflectionParameter, ReflectionAttribute, ReflectionException;
+use Generator;
 
 /**
  * ### Osnovna abstraktna klasa za kontenjere
@@ -74,6 +75,20 @@ abstract class Kontejner {
         }
 
         return self::$instance[$this->naziv];
+
+    }
+
+    /**
+     * ### Dohvati novi objekt kao generator
+     * @since 0.3.0.pre-alpha.M3
+     *
+     * @throws Kontejner_Greska Ako ne postoji objekt sa nazivom klase ili ukoliko nije uspješno obrađen atribut.
+     *
+     * @return Generator Objekt kao generator.
+     */
+    final public function generator ():Generator {
+
+        yield $this->dohvati();
 
     }
 

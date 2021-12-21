@@ -16,6 +16,7 @@ namespace FireHub\Jezgra\Komponente;
 
 use FireHub\Jezgra\Kontejner\Greske\Kontejner_Greska;
 use FireHub\Jezgra\Kontejner\Greske\Servis_Posluzitelj_Greska;
+use Generator;
 
 /**
  * ### Osnovna abstraktna klasa za sve poslužitelje servisa
@@ -65,6 +66,35 @@ abstract class Servis_Posluzitelj {
     public function napravi ():object {
 
         return (new Servis_Kontejner($this))->dohvati();
+
+    }
+
+    /**
+     * ### Lijeno čitanje liste servisa
+     * @since 0.3.0.pre-alpha.M3
+     *
+     * @param static[] $posluzitelji <p>
+     * Lista ovog poslužitelja.
+     * </p>
+     *
+     * @throws Servis_Posluzitelj_Greska Ukoliko ne postoji ili nije inicializirano svojstvo u poslužitelju.
+     * @throws Kontejner_Greska Ako ne postoji objekt sa nazivom klase ili ukoliko nije uspješno obrađen atribut.
+     *
+     * @return object[] Lista servisa.
+     */
+    public static function lijeno (array $posluzitelji):array {
+
+        foreach (self::generator($posluzitelji) as $posluzitelj) {
+
+            if ($posluzitelj !== false) {
+
+                $servisi[] = $posluzitelj;
+
+            }
+
+        }
+
+        return $servisi ?? [];
 
     }
 
@@ -147,6 +177,35 @@ abstract class Servis_Posluzitelj {
         }
 
         return $this->$svojstvo_naziv;
+
+    }
+
+    /**
+     * ### Generator
+     * @since 0.3.0.pre-alpha.M3
+     *
+     * @param static[] $posluzitelji <p>
+     * Lista ovog poslužitelja.
+     * </p>
+     *
+     * @throws Servis_Posluzitelj_Greska Ukoliko ne postoji ili nije inicializirano svojstvo u poslužitelju.
+     * @throws Kontejner_Greska Ako ne postoji objekt sa nazivom klase ili ukoliko nije uspješno obrađen atribut.
+     *
+     * @return Generator Objekt generatora.
+     */
+    private static function generator (array $posluzitelji):Generator {
+
+        foreach ($posluzitelji as $posluzitelj) {
+
+            if (!$posluzitelj instanceof static) {
+
+                throw new Servis_Posluzitelj_Greska(_('Ne mogu pokrenuti sustav, obratite se administratoru'));
+
+            }
+
+            yield from (new Servis_Kontejner($posluzitelj))->generator();
+
+        }
 
     }
 
