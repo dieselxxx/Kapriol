@@ -102,7 +102,8 @@ $datotekaBiblioteka = static function (array $putanja_niz, string $objekt):strin
  * Objekt koja se poziva.
  * </p>
  *
- * @throws Exception Ukoliko ne postoji datoteka.
+ * @throws Autoload_Greska Ukoliko ne postoji datoteka.
+ * @throws Kontejner_Greska Ako ne postoji objekt sa nazivom klase ili ukoliko nije uspješno obrađen atribut.
  *
  * @return string|null Putanja i naziv datoteke.
  */
