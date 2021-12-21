@@ -17,10 +17,9 @@
 
 return [
 
-    \FireHub\Jezgra\Komponente\TestPosluzitelj::class => [
+    \FireHub\Jezgra\Komponente\Test\Test::class => [
         'servisi' => [
-            \FireHub\Jezgra\Komponente\TestServis::class => [],
-            \FireHub\Jezgra\Komponente\TestServis2::class => []
+            \FireHub\Jezgra\Komponente\Test\Servisi\Test_Servis::class => []
         ]
     ]
 
