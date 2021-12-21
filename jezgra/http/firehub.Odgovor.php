@@ -20,6 +20,10 @@ use FireHub\Jezgra\Odgovor as Odgovor_Interface;
 use FireHub\Jezgra\HTTP\Enumeratori\StatusKod as HTTP_StatusKod;
 use FireHub\Jezgra\HTTP\Enumeratori\Vrsta as HTTP_Vrsta;
 use FireHub\Jezgra\HTTP\Enumeratori\Predmemorija as HTTP_Predmemorija;
+use FireHub\Jezgra\Komponente\Log\Log;
+use FireHub\Jezgra\Komponente\Log\Servisi\AutoPosalji;
+use FireHub\Jezgra\Kontejner\Greske\Kontejner_Greska;
+use Throwable;
 
 /**
  * ### HTTP odgovor
@@ -84,13 +88,25 @@ final class Odgovor implements Odgovor_Interface {
     }
 
     /**
-     * @inheritDoc
+     * {@inheritDoc}
+     *
+     * @throws Kontejner_Greska Ako ne postoji objekt sa nazivom klase ili ukoliko nije uspješno obrađen atribut.
      */
     public function sadrzaj ():string {
 
         ob_start('ob_gzhandler');
 
-        return $this->sadrzaj . '<b>'.round(memory_get_peak_usage()/1048576, 2) . ' mb</b>';
+        try {
+
+            return $this->sadrzaj . '<b>'.round(memory_get_peak_usage()/1048576, 2) . ' mb</b>';
+
+        } catch (Throwable $objekt) {
+
+            (new Log)->servis(AutoPosalji::class)->greska($objekt)->napravi()->posalji();
+
+            return '';
+
+        }
 
     }
 
