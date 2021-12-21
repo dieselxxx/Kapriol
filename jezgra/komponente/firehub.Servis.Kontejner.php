@@ -18,6 +18,7 @@
 namespace FireHub\Jezgra\Komponente;
 
 use FireHub\Jezgra\Kontejner\Kontejner;
+use FireHub\Jezgra\Komponente\Log\Enumeratori\Level;
 use FireHub\Jezgra\Kontejner\Greske\Kontejner_Greska;
 
 /**
@@ -60,6 +61,7 @@ final class Servis_Kontejner extends Kontejner {
         // provjeri da li postoji poslužitelj u konfiguraciji poslužitelja
         if (!array_key_exists($this->posluzitelj::class, $this->posluzitelji)) {
 
+            zapisnik(Level::KRITICNO, sprintf(_('Ne postoji poslužitelj: %s, u u konfiguraciji poslužitelja!'), $this->posluzitelj::class));
             throw new Kontejner_Greska(_('Ne mogu pokrenuti sustav, obratite se administratoru'));
 
         }
@@ -112,11 +114,12 @@ final class Servis_Kontejner extends Kontejner {
         if (
             !is_null($this->posluzitelj->postavljeniServis()) && // postoji unaprijed postavljeni servis
             (
-                array_key_exists($this->posluzitelj->postavljeniServis(), $this->posluzitelji[$this->posluzitelj::class]['servisi']) !== true // postavljeni servis postoji kao servis kod trenutnog poslužitelja
-                || !is_a($this->posluzitelj->postavljeniServis(), Servis_Interface::class, true) // postavljeni servis ima interface za servise
+                array_key_exists($this->posluzitelj->postavljeniServis(), $this->posluzitelji[$this->posluzitelj::class]['servisi']) !== true // postavljeni servis ne postoji kao servis kod trenutnog poslužitelja
+                || !is_a($this->posluzitelj->postavljeniServis(), Servis_Interface::class, true) // postavljeni servis nema interface za servise
             )
         ) {
 
+            zapisnik(Level::KRITICNO, sprintf(_('Postavljeni servis: %s, ne postoji kao servis kod trenutnog poslužitelja: %s, ili postavljeni servis nema interface za servise!'), $this->posluzitelj->postavljeniServis(), $this->posluzitelj::class));
             throw new Kontejner_Greska(_('Ne mogu pokrenuti sustav, obratite se administratoru'));
 
         }
@@ -139,6 +142,7 @@ final class Servis_Kontejner extends Kontejner {
         // ako poslužitelj u datoteci sa poslužiteljima nema niti jednog servisa
         if (empty($this->posluzitelji[$this->posluzitelj::class])) {
 
+            zapisnik(Level::KRITICNO, sprintf(_('Poslužitelj: %s, u datoteci sa poslužiteljima nema niti jednog servisa!'), $this->posluzitelj::class));
             throw new Kontejner_Greska(_('Ne mogu pokrenuti sustav, obratite se administratoru'));
 
         }
@@ -149,12 +153,14 @@ final class Servis_Kontejner extends Kontejner {
         // ako prvi zapis poslužitelja nije niz vrijednosti ili ključ prvog zapis poslužitelja nije string
         if (!is_array($prvi_element) || !is_string(key($prvi_element))) {
 
+            zapisnik(Level::KRITICNO, sprintf(_('Prvi zapis poslužitelja: %s, nije niz vrijednosti ili ključ prvog zapis poslužitelja nije string!'), $this->posluzitelj::class));
             throw new Kontejner_Greska(_('Ne mogu pokrenuti sustav, obratite se administratoru'));
 
         }
 
-        if (!is_a(key($prvi_element), Servis_Interface::class, true)) { // postavljeni servis ima interface za servise)
+        if (!is_a(key($prvi_element), Servis_Interface::class, true)) { // postavljeni servis nema interface za servise)
 
+            zapisnik(Level::KRITICNO, sprintf(_('Postavljeni servis: %s, nema interface za servise: %s!'), key($prvi_element), Servis_Interface::class));
             throw new Kontejner_Greska(_('Ne mogu pokrenuti sustav, obratite se administratoru'));
 
         }
