@@ -31,6 +31,10 @@ final class Test extends Servis_Posluzitelj {
 
     protected string $test_atribut;
 
+    /**
+     * @throws \FireHub\Jezgra\Kontejner\Greske\Kontejner_Greska
+     * @return Test
+     */
     public function napravi ():object {
 
         return (new Servis_Kontejner($this))->dohvati();
