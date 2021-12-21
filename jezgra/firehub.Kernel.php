@@ -14,6 +14,9 @@
 
 namespace FireHub\Jezgra;
 
+use FireHub\Jezgra\Greske\Greska;
+use FireHub\Jezgra\Komponente\Log\Log;
+use FireHub\Jezgra\Komponente\Log\Enumeratori\Level;
 
 /**
  * ### Osnovna klasa Kernel za pokretanje upita
@@ -43,5 +46,26 @@ abstract class Kernel {
      * @return Odgovor Instanca Odgovora.
      */
     abstract public function pokreni ():Odgovor;
+
+    /**
+     * ### Učitaj datoteku sa pomoćnim funkcijama
+     * @since 0.3.1.pre-alpha.M3
+     *
+     * @throws Greska Ukoliko se ne mogu učitati pomagači.
+     *
+     * @return self Trenutni objekt.
+     */
+    protected function pomagaci ():self {
+
+        if (!include(FIREHUB_ROOT . 'jezgra' . RAZDJELNIK_MAPE . 'firehub.Pomagaci.php')) {
+
+            (new Log)->level(Level::HITNO)->poruka('Pomagači se ne mogu učitati')->napravi()->posalji();
+            throw new Greska(_('Ne mogu pokrenuti sustav, obratite se administratoru.'));
+
+        }
+
+        return $this;
+
+    }
 
 }
