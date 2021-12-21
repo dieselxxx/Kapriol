@@ -79,20 +79,6 @@ abstract class Kontejner {
     }
 
     /**
-     * ### Dohvati novi objekt kao generator
-     * @since 0.3.0.pre-alpha.M3
-     *
-     * @throws Kontejner_Greska Ako ne postoji objekt sa nazivom klase ili ukoliko nije uspješno obrađen atribut.
-     *
-     * @return Generator Objekt kao generator.
-     */
-    final public function generator ():Generator {
-
-        yield $this->dohvati();
-
-    }
-
-    /**
      * ### Uzimanje postojećeg objekta iz memorije ukoliko postoji
      * @since 0.3.0.pre-alpha.M3
      *
@@ -110,6 +96,20 @@ abstract class Kontejner {
         }
 
         return self::$instance[$this->naziv];
+
+    }
+
+    /**
+     * ### Dohvati novi objekt kao generator
+     * @since 0.3.0.pre-alpha.M3
+     *
+     * @throws Kontejner_Greska Ako ne postoji objekt sa nazivom klase ili ukoliko nije uspješno obrađen atribut.
+     *
+     * @return Generator Objekt kao generator.
+     */
+    final public function generator ():Generator {
+
+        yield $this->dohvati();
 
     }
 
