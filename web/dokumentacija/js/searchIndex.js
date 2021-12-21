@@ -251,6 +251,56 @@ Search.appendIndex(
             "summary": "\u0023\u0023\u0023\u0020Kontejner\u0020gre\u0161ke",
             "url": "classes/FireHub-Jezgra-Kontejner-Greske-Kontejner-Greska.html"
         },                {
+            "fqsen": "\\FireHub\\Jezgra\\Komponente\\Test\\Test_Interface",
+            "name": "Test_Interface",
+            "summary": "\u0023\u0023\u0023\u0020Interface\u0020za\u0020testiranje",
+            "url": "classes/FireHub-Jezgra-Komponente-Test-Test-Interface.html"
+        },                {
+            "fqsen": "\\FireHub\\Jezgra\\Komponente\\Test\\Test",
+            "name": "Test",
+            "summary": "\u0023\u0023\u0023\u0020Poslu\u017Eitelj\u0020za\u0020testiranje",
+            "url": "classes/FireHub-Jezgra-Komponente-Test-Test.html"
+        },                {
+            "fqsen": "\\FireHub\\Jezgra\\Komponente\\Test\\Test\u003A\u003Anapravi\u0028\u0029",
+            "name": "napravi",
+            "summary": "",
+            "url": "classes/FireHub-Jezgra-Komponente-Test-Test.html#method_napravi"
+        },                {
+            "fqsen": "\\FireHub\\Jezgra\\Komponente\\Test\\Test\u003A\u003A\u0024test_atribut",
+            "name": "test_atribut",
+            "summary": "",
+            "url": "classes/FireHub-Jezgra-Komponente-Test-Test.html#property_test_atribut"
+        },                {
+            "fqsen": "\\FireHub\\Jezgra\\Komponente\\Test\\Test2",
+            "name": "Test2",
+            "summary": "\u0023\u0023\u0023\u0020Poslu\u017Eitelj\u0020za\u0020testiranje",
+            "url": "classes/FireHub-Jezgra-Komponente-Test-Test2.html"
+        },                {
+            "fqsen": "\\FireHub\\Jezgra\\Komponente\\Test\\Test2\u003A\u003Anapravi\u0028\u0029",
+            "name": "napravi",
+            "summary": "",
+            "url": "classes/FireHub-Jezgra-Komponente-Test-Test2.html#method_napravi"
+        },                {
+            "fqsen": "\\FireHub\\Jezgra\\Komponente\\Test\\Test2\u003A\u003A\u0024test_atribut",
+            "name": "test_atribut",
+            "summary": "",
+            "url": "classes/FireHub-Jezgra-Komponente-Test-Test2.html#property_test_atribut"
+        },                {
+            "fqsen": "\\FireHub\\Jezgra\\Komponente\\Test\\Servisi\\Test_Servis",
+            "name": "Test_Servis",
+            "summary": "\u0023\u0023\u0023\u0020Servis\u0020za\u0020testiranje",
+            "url": "classes/FireHub-Jezgra-Komponente-Test-Servisi-Test-Servis.html"
+        },                {
+            "fqsen": "\\FireHub\\Jezgra\\Komponente\\Test\\Servisi\\Test_Servis\u003A\u003A__construct\u0028\u0029",
+            "name": "__construct",
+            "summary": "",
+            "url": "classes/FireHub-Jezgra-Komponente-Test-Servisi-Test-Servis.html#method___construct"
+        },                {
+            "fqsen": "\\FireHub\\Jezgra\\Komponente\\Test\\Servisi\\Test_Servis\u003A\u003A\u0024test",
+            "name": "test",
+            "summary": "",
+            "url": "classes/FireHub-Jezgra-Komponente-Test-Servisi-Test-Servis.html#property_test"
+        },                {
             "fqsen": "\\",
             "name": "\\",
             "summary": "",
@@ -300,6 +350,16 @@ Search.appendIndex(
             "name": "Kontejner",
             "summary": "",
             "url": "namespaces/firehub-jezgra-kontejner.html"
+        },                {
+            "fqsen": "\\FireHub\\Jezgra\\Komponente\\Test",
+            "name": "Test",
+            "summary": "",
+            "url": "namespaces/firehub-jezgra-komponente-test.html"
+        },                {
+            "fqsen": "\\FireHub\\Jezgra\\Komponente\\Test\\Servisi",
+            "name": "Servisi",
+            "summary": "",
+            "url": "namespaces/firehub-jezgra-komponente-test-servisi.html"
         },                {
             "fqsen": "\\FireHub\\Jezgra\\Konzola",
             "name": "Konzola",
