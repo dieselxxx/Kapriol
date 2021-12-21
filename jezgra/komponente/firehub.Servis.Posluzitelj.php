@@ -14,6 +14,7 @@
 
 namespace FireHub\Jezgra\Komponente;
 
+use FireHub\Jezgra\Komponente\Log\Enumeratori\Level;
 use FireHub\Jezgra\Kontejner\Greske\Kontejner_Greska;
 use FireHub\Jezgra\Kontejner\Greske\Servis_Posluzitelj_Greska;
 use Generator;
@@ -110,6 +111,7 @@ abstract class Servis_Posluzitelj {
      * </p>
      *
      * @throws Servis_Posluzitelj_Greska Ukoliko ne postoji svojstvo u poslužitelju.
+     * @throws Kontejner_Greska Ako ne postoji objekt sa nazivom klase ili ukoliko nije uspješno obrađen atribut.
      *
      * @return mixed Vrijednost iz statičke metode servisa.
      */
@@ -118,6 +120,7 @@ abstract class Servis_Posluzitelj {
         // ako ne postoji svojstvo
         if (!property_exists($this, $metoda)) {
 
+            zapisnik(Level::KRITICNO, sprintf(_('Ne postoji metoda: %s, u poslužitelju servisa: %s!'), $metoda, self::class));
             throw new Servis_Posluzitelj_Greska(_('Ne mogu pokrenuti sustav, obratite se administratoru'));
 
         }
@@ -165,6 +168,7 @@ abstract class Servis_Posluzitelj {
      * </p>
      *
      * @throws Servis_Posluzitelj_Greska Ukoliko ne postoji ili nije inicializirano svojstvo u poslužitelju.
+     * @throws Kontejner_Greska Ako ne postoji objekt sa nazivom klase ili ukoliko nije uspješno obrađen atribut.
      *
      * @return mixed Vrijednost svojstva.
      */
@@ -172,6 +176,7 @@ abstract class Servis_Posluzitelj {
 
         if (!isset($this->$svojstvo_naziv)) {
 
+            zapisnik(Level::KRITICNO, sprintf(_('Ne postoji svojstvo: %s, u poslužitelju servisa: %s!'), $svojstvo_naziv, self::class));
             throw new Servis_Posluzitelj_Greska(_('Ne mogu pokrenuti sustav, obratite se administratoru'));
 
         }
@@ -188,7 +193,7 @@ abstract class Servis_Posluzitelj {
      * Lista ovog poslužitelja.
      * </p>
      *
-     * @throws Servis_Posluzitelj_Greska Ukoliko ne postoji ili nije inicializirano svojstvo u poslužitelju.
+     * @throws Servis_Posluzitelj_Greska Ukoliko poslužitelj nije instanca ovog poslužitelja.
      * @throws Kontejner_Greska Ako ne postoji objekt sa nazivom klase ili ukoliko nije uspješno obrađen atribut.
      *
      * @return Generator Objekt generatora.
@@ -199,6 +204,7 @@ abstract class Servis_Posluzitelj {
 
             if (!$posluzitelj instanceof static) {
 
+                zapisnik(Level::KRITICNO, sprintf(_('Poslužitelj: %s, nije instanca: %s!'), $posluzitelj, self::class));
                 throw new Servis_Posluzitelj_Greska(_('Ne mogu pokrenuti sustav, obratite se administratoru'));
 
             }
