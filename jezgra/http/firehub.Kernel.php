@@ -14,9 +14,13 @@
 
 namespace FireHub\Jezgra\HTTP;
 
-use FireHub\Jezgra\Kernel as OsnovniKernel;
+use FireHub\Jezgra\Kernel as OsnovniKernel;;
+
 use FireHub\Jezgra\Zahtjev;
 use FireHub\Jezgra\HTTP\Odgovor as HTTP_Odgovor;
+use FireHub\Jezgra\Komponente\Log\Log;
+use FireHub\Jezgra\Komponente\Log\Servisi\AutoPosalji;
+use FireHub\Jezgra\Kontejner\Greske\Kontejner_Greska;
 use Throwable;
 
 /**
@@ -33,18 +37,21 @@ final class Kernel extends OsnovniKernel {
     public function __construct (private Zahtjev $zahtjev) {}
 
     /**
-     * @inheritDoc
+     * {@inheritDoc}
+     *
+     * @throws Kontejner_Greska Ako ne postoji objekt sa nazivom klase ili ukoliko nije uspješno obrađen atribut.
      */
     public function pokreni ():HTTP_Odgovor {
 
         try {
 
             return $this
+                ->pomagaci()
                 ->odgovor();
 
         } catch (Throwable $objekt) {
 
-            var_dump($objekt);
+            (new Log)->servis(AutoPosalji::class)->greska($objekt)->napravi()->posalji();
 
         }
 
