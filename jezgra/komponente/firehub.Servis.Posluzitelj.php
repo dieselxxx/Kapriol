@@ -28,7 +28,7 @@ use Generator;
  * - Staičke metode servisa se mogu pozivati preko poslužitelja ili preko servisa.
  * @since 0.3.0.pre-alpha.M3
  *
- * @method self servis(string $servis) Postavi servis na poslužitelju
+ * @method $this servis(string $servis) Postavi servis na poslužitelju
  *
  * @package Sustav\Jezgra
  */
