@@ -17,12 +17,6 @@
 
 return [
 
-    \FireHub\Jezgra\Komponente\Test\Test::class => [
-        'servisi' => [
-            \FireHub\Jezgra\Komponente\Test\Servisi\Test_Servis::class => []
-        ]
-    ],
-
     \FireHub\Jezgra\Komponente\Log\Log::class => [
         'servisi' => [
             \FireHub\Jezgra\Komponente\Log\Servisi\Posalji::class => [],
