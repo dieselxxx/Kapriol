@@ -16,6 +16,7 @@ namespace FireHub\Jezgra\Komponente\Log;
 
 use FireHub\Jezgra\Komponente\Servis_Kontejner;
 use FireHub\Jezgra\Komponente\Servis_Posluzitelj;
+use FireHub\Jezgra\Komponente\Log\Servisi\Dostavljac;
 use FireHub\Jezgra\Komponente\Log\Enumeratori\Level;
 use Throwable;
 
@@ -23,6 +24,7 @@ use Throwable;
  * ### Poslužitelj za log
  * @since 0.3.1.pre-alpha.M3
  *
+ * @property-read array $dostavljaci Lista dostavljača na koje se log zapisuje
  * @property-read Level $level Level log zapisa
  * @property-read string $poruka Poruka log zapisa
  * @property-read int $kod Unikatni kod log zapisa
@@ -36,6 +38,11 @@ use Throwable;
  * @package Sustav\Jezgra
  */
 final class Log extends Servis_Posluzitelj {
+
+    /**
+     * @var Dostavljac[]
+     */
+    protected array $dostavljaci = [];
 
     /**
      * ### Level log zapisa
@@ -60,6 +67,42 @@ final class Log extends Servis_Posluzitelj {
      * @var ?Throwable
      */
     protected ?Throwable $greska = null;
+
+    /**
+     * ### Kontruktor
+     * @since 0.3.1.pre-alpha.M3
+     */
+    public function __construct () {
+
+        // zadane opcije
+        $this->dostavljaci($this->level->dostavljaci());
+
+    }
+
+    /**
+     * ### Lista dostavljača na koje se log zapisuje
+     * @since 0.3.1.pre-alpha.M3
+     *
+     * @param string[] $lista <p>
+     * Lista FQN naziva dostavljača na koje se log zapisuje.
+     * </p>
+     *
+     * @return $this Trenutni objekt.
+     */
+    public function dostavljaci (array $lista):self {
+
+        $this->dostavljaci = array_map(
+            function (string $dostavljac):Dostavljac {
+
+                return new $dostavljac;
+
+            },
+            $lista
+        );
+
+        return $this;
+
+    }
 
     /**
      * {@inheritDoc}

@@ -14,6 +14,8 @@
 
 namespace FireHub\Jezgra\Komponente\Log\Enumeratori;
 
+use FireHub\Jezgra\Komponente\Log\Servisi\Dostavljac\Ispisi;
+
 /**
  * ### Enumerator za dostupne levela log-a
  * @since 0.3.1.pre-alpha.M3
@@ -61,5 +63,29 @@ enum Level:int {
      * ### Hitna uzbuna za posebne greške
      */
     case HITNO = 80;
+
+    /**
+     * ### Lista dostavljaca enumeratora
+     * @since 0.3.1.pre-alpha.M3
+     *
+     * @return string[] Lista FQN naziva dostavljača.
+     *
+     * @todo Prebaciti opciju u konfiguraciju
+     */
+    public function dostavljaci ():array {
+
+        return match ($this) {
+            self::BILJESKA => [Ispisi::class],
+            self::DEBUG => [Ispisi::class],
+            self::INFO => [Ispisi::class],
+            self::UPOZORENJE => [Ispisi::class],
+            self::GRESKA => [Ispisi::class],
+            self::KRITICNO => [Ispisi::class],
+            self::UZBUNA => [Ispisi::class],
+            self::HITNO => [Ispisi::class],
+            default => [Ispisi::class]
+        };
+
+    }
 
 }

@@ -46,6 +46,11 @@ Search.appendIndex(
             "summary": "\u0023\u0023\u0023\u0020Pokreni\u0020Kernel",
             "url": "classes/FireHub-Jezgra-Kernel.html#method_pokreni"
         },                {
+            "fqsen": "\\FireHub\\Jezgra\\Kernel\u003A\u003Apomagaci\u0028\u0029",
+            "name": "pomagaci",
+            "summary": "\u0023\u0023\u0023\u0020U\u010Ditaj\u0020datoteku\u0020sa\u0020pomo\u0107nim\u0020funkcijama",
+            "url": "classes/FireHub-Jezgra-Kernel.html#method_pomagaci"
+        },                {
             "fqsen": "\\FireHub\\Jezgra\\HTTP\\Kernel",
             "name": "Kernel",
             "summary": "\u0023\u0023\u0023\u0020Osnovna\u0020klasa\u0020Kernel\u0020za\u0020pokretanje\u0020HTTP\u0020upita",
@@ -301,6 +306,156 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/FireHub-Jezgra-Komponente-Test-Servisi-Test-Servis.html#property_test"
         },                {
+            "fqsen": "\\zapisnik\u0028\u0029",
+            "name": "zapisnik",
+            "summary": "\u0023\u0023\u0023\u0020Po\u0161alji\u0020log\u0020zapis",
+            "url": "namespaces/default.html#function_zapisnik"
+        },                {
+            "fqsen": "\\FireHub\\Jezgra\\Greske\\Autoload_Greska",
+            "name": "Autoload_Greska",
+            "summary": "\u0023\u0023\u0023\u0020Autoload\u0020gre\u0161ke",
+            "url": "classes/FireHub-Jezgra-Greske-Autoload-Greska.html"
+        },                {
+            "fqsen": "\\FireHub\\Jezgra\\Greske\\Kernel_Greska",
+            "name": "Kernel_Greska",
+            "summary": "\u0023\u0023\u0023\u0020Kernel\u0020gre\u0161ke",
+            "url": "classes/FireHub-Jezgra-Greske-Kernel-Greska.html"
+        },                {
+            "fqsen": "\\FireHub\\Jezgra\\Komponente\\Log\\Log_Interface",
+            "name": "Log_Interface",
+            "summary": "\u0023\u0023\u0023\u0020Interface\u002Da\u0020za\u0020log\u0020servise",
+            "url": "classes/FireHub-Jezgra-Komponente-Log-Log-Interface.html"
+        },                {
+            "fqsen": "\\FireHub\\Jezgra\\Komponente\\Log\\Log_Interface\u003A\u003Aposalji\u0028\u0029",
+            "name": "posalji",
+            "summary": "\u0023\u0023\u0023\u0020Po\u0161alji\u0020log\u0020dostavlja\u010Dima",
+            "url": "classes/FireHub-Jezgra-Komponente-Log-Log-Interface.html#method_posalji"
+        },                {
+            "fqsen": "\\FireHub\\Jezgra\\Komponente\\Log\\Log",
+            "name": "Log",
+            "summary": "\u0023\u0023\u0023\u0020Poslu\u017Eitelj\u0020za\u0020log",
+            "url": "classes/FireHub-Jezgra-Komponente-Log-Log.html"
+        },                {
+            "fqsen": "\\FireHub\\Jezgra\\Komponente\\Log\\Log\u003A\u003A__construct\u0028\u0029",
+            "name": "__construct",
+            "summary": "\u0023\u0023\u0023\u0020Kontruktor",
+            "url": "classes/FireHub-Jezgra-Komponente-Log-Log.html#method___construct"
+        },                {
+            "fqsen": "\\FireHub\\Jezgra\\Komponente\\Log\\Log\u003A\u003A\u0024dostavljaci",
+            "name": "dostavljaci",
+            "summary": "",
+            "url": "classes/FireHub-Jezgra-Komponente-Log-Log.html#property_dostavljaci"
+        },                {
+            "fqsen": "\\FireHub\\Jezgra\\Komponente\\Log\\Log\u003A\u003Anapravi\u0028\u0029",
+            "name": "napravi",
+            "summary": "\u007B\u0040inheritDoc\u007D",
+            "url": "classes/FireHub-Jezgra-Komponente-Log-Log.html#method_napravi"
+        },                {
+            "fqsen": "\\FireHub\\Jezgra\\Komponente\\Log\\Log\u003A\u003A\u0024level",
+            "name": "level",
+            "summary": "\u0023\u0023\u0023\u0020Level\u0020log\u0020zapisa",
+            "url": "classes/FireHub-Jezgra-Komponente-Log-Log.html#property_level"
+        },                {
+            "fqsen": "\\FireHub\\Jezgra\\Komponente\\Log\\Log\u003A\u003A\u0024poruka",
+            "name": "poruka",
+            "summary": "\u0023\u0023\u0023\u0020Poruka\u0020log\u0020zapisa",
+            "url": "classes/FireHub-Jezgra-Komponente-Log-Log.html#property_poruka"
+        },                {
+            "fqsen": "\\FireHub\\Jezgra\\Komponente\\Log\\Log\u003A\u003A\u0024kod",
+            "name": "kod",
+            "summary": "\u0023\u0023\u0023\u0020Unikatni\u0020kod\u0020log\u0020zapisa",
+            "url": "classes/FireHub-Jezgra-Komponente-Log-Log.html#property_kod"
+        },                {
+            "fqsen": "\\FireHub\\Jezgra\\Komponente\\Log\\Log\u003A\u003A\u0024greska",
+            "name": "greska",
+            "summary": "\u0023\u0023\u0023\u0020Gre\u0161ke\u0020koje\u0020dolaze\u0020preko\u0020Throwable\u0020interface\u002Da",
+            "url": "classes/FireHub-Jezgra-Komponente-Log-Log.html#property_greska"
+        },                {
+            "fqsen": "\\FireHub\\Jezgra\\Komponente\\Log\\Servisi\\Dostavljac\\Ispisi",
+            "name": "Ispisi",
+            "summary": "\u0023\u0023\u0023\u0020Klasa\u0020za\u0020dostavlja\u010Da\u0020za\u0020ispisivanje\u0020logova",
+            "url": "classes/FireHub-Jezgra-Komponente-Log-Servisi-Dostavljac-Ispisi.html"
+        },                {
+            "fqsen": "\\FireHub\\Jezgra\\Komponente\\Log\\Servisi\\Dostavljac\\Ispisi\u003A\u003Aotvori\u0028\u0029",
+            "name": "otvori",
+            "summary": "\u0023\u0023\u0023\u0020Otvori\u0020dostavlja\u010Da",
+            "url": "classes/FireHub-Jezgra-Komponente-Log-Servisi-Dostavljac-Ispisi.html#method_otvori"
+        },                {
+            "fqsen": "\\FireHub\\Jezgra\\Komponente\\Log\\Servisi\\Dostavljac\\Ispisi\u003A\u003Azapisi\u0028\u0029",
+            "name": "zapisi",
+            "summary": "\u0023\u0023\u0023\u0020Zapi\u0161i\u0020zapis\u0020u\u0020dostavlja\u010Da",
+            "url": "classes/FireHub-Jezgra-Komponente-Log-Servisi-Dostavljac-Ispisi.html#method_zapisi"
+        },                {
+            "fqsen": "\\FireHub\\Jezgra\\Komponente\\Log\\Servisi\\Dostavljac\\Ispisi\u003A\u003Azatvori\u0028\u0029",
+            "name": "zatvori",
+            "summary": "\u0023\u0023\u0023\u0020Zatvori\u0020dostavlja\u010Da",
+            "url": "classes/FireHub-Jezgra-Komponente-Log-Servisi-Dostavljac-Ispisi.html#method_zatvori"
+        },                {
+            "fqsen": "\\FireHub\\Jezgra\\Komponente\\Log\\Servisi\\AutoPosalji",
+            "name": "AutoPosalji",
+            "summary": "\u0023\u0023\u0023\u0020Servis\u0020za\u0020automatsko\u0020slanje\u0020logova\u0020preko\u0020Throwable\u0020interface\u002Da",
+            "url": "classes/FireHub-Jezgra-Komponente-Log-Servisi-AutoPosalji.html"
+        },                {
+            "fqsen": "\\FireHub\\Jezgra\\Komponente\\Log\\Servisi\\AutoPosalji\u003A\u003A__construct\u0028\u0029",
+            "name": "__construct",
+            "summary": "\u0023\u0023\u0023\u0020Konstruktor",
+            "url": "classes/FireHub-Jezgra-Komponente-Log-Servisi-AutoPosalji.html#method___construct"
+        },                {
+            "fqsen": "\\FireHub\\Jezgra\\Komponente\\Log\\Servisi\\AutoPosalji\u003A\u003Aposalji\u0028\u0029",
+            "name": "posalji",
+            "summary": "\u0023\u0023\u0023\u0020Po\u0161alji\u0020log\u0020dostavlja\u010Dima",
+            "url": "classes/FireHub-Jezgra-Komponente-Log-Servisi-AutoPosalji.html#method_posalji"
+        },                {
+            "fqsen": "\\FireHub\\Jezgra\\Komponente\\Log\\Servisi\\AutoPosalji\u003A\u003Alevel\u0028\u0029",
+            "name": "level",
+            "summary": "\u0023\u0023\u0023\u0020Level\u0020objekta\u0020u\u0020ovisnosti\u0020od\u0020vrste\u0020Throwable\u0020gre\u0161ke",
+            "url": "classes/FireHub-Jezgra-Komponente-Log-Servisi-AutoPosalji.html#method_level"
+        },                {
+            "fqsen": "\\FireHub\\Jezgra\\Komponente\\Log\\Servisi\\AutoPosalji\u003A\u003A\u0024posluzitelj",
+            "name": "posluzitelj",
+            "summary": "",
+            "url": "classes/FireHub-Jezgra-Komponente-Log-Servisi-AutoPosalji.html#property_posluzitelj"
+        },                {
+            "fqsen": "\\FireHub\\Jezgra\\Komponente\\Log\\Servisi\\Dostavljac",
+            "name": "Dostavljac",
+            "summary": "\u0023\u0023\u0023\u0020Interface\u0020za\u0020dostavlja\u010Da\u0020log\u002Da",
+            "url": "classes/FireHub-Jezgra-Komponente-Log-Servisi-Dostavljac.html"
+        },                {
+            "fqsen": "\\FireHub\\Jezgra\\Komponente\\Log\\Servisi\\Dostavljac\u003A\u003Aotvori\u0028\u0029",
+            "name": "otvori",
+            "summary": "\u0023\u0023\u0023\u0020Otvori\u0020dostavlja\u010Da",
+            "url": "classes/FireHub-Jezgra-Komponente-Log-Servisi-Dostavljac.html#method_otvori"
+        },                {
+            "fqsen": "\\FireHub\\Jezgra\\Komponente\\Log\\Servisi\\Dostavljac\u003A\u003Azapisi\u0028\u0029",
+            "name": "zapisi",
+            "summary": "\u0023\u0023\u0023\u0020Zapi\u0161i\u0020zapis\u0020u\u0020dostavlja\u010Da",
+            "url": "classes/FireHub-Jezgra-Komponente-Log-Servisi-Dostavljac.html#method_zapisi"
+        },                {
+            "fqsen": "\\FireHub\\Jezgra\\Komponente\\Log\\Servisi\\Dostavljac\u003A\u003Azatvori\u0028\u0029",
+            "name": "zatvori",
+            "summary": "\u0023\u0023\u0023\u0020Zatvori\u0020dostavlja\u010Da",
+            "url": "classes/FireHub-Jezgra-Komponente-Log-Servisi-Dostavljac.html#method_zatvori"
+        },                {
+            "fqsen": "\\FireHub\\Jezgra\\Komponente\\Log\\Servisi\\Posalji",
+            "name": "Posalji",
+            "summary": "\u0023\u0023\u0023\u0020Servis\u0020za\u0020ru\u010Dno\u0020slanje\u0020logova",
+            "url": "classes/FireHub-Jezgra-Komponente-Log-Servisi-Posalji.html"
+        },                {
+            "fqsen": "\\FireHub\\Jezgra\\Komponente\\Log\\Servisi\\Posalji\u003A\u003A__construct\u0028\u0029",
+            "name": "__construct",
+            "summary": "\u0023\u0023\u0023\u0020Konstruktor",
+            "url": "classes/FireHub-Jezgra-Komponente-Log-Servisi-Posalji.html#method___construct"
+        },                {
+            "fqsen": "\\FireHub\\Jezgra\\Komponente\\Log\\Servisi\\Posalji\u003A\u003Aposalji\u0028\u0029",
+            "name": "posalji",
+            "summary": "\u0023\u0023\u0023\u0020Po\u0161alji\u0020log\u0020dostavlja\u010Dima",
+            "url": "classes/FireHub-Jezgra-Komponente-Log-Servisi-Posalji.html#method_posalji"
+        },                {
+            "fqsen": "\\FireHub\\Jezgra\\Komponente\\Log\\Servisi\\Posalji\u003A\u003A\u0024posluzitelj",
+            "name": "posluzitelj",
+            "summary": "",
+            "url": "classes/FireHub-Jezgra-Komponente-Log-Servisi-Posalji.html#property_posluzitelj"
+        },                {
             "fqsen": "\\",
             "name": "\\",
             "summary": "",
@@ -350,6 +505,21 @@ Search.appendIndex(
             "name": "Kontejner",
             "summary": "",
             "url": "namespaces/firehub-jezgra-kontejner.html"
+        },                {
+            "fqsen": "\\FireHub\\Jezgra\\Komponente\\Log",
+            "name": "Log",
+            "summary": "",
+            "url": "namespaces/firehub-jezgra-komponente-log.html"
+        },                {
+            "fqsen": "\\FireHub\\Jezgra\\Komponente\\Log\\Servisi\\Dostavljac",
+            "name": "Dostavljac",
+            "summary": "",
+            "url": "namespaces/firehub-jezgra-komponente-log-servisi-dostavljac.html"
+        },                {
+            "fqsen": "\\FireHub\\Jezgra\\Komponente\\Log\\Servisi",
+            "name": "Servisi",
+            "summary": "",
+            "url": "namespaces/firehub-jezgra-komponente-log-servisi.html"
         },                {
             "fqsen": "\\FireHub\\Jezgra\\Komponente\\Test",
             "name": "Test",

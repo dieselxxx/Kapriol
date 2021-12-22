@@ -42,9 +42,26 @@ final class Posalji implements Log_Interface {
      */
     public function posalji ():bool {
 
-        var_dump($this);
+        return array_walk(
+            $this->posluzitelj->dostavljaci,
+            function (Dostavljac $dostavljac):Dostavljac {
 
-        return true;
+                return (new $dostavljac)
+                    ->otvori()
+                    ->zapisi(
+                        'RučniLog',
+                        $this->posluzitelj->level->value,
+                        $this->posluzitelj->level->name,
+                        $this->posluzitelj->kod,
+                        debug_backtrace()[2]['file'],
+                        debug_backtrace()[2]['line'],
+                        $this->posluzitelj->poruka,
+                        debug_backtrace()
+                    )
+                    ->zatvori();
+
+            }
+        );
 
     }
 

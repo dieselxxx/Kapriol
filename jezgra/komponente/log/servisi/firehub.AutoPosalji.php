@@ -16,6 +16,9 @@ namespace FireHub\Jezgra\Komponente\Log\Servisi;
 
 use FireHub\Jezgra\Komponente\Log\Log;
 use FireHub\Jezgra\Komponente\Log\Log_Interface;
+use FireHub\Jezgra\Komponente\Log\Enumeratori\Level;
+use FireHub\Jezgra\Greske\Greska;
+use Throwable;
 
 /**
  * ### Servis za automatsko slanje logova preko Throwable interface-a
@@ -42,9 +45,65 @@ final class AutoPosalji implements Log_Interface {
      */
     public function posalji ():bool {
 
-        var_dump($this);
+        return array_walk(
+            $this->posluzitelj->dostavljaci,
+            function (Dostavljac $dostavljac):Dostavljac {
 
-        return true;
+                return (new $dostavljac)
+                    ->otvori()
+                    ->zapisi(
+                        get_class($this->posluzitelj->greska),
+                        $this->level($this->posluzitelj->greska)->value,
+                        $this->level($this->posluzitelj->greska)->name,
+                        $this->posluzitelj->greska->getCode(),
+                        $this->posluzitelj->greska->getFile(),
+                        $this->posluzitelj->greska->getLine(),
+                        $this->posluzitelj->greska->getMessage(),
+                        debug_backtrace()
+                    )
+                    ->zatvori();
+
+            }
+        );
+
+    }
+
+    /**
+     * ### Level objekta u ovisnosti od vrste Throwable greške
+     * @since 0.3.1.pre-alpha.M3
+     *
+     * @param Throwable $objekt <p>
+     * Objekt koji je stigao preko Throwable interace-a.
+     * </p>
+     *
+     * @return Level Level greške.
+     */
+    private function level (Throwable $objekt):Level {
+
+        return match (true) {
+
+            $objekt instanceof Greska => Level::INFO,
+
+            $objekt instanceof \ArithmeticError,
+                $objekt instanceof \AssertionError,
+                $objekt instanceof \ClosedGeneratorException,
+                $objekt instanceof \ValueError => Level::GRESKA,
+
+            $objekt instanceof \CompileError,
+                $objekt instanceof \TypeError,
+                $objekt instanceof \UnhandledMatchError,
+                $objekt instanceof \DOMException,
+                $objekt instanceof \ErrorException,
+                $objekt instanceof \JsonException,
+                $objekt instanceof \LogicException,
+                $objekt instanceof \PharException,
+                $objekt instanceof \ReflectionException,
+                $objekt instanceof \RuntimeException,
+                $objekt instanceof \SoapFault => Level::KRITICNO,
+
+            default => Level::KRITICNO
+
+        };
 
     }
 
