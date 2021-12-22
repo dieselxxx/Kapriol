@@ -120,7 +120,7 @@ abstract class Servis_Posluzitelj {
         // ako ne postoji svojstvo
         if (!property_exists($this, $metoda)) {
 
-            zapisnik(Level::KRITICNO, sprintf(_('Ne postoji metoda: %s, u poslužitelju servisa: %s!'), $metoda, self::class));
+            zapisnik(Level::KRITICNO, sprintf(_('Ne postoji metoda: %s, u poslužitelju servisa: %s!'), $metoda, static::class));
             throw new Servis_Posluzitelj_Greska(_('Ne mogu pokrenuti sustav, obratite se administratoru'));
 
         }
