@@ -26,7 +26,7 @@ use Generator;
  * - Public metode su metode koje se mogu promijeniti bilo gdje unutar aplikacije, uključujući i servis pripadajućeg poslužitelja.
  * - Private metode su namijenjene samo za pripadajućeg poslužitelja.
  * - Sva protected i public svojstva automatski dobivaju metode za osnovno postavljanje svojstva, Za njih se upisuje method DocBlock radi čitanja IDEA-a.
- * - Staičke metode servisa se mogu pozivati preko poslužitelja ili preko servisa.
+ * - Statičke metode servisa se mogu pozivati preko poslužitelja ili preko servisa.
  * @since 0.3.0.pre-alpha.M3
  *
  * @method $this servis(string $servis) Postavi servis na poslužitelju
