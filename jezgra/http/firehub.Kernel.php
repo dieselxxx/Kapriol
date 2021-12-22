@@ -18,9 +18,11 @@ use FireHub\Jezgra\Kernel as OsnovniKernel;;
 
 use FireHub\Jezgra\Zahtjev;
 use FireHub\Jezgra\HTTP\Odgovor as HTTP_Odgovor;
+use FireHub\Jezgra\Komponente\Datoteka\Datoteka;
 use FireHub\Jezgra\Komponente\Log\Log;
 use FireHub\Jezgra\Komponente\Log\Servisi\AutoPosalji;
 use FireHub\Jezgra\Kontejner\Greske\Kontejner_Greska;
+use FireHub\Jezgra\Komponente\Datoteka\Greske\Datoteka_Greska;
 use Throwable;
 
 /**
@@ -61,11 +63,16 @@ final class Kernel extends OsnovniKernel {
      * ### HTTP odgovor.
      * @since 0.2.6.pre-alpha.M2
      *
+     * @throws Datoteka_Greska Ukoliko se ne može pročitati naziv datoteke.
+     * @throws Kontejner_Greska Ukoliko se ne može napraviti objekt Log-a.
+     *
      * @return HTTP_Odgovor Odgovor za HTTP.
      */
     private function odgovor ():HTTP_Odgovor {
 
-        return (new HTTP_Odgovor());
+        return (new HTTP_Odgovor(
+            (new Datoteka())->datoteka($_SERVER['SCRIPT_FILENAME'])
+        ));
 
     }
 
