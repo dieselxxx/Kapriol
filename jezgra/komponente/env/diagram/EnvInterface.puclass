@@ -1,0 +1,11 @@
+@startuml
+
+package Sustav\Jezgra <<Node>> #FBE9E7 {
+    namespace FireHub\Jezgra\Komponente\Env {
+        interface Env_Interface #00897B;line:00796B {
+            + {static} procitaj (string $env, string|int|bool|null $zadano = null):string|int|bool|null
+        }
+    }
+}
+
+@enduml
