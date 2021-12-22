@@ -159,7 +159,7 @@ final class Datoteka implements Env_Interface {
         // provjeri dali je datoteka učitana, ne dali je array prazan
         if ($linije === false) {
 
-            zapisnik(Level::HITNO, sprintf(_('Dogodila se greška prilikom pretvaranje .env datoteke "%s" u linije'), $datoteka));
+            zapisnik(Level::KRITICNO, sprintf(_('Dogodila se greška prilikom pretvaranje .env datoteke "%s" u linije'), $datoteka));
             throw new Env_Greska(_('Ne mogu pokrenuti sustav, obratite se administratoru'));
 
         }
