@@ -55,7 +55,7 @@ abstract class Kontejner {
      * ### Dohvati novi objekt iz kontejnera
      * @since 0.3.0.pre-alpha.M3
      *
-     * @throws Kontejner_Greska Ako ne postoji objekt sa nazivom klase ili ukoliko nije uspješno obrađen atribut.
+     * @throws Kontejner_Greska Ukoliko se ne može spremiti instanca objekta.
      *
      * @return object Objekt iz kontajnera.
      */
@@ -106,7 +106,7 @@ abstract class Kontejner {
      * ### Dohvati novi objekt kao generator
      * @since 0.3.0.pre-alpha.M3
      *
-     * @throws Kontejner_Greska Ako ne postoji objekt sa nazivom klase ili ukoliko nije uspješno obrađen atribut.
+     * @throws Kontejner_Greska Ukoliko se ne može spremiti instanca objekta.
      *
      * @return Generator Objekt kao generator.
      */

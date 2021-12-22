@@ -60,7 +60,7 @@ abstract class Servis_Posluzitelj {
      * ### Napravi servis
      * @since 0.3.0.pre-alpha.M3
      *
-     * @throws Kontejner_Greska Ako ne postoji objekt sa nazivom klase ili ukoliko nije uspješno obrađen atribut.
+     * @throws Kontejner_Greska Ukoliko se ne može spremiti instanca objekta.
      *
      * @return Servis_Interface Objekt servisa.
      */
@@ -79,7 +79,7 @@ abstract class Servis_Posluzitelj {
      * </p>
      *
      * @throws Servis_Posluzitelj_Greska Ukoliko ne postoji ili nije inicializirano svojstvo u poslužitelju.
-     * @throws Kontejner_Greska Ako ne postoji objekt sa nazivom klase ili ukoliko nije uspješno obrađen atribut.
+     * @throws Kontejner_Greska Ukoliko se ne može spremiti instanca objekta.
      *
      * @return object[] Lista servisa.
      */
@@ -111,7 +111,7 @@ abstract class Servis_Posluzitelj {
      * </p>
      *
      * @throws Servis_Posluzitelj_Greska Ukoliko ne postoji svojstvo u poslužitelju.
-     * @throws Kontejner_Greska Ako ne postoji objekt sa nazivom klase ili ukoliko nije uspješno obrađen atribut.
+     * @throws Kontejner_Greska Ukoliko se ne može spremiti instanca objekta.
      *
      * @return self Poslužitelj objekt.
      */
@@ -168,7 +168,7 @@ abstract class Servis_Posluzitelj {
      * </p>
      *
      * @throws Servis_Posluzitelj_Greska Ukoliko ne postoji ili nije inicializirano svojstvo u poslužitelju.
-     * @throws Kontejner_Greska Ako ne postoji objekt sa nazivom klase ili ukoliko nije uspješno obrađen atribut.
+     * @throws Kontejner_Greska Ukoliko se ne može spremiti instanca objekta.
      *
      * @return mixed Vrijednost svojstva.
      */
@@ -194,7 +194,7 @@ abstract class Servis_Posluzitelj {
      * </p>
      *
      * @throws Servis_Posluzitelj_Greska Ukoliko poslužitelj nije instanca ovog poslužitelja.
-     * @throws Kontejner_Greska Ako ne postoji objekt sa nazivom klase ili ukoliko nije uspješno obrađen atribut.
+     * @throws Kontejner_Greska Ukoliko se ne može spremiti instanca objekta.
      *
      * @return Generator Objekt generatora.
      */

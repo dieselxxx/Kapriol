@@ -29,7 +29,7 @@ if (!function_exists('zapisnik')) {
      * Poruka koja će se zabilježiti u log.
      * </p>
      *
-     * @throws Kontejner_Greska Ako ne postoji objekt sa nazivom klase ili ukoliko nije uspješno obrađen atribut.
+     * @throws Kontejner_Greska Ukoliko se ne može spremiti instanca objekta.
      *
      * @return bool True ukoliko je zapisan log, u suprotnome False.
      */

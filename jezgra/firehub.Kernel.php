@@ -53,7 +53,7 @@ abstract class Kernel {
      * @since 0.3.1.pre-alpha.M3
      *
      * @throws Kernel_Greska Ukoliko se ne mogu učitati pomagači.
-     * @throws Kontejner_Greska Ako ne postoji objekt sa nazivom klase ili ukoliko nije uspješno obrađen atribut.
+     * @throws Kontejner_Greska Ukoliko se ne može spremiti instanca objekta.
      *
      * @return self Kernel objekt.
      */
