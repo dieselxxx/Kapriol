@@ -113,7 +113,7 @@ abstract class Servis_Posluzitelj {
      * @throws Servis_Posluzitelj_Greska Ukoliko ne postoji svojstvo u poslužitelju.
      * @throws Kontejner_Greska Ako ne postoji objekt sa nazivom klase ili ukoliko nije uspješno obrađen atribut.
      *
-     * @return mixed Vrijednost iz statičke metode servisa.
+     * @return self Poslužitelj objekt.
      */
     public function __call (string $metoda, array $argumenti):self {
 
