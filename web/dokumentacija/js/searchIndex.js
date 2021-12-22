@@ -261,6 +261,11 @@ Search.appendIndex(
             "summary": "\u0023\u0023\u0023\u0020Po\u0161alji\u0020log\u0020zapis",
             "url": "namespaces/default.html#function_zapisnik"
         },                {
+            "fqsen": "\\env\u0028\u0029",
+            "name": "env",
+            "summary": "\u0023\u0023\u0023\u0020Pro\u010Ditaj\u0020env\u0020zapis",
+            "url": "namespaces/default.html#function_env"
+        },                {
             "fqsen": "\\FireHub\\Jezgra\\Greske\\Autoload_Greska",
             "name": "Autoload_Greska",
             "summary": "\u0023\u0023\u0023\u0020Autoload\u0020gre\u0161ke",
@@ -466,6 +471,66 @@ Search.appendIndex(
             "summary": "\u0023\u0023\u0023\u0020Niz\u0020za\u0020\u010Ditanje\u0020dot\u0020zapisa",
             "url": "classes/FireHub-Jezgra-Komponente-Dot-Dot.html#property_niz"
         },                {
+            "fqsen": "\\FireHub\\Jezgra\\Komponente\\Env\\Env_Interface",
+            "name": "Env_Interface",
+            "summary": "\u0023\u0023\u0023\u0020Interface\u002Da\u0020za\u0020env\u0020servise",
+            "url": "classes/FireHub-Jezgra-Komponente-Env-Env-Interface.html"
+        },                {
+            "fqsen": "\\FireHub\\Jezgra\\Komponente\\Env\\Env_Interface\u003A\u003Aprocitaj\u0028\u0029",
+            "name": "procitaj",
+            "summary": "\u0023\u0023\u0023\u0020Pro\u010Ditaj\u0020env\u0020zapis",
+            "url": "classes/FireHub-Jezgra-Komponente-Env-Env-Interface.html#method_procitaj"
+        },                {
+            "fqsen": "\\FireHub\\Jezgra\\Komponente\\Env\\Env",
+            "name": "Env",
+            "summary": "\u0023\u0023\u0023\u0020Poslu\u017Eitelj\u0020za\u0020\u010Ditanje\u0020iz\u0020.env\u0020datoteka",
+            "url": "classes/FireHub-Jezgra-Komponente-Env-Env.html"
+        },                {
+            "fqsen": "\\FireHub\\Jezgra\\Komponente\\Env\\Env\u003A\u003A\u0024datoteka",
+            "name": "datoteka",
+            "summary": "\u0023\u0023\u0023\u0020Lista\u0020punih\u0020putanja\u0020.env\u0020datoteke",
+            "url": "classes/FireHub-Jezgra-Komponente-Env-Env.html#property_datoteka"
+        },                {
+            "fqsen": "\\FireHub\\Jezgra\\Komponente\\Env\\Env\u003A\u003Anapravi\u0028\u0029",
+            "name": "napravi",
+            "summary": "\u007B\u0040inheritDoc\u007D",
+            "url": "classes/FireHub-Jezgra-Komponente-Env-Env.html#method_napravi"
+        },                {
+            "fqsen": "\\FireHub\\Jezgra\\Komponente\\Env\\Greske\\Env_Greska",
+            "name": "Env_Greska",
+            "summary": "\u0023\u0023\u0023\u0020Env\u0020gre\u0161ke",
+            "url": "classes/FireHub-Jezgra-Komponente-Env-Greske-Env-Greska.html"
+        },                {
+            "fqsen": "\\FireHub\\Jezgra\\Komponente\\Env\\Servisi\\Datoteka",
+            "name": "Datoteka",
+            "summary": "\u0023\u0023\u0023\u0020Servis\u0020za\u0020\u010Ditanje\u0020.env\u0020datoteka",
+            "url": "classes/FireHub-Jezgra-Komponente-Env-Servisi-Datoteka.html"
+        },                {
+            "fqsen": "\\FireHub\\Jezgra\\Komponente\\Env\\Servisi\\Datoteka\u003A\u003A__construct\u0028\u0029",
+            "name": "__construct",
+            "summary": "\u0023\u0023\u0023\u0020Kontruktor",
+            "url": "classes/FireHub-Jezgra-Komponente-Env-Servisi-Datoteka.html#method___construct"
+        },                {
+            "fqsen": "\\FireHub\\Jezgra\\Komponente\\Env\\Servisi\\Datoteka\u003A\u003Aprocitaj\u0028\u0029",
+            "name": "procitaj",
+            "summary": "\u0023\u0023\u0023\u0020Pro\u010Ditaj\u0020env\u0020zapis",
+            "url": "classes/FireHub-Jezgra-Komponente-Env-Servisi-Datoteka.html#method_procitaj"
+        },                {
+            "fqsen": "\\FireHub\\Jezgra\\Komponente\\Env\\Servisi\\Datoteka\u003A\u003Apostavi\u0028\u0029",
+            "name": "postavi",
+            "summary": "\u0023\u0023\u0023\u0020Postavi\u0020postavke\u0020iz\u0020poslane\u0020env\u0020datoteke",
+            "url": "classes/FireHub-Jezgra-Komponente-Env-Servisi-Datoteka.html#method_postavi"
+        },                {
+            "fqsen": "\\FireHub\\Jezgra\\Komponente\\Env\\Servisi\\Datoteka\u003A\u003AdatotekaLinije\u0028\u0029",
+            "name": "datotekaLinije",
+            "summary": "\u0023\u0023\u0023\u0020Pretvori\u0020poslanu\u0020datoteku\u0020u\u0020niz\u0020linija",
+            "url": "classes/FireHub-Jezgra-Komponente-Env-Servisi-Datoteka.html#method_datotekaLinije"
+        },                {
+            "fqsen": "\\FireHub\\Jezgra\\Komponente\\Env\\Servisi\\Datoteka\u003A\u003A\u0024posluzitelj",
+            "name": "posluzitelj",
+            "summary": "",
+            "url": "classes/FireHub-Jezgra-Komponente-Env-Servisi-Datoteka.html#property_posluzitelj"
+        },                {
             "fqsen": "\\",
             "name": "\\",
             "summary": "",
@@ -505,6 +570,21 @@ Search.appendIndex(
             "name": "Dot",
             "summary": "",
             "url": "namespaces/firehub-jezgra-komponente-dot.html"
+        },                {
+            "fqsen": "\\FireHub\\Jezgra\\Komponente\\Env",
+            "name": "Env",
+            "summary": "",
+            "url": "namespaces/firehub-jezgra-komponente-env.html"
+        },                {
+            "fqsen": "\\FireHub\\Jezgra\\Komponente\\Env\\Greske",
+            "name": "Greske",
+            "summary": "",
+            "url": "namespaces/firehub-jezgra-komponente-env-greske.html"
+        },                {
+            "fqsen": "\\FireHub\\Jezgra\\Komponente\\Env\\Servisi",
+            "name": "Servisi",
+            "summary": "",
+            "url": "namespaces/firehub-jezgra-komponente-env-servisi.html"
         },                {
             "fqsen": "\\FireHub\\Jezgra\\Komponente",
             "name": "Komponente",

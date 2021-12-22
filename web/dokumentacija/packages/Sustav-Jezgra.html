@@ -117,6 +117,8 @@
         <dd>### Interface za dostavljača log-a</dd>
             <dt class="phpdocumentor-table-of-contents__entry -interface"><a href="classes/FireHub-Jezgra-Komponente-Dot-Dot-Interface.html"><abbr title="\FireHub\Jezgra\Komponente\Dot\Dot_Interface">Dot_Interface</abbr></a></dt>
         <dd>### Interface-a za dot servise</dd>
+            <dt class="phpdocumentor-table-of-contents__entry -interface"><a href="classes/FireHub-Jezgra-Komponente-Env-Env-Interface.html"><abbr title="\FireHub\Jezgra\Komponente\Env\Env_Interface">Env_Interface</abbr></a></dt>
+        <dd>### Interface-a za env servise</dd>
     
             <dt class="phpdocumentor-table-of-contents__entry -class"><a href="classes/FireHub-Jezgra-Sustav.html"><abbr title="\FireHub\Jezgra\Sustav">Sustav</abbr></a></dt>
         <dd>### Osnovna klasa za pokretanje sustava</dd>
@@ -146,6 +148,12 @@
         <dd>### Servis za ručno slanje logova</dd>
             <dt class="phpdocumentor-table-of-contents__entry -class"><a href="classes/FireHub-Jezgra-Komponente-Dot-Dot.html"><abbr title="\FireHub\Jezgra\Komponente\Dot\Dot">Dot</abbr></a></dt>
         <dd>### Poslužitelj za čitanje dot zapisa</dd>
+            <dt class="phpdocumentor-table-of-contents__entry -class"><a href="classes/FireHub-Jezgra-Komponente-Env-Env.html"><abbr title="\FireHub\Jezgra\Komponente\Env\Env">Env</abbr></a></dt>
+        <dd>### Poslužitelj za čitanje iz .env datoteka</dd>
+            <dt class="phpdocumentor-table-of-contents__entry -class"><a href="classes/FireHub-Jezgra-Komponente-Env-Greske-Env-Greska.html"><abbr title="\FireHub\Jezgra\Komponente\Env\Greske\Env_Greska">Env_Greska</abbr></a></dt>
+        <dd>### Env greške</dd>
+            <dt class="phpdocumentor-table-of-contents__entry -class"><a href="classes/FireHub-Jezgra-Komponente-Env-Servisi-Datoteka.html"><abbr title="\FireHub\Jezgra\Komponente\Env\Servisi\Datoteka">Datoteka</abbr></a></dt>
+        <dd>### Servis za čitanje .env datoteka</dd>
     
     </dl>
 
@@ -176,6 +184,13 @@
                         &nbsp;: bool    </span>
 </dt>
 <dd>### Pošalji log zapis</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -function -">
+    <a href="namespaces/default.html#function_env">env()</a>
+    <span>
+                        &nbsp;: string|int|float|bool|null    </span>
+</dt>
+<dd>### Pročitaj env zapis</dd>
 
     </dl>
 
@@ -306,7 +321,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="jezgra/firehub.Pomagaci.php"><a href="files/jezgra-firehub-pomagaci.html"><abbr title="jezgra/firehub.Pomagaci.php">firehub.Pomagaci.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">36</span>
+    <span class="phpdocumentor-element-found-in__line">37</span>
 
     </aside>
 
@@ -363,7 +378,7 @@ Poruka koja će se zabilježiti u log.
                 <dd class="phpdocumentor-tag-list__definition">
                                                                 <span class="phpdocumentor-tag-link"><abbr title="\Kontejner_Greska">Kontejner_Greska</abbr></span>
                                                             
-                                                 <section class="phpdocumentor-description"><p>Ako ne postoji objekt sa nazivom klase ili ukoliko nije uspješno obrađen atribut.</p>
+                                                 <section class="phpdocumentor-description"><p>Ukoliko se ne može spremiti instanca objekta.</p>
 </section>
 
                                     </dd>
@@ -375,6 +390,73 @@ Poruka koja će se zabilježiti u log.
             <section class="phpdocumentor-description"><p>True ukoliko je zapisan log, u suprotnome False.</p>
 </section>
 
+    
+</article>
+                    <article class="phpdocumentor-element -function - ">
+    <h4 class="phpdocumentor-element__name" id="function_env">
+        env()
+        <a href="namespaces/default.html#function_env" class="headerlink"><i class="fas fa-link"></i></a>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="jezgra/firehub.Pomagaci.php"><a href="files/jezgra-firehub-pomagaci.html"><abbr title="jezgra/firehub.Pomagaci.php">firehub.Pomagaci.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">58</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">### Pročitaj env zapis</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility"></span>
+                <span class="phpdocumentor-signature__name">env</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$env</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type">string|int|bool|null&nbsp;</span><span class="phpdocumentor-signature__argument__name">$zadano</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">string|int|float|bool|null</span></code>
+
+    
+        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+    <dl class="phpdocumentor-argument-list">
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$env</span>
+                : <span class="phpdocumentor-signature__argument__return-type">string</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"><p>
+FQN env datoteke.
+<p>
+</section>
+
+            </dd>
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$zadano</span>
+                : <span class="phpdocumentor-signature__argument__return-type">string|int|bool|null</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"><p>
+Zadana vrijednost env zapisa ukoliko ne postoji traženi env zapis.
+<p>
+</section>
+
+            </dd>
+            </dl>
+
+    
+    <h5 class="phpdocumentor-tag-list__heading" id="tags">
+        Tags
+        <a href="#tags" class="headerlink"><i class="fas fa-link"></i></a>
+    </h5>
+    <dl class="phpdocumentor-tag-list">
+                                    <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">since</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                            <span class="phpdocumentor-tag-link">0.3.3.pre-alpha.M3</span>
+                                                                                
+                                             
+                                    </dd>
+                        </dl>
+
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+    <span class="phpdocumentor-signature__response_type">string|int|float|bool|null</span>
+            &mdash;
+        
     
 </article>
             </section>

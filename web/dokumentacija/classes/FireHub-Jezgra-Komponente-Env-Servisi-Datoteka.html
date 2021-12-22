@@ -91,36 +91,38 @@
                     <ul class="phpdocumentor-breadcrumbs">
             <li class="phpdocumentor-breadcrumb"><a href="namespaces/firehub.html">FireHub</a></li>
             <li class="phpdocumentor-breadcrumb"><a href="namespaces/firehub-jezgra.html">Jezgra</a></li>
-            <li class="phpdocumentor-breadcrumb"><a href="namespaces/firehub-jezgra-http.html">HTTP</a></li>
+            <li class="phpdocumentor-breadcrumb"><a href="namespaces/firehub-jezgra-komponente.html">Komponente</a></li>
+            <li class="phpdocumentor-breadcrumb"><a href="namespaces/firehub-jezgra-komponente-env.html">Env</a></li>
+            <li class="phpdocumentor-breadcrumb"><a href="namespaces/firehub-jezgra-komponente-env-servisi.html">Servisi</a></li>
     </ul>
 
     <article class="phpdocumentor-element -class">
         <h2 class="phpdocumentor-content__title">
-    Kernel
+    Datoteka
 
-        <span class="phpdocumentor-element__extends">
-        extends <a href="classes/FireHub-Jezgra-Kernel.html"><abbr title="\FireHub\Jezgra\Kernel">Kernel</abbr></a>
-    </span>
     
             <div class="phpdocumentor-element__package">
             in package
             <ul class="phpdocumentor-breadcrumbs">
                                     <li class="phpdocumentor-breadcrumb"><a href="packages/Sustav.html">Sustav</a></li>
-                                    <li class="phpdocumentor-breadcrumb"><a href="packages/Sustav-HTTP.html">HTTP</a></li>
+                                    <li class="phpdocumentor-breadcrumb"><a href="packages/Sustav-Jezgra.html">Jezgra</a></li>
                             </ul>
         </div>
     
+            <span class="phpdocumentor-element__implements">
+            implements
+                            <a href="classes/FireHub-Jezgra-Komponente-Env-Env-Interface.html"><abbr title="\FireHub\Jezgra\Komponente\Env\Env_Interface">Env_Interface</abbr></a>                    </span>
     
     </h2>
 
         <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="jezgra/http/firehub.Kernel.php"><a href="files/jezgra-http-firehub-kernel.html"><abbr title="jezgra/http/firehub.Kernel.php">firehub.Kernel.php</abbr></a></abbr>
+    <abbr class="phpdocumentor-element-found-in__file" title="jezgra/komponente/env/servisi/firehub.Datoteka.php"><a href="files/jezgra-komponente-env-servisi-firehub-datoteka.html"><abbr title="jezgra/komponente/env/servisi/firehub.Datoteka.php">firehub.Datoteka.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">32</span>
+    <span class="phpdocumentor-element-found-in__line">29</span>
 
     </aside>
 
-            <p class="phpdocumentor-summary">### Osnovna klasa Kernel za pokretanje HTTP upita</p>
+            <p class="phpdocumentor-summary">### Servis za čitanje .env datoteka</p>
 
 
 
@@ -133,7 +135,7 @@
                     <span class="phpdocumentor-tag__name">since</span>
                 </dt>
                 <dd class="phpdocumentor-tag-list__definition">
-                                            <span class="phpdocumentor-tag-link">0.2.3.pre-alpha.M2</span>
+                                            <span class="phpdocumentor-tag-link">0.3.3.pre-alpha.M3</span>
                                                                                 
                                              
                                     </dd>
@@ -142,6 +144,17 @@
 
 
 
+<h3 id="interfaces_class_traits">
+    Interfaces, Classes and Traits
+    <a href="#interfaces_class_traits" class="headerlink"><i class="fas fa-link"></i></a>
+</h3>
+
+<dl class="phpdocumentor-table-of-contents">
+            <dt class="phpdocumentor-table-of-contents__entry -interface"><a href="classes/FireHub-Jezgra-Komponente-Env-Env-Interface.html"><abbr title="\FireHub\Jezgra\Komponente\Env\Env_Interface">Env_Interface</abbr></a></dt>
+        <dd>### Interface-a za env servise</dd>
+    
+    
+    </dl>
 
 
 <h3 id="toc">
@@ -151,39 +164,39 @@
 
 <dl class="phpdocumentor-table-of-contents">
                 <dt class="phpdocumentor-table-of-contents__entry -property -private">
-    <a href="classes/FireHub-Jezgra-HTTP-Kernel.html#property_zahtjev">$zahtjev</a>
+    <a href="classes/FireHub-Jezgra-Komponente-Env-Servisi-Datoteka.html#property_posluzitelj">$posluzitelj</a>
     <span>
-                &nbsp;: <a href="classes/FireHub-Jezgra-Zahtjev.html"><abbr title="\FireHub\Jezgra\Zahtjev">Zahtjev</abbr></a>            </span>
+                &nbsp;: <a href="classes/FireHub-Jezgra-Komponente-Env-Env.html"><abbr title="\FireHub\Jezgra\Komponente\Env\Env">Env</abbr></a>            </span>
 </dt>
 <dd></dd>
 
                 <dt class="phpdocumentor-table-of-contents__entry -method -public">
-    <a href="classes/FireHub-Jezgra-HTTP-Kernel.html#method___construct">__construct()</a>
+    <a href="classes/FireHub-Jezgra-Komponente-Env-Servisi-Datoteka.html#method___construct">__construct()</a>
     <span>
                         &nbsp;: mixed    </span>
 </dt>
-<dd>### Konstruktor.</dd>
+<dd>### Kontruktor</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
-    <a href="classes/FireHub-Jezgra-HTTP-Kernel.html#method_pokreni">pokreni()</a>
+    <a href="classes/FireHub-Jezgra-Komponente-Env-Servisi-Datoteka.html#method_procitaj">procitaj()</a>
     <span>
-                        &nbsp;: <a href="classes/FireHub-Jezgra-Odgovor.html"><abbr title="\FireHub\Jezgra\Odgovor">Odgovor</abbr></a>    </span>
+                        &nbsp;: string|int|float|bool|null    </span>
 </dt>
-<dd>### Pokreni Kernel</dd>
-
-            <dt class="phpdocumentor-table-of-contents__entry -method -protected">
-    <a href="classes/FireHub-Jezgra-Kernel.html#method_pomagaci">pomagaci()</a>
-    <span>
-                        &nbsp;: self    </span>
-</dt>
-<dd>### Učitaj datoteku sa pomoćnim funkcijama</dd>
+<dd>### Pročitaj env zapis</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -private">
-    <a href="classes/FireHub-Jezgra-HTTP-Kernel.html#method_odgovor">odgovor()</a>
+    <a href="classes/FireHub-Jezgra-Komponente-Env-Servisi-Datoteka.html#method_datotekaLinije">datotekaLinije()</a>
     <span>
-                        &nbsp;: <abbr title="\FireHub\Jezgra\HTTP\Odgovor">Odgovor</abbr>    </span>
+                        &nbsp;: array&lt;string|int, string&gt;    </span>
 </dt>
-<dd>### HTTP odgovor.</dd>
+<dd>### Pretvori poslanu datoteku u niz linija</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -private">
+    <a href="classes/FireHub-Jezgra-Komponente-Env-Servisi-Datoteka.html#method_postavi">postavi()</a>
+    <span>
+                        &nbsp;: bool    </span>
+</dt>
+<dd>### Postavi postavke iz poslane env datoteke</dd>
 
         </dl>
 
@@ -195,7 +208,7 @@
     <section class="phpdocumentor-properties">
         <h3 class="phpdocumentor-elements__header" id="properties">
             Properties
-            <a href="classes/FireHub-Jezgra-HTTP-Kernel.html#properties" class="headerlink"><i class="fas fa-link"></i></a>
+            <a href="classes/FireHub-Jezgra-Komponente-Env-Servisi-Datoteka.html#properties" class="headerlink"><i class="fas fa-link"></i></a>
         </h3>
                     <article
         class="
@@ -204,24 +217,24 @@
             -private
                                                         "
 >
-    <h4 class="phpdocumentor-element__name" id="property_zahtjev">
-        $zahtjev
-        <a href="classes/FireHub-Jezgra-HTTP-Kernel.html#property_zahtjev" class="headerlink"><i class="fas fa-link"></i></a>
+    <h4 class="phpdocumentor-element__name" id="property_posluzitelj">
+        $posluzitelj
+        <a href="classes/FireHub-Jezgra-Komponente-Env-Servisi-Datoteka.html#property_posluzitelj" class="headerlink"><i class="fas fa-link"></i></a>
         <span class="phpdocumentor-element__modifiers">
                                 </span>
     </h4>
     <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="jezgra/http/firehub.Kernel.php"><a href="files/jezgra-http-firehub-kernel.html"><abbr title="jezgra/http/firehub.Kernel.php">firehub.Kernel.php</abbr></a></abbr>
+    <abbr class="phpdocumentor-element-found-in__file" title="jezgra/komponente/env/servisi/firehub.Datoteka.php"><a href="files/jezgra-komponente-env-servisi-firehub-datoteka.html"><abbr title="jezgra/komponente/env/servisi/firehub.Datoteka.php">firehub.Datoteka.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">37</span>
+    <span class="phpdocumentor-element-found-in__line">43</span>
 
     </aside>
 
     
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">private</span>
-        <span class="phpdocumentor-signature__type"><a href="classes/FireHub-Jezgra-Zahtjev.html"><abbr title="\FireHub\Jezgra\Zahtjev">Zahtjev</abbr></a></span>
-    <span class="phpdocumentor-signature__name">$zahtjev</span>
+        <span class="phpdocumentor-signature__type"><a href="classes/FireHub-Jezgra-Komponente-Env-Env.html"><abbr title="\FireHub\Jezgra\Komponente\Env\Env">Env</abbr></a></span>
+    <span class="phpdocumentor-signature__name">$posluzitelj</span>
     </code>
 
         <section class="phpdocumentor-description"></section>
@@ -236,7 +249,7 @@
             <section class="phpdocumentor-methods">
         <h3 class="phpdocumentor-elements__header" id="methods">
             Methods
-            <a href="classes/FireHub-Jezgra-HTTP-Kernel.html#methods" class="headerlink"><i class="fas fa-link"></i></a>
+            <a href="classes/FireHub-Jezgra-Komponente-Env-Servisi-Datoteka.html#methods" class="headerlink"><i class="fas fa-link"></i></a>
         </h3>
                     <article
         class="phpdocumentor-element
@@ -246,32 +259,124 @@
 >
     <h4 class="phpdocumentor-element__name" id="method___construct">
         __construct()
-        <a href="classes/FireHub-Jezgra-HTTP-Kernel.html#method___construct" class="headerlink"><i class="fas fa-link"></i></a>
+        <a href="classes/FireHub-Jezgra-Komponente-Env-Servisi-Datoteka.html#method___construct" class="headerlink"><i class="fas fa-link"></i></a>
     </h4>
     <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="jezgra/http/firehub.Kernel.php"><a href="files/jezgra-http-firehub-kernel.html"><abbr title="jezgra/http/firehub.Kernel.php">firehub.Kernel.php</abbr></a></abbr>
+    <abbr class="phpdocumentor-element-found-in__file" title="jezgra/komponente/env/servisi/firehub.Datoteka.php"><a href="files/jezgra-komponente-env-servisi-firehub-datoteka.html"><abbr title="jezgra/komponente/env/servisi/firehub.Datoteka.php">firehub.Datoteka.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">37</span>
+    <span class="phpdocumentor-element-found-in__line">42</span>
 
     </aside>
 
-        <p class="phpdocumentor-summary">### Konstruktor.</p>
+        <p class="phpdocumentor-summary">### Kontruktor</p>
 
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
-                <span class="phpdocumentor-signature__name">__construct</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type"><a href="classes/FireHub-Jezgra-Zahtjev.html"><abbr title="\FireHub\Jezgra\Zahtjev">Zahtjev</abbr></a>&nbsp;</span><span class="phpdocumentor-signature__argument__name">$zahtjev</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
+                <span class="phpdocumentor-signature__name">__construct</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type"><a href="classes/FireHub-Jezgra-Komponente-Env-Env.html"><abbr title="\FireHub\Jezgra\Komponente\Env\Env">Env</abbr></a>&nbsp;</span><span class="phpdocumentor-signature__argument__name">$posluzitelj</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
 
     
         <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
     <dl class="phpdocumentor-argument-list">
                     <dt class="phpdocumentor-argument-list__entry">
-                <span class="phpdocumentor-signature__argument__name">$zahtjev</span>
-                : <span class="phpdocumentor-signature__argument__return-type"><a href="classes/FireHub-Jezgra-Zahtjev.html"><abbr title="\FireHub\Jezgra\Zahtjev">Zahtjev</abbr></a></span>
+                <span class="phpdocumentor-signature__argument__name">$posluzitelj</span>
+                : <span class="phpdocumentor-signature__argument__return-type"><a href="classes/FireHub-Jezgra-Komponente-Env-Env.html"><abbr title="\FireHub\Jezgra\Komponente\Env\Env">Env</abbr></a></span>
                             </dt>
             <dd class="phpdocumentor-argument-list__definition">
                     <section class="phpdocumentor-description"><p>
-Zahtjev.
+Poslužitelj servisa.
 </p>
+</section>
+
+            </dd>
+            </dl>
+
+    
+    <h5 class="phpdocumentor-tag-list__heading" id="tags">
+        Tags
+        <a href="#tags" class="headerlink"><i class="fas fa-link"></i></a>
+    </h5>
+    <dl class="phpdocumentor-tag-list">
+                                    <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">since</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                            <span class="phpdocumentor-tag-link">0.3.3.pre-alpha.M3</span>
+                                                                                
+                                             
+                                    </dd>
+                                                <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">throws</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                <span class="phpdocumentor-tag-link"><a href="classes/FireHub-Jezgra-Komponente-Env-Greske-Env-Greska.html"><abbr title="\FireHub\Jezgra\Komponente\Env\Greske\Env_Greska">Env_Greska</abbr></a></span>
+                                                            
+                                                 <section class="phpdocumentor-description"><p>Ukoliko nije ispravna env datoteka ili se dogodila greška prilikom čitanja env datoteke.</p>
+</section>
+
+                                    </dd>
+                            <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">throws</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                <span class="phpdocumentor-tag-link"><a href="classes/FireHub-Jezgra-Kontejner-Greske-Kontejner-Greska.html"><abbr title="\FireHub\Jezgra\Kontejner\Greske\Kontejner_Greska">Kontejner_Greska</abbr></a></span>
+                                                            
+                                                 <section class="phpdocumentor-description"><p>Ukoliko se ne može spremiti instanca objekta.</p>
+</section>
+
+                                    </dd>
+                        </dl>
+
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+    <span class="phpdocumentor-signature__response_type">mixed</span>
+            &mdash;
+        
+    
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -public
+                                    -static                    "
+>
+    <h4 class="phpdocumentor-element__name" id="method_procitaj">
+        procitaj()
+        <a href="classes/FireHub-Jezgra-Komponente-Env-Servisi-Datoteka.html#method_procitaj" class="headerlink"><i class="fas fa-link"></i></a>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="jezgra/komponente/env/servisi/firehub.Datoteka.php"><a href="files/jezgra-komponente-env-servisi-firehub-datoteka.html"><abbr title="jezgra/komponente/env/servisi/firehub.Datoteka.php">firehub.Datoteka.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">71</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">### Pročitaj env zapis</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+            <span class="phpdocumentor-signature__static">static</span>    <span class="phpdocumentor-signature__name">procitaj</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$env</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type">string|int|float|bool|null&nbsp;</span><span class="phpdocumentor-signature__argument__name">$zadano</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">null</span><span> ]</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">string|int|float|bool|null</span></code>
+
+    
+        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+    <dl class="phpdocumentor-argument-list">
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$env</span>
+                : <span class="phpdocumentor-signature__argument__return-type">string</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"><p>
+FQN env datoteke.
+<p>
+</section>
+
+            </dd>
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$zadano</span>
+                : <span class="phpdocumentor-signature__argument__return-type">string|int|float|bool|null</span>
+                 = <span class="phpdocumentor-signature__argument__default-value">null</span>            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"><p>
+Zadana vrijednost env zapisa ukoliko ne postoji traženi env zapis.
+<p>
 </section>
 
             </dd>
@@ -293,58 +398,9 @@ Zahtjev.
                         </dl>
 
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-    <span class="phpdocumentor-signature__response_type">mixed</span>
+    <span class="phpdocumentor-signature__response_type">string|int|float|bool|null</span>
             &mdash;
-        
-    
-</article>
-                    <article
-        class="phpdocumentor-element
-            -method
-            -public
-                                                        "
->
-    <h4 class="phpdocumentor-element__name" id="method_pokreni">
-        pokreni()
-        <a href="classes/FireHub-Jezgra-HTTP-Kernel.html#method_pokreni" class="headerlink"><i class="fas fa-link"></i></a>
-    </h4>
-    <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="jezgra/http/firehub.Kernel.php"><a href="files/jezgra-http-firehub-kernel.html"><abbr title="jezgra/http/firehub.Kernel.php">firehub.Kernel.php</abbr></a></abbr>
-    :
-    <span class="phpdocumentor-element-found-in__line">44</span>
-
-    </aside>
-
-        <p class="phpdocumentor-summary">### Pokreni Kernel</p>
-
-    <code class="phpdocumentor-code phpdocumentor-signature ">
-    <span class="phpdocumentor-signature__visibility">public</span>
-                <span class="phpdocumentor-signature__name">pokreni</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type"><a href="classes/FireHub-Jezgra-Odgovor.html"><abbr title="\FireHub\Jezgra\Odgovor">Odgovor</abbr></a></span></code>
-
-    
-    
-    
-    <h5 class="phpdocumentor-tag-list__heading" id="tags">
-        Tags
-        <a href="#tags" class="headerlink"><i class="fas fa-link"></i></a>
-    </h5>
-    <dl class="phpdocumentor-tag-list">
-                                    <dt class="phpdocumentor-tag-list__entry">
-                    <span class="phpdocumentor-tag__name">throws</span>
-                </dt>
-                <dd class="phpdocumentor-tag-list__definition">
-                                                                <span class="phpdocumentor-tag-link"><a href="classes/FireHub-Jezgra-Kontejner-Greske-Kontejner-Greska.html"><abbr title="\FireHub\Jezgra\Kontejner\Greske\Kontejner_Greska">Kontejner_Greska</abbr></a></span>
-                                                            
-                                                 <section class="phpdocumentor-description"><p>Ukoliko se ne može spremiti instanca objekta.</p>
-</section>
-
-                                    </dd>
-                        </dl>
-
-        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-    <span class="phpdocumentor-signature__response_type"><a href="classes/FireHub-Jezgra-Odgovor.html"><abbr title="\FireHub\Jezgra\Odgovor">Odgovor</abbr></a></span>
-            &mdash;
-            <section class="phpdocumentor-description"><p>Instanca Odgovora.</p>
+            <section class="phpdocumentor-description"><p>Vrijednost env zapisa.</p>
 </section>
 
     
@@ -352,28 +408,42 @@ Zahtjev.
                     <article
         class="phpdocumentor-element
             -method
-            -protected
+            -private
                                                         "
 >
-    <h4 class="phpdocumentor-element__name" id="method_pomagaci">
-        pomagaci()
-        <a href="classes/FireHub-Jezgra-Kernel.html#method_pomagaci" class="headerlink"><i class="fas fa-link"></i></a>
+    <h4 class="phpdocumentor-element__name" id="method_datotekaLinije">
+        datotekaLinije()
+        <a href="classes/FireHub-Jezgra-Komponente-Env-Servisi-Datoteka.html#method_datotekaLinije" class="headerlink"><i class="fas fa-link"></i></a>
     </h4>
     <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="jezgra/firehub.Kernel.php"><a href="files/jezgra-firehub-kernel.html"><abbr title="jezgra/firehub.Kernel.php">firehub.Kernel.php</abbr></a></abbr>
+    <abbr class="phpdocumentor-element-found-in__file" title="jezgra/komponente/env/servisi/firehub.Datoteka.php"><a href="files/jezgra-komponente-env-servisi-firehub-datoteka.html"><abbr title="jezgra/komponente/env/servisi/firehub.Datoteka.php">firehub.Datoteka.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">60</span>
+    <span class="phpdocumentor-element-found-in__line">155</span>
 
     </aside>
 
-        <p class="phpdocumentor-summary">### Učitaj datoteku sa pomoćnim funkcijama</p>
+        <p class="phpdocumentor-summary">### Pretvori poslanu datoteku u niz linija</p>
 
     <code class="phpdocumentor-code phpdocumentor-signature ">
-    <span class="phpdocumentor-signature__visibility">protected</span>
-                <span class="phpdocumentor-signature__name">pomagaci</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">self</span></code>
+    <span class="phpdocumentor-signature__visibility">private</span>
+                <span class="phpdocumentor-signature__name">datotekaLinije</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$datoteka</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">array&lt;string|int, string&gt;</span></code>
 
     
-    
+        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+    <dl class="phpdocumentor-argument-list">
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$datoteka</span>
+                : <span class="phpdocumentor-signature__argument__return-type">string</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"><p>
+Env datoteka od poslužitelja.
+</p>
+</section>
+
+            </dd>
+            </dl>
+
     
     <h5 class="phpdocumentor-tag-list__heading" id="tags">
         Tags
@@ -384,7 +454,7 @@ Zahtjev.
                     <span class="phpdocumentor-tag__name">since</span>
                 </dt>
                 <dd class="phpdocumentor-tag-list__definition">
-                                            <span class="phpdocumentor-tag-link">0.3.1.pre-alpha.M3</span>
+                                            <span class="phpdocumentor-tag-link">0.3.3.pre-alpha.M3</span>
                                                                                 
                                              
                                     </dd>
@@ -392,9 +462,92 @@ Zahtjev.
                     <span class="phpdocumentor-tag__name">throws</span>
                 </dt>
                 <dd class="phpdocumentor-tag-list__definition">
-                                                                <span class="phpdocumentor-tag-link"><a href="classes/FireHub-Jezgra-Greske-Kernel-Greska.html"><abbr title="\FireHub\Jezgra\Greske\Kernel_Greska">Kernel_Greska</abbr></a></span>
+                                                                <span class="phpdocumentor-tag-link"><a href="classes/FireHub-Jezgra-Komponente-Env-Greske-Env-Greska.html"><abbr title="\FireHub\Jezgra\Komponente\Env\Greske\Env_Greska">Env_Greska</abbr></a></span>
                                                             
-                                                 <section class="phpdocumentor-description"><p>Ukoliko se ne mogu učitati pomagači.</p>
+                                                 <section class="phpdocumentor-description"><p>Ukoliko se ne može pretvoriti env datoteka u linije.</p>
+</section>
+
+                                    </dd>
+                            <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">throws</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                <span class="phpdocumentor-tag-link"><a href="classes/FireHub-Jezgra-Kontejner-Greske-Kontejner-Greska.html"><abbr title="\FireHub\Jezgra\Kontejner\Greske\Kontejner_Greska">Kontejner_Greska</abbr></a></span>
+                                                            
+                                                 <section class="phpdocumentor-description"><p>Ukoliko se ne može napraviti objekt Log-a.</p>
+</section>
+
+                                    </dd>
+                        </dl>
+
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+    <span class="phpdocumentor-signature__response_type">array&lt;string|int, string&gt;</span>
+            &mdash;
+            <section class="phpdocumentor-description"><p>Lista linija iz env datoteke.</p>
+</section>
+
+    
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -private
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="method_postavi">
+        postavi()
+        <a href="classes/FireHub-Jezgra-Komponente-Env-Servisi-Datoteka.html#method_postavi" class="headerlink"><i class="fas fa-link"></i></a>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="jezgra/komponente/env/servisi/firehub.Datoteka.php"><a href="files/jezgra-komponente-env-servisi-firehub-datoteka.html"><abbr title="jezgra/komponente/env/servisi/firehub.Datoteka.php">firehub.Datoteka.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">116</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">### Postavi postavke iz poslane env datoteke</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">private</span>
+                <span class="phpdocumentor-signature__name">postavi</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$datoteka</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">bool</span></code>
+
+    
+        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+    <dl class="phpdocumentor-argument-list">
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$datoteka</span>
+                : <span class="phpdocumentor-signature__argument__return-type">string</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"><p>
+Env datoteka od poslužitelja.
+</p>
+</section>
+
+            </dd>
+            </dl>
+
+    
+    <h5 class="phpdocumentor-tag-list__heading" id="tags">
+        Tags
+        <a href="#tags" class="headerlink"><i class="fas fa-link"></i></a>
+    </h5>
+    <dl class="phpdocumentor-tag-list">
+                                    <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">since</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                            <span class="phpdocumentor-tag-link">0.3.3.pre-alpha.M3</span>
+                                                                                
+                                             
+                                    </dd>
+                                                <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">throws</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                <span class="phpdocumentor-tag-link"><a href="classes/FireHub-Jezgra-Komponente-Env-Greske-Env-Greska.html"><abbr title="\FireHub\Jezgra\Komponente\Env\Greske\Env_Greska">Env_Greska</abbr></a></span>
+                                                            
+                                                 <section class="phpdocumentor-description"><p>Ukoliko je metoda {datotekaLinije} javila grešku.</p>
 </section>
 
                                     </dd>
@@ -411,58 +564,9 @@ Zahtjev.
                         </dl>
 
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-    <span class="phpdocumentor-signature__response_type">self</span>
+    <span class="phpdocumentor-signature__response_type">bool</span>
             &mdash;
-            <section class="phpdocumentor-description"><p>Kernel objekt.</p>
-</section>
-
-    
-</article>
-                    <article
-        class="phpdocumentor-element
-            -method
-            -private
-                                                        "
->
-    <h4 class="phpdocumentor-element__name" id="method_odgovor">
-        odgovor()
-        <a href="classes/FireHub-Jezgra-HTTP-Kernel.html#method_odgovor" class="headerlink"><i class="fas fa-link"></i></a>
-    </h4>
-    <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="jezgra/http/firehub.Kernel.php"><a href="files/jezgra-http-firehub-kernel.html"><abbr title="jezgra/http/firehub.Kernel.php">firehub.Kernel.php</abbr></a></abbr>
-    :
-    <span class="phpdocumentor-element-found-in__line">66</span>
-
-    </aside>
-
-        <p class="phpdocumentor-summary">### HTTP odgovor.</p>
-
-    <code class="phpdocumentor-code phpdocumentor-signature ">
-    <span class="phpdocumentor-signature__visibility">private</span>
-                <span class="phpdocumentor-signature__name">odgovor</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type"><abbr title="\FireHub\Jezgra\HTTP\Odgovor">Odgovor</abbr></span></code>
-
-    
-    
-    
-    <h5 class="phpdocumentor-tag-list__heading" id="tags">
-        Tags
-        <a href="#tags" class="headerlink"><i class="fas fa-link"></i></a>
-    </h5>
-    <dl class="phpdocumentor-tag-list">
-                                    <dt class="phpdocumentor-tag-list__entry">
-                    <span class="phpdocumentor-tag__name">since</span>
-                </dt>
-                <dd class="phpdocumentor-tag-list__definition">
-                                            <span class="phpdocumentor-tag-link">0.2.6.pre-alpha.M2</span>
-                                                                                
-                                             
-                                    </dd>
-                        </dl>
-
-        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-    <span class="phpdocumentor-signature__response_type"><abbr title="\FireHub\Jezgra\HTTP\Odgovor">Odgovor</abbr></span>
-            &mdash;
-            <section class="phpdocumentor-description"><p>Odgovor za HTTP.</p>
+            <section class="phpdocumentor-description"><p>True ako je uspješno postavljano, false ako jedna od linija datoteke preko pozvane funkcije &quot;str_starts_with&quot; vrati false.</p>
 </section>
 
     
@@ -545,7 +649,7 @@ Zahtjev.
 </section>
             </div>
         </div>
-        <a href="classes/FireHub-Jezgra-HTTP-Kernel.html#top" class="phpdocumentor-back-to-top"><i class="fas fa-chevron-circle-up"></i></a>
+        <a href="classes/FireHub-Jezgra-Komponente-Env-Servisi-Datoteka.html#top" class="phpdocumentor-back-to-top"><i class="fas fa-chevron-circle-up"></i></a>
 
     </main>
 

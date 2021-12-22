@@ -14,6 +14,7 @@
  */
 
 use FireHub\Jezgra\Komponente\Log\Log;
+use FireHub\Jezgra\Komponente\Env\Env;
 use FireHub\Jezgra\Komponente\Log\Enumeratori\Level;
 use FireHub\Jezgra\Kontejner\Greske\Kontejner_Greska;
 
@@ -36,6 +37,27 @@ if (!function_exists('zapisnik')) {
     function zapisnik (Level $level, string $poruka):bool {
 
         return (new Log)->level($level)->poruka($poruka)->napravi()->posalji();
+
+    }
+}
+
+if (!function_exists('env')) {
+    /**
+     * ### Pročitaj env zapis
+     * @since 0.3.3.pre-alpha.M3
+     *
+     * @param string $env <p>
+     * FQN env datoteke.
+     * <p>
+     * @param string|int|bool|null $zadano <p>
+     * Zadana vrijednost env zapisa ukoliko ne postoji traženi env zapis.
+     * <p>
+     *
+     * @return string|int|float|bool|null
+     */
+    function env (string $env, string|bool|null $zadano):string|int|float|bool|null {
+
+        return Env::procitaj($env, $zadano);
 
     }
 }
