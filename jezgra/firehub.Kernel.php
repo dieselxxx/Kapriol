@@ -55,7 +55,7 @@ abstract class Kernel {
      * @throws Kernel_Greska Ukoliko se ne mogu učitati pomagači.
      * @throws Kontejner_Greska Ako ne postoji objekt sa nazivom klase ili ukoliko nije uspješno obrađen atribut.
      *
-     * @return self Trenutni objekt.
+     * @return self Kernel objekt.
      */
     protected function pomagaci ():self {
 
