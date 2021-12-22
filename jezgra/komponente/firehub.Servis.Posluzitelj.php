@@ -204,7 +204,7 @@ abstract class Servis_Posluzitelj {
 
             if (!$posluzitelj instanceof static) {
 
-                zapisnik(Level::KRITICNO, sprintf(_('Poslužitelj: %s, nije instanca: %s!'), $posluzitelj, self::class));
+                zapisnik(Level::KRITICNO, sprintf(_('Poslužitelj: %s, nije instanca: %s!'), $posluzitelj, static::class));
                 throw new Servis_Posluzitelj_Greska(_('Ne mogu pokrenuti sustav, obratite se administratoru'));
 
             }
