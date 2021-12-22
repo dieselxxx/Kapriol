@@ -176,7 +176,7 @@ abstract class Servis_Posluzitelj {
 
         if (!isset($this->$svojstvo_naziv)) {
 
-            zapisnik(Level::KRITICNO, sprintf(_('Ne postoji svojstvo: %s, u poslužitelju servisa: %s!'), $svojstvo_naziv, self::class));
+            zapisnik(Level::KRITICNO, sprintf(_('Ne postoji svojstvo: %s, u poslužitelju servisa: %s!'), $svojstvo_naziv, static::class));
             throw new Servis_Posluzitelj_Greska(_('Ne mogu pokrenuti sustav, obratite se administratoru'));
 
         }
