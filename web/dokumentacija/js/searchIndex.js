@@ -531,6 +531,66 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/FireHub-Jezgra-Komponente-Env-Servisi-Datoteka.html#property_posluzitelj"
         },                {
+            "fqsen": "\\FireHub\\Jezgra\\Komponente\\Datoteka\\Datoteka_Interface",
+            "name": "Datoteka_Interface",
+            "summary": "\u0023\u0023\u0023\u0020Interface\u002Da\u0020za\u0020\u010Ditanje\u0020podataka\u0020iz\u0020ostalih\u0020datoteka",
+            "url": "classes/FireHub-Jezgra-Komponente-Datoteka-Datoteka-Interface.html"
+        },                {
+            "fqsen": "\\FireHub\\Jezgra\\Komponente\\Datoteka\\Datoteka",
+            "name": "Datoteka",
+            "summary": "\u0023\u0023\u0023\u0020Poslu\u017Eitelj\u0020za\u0020\u010Ditanje\u0020podataka\u0020iz\u0020ostalih\u0020datoteka",
+            "url": "classes/FireHub-Jezgra-Komponente-Datoteka-Datoteka.html"
+        },                {
+            "fqsen": "\\FireHub\\Jezgra\\Komponente\\Datoteka\\Datoteka\u003A\u003Anapravi\u0028\u0029",
+            "name": "napravi",
+            "summary": "\u007B\u0040inheritDoc\u007D",
+            "url": "classes/FireHub-Jezgra-Komponente-Datoteka-Datoteka.html#method_napravi"
+        },                {
+            "fqsen": "\\FireHub\\Jezgra\\Komponente\\Datoteka\\Datoteka\u003A\u003A\u0024datoteka",
+            "name": "datoteka",
+            "summary": "\u0023\u0023\u0023\u0020Puna\u0020putanja\u0020datoteke\u0020koje\u0020se\u0020u\u010Ditava",
+            "url": "classes/FireHub-Jezgra-Komponente-Datoteka-Datoteka.html#property_datoteka"
+        },                {
+            "fqsen": "\\FireHub\\Jezgra\\Komponente\\Datoteka\\Greske\\Datoteka_Greska",
+            "name": "Datoteka_Greska",
+            "summary": "\u0023\u0023\u0023\u0020Datoteka\u0020gre\u0161ke",
+            "url": "classes/FireHub-Jezgra-Komponente-Datoteka-Greske-Datoteka-Greska.html"
+        },                {
+            "fqsen": "\\FireHub\\Jezgra\\Komponente\\Datoteka\\Servisi\\Datoteka_Servis",
+            "name": "Datoteka_Servis",
+            "summary": "\u0023\u0023\u0023\u0020Servis\u0020za\u0020\u010Ditanje\u0020detalja\u0020o\u0020datotekama",
+            "url": "classes/FireHub-Jezgra-Komponente-Datoteka-Servisi-Datoteka-Servis.html"
+        },                {
+            "fqsen": "\\FireHub\\Jezgra\\Komponente\\Datoteka\\Servisi\\Datoteka_Servis\u003A\u003A__construct\u0028\u0029",
+            "name": "__construct",
+            "summary": "\u0023\u0023\u0023\u0020Kontruktor",
+            "url": "classes/FireHub-Jezgra-Komponente-Datoteka-Servisi-Datoteka-Servis.html#method___construct"
+        },                {
+            "fqsen": "\\FireHub\\Jezgra\\Komponente\\Datoteka\\Servisi\\Datoteka_Servis\u003A\u003AzadnjeIzmijenjen\u0028\u0029",
+            "name": "zadnjeIzmijenjen",
+            "summary": "\u0023\u0023\u0023\u0020Vrijeme\u0020zadnje\u0020izmjene\u0020datoteke",
+            "url": "classes/FireHub-Jezgra-Komponente-Datoteka-Servisi-Datoteka-Servis.html#method_zadnjeIzmijenjen"
+        },                {
+            "fqsen": "\\FireHub\\Jezgra\\Komponente\\Datoteka\\Servisi\\Datoteka_Servis\u003A\u003AeTag\u0028\u0029",
+            "name": "eTag",
+            "summary": "\u0023\u0023\u0023\u0020Pretvaranje\u0020imena\u0020datoteke\u0020u\u0020md5\u0020hash\u0020algaritam",
+            "url": "classes/FireHub-Jezgra-Komponente-Datoteka-Servisi-Datoteka-Servis.html#method_eTag"
+        },                {
+            "fqsen": "\\FireHub\\Jezgra\\Komponente\\Datoteka\\Servisi\\Datoteka_Servis\u003A\u003Aizmijenjenod\u0028\u0029",
+            "name": "izmijenjenod",
+            "summary": "\u0023\u0023\u0023\u0020Datum\u0020i\u0020vrijeme\u0020zadnje\u0020promjene\u0020datoteke",
+            "url": "classes/FireHub-Jezgra-Komponente-Datoteka-Servisi-Datoteka-Servis.html#method_izmijenjenod"
+        },                {
+            "fqsen": "\\FireHub\\Jezgra\\Komponente\\Datoteka\\Servisi\\Datoteka_Servis\u003A\u003AeTagZaglavlje\u0028\u0029",
+            "name": "eTagZaglavlje",
+            "summary": "\u0023\u0023\u0023\u0020Pretvaranje\u0020datuma\u0020i\u0020vremena\u0020datoteke\u0020u\u0020md5\u0020hash\u0020algaritam",
+            "url": "classes/FireHub-Jezgra-Komponente-Datoteka-Servisi-Datoteka-Servis.html#method_eTagZaglavlje"
+        },                {
+            "fqsen": "\\FireHub\\Jezgra\\Komponente\\Datoteka\\Servisi\\Datoteka_Servis\u003A\u003A\u0024posluzitelj",
+            "name": "posluzitelj",
+            "summary": "",
+            "url": "classes/FireHub-Jezgra-Komponente-Datoteka-Servisi-Datoteka-Servis.html#property_posluzitelj"
+        },                {
             "fqsen": "\\",
             "name": "\\",
             "summary": "",
@@ -565,6 +625,21 @@ Search.appendIndex(
             "name": "Greske",
             "summary": "",
             "url": "namespaces/firehub-jezgra-http-greske.html"
+        },                {
+            "fqsen": "\\FireHub\\Jezgra\\Komponente\\Datoteka",
+            "name": "Datoteka",
+            "summary": "",
+            "url": "namespaces/firehub-jezgra-komponente-datoteka.html"
+        },                {
+            "fqsen": "\\FireHub\\Jezgra\\Komponente\\Datoteka\\Greske",
+            "name": "Greske",
+            "summary": "",
+            "url": "namespaces/firehub-jezgra-komponente-datoteka-greske.html"
+        },                {
+            "fqsen": "\\FireHub\\Jezgra\\Komponente\\Datoteka\\Servisi",
+            "name": "Servisi",
+            "summary": "",
+            "url": "namespaces/firehub-jezgra-komponente-datoteka-servisi.html"
         },                {
             "fqsen": "\\FireHub\\Jezgra\\Komponente\\Dot",
             "name": "Dot",
