@@ -406,6 +406,66 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/FireHub-Jezgra-Komponente-Log-Servisi-Posalji.html#property_posluzitelj"
         },                {
+            "fqsen": "\\FireHub\\Jezgra\\Komponente\\Dot\\Dot_Interface",
+            "name": "Dot_Interface",
+            "summary": "\u0023\u0023\u0023\u0020Interface\u002Da\u0020za\u0020dot\u0020servise",
+            "url": "classes/FireHub-Jezgra-Komponente-Dot-Dot-Interface.html"
+        },                {
+            "fqsen": "\\FireHub\\Jezgra\\Komponente\\Dot\\Dot_Interface\u003A\u003Asve\u0028\u0029",
+            "name": "sve",
+            "summary": "\u0023\u0023\u0023\u0020Dohvati\u0020sve\u0020Dot\u0020zapise",
+            "url": "classes/FireHub-Jezgra-Komponente-Dot-Dot-Interface.html#method_sve"
+        },                {
+            "fqsen": "\\FireHub\\Jezgra\\Komponente\\Dot\\Dot_Interface\u003A\u003Adohvati\u0028\u0029",
+            "name": "dohvati",
+            "summary": "\u0023\u0023\u0023\u0020Dohvati\u0020Dot\u0020zapis",
+            "url": "classes/FireHub-Jezgra-Komponente-Dot-Dot-Interface.html#method_dohvati"
+        },                {
+            "fqsen": "\\FireHub\\Jezgra\\Komponente\\Dot\\Dot_Interface\u003A\u003Adodaj\u0028\u0029",
+            "name": "dodaj",
+            "summary": "\u0023\u0023\u0023\u0020Dodaj\u0020Dot\u0020zapis\u0020ukoliko\u0020ne\u0020postoji",
+            "url": "classes/FireHub-Jezgra-Komponente-Dot-Dot-Interface.html#method_dodaj"
+        },                {
+            "fqsen": "\\FireHub\\Jezgra\\Komponente\\Dot\\Dot_Interface\u003A\u003Apostavi\u0028\u0029",
+            "name": "postavi",
+            "summary": "\u0023\u0023\u0023\u0020Postavi\u0020novi\u0020ili\u0020zamijeni\u0020postoje\u0107i\u0020Dot\u0020zapis",
+            "url": "classes/FireHub-Jezgra-Komponente-Dot-Dot-Interface.html#method_postavi"
+        },                {
+            "fqsen": "\\FireHub\\Jezgra\\Komponente\\Dot\\Dot_Interface\u003A\u003Azamijeni\u0028\u0029",
+            "name": "zamijeni",
+            "summary": "\u0023\u0023\u0023\u0020Zamijeni\u0020postoje\u0107i\u0020Dot\u0020zapis",
+            "url": "classes/FireHub-Jezgra-Komponente-Dot-Dot-Interface.html#method_zamijeni"
+        },                {
+            "fqsen": "\\FireHub\\Jezgra\\Komponente\\Dot\\Dot_Interface\u003A\u003Aocisti\u0028\u0029",
+            "name": "ocisti",
+            "summary": "\u0023\u0023\u0023\u0020O\u010Disti\u0020vrijednost\u0020Dot\u0020zapisa",
+            "url": "classes/FireHub-Jezgra-Komponente-Dot-Dot-Interface.html#method_ocisti"
+        },                {
+            "fqsen": "\\FireHub\\Jezgra\\Komponente\\Dot\\Dot_Interface\u003A\u003Aizbrisi\u0028\u0029",
+            "name": "izbrisi",
+            "summary": "\u0023\u0023\u0023\u0020Izbri\u0161i\u0020vrijednost\u0020Dot\u0020zapisa",
+            "url": "classes/FireHub-Jezgra-Komponente-Dot-Dot-Interface.html#method_izbrisi"
+        },                {
+            "fqsen": "\\FireHub\\Jezgra\\Komponente\\Dot\\Dot_Interface\u003A\u003Apostoji\u0028\u0029",
+            "name": "postoji",
+            "summary": "\u0023\u0023\u0023\u0020Provjerava\u0020da\u0020li\u0020postoji\u0020Dot\u0020zapis",
+            "url": "classes/FireHub-Jezgra-Komponente-Dot-Dot-Interface.html#method_postoji"
+        },                {
+            "fqsen": "\\FireHub\\Jezgra\\Komponente\\Dot\\Dot",
+            "name": "Dot",
+            "summary": "\u0023\u0023\u0023\u0020Poslu\u017Eitelj\u0020za\u0020\u010Ditanje\u0020dot\u0020zapisa",
+            "url": "classes/FireHub-Jezgra-Komponente-Dot-Dot.html"
+        },                {
+            "fqsen": "\\FireHub\\Jezgra\\Komponente\\Dot\\Dot\u003A\u003Anapravi\u0028\u0029",
+            "name": "napravi",
+            "summary": "\u007B\u0040inheritDoc\u007D",
+            "url": "classes/FireHub-Jezgra-Komponente-Dot-Dot.html#method_napravi"
+        },                {
+            "fqsen": "\\FireHub\\Jezgra\\Komponente\\Dot\\Dot\u003A\u003A\u0024niz",
+            "name": "niz",
+            "summary": "\u0023\u0023\u0023\u0020Niz\u0020za\u0020\u010Ditanje\u0020dot\u0020zapisa",
+            "url": "classes/FireHub-Jezgra-Komponente-Dot-Dot.html#property_niz"
+        },                {
             "fqsen": "\\",
             "name": "\\",
             "summary": "",
@@ -440,6 +500,11 @@ Search.appendIndex(
             "name": "Greske",
             "summary": "",
             "url": "namespaces/firehub-jezgra-http-greske.html"
+        },                {
+            "fqsen": "\\FireHub\\Jezgra\\Komponente\\Dot",
+            "name": "Dot",
+            "summary": "",
+            "url": "namespaces/firehub-jezgra-komponente-dot.html"
         },                {
             "fqsen": "\\FireHub\\Jezgra\\Komponente",
             "name": "Komponente",

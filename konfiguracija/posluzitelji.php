@@ -22,6 +22,12 @@ return [
             \FireHub\Jezgra\Komponente\Log\Servisi\Posalji::class => [],
             \FireHub\Jezgra\Komponente\Log\Servisi\AutoPosalji::class => []
         ]
-    ]
+    ],
+
+    \FireHub\Jezgra\Komponente\Dot\Dot::class => [
+        'servisi' => [
+            \FireHub\Jezgra\Komponente\Dot\Servisi\Dot_Servis::class => []
+        ]
+    ],
 
 ];
