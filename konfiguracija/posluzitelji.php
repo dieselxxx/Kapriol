@@ -30,4 +30,10 @@ return [
         ]
     ],
 
+    \FireHub\Jezgra\Komponente\Env\Env::class => [
+        'servisi' => [
+            \FireHub\Jezgra\Komponente\Env\Servisi\Datoteka::class => []
+        ]
+    ]
+
 ];
