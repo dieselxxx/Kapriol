@@ -111,7 +111,7 @@ abstract class Servis_Posluzitelj {
      * </p>
      *
      * @throws Servis_Posluzitelj_Greska Ukoliko ne postoji svojstvo u poslužitelju.
-     * @throws Kontejner_Greska Ukoliko se ne može spremiti instanca objekta.
+     * @throws Kontejner_Greska Ukoliko se ne može spremiti instanca Log-a.
      *
      * @return self Poslužitelj objekt.
      */
@@ -168,7 +168,7 @@ abstract class Servis_Posluzitelj {
      * </p>
      *
      * @throws Servis_Posluzitelj_Greska Ukoliko ne postoji ili nije inicializirano svojstvo u poslužitelju.
-     * @throws Kontejner_Greska Ukoliko se ne može spremiti instanca objekta.
+     * @throws Kontejner_Greska Ukoliko se ne može spremiti instanca Log-a.
      *
      * @return mixed Vrijednost svojstva.
      */
@@ -194,7 +194,7 @@ abstract class Servis_Posluzitelj {
      * </p>
      *
      * @throws Servis_Posluzitelj_Greska Ukoliko poslužitelj nije instanca ovog poslužitelja.
-     * @throws Kontejner_Greska Ukoliko se ne može spremiti instanca objekta.
+     * @throws Kontejner_Greska Ukoliko se ne može spremiti instanca Log-a.
      *
      * @return Generator Objekt generatora.
      */

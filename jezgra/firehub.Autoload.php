@@ -41,7 +41,7 @@ require __DIR__.'/../jezgra/enumeratori/firehub.Sufiks.php';
  * </p>
  *
  * @throws Autoload_Greska Ukoliko ekstenzija nije ispravna.
- * @throws Kontejner_Greska Ukoliko se ne može spremiti instanca objekta.
+ * @throws Kontejner_Greska Ukoliko se ne može spremiti instanca Log-a.
  *
  * @return string Putanja i naziv datoteke.
  */
@@ -103,7 +103,7 @@ $datotekaBiblioteka = static function (array $putanja_niz, string $objekt):strin
  * </p>
  *
  * @throws Autoload_Greska Ukoliko ne postoji datoteka.
- * @throws Kontejner_Greska Ukoliko se ne može spremiti instanca objekta.
+ * @throws Kontejner_Greska Ukoliko se ne može spremiti instanca Log-a.
  *
  * @return string|null Putanja i naziv datoteke.
  */

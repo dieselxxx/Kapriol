@@ -34,6 +34,14 @@ return [
         'servisi' => [
             \FireHub\Jezgra\Komponente\Env\Servisi\Datoteka::class => []
         ]
+    ],
+
+    \FireHub\Jezgra\Komponente\Datoteka\Datoteka::class => [
+        'servisi' => [
+            \FireHub\Jezgra\Komponente\Datoteka\Servisi\Datoteka_Servis::class => [
+                'parametri' => []
+            ]
+        ]
     ]
 
 ];

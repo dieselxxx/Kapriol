@@ -90,7 +90,7 @@ final class Odgovor implements Odgovor_Interface {
     /**
      * {@inheritDoc}
      *
-     * @throws Kontejner_Greska Ukoliko se ne može spremiti instanca objekta.
+     * @throws Kontejner_Greska Ukoliko se ne može spremiti instanca Log-a.
      */
     public function sadrzaj ():string {
 

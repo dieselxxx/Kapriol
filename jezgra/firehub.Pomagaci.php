@@ -30,7 +30,7 @@ if (!function_exists('zapisnik')) {
      * Poruka koja će se zabilježiti u log.
      * </p>
      *
-     * @throws Kontejner_Greska Ukoliko se ne može spremiti instanca objekta.
+     * @throws Kontejner_Greska Ukoliko se ne može spremiti instanca Log-a.
      *
      * @return bool True ukoliko je zapisan log, u suprotnome False.
      */

@@ -38,7 +38,7 @@ final class Kernel extends OsnovniKernel {
     /**
      * {@inheritDoc}
      *
-     * @throws Kontejner_Greska Ukoliko se ne može spremiti instanca objekta.
+     * @throws Kontejner_Greska Ukoliko se ne može spremiti instanca Log-a.
      */
     public function pokreni ():Konzola_Odgovor {
 

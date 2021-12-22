@@ -37,7 +37,7 @@ final class Datoteka implements Env_Interface {
      * </p>
      *
      * @throws Env_Greska Ukoliko nije ispravna env datoteka ili se dogodila greška prilikom čitanja env datoteke.
-     * @throws Kontejner_Greska Ukoliko se ne može spremiti instanca objekta.
+     * @throws Kontejner_Greska Ukoliko se ne može spremiti instanca Log-a.
      */
     public function __construct (
         private Env $posluzitelj
@@ -109,7 +109,7 @@ final class Datoteka implements Env_Interface {
      * </p>
      *
      * @throws Env_Greska Ukoliko je metoda {datotekaLinije} javila grešku.
-     * @throws Kontejner_Greska Ukoliko se ne može spremiti instanca objekta.
+     * @throws Kontejner_Greska Ukoliko se ne može spremiti instanca Log-a.
      *
      * @return bool True ako je uspješno postavljano, false ako jedna od linija datoteke preko pozvane funkcije "str_starts_with" vrati false.
      */
