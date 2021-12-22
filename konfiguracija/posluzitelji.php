@@ -38,9 +38,13 @@ return [
 
     \FireHub\Jezgra\Komponente\Datoteka\Datoteka::class => [
         'servisi' => [
-            \FireHub\Jezgra\Komponente\Datoteka\Servisi\Datoteka_Servis::class => [
-                'parametri' => []
-            ]
+            \FireHub\Jezgra\Komponente\Datoteka\Servisi\Datoteka_Servis::class => []
+        ]
+    ],
+
+    \FireHub\Jezgra\Komponente\Konfiguracija\Konfiguracija::class => [
+        'servisi' => [
+            \FireHub\Jezgra\Komponente\Konfiguracija\Servisi\Ucitaj::class => []
         ]
     ]
 
