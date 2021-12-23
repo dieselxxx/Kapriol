@@ -44,7 +44,7 @@ return [
 
     \FireHub\Jezgra\Komponente\Konfiguracija\Konfiguracija::class => [
         'servisi' => [
-            \FireHub\Jezgra\Komponente\Konfiguracija\Servisi\Ucitaj::class => []
+            \FireHub\Jezgra\Komponente\Konfiguracija\Servisi\DotNiz::class => []
         ]
     ]
 
