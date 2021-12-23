@@ -66,7 +66,7 @@ if (!function_exists('env')) {
 if (!function_exists('konfiguracija')) {
     /**
      * ### Dohvati konfiguracijski zapis
-     * @since 0.3.3.pre-alpha.M3
+     * @since 0.3.5.pre-alpha.M3
      *
      * @param string $naziv <p>
      * Naziv konfiguracijskog zapisa.
