@@ -14,13 +14,15 @@
 
 namespace FireHub\Jezgra\HTTP;
 
-use FireHub\Jezgra\Kernel as OsnovniKernel;;
-
+use FireHub\Jezgra\Kernel as OsnovniKernel;
 use FireHub\Jezgra\Zahtjev;
+use FireHub\Jezgra\HTTP\Zahtjev as HTTP_Zahtjev;
 use FireHub\Jezgra\HTTP\Odgovor as HTTP_Odgovor;
 use FireHub\Jezgra\Komponente\Datoteka\Datoteka;
 use FireHub\Jezgra\Komponente\Log\Log;
 use FireHub\Jezgra\Komponente\Log\Servisi\AutoPosalji;
+use FireHub\Jezgra\Komponente\Log\Enumeratori\Level;
+use FireHub\Jezgra\Greske\Greska;
 use FireHub\Jezgra\Kontejner\Greske\Kontejner_Greska;
 use FireHub\Jezgra\Komponente\Datoteka\Greske\Datoteka_Greska;
 use Throwable;
@@ -34,7 +36,11 @@ use Throwable;
 final class Kernel extends OsnovniKernel {
 
     /**
-     * @inheritDoc
+     * {@inheritDoc}
+     *
+     * @param HTTP_Zahtjev $zahtjev <p>
+     * Zahtjev.
+     * </p>
      */
     public function __construct (private Zahtjev $zahtjev) {}
 
@@ -49,6 +55,9 @@ final class Kernel extends OsnovniKernel {
 
             return $this
                 ->pomagaci()
+                ->ucitajEnv(FIREHUB_ROOT . '.env')
+                ->postaviAplikaciju()
+                ->ucitajEnv(APLIKACIJA_ROOT . '.env')
                 ->odgovor();
 
         } catch (Throwable $objekt) {
@@ -56,6 +65,69 @@ final class Kernel extends OsnovniKernel {
             (new Log)->servis(AutoPosalji::class)->greska($objekt)->napravi()->posalji();
 
         }
+
+    }
+
+    /**
+     * ### Postavljanje zadane aplikacije
+     * @since 0.3.5.pre-alpha.M3
+     *
+     * @name string APLIKACIJA
+     * @name string APLIKACIJA_ROOT
+     *
+     * @throws Greska Ukoliko se ne može pročitati zadana aplikacija.
+     *
+     * @return $this Instanca Kernel-a.
+     */
+    private function postaviAplikaciju ():self {
+
+        define('APLIKACIJA', strtolower($this->trenutnaAplikacija()));
+
+        define('APLIKACIJA_ROOT', FIREHUB_ROOT . 'aplikacija' . RAZDJELNIK_MAPE . APLIKACIJA . RAZDJELNIK_MAPE);
+
+        return $this;
+
+    }
+
+    /**
+     * ### Informacija o trenutnoj aplikacija u sustavu
+     *
+     * Zadana aplikacija, ukoliko je popunjena, otvara na početnom URL
+     * dok ostale trebaju imati URL koji odgovara nazivu aplikacije i
+     * mape za aplikaciju.
+     * @since 0.3.5.pre-alpha.M3
+     *
+     * @throws Greska Ukoliko ne postoji informacija o zadanoj aplikaciji.
+     *
+     * @return string Naziv zadane aplikacije.
+     */
+    private function trenutnaAplikacija ():string {
+
+        // ako postoji url i vrijednost postoji u listi aplikacija u .env datoteci
+        if (
+            $this->zahtjev->url() !== '/'
+            && env('APP_' . strtoupper($this->zahtjev->urlKomponente()[0]), false) === true
+        ) {
+
+            return $this->zahtjev->urlKomponente()[0];
+
+        }
+
+        // zadana aplikacija
+        $zadana_aplikacija = env('APP_ZADANA', false);
+
+        // ako ne postoji zapis o zadanoj aplikaciji ili je zadana aplikacija postavljena na false
+        if (
+            $zadana_aplikacija === false
+            || env($zadana_aplikacija, false) === false
+        ) {
+
+            zapisnik(Level::KRITICNO, _('Ne mogu pronaći zadanu aplikaciju sustava!'));
+            throw new Greska(_('Ne mogu pokrenuti sustav, obratite se administratoru.'));
+
+        }
+
+        return ltrim(strtolower(env('APP_ZADANA', '')), 'app_');
 
     }
 
