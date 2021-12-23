@@ -14,6 +14,7 @@
 
 namespace FireHub\Jezgra;
 
+use FireHub\Jezgra\Komponente\Env\Env;
 use FireHub\Jezgra\Komponente\Log\Log;
 use FireHub\Jezgra\Komponente\Log\Enumeratori\Level;
 use FireHub\Jezgra\Greske\Kernel_Greska;
@@ -65,6 +66,26 @@ abstract class Kernel {
             throw new Kernel_Greska(_('Ne mogu pokrenuti sustav, obratite se administratoru.'));
 
         }
+
+        return $this;
+
+    }
+
+    /**
+     * ### Učitaj .env datoteku
+     * @since 0.3.5.pre-alpha.M3
+     *
+     * @param string $putanja <p>
+     * Puna putanja do .env datoteke.
+     * </p>
+     *
+     * @throws Kontejner_Greska Ukoliko se ne može napraviti Env objekt.
+     *
+     * @return $this Kernel objekt.
+     */
+    protected function ucitajEnv (string $putanja):self {
+
+        (new Env())->datoteka($putanja)->napravi();
 
         return $this;
 

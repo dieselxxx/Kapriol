@@ -15,7 +15,8 @@
 namespace FireHub\Jezgra\Konzola;
 
 use FireHub\Jezgra\Kernel as OsnovniKernel;
-use FireHub\Jezgra\Zahtjev;
+use FireHub\Jezgra\Zahtjev as Zahtjev;
+use FireHub\Jezgra\Konzola\Zahtjev as Konzola_Zahtjev;
 use FireHub\Jezgra\Konzola\Odgovor as Konzola_Odgovor;
 use FireHub\Jezgra\Komponente\Log\Log;
 use FireHub\Jezgra\Komponente\Log\Servisi\AutoPosalji;
@@ -31,7 +32,11 @@ use Throwable;
 final class Kernel extends OsnovniKernel {
 
     /**
-     * @inheritDoc
+     * {@inheritDoc}
+     *
+     * @param Konzola_Zahtjev $zahtjev <p>
+     * Zahtjev.
+     * </p>
      */
     public function __construct (private Zahtjev $zahtjev) {}
 
@@ -46,6 +51,7 @@ final class Kernel extends OsnovniKernel {
 
             return $this
                 ->pomagaci()
+                ->ucitajEnv(FIREHUB_ROOT . '.env')
                 ->odgovor();
 
         } catch (Throwable $objekt) {
