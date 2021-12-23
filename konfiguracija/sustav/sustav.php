@@ -22,7 +22,7 @@ return [
      * Informacije
      * --------------------------------------------------------------------------
      * Osnovne informacije o sustavu.
-     * @since 0.3.3.pre-alpha.M3
+     * @since 0.3.5.pre-alpha.M3
      *
      * @var array<string, array<string, mixed>>
      */
@@ -38,7 +38,7 @@ return [
      * --------------------------------------------------------------------------
      * Lista preduvjeta koji se moraju zadovoljiti kako bi sustav mogao
      * normalano raditi.
-     * @since 0.3.3.pre-alpha.M3
+     * @since 0.3.5.pre-alpha.M3
      *
      * @var array<string, array<string, mixed>>
      */
@@ -51,7 +51,7 @@ return [
      * Vremenska zona
      * --------------------------------------------------------------------------
      * Zadana vremenska zona na kojoj radi sustav.
-     * @since 0.3.3.pre-alpha.M3
+     * @since 0.3.5.pre-alpha.M3
      *
      * @var array<string, string>
      *
@@ -65,7 +65,7 @@ return [
      * --------------------------------------------------------------------------
      * Lista predefiniranih sistemskih putanja koje su nužne za rad sustava.
      * Koristiti / kao razdjelinik mapa.
-     * @since 0.3.3.pre-alpha.M3
+     * @since 0.3.5.pre-alpha.M3
      *
      * @var array<string, array<string, string>>
      */
