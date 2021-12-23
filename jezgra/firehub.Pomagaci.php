@@ -15,6 +15,7 @@
 
 use FireHub\Jezgra\Komponente\Log\Log;
 use FireHub\Jezgra\Komponente\Env\Env;
+use FireHub\Jezgra\Komponente\Konfiguracija\Konfiguracija;
 use FireHub\Jezgra\Komponente\Log\Enumeratori\Level;
 use FireHub\Jezgra\Kontejner\Greske\Kontejner_Greska;
 
@@ -58,6 +59,26 @@ if (!function_exists('env')) {
     function env (string $env, string|bool|null $zadano):string|int|float|bool|null {
 
         return Env::procitaj($env, $zadano);
+
+    }
+}
+
+if (!function_exists('konfiguracija')) {
+    /**
+     * ### Dohvati konfiguracijski zapis
+     * @since 0.3.3.pre-alpha.M3
+     *
+     * @param string $naziv <p>
+     * Naziv konfiguracijskog zapisa.
+     * <p>
+     *
+     * @throws Kontejner_Greska Ukoliko se ne može spremiti instanca Konfiguracije.
+     *
+     * @return string|int|float|bool|array|null Vrijednosti konfiguracijskog zapisa.
+     */
+    function konfiguracija (string $naziv):string|int|float|bool|array|null {
+
+        return (new Konfiguracija)->napravi()->dohvati($naziv);
 
     }
 }
