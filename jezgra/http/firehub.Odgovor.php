@@ -104,8 +104,6 @@ final class Odgovor implements Odgovor_Interface {
         try {
 
             var_dump(konfiguracija('sustav'));
-            //var_dump((new \FireHub\Jezgra\Komponente\Konfiguracija\Konfiguracija)->napravi()->dohvati('t.t'));
-            //var_dump((new \FireHub\Jezgra\Komponente\Konfiguracija\Konfiguracija)->napravi()->dohvati('z.z'));
 
             var_dump(
                 array_filter(
