@@ -103,6 +103,21 @@ final class Odgovor implements Odgovor_Interface {
 
         try {
 
+            var_dump(konfiguracija('sustav'));
+            //var_dump((new \FireHub\Jezgra\Komponente\Konfiguracija\Konfiguracija)->napravi()->dohvati('t.t'));
+            //var_dump((new \FireHub\Jezgra\Komponente\Konfiguracija\Konfiguracija)->napravi()->dohvati('z.z'));
+
+            var_dump(
+                array_filter(
+                    get_declared_classes(),
+                    function($className) {
+                        return !call_user_func(
+                            array(new \ReflectionClass($className), 'isInternal')
+                        );
+                    }
+                )
+            );
+
             return $this->sadrzaj . '<b>'.round(memory_get_peak_usage()/1048576, 2) . ' mb</b>';
 
         } catch (Throwable $objekt) {

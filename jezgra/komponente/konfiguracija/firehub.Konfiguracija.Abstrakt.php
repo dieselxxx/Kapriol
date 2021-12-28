@@ -92,6 +92,8 @@ abstract class Konfiguracija_Abstrakt implements Konfiguracija_Interface {
         // pokreni Dot servis
         $this->dot = $dot->niz([$this->konfiguracija])->napravi();
 
+        var_dump($this->dot->sve());
+
     }
 
     /**
