@@ -35,7 +35,7 @@ final class Dot_Servis implements Dot_Interface {
      */
     public function __construct (
         private Dot $posluzitelj
-    ) { }
+    ) {}
 
     /**
      * @inheritDoc
