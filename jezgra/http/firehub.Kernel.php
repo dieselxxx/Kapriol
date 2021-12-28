@@ -58,6 +58,7 @@ final class Kernel extends OsnovniKernel {
                 ->ucitajEnv(FIREHUB_ROOT . '.env')
                 ->postaviAplikaciju()
                 ->ucitajEnv(APLIKACIJA_ROOT . '.env')
+                ->konfiguracija()
                 ->odgovor();
 
         } catch (Throwable $objekt) {
