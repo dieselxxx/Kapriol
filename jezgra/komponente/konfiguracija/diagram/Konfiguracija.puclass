@@ -1,0 +1,11 @@
+@startuml
+
+package Sustav\Konfiguracija <<Node>> #FBE9E7 {
+    namespace FireHub\Jezgra\Komponente\Konfiguracija {
+        class Konfiguracija #00897B;line:00796B {
+            + napravi ():Env_Interface
+        }
+    }
+}
+
+@enduml

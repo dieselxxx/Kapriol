@@ -6,6 +6,8 @@ package Jezgra <<Node>> #FBE9E7 {
             + {abstract} __construct (Zahtjev $zahtjev):void
             + {abstract} pokreni ():self
             # pomagaci ():self
+            # ucitajEnv (string $putanja):self
+            # konfiguracija ():self
         }
     }
 }

@@ -5,6 +5,8 @@ package HTTP <<Node>> #FBE9E7 {
         class Kernel #00897B;line:00796B {
             __construct (private Zahtjev $zahtjev):void
             + pokreni ():HTTP_Odgovor
+            - postaviAplikaciju ():self
+            - trenutnaAplikacija ():string
             - odgovor ():HTTP_Odgovor
         }
     }
