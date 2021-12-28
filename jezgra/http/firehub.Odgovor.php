@@ -103,8 +103,6 @@ final class Odgovor implements Odgovor_Interface {
 
         try {
 
-            var_dump(konfiguracija('sustav'));
-
             var_dump(
                 array_filter(
                     get_declared_classes(),
