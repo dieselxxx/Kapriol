@@ -322,7 +322,7 @@ abstract class Kontejner {
             $obradeni_atributi = [];
             array_walk(
                 $atributi,
-                function($atribut) use (&$obradeni_atributi):object {
+                function(ReflectionAttribute $atribut) use (&$obradeni_atributi):object {
 
                     // napravi novu instancu atributa
                     $atribut_instanca = $atribut->newInstance();
