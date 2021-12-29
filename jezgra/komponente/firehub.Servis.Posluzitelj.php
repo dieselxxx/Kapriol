@@ -14,9 +14,11 @@
 
 namespace FireHub\Jezgra\Komponente;
 
+use FireHub\Jezgra\Atributi\Atribut;
 use FireHub\Jezgra\Komponente\Log\Enumeratori\Level;
 use FireHub\Jezgra\Kontejner\Greske\Kontejner_Greska;
 use FireHub\Jezgra\Kontejner\Greske\Servis_Posluzitelj_Greska;
+use ReflectionClass, ReflectionAttribute;
 use Generator;
 
 /**
@@ -40,6 +42,25 @@ abstract class Servis_Posluzitelj {
      * @var ?string $servis
      */
     protected ?string $servis = null;
+
+    /**
+     * ### Konstruktor
+     * @since 0.3.5.pre-alpha.M3
+     *
+     * @throws Servis_Posluzitelj_Greska Ukoliko se ne mogu postaviti zadana svojstva poslužitelja.
+     * @throws Kontejner_Greska Ukoliko se ne može spremiti instanca Konfiguracije.
+     */
+    public function __construct () {
+
+        // postavi zadana svojstva poslužitelja
+        if (!$this->postaviZadanaSvojstva()) {
+
+            zapisnik(Level::KRITICNO, sprintf(_('Ne mogu postaviti zadana svojstva poslužitelja: %s!'), static::class));
+            throw new Servis_Posluzitelj_Greska(_('Ne mogu pokrenuti sustav, obratite se administratoru'));
+
+        }
+
+    }
 
     /**
      * ### Pročitaj ručno postavljeni servis na poslužitelju
@@ -212,6 +233,65 @@ abstract class Servis_Posluzitelj {
             yield from (new Servis_Kontejner($posluzitelj))->generator();
 
         }
+
+    }
+
+    /**
+     * ### Refleksija trenutnog objekta
+     * @since 0.3.5.pre-alpha.M3
+     *
+     * @return ReflectionClass Reflekcijska klasa objekta.
+     */
+    private function refleksija ():ReflectionClass {
+
+        return new ReflectionClass(static::class);
+
+    }
+
+    /**
+     * ### Postavi zadana svojstva poslužitelja
+     * @since 0.3.5.pre-alpha.M3
+     *
+     * @throws Kontejner_Greska Ukoliko se ne može spremiti instanca Konfiguracije.
+     *
+     * @return bool True ako su postavljena zadana svojstva, False u suprotnome.
+     */
+    private function postaviZadanaSvojstva ():bool {
+
+        $svojstva = $this->refleksija()->getProperties();
+
+        return array_walk(
+            $svojstva,
+            function ($svojstvo) {
+
+                $atributi = $svojstvo->getAttributes(Atribut::class, ReflectionAttribute::IS_INSTANCEOF);
+
+                array_walk(
+                    $atributi,
+                    function(ReflectionAttribute $atribut) use ($svojstvo):bool {
+
+                        // napravi novu instancu atributa
+                        $atribut_instanca = $atribut->newInstance();
+
+                        // dohvati naziv svojstva
+                        $naziv_svojstva = $svojstvo->getName();
+
+                        // dohvati vrijednosti iz konfiguracije
+                        $vrijednost_konfiguracije = konfiguracija($atribut_instanca->vrijednost);
+
+                        // postavi vrijednost ukoliko postoji vrijednost iz konfiguracije
+                        if (!is_null($vrijednost_konfiguracije)) {
+                            $this->$naziv_svojstva = $vrijednost_konfiguracije;
+                        }
+
+                        // obradi atribut
+                        return $atribut_instanca->obradi();
+
+                    }
+                );
+
+            }
+        );
 
     }
 

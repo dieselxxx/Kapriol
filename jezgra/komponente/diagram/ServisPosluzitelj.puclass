@@ -4,6 +4,7 @@ package Jezgra <<Node>> #FBE9E7 {
     namespace FireHub\Jezgra\Komponente {
         abstract class Servis_Posluzitelj #00897B;line:00796B {
             # ?string $servis
+            + __construct ():void
             + postavljeniServis ():?string
             + napravi ():object
             + lijeno (array $posluzitelji):array
@@ -11,6 +12,8 @@ package Jezgra <<Node>> #FBE9E7 {
             + __callStatic (string $metoda, array $argumenti):mixed
             + &__get (string $svojstvo_naziv):mixed
             - generator (array $posluzitelji):Generator
+            - refleksija ():ReflectionClass
+            - postaviZadanaSvojstva ():bool
         }
     }
 }
