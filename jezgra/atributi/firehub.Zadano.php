@@ -25,6 +25,14 @@ use Attribute;
 #[Attribute(Attribute::TARGET_PROPERTY)]
 final class Zadano implements Atribut {
 
+    /**
+     * ### Konstruktor
+     * @since 0.3.5.pre-alpha.M3
+     *
+     * @param string $vrijednost <p>
+     * Vrijednost zadane postavke.
+     * </p>
+     */
     public function __construct (
         public readonly string $vrijednost
     ) {}
