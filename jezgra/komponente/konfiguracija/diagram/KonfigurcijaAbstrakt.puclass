@@ -10,7 +10,7 @@ package Sustav\Konfiguracija <<Node>> #FBE9E7 {
             - Konfiguracija $posluzitelj
             - Metode_PodServis $metodePodServis
             + __construct (Konfiguracija $posluzitelj, Dot $dot, Metode_PodServis $metodePodServis):void
-            + dohvati (string $naziv):string|int|float|bool|array|null
+            + dohvati (string $naziv):string|int|float|bool|array|null|UnitEnum
             + postoji (string $naziv):bool
             + dodaj (string $naziv, float|array|bool|int|string|null $vrijednost):bool
             - filtrirajZapiseKonfiguracije (array $konfiguracija):array

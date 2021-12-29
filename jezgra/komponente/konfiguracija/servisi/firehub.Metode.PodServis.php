@@ -17,6 +17,7 @@ namespace FireHub\Jezgra\Komponente\Konfiguracija\Servisi;
 use FireHub\Jezgra\Komponente\Konfiguracija\Greske\KonfiguracijaMetoda_Greska;
 use FireHub\Jezgra\Komponente\Log\Enumeratori\Level;
 use FireHub\Jezgra\Kontejner\Greske\Kontejner_Greska;
+use UnitEnum;
 
 /**
  * ### Servis za pozivanje potrebnih metoda konfiguracije
@@ -58,7 +59,7 @@ final class Metode_PodServis {
 
                 return array_walk(
                     $vrijednost,
-                    function (array|string|int|float|bool $opcije, string $metoda) use ($kljuc):array|string|int|float|bool {
+                    function (array|string|int|float|bool|UnitEnum $opcije, string $metoda) use ($kljuc):array|string|int|float|bool|UnitEnum {
 
                         // prikljuci kljuc trenutnoj metodi
                         $kljuc_metoda = $kljuc.'_'.$metoda;

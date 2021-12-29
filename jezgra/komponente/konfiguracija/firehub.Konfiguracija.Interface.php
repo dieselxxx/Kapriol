@@ -15,6 +15,7 @@
 namespace FireHub\Jezgra\Komponente\Konfiguracija;
 
 use FireHub\Jezgra\Komponente\Servis_Interface;
+use UnitEnum;
 
 /**
  * ### Interface-a za servise konfiguracije
@@ -32,9 +33,9 @@ interface Konfiguracija_Interface extends Servis_Interface {
      * Naziv konfiguracijskog zapisa.
      * <p>
      *
-     * @return string|int|float|bool|array|null Vrijednosti konfiguracijskog zapisa.
+     * @return string|int|float|bool|array|null|UnitEnum Vrijednosti konfiguracijskog zapisa.
      */
-    public function dohvati (string $naziv):string|int|float|bool|array|null;
+    public function dohvati (string $naziv):string|int|float|bool|array|null|UnitEnum;
 
     /**
      * ### Provjerava dali postoji konfiguracijski zapis
@@ -55,12 +56,12 @@ interface Konfiguracija_Interface extends Servis_Interface {
      * @param string $naziv <p>
      * Naziv konfiguracijskog zapisa.
      * <p>
-     * @param string|int|float|bool|array|null $vrijednost <p>
+     * @param string|int|float|bool|array|null|UnitEnum $vrijednost <p>
      * Vrijednosti konfiguracijskog zapisa.
      * <p>
      *
      * @return bool Da li je uspješno dodan zapis.
      */
-    public function dodaj (string $naziv, string|int|float|bool|array|null $vrijednost):bool;
+    public function dodaj (string $naziv, string|int|float|bool|array|null|UnitEnum $vrijednost):bool;
 
 }

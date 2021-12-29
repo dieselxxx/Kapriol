@@ -3,9 +3,9 @@
 package Sustav\Konfiguracija <<Node>> #FBE9E7 {
     namespace FireHub\Jezgra\Komponente\Konfiguracija {
         interface Konfiguracija_Interface #00897B;line:00796B {
-            + dohvati (string $naziv):string|int|float|bool|array|null
+            + dohvati (string $naziv):string|int|float|bool|array|null|UnitEnum
             + postoji (string $naziv):bool
-            + dodaj (string $naziv, string|int|float|bool|array|null $vrijednost):bool
+            + dodaj (string $naziv, string|int|float|bool|array|null|UnitEnum $vrijednost):bool
         }
     }
 }

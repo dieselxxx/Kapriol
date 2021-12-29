@@ -20,6 +20,7 @@ use FireHub\Jezgra\Komponente\Konfiguracija\Servisi\Metode_PodServis;
 use FireHub\Jezgra\Kolekcije\Niz_Kolekcija;
 use FireHub\Jezgra\Komponente\Konfiguracija\Enumeratori\Citac;
 use FireHub\Jezgra\Kontejner\Greske\Kontejner_Greska;
+use UnitEnum;
 
 /**
  * ### Abstraktna klasa za servise konfiguracije
@@ -97,7 +98,7 @@ abstract class Konfiguracija_Abstrakt implements Konfiguracija_Interface {
     /**
      * @inheritDoc
      */
-    final public function dohvati (string $naziv):string|int|float|bool|array|null {
+    final public function dohvati (string $naziv):string|int|float|bool|array|null|UnitEnum {
 
         return $this->dot->dohvati($naziv);
 
@@ -115,7 +116,7 @@ abstract class Konfiguracija_Abstrakt implements Konfiguracija_Interface {
     /**
      * @inheritDoc
      */
-    final public function dodaj (string $naziv, float|array|bool|int|string|null $vrijednost):bool {
+    final public function dodaj (string $naziv, float|array|bool|int|string|null|UnitEnum $vrijednost):bool {
 
         return $this->dot->dodaj($naziv, $vrijednost);
 
