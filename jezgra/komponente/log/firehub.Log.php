@@ -18,6 +18,7 @@ use FireHub\Jezgra\Komponente\Servis_Kontejner;
 use FireHub\Jezgra\Komponente\Servis_Posluzitelj;
 use FireHub\Jezgra\Komponente\Log\Servisi\Dostavljac;
 use FireHub\Jezgra\Komponente\Log\Enumeratori\Level;
+use FireHub\Jezgra\Atributi\Zadano;
 use Throwable;
 
 /**
@@ -48,7 +49,8 @@ final class Log extends Servis_Posluzitelj {
      * ### Level log zapisa
      * @var Level
      */
-    protected Level $level = Level::BILJESKA;
+    #[Zadano('log.level')]
+    protected Level $level;
 
     /**
      * ### Poruka log zapisa
@@ -73,6 +75,8 @@ final class Log extends Servis_Posluzitelj {
      * @since 0.3.1.pre-alpha.M3
      */
     public function __construct () {
+
+        parent::__construct();
 
         // zadane opcije
         $this->dostavljaci($this->level->dostavljaci());

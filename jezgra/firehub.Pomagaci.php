@@ -74,9 +74,9 @@ if (!function_exists('konfiguracija')) {
      *
      * @throws Kontejner_Greska Ukoliko se ne može spremiti instanca Konfiguracije.
      *
-     * @return string|int|float|bool|array|null Vrijednosti konfiguracijskog zapisa.
+     * @return string|int|float|bool|array|null|UnitEnum Vrijednosti konfiguracijskog zapisa.
      */
-    function konfiguracija (string $naziv):string|int|float|bool|array|null {
+    function konfiguracija (string $naziv):string|int|float|bool|array|null|UnitEnum {
 
         return (new Konfiguracija)->napravi()->dohvati($naziv);
 
