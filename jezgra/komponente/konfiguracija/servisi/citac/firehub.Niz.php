@@ -15,6 +15,9 @@
 namespace FireHub\Jezgra\Komponente\Konfiguracija\Servisi\Citac;
 
 use FireHub\Jezgra\Komponente\Konfiguracija\Servisi\Citac_Interface;
+use FireHub\Jezgra\Komponente\Log\Enumeratori\Level;
+use FireHub\Jezgra\Komponente\Konfiguracija\Greske\Konfiguracija_Greska;
+use FireHub\Jezgra\Kontejner\Greske\Kontejner_Greska;
 
 /**
  * ### Čitač datoteka za registriranje konfiguracijskih podataka
@@ -52,9 +55,20 @@ final class Niz implements Citac_Interface {
      * Puna putanja do konfiguracijske datoteke.
      * </p>
      *
+     * @throws Konfiguracija_Greska Ukoliko datoteka nije niz.
+     * @throws Kontejner_Greska Ukoliko se ne može spremiti instanca Log-a.
+     *
      * @return array<string, string> Dodane datoteke.
      */
     private function dodajDatoteku (string $datoteka):array {
+
+        // ukoliko datoteka nije u obliku niza
+        if (!is_array(include $datoteka)) {
+
+            zapisnik(Level::KRITICNO, sprintf(_('Datoteka: %s,nije u obliku niza!'), $datoteka));
+            throw new Konfiguracija_Greska(_('Ne mogu pokrenuti sustav, obratite se administratoru'));
+
+        }
 
         return include $datoteka;
 
