@@ -54,7 +54,7 @@ final class Metode_PodServis {
 
         array_walk(
             $this->konfiguracija,
-            function ($vrijednost, $kljuc):bool {
+            function (array $vrijednost, string $kljuc):bool {
 
                 return array_walk(
                     $vrijednost,
