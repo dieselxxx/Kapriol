@@ -1,0 +1,12 @@
+@startuml
+
+package Sustav\Konfiguracija <<Node>> #FBE9E7 {
+    namespace FireHub\Jezgra\Komponente\Konfiguracija\Servisi {
+        class Niz #00897B;line:00796B {
+            # konfiguracijaSustav ():array
+            # konfiguracijaAplikacija ():array
+        }
+    }
+}
+
+@enduml

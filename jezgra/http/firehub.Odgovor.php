@@ -17,9 +17,15 @@
 namespace FireHub\Jezgra\HTTP;
 
 use FireHub\Jezgra\Odgovor as Odgovor_Interface;
+use FireHub\Jezgra\Komponente\Datoteka\Datoteka;
 use FireHub\Jezgra\HTTP\Enumeratori\StatusKod as HTTP_StatusKod;
 use FireHub\Jezgra\HTTP\Enumeratori\Vrsta as HTTP_Vrsta;
 use FireHub\Jezgra\HTTP\Enumeratori\Predmemorija as HTTP_Predmemorija;
+use FireHub\Jezgra\Komponente\Log\Log;
+use FireHub\Jezgra\Komponente\Log\Servisi\AutoPosalji;
+use FireHub\Jezgra\Kontejner\Greske\Kontejner_Greska;
+use FireHub\Jezgra\Komponente\Datoteka\Greske\Datoteka_Greska;
+use Throwable;
 
 /**
  * ### HTTP odgovor
@@ -36,7 +42,7 @@ final class Odgovor implements Odgovor_Interface {
      * ### Konstruktor
      * @since 0.2.6.pre-alpha.M2
      *
-     * @param string $datoteka [optional] <p>
+     * @param Datoteka $datoteka <p>
      * Trenutna radna datoteka.
      * </p>
      * @param HTTP_StatusKod $kod [optional] <p>
@@ -61,9 +67,12 @@ final class Odgovor implements Odgovor_Interface {
      * @param string $sadrzaj [optional] <p>
      * Sadržaj HTTP odgovora.
      * </p>
+     *
+     * @throws Datoteka_Greska Ukoliko se ne može pročitati naziv datoteke.
+     * @throws Kontejner_Greska Ukoliko se ne može napraviti objekt Log-a.
      */
     public function __construct (
-        public readonly string $datoteka = '',
+        public readonly Datoteka $datoteka,
         public readonly HTTP_StatusKod $kod = HTTP_StatusKod::HTTP_OK,
         public readonly HTTP_Vrsta $vrsta = HTTP_Vrsta::HTML,
         public readonly string $karakteri = 'UTF-8',
@@ -84,13 +93,36 @@ final class Odgovor implements Odgovor_Interface {
     }
 
     /**
-     * @inheritDoc
+     * {@inheritDoc}
+     *
+     * @throws Kontejner_Greska Ukoliko se ne može spremiti instanca Log-a.
      */
     public function sadrzaj ():string {
 
         ob_start('ob_gzhandler');
 
-        return $this->sadrzaj . '<b>'.round(memory_get_peak_usage()/1048576, 2) . ' mb</b>';
+        try {
+
+            var_dump(
+                array_filter(
+                    get_declared_classes(),
+                    function($className) {
+                        return !call_user_func(
+                            array(new \ReflectionClass($className), 'isInternal')
+                        );
+                    }
+                )
+            );
+
+            return $this->sadrzaj . '<b>'.round(memory_get_peak_usage()/1048576, 2) . ' mb</b>';
+
+        } catch (Throwable $objekt) {
+
+            (new Log)->servis(AutoPosalji::class)->greska($objekt)->napravi()->posalji();
+
+            return '';
+
+        }
 
     }
 
@@ -148,9 +180,32 @@ final class Odgovor implements Odgovor_Interface {
      * ### Dodaj potrebnu HTTP predmemoriju
      * @since 0.2.6.pre-alpha.M2
      *
+     * @throws Datoteka_Greska Ukoliko se ne može pročitati naziv datoteke.
+     * @throws Kontejner_Greska Ukoliko se ne može napraviti objekt Log-a.
+     *
      * @return $this Trenutni objekt.
      */
     private function postaviPredmemoriju ():self {
+
+        $datoteka = ($this->datoteka)->napravi();
+
+        // izvlačenje naziva enuma predmemorije
+        $lista_predmemorije = array_map(
+            function($predmemorija):string {
+                return $predmemorija->value;
+            },
+            $this->predmemorija
+        );
+
+        header('Cache-Control: ' . implode(',', $lista_predmemorije) . ', max-age=' . $this->predmemorija_vrijeme);
+        header('Last-Modified: ' . gmdate('D, d M Y H:i:s', $datoteka->zadnjeIzmijenjen()) . ' GMT'); // info o vremenu izmjene datoteke
+        header('Etag: ' . $datoteka->eTag()); // md5 hash za provjeru izmjene datoteke
+
+        if ($datoteka->eTagZaglavlje() === $datoteka->eTag() || strtotime($datoteka->izmijenjenOd()) === $datoteka->zadnjeIzmijenjen()) {
+
+            header('HTTP/1.1 ' . HTTP_StatusKod::HTTP_NOT_MODIFIED->value . ' ' . HTTP_StatusKod::HTTP_NOT_MODIFIED->statusNaziv());
+
+        }
 
         return $this;
 

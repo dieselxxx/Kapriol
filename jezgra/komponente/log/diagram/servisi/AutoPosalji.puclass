@@ -1,0 +1,14 @@
+@startuml
+
+package Sustav\Jezgra <<Node>> #FBE9E7 {
+    namespace FireHub\Jezgra\Komponente\Log\Servisi {
+        class AutoPosalji #00897B;line:00796B {
+            - Log $posluzitelj
+            + __construct (Log $posluzitelj):void
+            + posalji ():bool
+            - level (Throwable $objekt):Level
+        }
+    }
+}
+
+@enduml

@@ -17,6 +17,10 @@
 namespace FireHub\Jezgra\Konzola;
 
 use FireHub\Jezgra\Odgovor as Odgovor_Interface;
+use FireHub\Jezgra\Komponente\Log\Log;
+use FireHub\Jezgra\Komponente\Log\Servisi\AutoPosalji;
+use FireHub\Jezgra\Kontejner\Greske\Kontejner_Greska;
+use Throwable;
 
 /**
  * ### Konzola odgovor
@@ -30,11 +34,25 @@ use FireHub\Jezgra\Odgovor as Odgovor_Interface;
 final class Odgovor implements Odgovor_Interface {
 
     /**
-     * @inheritDoc
+     * {@inheritDoc}
+     *
+     * @throws Kontejner_Greska Ukoliko se ne može spremiti instanca Log-a.
      */
     public function sadrzaj ():string {
 
-        return round(memory_get_peak_usage()/1048576, 2) . ' mb';
+        ob_start('ob_gzhandler');
+
+        try {
+
+            return round(memory_get_peak_usage()/1048576, 2) . ' mb';
+
+        } catch (Throwable $objekt) {
+
+            (new Log)->servis(AutoPosalji::class)->greska($objekt)->napravi()->posalji();
+
+            return '';
+
+        }
 
     }
 

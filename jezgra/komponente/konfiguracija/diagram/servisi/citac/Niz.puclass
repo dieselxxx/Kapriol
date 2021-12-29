@@ -1,0 +1,15 @@
+@startuml
+
+package Sustav\Konfiguracija <<Node>> #FBE9E7 {
+    namespace FireHub\Jezgra\Komponente\Konfiguracija\Servisi\Niz {
+        class Niz #00897B;line:00796B {
+            - string $putanja
+            + ucitaj (string $putanja):array
+            - dodajDatoteku (string $datoteka):array
+            - formatiranNizDatoteka ():array
+            - skeniraj ():array
+        }
+    }
+}
+
+@enduml

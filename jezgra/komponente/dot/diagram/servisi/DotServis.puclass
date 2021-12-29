@@ -1,0 +1,20 @@
+@startuml
+
+package Sustav\Jezgra <<Node>> #FBE9E7 {
+    namespace FireHub\Jezgra\Komponente\Dot\Servisi {
+        interface Dot_Servis #00897B;line:00796B {
+            - Dot $posluzitelj
+            + __construct (Dot $posluzitelj):void
+            + sve ():array
+            + dohvati (string $vrijednost):mixed
+            + dodaj (string $zapis, mixed $vrijednost):bool
+            + postavi (string $zapis, mixed $vrijednost):bool
+            + zamijeni (string $zapis, mixed $vrijednost):bool
+            + ocisti (string $zapis):bool
+            + izbrisi (string $zapis):bool
+            + postoji (string $zapis):bool
+        }
+    }
+}
+
+@enduml

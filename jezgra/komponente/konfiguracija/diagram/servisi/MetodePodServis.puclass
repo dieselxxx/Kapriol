@@ -1,0 +1,24 @@
+@startuml
+
+package Sustav\Konfiguracija <<Node>> #FBE9E7 {
+    namespace FireHub\Jezgra\Komponente\Konfiguracija\Servisi {
+        class Metode_PodServis #00897B;line:00796B {
+            - array $konfiguracija
+            - array $rezultat
+            + pokreni (array $konfiguracija):self
+            + rezultat ():array
+            - sustav_preduvjeti (string|int ...$opcije):bool
+            - sustav_vremenskaZona (string $opcija):string
+            - sustav_sistemskePutanje (string ...$opcije):array
+            - php_ekstenzije (string ...$opcije):bool
+            - php_phpPostavke (string ...$opcije):bool
+            - debug_php (bool|array ...$opcije):bool
+            - debug_sustav (bool|array ...$opcije):bool
+            - baza_podataka_server (string $opcija):string
+            - predmemorija_server (string $opcija):string
+            - aplikacija_preduvjeti (string|int ...$opcije):bool
+        }
+    }
+}
+
+@enduml

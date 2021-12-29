@@ -1,0 +1,16 @@
+@startuml
+
+package Sustav\Jezgra <<Node>> #FBE9E7 {
+    namespace FireHub\Jezgra\Komponente\Datoteka\Servisi {
+        class Datoteka_Servis #00897B;line:00796B {
+            - Datoteka $posluzitelj
+            + __construct (Datoteka $posluzitelj):void
+            + zadnjeIzmijenjen ():int
+            + eTag ():string
+            + izmijenjenod ():string
+            + eTagZaglavlje ():string
+        }
+    }
+}
+
+@enduml

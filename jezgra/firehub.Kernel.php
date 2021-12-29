@@ -14,6 +14,12 @@
 
 namespace FireHub\Jezgra;
 
+use FireHub\Jezgra\Komponente\Env\Env;
+use FireHub\Jezgra\Komponente\Konfiguracija\Konfiguracija;
+use FireHub\Jezgra\Komponente\Log\Log;
+use FireHub\Jezgra\Komponente\Log\Enumeratori\Level;
+use FireHub\Jezgra\Greske\Kernel_Greska;
+use FireHub\Jezgra\Kontejner\Greske\Kontejner_Greska;
 
 /**
  * ### Osnovna klasa Kernel za pokretanje upita
@@ -43,5 +49,71 @@ abstract class Kernel {
      * @return Odgovor Instanca Odgovora.
      */
     abstract public function pokreni ():Odgovor;
+
+    /**
+     * ### Učitaj datoteku sa pomoćnim funkcijama
+     * @since 0.3.1.pre-alpha.M3
+     *
+     * @throws Kernel_Greska Ukoliko se ne mogu učitati pomagači.
+     * @throws Kontejner_Greska Ukoliko se ne može spremiti instanca Log-a.
+     *
+     * @return self Kernel objekt.
+     */
+    protected function pomagaci ():self {
+
+        if (!include(FIREHUB_ROOT . 'jezgra' . RAZDJELNIK_MAPE . 'firehub.Pomagaci.php')) {
+
+            (new Log)->level(Level::KRITICNO)->poruka(sprintf(_('Pomagači: %s, se ne mogu učitati'), FIREHUB_ROOT . 'jezgra' . RAZDJELNIK_MAPE . 'firehub.Pomagaci.php'))->napravi()->posalji();
+            throw new Kernel_Greska(_('Ne mogu pokrenuti sustav, obratite se administratoru.'));
+
+        }
+
+        return $this;
+
+    }
+
+    /**
+     * ### Učitaj .env datoteku
+     * @since 0.3.5.pre-alpha.M3
+     *
+     * @param string $putanja <p>
+     * Puna putanja do .env datoteke.
+     * </p>
+     *
+     * @throws Kontejner_Greska Ukoliko se ne može napraviti Env objekt.
+     *
+     * @return $this Kernel objekt.
+     */
+    protected function ucitajEnv (string $putanja):self {
+
+        (new Env())->datoteka($putanja)->napravi();
+
+        return $this;
+
+    }
+
+    /**
+     * ### Učitaj konfiguracijske postavke
+     *
+     * Pozivanje svih konfiguracijskih objekata sustava i trenutne aplikacije.
+     * @since 0.3.5.pre-alpha.M3
+     *
+     * @throws Kernel_Greska Ukoliko se ne može učitati konfiguracijska datoteka.
+     * @throws Kontejner_Greska Ukoliko se ne može spremiti instanca Log-a.
+     *
+     * @return $this Kernel objekt.
+     */
+    protected function konfiguracija ():self {
+
+        if (!(new Konfiguracija())->napravi()) {
+
+            zapisnik(Level::UZBUNA, _('Ne mogu učitati konfiguraciju sustava!'));
+            throw new Kernel_Greska(_('Ne mogu pokrenuti sustav, obratite se administratoru.'));
+
+        }
+
+        return $this;
+
+    }
 
 }

@@ -17,9 +17,11 @@
 
 namespace FireHub\Jezgra;
 
-use Exception;
 use FireHub\Jezgra\Enumeratori\Prefiks;
 use FireHub\Jezgra\Enumeratori\Sufiks;
+use FireHub\Jezgra\Komponente\Log\Enumeratori\Level;
+use FireHub\Jezgra\Greske\Autoload_Greska;
+use FireHub\Jezgra\Kontejner\Greske\Kontejner_Greska;
 
 require __DIR__.'/../jezgra/enumeratori/firehub.Prefiks.php';
 require __DIR__.'/../jezgra/enumeratori/firehub.Sufiks.php';
@@ -38,7 +40,8 @@ require __DIR__.'/../jezgra/enumeratori/firehub.Sufiks.php';
  * Naziv objekta.
  * </p>
  *
- * @throws Exception Ukoliko ekstenzija nije ispravna.
+ * @throws Autoload_Greska Ukoliko ekstenzija nije ispravna.
+ * @throws Kontejner_Greska Ukoliko se ne može spremiti instanca Log-a.
  *
  * @return string Putanja i naziv datoteke.
  */
@@ -54,7 +57,8 @@ $datotekaFireHub = static function (array $putanja_niz, string $objekt):string {
 
     if ($vrsta && (!Sufiks::tryFrom($vrsta) || isset(Prefiks::cases()[0]) === false)) { // provjeri ispravnost ekstenzije datoteke
 
-        throw new Exception(_('Ne mogu pokrenuti sustav, obratite se administratoru.'));
+        zapisnik(Level::KRITICNO, sprintf(_('Datoteka: %s, nema pravilan prefiks: %s, ili vrsta: %s, nije ispravna u enumu sufiksa: %s'), $objekt, Prefiks::cases()[0]->value, $vrsta, Sufiks::class));
+        throw new Autoload_Greska(_('Ne mogu pokrenuti sustav, obratite se administratoru.'));
 
     }
 
@@ -62,7 +66,7 @@ $datotekaFireHub = static function (array $putanja_niz, string $objekt):string {
         ? Prefiks::cases()[0]->value . '.' . $ime . '.' . $vrsta . '.php'
         : Prefiks::cases()[0]->value . '.' . $ime . '.' . $vrsta . 'php';
 
-    return DIRECTORY_SEPARATOR . $putanja . DIRECTORY_SEPARATOR . $naziv_objekta;
+    return $putanja . DIRECTORY_SEPARATOR . $naziv_objekta;
 
 };
 
@@ -98,7 +102,8 @@ $datotekaBiblioteka = static function (array $putanja_niz, string $objekt):strin
  * Objekt koja se poziva.
  * </p>
  *
- * @throws Exception Ukoliko ne postoji datoteka.
+ * @throws Autoload_Greska Ukoliko ne postoji datoteka.
+ * @throws Kontejner_Greska Ukoliko se ne može spremiti instanca Log-a.
  *
  * @return string|null Putanja i naziv datoteke.
  */
@@ -120,7 +125,8 @@ $datoteka = static function (string $auto_objekt) use ($datotekaFireHub, $datote
         // ako ne postoji datoteka
         if (!is_file(realpath($_SERVER['DOCUMENT_ROOT']) . DIRECTORY_SEPARATOR . $datoteka)) {
 
-            throw new Exception(sprintf(_('Dogodila se greška prilikom izvođenja aplikacije zbog datoteke: %s!'), $datoteka));
+            zapisnik(Level::KRITICNO, sprintf(_('Ne postoji datoteka: %s, za objekt: %s!'), realpath($_SERVER['DOCUMENT_ROOT']) . DIRECTORY_SEPARATOR . $datoteka, $objekt));
+            throw new Autoload_Greska(_('Ne mogu pokrenuti sustav, obratite se administratoru!'));
 
         }
 
@@ -135,7 +141,8 @@ $datoteka = static function (string $auto_objekt) use ($datotekaFireHub, $datote
         // ako ne postoji datoteka
         if (!is_file(realpath($_SERVER['DOCUMENT_ROOT']) . DIRECTORY_SEPARATOR . $datoteka)) {
 
-            throw new Exception(sprintf(_('Dogodila se greška prilikom izvođenja aplikacije zbog datoteke: %s!'), $datoteka));
+            zapisnik(Level::KRITICNO, sprintf(_('Ne postoji datoteka: %s, za objekt: %s!'), realpath($_SERVER['DOCUMENT_ROOT']) . DIRECTORY_SEPARATOR . $datoteka, $objekt));
+            throw new Autoload_Greska(_('Ne mogu pokrenuti sustav, obratite se administratoru!'));
 
         }
 

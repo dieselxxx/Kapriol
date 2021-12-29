@@ -1,0 +1,10 @@
+@startuml
+
+package Sustav\Jezgra <<Node>> #FBE9E7 {
+    namespace FireHub\Jezgra\Komponente\Datoteka {
+        interface Datoteka_Interface #00897B;line:00796B {
+        }
+    }
+}
+
+@enduml
