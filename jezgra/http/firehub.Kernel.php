@@ -17,6 +17,7 @@ namespace FireHub\Jezgra\HTTP;
 use FireHub\Jezgra\Kernel as OsnovniKernel;
 use FireHub\Jezgra\Zahtjev;
 use FireHub\Jezgra\HTTP\Zahtjev as HTTP_Zahtjev;
+use FireHub\Jezgra\Komponente\Rute\Rute;
 use FireHub\Jezgra\HTTP\Odgovor as HTTP_Odgovor;
 use FireHub\Jezgra\Komponente\Datoteka\Datoteka;
 use FireHub\Jezgra\Komponente\Log\Log;
@@ -155,7 +156,7 @@ final class Kernel extends OsnovniKernel {
      */
     private function ruter ():self {
 
-        if (!$this->ruter = new Ruter()) {
+        if (!$this->ruter = new Ruter($this->zahtjev, new Rute())) {
 
             (new Log)->level(Level::HITNO)->poruka('Ne mogu učitati ruter');
             throw new Kernel_Greska(_('Ne mogu pokrenuti sustav, obratite se administratoru.'));
