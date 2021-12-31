@@ -3,10 +3,13 @@
 package HTTP <<Node>> #FBE9E7 {
     namespace FireHub\Jezgra\HTTP {
         class Kernel #00897B;line:00796B {
-            __construct (private Zahtjev $zahtjev):void
+            - Ruter $ruter
+            - Zahtjev $zahtjev
+            + __construct (private Zahtjev $zahtjev):void
             + pokreni ():HTTP_Odgovor
             - postaviAplikaciju ():self
             - trenutnaAplikacija ():string
+            - ruter ():self
             - odgovor ():HTTP_Odgovor
         }
     }
