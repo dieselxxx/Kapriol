@@ -14,12 +14,14 @@
 
 namespace FireHub\Jezgra;
 
+use FireHub\Jezgra\Posrednici\Posrednik_Kontejner;
 use FireHub\Jezgra\Komponente\Env\Env;
 use FireHub\Jezgra\Komponente\Konfiguracija\Konfiguracija;
 use FireHub\Jezgra\Komponente\Log\Log;
 use FireHub\Jezgra\Komponente\Log\Enumeratori\Level;
 use FireHub\Jezgra\Greske\Kernel_Greska;
 use FireHub\Jezgra\Kontejner\Greske\Kontejner_Greska;
+use Generator;
 
 /**
  * ### Osnovna klasa Kernel za pokretanje upita
@@ -51,13 +53,52 @@ abstract class Kernel {
     abstract public function pokreni ():Odgovor;
 
     /**
+     * ### Obrada posrednika za kernel
+     * @since 0.4.0.pre-alpha.M4
+     *
+     * @param array $posrednici <p>
+     * Lista posrednika.
+     * </p>
+     * @param string $kljuc <p>
+     * Ključ sa listom posrednika koje se trebaju obraditi.
+     * </p>
+     *
+     * @throws Kernel_Greska Ukoliko ne postoji ključ u nizu parametara za posrednika.
+     * @throws Kontejner_Greska Ukoliko se ne može spremiti instanca Log-a.
+     *
+     * @return static Kernel objekt.
+     */
+    protected function posrednici (array $posrednici, string $kljuc):self {
+
+        if (!array_key_exists($kljuc, $posrednici)) {
+
+            (new Log)->level(Level::KRITICNO)->poruka(sprintf(_('Ne postoji ključ: %s, u nizu parametara za posrednika'), $kljuc))->napravi()->posalji();
+            throw new Kernel_Greska(_('Ne mogu pokrenuti sustav, obratite se administratoru.'));
+
+        }
+
+        // pokeni posrednike
+        $generator = $this->obradiPosrednike($posrednici[$kljuc]);
+
+        // obradi posrednike
+        while ($generator->valid()) {
+
+            $generator->next();
+
+        }
+
+        return $this;
+
+    }
+
+    /**
      * ### Učitaj datoteku sa pomoćnim funkcijama
      * @since 0.3.1.pre-alpha.M3
      *
      * @throws Kernel_Greska Ukoliko se ne mogu učitati pomagači.
      * @throws Kontejner_Greska Ukoliko se ne može spremiti instanca Log-a.
      *
-     * @return self Kernel objekt.
+     * @return static Kernel objekt.
      */
     protected function pomagaci ():self {
 
@@ -82,7 +123,7 @@ abstract class Kernel {
      *
      * @throws Kontejner_Greska Ukoliko se ne može napraviti Env objekt.
      *
-     * @return $this Kernel objekt.
+     * @return static Kernel objekt.
      */
     protected function ucitajEnv (string $putanja):self {
 
@@ -101,7 +142,7 @@ abstract class Kernel {
      * @throws Kernel_Greska Ukoliko se ne može učitati konfiguracijska datoteka.
      * @throws Kontejner_Greska Ukoliko se ne može spremiti instanca Log-a.
      *
-     * @return $this Kernel objekt.
+     * @return static Kernel objekt.
      */
     protected function konfiguracija ():self {
 
@@ -113,6 +154,44 @@ abstract class Kernel {
         }
 
         return $this;
+
+    }
+
+    /**
+     * ### Obradi sve HTTP posrednike
+     *
+     * Pokreće svim posrednicima metodu {obradi} koja
+     * vraća stanje posrednika. Posrednici se učitavaju redosljedom iz
+     * konfiguracijske datoteke posrednika, te prvi koji vrati stanje false
+     * zaustavlja se daljnje obrađivanje posrednika.
+     * @since 0.4.0.pre-alpha.M4
+     *
+     * @param string[] $posrednici <p>
+     * Lista posrednika za obradu.
+     * </p>
+     *
+     * @throws Kernel_Greska Ukoliko ne mogu obraditi posrednika.
+     * @throws Kontejner_Greska Ukoliko se ne može spremiti instanca objekta.
+     *
+     * @return Generator Pokreće posrednika.
+     */
+    private function obradiPosrednike (array $posrednici):Generator {
+
+        foreach ($posrednici as $posrednik) {
+
+            // napravi posrednika
+            $obradi_posrednika = (new Posrednik_Kontejner($posrednik))->dohvati()->obradi();
+
+            if ($obradi_posrednika === false) {
+
+                zapisnik(Level::KRITICNO, sprintf(_('Ne mogu obraditi posrednika %s!'), $posrednik));
+                throw new Kernel_Greska(_('Ne mogu pokrenuti sustav, obratite se administratoru.'));
+
+            }
+
+            yield $obradi_posrednika;
+
+        }
 
     }
 
