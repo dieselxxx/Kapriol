@@ -46,6 +46,12 @@ return [
         'servisi' => [
             \FireHub\Jezgra\Komponente\Konfiguracija\Servisi\Niz::class => []
         ]
+    ],
+
+    \FireHub\Jezgra\Komponente\Rute\Rute::class => [
+        'servisi' => [
+            \FireHub\Jezgra\Komponente\Rute\Servisi\Datoteka::class => []
+        ]
     ]
 
 ];
