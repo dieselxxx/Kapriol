@@ -151,6 +151,7 @@ final class Kernel extends OsnovniKernel {
      * @since 0.4.1.pre-alpha.M4
      *
      * @throws Kernel_Greska Ukoliko se ne može učitati ruter.
+     * @throws Kontejner_Greska Ukoliko se ne može spremiti instanca Rute.
      *
      * @return $this Instanca Kernel-a.
      */
