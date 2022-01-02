@@ -10,6 +10,9 @@
  *
  * @version 1.0
  * @package Sustav\HTTP
+ *
+ * @todo Predmemorija
+ * @todo Posrednici
  */
 
 namespace FireHub\Jezgra\Komponente\Rute;
