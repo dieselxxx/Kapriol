@@ -62,15 +62,18 @@ final class Niz implements Citac_Interface {
      */
     private function dodajDatoteku (string $datoteka):array {
 
+        // dodaj datoteku
+        $podatci = include $datoteka;
+
         // ukoliko datoteka nije u obliku niza
-        if (!is_array(include $datoteka)) {
+        if (!is_array($podatci)) {
 
             zapisnik(Level::KRITICNO, sprintf(_('Datoteka: %s,nije u obliku niza!'), $datoteka));
             throw new Konfiguracija_Greska(_('Ne mogu pokrenuti sustav, obratite se administratoru'));
 
         }
 
-        return include $datoteka;
+        return $podatci;
 
     }
 
