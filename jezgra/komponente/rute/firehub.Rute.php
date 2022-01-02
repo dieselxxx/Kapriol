@@ -69,6 +69,69 @@ final class Rute extends Servis_Posluzitelj {
     }
 
     /**
+     * ### POST metoda
+     * @since 0.4.1.pre-alpha.M4
+     *
+     * @param string $url <p>
+     * URL rute.
+     * </p>
+     * @param array<string, string> $podatci <p>
+     * Kontroler i metoda rute.
+     * </p>
+     *
+     * @throws Kontejner_Greska Ukoliko se ne može spremiti instanca Rute.
+     *
+     * @return bool Da li je dadana ruta.
+     */
+    public static function post (string $url, array $podatci):bool {
+
+        return (new self())->napravi()->dodaj('POST', $url, $podatci);
+
+    }
+
+    /**
+     * ### PUT metoda
+     * @since 0.4.1.pre-alpha.M4
+     *
+     * @param string $url <p>
+     * URL rute.
+     * </p>
+     * @param array<string, string> $podatci <p>
+     * Kontroler i metoda rute.
+     * </p>
+     *
+     * @throws Kontejner_Greska Ukoliko se ne može spremiti instanca Rute.
+     *
+     * @return bool Da li je dadana ruta.
+     */
+    public static function put (string $url, array $podatci):bool {
+
+        return (new self())->napravi()->dodaj('put', $url, $podatci);
+
+    }
+
+    /**
+     * ### DELETE metoda
+     * @since 0.4.1.pre-alpha.M4
+     *
+     * @param string $url <p>
+     * URL rute.
+     * </p>
+     * @param array<string, string> $podatci <p>
+     * Kontroler i metoda rute.
+     * </p>
+     *
+     * @throws Kontejner_Greska Ukoliko se ne može spremiti instanca Rute.
+     *
+     * @return bool Da li je dadana ruta.
+     */
+    public static function delete (string $url, array $podatci):bool {
+
+        return (new self())->napravi()->dodaj('DELETE', $url, $podatci);
+
+    }
+
+    /**
      * {@inheritDoc}
      *
      * @return Rute_Interface Objekt Ruta servisa.
