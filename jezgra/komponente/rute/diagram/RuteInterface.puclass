@@ -1,0 +1,12 @@
+@startuml
+
+package Sustav\HTTP <<Node>> #FBE9E7 {
+    namespace FireHub\Jezgra\Komponente\Rute {
+        interface Rute_Interface #00897B;line:00796B {
+            + provjeri (string $metoda, string $url):array|false
+            + dodaj (string $metoda, string $url, array $podatci):bool
+        }
+    }
+}
+
+@enduml
