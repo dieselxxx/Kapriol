@@ -106,7 +106,7 @@ final class Rute extends Servis_Posluzitelj {
      */
     public static function put (string $url, array $podatci):bool {
 
-        return (new self())->napravi()->dodaj('put', $url, $podatci);
+        return (new self())->napravi()->dodaj('PUT', $url, $podatci);
 
     }
 
