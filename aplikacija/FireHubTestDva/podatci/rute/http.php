@@ -11,3 +11,7 @@
  * @version 1.0
  * @package Sustav\Jezgra
  */
+
+use FireHub\Jezgra\Komponente\Rute\Rute;
+
+Rute::sve('naslovna/index', [\FireHub\Aplikacija\FireHubTest\Kontroler\Naslovna_Kontroler::class, 'index']);
