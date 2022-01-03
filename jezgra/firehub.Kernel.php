@@ -171,7 +171,7 @@ abstract class Kernel {
      * </p>
      *
      * @throws Kernel_Greska Ukoliko ne mogu obraditi posrednika.
-     * @throws Kontejner_Greska Ukoliko se ne može spremiti instanca objekta.
+     * @throws Kontejner_Greska Ukoliko se ne može spremiti instanca posrednika ili Log-a.
      *
      * @return Generator Pokreće posrednika.
      */
