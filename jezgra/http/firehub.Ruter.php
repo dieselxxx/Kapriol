@@ -220,7 +220,7 @@ final class Ruter {
 
         }
 
-        return $url;
+        return !empty($url) ? $url : $this->parametri;
 
     }
 
