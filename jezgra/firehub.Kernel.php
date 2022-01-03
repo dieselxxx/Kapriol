@@ -158,7 +158,7 @@ abstract class Kernel {
     }
 
     /**
-     * ### Obradi sve HTTP posrednike
+     * ### Obradi sve posrednike
      *
      * Pokreće svim posrednicima metodu {obradi} koja
      * vraća stanje posrednika. Posrednici se učitavaju redosljedom iz
