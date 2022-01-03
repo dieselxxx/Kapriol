@@ -2,13 +2,19 @@
 
 namespace FireHub\Aplikacija\FireHubTest\Kontroler;
 
-final class Naslovna_Kontroler {
+use FireHub\Jezgra\Kontroler\Kontroler;
+
+final class Naslovna_Kontroler extends Kontroler {
 
     public function index () {
 
     }
 
     public function index2 () {
+
+    }
+
+    public function index3 () {
 
     }
 

@@ -1,10 +1,10 @@
 <?php declare(strict_types = 1);
 
-namespace FireHub\Aplikacija\FireHubTestDva\Kontroler;
+namespace FireHub\Aplikacija\FireHubTest\Kontroler;
 
 use FireHub\Jezgra\Kontroler\Kontroler;
 
-final class Naslovna_Kontroler extends Kontroler {
+final class Test_Kontroler extends Kontroler {
 
     public function index () {
 
@@ -13,5 +13,9 @@ final class Naslovna_Kontroler extends Kontroler {
     public function index2 () {
 
     }
-    
+
+    public function index3 () {
+
+    }
+
 }
