@@ -15,13 +15,18 @@
 namespace FireHub\Jezgra\HTTP;
 
 use FireHub\Jezgra\HTTP\Zahtjev as HTTP_Zahtjev;
+use FireHub\Jezgra\Komponente\Log\Enumeratori\Level;
 use FireHub\Jezgra\Komponente\Rute\Rute;
+use FireHub\Jezgra\Kontroler\Kontroler_Kontejner;
+use FireHub\Jezgra\Kontroler\Kontroler;
 use FireHub\Jezgra\Kontejner\Greske\Kontejner_Greska;
+use FireHub\Jezgra\HTTP\Greske\Ruter_Greska;
+use ReflectionException;
 
 /**
  * ### Klasa Ruter za rutiranje HTTP zahtjeva i odgovora aplikacije
- *
  * @since 0.4.1.pre-alpha.M4
+ *
  * @package Sustav\HTTP
  */
 final class Ruter {
@@ -31,6 +36,24 @@ final class Ruter {
      * @var array<string, string>|false
      */
     private array|false $ruta;
+
+    /**
+     * ### Naziv zadanog kontrolera
+     * @var string
+     */
+    private string $kontroler = 'FireHub\\Aplikacija\\'.APLIKACIJA.'\\Kontroler\\Naslovna_Kontroler';
+
+    /**
+     * ### Naziv zadane metode
+     * @var string
+     */
+    private string $metoda = 'index';
+
+    /**
+     * ### Zadani parameteri
+     * @var array<int, string>
+     */
+    private array $parametri = [];
 
     /**
      * ### Konstruktor
@@ -43,7 +66,7 @@ final class Ruter {
      * Poslužitelj HTTP ruta.
      * </p>
      *
-     * @throws Kontejner_Greska Ukoliko se ne može spremiti instanca Rute.
+     * @throws Kontejner_Greska Ukoliko se ne može spremiti instanca Rute ili Log-a.
      */
     public function __construct (
         private HTTP_Zahtjev $http_zahtjev,
@@ -52,6 +75,43 @@ final class Ruter {
 
         // trenutna ruta
         $this->ruta = $this->ruta();
+
+    }
+
+    /**
+     * ### Pokreni kontroler
+     * @since 0.4.2.pre-alpha.M4
+     *
+     * @throws Kontejner_Greska Ukoliko se ne može spremiti instanca Log-a.
+     * @throws Ruter_Greska Ukoliko objekt nije instanca kontrolera.
+     * @throws ReflectionException Ako ne postoji objekt sa nazivom klase.
+     *
+     * @return string Sadržaj kontroler.
+     */
+    public function kontroler ():string {
+
+        // kontroler kontejner
+        $kontroler_kontejner = new Kontroler_Kontejner($this->kontrolerNaziv());
+
+        // kontroler
+        $kontroler = $kontroler_kontejner->singleton();
+
+        // kontroler mora biti instanca abstraktnog kontrolera
+        if (!$kontroler instanceof Kontroler) {
+
+            zapisnik(Level::KRITICNO, sprintf(_('Objekt: "%s" nije instanca kontrolera!'), $kontroler::class));
+            throw new Ruter_Greska(sprintf(_('Ne mogu pokrenuti sustav, obratite se administratoru.'), $kontroler::class));
+
+        }
+
+        // pozovi metodu
+        $metoda = $this->metoda();
+
+        // autožica
+        $autozica_metoda = $kontroler_kontejner->autozicaMetoda($metoda);
+
+        // pokreni metodu kontrolera sa parametrima
+        return $kontroler->$metoda(...array_merge($autozica_metoda, $this->parametri($this->url())));
 
     }
 
@@ -91,13 +151,76 @@ final class Ruter {
 
         $url_komponente = $this->http_zahtjev->urlKomponente();
 
-        if ($url_komponente[0] === APLIKACIJA) {
+        if (isset($url_komponente[0]) && $url_komponente[0] === APLIKACIJA) {
 
             return array_splice($url_komponente,1);
 
         }
 
         return array_splice($url_komponente,0);
+
+    }
+
+    /**
+     * ### Naziv trenutnog kontrolera
+     * @since 0.4.2.pre-alpha.M4
+     *
+     * @return string FQN naziv kontrolera.
+     */
+    private function kontrolerNaziv ():string {
+
+        $aplikacija_kontroler_putanja = 'FireHub\\Aplikacija\\'.APLIKACIJA.'\\Kontroler\\';
+
+        return match (true) {
+            ($this->ruta) && (isset($this->ruta[0])) && (is_a($this->ruta[0], Kontroler::class, true)) => $this->ruta[0], // provjera da li postoji prvi ključ u nizu rute i ključ je kontroler
+            isset($this->url()[0]) && class_exists($aplikacija_kontroler_putanja . $this->url()[0]. '_Kontroler') => $aplikacija_kontroler_putanja . $this->url()[0]. '_Kontroler', // provjera da li postoji klasa sa prvom vrijednosti iz URL-a
+            default => $this->kontroler // pozovi zadani kontroler
+        };
+
+    }
+
+    /**
+     * ### Naziv metode
+     * @since 0.4.2.pre-alpha.M4
+     *
+     * @return string Naziv metode.
+     */
+    private function metoda ():string {
+
+        return match (true) {
+            ($this->ruta) && (isset($this->ruta[1])) && (method_exists($this->kontrolerNaziv(), $this->ruta[1])) => $this->ruta[1], // provjera da li postoji drugi ključ u nizu rute i metoda u kontroleru
+            default => $this->metoda // pozovi zadanu metodu
+        };
+
+    }
+
+    /**
+     * ### Niz parametara
+     * @since 0.4.2.pre-alpha.M4
+     *
+     * @param string[] $url <p>
+     * Lista url parametara.
+     * </p>
+     *
+     * @return string[] Niz parametara.
+     */
+    private function parametri (array $url):array {
+
+        // ukoliko je prva vrijednost url-a naziv trenutnog kontrolera makni je
+        if (isset($url[0]) && strtolower('FireHub\\Aplikacija\\'.APLIKACIJA.'\\Kontroler\\'.$url[0].'_Kontroler') === strtolower($this->kontroler)) {
+
+            array_shift($url);
+
+        }
+
+        // ukoliko je prva vrijednost url-a naziv trenutne metode makni je
+        if (isset($url[0]) && $url[0] == $this->metoda) {
+
+            array_shift($url);
+
+        }
+
+        return $url;
 
     }
 
