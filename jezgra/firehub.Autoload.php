@@ -122,6 +122,13 @@ $datoteka = static function (string $auto_objekt) use ($datotekaFireHub, $datote
 
         $datoteka = $datotekaFireHub($putanja_niz, $objekt);
 
+        // ako je objekt kontroler i ne postoji datoteka za njega
+        if (str_ends_with($objekt, '_Kontroler') && !is_file(realpath($_SERVER['DOCUMENT_ROOT']) . DIRECTORY_SEPARATOR . $datoteka)) {
+
+            return null;
+
+        }
+
         // ako ne postoji datoteka
         if (!is_file(realpath($_SERVER['DOCUMENT_ROOT']) . DIRECTORY_SEPARATOR . $datoteka)) {
 
@@ -169,7 +176,7 @@ $autoload = static function (string $auto_objekt) use ($datoteka):int|false {
 
     $objekt = $datoteka($auto_objekt);
 
-    return is_string(realpath($_SERVER['DOCUMENT_ROOT']) . DIRECTORY_SEPARATOR . $objekt) // da li je string
+    return is_string(realpath($_SERVER['DOCUMENT_ROOT']) . DIRECTORY_SEPARATOR . $objekt) && !is_null($objekt) // da li je string
         ? include realpath($_SERVER['DOCUMENT_ROOT']) . DIRECTORY_SEPARATOR . $objekt // include objektovu datoteku
         : false;
 
