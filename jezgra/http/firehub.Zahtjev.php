@@ -52,7 +52,22 @@ final class Zahtjev implements Zahtjev_Interface {
      */
     public function urlKomponente ():array {
 
-        return $this->url() !== '/' ? explode('/', trim(preg_replace('/\?.*/', '', $this->url()), '/')) : [];
+        return array_map(
+            function ($komponenta) {
+
+                if (is_numeric($komponenta)) {
+
+                    return (int)$komponenta;
+
+                } else {
+
+                    return $komponenta;
+
+                }
+
+            },
+            $this->url() !== '/' ? explode('/', trim(preg_replace('/\?.*/', '', $this->url()), '/')) : []
+        );
 
     }
 
