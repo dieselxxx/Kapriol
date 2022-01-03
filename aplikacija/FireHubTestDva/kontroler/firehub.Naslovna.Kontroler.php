@@ -6,7 +6,7 @@ use FireHub\Jezgra\Kontroler\Kontroler;
 
 final class Naslovna_Kontroler extends Kontroler {
 
-    public function index () {
+    public function index ():string {
 
     }
 

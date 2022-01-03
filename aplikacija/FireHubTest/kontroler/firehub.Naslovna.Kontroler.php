@@ -6,7 +6,7 @@ use FireHub\Jezgra\Kontroler\Kontroler;
 
 final class Naslovna_Kontroler extends Kontroler {
 
-    public function index (\FireHub\Jezgra\Komponente\Dot\Dot $dot, $par1 = 'test', int $par2 = 5):string {
+    public function index (\FireHub\Jezgra\Komponente\Dot\Dot $dot = null, $par1 = 'test', int $par2 = 5):string {
 
         return 'ja_sam_naslovna_index';
 
