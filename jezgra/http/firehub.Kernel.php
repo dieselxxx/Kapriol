@@ -26,6 +26,8 @@ use FireHub\Jezgra\Komponente\Log\Enumeratori\Level;
 use FireHub\Jezgra\Greske\Kernel_Greska;
 use FireHub\Jezgra\Kontejner\Greske\Kontejner_Greska;
 use FireHub\Jezgra\Komponente\Datoteka\Greske\Datoteka_Greska;
+use FireHub\Jezgra\HTTP\Greske\Ruter_Greska;
+use ReflectionException;
 use Throwable;
 
 /**
@@ -174,13 +176,16 @@ final class Kernel extends OsnovniKernel {
      *
      * @throws Datoteka_Greska Ukoliko se ne može pročitati naziv datoteke.
      * @throws Kontejner_Greska Ukoliko se ne može napraviti objekt Log-a.
+     * @throws Ruter_Greska Ukoliko objekt nije instanca kontrolera.
+     * @throws ReflectionException Ako ne postoji objekt sa nazivom klase.
      *
      * @return HTTP_Odgovor Odgovor za HTTP.
      */
     private function odgovor ():HTTP_Odgovor {
 
         return (new HTTP_Odgovor(
-            (new Datoteka())->datoteka($_SERVER['SCRIPT_FILENAME'])
+            datoteka: (new Datoteka())->datoteka($_SERVER['SCRIPT_FILENAME']),
+            sadrzaj: $this->ruter->kontroler()
         ));
 
     }
