@@ -64,7 +64,7 @@ abstract class Kernel {
      * Ključ sa listom posrednika koje se trebaju obraditi.
      * </p>
      *
-     * @throws Kernel_Greska Ukoliko ne postoji ključ u nizu parametara za posrednika.
+     * @throws Posrednik_Greska Ukoliko ne postoji ključ u nizu parametara za posrednika.
      * @throws Kontejner_Greska Ukoliko se ne može spremiti instanca Log-a.
      *
      * @return static Kernel objekt.
@@ -74,7 +74,7 @@ abstract class Kernel {
         if (!array_key_exists($kljuc, $posrednici)) {
 
             (new Log)->level(Level::KRITICNO)->poruka(sprintf(_('Ne postoji ključ: %s, u nizu parametara za posrednika'), $kljuc))->napravi()->posalji();
-            throw new Kernel_Greska(_('Ne mogu pokrenuti sustav, obratite se administratoru.'));
+            throw new Posrednik_Greska(_('Ne mogu pokrenuti sustav, obratite se administratoru.'));
 
         }
 
