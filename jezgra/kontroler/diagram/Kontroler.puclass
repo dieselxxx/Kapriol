@@ -1,0 +1,12 @@
+@startuml
+
+package Jezgra\Kontroler <<Node>> #FBE9E7 {
+    namespace FireHub\Jezgra\Kontroler {
+        abstract class Kontroler #00897B;line:00796B {
+            + {abstract} index ():string
+            # model (string $naziv):Model
+        }
+    }
+}
+
+@enduml

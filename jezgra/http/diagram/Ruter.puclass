@@ -4,11 +4,18 @@ package HTTP <<Node>> #FBE9E7 {
     namespace FireHub\Jezgra\HTTP {
         class Ruter #00897B;line:00796B {
             - array|false $ruta
+            - string $kontroler
+            - string $metoda
+            - array $parametri
             - HTTP_Zahtjev $http_zahtjev
             - Rute $rute
             + __construct (HTTP_Zahtjev $http_zahtjev, Rute $rute):void
+            + kontroler ():string
             - ruta ():array|false
             - url ():array
+            - kontrolerNaziv ():string
+            - metoda ():string
+            - parametri (array $url):array
         }
     }
 }
