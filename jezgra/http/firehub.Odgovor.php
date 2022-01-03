@@ -114,7 +114,7 @@ final class Odgovor implements Odgovor_Interface {
                 )
             );
 
-            return $this->sadrzaj . '<b>'.round(memory_get_peak_usage()/1048576, 2) . ' mb</b>';
+            return $this->sadrzaj . '<br><b>'.round(memory_get_peak_usage()/1048576, 2) . ' mb</b>';
 
         } catch (Throwable $objekt) {
 
