@@ -14,4 +14,4 @@
 
 use FireHub\Jezgra\Komponente\Rute\Rute;
 
-Rute::sve('naslovna/index', [\FireHub\Aplikacija\FireHubTest\Kontroler\Naslovna_Kontroler::class, 'index']);
+Rute::sve('naslovna/index', [\FireHub\Aplikacija\FireHubTestDva\Kontroler\Naslovna_Kontroler::class, 'index']);

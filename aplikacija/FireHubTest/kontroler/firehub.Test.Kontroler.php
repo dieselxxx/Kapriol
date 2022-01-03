@@ -8,6 +8,7 @@ final class Test_Kontroler extends Kontroler {
 
     public function index () {
 
+
     }
 
     public function index2 () {
