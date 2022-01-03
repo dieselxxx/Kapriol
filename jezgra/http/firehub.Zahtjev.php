@@ -50,7 +50,7 @@ final class Zahtjev implements Zahtjev_Interface {
      */
     public function urlKomponente ():array {
 
-        return explode('/', trim(preg_replace('/\?.*/', '', $this->url()), '/'));
+        return $this->url() !== '/' ? explode('/', trim(preg_replace('/\?.*/', '', $this->url()), '/')) : [];
 
     }
 
