@@ -21,6 +21,7 @@ use FireHub\Jezgra\Komponente\Log\Log;
 use FireHub\Jezgra\Komponente\Log\Enumeratori\Level;
 use FireHub\Jezgra\Greske\Kernel_Greska;
 use FireHub\Jezgra\Kontejner\Greske\Kontejner_Greska;
+use FireHub\Jezgra\Posrednici\Greske\Posrednik_Greska;
 use Generator;
 
 /**
@@ -170,7 +171,7 @@ abstract class Kernel {
      * Lista posrednika za obradu.
      * </p>
      *
-     * @throws Kernel_Greska Ukoliko ne mogu obraditi posrednika.
+     * @throws Posrednik_Greska Ukoliko ne mogu obraditi posrednika.
      * @throws Kontejner_Greska Ukoliko se ne može spremiti instanca posrednika ili Log-a.
      *
      * @return Generator Pokreće posrednika.
@@ -185,7 +186,7 @@ abstract class Kernel {
             if ($obradi_posrednika === false) {
 
                 zapisnik(Level::KRITICNO, sprintf(_('Ne mogu obraditi posrednika %s!'), $posrednik));
-                throw new Kernel_Greska(_('Ne mogu pokrenuti sustav, obratite se administratoru.'));
+                throw new Posrednik_Greska(_('Ne mogu pokrenuti sustav, obratite se administratoru.'));
 
             }
 
