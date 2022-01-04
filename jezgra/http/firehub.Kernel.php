@@ -20,6 +20,9 @@ use FireHub\Jezgra\HTTP\Zahtjev as HTTP_Zahtjev;
 use FireHub\Jezgra\Komponente\Rute\Rute;
 use FireHub\Jezgra\HTTP\Odgovor as HTTP_Odgovor;
 use FireHub\Jezgra\Komponente\Datoteka\Datoteka;
+use FireHub\Jezgra\HTTP\Enumeratori\StatusKod as HTTP_StatusKod;
+use FireHub\Jezgra\HTTP\Enumeratori\Vrsta as HTTP_Vrsta;
+use FireHub\Jezgra\HTTP\Enumeratori\Predmemorija as HTTP_Predmemorija;
 use FireHub\Jezgra\Komponente\Log\Log;
 use FireHub\Jezgra\Komponente\Log\Servisi\AutoPosalji;
 use FireHub\Jezgra\Komponente\Log\Enumeratori\Level;
@@ -153,7 +156,9 @@ final class Kernel extends OsnovniKernel {
      * @since 0.4.1.pre-alpha.M4
      *
      * @throws Kernel_Greska Ukoliko se ne može učitati ruter.
-     * @throws Kontejner_Greska Ukoliko se ne može spremiti instanca Rute.
+     * @throws Kontejner_Greska Ukoliko se ne može spremiti instanca Rute ili Log-a.
+     * @throws Ruter_Greska Ukoliko objekt nije instanca kontrolera.
+     * @throws ReflectionException Ako ne postoji objekt sa nazivom klase.
      *
      * @return $this Instanca Kernel-a.
      */
@@ -176,8 +181,6 @@ final class Kernel extends OsnovniKernel {
      *
      * @throws Datoteka_Greska Ukoliko se ne može pročitati naziv datoteke.
      * @throws Kontejner_Greska Ukoliko se ne može napraviti objekt Log-a.
-     * @throws Ruter_Greska Ukoliko objekt nije instanca kontrolera.
-     * @throws ReflectionException Ako ne postoji objekt sa nazivom klase.
      *
      * @return HTTP_Odgovor Odgovor za HTTP.
      */
@@ -185,7 +188,13 @@ final class Kernel extends OsnovniKernel {
 
         return (new HTTP_Odgovor(
             datoteka: (new Datoteka())->datoteka($_SERVER['SCRIPT_FILENAME']),
-            sadrzaj: $this->ruter->kontroler()
+            kod: $this->ruter->http_odgovor()['kod'] ?? HTTP_StatusKod::HTTP_OK,
+            vrsta: $this->ruter->http_odgovor()['vrsta'] ?? HTTP_Vrsta::HTML,
+            karakteri: $this->ruter->http_odgovor()['karakteri'] ?? 'UTF-8',
+            jezik: $this->ruter->http_odgovor()['jezik'] ?? 'hr',
+            predmemorija: $this->ruter->http_odgovor()['predmemorija'] ?? [HTTP_Predmemorija::BEZ_SPREMANJA, HTTP_Predmemorija::BEZ_PREDMEMORIJE, HTTP_Predmemorija::MORA_PONOVNO_POTVRDITI],
+            predmemorija_vrijeme: $this->ruter->http_odgovor()['predmemorija_vrijeme'] ?? 31536000,
+            sadrzaj: $this->ruter->sadrzaj
         ));
 
     }
