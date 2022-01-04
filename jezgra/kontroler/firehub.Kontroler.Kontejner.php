@@ -28,6 +28,20 @@ use FireHub\Jezgra\Kontejner\Greske\Kontejner_Greska;
  */
 final class Kontroler_Kontejner extends Kontejner {
 
+    /***
+     * {@inheritDoc}
+     *
+     * @throws Kontejner_Greska Ako ne postoji objekt sa nazivom klase ili ukoliko nije uspješno obrađen atribut.
+     */
+    public function __construct (protected string $naziv) {
+
+        parent::__construct($this->naziv);
+
+        // učitaj atribute objekta
+        $this->atributiObjekt();
+
+    }
+
     /**
      * {@inheritDoc}
      *
