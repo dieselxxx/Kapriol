@@ -9,7 +9,7 @@
  * @license GNU General Public License version 3 - [https://opensource.org/licenses/GPL-3.0](https://opensource.org/licenses/GPL-3.0)
  *
  * @version 1.0
- * @package Sustav\Jezgra
+ * @package Sustav\Sadrzaj
  */
 
 namespace FireHub\Jezgra\Sadrzaj\Greske;
@@ -20,7 +20,7 @@ use FireHub\Jezgra\Greske\Greska;
  * ### Greške sadržaja
  * @since 0.4.4.pre-alpha.M4
  *
- * @package Sustav\Jezgra
+ * @package Sustav\Sadrzaj
  */
 class Sadrzaj_Greska extends Greska {
 
