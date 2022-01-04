@@ -15,8 +15,6 @@ final class Test3_Posrednik implements Posrednik {
      */
     public function obradi ():bool {
 
-        var_dump('pos_test_3');
-
         return true;
 
     }
