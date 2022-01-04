@@ -2,6 +2,7 @@
 
 namespace FireHub\Aplikacija\FireHubTest\Kontroler;
 
+use FireHub\Jezgra\Sadrzaj\Sadrzaj;
 use FireHub\Jezgra\HTTP\Atributi\Zaglavlja;
 use FireHub\Jezgra\HTTP\Enumeratori\Predmemorija;
 use FireHub\Jezgra\HTTP\Enumeratori\Vrsta;
@@ -14,9 +15,9 @@ final class Naslovna_Kontroler extends Kontroler {
 
     #[Posrednici([Test3_Posrednik::class])]
     #[Zaglavlja(vrsta: Vrsta::HTML, predmemorija: [Predmemorija::BEZ_SPREMANJA], predmemorija_vrijeme: 400)]
-    public function index (\FireHub\Jezgra\Komponente\Dot\Dot $dot = null, $par1 = 'test', int $par2 = 5):string {
+    public function index (\FireHub\Jezgra\Komponente\Dot\Dot $dot = null, $par1 = 'test', int $par2 = 5):Sadrzaj {
 
-        return 'ja_sam_naslovna_index';
+        return sadrzaj();
 
     }
 
