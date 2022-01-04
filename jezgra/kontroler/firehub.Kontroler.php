@@ -15,6 +15,7 @@
 namespace FireHub\Jezgra\Kontroler;
 
 use FireHub\Jezgra\Kontejner\Greske\Kontejner_Greska;
+use FireHub\Jezgra\Sadrzaj\Sadrzaj;
 use FireHub\Jezgra\Model\Model;
 use FireHub\Jezgra\Model\Model_Kontejner;
 use FireHub\Jezgra\Komponente\Log\Enumeratori\Level;
@@ -35,9 +36,9 @@ abstract class Kontroler {
      * ukoliko URL ne sadrži parametre za nju.
      * @since 0.4.2.pre-alpha.M4
      *
-     * @return string Instanca Sadrzaj-a.
+     * @return Sadrzaj Instanca Sadrzaj-a.
      */
-    abstract public function index ():string;
+    abstract public function index ():Sadrzaj;
 
     /**
      * ### Pozovi model
