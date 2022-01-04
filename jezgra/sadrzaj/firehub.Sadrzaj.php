@@ -20,7 +20,7 @@ use FireHub\Jezgra\Sadrzaj\Vrste\HTML;
 use FireHub\Jezgra\Sadrzaj\Vrste\JSON;
 use FireHub\Jezgra\Komponente\Log\Enumeratori\Level;
 use FireHub\Jezgra\Sadrzaj\Greske\Sadrzaj_Greska;
-use Throwable;
+use JsonException;
 
 /**
  * ### Klasa za ispis sadržaja
@@ -107,35 +107,27 @@ final class Sadrzaj {
      * ### Ispiši sadržaj
      * @since 0.4.4.pre-alpha.M4
      *
-     * @throws Sadrzaj_Greska Ukoliko stranica ima nezovoljen format ili se ne može učitati datoteka.
+     * @throws Sadrzaj_Greska Ukoliko stranica ima nezovoljen format ili se ne mogu obraditi podatci na datoteci.
      * @throws Kontejner_Greska Ukoliko se ne može spremiti instanca Log-a.
+     * @throws JsonException Ukoliko se dogodila greška sa čitanjem JSON formata.
      *
      * @return string Sadržaj.
      */
     public function ispisi ():string {
 
-        try {
+        // potvrdi validnost formata
+        if (!Vrsta::tryFrom($this->format->value)) {
 
-            // potvrdi validnost formata
-            if (!Vrsta::tryFrom($this->format->value)) {
-
-                zapisnik(Level::KRITICNO, sprintf(_('Stranica: %s ima nedozvoljen format %s!'), $this->datoteka, $this->format->value));
-                throw new Sadrzaj_Greska(_('Ne mogu pokrenuti sustav, obratite se administratoru.'));
-
-            }
-
-            // ispiši sadržaj u ovisnosti o odabranoj vrsti sadržaja
-            return match ($this->format) {
-                Vrsta::HTML => (new HTML($this->podatci, $this->datoteka))->ispisi(),
-                Vrsta::JSON => (new JSON($this->podatci))->ispisi()
-            };
-
-        } catch (Throwable) {
-
-            zapisnik(Level::KRITICNO, sprintf(_('Ne mogu učitati sadržaj za datoteku: %s u formatu: %s!'), $this->datoteka, $this->format->value));
+            zapisnik(Level::KRITICNO, sprintf(_('Stranica: %s ima nedozvoljen format %s!'), $this->datoteka, $this->format->value));
             throw new Sadrzaj_Greska(_('Ne mogu pokrenuti sustav, obratite se administratoru.'));
 
         }
+
+        // ispiši sadržaj u ovisnosti o odabranoj vrsti sadržaja
+        return match ($this->format) {
+            Vrsta::HTML => (new HTML($this->podatci, $this->datoteka))->ispisi(),
+            Vrsta::JSON => (new JSON($this->podatci))->ispisi()
+        };
 
     }
 
