@@ -62,7 +62,7 @@ final class Ruter {
      * ### HTTP odgovor iz atributa metode kontrolera
      * @var array<string, mixed>
      */
-    private array $http_odgovor;
+    private array $http_odgovor = [];
 
     /**
      * ### Sadržaj iz kontrolera
