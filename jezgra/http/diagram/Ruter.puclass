@@ -7,10 +7,13 @@ package HTTP <<Node>> #FBE9E7 {
             - string $kontroler
             - string $metoda
             - array $parametri
+            - array $http_odgovor
+            + Sadrzaj $sadrzaj
             - HTTP_Zahtjev $http_zahtjev
             - Rute $rute
             + __construct (HTTP_Zahtjev $http_zahtjev, Rute $rute):void
-            + kontroler ():string
+            + HTTP_odgovor ():array
+            - HTTP_zaglavljaKontrolera (array $atributi):Zaglavlja|false
             - ruta ():array|false
             - url ():array
             - kontrolerNaziv ():string
