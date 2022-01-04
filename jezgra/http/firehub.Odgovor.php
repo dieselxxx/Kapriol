@@ -103,18 +103,7 @@ final class Odgovor implements Odgovor_Interface {
 
         try {
 
-            var_dump(
-                array_filter(
-                    get_declared_classes(),
-                    function($className) {
-                        return !call_user_func(
-                            array(new \ReflectionClass($className), 'isInternal')
-                        );
-                    }
-                )
-            );
-
-            return $this->sadrzaj . '<br><b>'.round(memory_get_peak_usage()/1048576, 2) . ' mb</b>';
+            return $this->sadrzaj;
 
         } catch (Throwable $objekt) {
 
