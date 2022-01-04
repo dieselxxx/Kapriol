@@ -9,6 +9,7 @@ use FireHub\Jezgra\HTTP\Enumeratori\Vrsta;
 use FireHub\Jezgra\Kontroler\Kontroler;
 use FireHub\Jezgra\Atributi\Posrednici;
 use FireHub\Jezgra\Posrednici\Test3_Posrednik;
+use FireHub\Jezgra\Sadrzaj\Enumeratori\Vrsta as Sadrzaj_Vrsta;
 
 #[Posrednici([Test3_Posrednik::class])]
 final class Naslovna_Kontroler extends Kontroler {
@@ -17,11 +18,22 @@ final class Naslovna_Kontroler extends Kontroler {
     #[Zaglavlja(vrsta: Vrsta::HTML, predmemorija: [Predmemorija::BEZ_SPREMANJA], predmemorija_vrijeme: 400)]
     public function index (\FireHub\Jezgra\Komponente\Dot\Dot $dot = null, $par1 = 'test', int $par2 = 5):Sadrzaj {
 
-        return sadrzaj();
+        return sadrzaj()->datoteka('test.html')->format(Sadrzaj_Vrsta::HTML)->podatci([
+            'prvi_podatak' => 'naslovna-index',
+            'drugi_podatak' => 'naslovna-index',
+            'treći_podatak' => 'naslovna-index'
+        ]);
 
     }
 
-    public function index2 () {
+    #[Zaglavlja(vrsta: Vrsta::JSON)]
+    public function index2 ():Sadrzaj {
+
+        return sadrzaj()->datoteka('test.html')->format(Sadrzaj_Vrsta::JSON)->podatci([
+            'prvi_podatak' => 'naslovna-index2',
+            'drugi_podatak' => 'naslovna-index2',
+            'treći_podatak' => 'naslovna-index2'
+        ]);
 
 
     }
