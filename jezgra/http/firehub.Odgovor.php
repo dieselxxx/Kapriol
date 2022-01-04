@@ -45,26 +45,26 @@ final class Odgovor implements Odgovor_Interface {
      * @param Datoteka $datoteka <p>
      * Trenutna radna datoteka.
      * </p>
-     * @param HTTP_StatusKod $kod [optional] <p>
+     * @param HTTP_StatusKod $kod <p>
      * Status kod HTTP odgovora.
      * </p>
-     * @param HTTP_Vrsta $vrsta [optional] <p>
+     * @param HTTP_Vrsta $vrsta <p>
      * Media tip vrsta HTTP odgovora.
      * </p>
-     * @param string $karakteri [optional] <p>
+     * @param string $karakteri <p>
      * Standard enkodiranje karaktera.
      * </p>
-     * @param string $jezik [optional] <p>
+     * @param string $jezik <p>
      * Skraćeni naziv jezika.
      * </p>
-     * @param HTTP_Predmemorija[] $predmemorija [optional] <p>
+     * @param HTTP_Predmemorija[] $predmemorija <p>
      * Lista naredbi za predmemoriju.
      * https://www.iana.org/assignments/language-subtag-registry/language-subtag-registry.
      * </p>
-     * @param int $predmemorija_vrijeme [optional] <p>
+     * @param int $predmemorija_vrijeme <p>
      * Maksimalno vrijeme trajanja predmemorije.
      * </p>
-     * @param string $sadrzaj [optional] <p>
+     * @param string $sadrzaj <p>
      * Sadržaj HTTP odgovora.
      * </p>
      *
@@ -73,13 +73,13 @@ final class Odgovor implements Odgovor_Interface {
      */
     public function __construct (
         public readonly Datoteka $datoteka,
-        public readonly HTTP_StatusKod $kod = HTTP_StatusKod::HTTP_OK,
-        public readonly HTTP_Vrsta $vrsta = HTTP_Vrsta::HTML,
-        public readonly string $karakteri = 'UTF-8',
-        public readonly string $jezik = 'hr',
-        public readonly array $predmemorija = [HTTP_Predmemorija::BEZ_SPREMANJA, HTTP_Predmemorija::BEZ_PREDMEMORIJE, HTTP_Predmemorija::MORA_PONOVNO_POTVRDITI],
-        public readonly int $predmemorija_vrijeme = 31536000,
-        private string $sadrzaj = ''
+        public readonly HTTP_StatusKod $kod,
+        public readonly HTTP_Vrsta $vrsta,
+        public readonly string $karakteri,
+        public readonly string $jezik ,
+        public readonly array $predmemorija,
+        public readonly int $predmemorija_vrijeme,
+        private string $sadrzaj
     ) {
 
         // postavi HTTP zaglavlja
@@ -99,7 +99,7 @@ final class Odgovor implements Odgovor_Interface {
      */
     public function sadrzaj ():string {
 
-        ob_start('ob_gzhandler');
+        //ob_start('ob_gzhandler');
 
         try {
 
