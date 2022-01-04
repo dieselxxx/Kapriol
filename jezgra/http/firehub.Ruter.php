@@ -107,8 +107,11 @@ final class Ruter {
         // pozovi metodu
         $metoda = $this->metoda();
 
-        // autožica
+        // autožica metode
         $autozica_metoda = $kontroler_kontejner->autozicaMetoda($metoda);
+
+        // atributi metode
+        $kontroler_kontejner->atributiMetoda($metoda);
 
         // pokreni metodu kontrolera sa parametrima
         return $kontroler->$metoda(...array_merge($autozica_metoda, $this->parametri($this->url())));
