@@ -194,7 +194,7 @@ final class Kernel extends OsnovniKernel {
             jezik: $this->ruter->http_odgovor()['jezik'] ?? 'hr',
             predmemorija: $this->ruter->http_odgovor()['predmemorija'] ?? [HTTP_Predmemorija::BEZ_SPREMANJA, HTTP_Predmemorija::BEZ_PREDMEMORIJE, HTTP_Predmemorija::MORA_PONOVNO_POTVRDITI],
             predmemorija_vrijeme: $this->ruter->http_odgovor()['predmemorija_vrijeme'] ?? 31536000,
-            sadrzaj: $this->ruter->sadrzaj
+            sadrzaj: $this->ruter->sadrzaj ?? ''
         ));
 
     }
