@@ -15,13 +15,15 @@
 namespace FireHub\Jezgra\HTTP;
 
 use FireHub\Jezgra\HTTP\Zahtjev as HTTP_Zahtjev;
-use FireHub\Jezgra\Komponente\Log\Enumeratori\Level;
 use FireHub\Jezgra\Komponente\Rute\Rute;
 use FireHub\Jezgra\Kontroler\Kontroler_Kontejner;
 use FireHub\Jezgra\Kontroler\Kontroler;
+use FireHub\Jezgra\Komponente\Log\Enumeratori\Level;
 use FireHub\Jezgra\Kontejner\Greske\Kontejner_Greska;
 use FireHub\Jezgra\HTTP\Greske\Ruter_Greska;
 use ReflectionException;
+use FireHub\Jezgra\Atributi\Atribut;
+use FireHub\Jezgra\HTTP\Atributi\Zaglavlja;
 
 /**
  * ### Klasa Ruter za rutiranje HTTP zahtjeva i odgovora aplikacije
@@ -56,6 +58,18 @@ final class Ruter {
     private array $parametri = [];
 
     /**
+     * ### HTTP odgovor iz atributa metode kontrolera
+     * @var array<string, mixed>
+     */
+    private array $http_odgovor;
+
+    /**
+     * ### Sadržaj iz kontrolera
+     * @var string
+     */
+    public readonly string $sadrzaj;
+
+    /**
      * ### Konstruktor
      * @since 0.4.1.pre-alpha.M4
      *
@@ -67,6 +81,8 @@ final class Ruter {
      * </p>
      *
      * @throws Kontejner_Greska Ukoliko se ne može spremiti instanca Rute ili Log-a.
+     * @throws Ruter_Greska Ukoliko objekt nije instanca kontrolera.
+     * @throws ReflectionException Ako ne postoji objekt sa nazivom klase.
      */
     public function __construct (
         private HTTP_Zahtjev $http_zahtjev,
@@ -75,20 +91,6 @@ final class Ruter {
 
         // trenutna ruta
         $this->ruta = $this->ruta();
-
-    }
-
-    /**
-     * ### Pokreni kontroler
-     * @since 0.4.2.pre-alpha.M4
-     *
-     * @throws Kontejner_Greska Ukoliko se ne može spremiti instanca Log-a.
-     * @throws Ruter_Greska Ukoliko objekt nije instanca kontrolera.
-     * @throws ReflectionException Ako ne postoji objekt sa nazivom klase.
-     *
-     * @return string Sadržaj kontroler.
-     */
-    public function kontroler ():string {
 
         // kontroler kontejner
         $kontroler_kontejner = new Kontroler_Kontejner($this->kontrolerNaziv());
@@ -111,10 +113,64 @@ final class Ruter {
         $autozica_metoda = $kontroler_kontejner->autozicaMetoda($metoda);
 
         // atributi metode
-        $kontroler_kontejner->atributiMetoda($metoda);
+        $atributi_metode = $kontroler_kontejner->atributiMetoda($metoda);
 
-        // pokreni metodu kontrolera sa parametrima
-        return $kontroler->$metoda(...array_merge($autozica_metoda, $this->parametri($this->url())));
+        // dodaj HTTP odgovore
+        $this->HTTP_zaglavljaKontrolera($atributi_metode);
+
+        // pokreni metodu kontrolera sa parametrima i postavi ga kao sadržaj
+        $this->sadrzaj = $kontroler->$metoda(...array_merge($autozica_metoda, $this->parametri($this->url())));
+
+    }
+
+    /**
+     * ### Vrijednosti HTTP odgovora
+     * @since 0.4.3.pre-alpha.M4
+     *
+     * @return array<string, mixed> Vrijednosti HTTP odgovora.
+     */
+    public function HTTP_odgovor ():array {
+
+        return $this->http_odgovor;
+
+    }
+
+    /**
+     * ### Pozovi HTTP atribute zaglavlja metode kontolera
+     * @since 0.4.3.pre-alpha.M4
+     *
+     * @param Atribut[] $atributi <p>
+     * Atributi kontrolera.
+     * </p>
+     *
+     * @return Zaglavlja|false Vrijednosti atributa zaglavlja.
+     */
+    private function HTTP_zaglavljaKontrolera (array $atributi):Zaglavlja|false {
+
+        $zaglavljaAtribut = array_filter($atributi, function ($atribut):bool {
+
+            if ($atribut instanceof Zaglavlja) {
+
+                return array_walk(
+                    $atribut,
+                    function ($vrijednosti, $kljuc):void {
+
+                        if (!is_null($vrijednosti)) {
+
+                            $this->http_odgovor[$kljuc] = $vrijednosti;
+
+                        }
+
+                    }
+                );
+
+            }
+
+            return false;
+
+        });
+
+        return reset($zaglavljaAtribut);
 
     }
 
