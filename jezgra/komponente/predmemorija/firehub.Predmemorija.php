@@ -44,6 +44,9 @@ use FireHub\Jezgra\Kontejner\Greske\Kontejner_Greska;
  */
 final class Predmemorija extends Servis_Posluzitelj {
 
+    /**
+     * @inheritdoc
+     */
     #[Zadano('predmemorija.servis')]
     protected ?string $servis = null;
 
