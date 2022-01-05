@@ -52,6 +52,13 @@ return [
         'servisi' => [
             \FireHub\Jezgra\Komponente\Rute\Servisi\Datoteka::class => []
         ]
+    ],
+
+    \FireHub\Jezgra\Komponente\Predmemorija\Predmemorija::class => [
+        'servisi' => [
+            \FireHub\Jezgra\Komponente\Predmemorija\Servisi\MemCache::class => [],
+            \FireHub\Jezgra\Komponente\Predmemorija\Servisi\Test::class=> []
+        ]
     ]
 
 ];
