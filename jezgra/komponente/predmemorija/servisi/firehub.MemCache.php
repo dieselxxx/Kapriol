@@ -14,6 +14,7 @@
 
 namespace FireHub\Jezgra\Komponente\Predmemorija\Servisi;
 
+use FireHub\Jezgra\Komponente\Predmemorija\Predmemorija;
 use FireHub\Jezgra\Komponente\Predmemorija\Predmemorija_Interface;
 
 /**
@@ -23,5 +24,8 @@ use FireHub\Jezgra\Komponente\Predmemorija\Predmemorija_Interface;
  * @package Sustav\Jezgra
  */
 final class MemCache implements Predmemorija_Interface {
+
+    public function __construct (private Predmemorija $posluzitelj) {
+    }
 
 }

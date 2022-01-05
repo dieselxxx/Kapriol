@@ -54,24 +54,6 @@ return [
                 'prag_duljine_kompresije' => 20000,
                 'kompresija' => 0.2
             ]
-        ],
-        'test' => [
-            'ekstenzije' => [
-                'memcache'
-            ],
-            'parametri' => [
-                'servis' => \FireHub\Jezgra\Komponente\Predmemorija\Servisi\Test::class,
-                'host' => 'localhost',
-                'port' => 11211,
-                'trajno' => true,
-                'tezina' => 1,
-                'odziv' => 0.5,
-                'interval_ponovni_pokusaj' => 60,
-                'korisnicko_ime' => '',
-                'prefiks' => APLIKACIJA . '_',
-                'prag_duljine_kompresije' => 20000,
-                'kompresija' => 0.2
-            ]
         ]
     ],
 
