@@ -1071,51 +1071,6 @@ Search.appendIndex(
             "summary": "\u0023\u0023\u0023\u0020Gre\u0161ke\u0020sadr\u017Eaja",
             "url": "classes/FireHub-Jezgra-Sadrzaj-Greske-Sadrzaj-Greska.html"
         },                {
-            "fqsen": "\\FireHub\\Jezgra\\Sadrzaj\\Vrste\\HTML",
-            "name": "HTML",
-            "summary": "\u0023\u0023\u0023\u0020Klasa\u0020za\u0020HTML\u0020sadr\u017Eaj",
-            "url": "classes/FireHub-Jezgra-Sadrzaj-Vrste-HTML.html"
-        },                {
-            "fqsen": "\\FireHub\\Jezgra\\Sadrzaj\\Vrste\\HTML\u003A\u003A__construct\u0028\u0029",
-            "name": "__construct",
-            "summary": "\u0023\u0023\u0023\u0020Konstruktor",
-            "url": "classes/FireHub-Jezgra-Sadrzaj-Vrste-HTML.html#method___construct"
-        },                {
-            "fqsen": "\\FireHub\\Jezgra\\Sadrzaj\\Vrste\\HTML\u003A\u003Aispisi\u0028\u0029",
-            "name": "ispisi",
-            "summary": "\u0023\u0023\u0023\u0020Ispi\u0161i\u0020sadr\u017Eaj",
-            "url": "classes/FireHub-Jezgra-Sadrzaj-Vrste-HTML.html#method_ispisi"
-        },                {
-            "fqsen": "\\FireHub\\Jezgra\\Sadrzaj\\Vrste\\HTML\u003A\u003AsadrzajDinamicki\u0028\u0029",
-            "name": "sadrzajDinamicki",
-            "summary": "\u0023\u0023\u0023\u0020U\u010Ditaj\u0020dinami\u010Dki\u0020sadr\u017Eaj\u0020stranice",
-            "url": "classes/FireHub-Jezgra-Sadrzaj-Vrste-HTML.html#method_sadrzajDinamicki"
-        },                {
-            "fqsen": "\\FireHub\\Jezgra\\Sadrzaj\\Vrste\\HTML\u003A\u003AsadrzajSve\u0028\u0029",
-            "name": "sadrzajSve",
-            "summary": "\u0023\u0023\u0023\u0020U\u010Ditaj\u0020stati\u010Dki\u0020i\u0020dinami\u010Dki\u0020sadr\u017Eaj\u0020stranice",
-            "url": "classes/FireHub-Jezgra-Sadrzaj-Vrste-HTML.html#method_sadrzajSve"
-        },                {
-            "fqsen": "\\FireHub\\Jezgra\\Sadrzaj\\Vrste\\HTML\u003A\u003AdodajBazu\u0028\u0029",
-            "name": "dodajBazu",
-            "summary": "\u0023\u0023\u0023\u0020Dodaj\u0020baznu\u0020HTML\u0020datoteku",
-            "url": "classes/FireHub-Jezgra-Sadrzaj-Vrste-HTML.html#method_dodajBazu"
-        },                {
-            "fqsen": "\\FireHub\\Jezgra\\Sadrzaj\\Vrste\\HTML\u003A\u003A\u0024sadrzaj",
-            "name": "sadrzaj",
-            "summary": "\u0023\u0023\u0023\u0020Sadr\u017Eaj\u0020za\u0020ispis",
-            "url": "classes/FireHub-Jezgra-Sadrzaj-Vrste-HTML.html#property_sadrzaj"
-        },                {
-            "fqsen": "\\FireHub\\Jezgra\\Sadrzaj\\Vrste\\HTML\u003A\u003A\u0024podatci",
-            "name": "podatci",
-            "summary": "",
-            "url": "classes/FireHub-Jezgra-Sadrzaj-Vrste-HTML.html#property_podatci"
-        },                {
-            "fqsen": "\\FireHub\\Jezgra\\Sadrzaj\\Vrste\\HTML\u003A\u003A\u0024datoteka",
-            "name": "datoteka",
-            "summary": "",
-            "url": "classes/FireHub-Jezgra-Sadrzaj-Vrste-HTML.html#property_datoteka"
-        },                {
             "fqsen": "\\FireHub\\Jezgra\\Sadrzaj\\Vrste\\JSON",
             "name": "JSON",
             "summary": "\u0023\u0023\u0023\u0020Klasa\u0020ya\u0020JSON\u0020sadr\u017Eaj",
