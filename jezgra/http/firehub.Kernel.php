@@ -17,14 +17,20 @@ namespace FireHub\Jezgra\HTTP;
 use FireHub\Jezgra\Kernel as OsnovniKernel;
 use FireHub\Jezgra\Zahtjev;
 use FireHub\Jezgra\HTTP\Zahtjev as HTTP_Zahtjev;
+use FireHub\Jezgra\Komponente\Rute\Rute;
 use FireHub\Jezgra\HTTP\Odgovor as HTTP_Odgovor;
 use FireHub\Jezgra\Komponente\Datoteka\Datoteka;
+use FireHub\Jezgra\HTTP\Enumeratori\StatusKod as HTTP_StatusKod;
+use FireHub\Jezgra\HTTP\Enumeratori\Vrsta as HTTP_Vrsta;
+use FireHub\Jezgra\HTTP\Enumeratori\Predmemorija as HTTP_Predmemorija;
 use FireHub\Jezgra\Komponente\Log\Log;
 use FireHub\Jezgra\Komponente\Log\Servisi\AutoPosalji;
 use FireHub\Jezgra\Komponente\Log\Enumeratori\Level;
-use FireHub\Jezgra\Greske\Greska;
+use FireHub\Jezgra\Greske\Kernel_Greska;
 use FireHub\Jezgra\Kontejner\Greske\Kontejner_Greska;
 use FireHub\Jezgra\Komponente\Datoteka\Greske\Datoteka_Greska;
+use FireHub\Jezgra\HTTP\Greske\Ruter_Greska;
+use ReflectionException;
 use Throwable;
 
 /**
@@ -34,6 +40,12 @@ use Throwable;
  * @package Sustav\HTTP
  */
 final class Kernel extends OsnovniKernel {
+
+    /**
+     * ### HTTP Ruter
+     * @var Ruter
+     */
+    private Ruter $ruter;
 
     /**
      * {@inheritDoc}
@@ -54,11 +66,14 @@ final class Kernel extends OsnovniKernel {
         try {
 
             return $this
+                ->posrednici(include FIREHUB_ROOT . 'konfiguracija' . RAZDJELNIK_MAPE . 'posrednici.php', 'http')
                 ->pomagaci()
                 ->ucitajEnv(FIREHUB_ROOT . '.env')
                 ->postaviAplikaciju()
+                ->posrednici(include APLIKACIJA_ROOT . 'konfiguracija' . RAZDJELNIK_MAPE . 'posrednici.php', 'http')
                 ->ucitajEnv(APLIKACIJA_ROOT . '.env')
                 ->konfiguracija()
+                ->ruter()
                 ->odgovor();
 
         } catch (Throwable $objekt) {
@@ -76,7 +91,8 @@ final class Kernel extends OsnovniKernel {
      * @name string APLIKACIJA
      * @name string APLIKACIJA_ROOT
      *
-     * @throws Greska Ukoliko se ne može pročitati zadana aplikacija.
+     * @throws Kernel_Greska Ukoliko se ne može pročitati zadana aplikacija.
+     * @throws Kontejner_Greska Ukoliko se može spremiti instanca Log-a.
      *
      * @return $this Instanca Kernel-a.
      */
@@ -98,7 +114,8 @@ final class Kernel extends OsnovniKernel {
      * mape za aplikaciju.
      * @since 0.3.5.pre-alpha.M3
      *
-     * @throws Greska Ukoliko ne postoji informacija o zadanoj aplikaciji.
+     * @throws Kernel_Greska Ukoliko ne postoji informacija o zadanoj aplikaciji.
+     * @throws Kontejner_Greska Ukoliko se može spremiti instanca Log-a.
      *
      * @return string Naziv zadane aplikacije.
      */
@@ -124,7 +141,7 @@ final class Kernel extends OsnovniKernel {
         ) {
 
             zapisnik(Level::KRITICNO, _('Ne mogu pronaći zadanu aplikaciju sustava!'));
-            throw new Greska(_('Ne mogu pokrenuti sustav, obratite se administratoru.'));
+            throw new Kernel_Greska(_('Ne mogu pokrenuti sustav, obratite se administratoru.'));
 
         }
 
@@ -133,18 +150,51 @@ final class Kernel extends OsnovniKernel {
     }
 
     /**
+     * ### Pokreni ruter
+     *
+     * Sustav za rutiranje HTTP zahtjeva i odgovora aplikacije.
+     * @since 0.4.1.pre-alpha.M4
+     *
+     * @throws Kernel_Greska Ukoliko se ne može učitati ruter.
+     * @throws Kontejner_Greska Ukoliko se ne može spremiti instanca Rute ili Log-a.
+     * @throws Ruter_Greska Ukoliko objekt nije instanca kontrolera.
+     * @throws ReflectionException Ako ne postoji objekt sa nazivom klase.
+     *
+     * @return $this Instanca Kernel-a.
+     */
+    private function ruter ():self {
+
+        if (!$this->ruter = new Ruter($this->zahtjev, new Rute())) {
+
+            (new Log)->level(Level::HITNO)->poruka('Ne mogu učitati ruter');
+            throw new Kernel_Greska(_('Ne mogu pokrenuti sustav, obratite se administratoru.'));
+
+        }
+
+        return $this;
+
+    }
+
+    /**
      * ### HTTP odgovor.
      * @since 0.2.6.pre-alpha.M2
      *
      * @throws Datoteka_Greska Ukoliko se ne može pročitati naziv datoteke.
-     * @throws Kontejner_Greska Ukoliko se ne može napraviti objekt Log-a.
+     * @throws Kontejner_Greska Ukoliko se može spremiti instanca Log-a.
      *
      * @return HTTP_Odgovor Odgovor za HTTP.
      */
     private function odgovor ():HTTP_Odgovor {
 
         return (new HTTP_Odgovor(
-            (new Datoteka())->datoteka($_SERVER['SCRIPT_FILENAME'])
+            datoteka: (new Datoteka())->datoteka($_SERVER['SCRIPT_FILENAME']),
+            kod: $this->ruter->http_odgovor()['kod'] ?? HTTP_StatusKod::HTTP_OK,
+            vrsta: $this->ruter->http_odgovor()['vrsta'] ?? HTTP_Vrsta::HTML,
+            karakteri: $this->ruter->http_odgovor()['karakteri'] ?? 'UTF-8',
+            jezik: $this->ruter->http_odgovor()['jezik'] ?? 'hr',
+            predmemorija: $this->ruter->http_odgovor()['predmemorija'] ?? [HTTP_Predmemorija::BEZ_SPREMANJA, HTTP_Predmemorija::BEZ_PREDMEMORIJE, HTTP_Predmemorija::MORA_PONOVNO_POTVRDITI],
+            predmemorija_vrijeme: $this->ruter->http_odgovor()['predmemorija_vrijeme'] ?? 31536000,
+            sadrzaj: $this->ruter->sadrzaj->ispisi() ?? ''
         ));
 
     }

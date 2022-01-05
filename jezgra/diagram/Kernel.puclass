@@ -5,9 +5,11 @@ package Jezgra <<Node>> #FBE9E7 {
         abstract class Kernel #00897B;line:00796B {
             + {abstract} __construct (Zahtjev $zahtjev):void
             + {abstract} pokreni ():self
+            # posrednici (array $posrednici, string $kljuc):self
             # pomagaci ():self
             # ucitajEnv (string $putanja):self
             # konfiguracija ():self
+            - obradiPosrednike (array $posrednici):Generator
         }
     }
 }

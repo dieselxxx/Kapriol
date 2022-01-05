@@ -50,6 +50,7 @@ final class Kernel extends OsnovniKernel {
         try {
 
             return $this
+                ->posrednici(include FIREHUB_ROOT . 'konfiguracija' . RAZDJELNIK_MAPE . 'posrednici.php', 'konzola')
                 ->pomagaci()
                 ->ucitajEnv(FIREHUB_ROOT . '.env')
                 ->odgovor();

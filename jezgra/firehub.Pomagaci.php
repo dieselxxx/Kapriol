@@ -16,6 +16,7 @@
 use FireHub\Jezgra\Komponente\Log\Log;
 use FireHub\Jezgra\Komponente\Env\Env;
 use FireHub\Jezgra\Komponente\Konfiguracija\Konfiguracija;
+use FireHub\Jezgra\Sadrzaj\Sadrzaj;
 use FireHub\Jezgra\Komponente\Log\Enumeratori\Level;
 use FireHub\Jezgra\Kontejner\Greske\Kontejner_Greska;
 
@@ -79,6 +80,20 @@ if (!function_exists('konfiguracija')) {
     function konfiguracija (string $naziv):string|int|float|bool|array|null|UnitEnum {
 
         return (new Konfiguracija)->napravi()->dohvati($naziv);
+
+    }
+}
+
+if (!function_exists('sadrzaj')) {
+    /**
+     * ### Učitaj sadržaj
+     * @since 0.4.4.pre-alpha.M4
+     *
+     * @return Sadrzaj Nacrtaj sadržaj.
+     */
+    function sadrzaj ():Sadrzaj {
+
+        return (new Sadrzaj());
 
     }
 }

@@ -7,7 +7,7 @@
  * @since 0.3.5.pre-alpha.M3
  *
  * @author Danijel Galić
- * @copyright 2021 Grafotisak d.o.o.
+ * @copyright 2022 FireHub Web Application Framework
  * @license GNU General Public License version 3 - [https://opensource.org/licenses/GPL-3.0](https://opensource.org/licenses/GPL-3.0)
  *
  * @version 1.0

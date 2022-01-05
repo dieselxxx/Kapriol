@@ -15,7 +15,7 @@ package Jezgra <<Node>> #FBE9E7 {
             - autozica (array $podatci):array
             - refleksijaParametriFiltar (array $parametri):array
             - jeSingleton ():bool
-            - atributiObjekt ():array
+            # atributiObjekt ():array
             + atributiMetoda (string $metoda):array
             - obradiAtribute (array $atributi):array
             - refleksija ():ReflectionClass

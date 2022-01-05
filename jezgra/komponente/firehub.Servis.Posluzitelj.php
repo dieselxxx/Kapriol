@@ -104,7 +104,7 @@ abstract class Servis_Posluzitelj {
      *
      * @return object[] Lista servisa.
      */
-    public static function lijeno (array $posluzitelji):array {
+    final public static function lijeno (array $posluzitelji):array {
 
         foreach (self::generator($posluzitelji) as $posluzitelj) {
 

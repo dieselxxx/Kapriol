@@ -38,7 +38,9 @@ final class Zahtjev implements Zahtjev_Interface {
      */
     public function url ():string {
 
-        return isset($_SERVER['REQUEST_URI']) ? strtolower(parse_url(rawurldecode($_SERVER['REQUEST_URI']), PHP_URL_PATH)) : '/';
+        $uri = isset($_SERVER['REQUEST_URI']) ? filter_var($_SERVER['REQUEST_URI'], FILTER_SANITIZE_URL) : false;
+
+        return $uri ? strtolower(parse_url(rawurldecode($uri), PHP_URL_PATH)) : '/';
 
     }
 
@@ -50,7 +52,22 @@ final class Zahtjev implements Zahtjev_Interface {
      */
     public function urlKomponente ():array {
 
-        return explode('/', trim(preg_replace('/\?.*/', '', $this->url()), '/'));
+        return array_map(
+            function ($komponenta) {
+
+                if (is_numeric($komponenta)) {
+
+                    return (int)$komponenta;
+
+                } else {
+
+                    return $komponenta;
+
+                }
+
+            },
+            $this->url() !== '/' ? explode('/', trim(preg_replace('/\?.*/', '', $this->url()), '/')) : []
+        );
 
     }
 

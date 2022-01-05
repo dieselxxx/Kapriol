@@ -274,7 +274,7 @@ abstract class Kontejner {
      *
      * @return Atribut[] Atributi objekta koji implementiraju Atribut interface.
      */
-    private function atributiObjekt ():array {
+    protected function atributiObjekt ():array {
 
         return $this->obradiAtribute(
             $this->refleksija()->getAttributes(Atribut::class, ReflectionAttribute::IS_INSTANCEOF)

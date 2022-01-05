@@ -1,0 +1,11 @@
+@startuml
+
+package Sustav\Posrednici <<Node>> #FBE9E7 {
+    namespace FireHub\Jezgra\Posrednici {
+        interface Posrednik #00897B;line:00796B {
+            + obradi ():bool
+        }
+    }
+}
+
+@enduml

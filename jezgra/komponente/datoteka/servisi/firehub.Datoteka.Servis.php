@@ -58,7 +58,7 @@ final class Datoteka_Servis implements Datoteka_Interface {
      * @since 0.3.4.pre-alpha.M3
      *
      * @throws Datoteka_Greska Ukoliko se ne može pročitati vrijeme zadnje izmjene datoteke.
-     * @throws Kontejner_Greska Ukoliko se ne može napraviti objekt Log-a.
+     * @throws Kontejner_Greska Ukoliko može spremiti instanca Log-a.
      *
      * @return int Broj sekundi zadnje izmjene datoteke.
      */
@@ -80,7 +80,7 @@ final class Datoteka_Servis implements Datoteka_Interface {
      * @since 0.3.4.pre-alpha.M3
      *
      * @throws Datoteka_Greska Ukoliko se ne može pročitati naziv datoteke.
-     * @throws Kontejner_Greska Ukoliko se ne može napraviti objekt Log-a.
+     * @throws Kontejner_Greska Ukoliko se može spremiti instanca Log-a.
      *
      * @return string MD5 hash od naziva datoteke.
      *
