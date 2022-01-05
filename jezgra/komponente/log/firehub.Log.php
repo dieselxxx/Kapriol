@@ -18,7 +18,6 @@ use FireHub\Jezgra\Komponente\Servis_Kontejner;
 use FireHub\Jezgra\Komponente\Servis_Posluzitelj;
 use FireHub\Jezgra\Komponente\Log\Servisi\Dostavljac;
 use FireHub\Jezgra\Komponente\Log\Enumeratori\Level;
-use FireHub\Jezgra\Atributi\Zadano;
 use Throwable;
 
 /**
@@ -49,8 +48,7 @@ final class Log extends Servis_Posluzitelj {
      * ### Level log zapisa
      * @var Level
      */
-    #[Zadano('log.level')]
-    protected Level $level;
+    protected Level $level = Level::GRESKA;
 
     /**
      * ### Poruka log zapisa
