@@ -92,7 +92,7 @@ final class Kernel extends OsnovniKernel {
      * @name string APLIKACIJA_ROOT
      *
      * @throws Kernel_Greska Ukoliko se ne može pročitati zadana aplikacija.
-     * @throws Kontejner_Greska Ukoliko se ne može napraviti objekt Log-a.
+     * @throws Kontejner_Greska Ukoliko se može spremiti instanca Log-a.
      *
      * @return $this Instanca Kernel-a.
      */
@@ -115,7 +115,7 @@ final class Kernel extends OsnovniKernel {
      * @since 0.3.5.pre-alpha.M3
      *
      * @throws Kernel_Greska Ukoliko ne postoji informacija o zadanoj aplikaciji.
-     * @throws Kontejner_Greska Ukoliko se ne može napraviti objekt Log-a.
+     * @throws Kontejner_Greska Ukoliko se može spremiti instanca Log-a.
      *
      * @return string Naziv zadane aplikacije.
      */
@@ -180,7 +180,7 @@ final class Kernel extends OsnovniKernel {
      * @since 0.2.6.pre-alpha.M2
      *
      * @throws Datoteka_Greska Ukoliko se ne može pročitati naziv datoteke.
-     * @throws Kontejner_Greska Ukoliko se ne može napraviti objekt Log-a.
+     * @throws Kontejner_Greska Ukoliko se može spremiti instanca Log-a.
      *
      * @return HTTP_Odgovor Odgovor za HTTP.
      */

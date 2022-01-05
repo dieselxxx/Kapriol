@@ -111,7 +111,7 @@ final class Metode_PodServis {
      * </p>
      *
      * @throws KonfiguracijaMetoda_Greska Ukoliko je verzija PHP-a manja od minimalne verzije koju zahjeva sustav.
-     * @throws Kontejner_Greska Ukoliko se ne može napraviti objekt Log-a.
+     * @throws Kontejner_Greska Ukoliko se može spremiti instanca Log-a.
      *
      * @return bool True ukoliko je PHP verzija ispravna, False u suprotnome.
      */
@@ -137,7 +137,7 @@ final class Metode_PodServis {
      * </p>
      *
      * @throws KonfiguracijaMetoda_Greska Ukoliko vremenska zona nije ispravna.
-     * @throws Kontejner_Greska Ukoliko se ne može napraviti objekt Log-a.
+     * @throws Kontejner_Greska Ukoliko se može spremiti instanca Log-a.
      *
      * @return string Naziv vremenske zone.
      */
@@ -163,7 +163,7 @@ final class Metode_PodServis {
      * </p>
      *
      * @throws KonfiguracijaMetoda_Greska Ukoliko ne postoji mapa za stavku.
-     * @throws Kontejner_Greska Ukoliko se ne može napraviti objekt Log-a.
+     * @throws Kontejner_Greska Ukoliko se može spremiti instanca Log-a.
      *
      * @return array<string, string> Sistemske putanje.
      */
@@ -199,7 +199,7 @@ final class Metode_PodServis {
      * </p>
      *
      * @throws KonfiguracijaMetoda_Greska Ukoliko ekstenzija nije dostupna.
-     * @throws Kontejner_Greska Ukoliko se ne može napraviti objekt Log-a.
+     * @throws Kontejner_Greska Ukoliko se može spremiti instanca Log-a.
      *
      * @return bool True ukoliko su sve ekstenzije dostupne.
      */
@@ -228,7 +228,7 @@ final class Metode_PodServis {
      * </p>
      *
      * @throws KonfiguracijaMetoda_Greska Ukoliko php.ini postavka ne postoji ili ima pogrešnu vrijednost.
-     * @throws Kontejner_Greska Ukoliko se ne može napraviti objekt Log-a.
+     * @throws Kontejner_Greska Ukoliko se može spremiti instanca Log-a.
      *
      * @return bool True ukoliko se sve opcije uključe.
      */
@@ -261,7 +261,7 @@ final class Metode_PodServis {
      * </p>
      *
      * @throws KonfiguracijaMetoda_Greska Ukoliko postavka ne postoji ili ima pogrešnu vrijednost.
-     * @throws Kontejner_Greska Ukoliko se ne može napraviti objekt Log-a.
+     * @throws Kontejner_Greska Ukoliko se može spremiti instanca Log-a.
      *
      * @return bool True ukoliko se debug uključi.
      */
@@ -300,7 +300,7 @@ final class Metode_PodServis {
      * </p>
      *
      * @throws KonfiguracijaMetoda_Greska Ukoliko postavka ne postoji ili ima pogrešnu vrijednost.
-     * @throws Kontejner_Greska Ukoliko se ne može napraviti objekt Log-a.
+     * @throws Kontejner_Greska Ukoliko se može spremiti instanca Log-a.
      *
      * @return bool True ukoliko se debug uključi.
      */
@@ -336,7 +336,7 @@ final class Metode_PodServis {
      * </p>
      *
      * @throws KonfiguracijaMetoda_Greska Ukoliko baza podataka nije dostupna kao izbor ili nedostaje ekstenzija.
-     * @throws Kontejner_Greska Ukoliko se ne može napraviti objekt Log-a.
+     * @throws Kontejner_Greska Ukoliko se može spremiti instanca Log-a.
      *
      * @return string Opcija.
      */
@@ -382,7 +382,7 @@ final class Metode_PodServis {
      * </p>
      *
      * @throws KonfiguracijaMetoda_Greska Ukoliko predmemorija nije dostupna kao izbor ili nedostaje ekstenzija.
-     * @throws Kontejner_Greska Ukoliko se ne može napraviti objekt Log-a.
+     * @throws Kontejner_Greska Ukoliko se može spremiti instanca Log-a.
      *
      * @return string Opcija.
      */
@@ -428,7 +428,7 @@ final class Metode_PodServis {
      * </p>
      *
      * @throws KonfiguracijaMetoda_Greska Ukoliko preduvjet nije ispunjen.
-     * @throws Kontejner_Greska Ukoliko se ne može napraviti objekt Log-a.
+     * @throws Kontejner_Greska Ukoliko se može spremiti instanca Log-a.
      *
      * @return bool True ukoliko su svi preduvjeti ispunjeni.
      */

@@ -69,7 +69,7 @@ final class Odgovor implements Odgovor_Interface {
      * </p>
      *
      * @throws Datoteka_Greska Ukoliko se ne može pročitati naziv datoteke.
-     * @throws Kontejner_Greska Ukoliko se ne može napraviti objekt Log-a.
+     * @throws Kontejner_Greska Ukoliko se može spremiti instanca Log-a.
      */
     public function __construct (
         public readonly Datoteka $datoteka,
@@ -170,7 +170,7 @@ final class Odgovor implements Odgovor_Interface {
      * @since 0.2.6.pre-alpha.M2
      *
      * @throws Datoteka_Greska Ukoliko se ne može pročitati naziv datoteke.
-     * @throws Kontejner_Greska Ukoliko se ne može napraviti objekt Log-a.
+     * @throws Kontejner_Greska Ukoliko se može spremiti instanca Log-a.
      *
      * @return $this Trenutni objekt.
      */

@@ -148,7 +148,7 @@ final class Datoteka implements Env_Interface {
      * </p>
      *
      * @throws Env_Greska Ukoliko se ne može pretvoriti env datoteka u linije.
-     * @throws Kontejner_Greska Ukoliko se ne može napraviti objekt Log-a.
+     * @throws Kontejner_Greska Ukoliko se može spremiti instanca Log-a.
      *
      * @return string[] Lista linija iz env datoteke.
      */

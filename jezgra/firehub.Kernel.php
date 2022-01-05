@@ -122,7 +122,7 @@ abstract class Kernel {
      * Puna putanja do .env datoteke.
      * </p>
      *
-     * @throws Kontejner_Greska Ukoliko se ne može napraviti Env objekt.
+     * @throws Kontejner_Greska Ukoliko se ne može spremiti instanca Env objekta.
      *
      * @return static Kernel objekt.
      */
