@@ -329,7 +329,7 @@ final class Metode_PodServis {
 
     /**
      * ### Provjera i postavljenje odabrane baze podataka
-     * @since 0.3.5.pre-alpha.M3
+     * @since 0.5.1.pre-alpha.M5
      *
      * @param string $opcija <p>
      * Opcija baze podataka.
@@ -375,7 +375,7 @@ final class Metode_PodServis {
 
     /**
      * ### Provjera i postavljenje odabrane predmemorije
-     * @since 0.3.5.pre-alpha.M3
+     * @since 0.5.0.pre-alpha.M5
      *
      * @param string $opcija <p>
      * Opcija predmemorije.
