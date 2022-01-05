@@ -107,7 +107,7 @@ final class Sadrzaj {
      * ### Ispiši sadržaj
      * @since 0.4.4.pre-alpha.M4
      *
-     * @throws Sadrzaj_Greska Ukoliko stranica ima nezovoljen format ili se ne mogu obraditi podatci na datoteci.
+     * @throws Sadrzaj_Greska Ukoliko se ne mogu obraditi podatci na datoteci, nema podataka predloška, ne mogu učitati konfiguracijsku json datoteku ili je datoteka prazna.
      * @throws Kontejner_Greska Ukoliko se ne može spremiti instanca Log-a.
      * @throws JsonException Ukoliko se dogodila greška sa čitanjem JSON formata.
      *
@@ -125,7 +125,17 @@ final class Sadrzaj {
 
         // ispiši sadržaj u ovisnosti o odabranoj vrsti sadržaja
         return match ($this->format) {
-            Vrsta::HTML => (new HTML($this->podatci, $this->datoteka))->ispisi(),
+            Vrsta::HTML => (
+                new HTML(
+                    $this->podatci,
+                    $this->datoteka,
+                    FIREHUB_ROOT . konfiguracija('sustav.putanje.web') . 'resursi' . RAZDJELNIK_MAPE . 'sadrzaj' . RAZDJELNIK_MAPE . 'baza.html',
+                    FIREHUB_ROOT . konfiguracija('sustav.putanje.web') . APLIKACIJA . RAZDJELNIK_MAPE . 'resursi' . RAZDJELNIK_MAPE . 'sadrzaj' . RAZDJELNIK_MAPE . 'baza.html',
+                    FIREHUB_ROOT . konfiguracija('sustav.putanje.web') . APLIKACIJA . RAZDJELNIK_MAPE . 'resursi' . RAZDJELNIK_MAPE . 'sadrzaj' . RAZDJELNIK_MAPE . 'predlozak' . RAZDJELNIK_MAPE,
+                    konfiguracija('tema.odabrano'),
+                    FIREHUB_ROOT . konfiguracija('sustav.putanje.web') . APLIKACIJA . RAZDJELNIK_MAPE . 'resursi' . RAZDJELNIK_MAPE . 'teme' . RAZDJELNIK_MAPE . konfiguracija('tema.odabrano') . RAZDJELNIK_MAPE . 'info.json'
+                )
+            )->ispisi(),
             Vrsta::JSON => (new JSON($this->podatci))->ispisi()
         };
 
