@@ -1,0 +1,10 @@
+{
+    "css": [
+        "css/test.css",
+        "css/test2.css"
+    ],
+    "javascript": {
+        "jedan": "js/test.js",
+        "dva": "js/test2.js"
+    }
+}
