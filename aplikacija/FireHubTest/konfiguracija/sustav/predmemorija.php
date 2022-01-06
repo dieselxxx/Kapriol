@@ -18,7 +18,8 @@ return [
     |--------------------------------------------------------------------------
     | Koristi predmemoriju
     |--------------------------------------------------------------------------
-     * Da li aplikacija koristi predmemoriju.
+     * Da li aplikacija i sustav koriste predmemoriju.
+     * Ova opcija ne utječe na korištenje predmemorije unutar apliakcije.
      * @since 0.5.0.pre-alpha.M5
      *
      * @var array<string, bool>
