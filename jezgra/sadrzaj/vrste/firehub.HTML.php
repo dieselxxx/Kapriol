@@ -33,9 +33,9 @@ final class HTML implements Vrsta_Interface {
 
     /**
      * ### Predmemorija
-     * @var Predmemorija_Interface
+     * @var Predmemorija_Interface|false
      */
-    private Predmemorija_Interface $predmemorija;
+    private Predmemorija_Interface|false $predmemorija = false;
 
     /**
      * ### Sadržaj za ispis
@@ -87,8 +87,6 @@ final class HTML implements Vrsta_Interface {
 
         }
 
-        var_dump($this->predmemorija);
-
     }
 
     /**
@@ -97,12 +95,21 @@ final class HTML implements Vrsta_Interface {
      * @throws Sadrzaj_Greska Ukoliko se ne mogu obraditi podatci na datoteci, nema podataka predloška, ne mogu učitati konfiguracijsku json datoteku ili je datoteka prazna.
      * @throws Kontejner_Greska Ukoliko se ne može spremiti instanca Log-a.
      * @throws JsonException Ukoliko se ne može dekodirati JSON sadržaj iz konfiguracijske datoteke teme ili je datoteka prazna.
-     *
-     * @todo Dodati predmemoriju
      */
     public function ispisi ():string {
 
-        //return '<br><b>'.round(memory_get_peak_usage()/1048576, 2) . ' mb</b>';
+        if (
+            $this->predmemorija // ako je uključena predmemorija
+            && $sadrzaj = $this->predmemorija->dohvati('firehub_sadrzaj_html')) // postoji sadržaj predmemorije
+        {
+
+            // dodaj sadržaj iz predmemorije
+            $this->sadrzaj = $sadrzaj;
+
+            // učitaj samo dinamički sadržaj iz datoteka
+            return $this->sadrzajDinamicki();
+
+        }
 
         // učitaj statički i dinamički sadržaj iz datoteka
         return $this->sadrzajSve();
@@ -295,6 +302,9 @@ final class HTML implements Vrsta_Interface {
 
             }
         );
+
+        // postavi sadržaj u predmemoriju
+        $this->predmemorija?->zapisi('firehub_sadrzaj_html', $this->sadrzaj);
 
         return $this->sadrzaj;
 

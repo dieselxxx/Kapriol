@@ -101,13 +101,18 @@ final class Odgovor implements Odgovor_Interface {
 
         //ob_start('ob_gzhandler');
 
+        $x = array_filter(
+            get_declared_classes(),
+            function($className) {
+                return !call_user_func(
+                    array(new \ReflectionClass($className), 'isInternal')
+                );
+            }
+        );
+
+        //var_dump($x);
+
         try {
-
-            var_dump(konfiguracija('predmemorija'));
-
-            var_dump(
-                (new \FireHub\Jezgra\Komponente\Predmemorija\Predmemorija())->napravi()
-            );
 
             return $this->sadrzaj . '<br><b>' . round(memory_get_peak_usage()/1048576, 2) . ' mb</b><br>';
 

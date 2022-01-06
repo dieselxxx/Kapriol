@@ -3,7 +3,7 @@
 package Sadrzaj <<Node>> #FBE9E7 {
     namespace FireHub\Jezgra\Sadrzaj\Vrste {
         class HTML #FDD835;line:FBC02D {
-            - Predmemorija_Interface $predmemorija
+            - Predmemorija_Interface|false $predmemorija
             - string $sadrzaj
             - array $podatci
             - string $datoteka

@@ -14,11 +14,11 @@
 
 namespace FireHub\Jezgra\Sadrzaj;
 
-use FireHub\Jezgra\Kontejner\Greske\Kontejner_Greska;
 use FireHub\Jezgra\Sadrzaj\Enumeratori\Vrsta;
 use FireHub\Jezgra\Sadrzaj\Vrste\HTML;
 use FireHub\Jezgra\Sadrzaj\Vrste\JSON;
 use FireHub\Jezgra\Komponente\Log\Enumeratori\Level;
+use FireHub\Jezgra\Kontejner\Greske\Kontejner_Greska;
 use FireHub\Jezgra\Sadrzaj\Greske\Sadrzaj_Greska;
 use JsonException;
 
@@ -108,7 +108,7 @@ final class Sadrzaj {
      * @since 0.4.4.pre-alpha.M4
      *
      * @throws Sadrzaj_Greska Ukoliko se ne mogu obraditi podatci na datoteci, nema podataka predloška, ne mogu učitati konfiguracijsku json datoteku ili je datoteka prazna.
-     * @throws Kontejner_Greska Ukoliko se ne može spremiti instanca Log-a.
+     * @throws Kontejner_Greska Ukoliko se ne može spremiti instanca Log-a ili predmemorije.
      * @throws JsonException Ukoliko se dogodila greška sa čitanjem JSON formata.
      *
      * @return string Sadržaj.
@@ -133,7 +133,8 @@ final class Sadrzaj {
                     FIREHUB_ROOT . konfiguracija('sustav.putanje.web') . APLIKACIJA . RAZDJELNIK_MAPE . 'resursi' . RAZDJELNIK_MAPE . 'sadrzaj' . RAZDJELNIK_MAPE . 'baza.html',
                     FIREHUB_ROOT . konfiguracija('sustav.putanje.web') . APLIKACIJA . RAZDJELNIK_MAPE . 'resursi' . RAZDJELNIK_MAPE . 'sadrzaj' . RAZDJELNIK_MAPE . 'predlozak' . RAZDJELNIK_MAPE,
                     konfiguracija('tema.odabrano'),
-                    FIREHUB_ROOT . konfiguracija('sustav.putanje.web') . APLIKACIJA . RAZDJELNIK_MAPE . 'resursi' . RAZDJELNIK_MAPE . 'teme' . RAZDJELNIK_MAPE . konfiguracija('tema.odabrano') . RAZDJELNIK_MAPE . 'info.json'
+                    FIREHUB_ROOT . konfiguracija('sustav.putanje.web') . APLIKACIJA . RAZDJELNIK_MAPE . 'resursi' . RAZDJELNIK_MAPE . 'teme' . RAZDJELNIK_MAPE . konfiguracija('tema.odabrano') . RAZDJELNIK_MAPE . 'info.json',
+                    konfiguracija('predmemorija.ukljuceno')
                 )
             )->ispisi(),
             Vrsta::JSON => (new JSON($this->podatci))->ispisi()
