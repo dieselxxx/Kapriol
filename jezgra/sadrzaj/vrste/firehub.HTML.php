@@ -15,6 +15,8 @@
 namespace FireHub\Jezgra\Sadrzaj\Vrste;
 
 use FireHub\Jezgra\Sadrzaj\Vrsta_Interface;
+use FireHub\Jezgra\Komponente\Predmemorija\Predmemorija;
+use FireHub\Jezgra\Komponente\Predmemorija\Predmemorija_Interface;
 use FireHub\Jezgra\Komponente\Log\Enumeratori\Level;
 use FireHub\Jezgra\Kontejner\Greske\Kontejner_Greska;
 use FireHub\Jezgra\Sadrzaj\Greske\Sadrzaj_Greska;
@@ -28,6 +30,12 @@ use Generator;
  * @package Sustav\Sadrzaj
  */
 final class HTML implements Vrsta_Interface {
+
+    /**
+     * ### Predmemorija
+     * @var Predmemorija_Interface
+     */
+    private Predmemorija_Interface $predmemorija;
 
     /**
      * ### Sadržaj za ispis
@@ -56,6 +64,11 @@ final class HTML implements Vrsta_Interface {
      * @param string $konfiguracija_teme [optional] <p>
      * Konfiguracijska JSON datoteka za temu.
      * </p>
+     * @param bool $predmemorija_ukljucena <p>
+     * Da li HTML koristi predmemoriju za učitavanje statičkog sadržaja.
+     * </p>
+     *
+     * @throws Kontejner_Greska Ukoliko se ne može spremiti instanca predmemorije.
      */
     public function __construct (
         private array $podatci,
@@ -64,8 +77,17 @@ final class HTML implements Vrsta_Interface {
         private string $baza_app = '',
         private string $predlozak_putanja = '',
         private string $tema = '',
-        private string $json_konfiguracija_teme = ''
+        private string $json_konfiguracija_teme = '',
+        private bool $predmemorija_ukljucena = false,
     ) {
+
+        if ($this->predmemorija_ukljucena) {
+
+            $this->predmemorija = (new Predmemorija())->napravi();
+
+        }
+
+        var_dump($this->predmemorija);
 
     }
 

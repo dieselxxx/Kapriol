@@ -3,6 +3,7 @@
 package Sadrzaj <<Node>> #FBE9E7 {
     namespace FireHub\Jezgra\Sadrzaj\Vrste {
         class HTML #FDD835;line:FBC02D {
+            - Predmemorija_Interface $predmemorija
             - string $sadrzaj
             - array $podatci
             - string $datoteka
@@ -11,7 +12,8 @@ package Sadrzaj <<Node>> #FBE9E7 {
             - string $predlozak_putanja
             - string $tema
             - string $konfiguracija_teme
-            + __construct (array $podatci, string $datoteka, string $baza_sustav, string $baza_app, string $predlozak_putanja, string $tema, string $konfiguracija_teme):void
+            - bool $predmemorija_ukljucena
+            + __construct (array $podatci, string $datoteka, string $baza_sustav, string $baza_app, string $predlozak_putanja, string $tema, string $konfiguracija_teme, bool $predmemorija_ukljucena):void
             + ispisi ():string
             - sadrzajDinamicki ():string
             - sadrzajSve ():string
