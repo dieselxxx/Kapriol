@@ -17,8 +17,10 @@ namespace FireHub\Jezgra\Komponente\Predmemorija;
 use FireHub\Jezgra\Komponente\Servis_Kontejner;
 use FireHub\Jezgra\Komponente\Servis_Posluzitelj;
 use FireHub\Jezgra\Atributi\Zadano;
+use FireHub\Jezgra\Komponente\Log\Enumeratori\Level;
 use FireHub\Jezgra\Kontejner\Greske\Servis_Posluzitelj_Greska;
 use FireHub\Jezgra\Kontejner\Greske\Kontejner_Greska;
+use FireHub\Jezgra\Komponente\Predmemorija\Greske\Predmemorija_Greska;
 
 /**
  * ### Poslužitelj za predmemoriju
@@ -110,7 +112,7 @@ final class Predmemorija extends Servis_Posluzitelj {
      * ### Dodatni serveri predmemorije
      * @var array<int, array<string, mixed>>
      */
-    private array $dodatni_serveri;
+    protected array $dodatni_serveri;
 
     /**
      * ### Konstruktor
@@ -175,7 +177,8 @@ final class Predmemorija extends Servis_Posluzitelj {
      * ### Dodatni serveri predmemorije
      * @since 0.5.0.pre-alpha.M5
      *
-     * @throws Kontejner_Greska Ukoliko se ne može spremiti instanca Konfiguracije.
+     * @throws Kontejner_Greska Ukoliko se ne može spremiti instanca Konfiguracije ili Log-a.
+     * @throws Predmemorija_Greska
      *
      * @return array<int, array<string, mixed>> Niz dodatnih servera predmemorije.
      */
@@ -190,7 +193,20 @@ final class Predmemorija extends Servis_Posluzitelj {
                 foreach ($serveri_lista as $serveri_lista_stavka) {
 
                     $serveri_lista_stavka = explode('=', $serveri_lista_stavka);
+
                     $serveri_lista_sa_nazivima[$serveri_lista_stavka[0]] = $serveri_lista_stavka[1];
+
+                }
+
+                if (
+                    !isset($serveri_lista_sa_nazivima['host'])
+                    || !isset($serveri_lista_sa_nazivima['port'])
+                    || !isset($serveri_lista_sa_nazivima['korisnicko_ime'])
+                    || !isset($serveri_lista_sa_nazivima['lozinka'])
+                ) {
+
+                    zapisnik(Level::KRITICNO, _('Oblik zapisa dodatnog servera predmemorije nije ispravan!'));
+                    throw new Predmemorija_Greska(_('Ne mogu pokrenuti sustav, obratite se administratoru!'));
 
                 }
 
