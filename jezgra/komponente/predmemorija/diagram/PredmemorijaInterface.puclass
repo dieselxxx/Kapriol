@@ -1,0 +1,18 @@
+@startuml
+
+package Sustav\Jezgra <<Node>> #FBE9E7 {
+    namespace FireHub\Jezgra\Komponente\Predmemorija {
+        interface Predmemorija_Interface #00897B;line:00796B {
+            + dodaj (string $kljuc, mixed $vrijednost, MemCacheKompresija $kompresija = MemCacheKompresija::FALSE, int $vrijeme = 0):bool
+            + zamijeni (string $kljuc, mixed $vrijednost, MemCacheKompresija $kompresija = MemCacheKompresija::FALSE, int $vrijeme = 0):bool
+            + zapisi (string $kljuc, mixed $vrijednost, MemCacheKompresija $kompresija = MemCacheKompresija::FALSE, int $vrijeme = 0):bool
+            + dohvati (array|string $kljuc):string|array|false
+            + izbrisi (string $kljuc):bool
+            + ocisti ():bool
+            + sve ():array
+            + komanda (string $komadna):string
+        }
+    }
+}
+
+@enduml

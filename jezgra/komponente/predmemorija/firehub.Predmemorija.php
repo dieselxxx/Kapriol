@@ -145,6 +145,7 @@ final class Predmemorija extends Servis_Posluzitelj {
      *
      * @throws Servis_Posluzitelj_Greska Ukoliko se ne mogu postaviti zadana svojstva poslužitelja.
      * @throws Kontejner_Greska Ukoliko se ne može spremiti instanca Konfiguracije.
+     * @throws Predmemorija_Greska Oblik zapisa dodatnog servera predmemorije nije ispravan.
      */
     public function __construct () {
 
@@ -225,7 +226,7 @@ final class Predmemorija extends Servis_Posluzitelj {
      * @since 0.5.0.pre-alpha.M5
      *
      * @throws Kontejner_Greska Ukoliko se ne može spremiti instanca Konfiguracije ili Log-a.
-     * @throws Predmemorija_Greska
+     * @throws Predmemorija_Greska Oblik zapisa dodatnog servera predmemorije nije ispravan.
      *
      * @return array<int, array<string, mixed>> Niz dodatnih servera predmemorije.
      */
