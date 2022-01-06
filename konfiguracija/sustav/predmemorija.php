@@ -52,7 +52,8 @@ return [
                 'lozinka' => '',
                 'prefiks' => APLIKACIJA . '_',
                 'prag_duljine_kompresije' => 20000,
-                'kompresija' => 0.2
+                'kompresija' => 0.2,
+                'dodatni_serveri' => ''
             ]
         ]
     ],
