@@ -34,11 +34,15 @@ use FireHub\Jezgra\Komponente\Predmemorija\Greske\Predmemorija_Greska;
  * @property-read int $tezina Težina u odnosu na ostale servere predmemorije
  * @property-read float $odziv Maksimalni odziv u sekundama na koji se čeka da server reagira
  * @property-read int $interval_ponovni_pokusaj Interval u kojem će server ponovno pokušati pronaći zapise
+ * @property-read string $prefiks Prefiks ključa vrijednosti
+ * @property-read int $prag_duljine_kompresije Minimalna vrijednost prije kompresiranja podatka
+ * @property-read float $kompresija Količina kompresije - između 1(100%) i 0(%0)
  * @property-read array $dodatni_serveri Dodatni serveri predmemorije
  *
  * @method $this trajno(bool $trajno) Trajna konekcija na predmemoriju
  * @method $this tezina(int $tezina) Težina u odnosu na ostale servere predmemorije
  * @method $this odziv(float $odziv) Maksimalni odziv u sekundama na koji se čeka da server reagira
+ * @method $this prefiks(string $prefiks) Prefiks ključa vrijednosti
  * @method $this interval_ponovni_pokusaj(int $interval_ponovni_pokusaj) Interval u kojem će server ponovno pokušati pronaći zapise
  * @method $this dodatni_serveri(array $dodatni_serveri) Dodatni serveri predmemorije
  *
@@ -109,6 +113,27 @@ final class Predmemorija extends Servis_Posluzitelj {
     protected int $interval_ponovni_pokusaj;
 
     /**
+     * ### Prefiks ključa vrijednosti
+     * @var string
+     */
+    #[Zadano('predmemorija.prefiks')]
+    protected string $prefiks;
+
+    /**
+     * ### Minimalna vrijednost prije kompresiranja podatka
+     * @var int
+     */
+    #[Zadano('predmemorija.prag_duljine_kompresije')]
+    protected int $prag_duljine_kompresije;
+
+    /**
+     * ### Količina kompresije - između 1(100%) i 0(%0)
+     * @var float
+     */
+    #[Zadano('predmemorija.kompresija')]
+    protected float $kompresija;
+
+    /**
      * ### Dodatni serveri predmemorije
      * @var array<int, array<string, mixed>>
      */
@@ -168,6 +193,28 @@ final class Predmemorija extends Servis_Posluzitelj {
 
         $this->korisnicko_ime = $korisnicko_ime;
         $this->lozinka = $lozinka;
+
+        return $this;
+
+    }
+
+    /**
+     * ### Postavi automatsku kompresiju vrijednosti
+     * @since 0.5.0.pre-alpha.M5
+     *
+     * @param int $prag_duljine_kompresije <p>
+     * Minimalna vrijednost prije kompresiranja podatka.
+     * </p>
+     * @param float $kompresija <p>
+     * Količina kompresije - između 1(100%) i 0(%0).
+     * </p>
+     *
+     * @return $this Instanca Predmemorije.
+     */
+    public function kompresija (int $prag_duljine_kompresije, float $kompresija):self {
+
+        $this->prag_duljine_kompresije = $prag_duljine_kompresije;
+        $this->kompresija = $kompresija;
 
         return $this;
 
