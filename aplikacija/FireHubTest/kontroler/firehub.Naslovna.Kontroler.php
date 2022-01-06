@@ -38,7 +38,13 @@ final class Naslovna_Kontroler extends Kontroler {
 
     }
 
-    public function index3 () {
+    public function index3 ():Sadrzaj {
+
+        return sadrzaj()->datoteka('test.html')->format(Sadrzaj_Vrsta::HTML)->podatci([
+            'prvi_podatak' => 'naslovna-index3',
+            'drugi_podatak' => 'naslovna-index3',
+            'treći_podatak' => 'naslovna-index3'
+        ]);
 
     }
 
