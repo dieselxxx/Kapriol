@@ -23,8 +23,7 @@ return [
      *
      * @var array<string, int>
      */
-    'vrijeme' => 86400
-    ,
+    'vrijeme' => env('KOLACIC_VRIJEME', '86400'),
 
     /**
      * --------------------------------------------------------------------------
@@ -35,7 +34,7 @@ return [
      *
      * @var array<string, string>
      */
-    'putanja' => '/',
+    'putanja' => env('KOLACIC_PUTANJA', '/'),
 
     /**
      * --------------------------------------------------------------------------
@@ -46,7 +45,7 @@ return [
      *
      * @var array<string, string>
      */
-    'domena' => '',
+    'domena' => env('KOLACIC_DOMENA', ''),
 
     /**
      * --------------------------------------------------------------------------
@@ -57,7 +56,7 @@ return [
      *
      * @var array<string, bool>
      */
-    'ssl' => false,
+    'ssl' => env('KOLACIC_SSL', false),
 
     /**
      * --------------------------------------------------------------------------
@@ -68,7 +67,7 @@ return [
      *
      * @var array<string, bool>
      */
-    'http' => true,
+    'http' => env('KOLACIC_HTTP', true),
 
     /**
      * --------------------------------------------------------------------------
@@ -79,6 +78,6 @@ return [
      *
      * @var array<string, string>
      */
-    'ista_stranica' => 'Lax'
+    'ista_stranica' => env('KOLACIC_ISTA_STRANICA', 'Lax')
 
 ];
