@@ -15,7 +15,7 @@
 namespace FireHub\Jezgra\Komponente\Kolacic\Atributi;
 
 use FireHub\Jezgra\Atributi\Atribut;;
-use FireHub\Jezgra\Komponente\Kolacic\Kolacic AS Kolacic_Servis;
+use FireHub\Jezgra\Komponente\Kolacic\Kolacic as Kolacic_Servis;
 use FireHub\Jezgra\Komponente\Kolacic\Enumeratori\IstaStranica;
 use FireHub\Jezgra\Kontejner\Greske\Kontejner_Greska;
 use Attribute;
