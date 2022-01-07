@@ -66,6 +66,12 @@ return [
             \FireHub\Jezgra\Komponente\BazaPodataka\Servisi\MySQL::class => [],
             \FireHub\Jezgra\Komponente\BazaPodataka\Servisi\MongoDB::class => []
         ]
+    ],
+
+    \FireHub\Jezgra\Komponente\Kolacic\Kolacic::class => [
+        'servisi' => [
+            \FireHub\Jezgra\Komponente\Kolacic\Servisi\Kolacic_Servis::class => []
+        ]
     ]
 
 ];
