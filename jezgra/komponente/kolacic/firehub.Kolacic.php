@@ -13,9 +13,10 @@
  */
 
 namespace FireHub\Jezgra\Komponente\Kolacic;
-
+;
 use FireHub\Jezgra\Komponente\Servis_Kontejner;
 use FireHub\Jezgra\Komponente\Servis_Posluzitelj;
+use FireHub\Jezgra\Komponente\Kolacic\Enumeratori\IstaStranica;
 use FireHub\Jezgra\Atributi\Zadano;
 
 /**
@@ -29,7 +30,7 @@ use FireHub\Jezgra\Atributi\Zadano;
  * @property-read string $domena Naziv domene ili poddomene na koji je kolačić dostupan
  * @property-read bool $ssl Da li kolačić zahtjeva SSL enkriptiranu vezu
  * @property-read bool $http Da li je kolačić dostupan samo u HTTP protokolu
- * @property-read string $ista_stranica Za koje stranice vrijedi kolačić
+ * @property-read IstaStranica $ista_stranica Za koje stranice vrijedi kolačić
  *
  * @method $this naziv(string $naziv) Naziv kolačića
  * @method $this vrijednost(string $vrijednost) Vrijednost kolačića
@@ -38,7 +39,7 @@ use FireHub\Jezgra\Atributi\Zadano;
  * @method $this domena(string $naziv) Naziv domene ili poddomene na koji je kolačić dostupna
  * @method $this ssl(bool $ukljuceno) Da li kolačić zahtjeva SSL enkriptiranu vezu
  * @method $this http(bool $ukljuceno) Da li je kolačić dostupan samo u HTTP protokolu
- * @method $this ista_stranica(string $ista_stranica) Za koje stranice vrijedi kolačić
+ * @method $this ista_stranica(IstaStranica $ista_stranica) Za koje stranice vrijedi kolačić
  *
  * @package Sustav\Jezgra
  */
@@ -94,10 +95,10 @@ final class Kolacic extends Servis_Posluzitelj {
 
     /**
      * ### Za koje stranice vrijedi kolačić
-     * @var string
+     * @var IstaStranica
      */
     #[Zadano('kolacic.ista_stranica')]
-    protected string $ista_stranica;
+    protected IstaStranica $ista_stranica;
 
     /**
      * {@inheritDoc}
