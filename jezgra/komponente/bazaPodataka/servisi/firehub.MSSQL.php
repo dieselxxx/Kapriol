@@ -35,6 +35,18 @@ final class MSSQL implements BazaPodataka_Interface {
     private mixed $konekcija;
 
     /**
+     * ### Upit prema MSSQL serveru
+     * @var mixed
+     */
+    private mixed $upit;
+
+    /**
+     * ### Lista upita transakcije
+     * @var array
+     */
+    private array $lista_upita = [];
+
+    /**
      * ### Konstruktor
      * @since 0.5.1.pre-alpha.M5
      *
@@ -42,7 +54,7 @@ final class MSSQL implements BazaPodataka_Interface {
      * Poslužitelj servisa.
      * </p>
      *
-     * @throws BazaPodataka_Greska Ukoliko se ne može spojiti na MSSQL server.
+     * @throws BazaPodataka_Greska Ukoliko se ne može spojiti na MSSQL server, ne mogu obraditi MySQL upit ili transakciju.
      * @throws Kontejner_Greska Ukoliko se ne može spremiti instanca Log-a ili konfiguracije.
      */
     public function __construct (
@@ -72,24 +84,170 @@ final class MSSQL implements BazaPodataka_Interface {
 
     }
 
-    public function redak ():array
-    {
-        // TODO: Implement redak() method.
+    /**
+     * {@inheritDoc}
+     *
+     * @todo Provjeriti kursor ponašanje za više upita prema ovoj funkciji.
+     * @todo Provjeriti ponašanje nakon što nema retka u sqlsrv_get_field funkciji.
+     */
+    public function redak ():array|false {
+
+        // dohvati podatke
+        sqlsrv_fetch($this->upit);
+
+        // preuzmi meta podatke
+        $meta_podatci = sqlsrv_field_metadata($this->upit);
+
+        $broj_kolumne = 0;
+        array_walk (
+            $meta_podatci,
+            function ($kolumna) use (&$rezultat, &$broj_kolumne):mixed {
+                return $rezultat[$kolumna['Name']] = sqlsrv_get_field($this->upit, $broj_kolumne++);
+            }
+        );
+
+        return $rezultat;
+
     }
 
-    public function objekt ():object
-    {
-        // TODO: Implement objekt() method.
+    /**
+     * {@inheritDoc}
+     *
+     * @throws BazaPodataka_Greska Ukoliko ne mogu napraviti upit kao objekt.
+     * @throws Kontejner_Greska Ukoliko se ne može spremiti instanca Log-a.
+     */
+    public function objekt ():object|false {
+
+        if (($objekt = sqlsrv_fetch_object($this->upit)) === false) {
+
+            zapisnik(Level::KRITICNO, _('Ne se napraviti upit: %s, kao objekt!'));
+            throw new BazaPodataka_Greska((_('Ne mogu pokrenuti sustav, obratite se administratoru.')));
+
+        }
+
+        return !is_null($objekt) ? $objekt : false;
+
     }
 
-    public function niz ():array
-    {
-        // TODO: Implement niz() method.
+    /**
+     * @inheritDoc
+     */
+    public function niz ():array|false {
+
+        while ($redak = sqlsrv_fetch_array($this->upit, SQLSRV_FETCH_ASSOC)) {
+
+            $rezultat[] = $redak;
+
+        }
+
+        return $rezultat ?? false;
+
     }
 
-    public function rezultat ():array
-    {
-        // TODO: Implement rezultat() method.
+    /**
+     * @inheritDoc
+     */
+    public function rezultat ():array {
+
+        return $this->lista_upita;
+
+    }
+
+    /**
+     * ### Pošalji upit prema MSSQL serveru
+     * @since 0.5.1.pre-alpha.M5
+     *
+     * @throws BazaPodataka_Greska Ukoliko ne mogu obraditi MSSQL upit.
+     * @throws Kontejner_Greska Ukoliko se ne može spremiti instanca Log-a.
+     *
+     * @return void
+     */
+    private function upit ():void {
+
+        if (
+            !$this->upit = sqlsrv_query(
+                $this->konekcija,
+                $this->posluzitelj->upit,
+                [],
+                [
+                    'QueryTimeout' => $this->posluzitelj->odziv,
+                    'SendStreamParamsAtExec' => $this->posluzitelj->posalji_stream_pri_izvrsavanju,
+                    'Scrollable' => $this->posluzitelj->kursor
+                ]
+            )
+        ) {
+
+            zapisnik(Level::KRITICNO, sprintf(_('Ne mogu obraditi MSSQL upit: %s!'), $this->posluzitelj->upit));
+            throw new BazaPodataka_Greska((_('Ne mogu pokrenuti sustav, obratite se administratoru.')));
+
+        }
+
+    }
+
+    /**
+     * ### Pošalji transakciju prema MSSQL serveru
+     * @since 0.5.1.pre-alpha.M5
+     *
+     * @throws BazaPodataka_Greska Ukoliko ne mogu pokreniti transakciju na MSSQL serveru.
+     * @throws Kontejner_Greska Ukoliko se ne može spremiti instanca Log-a.
+     *
+     * @return void
+     */
+    private function transakcija ():void {
+
+        if (!sqlsrv_begin_transaction($this->konekcija)) {
+
+            zapisnik(Level::KRITICNO, _('Ne mogu pokreniti transakciju na MSSQL serveru!'));
+            throw new BazaPodataka_Greska((_('Ne mogu pokrenuti sustav, obratite se administratoru.')));
+
+        }
+
+        // pripremi sve upite
+        array_walk(
+            $this->posluzitelj->transakcija,
+            function ($objekt) {
+
+                $this->lista_upita[] = sqlsrv_query(
+                    $this->konekcija,
+                    $this->posluzitelj->upit,
+                    [],
+                    [
+                        'QueryTimeout' => $objekt->odziv,
+                        'SendStreamParamsAtExec' => $objekt->posalji_stream_pri_izvrsavanju,
+                        'Scrollable' => $objekt->kursor
+                    ]
+                );
+
+            }
+        );
+
+        // ako padne neki upit vrati transakciju
+        array_walk(
+            $this->lista_upita,
+            function ($upit):void {
+
+                if (!$upit) {
+                    sqlsrv_rollback($this->konekcija);
+                }
+
+            }
+        );
+
+        // završi transakciju
+        sqlsrv_commit($this->konekcija);
+
+    }
+
+    /**
+     * ### Zatvori konekciju baze podataka
+     * @since 0.5.1.pre-alpha.M5
+     *
+     * @return void
+     */
+    public function __destruct () {
+
+        sqlsrv_close($this->konekcija);
+
     }
 
 }
