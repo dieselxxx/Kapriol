@@ -114,10 +114,6 @@ final class Odgovor implements Odgovor_Interface {
 
         try {
 
-            var_dump((new \FireHub\Jezgra\Komponente\BazaPodataka\BazaPodataka())->napravi());
-
-            var_dump(konfiguracija('baza_podataka'));
-
             return $this->sadrzaj . '<br><b>' . round(memory_get_peak_usage()/1048576, 2) . ' mb</b><br>';
 
         } catch (Throwable $objekt) {
