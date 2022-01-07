@@ -27,7 +27,7 @@ return [
     'konekcije' => [
         'MSSQL' => [
             'ekstenzije' => [
-                'pdo_sqlsrv', 'sqlsrvc'
+                'pdo_sqlsrv', 'sqlsrv'
             ],
             'parametri' => [
                 'servis' => \FireHub\Jezgra\Komponente\BazaPodataka\Servisi\MSSQL::class,
