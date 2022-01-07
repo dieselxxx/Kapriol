@@ -54,7 +54,7 @@ final class MySQL implements BazaPodataka_Interface {
      * Poslužitelj servisa.
      * </p>
      *
-     * @throws BazaPodataka_Greska Ukoliko se ne može spojiti na MSSQL server.
+     * @throws BazaPodataka_Greska Ukoliko se ne može spojiti na MSSQL server, ne mogu obraditi MySQL upit ili transakciju.
      * @throws Kontejner_Greska Ukoliko se ne može spremiti instanca Log-a.
      */
     public function __construct (
