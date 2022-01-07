@@ -28,25 +28,25 @@ interface BazaPodataka_Interface extends Servis_Interface {
      * ### Vraća prvi redak iz baze podataka kao niz
      * @since 0.5.1.pre-alpha.M5
      *
-     * @return array<string, mixed> Niz rezultata iz retka.
+     * @return array<string, mixed>|false Niz rezultata iz retka ili false ako nema više redaka.
      */
-    public function redak ():array;
+    public function redak ():array|false;
 
     /**
      * ### Vraća prvi redak iz baze podataka kao objekt
      * @since 0.5.1.pre-alpha.M5
      *
-     * @return object Rezultat kao objekt.
+     * @return object|false Rezultat kao objekt ili false ako nema više redaka.
      */
-    public function objekt ():object;
+    public function objekt ():object|false;
 
     /**
      * ### Vraća sve rezultate iz baze podataka kao niz
      * @since 0.5.1.pre-alpha.M5
      *
-     * @return array<int, array<string, mixed>> Rezultat kao niz redaka.
+     * @return array<int, array<string, mixed>>|false Rezultat kao niz redaka ili false ako nema rezultata.
      */
-    public function niz ():array;
+    public function niz ():array|false;
 
     /**
      * ### Lista odrađenih naredbi transakcije
