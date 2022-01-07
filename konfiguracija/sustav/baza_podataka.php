@@ -27,7 +27,7 @@ return [
     'konekcije' => [
         'MSSQL' => [
             'ekstenzije' => [
-                'pdo_sqlsrv', 'sqlsrv'
+                //'pdo_sqlsrv', 'sqlsrv'
             ],
             'parametri' => [
                 'servis' => \FireHub\Jezgra\Komponente\BazaPodataka\Servisi\MSSQL::class,
@@ -43,7 +43,7 @@ return [
                 'vrste_greski' => 0, // SQLSRV_LOG_SYSTEM_ALL, SQLSRV_LOG_SYSTEM_CONN, SQLSRV_LOG_SYSTEM_INIT, SQLSRV_LOG_SYSTEM_OFF, SQLSRV_LOG_SYSTEM_STMT, SQLSRV_LOG_SYSTEM_UTIL
                 'odziv' => 500,
                 'stream_u_dijelovima' => true,
-                'kursor' => 'forward' // SQLSRV_CURSOR_FORWARD, SQLSRV_CURSOR_STATIC, SQLSRV_CURSOR_DYNAMIC, SQLSRV_CURSOR_KEYSET
+                'kursor' => \FireHub\Jezgra\Komponente\BazaPodataka\Servisi\MSSQL\Enumeratori\Kursor::SQLSRV_CURSOR_FORWARD
             ]
         ],
         'MYSQL' => [

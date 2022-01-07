@@ -131,8 +131,8 @@ return [
      * Način redoslijeda odabiranja redaka.
      * @since 0.5.1.pre-alpha.M5
      *
-     * @var array<string, bool>
+     * @var array<string, \FireHub\Jezgra\Komponente\BazaPodataka\Kursor_Interface>
      */
-    'kursor' => 'forward'
+    'kursor' => \FireHub\Jezgra\Komponente\BazaPodataka\Servisi\MSSQL\Enumeratori\Kursor::SQLSRV_CURSOR_FORWARD
 
 ];
