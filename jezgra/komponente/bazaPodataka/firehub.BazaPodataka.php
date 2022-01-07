@@ -34,66 +34,77 @@ final class BazaPodataka extends Servis_Posluzitelj {
      * ### IP adresa servera baze podataka
      * @var string
      */
+    #[Zadano('baza_podataka.host')]
     protected string $host;
 
     /**
      * ### Port servera baze podataka
      * @var int
      */
+    #[Zadano('baza_podataka.port')]
     protected int $port;
 
     /**
      * ### Instanca servera baze podataka
      * @var string
      */
+    #[Zadano('baza_podataka.instanca')]
     protected string $instanca;
 
     /**
      * ### Baza baze podataka
      * @var string
      */
+    #[Zadano('baza_podataka.baza')]
     protected string $baza;
 
     /**
      * ### Shema baze podataka
      * @var string
      */
+    #[Zadano('baza_podataka.shema')]
     protected string $shema;
 
     /**
      * ### Korisnicko ime za spajanje na server baze podataka
      * @var string
      */
+    #[Zadano('baza_podataka.korisnicko_ime')]
     protected string $korisnicko_ime;
 
     /**
      * ### Lozinka za spajanje na server baze podataka
      * @var string
      */
+    #[Zadano('baza_podataka.lozinka')]
     protected string $lozinka;
 
     /**
      * ### Enkodiranje karaketera iz baze podataka
      * @var string
      */
+    #[Zadano('baza_podataka.karakteri')]
     protected string $karakteri;
 
     /**
      * ### Maksimalni odziv servera u sekundama prilikom upita
      * @var int
      */
+    #[Zadano('baza_podataka.odziv')]
     protected int $odziv;
 
     /**
      * ### Slanje svih podataka pri izvršavanju u upita ili u dijelovima
      * @var bool
      */
+    #[Zadano('baza_podataka.posalji_stream_pri_izvrsavanju')]
     protected bool $posalji_stream_pri_izvrsavanju;
 
     /**
      * ### Način redoslijeda odabiranja redaka
      * @var string
      */
+    #[Zadano('baza_podataka.kursor')]
     protected string $kursor;
 
     /**

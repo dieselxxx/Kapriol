@@ -27,10 +27,10 @@ return [
     'konekcije' => [
         'MSSQL' => [
             'ekstenzije' => [
-                'pdo_sqlsrv', 'sqlsrv'
+                'pdo_sqlsrv', 'sqlsrvc'
             ],
             'parametri' => [
-                'servis' => \FireHub\Jezgra\Komponente\Predmemorija\Servisi\MemCache::class,
+                'servis' => \FireHub\Jezgra\Komponente\BazaPodataka\Servisi\MSSQL::class,
                 'host' => 'localhost',
                 'port' => 1433,
                 'instanca' => 'MSSQLSERVER',
@@ -51,7 +51,7 @@ return [
                 'mysqli'
             ],
             'parametri' => [
-                'servis' => \FireHub\Jezgra\Komponente\Predmemorija\Servisi\MemCache::class,
+                'servis' => \FireHub\Jezgra\Komponente\BazaPodataka\Servisi\MySQL::class,
                 'host' => 'localhost',
                 'baza' => 'FireHub',
                 'shema' => 'dbo',
@@ -64,7 +64,7 @@ return [
                 'mongodb'
             ],
             'parametri' => [
-                'servis' => \FireHub\Jezgra\Komponente\Predmemorija\Servisi\MemCache::class,
+                'servis' => \FireHub\Jezgra\Komponente\BazaPodataka\Servisi\MongoDB::class,
                 'host' => '192.168.8.50',
                 'port' => 27017,
                 'baza' => 'firehub',
