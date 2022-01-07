@@ -13,7 +13,7 @@
  */
 
 namespace FireHub\Jezgra\Komponente\Kolacic;
-;
+
 use FireHub\Jezgra\Komponente\Servis_Kontejner;
 use FireHub\Jezgra\Komponente\Servis_Posluzitelj;
 use FireHub\Jezgra\Komponente\Kolacic\Enumeratori\IstaStranica;
