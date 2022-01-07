@@ -56,8 +56,15 @@ return [
 
     \FireHub\Jezgra\Komponente\Predmemorija\Predmemorija::class => [
         'servisi' => [
-            \FireHub\Jezgra\Komponente\Predmemorija\Servisi\MemCache::class => [],
-            \FireHub\Jezgra\Komponente\Predmemorija\Servisi\Test::class=> []
+            \FireHub\Jezgra\Komponente\Predmemorija\Servisi\MemCache::class => []
+        ]
+    ],
+
+    \FireHub\Jezgra\Komponente\BazaPodataka\BazaPodataka::class => [
+        'servisi' => [
+            \FireHub\Jezgra\Komponente\BazaPodataka\Servisi\MSSQL::class => [],
+            \FireHub\Jezgra\Komponente\BazaPodataka\Servisi\MySQL::class => [],
+            \FireHub\Jezgra\Komponente\BazaPodataka\Servisi\MongoDB::class => []
         ]
     ]
 
