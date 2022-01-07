@@ -72,6 +72,12 @@ return [
         'servisi' => [
             \FireHub\Jezgra\Komponente\Kolacic\Servisi\Kolacic_Servis::class => []
         ]
+    ],
+
+    FireHub\Jezgra\Komponente\Sesija\Sesija::class => [
+        'servisi' => [
+            \FireHub\Jezgra\Komponente\Sesija\Servisi\Datoteka_Servis::class => []
+        ]
     ]
 
 ];
