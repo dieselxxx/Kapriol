@@ -36,13 +36,13 @@ use FireHub\Jezgra\Atributi\Zadano;
  * @property-read string $upit Upit prema bazi podataka
  * @property-read array $transakcija Niz upita prema bazi podataka u obliku transakcije
  *
- * @method $this baza(string $naziv) Baza baze podataka
- * @method $this shema(string $naziv) Shema baze podataka
- * @method $this karakteri(string $vrsta) Enkodiranje karaketera iz baze podataka
- * @method $this odziv(int $sekundi) Maksimalni odziv servera u sekundama prilikom upita
- * @method $this posalji_stream_pri_izvrsavanju(bool $ukljuceno) Slanje svih podataka pri izvršavanju u upita ili u dijelovima
- * @method $this kursor(Kursor_Interface $vrsta) Način redoslijeda odabiranja redaka
- * @method $this upit(string $upit) Upit prema bazi podataka
+ * @method $this baza (string $naziv) Baza baze podataka
+ * @method $this shema (string $naziv) Shema baze podataka
+ * @method $this karakteri (string $vrsta) Enkodiranje karaketera iz baze podataka
+ * @method $this odziv (int $sekundi) Maksimalni odziv servera u sekundama prilikom upita
+ * @method $this posalji_stream_pri_izvrsavanju (bool $ukljuceno) Slanje svih podataka pri izvršavanju u upita ili u dijelovima
+ * @method $this kursor (Kursor_Interface $vrsta) Način redoslijeda odabiranja redaka
+ * @method $this upit (string $upit) Upit prema bazi podataka
  */
 final class BazaPodataka extends Servis_Posluzitelj {
 
