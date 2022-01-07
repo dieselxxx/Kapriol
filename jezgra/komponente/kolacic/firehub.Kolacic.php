@@ -33,7 +33,7 @@ use FireHub\Jezgra\Atributi\Zadano;
  *
  * @method $this naziv(string $naziv) Naziv kolačića
  * @method $this vrijednost(string $vrijednost) Vrijednost kolačića
- * @method $this vrijeme(int $vrijeme) Maksimalno vrijeme kolačića
+ * @method $this vrijeme(int $sekundi) Maksimalno vrijeme kolačića
  * @method $this putanja(string $putanja) Putanja za koju vrijedi kolačić
  * @method $this domena(string $naziv) Naziv domene ili poddomene na koji je kolačić dostupna
  * @method $this ssl(bool $ukljuceno) Da li kolačić zahtjeva SSL enkriptiranu vezu
