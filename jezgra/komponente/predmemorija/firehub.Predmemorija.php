@@ -39,12 +39,12 @@ use FireHub\Jezgra\Komponente\Predmemorija\Greske\Predmemorija_Greska;
  * @property-read float $kompresija Količina kompresije - između 1(100%) i 0(%0)
  * @property-read array $dodatni_serveri Dodatni serveri predmemorije
  *
- * @method $this trajno(bool $trajno) Trajna konekcija na predmemoriju
- * @method $this tezina(int $tezina) Težina u odnosu na ostale servere predmemorije
- * @method $this odziv(float $odziv) Maksimalni odziv u sekundama na koji se čeka da server reagira
- * @method $this prefiks(string $prefiks) Prefiks ključa vrijednosti
- * @method $this interval_ponovni_pokusaj(int $interval_ponovni_pokusaj) Interval u kojem će server ponovno pokušati pronaći zapise
- * @method $this dodatni_serveri(array $dodatni_serveri) Dodatni serveri predmemorije
+ * @method $this trajno (bool $trajno) Trajna konekcija na predmemoriju
+ * @method $this tezina (int $tezina) Težina u odnosu na ostale servere predmemorije
+ * @method $this odziv (float $odziv) Maksimalni odziv u sekundama na koji se čeka da server reagira
+ * @method $this prefiks (string $prefiks) Prefiks ključa vrijednosti
+ * @method $this interval_ponovni_pokusaj (int $interval_ponovni_pokusaj) Interval u kojem će server ponovno pokušati pronaći zapise
+ * @method $this dodatni_serveri (array $dodatni_serveri) Dodatni serveri predmemorije
  *
  * @package Sustav\Jezgra
  */
