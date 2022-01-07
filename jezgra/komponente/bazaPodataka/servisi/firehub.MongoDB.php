@@ -88,16 +88,40 @@ final class MongoDB implements BazaPodataka_Interface {
 
     }
 
+    /**
+     * @inheritDoc
+     */
     public function redak ():array|false {
+
+        return false;
+
     }
 
+    /**
+     * @inheritDoc
+     */
     public function objekt ():object|false {
+
+        return false;
+
     }
 
+    /**
+     * @inheritDoc
+     */
     public function niz ():array|false {
+
+        return false;
+
     }
 
+    /**
+     * @inheritDoc
+     */
     public function rezultat ():array {
+
+        return [];
+
     }
 
 }
