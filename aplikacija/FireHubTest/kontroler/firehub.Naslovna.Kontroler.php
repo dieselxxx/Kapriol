@@ -19,6 +19,8 @@ final class Naslovna_Kontroler extends Kontroler {
     //#[\FireHub\Jezgra\Komponente\Kolacic\Atributi\Kolacic('test', 'yxx', http: false)]
     public function index (\FireHub\Jezgra\Komponente\Dot\Dot $dot = null, $par1 = 'test', int $par2 = 5):Sadrzaj {
 
+            (new \FireHub\Jezgra\Komponente\Sesija\Sesija())->napravi();
+
         return sadrzaj()->datoteka('test.html')->format(Sadrzaj_Vrsta::HTML)->podatci([
             'prvi_podatak' => 'naslovna-index',
             'drugi_podatak' => 'naslovna-index',
