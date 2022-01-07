@@ -76,8 +76,8 @@ return [
      * Restrikcija kolačića.
      * @since 0.5.2.pre-alpha.M5
      *
-     * @var array<string, string>
+     * @var array<string, \FireHub\Jezgra\Komponente\Kolacic\Enumeratori\IstaStranica>
      */
-    'ista_stranica' => env('KOLACIC_ISTA_STRANICA', 'Lax')
+    'ista_stranica' => \FireHub\Jezgra\Komponente\Kolacic\Enumeratori\IstaStranica::LAX
 
 ];
