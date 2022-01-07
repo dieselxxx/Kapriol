@@ -58,6 +58,7 @@
                                 <h3 class="phpdocumentor-sidebar__root-namespace"><a href="namespaces/default.html"><abbr title="\">Global</abbr></a></h3>
                                         <h4 class="phpdocumentor-sidebar__root-namespace"><a href="namespaces/firehub.html"><abbr title="\FireHub">FireHub</abbr></a></h4>
                 <ul class="phpdocumentor-list">
+                                            <li><a href="namespaces/firehub-aplikacija.html"><abbr title="\FireHub\Aplikacija">Aplikacija</abbr></a></li>
                                             <li><a href="namespaces/firehub-jezgra.html"><abbr title="\FireHub\Jezgra">Jezgra</abbr></a></li>
                                     </ul>
                         </section>
@@ -70,8 +71,17 @@
                                     <li><a href="packages/Sustav-HTTP.html"><abbr title="\Sustav\HTTP">HTTP</abbr></a></li>
                                     <li><a href="packages/Sustav-Konzola.html"><abbr title="\Sustav\Konzola">Konzola</abbr></a></li>
                                     <li><a href="packages/Sustav-Test.html"><abbr title="\Sustav\Test">Test</abbr></a></li>
+                                    <li><a href="packages/Sustav-Konfiguracija.html"><abbr title="\Sustav\Konfiguracija">Konfiguracija</abbr></a></li>
+                                    <li><a href="packages/Sustav-Kontroler.html"><abbr title="\Sustav\Kontroler">Kontroler</abbr></a></li>
+                                    <li><a href="packages/Sustav-Model.html"><abbr title="\Sustav\Model">Model</abbr></a></li>
+                                    <li><a href="packages/Sustav-Posrednici.html"><abbr title="\Sustav\Posrednici">Posrednici</abbr></a></li>
+                                    <li><a href="packages/Sustav-Sadrzaj.html"><abbr title="\Sustav\Sadrzaj">Sadrzaj</abbr></a></li>
                             </ul>
                                 <h3 class="phpdocumentor-sidebar__root-package"><a href="packages/Application.html"><abbr title="\Application">Application</abbr></a></h3>
+                                <h3 class="phpdocumentor-sidebar__root-package"><a href="packages/Aplikacija.html"><abbr title="\Aplikacija">Aplikacija</abbr></a></h3>
+                        <ul class="phpdocumentor-list">
+                                    <li><a href="packages/Aplikacija-Konfiguracija.html"><abbr title="\Aplikacija\Konfiguracija">Konfiguracija</abbr></a></li>
+                            </ul>
                         </section>
     
     <section class="phpdocumentor-sidebar__category">
@@ -112,7 +122,7 @@
         <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="jezgra/firehub.Kernel.php"><a href="files/jezgra-firehub-kernel.html"><abbr title="jezgra/firehub.Kernel.php">firehub.Kernel.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">28</span>
+    <span class="phpdocumentor-element-found-in__line">33</span>
 
     </aside>
 
@@ -161,11 +171,39 @@
 <dd>### Pokreni Kernel</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -protected">
+    <a href="classes/FireHub-Jezgra-Kernel.html#method_konfiguracija">konfiguracija()</a>
+    <span>
+                        &nbsp;: static    </span>
+</dt>
+<dd>### Učitaj konfiguracijske postavke</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -protected">
     <a href="classes/FireHub-Jezgra-Kernel.html#method_pomagaci">pomagaci()</a>
     <span>
-                        &nbsp;: self    </span>
+                        &nbsp;: static    </span>
 </dt>
 <dd>### Učitaj datoteku sa pomoćnim funkcijama</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -protected">
+    <a href="classes/FireHub-Jezgra-Kernel.html#method_posrednici">posrednici()</a>
+    <span>
+                        &nbsp;: static    </span>
+</dt>
+<dd>### Obrada posrednika za kernel</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -protected">
+    <a href="classes/FireHub-Jezgra-Kernel.html#method_ucitajEnv">ucitajEnv()</a>
+    <span>
+                        &nbsp;: static    </span>
+</dt>
+<dd>### Učitaj .env datoteku</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -private">
+    <a href="classes/FireHub-Jezgra-Kernel.html#method_obradiPosrednike">obradiPosrednike()</a>
+    <span>
+                        &nbsp;: <abbr title="\Generator">Generator</abbr>    </span>
+</dt>
+<dd>### Obradi sve posrednike</dd>
 
         </dl>
 
@@ -193,7 +231,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="jezgra/firehub.Kernel.php"><a href="files/jezgra-firehub-kernel.html"><abbr title="jezgra/firehub.Kernel.php">firehub.Kernel.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">38</span>
+    <span class="phpdocumentor-element-found-in__line">43</span>
 
     </aside>
 
@@ -254,7 +292,7 @@ Zahtjev.
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="jezgra/firehub.Kernel.php"><a href="files/jezgra-firehub-kernel.html"><abbr title="jezgra/firehub.Kernel.php">firehub.Kernel.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">49</span>
+    <span class="phpdocumentor-element-found-in__line">54</span>
 
     </aside>
 
@@ -299,6 +337,77 @@ metoda izložena datotekama koje pokreću sustav.</p>
             -protected
                                                         "
 >
+    <h4 class="phpdocumentor-element__name" id="method_konfiguracija">
+        konfiguracija()
+        <a href="classes/FireHub-Jezgra-Kernel.html#method_konfiguracija" class="headerlink"><i class="fas fa-link"></i></a>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="jezgra/firehub.Kernel.php"><a href="files/jezgra-firehub-kernel.html"><abbr title="jezgra/firehub.Kernel.php">firehub.Kernel.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">148</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">### Učitaj konfiguracijske postavke</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">protected</span>
+                <span class="phpdocumentor-signature__name">konfiguracija</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">static</span></code>
+
+        <section class="phpdocumentor-description"><p>Pozivanje svih konfiguracijskih objekata sustava i trenutne aplikacije.</p>
+</section>
+
+    
+    
+    <h5 class="phpdocumentor-tag-list__heading" id="tags">
+        Tags
+        <a href="#tags" class="headerlink"><i class="fas fa-link"></i></a>
+    </h5>
+    <dl class="phpdocumentor-tag-list">
+                                    <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">since</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                            <span class="phpdocumentor-tag-link">0.3.5.pre-alpha.M3</span>
+                                                                                
+                                             
+                                    </dd>
+                                                <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">throws</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                <span class="phpdocumentor-tag-link"><a href="classes/FireHub-Jezgra-Greske-Kernel-Greska.html"><abbr title="\FireHub\Jezgra\Greske\Kernel_Greska">Kernel_Greska</abbr></a></span>
+                                                            
+                                                 <section class="phpdocumentor-description"><p>Ukoliko se ne može učitati konfiguracijska datoteka.</p>
+</section>
+
+                                    </dd>
+                            <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">throws</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                <span class="phpdocumentor-tag-link"><a href="classes/FireHub-Jezgra-Kontejner-Greske-Kontejner-Greska.html"><abbr title="\FireHub\Jezgra\Kontejner\Greske\Kontejner_Greska">Kontejner_Greska</abbr></a></span>
+                                                            
+                                                 <section class="phpdocumentor-description"><p>Ukoliko se ne može spremiti instanca Log-a.</p>
+</section>
+
+                                    </dd>
+                        </dl>
+
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+    <span class="phpdocumentor-signature__response_type">static</span>
+            &mdash;
+            <section class="phpdocumentor-description"><p>Kernel objekt.</p>
+</section>
+
+    
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -protected
+                                                        "
+>
     <h4 class="phpdocumentor-element__name" id="method_pomagaci">
         pomagaci()
         <a href="classes/FireHub-Jezgra-Kernel.html#method_pomagaci" class="headerlink"><i class="fas fa-link"></i></a>
@@ -306,7 +415,7 @@ metoda izložena datotekama koje pokreću sustav.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="jezgra/firehub.Kernel.php"><a href="files/jezgra-firehub-kernel.html"><abbr title="jezgra/firehub.Kernel.php">firehub.Kernel.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">60</span>
+    <span class="phpdocumentor-element-found-in__line">104</span>
 
     </aside>
 
@@ -314,7 +423,7 @@ metoda izložena datotekama koje pokreću sustav.</p>
 
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">protected</span>
-                <span class="phpdocumentor-signature__name">pomagaci</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">self</span></code>
+                <span class="phpdocumentor-signature__name">pomagaci</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">static</span></code>
 
     
     
@@ -355,9 +464,264 @@ metoda izložena datotekama koje pokreću sustav.</p>
                         </dl>
 
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-    <span class="phpdocumentor-signature__response_type">self</span>
+    <span class="phpdocumentor-signature__response_type">static</span>
             &mdash;
             <section class="phpdocumentor-description"><p>Kernel objekt.</p>
+</section>
+
+    
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -protected
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="method_posrednici">
+        posrednici()
+        <a href="classes/FireHub-Jezgra-Kernel.html#method_posrednici" class="headerlink"><i class="fas fa-link"></i></a>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="jezgra/firehub.Kernel.php"><a href="files/jezgra-firehub-kernel.html"><abbr title="jezgra/firehub.Kernel.php">firehub.Kernel.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">72</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">### Obrada posrednika za kernel</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">protected</span>
+                <span class="phpdocumentor-signature__name">posrednici</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, mixed&gt;&nbsp;</span><span class="phpdocumentor-signature__argument__name">$posrednici</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$kljuc</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">static</span></code>
+
+    
+        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+    <dl class="phpdocumentor-argument-list">
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$posrednici</span>
+                : <span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, mixed&gt;</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"><p>
+Lista posrednika.
+</p>
+</section>
+
+            </dd>
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$kljuc</span>
+                : <span class="phpdocumentor-signature__argument__return-type">string</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"><p>
+Ključ sa listom posrednika koje se trebaju obraditi.
+</p>
+</section>
+
+            </dd>
+            </dl>
+
+    
+    <h5 class="phpdocumentor-tag-list__heading" id="tags">
+        Tags
+        <a href="#tags" class="headerlink"><i class="fas fa-link"></i></a>
+    </h5>
+    <dl class="phpdocumentor-tag-list">
+                                    <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">since</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                            <span class="phpdocumentor-tag-link">0.4.0.pre-alpha.M4</span>
+                                                                                
+                                             
+                                    </dd>
+                                                <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">throws</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                <span class="phpdocumentor-tag-link"><a href="classes/FireHub-Jezgra-Posrednici-Greske-Posrednik-Greska.html"><abbr title="\FireHub\Jezgra\Posrednici\Greske\Posrednik_Greska">Posrednik_Greska</abbr></a></span>
+                                                            
+                                                 <section class="phpdocumentor-description"><p>Ukoliko ne postoji ključ u nizu parametara za posrednika.</p>
+</section>
+
+                                    </dd>
+                            <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">throws</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                <span class="phpdocumentor-tag-link"><a href="classes/FireHub-Jezgra-Kontejner-Greske-Kontejner-Greska.html"><abbr title="\FireHub\Jezgra\Kontejner\Greske\Kontejner_Greska">Kontejner_Greska</abbr></a></span>
+                                                            
+                                                 <section class="phpdocumentor-description"><p>Ukoliko se ne može spremiti instanca Log-a.</p>
+</section>
+
+                                    </dd>
+                        </dl>
+
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+    <span class="phpdocumentor-signature__response_type">static</span>
+            &mdash;
+            <section class="phpdocumentor-description"><p>Kernel objekt.</p>
+</section>
+
+    
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -protected
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="method_ucitajEnv">
+        ucitajEnv()
+        <a href="classes/FireHub-Jezgra-Kernel.html#method_ucitajEnv" class="headerlink"><i class="fas fa-link"></i></a>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="jezgra/firehub.Kernel.php"><a href="files/jezgra-firehub-kernel.html"><abbr title="jezgra/firehub.Kernel.php">firehub.Kernel.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">129</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">### Učitaj .env datoteku</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">protected</span>
+                <span class="phpdocumentor-signature__name">ucitajEnv</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$putanja</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">static</span></code>
+
+    
+        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+    <dl class="phpdocumentor-argument-list">
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$putanja</span>
+                : <span class="phpdocumentor-signature__argument__return-type">string</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"><p>
+Puna putanja do .env datoteke.
+</p>
+</section>
+
+            </dd>
+            </dl>
+
+    
+    <h5 class="phpdocumentor-tag-list__heading" id="tags">
+        Tags
+        <a href="#tags" class="headerlink"><i class="fas fa-link"></i></a>
+    </h5>
+    <dl class="phpdocumentor-tag-list">
+                                    <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">since</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                            <span class="phpdocumentor-tag-link">0.3.5.pre-alpha.M3</span>
+                                                                                
+                                             
+                                    </dd>
+                                                <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">throws</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                <span class="phpdocumentor-tag-link"><a href="classes/FireHub-Jezgra-Kontejner-Greske-Kontejner-Greska.html"><abbr title="\FireHub\Jezgra\Kontejner\Greske\Kontejner_Greska">Kontejner_Greska</abbr></a></span>
+                                                            
+                                                 <section class="phpdocumentor-description"><p>Ukoliko se ne može spremiti instanca Env objekta.</p>
+</section>
+
+                                    </dd>
+                        </dl>
+
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+    <span class="phpdocumentor-signature__response_type">static</span>
+            &mdash;
+            <section class="phpdocumentor-description"><p>Kernel objekt.</p>
+</section>
+
+    
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -private
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="method_obradiPosrednike">
+        obradiPosrednike()
+        <a href="classes/FireHub-Jezgra-Kernel.html#method_obradiPosrednike" class="headerlink"><i class="fas fa-link"></i></a>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="jezgra/firehub.Kernel.php"><a href="files/jezgra-firehub-kernel.html"><abbr title="jezgra/firehub.Kernel.php">firehub.Kernel.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">179</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">### Obradi sve posrednike</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">private</span>
+                <span class="phpdocumentor-signature__name">obradiPosrednike</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, string&gt;&nbsp;</span><span class="phpdocumentor-signature__argument__name">$posrednici</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type"><abbr title="\Generator">Generator</abbr></span></code>
+
+        <section class="phpdocumentor-description"><p>Pokreće svim posrednicima metodu {obradi} koja
+vraća stanje posrednika. Posrednici se učitavaju redosljedom iz
+konfiguracijske datoteke posrednika, te prvi koji vrati stanje false
+zaustavlja se daljnje obrađivanje posrednika.</p>
+</section>
+
+        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+    <dl class="phpdocumentor-argument-list">
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$posrednici</span>
+                : <span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, string&gt;</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"><p>
+Lista posrednika za obradu.
+</p>
+</section>
+
+            </dd>
+            </dl>
+
+    
+    <h5 class="phpdocumentor-tag-list__heading" id="tags">
+        Tags
+        <a href="#tags" class="headerlink"><i class="fas fa-link"></i></a>
+    </h5>
+    <dl class="phpdocumentor-tag-list">
+                                    <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">since</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                            <span class="phpdocumentor-tag-link">0.4.0.pre-alpha.M4</span>
+                                                                                
+                                             
+                                    </dd>
+                                                <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">throws</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                <span class="phpdocumentor-tag-link"><a href="classes/FireHub-Jezgra-Posrednici-Greske-Posrednik-Greska.html"><abbr title="\FireHub\Jezgra\Posrednici\Greske\Posrednik_Greska">Posrednik_Greska</abbr></a></span>
+                                                            
+                                                 <section class="phpdocumentor-description"><p>Ukoliko ne mogu obraditi posrednika.</p>
+</section>
+
+                                    </dd>
+                            <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">throws</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                <span class="phpdocumentor-tag-link"><a href="classes/FireHub-Jezgra-Kontejner-Greske-Kontejner-Greska.html"><abbr title="\FireHub\Jezgra\Kontejner\Greske\Kontejner_Greska">Kontejner_Greska</abbr></a></span>
+                                                            
+                                                 <section class="phpdocumentor-description"><p>Ukoliko se ne može spremiti instanca posrednika ili Log-a.</p>
+</section>
+
+                                    </dd>
+                        </dl>
+
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+    <span class="phpdocumentor-signature__response_type"><abbr title="\Generator">Generator</abbr></span>
+            &mdash;
+            <section class="phpdocumentor-description"><p>Pokreće posrednika.</p>
 </section>
 
     
