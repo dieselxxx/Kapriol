@@ -133,13 +133,13 @@ final class BazaPodataka extends Servis_Posluzitelj {
      * ### Upit prema bazi podataka
      * @var null|string
      */
-    protected ?string $upit;
+    protected ?string $upit = null;
 
     /**
      * ### Niz upita prema bazi podataka u obliku transakcije
      * @var null|string[]
      */
-    protected ?array $transakcija;
+    protected ?array $transakcija = null;
 
     /**
      * ### Server baze podataka
