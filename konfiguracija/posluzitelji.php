@@ -76,7 +76,7 @@ return [
 
     FireHub\Jezgra\Komponente\Sesija\Sesija::class => [
         'servisi' => [
-            \FireHub\Jezgra\Komponente\Sesija\Servisi\Datoteka_Servis::class => []
+            \FireHub\Jezgra\Komponente\Sesija\Servisi\Datoteka::class => []
         ]
     ]
 
