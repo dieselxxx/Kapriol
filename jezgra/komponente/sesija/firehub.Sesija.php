@@ -99,14 +99,14 @@ final class Sesija extends Servis_Posluzitelj {
      * ### Za koje stranice vrijedi kolačić
      * @var IstaStranica
      */
-    #[Zadano('kolacic.ista_stranica')]
+    #[Zadano('sesija.ista_stranica')]
     protected IstaStranica $ista_stranica;
 
     /**
      * ### Lokacija za spremanje podatkovne sesije
      * @var string
      */
-    #[Zadano('kolacic.lokacija')]
+    #[Zadano('sesija.lokacija')]
     protected string $lokacija;
 
     /**
