@@ -87,7 +87,7 @@ interface Sesija_Interface extends Servis_Interface {
     public function izbrisi (string $kljuc):bool;
 
     /**
-     * ### Uništi sesiju
+     * ### Uništi sve podatke vezane za sesiju
      * @since 0.5.3.pre-alpha.M5
      *
      * @return bool Da li je uništena sesija.
