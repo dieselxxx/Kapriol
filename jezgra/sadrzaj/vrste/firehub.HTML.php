@@ -303,8 +303,12 @@ final class HTML implements Vrsta_Interface {
             }
         );
 
-        // postavi sadržaj u predmemoriju
-        $this->predmemorija?->zapisi('firehub_sadrzaj_html', $this->sadrzaj);
+        // postavi sadržaj u predmemoriju ukoliko je uključena
+        if ($this->predmemorija) {
+
+            $this->predmemorija->zapisi('firehub_sadrzaj_html', $this->sadrzaj);
+
+        }
 
         return $this->sadrzaj;
 
