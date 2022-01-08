@@ -11,7 +11,6 @@
  * @version 1.0
  * @package Sustav\HTTP
  *
- * @todo Predmemorija
  * @todo Posrednici
  */
 
