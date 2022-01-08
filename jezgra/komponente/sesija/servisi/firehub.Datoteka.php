@@ -210,7 +210,7 @@ final class Datoteka implements Sesija_Interface {
                 'domain' => $this->posluzitelj->domena,
                 'secure' => $this->posluzitelj->ssl,
                 'httponly' => $this->posluzitelj->http,
-                'samesite' => $this->posluzitelj->ista_stranica
+                'samesite' => $this->posluzitelj->ista_stranica->value
             ]
         );
 
