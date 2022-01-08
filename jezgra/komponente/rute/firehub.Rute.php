@@ -42,7 +42,7 @@ final class Rute extends Servis_Posluzitelj {
      *
      * @throws Kontejner_Greska Ukoliko se ne može spremiti instanca Rute.
      *
-     * @return bool Da li je dadana ruta.
+     * @return bool Da li je dodana ruta.
      */
     public static function sve (string $url, array $podatci):bool {
 
@@ -63,7 +63,7 @@ final class Rute extends Servis_Posluzitelj {
      *
      * @throws Kontejner_Greska Ukoliko se ne može spremiti instanca Rute.
      *
-     * @return bool Da li je dadana ruta.
+     * @return bool Da li je dodana ruta.
      */
     public static function get (string $url, array $podatci):bool {
 
@@ -84,7 +84,7 @@ final class Rute extends Servis_Posluzitelj {
      *
      * @throws Kontejner_Greska Ukoliko se ne može spremiti instanca Rute.
      *
-     * @return bool Da li je dadana ruta.
+     * @return bool Da li je dodana ruta.
      */
     public static function post (string $url, array $podatci):bool {
 
@@ -105,7 +105,7 @@ final class Rute extends Servis_Posluzitelj {
      *
      * @throws Kontejner_Greska Ukoliko se ne može spremiti instanca Rute.
      *
-     * @return bool Da li je dadana ruta.
+     * @return bool Da li je dodana ruta.
      */
     public static function put (string $url, array $podatci):bool {
 
@@ -126,7 +126,7 @@ final class Rute extends Servis_Posluzitelj {
      *
      * @throws Kontejner_Greska Ukoliko se ne može spremiti instanca Rute.
      *
-     * @return bool Da li je dadana ruta.
+     * @return bool Da li je dodana ruta.
      */
     public static function delete (string $url, array $podatci):bool {
 
