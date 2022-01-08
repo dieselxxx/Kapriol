@@ -1,0 +1,29 @@
+@startuml
+
+package Sustav\Jezgra <<Node>> #FBE9E7 {
+    namespace FireHub\Jezgra\Komponente\Sesija {
+        class Sesija #00897B;line:00796B {
+            # ?string $servis
+            # string $naziv
+            # int $vrijeme
+            # string $putanja
+            # string $domena
+            # bool $ssl
+            # bool $http
+            # string $ista_stranica
+            # string $lokacija
+            + __construct ():void
+            + naziv (string $naziv):self
+            + vrijeme (int $vrijeme):self
+            + putanja (string $putanja):self
+            + domena (string $naziv):self
+            + ssl (bool $ukljuceno):self
+            + http (bool $ukljuceno):self
+            + ista_stranica (string $ista_stranica):self
+            + lokacija (string $lokacija):self
+            + napravi ():Sesija_Interface
+        }
+    }
+}
+
+@enduml
