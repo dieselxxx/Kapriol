@@ -17,7 +17,7 @@
 
 namespace FireHub\Jezgra;
 
-use FireHub\Jezgra\Enumeratori\Kernel AS Kernel_Enumerator;
+use FireHub\Jezgra\Enumeratori\Kernel as Kernel_Enumerator;
 use Error;
 
 /**
