@@ -41,9 +41,25 @@ abstract class Enumerator {
      * </p>
      */
     public function __construct (
-        private string $name,
-        private string|int $value
+        public string $name,
+        private string|int $value = ''
     ) {}
+
+    /**
+     * @param string $naziv <p>
+     * Naziv statičke metode.
+     * </p>
+     * @param array $parametri <p>
+     * Parametri statičke metode.
+     * </p>
+     *
+     * @return static Vrijednost statičke metode.
+     */
+    public static function __callStatic (string $naziv, array $parametri):static {
+
+        return new static($naziv);
+
+    }
 
     /**
      * ### Prikaži sve dostupne vrijednosti enumratora
@@ -127,7 +143,7 @@ abstract class Enumerator {
      */
     private static function dohvatiKonstante ():array {
 
-        return (new ReflectionClass(static::class))->getConstants(ReflectionClassConstant::IS_PUBLIC);
+        return (new ReflectionClass(static::class))->getConstants(ReflectionClassConstant::IS_PROTECTED);
 
     }
 
