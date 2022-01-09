@@ -18,13 +18,17 @@
 namespace FireHub\Jezgra;
 
 use FireHub\Jezgra\Enumeratori\Prefiks;
+use FireHub\Jezgra\Enumeratori\Prefiks_Enumerator;
 use FireHub\Jezgra\Enumeratori\Sufiks;
+use FireHub\Jezgra\Enumeratori\Sufiks_Enumerator;
 use FireHub\Jezgra\Komponente\Log\Enumeratori\Level;
 use FireHub\Jezgra\Greske\Autoload_Greska;
 use FireHub\Jezgra\Kontejner\Greske\Kontejner_Greska;
 
 require __DIR__.'/../jezgra/enumeratori/firehub.Prefiks.php';
+require __DIR__.'/../jezgra/enumeratori/firehub.Prefiks.Enumerator.php';
 require __DIR__.'/../jezgra/enumeratori/firehub.Sufiks.php';
+require __DIR__.'/../jezgra/enumeratori/firehub.Sufiks.Enumerator.php';
 
 /**
  * ### Datoteka koja pripada FireHub aplikaciji
@@ -55,7 +59,7 @@ $datotekaFireHub = static function (array $putanja_niz, string $objekt):string {
     $ime = $datoteka_komponente[0] ?? '';
     count($datoteka_komponente) > 1 ? $vrsta = $datoteka_komponente[1] : $vrsta = false;
 
-    if ($vrsta && (!Sufiks::tryFrom($vrsta) || isset(Prefiks::cases()[0]) === false)) { // provjeri ispravnost ekstenzije datoteke
+    if ($vrsta && (!Sufiks_Enumerator::tryFrom($vrsta) || isset(Sufiks_Enumerator::cases()[0]) === false)) { // provjeri ispravnost ekstenzije datoteke
 
         zapisnik(Level::KRITICNO, sprintf(_('Datoteka: %s, nema pravilan prefiks: %s, ili vrsta: %s, nije ispravna u enumu sufiksa: %s'), $objekt, Prefiks::cases()[0]->value, $vrsta, Sufiks::class));
         throw new Autoload_Greska(_('Ne mogu pokrenuti sustav, obratite se administratoru.'));
@@ -65,6 +69,7 @@ $datotekaFireHub = static function (array $putanja_niz, string $objekt):string {
     $naziv_objekta = $vrsta
         ? Prefiks::cases()[0]->value . '.' . $ime . '.' . $vrsta . '.php'
         : Prefiks::cases()[0]->value . '.' . $ime . '.' . $vrsta . 'php';
+        //?: Prefiks_Enumerator::cases()[0] . '.' . $ime . '.' . $vrsta . 'php';
 
     return $putanja . DIRECTORY_SEPARATOR . $naziv_objekta;
 
