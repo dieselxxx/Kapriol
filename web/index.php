@@ -15,6 +15,7 @@ use FireHub\Jezgra\Enumeratori\Kernel;
  */
 require __DIR__.'/../jezgra/firehub.Sustav.php';
 require __DIR__.'/../jezgra/enumeratori/firehub.Kernel.php';
+
 $sustav = new Sustav();
 $odgovor = $sustav->pokreni(Kernel::HTTP);
 echo $odgovor->sadrzaj();
