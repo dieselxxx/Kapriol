@@ -81,7 +81,7 @@ final class Datoteka implements Rute_Interface {
             array_push(
                 $this->rute,
                 ['http_metoda' => $metoda, 'url' => $url, 'podatci' => $podatci]
-            ) < 0
+            ) > 0
         ) {
 
             return true;
