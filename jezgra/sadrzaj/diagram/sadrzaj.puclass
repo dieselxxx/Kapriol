@@ -1,0 +1,17 @@
+@startuml
+
+    package Sadrzaj <<Node>> #FBE9E7 {
+    namespace FireHub\Jezgra\Sadrzaj {
+        class Sadrzaj #FDD835;line:FBC02D {
+            - Vrsta $format
+            - string $datoteka
+            - array $podatci
+            + format (Vrsta $naziv):self
+            + datoteka (string $naziv):self
+            + podatci (array $podatci):self
+            + ispisi ():string
+        }
+    }
+}
+
+@enduml

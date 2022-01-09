@@ -1,0 +1,13 @@
+@startuml
+
+package Sustav\Jezgra <<Node>> #FBE9E7 {
+    namespace FireHub\Jezgra\Komponente\Kolacic {
+        interface Kolacic_Interface #00897B;line:00796B {
+            + spremi ():bool
+            + procitaj ($naziv):string|false
+            + izbrisi ($naziv):bool
+        }
+    }
+}
+
+@enduml

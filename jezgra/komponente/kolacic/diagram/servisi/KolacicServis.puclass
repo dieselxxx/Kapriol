@@ -1,0 +1,15 @@
+@startuml
+
+package Sustav\Jezgra <<Node>> #FBE9E7 {
+    namespace FireHub\Jezgra\Komponente\Kolacic\Servisi {
+        class Kolacic_Servis #00897B;line:00796B {
+            - Kolacic $posluzitelj
+            + __construct (Kolacic $posluzitelj):void
+            + spremi ():bool
+            + procitaj ($naziv):string|false
+            + izbrisi ($naziv):bool
+        }
+    }
+}
+
+@enduml

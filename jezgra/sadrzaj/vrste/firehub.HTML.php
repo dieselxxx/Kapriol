@@ -15,6 +15,8 @@
 namespace FireHub\Jezgra\Sadrzaj\Vrste;
 
 use FireHub\Jezgra\Sadrzaj\Vrsta_Interface;
+use FireHub\Jezgra\Komponente\Predmemorija\Predmemorija;
+use FireHub\Jezgra\Komponente\Predmemorija\Predmemorija_Interface;
 use FireHub\Jezgra\Komponente\Log\Enumeratori\Level;
 use FireHub\Jezgra\Kontejner\Greske\Kontejner_Greska;
 use FireHub\Jezgra\Sadrzaj\Greske\Sadrzaj_Greska;
@@ -28,6 +30,12 @@ use Generator;
  * @package Sustav\Sadrzaj
  */
 final class HTML implements Vrsta_Interface {
+
+    /**
+     * ### Predmemorija
+     * @var Predmemorija_Interface|false
+     */
+    private Predmemorija_Interface|false $predmemorija = false;
 
     /**
      * ### Sadržaj za ispis
@@ -56,6 +64,11 @@ final class HTML implements Vrsta_Interface {
      * @param string $konfiguracija_teme [optional] <p>
      * Konfiguracijska JSON datoteka za temu.
      * </p>
+     * @param bool $predmemorija_ukljucena <p>
+     * Da li HTML koristi predmemoriju za učitavanje statičkog sadržaja.
+     * </p>
+     *
+     * @throws Kontejner_Greska Ukoliko se ne može spremiti instanca predmemorije.
      */
     public function __construct (
         private array $podatci,
@@ -64,8 +77,15 @@ final class HTML implements Vrsta_Interface {
         private string $baza_app = '',
         private string $predlozak_putanja = '',
         private string $tema = '',
-        private string $json_konfiguracija_teme = ''
+        private string $json_konfiguracija_teme = '',
+        private bool $predmemorija_ukljucena = false,
     ) {
+
+        if ($this->predmemorija_ukljucena) {
+
+            $this->predmemorija = (new Predmemorija())->napravi();
+
+        }
 
     }
 
@@ -75,12 +95,21 @@ final class HTML implements Vrsta_Interface {
      * @throws Sadrzaj_Greska Ukoliko se ne mogu obraditi podatci na datoteci, nema podataka predloška, ne mogu učitati konfiguracijsku json datoteku ili je datoteka prazna.
      * @throws Kontejner_Greska Ukoliko se ne može spremiti instanca Log-a.
      * @throws JsonException Ukoliko se ne može dekodirati JSON sadržaj iz konfiguracijske datoteke teme ili je datoteka prazna.
-     *
-     * @todo Dodati predmemoriju
      */
     public function ispisi ():string {
 
-        //return '<br><b>'.round(memory_get_peak_usage()/1048576, 2) . ' mb</b>';
+        if (
+            $this->predmemorija // ako je uključena predmemorija
+            && $sadrzaj = $this->predmemorija->dohvati('firehub_sadrzaj_html')) // postoji sadržaj predmemorije
+        {
+
+            // dodaj sadržaj iz predmemorije
+            $this->sadrzaj = $sadrzaj;
+
+            // učitaj samo dinamički sadržaj iz datoteka
+            return $this->sadrzajDinamicki();
+
+        }
 
         // učitaj statički i dinamički sadržaj iz datoteka
         return $this->sadrzajSve();
@@ -273,6 +302,13 @@ final class HTML implements Vrsta_Interface {
 
             }
         );
+
+        // postavi sadržaj u predmemoriju ukoliko je uključena
+        if ($this->predmemorija) {
+
+            $this->predmemorija->zapisi('firehub_sadrzaj_html', $this->sadrzaj);
+
+        }
 
         return $this->sadrzaj;
 

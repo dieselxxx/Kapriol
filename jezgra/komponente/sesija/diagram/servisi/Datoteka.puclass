@@ -1,0 +1,22 @@
+@startuml
+
+package Sustav\Jezgra <<Node>> #FBE9E7 {
+    namespace FireHub\Jezgra\Komponente\Sesija\Servisi {
+        class Datoteka_Servis #00897B;line:00796B {
+            - Sesija $posluzitelj
+            + __construct (Sesija $posluzitelj):void
+            + status ():bool
+            + zapisi (string $kljuc, mixed $vrijednost):bool
+            + procitaj (string $kljuc):mixed
+            + uredi (string $kljuc, mixed $vrijednost):bool
+            + izbrisi (string $kljuc):bool
+            + unisti ():bool
+            - postaviNaziv ():string|false
+            - postaviLokaciju ():string|false
+            - postaviParametere():bool
+            + __destruct ():void
+        }
+    }
+}
+
+@enduml

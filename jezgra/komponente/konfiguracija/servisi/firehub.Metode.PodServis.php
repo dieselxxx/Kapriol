@@ -329,7 +329,7 @@ final class Metode_PodServis {
 
     /**
      * ### Provjera i postavljenje odabrane baze podataka
-     * @since 0.3.5.pre-alpha.M3
+     * @since 0.5.1.pre-alpha.M5
      *
      * @param string $opcija <p>
      * Opcija baze podataka.
@@ -375,7 +375,7 @@ final class Metode_PodServis {
 
     /**
      * ### Provjera i postavljenje odabrane predmemorije
-     * @since 0.3.5.pre-alpha.M3
+     * @since 0.5.0.pre-alpha.M5
      *
      * @param string $opcija <p>
      * Opcija predmemorije.
@@ -411,6 +411,41 @@ final class Metode_PodServis {
             function ($vrijednost, $parametar):void {
                 if (!array_key_exists($parametar, $this->rezultat['predmemorija'])) {
                     $this->rezultat['predmemorija'][$parametar] = $vrijednost;
+                }
+            }
+        );
+
+        return $opcija;
+
+    }
+
+    /**
+     * ### Provjera i postavljenje odabrane vrste sesije
+     * @since 0.5.3.pre-alpha.M5
+     *
+     * @param string $opcija <p>
+     * Opcija sesije.
+     * </p>
+     *
+     * @throws KonfiguracijaMetoda_Greska Ukoliko sesija nije dostupna kao izbor.
+     * @throws Kontejner_Greska Ukoliko se može spremiti instanca objekt Log-a.
+     *
+     * @return string Opcija.
+     */
+    private function sesija_vrsta (string $opcija):string {
+
+        // provjeri da li je odabrana baza podataka dostupna
+        if (!array_key_exists($opcija, $this->rezultat['sesija']['vrste'])) {
+            zapisnik(Level::HITNO, sprintf(_('Sesija %s nije dostupna kao izbor!'), $opcija));
+            throw new KonfiguracijaMetoda_Greska(sprintf(_('Sesija %s nije dostupna kao izbor!'), $opcija));
+        }
+
+        // dodaj zadane parametre u rezultat koji nisu navedeni
+        array_walk(
+            $this->rezultat['sesija']['vrste'][$opcija]['parametri'],
+            function ($vrijednost, $parametar):void {
+                if (!array_key_exists($parametar, $this->rezultat['sesija'])) {
+                    $this->rezultat['sesija'][$parametar] = $vrijednost;
                 }
             }
         );

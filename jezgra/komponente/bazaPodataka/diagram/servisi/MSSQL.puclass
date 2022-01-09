@@ -1,0 +1,22 @@
+@startuml
+
+package Sustav\Jezgra <<Node>> #FBE9E7 {
+    namespace FireHub\Jezgra\Komponente\BazaPodataka\Servisi {
+        class MSSQL #00897B;line:00796B {
+            - mixed $konekcija
+            - mixed $upit
+            - array $lista_upita
+            - BazaPodataka $posluzitelj
+            + __construct (BazaPodataka $posluzitelj):void
+            + redak ():array|false
+            + objekt ():object|false
+            + niz ():array|false
+            + rezultat ():array
+            - upit ():void
+            - transakcija ():void
+            + __destruct ():void
+        }
+    }
+}
+
+@enduml

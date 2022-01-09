@@ -18,7 +18,8 @@ use FireHub\Jezgra\Komponente\Servis_Kontejner;
 use FireHub\Jezgra\Komponente\Servis_Posluzitelj;
 use FireHub\Jezgra\Komponente\Log\Servisi\Dostavljac;
 use FireHub\Jezgra\Komponente\Log\Enumeratori\Level;
-use FireHub\Jezgra\Atributi\Zadano;
+use FireHub\Jezgra\Kontejner\Greske\Servis_Posluzitelj_Greska;
+use FireHub\Jezgra\Kontejner\Greske\Kontejner_Greska;
 use Throwable;
 
 /**
@@ -49,8 +50,7 @@ final class Log extends Servis_Posluzitelj {
      * ### Level log zapisa
      * @var Level
      */
-    #[Zadano('log.level')]
-    protected Level $level;
+    protected Level $level = Level::GRESKA;
 
     /**
      * ### Poruka log zapisa
@@ -73,6 +73,9 @@ final class Log extends Servis_Posluzitelj {
     /**
      * ### Kontruktor
      * @since 0.3.1.pre-alpha.M3
+     *
+     * @throws Servis_Posluzitelj_Greska Ukoliko se ne mogu postaviti zadana svojstva poslužitelja.
+     * @throws Kontejner_Greska Ukoliko se ne može spremiti instanca Konfiguracije.
      */
     public function __construct () {
 

@@ -30,7 +30,9 @@ use FireHub\Jezgra\Greske\Kernel_Greska;
 use FireHub\Jezgra\Kontejner\Greske\Kontejner_Greska;
 use FireHub\Jezgra\Komponente\Datoteka\Greske\Datoteka_Greska;
 use FireHub\Jezgra\HTTP\Greske\Ruter_Greska;
+use FireHub\Jezgra\Sadrzaj\Greske\Sadrzaj_Greska;
 use ReflectionException;
+use JsonException;
 use Throwable;
 
 /**
@@ -180,7 +182,9 @@ final class Kernel extends OsnovniKernel {
      * @since 0.2.6.pre-alpha.M2
      *
      * @throws Datoteka_Greska Ukoliko se ne može pročitati naziv datoteke.
-     * @throws Kontejner_Greska Ukoliko se može spremiti instanca Log-a.
+     * @throws Kontejner_Greska Ukoliko se može spremiti instanca Log-a ili predmemorije.
+     * @throws Sadrzaj_Greska Ukoliko se ne mogu obraditi podatci na datoteci, nema podataka predloška, ne mogu učitati konfiguracijsku json datoteku ili je datoteka prazna.
+     * @throws JsonException Ukoliko se dogodila greška sa čitanjem JSON formata.
      *
      * @return HTTP_Odgovor Odgovor za HTTP.
      */

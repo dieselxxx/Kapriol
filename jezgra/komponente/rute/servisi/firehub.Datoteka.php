@@ -17,6 +17,8 @@ namespace FireHub\Jezgra\Komponente\Rute\Servisi;
 use FireHub\Jezgra\Komponente\Rute\Rute;
 use FireHub\Jezgra\Komponente\Rute\Rute_Interface;
 use FireHub\Jezgra\Komponente\Rute\Servisi\Datoteka\Datoteka_PodServis;
+use FireHub\Jezgra\Komponente\Predmemorija\Predmemorija;
+use FireHub\Jezgra\Kontejner\Greske\Kontejner_Greska;
 
 /**
  * ### Servis za registriranje HTTP ruta iz datoteka
@@ -42,19 +44,80 @@ final class Datoteka implements Rute_Interface {
      * @param Datoteka_PodServis $datotekaPodServis <p>
      * Podservis za nizove ruta.
      * </p>
+     * @param Predmemorija $predmemorija <p>
+     * Predmemorija.
+     * </p>
      */
     public function __construct (
         private Rute $posluzitelj,
-        private Datoteka_PodServis $datotekaPodServis
+        private Datoteka_PodServis $datotekaPodServis,
+        private Predmemorija $predmemorija
     ) {}
+
+    /**
+     * {@inheritDoc}
+     *
+     * @throws Kontejner_Greska Ukoliko se ne može spremiti instanca Konfiguracije ili predmemorije.
+     */
+    public function provjeri (string $metoda, string $url):array|false {
+
+        // provjeri da li postoji ruta u predmemoriji
+        if (konfiguracija('predmemorija.ukljuceno') && $this->predmemorijaRuta($metoda, $url)) {
+
+            return $this->predmemorijaRuta($metoda, $url);
+
+        }
+
+        return $this->datotekaRuta($metoda, $url);
+
+    }
 
     /**
      * @inheritDoc
      */
-    public function provjeri (string $metoda, string $url):array|false {
+    public function dodaj (string $metoda, string $url, array $podatci):bool {
+
+        if (
+            array_push(
+                $this->rute,
+                ['http_metoda' => $metoda, 'url' => $url, 'podatci' => $podatci]
+            ) > 0
+        ) {
+
+            return true;
+
+        }
+
+        return false;
+
+    }
+
+    /**
+     * ### Odaberi rutu iz servisa datoteka
+     * @since 0.5.0.pre-alpha.M5
+     *
+     * @param string $metoda <p>
+     * Metoda rute.
+     * </p>
+     * @param string $url <p>
+     * Url.
+     * </p>
+     *
+     * @throws Kontejner_Greska Ukoliko se ne može spremiti instanca Konfiguracije ili predmemorije.
+     *
+     * @return array<string, string>|false Niz podataka rute.
+     */
+    private function datotekaRuta (string $metoda, string $url):array|false {
 
         // napuni rute u servis iz datoteke
         $this->datotekaPodServis->ucitaj(APLIKACIJA_ROOT . 'podatci' . RAZDJELNIK_MAPE . 'rute' .  RAZDJELNIK_MAPE . '*.php');
+
+        // zapiši rute u predmemoriju
+        if (konfiguracija('predmemorija.ukljuceno')) {
+
+            $this->predmemorija->napravi()->zapisi('firehub_rute', serialize($this->rute));
+
+        }
 
         // ukoliko ne postoji ruta
         if (!$prva_ruta = $this->prvaRuta($metoda, $url)) {
@@ -75,22 +138,58 @@ final class Datoteka implements Rute_Interface {
     }
 
     /**
-     * @inheritDoc
+     * ### Odaberi rutu iz servisa predmemorije
+     * @since 0.5.0.pre-alpha.M5
+     *
+     * @param string $metoda <p>
+     * Metoda rute.
+     * </p>
+     * @param string $url <p>
+     * Url.
+     * </p>
+     *
+     * @throws Kontejner_Greska Ukoliko se ne može spremiti instanca Konfiguracije ili predmemorije.
+     *
+     * @return array<string, string>|false Niz podataka rute.
      */
-    public function dodaj (string $metoda, string $url, array $podatci):bool {
+    private function predmemorijaRuta (string $metoda, string $url):array|false {
 
-        if (
-            array_push(
-                $this->rute,
-                ['http_metoda' => $metoda, 'url' => $url, 'podatci' => $podatci]
-            ) < 0
-        ) {
+        // dohvati rute iz predmemorije
+        $rute = $this->predmemorija->napravi()->dohvati('firehub_rute');
 
-            return true;
+        // ukoliko postoje rute u predmemoriji
+        if ($rute) {
+
+            // unserialize ruta u niz
+            $rute = unserialize($rute);
+
+            array_walk(
+                $rute,
+                function (array $ruta):bool {
+
+                    // dodaj rutu u niz ruta
+                    return $this->dodaj($ruta['http_metoda'], $ruta['url'], $ruta['podatci']);
+
+                }
+            );
 
         }
 
-        return false;
+        // ukoliko ne postoji ruta
+        if (!$prva_ruta = $this->prvaRuta($metoda, $url)) {
+
+            return false;
+
+        }
+
+        // ukoliko ne postoji ključ "podatci"
+        if (!isset($prva_ruta['podatci'])) {
+
+            return false;
+
+        }
+
+        return $prva_ruta['podatci'];
 
     }
 

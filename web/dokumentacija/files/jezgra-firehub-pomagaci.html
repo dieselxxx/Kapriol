@@ -58,6 +58,7 @@
                                 <h3 class="phpdocumentor-sidebar__root-namespace"><a href="namespaces/default.html"><abbr title="\">Global</abbr></a></h3>
                                         <h4 class="phpdocumentor-sidebar__root-namespace"><a href="namespaces/firehub.html"><abbr title="\FireHub">FireHub</abbr></a></h4>
                 <ul class="phpdocumentor-list">
+                                            <li><a href="namespaces/firehub-aplikacija.html"><abbr title="\FireHub\Aplikacija">Aplikacija</abbr></a></li>
                                             <li><a href="namespaces/firehub-jezgra.html"><abbr title="\FireHub\Jezgra">Jezgra</abbr></a></li>
                                     </ul>
                         </section>
@@ -70,8 +71,17 @@
                                     <li><a href="packages/Sustav-HTTP.html"><abbr title="\Sustav\HTTP">HTTP</abbr></a></li>
                                     <li><a href="packages/Sustav-Konzola.html"><abbr title="\Sustav\Konzola">Konzola</abbr></a></li>
                                     <li><a href="packages/Sustav-Test.html"><abbr title="\Sustav\Test">Test</abbr></a></li>
+                                    <li><a href="packages/Sustav-Konfiguracija.html"><abbr title="\Sustav\Konfiguracija">Konfiguracija</abbr></a></li>
+                                    <li><a href="packages/Sustav-Kontroler.html"><abbr title="\Sustav\Kontroler">Kontroler</abbr></a></li>
+                                    <li><a href="packages/Sustav-Model.html"><abbr title="\Sustav\Model">Model</abbr></a></li>
+                                    <li><a href="packages/Sustav-Posrednici.html"><abbr title="\Sustav\Posrednici">Posrednici</abbr></a></li>
+                                    <li><a href="packages/Sustav-Sadrzaj.html"><abbr title="\Sustav\Sadrzaj">Sadrzaj</abbr></a></li>
                             </ul>
                                 <h3 class="phpdocumentor-sidebar__root-package"><a href="packages/Application.html"><abbr title="\Application">Application</abbr></a></h3>
+                                <h3 class="phpdocumentor-sidebar__root-package"><a href="packages/Aplikacija.html"><abbr title="\Aplikacija">Aplikacija</abbr></a></h3>
+                        <ul class="phpdocumentor-list">
+                                    <li><a href="packages/Aplikacija-Konfiguracija.html"><abbr title="\Aplikacija\Konfiguracija">Konfiguracija</abbr></a></li>
+                            </ul>
                         </section>
     
     <section class="phpdocumentor-sidebar__category">
@@ -174,6 +184,20 @@ za više mjesta u sustavu i aplikacijama</p>
 </dt>
 <dd>### Pročitaj env zapis</dd>
 
+            <dt class="phpdocumentor-table-of-contents__entry -function -">
+    <a href="namespaces/default.html#function_konfiguracija">konfiguracija()</a>
+    <span>
+                        &nbsp;: string|int|float|bool|array&lt;string|int, mixed&gt;|null|<abbr title="\UnitEnum">UnitEnum</abbr>    </span>
+</dt>
+<dd>### Dohvati konfiguracijski zapis</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -function -">
+    <a href="namespaces/default.html#function_sadrzaj">sadrzaj()</a>
+    <span>
+                        &nbsp;: <abbr title="\Sadrzaj">Sadrzaj</abbr>    </span>
+</dt>
+<dd>### Učitaj sadržaj</dd>
+
     </dl>
 
 
@@ -193,7 +217,7 @@ za više mjesta u sustavu i aplikacijama</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="jezgra/firehub.Pomagaci.php"><a href="files/jezgra-firehub-pomagaci.html"><abbr title="jezgra/firehub.Pomagaci.php">firehub.Pomagaci.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">37</span>
+    <span class="phpdocumentor-element-found-in__line">39</span>
 
     </aside>
 
@@ -272,7 +296,7 @@ Poruka koja će se zabilježiti u log.
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="jezgra/firehub.Pomagaci.php"><a href="files/jezgra-firehub-pomagaci.html"><abbr title="jezgra/firehub.Pomagaci.php">firehub.Pomagaci.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">58</span>
+    <span class="phpdocumentor-element-found-in__line">60</span>
 
     </aside>
 
@@ -329,6 +353,118 @@ Zadana vrijednost env zapisa ukoliko ne postoji traženi env zapis.
     <span class="phpdocumentor-signature__response_type">string|int|float|bool|null</span>
             &mdash;
         
+    
+</article>
+                    <article class="phpdocumentor-element -function - ">
+    <h4 class="phpdocumentor-element__name" id="function_konfiguracija">
+        konfiguracija()
+        <a href="namespaces/default.html#function_konfiguracija" class="headerlink"><i class="fas fa-link"></i></a>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="jezgra/firehub.Pomagaci.php"><a href="files/jezgra-firehub-pomagaci.html"><abbr title="jezgra/firehub.Pomagaci.php">firehub.Pomagaci.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">80</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">### Dohvati konfiguracijski zapis</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility"></span>
+                <span class="phpdocumentor-signature__name">konfiguracija</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$naziv</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">string|int|float|bool|array&lt;string|int, mixed&gt;|null|<abbr title="\UnitEnum">UnitEnum</abbr></span></code>
+
+    
+        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+    <dl class="phpdocumentor-argument-list">
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$naziv</span>
+                : <span class="phpdocumentor-signature__argument__return-type">string</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"><p>
+Naziv konfiguracijskog zapisa.
+<p>
+</section>
+
+            </dd>
+            </dl>
+
+    
+    <h5 class="phpdocumentor-tag-list__heading" id="tags">
+        Tags
+        <a href="#tags" class="headerlink"><i class="fas fa-link"></i></a>
+    </h5>
+    <dl class="phpdocumentor-tag-list">
+                                    <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">since</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                            <span class="phpdocumentor-tag-link">0.3.5.pre-alpha.M3</span>
+                                                                                
+                                             
+                                    </dd>
+                                                <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">throws</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                <span class="phpdocumentor-tag-link"><abbr title="\Kontejner_Greska">Kontejner_Greska</abbr></span>
+                                                            
+                                                 <section class="phpdocumentor-description"><p>Ukoliko se ne može spremiti instanca Konfiguracije.</p>
+</section>
+
+                                    </dd>
+                        </dl>
+
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+    <span class="phpdocumentor-signature__response_type">string|int|float|bool|array&lt;string|int, mixed&gt;|null|<abbr title="\UnitEnum">UnitEnum</abbr></span>
+            &mdash;
+            <section class="phpdocumentor-description"><p>Vrijednosti konfiguracijskog zapisa.</p>
+</section>
+
+    
+</article>
+                    <article class="phpdocumentor-element -function - ">
+    <h4 class="phpdocumentor-element__name" id="function_sadrzaj">
+        sadrzaj()
+        <a href="namespaces/default.html#function_sadrzaj" class="headerlink"><i class="fas fa-link"></i></a>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="jezgra/firehub.Pomagaci.php"><a href="files/jezgra-firehub-pomagaci.html"><abbr title="jezgra/firehub.Pomagaci.php">firehub.Pomagaci.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">94</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">### Učitaj sadržaj</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility"></span>
+                <span class="phpdocumentor-signature__name">sadrzaj</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type"><abbr title="\Sadrzaj">Sadrzaj</abbr></span></code>
+
+    
+    
+    
+    <h5 class="phpdocumentor-tag-list__heading" id="tags">
+        Tags
+        <a href="#tags" class="headerlink"><i class="fas fa-link"></i></a>
+    </h5>
+    <dl class="phpdocumentor-tag-list">
+                                    <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">since</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                            <span class="phpdocumentor-tag-link">0.4.4.pre-alpha.M4</span>
+                                                                                
+                                             
+                                    </dd>
+                        </dl>
+
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+    <span class="phpdocumentor-signature__response_type"><abbr title="\Sadrzaj">Sadrzaj</abbr></span>
+            &mdash;
+            <section class="phpdocumentor-description"><p>Nacrtaj sadržaj.</p>
+</section>
+
     
 </article>
             </section>

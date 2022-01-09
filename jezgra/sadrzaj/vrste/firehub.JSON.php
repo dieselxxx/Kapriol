@@ -9,7 +9,7 @@
  * @license GNU General Public License version 3 - [https://opensource.org/licenses/GPL-3.0](https://opensource.org/licenses/GPL-3.0)
  *
  * @version 1.0
- * @package Sustav\Jezgra
+ * @package Sustav\Sadrzaj
  */
 
 namespace FireHub\Jezgra\Sadrzaj\Vrste;

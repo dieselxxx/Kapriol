@@ -52,6 +52,32 @@ return [
         'servisi' => [
             \FireHub\Jezgra\Komponente\Rute\Servisi\Datoteka::class => []
         ]
+    ],
+
+    \FireHub\Jezgra\Komponente\Predmemorija\Predmemorija::class => [
+        'servisi' => [
+            \FireHub\Jezgra\Komponente\Predmemorija\Servisi\MemCache::class => []
+        ]
+    ],
+
+    \FireHub\Jezgra\Komponente\BazaPodataka\BazaPodataka::class => [
+        'servisi' => [
+            \FireHub\Jezgra\Komponente\BazaPodataka\Servisi\MSSQL::class => [],
+            \FireHub\Jezgra\Komponente\BazaPodataka\Servisi\MySQL::class => [],
+            \FireHub\Jezgra\Komponente\BazaPodataka\Servisi\MongoDB::class => []
+        ]
+    ],
+
+    \FireHub\Jezgra\Komponente\Kolacic\Kolacic::class => [
+        'servisi' => [
+            \FireHub\Jezgra\Komponente\Kolacic\Servisi\Kolacic_Servis::class => []
+        ]
+    ],
+
+    FireHub\Jezgra\Komponente\Sesija\Sesija::class => [
+        'servisi' => [
+            \FireHub\Jezgra\Komponente\Sesija\Servisi\Datoteka::class => []
+        ]
     ]
 
 ];

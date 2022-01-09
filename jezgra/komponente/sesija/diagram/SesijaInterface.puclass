@@ -1,0 +1,16 @@
+@startuml
+
+package Sustav\Jezgra <<Node>> #FBE9E7 {
+    namespace FireHub\Jezgra\Komponente\Sesija {
+        interface Sesija_Interface #00897B;line:00796B {
+            + status ():bool
+            + zapisi (string $kljuc, mixed $vrijednost):bool
+            + procitaj (string $kljuc):mixed
+            + uredi (string $kljuc, mixed $vrijednost):bool
+            + izbrisi (string $kljuc):bool
+            + unisti ():bool
+        }
+    }
+}
+
+@enduml
