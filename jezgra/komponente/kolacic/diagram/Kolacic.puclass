@@ -1,0 +1,28 @@
+@startuml
+
+package Sustav\Jezgra <<Node>> #FBE9E7 {
+    namespace FireHub\Jezgra\Komponente\Kolacic {
+        class Kolacic #00897B;line:00796B {
+            # string $naziv
+            # string $vrijednost
+            # int $vrijeme
+            # string $putanja
+            # string $domena
+            # bool $ssl
+            # bool $http
+            # string $ista_stranica
+            + __construct ():void
+            + naziv (string $naziv):self
+            + vrijednost (string $vrijednost):self
+            + vrijeme (int $sekundi):self
+            + putanja (string $putanja):self
+            + domena (string $naziv):self
+            + ssl (bool $ukljuceno):self
+            + http (bool $ukljuceno):self
+            + ista_stranica (string $ista_stranica):self
+            + napravi ():Kolacic_Interface
+        }
+    }
+}
+
+@enduml

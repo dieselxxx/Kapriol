@@ -1,0 +1,35 @@
+@startuml
+
+package Sustav\Jezgra <<Node>> #FBE9E7 {
+    namespace FireHub\Jezgra\Komponente\Predmemorija {
+        class Predmemorija #00897B;line:00796B {
+            # ?string $servis
+            # string $host
+            # int $port
+            # string $korisnicko_ime
+            # string $lozinka
+            # bool $trajno
+            # int $tezina
+            # float $odziv
+            # int $interval_ponovni_pokusaj
+            # string $prefiks
+            # int $prag_duljine_kompresije
+            # float $kompresija
+            # array $dodatni_serveri
+            + __construct ():void
+            + server (string $host, int $port):self
+            + vjerodajnice (string $korisnicko_ime, string $lozinka):self
+            + kompresija (int $prag_duljine_kompresije, float $kompresija):self
+            + trajno(bool $trajno):self
+            + tezina(int $tezina):self
+            + odziv(float $odziv):self
+            + prefiks(string $prefiks):self
+            + interval_ponovni_pokusaj(int $interval_ponovni_pokusaj):self
+            + dodatni_serveri(array $dodatni_serveri):self
+            - konfiguracijaDodatniServeri ():array
+            + napravi ():Predmemorija_Interface
+        }
+    }
+}
+
+@enduml

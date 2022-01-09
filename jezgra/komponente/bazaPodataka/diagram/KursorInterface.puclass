@@ -1,0 +1,11 @@
+@startuml
+
+package Sustav\Jezgra <<Node>> #FBE9E7 {
+    namespace FireHub\Jezgra\Komponente\BazaPodataka {
+        interface Kursor_Interface #00897B;line:00796B {
+            + vrijednost ():string
+        }
+    }
+}
+
+@enduml

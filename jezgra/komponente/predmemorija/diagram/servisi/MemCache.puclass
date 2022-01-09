@@ -1,0 +1,26 @@
+@startuml
+
+package Sustav\Jezgra <<Node>> #FBE9E7 {
+    namespace FireHub\Jezgra\Komponente\Predmemorija\Servisi {
+        class MemCache_Servis #00897B;line:00796B {
+            - Memcache $memcache
+            - Predmemorija $posluzitelj
+            + __construct (Predmemorija $posluzitelj):void
+            - konekcija ():void
+            - konekcija_multi (array $konekcija):bool
+            - konekcija_single ():bool
+            + dodaj (string $kljuc, mixed $vrijednost, bool $kompresija, int $vrijeme):bool
+            + zamijeni (string $kljuc, mixed $vrijednost, bool $kompresija, int $vrijeme):bool
+            + zapisi (string $kljuc, mixed $vrijednost, bool $kompresija, int $vrijeme):bool
+            + dohvati (array|string $kljuc):string|array|false
+            + izbrisi (string $kljuc):bool
+            + ocisti ():bool
+            + sve ():array
+            + komanda (string $komadna):string
+            - kompresija ():bool
+            + __destruct():void
+        }
+    }
+}
+
+@enduml

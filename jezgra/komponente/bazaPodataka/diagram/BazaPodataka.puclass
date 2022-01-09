@@ -1,0 +1,35 @@
+@startuml
+
+package Sustav\Jezgra <<Node>> #FBE9E7 {
+    namespace FireHub\Jezgra\Komponente\BazaPodataka {
+        class BazaPodataka #00897B;line:00796B {
+            # string $servis
+            # string $host
+            # protected int $port
+            # string $instanca
+            # string $baza
+            # string $shema
+            # string $korisnicko_ime
+            # string $lozinka
+            # string $karakteri
+            # int $odziv
+            # bool $stream_u_dijelovima
+            # string $kursor
+            # ?string $upit
+            # ?array $transakcija
+            + server (string $host, int $port, string $instanca = ''):self
+            + baza (string $naziv):self
+            + shema (string $naziv)
+            + karakteri (string $vrsta)
+            + odziv (int $sekundi)
+            + posalji_stream_pri_izvrsavanju(bool $ukljuceno)
+            + kursor (Kursor_Interface $vrsta)
+            + upit (string $upit):self
+            + vjerodajnice (string $korisnicko_ime, string $lozinka):self
+            + transakcija (string ...$upit):self
+            + napravi ():BazaPodataka_Interface
+        }
+    }
+}
+
+@enduml

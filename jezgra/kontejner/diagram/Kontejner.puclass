@@ -1,0 +1,26 @@
+@startuml
+
+package Jezgra <<Node>> #FBE9E7 {
+    namespace FireHub\Jezgra\Kontejner {
+        abstract class Kontejner #00897B;line:00796B {
+            # {static} array $instance
+            + __construct (string $naziv):void
+            + dohvati ():object
+            + singleton ():object
+            + generator ():Generator
+            # {abstract} parameteri ():array
+            - spremiNovuInstancu ():bool
+            # autozicaObjekt ():array
+            + autozicaMetoda (string $metoda):array
+            - autozica (array $podatci):array
+            - refleksijaParametriFiltar (array $parametri):array
+            - jeSingleton ():bool
+            # atributiObjekt ():array
+            + atributiMetoda (string $metoda):array
+            - obradiAtribute (array $atributi):array
+            - refleksija ():ReflectionClass
+        }
+    }
+}
+
+@enduml

@@ -1,0 +1,13 @@
+@startuml
+
+package Sustav\Jezgra <<Node>> #FBE9E7 {
+    namespace FireHub\Jezgra\Komponente\Log\Servisi\Dostavljac {
+        class Ispisi #00897B;line:00796B {
+            + otvori ():self
+            + zapisi (string $vrsta_objekta, int $level, string $level_naziv, int $kod, string $datoteka, int $linija, string $poruka, array $debug):self
+            + zatvori ():self
+        }
+    }
+}
+
+@enduml

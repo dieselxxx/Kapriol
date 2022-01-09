@@ -1,0 +1,12 @@
+@startuml
+
+package Sadrzaj <<Node>> #FBE9E7 {
+    namespace FireHub\Jezgra\Sadrzaj\Vrste {
+        class HTML #FDD835;line:FBC02D {
+            + __construct (array $podatci):void
+            + ispisi ():string
+        }
+    }
+}
+
+@enduml

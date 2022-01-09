@@ -1,0 +1,11 @@
+@startuml
+
+package Sustav\Konfiguracija <<Node>> #FBE9E7 {
+    namespace FireHub\Jezgra\Komponente\Konfiguracija\Servisi {
+        interface Citac_Interface #00897B;line:00796B {
+            + ucitaj (string $putanja):array
+        }
+    }
+}
+
+@enduml

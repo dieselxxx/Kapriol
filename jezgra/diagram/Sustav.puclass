@@ -1,0 +1,13 @@
+@startuml
+
+package Jezgra <<Node>> #FBE9E7 {
+    namespace FireHub\Jezgra {
+        class Kernel #00897B;line:00796B {
+            + pokreni (Kernel_Enumerator $kernel):Kernel
+            - autoload ():self
+            - kernel (Kernel_Enumerator $kernel):Kernel
+        }
+    }
+}
+
+@enduml

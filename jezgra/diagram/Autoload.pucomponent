@@ -1,0 +1,10 @@
+@startuml
+allowmixing
+
+package Jezgra <<Node>> #FBE9E7 {
+    namespace FireHub\Jezgra {
+        component Autoload
+    }
+}
+
+@enduml

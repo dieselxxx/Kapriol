@@ -1,0 +1,22 @@
+@startuml
+
+package Sustav\Jezgra <<Node>> #FBE9E7 {
+    namespace FireHub\Jezgra\Komponente\Log {
+        class Log #00897B;line:00796B {
+            # array $dostavljaci
+            # Level $level
+            # string $poruka
+            # int $kod
+            # ?Throwable $greska
+            + __construct ():void
+            + dostavljaci (array $lista):self
+            + level(Level $level):self
+            + poruka(string $poruka):self
+            + kod(int $kod):self
+            + greska(Throwable $greska):self
+            + napravi ():Log_Interface
+        }
+    }
+}
+
+@enduml

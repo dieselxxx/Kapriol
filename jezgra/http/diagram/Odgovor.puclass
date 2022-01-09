@@ -1,0 +1,25 @@
+@startuml
+
+package HTTP <<Node>> #FBE9E7 {
+    namespace FireHub\Jezgra\HTTP {
+        class Odgovor #00897B;line:00796B {
+            + Datoteka $datoteka
+            + HTTP_StatusKod $kod
+            + HTTP_Vrsta $vrsta
+            + string $karakteri
+            + string $jezik
+            + array $predmemorija
+            + int $predmemorija_vrijeme
+            - string $sadrzaj
+            + __construct (Datoteka $datoteka, HTTP_StatusKod $kod, HTTP_Vrsta $vrsta, string $karakteri, string $jezik, array $predmemorija, int $predmemorija_vrijeme, string $sadrzaj):void
+            + sadrzaj ():string
+            - postaviStatus ():self
+            - postaviVrstu ():self
+            - postaviJezik ():self
+            - postaviPredmemoriju ():self
+            - poweredBy ():self
+        }
+    }
+}
+
+@enduml

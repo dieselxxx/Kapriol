@@ -1,0 +1,17 @@
+@startuml
+
+package Jezgra <<Node>> #FBE9E7 {
+    namespace FireHub\Jezgra\Komponente {
+        class Servis_Kontejner #00897B;line:00796B {
+            - const POSLUZITELJI
+            - array $posluzitelji
+            - Servis_Posluzitelj $posluzitelj
+            + __construct (Servis_Posluzitelj $posluzitelj):void
+            # parameteri ():array
+            - servis ():string
+            - zadaniServis ():string
+        }
+    }
+}
+
+@enduml

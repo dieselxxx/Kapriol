@@ -1,0 +1,80 @@
+'' Author: Danijel Galić
+'' Copyright: 2022 FireHub Web Application Framework
+!$THEME = "firehub"
+
+''
+'' pozadinska boja
+''
+skinparam backgroundColor "white""
+skinparam useBetaStyle false
+
+''
+'' boje
+''
+!$CRVENA = "#E53935"
+!$CRVENA_TAMNO = "#B71C1C"
+!$ROZA = "#D81B60"
+!$LJUBICASTA = "#8E24AA"
+!$DUBOKO_LJUBICASTA = "#5E35B1"
+!$INDIGO = "#3949AB"
+!$PLAVA = "#1E88E5"
+!$SVIJETLO_PLAVA = "#039BE5"
+!$CIJAN = "#00ACC1"
+!$TEAL = "#00897B"
+!$TEAL_TAMNO = "#00796B"
+!$ZELENA = "#43A047"
+!$SVIJETLO_ZELENA = "#7CB342"
+!$LIMETA = "#C0CA33"
+!$ZUTA = "#FDD835"
+!$JANTAR = "#FFB300"
+!$NARANCASTA = "#FB8C00"
+!$DUBOKO_NARANCASTA = "#F4511E"
+!$DUBOKO_NARANCASTA_TAMNO = "#E64A19"
+!$SMEDJA = "#6D4C41"
+!$SIVA = "#757575"
+!$PLAVO_SIVA = "#546E7A"
+!$TEXT = "#FAFAFA"
+!$TAMNA = "#212121"
+
+''
+'' procedure
+''
+!procedure $primarna_shema()
+	FontColor                   $TEXT
+	FontStyle                   "normal"
+	BorderStyle                 solid
+!endprocedure
+!procedure $narancasta()
+	BackgroundColor             $DUBOKO_NARANCASTA
+	BorderColor                 $DUBOKO_NARANCASTA_TAMNO
+!endprocedure
+
+''
+'' globalne varijable
+''
+skinparam defaultFontName       "Monaco"
+skinparam defaultFontSize       12
+skinparam dpi                   100
+skinparam shadowing             true
+skinparam padding               1
+
+''
+'' komponente
+''
+skinparam package {
+    $primarna_shema()
+    BackgroundColor             "white""
+  	BorderColor                 $DUBOKO_NARANCASTA
+  	FontSize                    8
+	FontColor                   $DUBOKO_NARANCASTA
+	BorderThickness             1
+}
+skinparam class {
+    $primarna_shema()
+    $narancasta()
+    AttributeIconSize           12
+}
+skinparam component {
+    $primarna_shema()
+    $narancasta()
+}
