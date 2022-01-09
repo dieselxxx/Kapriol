@@ -9,13 +9,16 @@
 
 use FireHub\Jezgra\Sustav;
 use FireHub\Jezgra\Enumeratori\Kernel;
+use FireHub\Jezgra\Enumeratori\Kernel_Enumerator;
 
 /**
  * Pokreni sustav
  */
 require __DIR__.'/../jezgra/firehub.Sustav.php';
 require __DIR__.'/../jezgra/enumeratori/firehub.Kernel.php';
+require __DIR__.'/../jezgra/firehub.Enumerator.php';
+require __DIR__.'/../jezgra/enumeratori/firehub.Kernel.Enumerator.php';
 
 $sustav = new Sustav();
-$odgovor = $sustav->pokreni(Kernel::HTTP);
+$odgovor = $sustav->pokreni(Kernel_Enumerator::HTTP());
 echo $odgovor->sadrzaj();
