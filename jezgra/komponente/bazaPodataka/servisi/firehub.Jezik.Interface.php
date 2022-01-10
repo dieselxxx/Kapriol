@@ -14,8 +14,11 @@
 
 namespace FireHub\Jezgra\Komponente\BazaPodataka\Servisi;
 
+use stdClass;
+
 /**
  * ### Osnovni interface za sve jezike baza podataka
+ *
  * @since 0.6.0.alpha.M1
  *
  * @package Sustav\Jezgra
@@ -32,9 +35,12 @@ interface Jezik_Interface {
      * @param string $tabela <p>
      * Naziv tabele upita.
      * </p>
+     * @param stdClass $upit <p>
+     * Upit prema bazi podataka.
+     * </p>
      *
      * @return string Upit preko jezika.
      */
-    public function obradi (string $baza, string $tabela):string;
+    public function obradi (string $baza, string $tabela, stdClass $upit):string;
 
 }
