@@ -67,9 +67,10 @@ $datotekaFireHub = static function (array $putanja_niz, string $objekt):string {
     }
 
     $naziv_objekta = $vrsta
-        ? Prefiks::cases()[0]->value . '.' . $ime . '.' . $vrsta . '.php'
-        : Prefiks::cases()[0]->value . '.' . $ime . '.' . $vrsta . 'php';
-        //?: Prefiks_Enumerator::cases()[0] . '.' . $ime . '.' . $vrsta . 'php';
+        //? Prefiks::cases()[0]->value . '.' . $ime . '.' . $vrsta . '.php'
+        //: Prefiks::cases()[0]->value . '.' . $ime . '.' . $vrsta . 'php';
+        ? Prefiks_Enumerator::cases()[0] . '.' . $ime . '.' . $vrsta . '.php'
+        : Prefiks_Enumerator::cases()[0] . '.' . $ime . '.' . $vrsta . 'php';
 
     return $putanja . DIRECTORY_SEPARATOR . $naziv_objekta;
 
