@@ -16,6 +16,7 @@ namespace FireHub\Jezgra\Komponente\BazaPodataka\Servisi;
 
 use FireHub\Jezgra\Komponente\BazaPodataka\BazaPodataka;
 use FireHub\Jezgra\Komponente\BazaPodataka\BazaPodataka_Interface;
+use FireHub\Jezgra\Komponente\BazaPodataka\Servisi\Jezik\MySQL as MySQL_Jezik;
 use FireHub\Jezgra\Komponente\Log\Enumeratori\Level;
 use FireHub\Jezgra\Komponente\BazaPodataka\Greske\BazaPodataka_Greska;
 use FireHub\Jezgra\Kontejner\Greske\Kontejner_Greska;
@@ -53,12 +54,16 @@ final class MySQL implements BazaPodataka_Interface {
      * @param BazaPodataka $posluzitelj <p>
      * Poslužitelj servisa.
      * </p>
+     * @param MySQL_Jezik $jezik <p>
+     * Jezik baze podataka.
+     * </p>
      *
      * @throws BazaPodataka_Greska Ukoliko se ne može spojiti na MSSQL server, ne mogu obraditi MySQL upit ili transakciju.
      * @throws Kontejner_Greska Ukoliko se ne može spremiti instanca Log-a.
      */
     public function __construct (
-        private BazaPodataka $posluzitelj
+        private BazaPodataka $posluzitelj,
+        private MySQL_Jezik $jezik
     ) {
 
         $this->konekcija = mysqli_connect(
@@ -79,9 +84,17 @@ final class MySQL implements BazaPodataka_Interface {
         // provjera vrste upita
         switch (!null) {
 
-            case $this->posluzitelj->upit :
+            case $this->posluzitelj->upit->sirovi :
 
-                $this->upit();
+                $this->upit($this->posluzitelj->upit->sirovi);
+
+                break;
+
+            case $this->posluzitelj->upit : // ako postoji upit
+
+                $this->upit(
+                    $this->jezik->obradi($this->posluzitelj->baza, $this->posluzitelj->tabela, $this->posluzitelj->upit)
+                );
 
                 break;
 
@@ -172,17 +185,21 @@ final class MySQL implements BazaPodataka_Interface {
      * ### Pošalji upit prema MySQL serveru
      * @since 0.5.1.pre-alpha.M5
      *
+     * @param string $upit <p>
+     * Upit prema bazi podataka.
+     * </p>
+     *
      * @throws BazaPodataka_Greska Ukoliko ne mogu obraditi MySQL upit.
      * @throws Kontejner_Greska Ukoliko se ne može spremiti instanca Log-a.
      *
      * @return void
      */
-    private function upit ():void {
+    private function upit (string $upit):void {
 
         if (
             !$this->upit = mysqli_query(
                 $this->konekcija,
-                $this->posluzitelj->upit
+                $upit
             )
         ) {
 
@@ -219,7 +236,7 @@ final class MySQL implements BazaPodataka_Interface {
                 if (
                     !$upit = mysqli_prepare(
                         $this->konekcija,
-                        $transakcija
+                        $this->jezik->obradi($transakcija->baza, $transakcija->tabela, $transakcija->upit)
                     )
                 ) {
 
