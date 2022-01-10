@@ -218,7 +218,7 @@ final class BazaPodataka extends Servis_Posluzitelj {
      */
     public function napravi ():object {
 
-        return (new Servis_Kontejner($this))->singleton();
+        return (new Servis_Kontejner($this))->dohvati();
 
     }
 
