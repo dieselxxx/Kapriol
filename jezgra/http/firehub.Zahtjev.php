@@ -18,6 +18,7 @@ namespace FireHub\Jezgra\HTTP;
 
 use FireHub\Jezgra\Zahtjev as Zahtjev_Interface;
 use FireHub\Jezgra\HTTP\Enumeratori\Metoda as HTTP_Metoda;
+use FireHub\Jezgra\HTTP\Enumeratori\Metoda_Enumerator as HTTP_Metoda_Enumerator;
 
 /**
  * ### HTTP zahtjev
@@ -79,9 +80,9 @@ final class Zahtjev implements Zahtjev_Interface {
      */
     public function metoda ():string {
 
-        if (isset($_SERVER['REQUEST_METHOD']) && HTTP_Metoda::tryFrom($_SERVER['REQUEST_METHOD'])) {
+        if (isset($_SERVER['REQUEST_METHOD']) && HTTP_Metoda_Enumerator::tryFrom($_SERVER['REQUEST_METHOD'])) {
 
-            return HTTP_Metoda::from($_SERVER['REQUEST_METHOD'])->value;
+            return HTTP_Metoda_Enumerator::from($_SERVER['REQUEST_METHOD'])->value;
 
         }
 
