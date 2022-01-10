@@ -250,9 +250,9 @@ final class MSSQL implements BazaPodataka_Interface {
                     $this->jezik->obradi($transakcija->baza, $transakcija->tabela, $transakcija->upit),
                     [],
                     [
-                        'QueryTimeout' => $objekt->odziv,
-                        'SendStreamParamsAtExec' => $objekt->posalji_stream_pri_izvrsavanju,
-                        'Scrollable' => $objekt->kursor
+                        'QueryTimeout' => $transakcija->odziv,
+                        'SendStreamParamsAtExec' => $transakcija->posalji_stream_pri_izvrsavanju,
+                        'Scrollable' => $transakcija->kursor
                     ]
                 );
 
