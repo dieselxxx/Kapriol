@@ -34,7 +34,7 @@ use FireHub\Jezgra\Atributi\Zadano;
  * @property-read bool $posalji_stream_pri_izvrsavanju Slanje svih podataka pri izvršavanju u upita ili u dijelovima
  * @property-read Kursor_Interface $kursor Način redoslijeda odabiranja redaka
  * @property-read string $upit Upit prema bazi podataka
- * @property-read array $transakcija Niz upita prema bazi podataka u obliku transakcije
+ * @property-read string[]|string| $transakcija Niz upita prema bazi podataka u obliku transakcije
  *
  * @method $this baza (string $naziv) Baza baze podataka
  * @method $this shema (string $naziv) Shema baze podataka
@@ -135,7 +135,7 @@ final class BazaPodataka extends Servis_Posluzitelj {
      *
      * @todo Dodati slagalicu upita na bazu podataka.
      */
-    protected ?string $upit = null;
+    protected null|string $upit = null;
 
     /**
      * ### Niz upita prema bazi podataka u obliku transakcije
