@@ -160,18 +160,11 @@ final class Datoteka implements Rute_Interface {
         // ukoliko postoje rute u predmemoriji
         if ($rute) {
 
+            // isprazni rute
+            $this->rute = [];
+
             // unserialize ruta u niz
-            $rute = unserialize($rute);
-
-            array_walk(
-                $rute,
-                function (array $ruta):bool {
-
-                    // dodaj rutu u niz ruta
-                    return $this->dodaj($ruta['http_metoda'], $ruta['url'], $ruta['podatci']);
-
-                }
-            );
+            $this->rute = unserialize($rute);
 
         }
 
