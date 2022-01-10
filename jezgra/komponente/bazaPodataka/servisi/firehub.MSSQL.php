@@ -16,6 +16,7 @@ namespace FireHub\Jezgra\Komponente\BazaPodataka\Servisi;
 
 use FireHub\Jezgra\Komponente\BazaPodataka\BazaPodataka;
 use FireHub\Jezgra\Komponente\BazaPodataka\BazaPodataka_Interface;
+use FireHub\Jezgra\Komponente\BazaPodataka\Servisi\Jezik\SQL;
 use FireHub\Jezgra\Komponente\Log\Enumeratori\Level;
 use FireHub\Jezgra\Komponente\BazaPodataka\Greske\BazaPodataka_Greska;
 use FireHub\Jezgra\Kontejner\Greske\Kontejner_Greska;
@@ -53,12 +54,16 @@ final class MSSQL implements BazaPodataka_Interface {
      * @param BazaPodataka $posluzitelj <p>
      * Poslužitelj servisa.
      * </p>
+     * @param SQL $jezik <p>
+     * Jezik baze podataka.
+     * </p>
      *
      * @throws BazaPodataka_Greska Ukoliko se ne može spojiti na MSSQL server, ne mogu obraditi MySQL upit ili transakciju.
      * @throws Kontejner_Greska Ukoliko se ne može spremiti instanca Log-a ili konfiguracije.
      */
     public function __construct (
-        private BazaPodataka $posluzitelj
+        private BazaPodataka $posluzitelj,
+        private SQL $jezik
     ) {
 
         if (
@@ -85,9 +90,17 @@ final class MSSQL implements BazaPodataka_Interface {
         // provjera vrste upita
         switch (!null) {
 
-            case $this->posluzitelj->upit :
+            case $this->posluzitelj->upit->sirovi :
 
-                $this->upit();
+                $this->upit($this->posluzitelj->upit->sirovi);
+
+                break;
+
+            case $this->posluzitelj->upit : // ako postoji upit
+
+                $this->upit(
+                    $this->jezik->obradi($this->posluzitelj->baza, $this->posluzitelj->tabela, $this->posluzitelj->upit)
+                );
 
                 break;
 
@@ -178,17 +191,21 @@ final class MSSQL implements BazaPodataka_Interface {
      * ### Pošalji upit prema MSSQL serveru
      * @since 0.5.1.pre-alpha.M5
      *
+     * @param string $upit <p>
+     * Upit prema bazi podataka.
+     * </p>
+     *
      * @throws BazaPodataka_Greska Ukoliko ne mogu obraditi MSSQL upit.
      * @throws Kontejner_Greska Ukoliko se ne može spremiti instanca Log-a.
      *
      * @return void
      */
-    private function upit ():void {
+    private function upit (string $upit):void {
 
         if (
             !$this->upit = sqlsrv_query(
                 $this->konekcija,
-                $this->posluzitelj->upit,
+                $upit,
                 [],
                 [
                     'QueryTimeout' => $this->posluzitelj->odziv,
@@ -226,11 +243,11 @@ final class MSSQL implements BazaPodataka_Interface {
         // pripremi sve upite
         array_walk(
             $this->posluzitelj->transakcija,
-            function ($objekt) {
+            function ($transakcija) {
 
                 $this->lista_upita[] = sqlsrv_query(
                     $this->konekcija,
-                    $this->posluzitelj->upit,
+                    $this->jezik->obradi($transakcija->baza, $transakcija->tabela, $transakcija->upit),
                     [],
                     [
                         'QueryTimeout' => $objekt->odziv,
