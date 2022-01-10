@@ -80,11 +80,26 @@ final class MongoDB implements BazaPodataka_Interface {
 
         }
 
-        match (null) {
-            $this->posluzitelj->upit => $this->transakcija(),
-            $this->posluzitelj->transakcija => $this->upit(),
-            default => throw new BazaPodataka_Greska(_('Ne postoji niti upit niti transakcija prema bazi podataka!'))
-        };
+        // provjera vrste upita
+        switch (!null) {
+
+            case $this->posluzitelj->upit :
+
+                $this->upit();
+
+                break;
+
+            case $this->posluzitelj->transakcija :
+
+                $this->transakcija();
+
+                break;
+
+            default :
+
+                throw new BazaPodataka_Greska(_('Ne postoji niti upit niti transakcija prema bazi podataka!'));
+
+        }
 
     }
 

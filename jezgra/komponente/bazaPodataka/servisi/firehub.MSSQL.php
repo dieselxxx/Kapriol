@@ -82,11 +82,26 @@ final class MSSQL implements BazaPodataka_Interface {
         sqlsrv_configure('LogSeverity', konfiguracija('baza_podataka.greske'));
         sqlsrv_configure('LogSubsystems', konfiguracija('baza_podataka.vrste_greski'));
 
-        match (null) {
-            $this->posluzitelj->upit => $this->transakcija(),
-            $this->posluzitelj->transakcija => $this->upit(),
-            default => throw new BazaPodataka_Greska(_('Ne postoji niti upit niti transakcija prema bazi podataka!'))
-        };
+        // provjera vrste upita
+        switch (!null) {
+
+            case $this->posluzitelj->upit :
+
+                $this->upit();
+
+                break;
+
+            case $this->posluzitelj->transakcija :
+
+                $this->transakcija();
+
+                break;
+
+            default :
+
+                throw new BazaPodataka_Greska(_('Ne postoji niti upit niti transakcija prema bazi podataka!'));
+
+        }
 
     }
 
