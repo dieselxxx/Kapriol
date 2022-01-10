@@ -51,7 +51,7 @@ final class MySQL extends SQL implements Jezik_Interface {
      * ### Odaberi podatke
      * @since 0.6.0.alpha.M1
      *
-     * @return $this
+     * @return $this Instanca ovog objekta.
      */
     protected function odaberi ():self {
 
@@ -65,7 +65,7 @@ final class MySQL extends SQL implements Jezik_Interface {
      * ### Limit rezultata upita
      * @since 0.6.0.alpha.M1
      *
-     * @return string
+     * @return string Upit za limit.
      */
     protected function limit ():string {
 
@@ -79,9 +79,11 @@ final class MySQL extends SQL implements Jezik_Interface {
      * ### Formatiranje niza kolumni
      * @since 0.6.0.alpha.M1
      *
-     * @param array|string $lista
+     * @param array|string $lista <p>
+     * Lista kolumni za formatiranje.
+     * </p>
      *
-     * @return string
+     * @return string Formtirani niz kolumni.
      */
     protected function kolumne (array|string $lista):string {
 
