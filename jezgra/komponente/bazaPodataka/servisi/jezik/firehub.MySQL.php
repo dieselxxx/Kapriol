@@ -14,17 +14,91 @@
 
 namespace FireHub\Jezgra\Komponente\BazaPodataka\Servisi\Jezik;
 
+use FireHub\Jezgra\Komponente\BazaPodataka\Servisi\Jezik_Interface;
+use stdClass;
+
 /**
- * ### MySQL query jezik
+ * ### Podservis za MySQL query jezik
  * @since 0.6.0.alpha.M1
  *
  * @package Sustav\Jezgra
  */
-class MySQL extends SQL {
+final class MySQL extends SQL implements Jezik_Interface {
 
-    public function obradi (string $baza, string $tabela):string {
+    /**
+     * @inheritDoc
+     */
+    public function obradi (string $baza, string $tabela, stdClass $upit):string {
 
-        return 'SELECT * FROM test LIMIT 2';
+        $this->tabela = '`'.$baza.'`.'.'`'.$tabela.'`';
+        $this->upit = $upit;
+
+        match ($upit->vrsta) {
+            'odaberi' => $this->odaberi()->gdje(),
+            'umetni' => $this->umetni(),
+            'azuriraj' => $this->azuriraj(),
+            'izbrisi' => $this->izbrisi()->gdje()
+        };
+
+        return match ($upit->vrsta) {
+            'odaberi' => "SELECT * FROM ($this->rezultat) `upit` ORDER BY RedBroj{$this->limit()}",
+            default => $this->rezultat
+        };
+
+    }
+
+    /**
+     * ### Odaberi podatke
+     * @since 0.6.0.alpha.M1
+     *
+     * @return $this
+     */
+    protected function odaberi ():self {
+
+        $this->rezultat = "SELECT ROW_NUMBER() OVER (ORDER BY `{$this->poredaj()}` {$this->poredaj_redoslijed()}) AS RedBroj, {$this->kolumne($this->upit->kolumne)} FROM $this->tabela";
+
+        return $this;
+
+    }
+
+    /**
+     * ### Limit rezultata upita
+     * @since 0.6.0.alpha.M1
+     *
+     * @return string
+     */
+    protected function limit ():string {
+
+        return !is_null($this->upit->limit_pomak) && !is_null($this->upit->limit_broj_redaka)
+            ? ' LIMIT '.$this->upit->limit_broj_redaka.' OFFSET '.$this->upit->limit_pomak
+            : '';
+
+    }
+
+    /**
+     * ### Formatiranje niza kolumni
+     * @since 0.6.0.alpha.M1
+     *
+     * @param array|string $lista
+     *
+     * @return string
+     */
+    protected function kolumne (array|string $lista):string {
+
+        if (is_array($lista)) {
+
+            array_walk(
+                $lista,
+                static function (&$kolumna) {
+                    return $kolumna = '`'.$kolumna.'`';
+                }
+            );
+
+            return implode(',', $lista);
+
+        }
+
+        return '`'.$lista.'`';
 
     }
 
