@@ -18,13 +18,17 @@ namespace FireHub\Jezgra\Komponente\BazaPodataka\Servisi;
 
 use FireHub\Jezgra\Komponente\BazaPodataka\BazaPodataka;
 use FireHub\Jezgra\Komponente\BazaPodataka\BazaPodataka_Interface;
+use FireHub\Jezgra\Komponente\BazaPodataka\Servisi\Jezik\NoSQLDokument;
 use FireHub\Jezgra\Komponente\Log\Enumeratori\Level;
 use FireHub\Jezgra\Komponente\BazaPodataka\Greske\BazaPodataka_Greska;
 use FireHub\Jezgra\Kontejner\Greske\Kontejner_Greska;
 use MongoDB\Driver\BulkWrite;
 use MongoDB\Driver\Manager;
 use MongoDB\Driver\Query;
+use MongoDB\Driver\Exception\Exception;
+use stdClass;
 use Throwable;
+use JsonException;
 
 /**
  * ### Servis MongoDB baze podataka
@@ -59,12 +63,17 @@ final class MongoDB implements BazaPodataka_Interface {
      * @param BazaPodataka $posluzitelj <p>
      * Poslužitelj servisa.
      * </p>
+     * @param NoSQLDokument $jezik <p>
+     * Jezik baze podataka.
+     * </p>
      *
      * @throws BazaPodataka_Greska Ukoliko se ne može spojiti na MongoDB server, ne mogu obraditi MongoDB upit ili transakciju.
      * @throws Kontejner_Greska Ukoliko se ne može spremiti instanca Log-a.
+     * @throws Exception Argument ili uri format konekcije nije ispravan.
      */
     public function __construct (
-        private BazaPodataka $posluzitelj
+        private BazaPodataka $posluzitelj,
+        private NoSQLDokument $jezik
     ) {
 
         try {
@@ -83,9 +92,11 @@ final class MongoDB implements BazaPodataka_Interface {
         // provjera vrste upita
         switch (!null) {
 
-            case $this->posluzitelj->upit :
+            case $this->posluzitelj->upit : // ako postoji upit
 
-                $this->upit();
+                $this->upit(
+                    unserialize($this->jezik->obradi($this->posluzitelj->baza, $this->posluzitelj->tabela, $this->posluzitelj->upit), [Jezik_Interface::class])
+                );
 
                 break;
 
@@ -104,11 +115,20 @@ final class MongoDB implements BazaPodataka_Interface {
     }
 
     /**
-     * @inheritDoc
+     * {@inheritDoc}
+     *
+     * @throws JsonException Ukoliko se ne mogu enkodirati ili dekodirati JSON podatci.
      */
     public function redak ():array|false {
 
-        return false;
+        $rezultat = [];
+        foreach ($this->upit as $dokument) {
+
+            $rezultat = json_decode(json_encode($dokument, JSON_THROW_ON_ERROR), true, 512, JSON_THROW_ON_ERROR);
+
+        }
+
+        return $rezultat;
 
     }
 
@@ -117,16 +137,33 @@ final class MongoDB implements BazaPodataka_Interface {
      */
     public function objekt ():object|false {
 
-        return false;
+        $objekt = new stdClass();
+
+        foreach ($this->upit as $dokument) {
+
+            $objekt = $dokument;
+
+        }
+
+        return $objekt;
 
     }
 
     /**
-     * @inheritDoc
+     * {@inheritDoc}
+     *
+     * @throws JsonException Ukoliko se ne mogu enkodirati ili dekodirati JSON podatci.
      */
     public function niz ():array|false {
 
-        return false;
+        $rezultat = [];
+        foreach ($this->upit as $dokument) {
+
+            $rezultat[] = json_decode(json_encode($dokument, JSON_THROW_ON_ERROR), true, 512, JSON_THROW_ON_ERROR);
+
+        }
+
+        return $rezultat;
 
     }
 
@@ -135,7 +172,109 @@ final class MongoDB implements BazaPodataka_Interface {
      */
     public function rezultat ():array {
 
-        return [];
+        return $this->lista_upita;
+
+    }
+
+    /**
+     * ### Pošalji upit prema MongoDB serveru
+     * @since 0.6.0.alpha.M1
+     *
+     * @param array[] $upit <p>
+     * Niz upita prema bazi podataka.
+     * </p>
+     *
+     * @throws BazaPodataka_Greska Ukoliko ne mogu obraditi MongoDB upit.
+     * @throws Kontejner_Greska Ukoliko se ne može spremiti instanca Log-a.
+     * @throws Exception Greške MongoDB servera.
+     *
+     * @return void
+     */
+    private function upit (array $upit):void {
+
+        if ($this->posluzitelj->upit->vrsta === 'odaberi') {
+
+            if (!$this->upit = new Query($upit[0], $upit[1])) {
+
+                zapisnik(Level::KRITICNO, sprintf(_('Ne mogu obraditi MongoDB upit: %s!'), $this->jezik->obradi($this->posluzitelj->baza, $this->posluzitelj->tabela, $this->posluzitelj->upit)));
+                throw new BazaPodataka_Greska((_('Ne mogu pokrenuti sustav, obratite se administratoru.')));
+
+            }
+
+            $this->upit = $this->konekcija->executeQuery($this->posluzitelj->baza.'.'.$this->posluzitelj->tabela, $this->upit);
+
+        } else {
+
+            if (!$this->upit = new BulkWrite()) {
+
+                zapisnik(Level::KRITICNO, sprintf(_('Ne mogu obraditi MongoDB upit: %s!'), $this->jezik->obradi($this->posluzitelj->baza, $this->posluzitelj->tabela, $this->posluzitelj->upit)));
+                throw new BazaPodataka_Greska((_('Ne mogu pokrenuti sustav, obratite se administratoru.')));
+
+            }
+
+            if ($this->posluzitelj->upit->vrsta === 'umetni') {
+
+                $this->upit->insert($upit);
+
+            } else if ($this->posluzitelj->upit->vrsta === 'azuriraj') {
+
+                $this->upit->update($upit[0], $upit[1], array('upsert' => true, 'multi' => true));
+
+            } else if ($this->posluzitelj->upit->vrsta === 'izbrisi') {
+
+                $this->upit->delete($upit);
+
+            }
+
+            $this->konekcija->executeBulkWrite($this->posluzitelj->baza.'.'.$this->posluzitelj->tabela, $this->upit);
+
+        }
+
+    }
+
+    /**
+     * ### Pošalji transakciju prema MongoDB serveru
+     * @since 0.6.0.alpha.M1
+     *
+     * @throws BazaPodataka_Greska Ukoliko ne mogu pokreniti transakciju na MongoDB serveru.
+     * @throws Kontejner_Greska Ukoliko se ne može spremiti instanca Log-a.
+     *
+     * @return void
+     */
+    private function transakcija ():void {
+
+        if (!$this->upit = new BulkWrite()) {
+
+            zapisnik(Level::KRITICNO, sprintf(_('Ne mogu obraditi MongoDB upit: %s!'), $this->jezik->obradi($this->posluzitelj->baza, $this->posluzitelj->tabela, $this->posluzitelj->upit)));
+            throw new BazaPodataka_Greska((_('Ne mogu pokrenuti sustav, obratite se administratoru.')));
+
+        }
+
+        // pripremi sve upite
+        array_walk(
+            $this->posluzitelj->transakcija,
+            function ($objekt):void {
+
+                $upit = unserialize($this->jezik->obradi($objekt->baza, $objekt->tabela, $objekt->upit), [Jezik_Interface::class]);
+
+                if ($objekt->upit->vrsta === 'umetni') {
+
+                    $this->upit->insert($upit);
+
+                } else if ($objekt->upit->vrsta === 'azuriraj') {
+
+                    $this->upit->update($upit[0], $upit[1], array('upsert' => true, 'multi' => true));
+
+                } else if ($objekt->upit->vrsta === 'izbrisi') {
+
+                    $this->upit->delete($upit);
+
+                }
+
+            }
+        );
+
+        $this->konekcija->executeBulkWrite($this->posluzitelj->baza.'.'.$this->posluzitelj->tabela, $this->upit);
 
     }
 
