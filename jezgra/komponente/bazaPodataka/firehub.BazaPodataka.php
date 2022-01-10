@@ -17,6 +17,7 @@ namespace FireHub\Jezgra\Komponente\BazaPodataka;
 use FireHub\Jezgra\Komponente\Servis_Kontejner;
 use FireHub\Jezgra\Komponente\Servis_Posluzitelj;
 use FireHub\Jezgra\Atributi\Zadano;
+use stdClass;
 
 /**
  * ### Poslužitelj za bazu podataka
@@ -33,7 +34,7 @@ use FireHub\Jezgra\Atributi\Zadano;
  * @property-read int $odziv Maksimalni odziv servera u sekundama prilikom upita
  * @property-read bool $posalji_stream_pri_izvrsavanju Slanje svih podataka pri izvršavanju u upita ili u dijelovima
  * @property-read Kursor_Interface $kursor Način redoslijeda odabiranja redaka
- * @property-read null|string $upit Upit prema bazi podataka
+ * @property-read null|stdClass $upit Upit prema bazi podataka
  * @property-read null|string[] $transakcija Niz upita prema bazi podataka u obliku transakcije
  * @property-read string $tabela Tabela za upit
  *
@@ -43,7 +44,6 @@ use FireHub\Jezgra\Atributi\Zadano;
  * @method $this odziv (int $sekundi) Maksimalni odziv servera u sekundama prilikom upita
  * @method $this posalji_stream_pri_izvrsavanju (bool $ukljuceno) Slanje svih podataka pri izvršavanju u upita ili u dijelovima
  * @method $this kursor (Kursor_Interface $vrsta) Način redoslijeda odabiranja redaka
- * @method $this upit (string $upit) Upit prema bazi podataka
  * @method $this tabela (string $naziv) Tabela za upit
  */
 final class BazaPodataka extends Servis_Posluzitelj {
@@ -133,11 +133,11 @@ final class BazaPodataka extends Servis_Posluzitelj {
 
     /**
      * ### Upit prema bazi podataka
-     * @var null|string
+     * @var null|stdClass
      *
      * @todo Dodati slagalicu upita na bazu podataka.
      */
-    protected ?string $upit = null;
+    protected ?stdClass $upit = null;
 
     /**
      * ### Niz upita prema bazi podataka u obliku transakcije
@@ -151,7 +151,7 @@ final class BazaPodataka extends Servis_Posluzitelj {
      * ### Tabela za upit
      * @var string
      */
-    private string $tabela;
+    protected string $tabela;
 
     /**
      * ### Server baze podataka
@@ -202,18 +202,182 @@ final class BazaPodataka extends Servis_Posluzitelj {
     }
 
     /**
+     * ### Slanje sirovog upita prema servisu baze podataka
+     * @since 0.6.0.alpha.M1
+     *
+     * @param string $upit  <p>
+     * Sirovi upit prema bazi podataka.
+     * </p>
+     *
+     * @return $this
+     */
+    public function sirovi (string $upit):self {
+
+        $this->upit = new stdClass();
+        $this->upit->sirovi = $upit;
+
+        return $this;
+
+    }
+
+    /**
      * ### Niz upita prema bazi podataka u obliku transakcije
      * @since 0.5.1.pre-alpha.M5
      *
-     * @param string ...$upit <p>
-     * Upit za transakciju.
+     * @param BazaPodataka ...$upit <p>
+     * Instanca BazePodataka.
      * </p>
      *
      * @return $this Instanca Baze Podataka.
      */
-    public function transakcija (string ...$upit):self {
+    public function transakcija (BazaPodataka ...$upit):self {
 
         $this->transakcija = $upit;
+
+        return $this;
+
+    }
+
+    /**
+     * ### Odaberi kolumne iz tabele
+     * @since 0.6.0.alpha.M1
+     *
+     * @param array $kolumne <p>
+     * Lista kolumni za odabir.
+     * </p>
+     *
+     * @return $this
+     */
+    public function odaberi (array $kolumne):self {
+
+        $this->upit = new stdClass();
+        $this->upit->vrsta = 'odaberi';
+        $this->upit->kolumne = $kolumne;
+
+        return $this;
+
+    }
+
+    /**
+     * ### Izbriši redak iz tabele
+     * @since 0.6.0.alpha.M1
+     *
+     * @param array $podatci <p>
+     * Lista podataka za umetanje.
+     * </p>
+     *
+     * @return $this
+     */
+    public function umetni (array $podatci):self {
+
+        $this->upit = new stdClass();
+        $this->upit->vrsta = 'umetni';
+        $this->upit->podatci = $podatci;
+
+        return $this;
+
+    }
+
+    /**
+     * ### Ažuriraj redak iz tabele
+     * @since 0.6.0.alpha.M1
+     *
+     * @param array $podatci <p>
+     * Lista podataka za ažuriranje.
+     * </p>
+     *
+     * @return $this
+     */
+    public function azuriraj (array $podatci):self {
+
+        $this->upit = new stdClass();
+        $this->upit->vrsta = 'azuriraj';
+        $this->upit->podatci = $podatci;
+
+        return $this;
+
+    }
+
+    /**
+     * ### Izbriši redak iz tabele
+     * @since 0.6.0.alpha.M1
+     *
+     * @return $this
+     */
+    public function izbrisi ():self {
+
+        $this->upit = new stdClass();
+        $this->upit->vrsta = 'izbrisi';
+
+        return $this;
+
+    }
+
+    /**
+     * ### Filtar vrijednost po nazivu kolumne
+     * @since 0.6.0.alpha.M1
+     *
+     * @param string $naziv <p>
+     * Naziv filtra.
+     * </p>
+     * @param string $operator <p>
+     * Vrsta operatora za uspoređivanje.
+     * <, > ili =
+     * </p>
+     * @param mixed $vrijednost <p>
+     * Vrijednost za usporediti.
+     * </p>
+     *
+     * @return $this
+     */
+    public function gdje (string $naziv, string $operator, mixed $vrijednost):self {
+
+        $this->upit->gdje[] = ['naziv' => $naziv, 'operator' => $operator, 'vrijednost' => $vrijednost];
+
+        return $this;
+
+    }
+
+    /**
+     * ### Redanje zapisa
+     * @since 0.6.0.alpha.M1
+     *
+     * @param string $poredaj <p>
+     * Kolumna po kojoj redamo zapise.
+     * </p>
+     * @param string $redoslijed <p>
+     * Redolijed po kojoj redamo zapise.
+     * ASC ili DESC.
+     * </p>
+     *
+     * @return $this
+     */
+    public function poredaj (string $poredaj, string $redoslijed):self {
+
+        $this->upit->poredaj = $poredaj;
+        $this->upit->poredaj_redoslijed = strtoupper($redoslijed);
+
+        return $this;
+
+    }
+
+    /**
+     * ### Limit broja zapisa iz baze podataka
+     * @since 0.6.0.alpha.M1
+     *
+     * @param int $pomak <p>
+     * Pomak od kojeg se limitiraju zapisi.
+     * </p>
+     * @param int $broj_redaka <p>
+     * Broj redaka koje odabiremo.
+     * </p>
+     *
+     * @return $this
+     */
+    public function limit (int $pomak, int $broj_redaka):self {
+
+        $this->upit->limit_pomak = $pomak;
+        $this->upit->limit_broj_redaka = $broj_redaka;
 
         return $this;
 

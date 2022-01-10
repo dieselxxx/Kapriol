@@ -23,11 +23,10 @@ final class Naslovna_Kontroler extends Kontroler {
         //$x = (new BazaPodataka())->upit('SELECT * FROM test2')->napravi();
         //var_dump($x->niz());
 
-        $y = (new BazaPodataka())->upit('SELECT * FROM test LIMIT 3')->napravi();
+        $y = (new BazaPodataka())->sirovi('SELECT * FROM test LIMIT 3')->napravi();
         var_dump($y->niz());
 
-        $z = (new BazaPodataka())->upit(
-        )->napravi();
+        //$z = (new BazaPodataka())->tabela('test')->napravi();
         //var_dump($z->niz());
 
         return sadrzaj()->datoteka('test.html')->format(Sadrzaj_Vrsta::HTML)->podatci([
