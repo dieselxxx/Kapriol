@@ -59,7 +59,7 @@ final class NoSQLDokument implements Jezik_Interface {
      * ### Odaberi podatke
      * @since 0.6.0.alpha.M1
      *
-     * @return $this
+     * @return $this Instanca ovog objekta.
      */
     private function odaberi ():self {
 
@@ -83,7 +83,7 @@ final class NoSQLDokument implements Jezik_Interface {
      * ### Umetni podatke
      * @since 0.6.0.alpha.M1
      *
-     * @return $this
+     * @return $this Instanca ovog objekta.
      */
     private function umetni ():self {
 
@@ -99,7 +99,7 @@ final class NoSQLDokument implements Jezik_Interface {
      * ### Ažuriraj podatke
      * @since 0.6.0.alpha.M1
      *
-     * @return $this
+     * @return $this Instanca ovog objekta.
      */
     private function azuriraj ():self {
 
@@ -115,10 +115,10 @@ final class NoSQLDokument implements Jezik_Interface {
     }
 
     /**
-     * ###Izbriši podatke
+     * ### Izbriši podatke
      * @since 0.6.0.alpha.M1
      *
-     * @return $this
+     * @return $this Instanca ovog objekta.
      */
     private function izbrisi ():self {
 
@@ -134,7 +134,7 @@ final class NoSQLDokument implements Jezik_Interface {
      * ### Filtar podataka
      * @since 0.6.0.alpha.M1
      *
-     * @return array
+     * @return array Niz filtara za gdje.
      */
     private function gdje ():array {
 
@@ -163,7 +163,7 @@ final class NoSQLDokument implements Jezik_Interface {
      * ### Limit rezultata upita
      * @since 0.6.0.alpha.M1
      *
-     * @return int
+     * @return int Upit za limit.
      */
     private function limit ():int {
 
@@ -177,7 +177,7 @@ final class NoSQLDokument implements Jezik_Interface {
      * ### Pomak rezultata upita
      * @since 0.6.0.alpha.M1
      *
-     * @return int
+     * @return int Upit za pomak.
      */
     private function pomak ():int {
 
@@ -191,7 +191,7 @@ final class NoSQLDokument implements Jezik_Interface {
      * ### Redanje zapisa
      * @since 0.6.0.alpha.M1
      *
-     * @return string
+     * @return string Upit za poredaj.
      */
     private function poredaj ():string {
 
@@ -203,7 +203,7 @@ final class NoSQLDokument implements Jezik_Interface {
      * ### Redoslijed redanje zapisa
      * @since 0.6.0.alpha.M1
      *
-     * @return int
+     * @return int Upit za poredaj redoslijed.
      */
     private function poredaj_redoslijed ():int {
 
@@ -217,9 +217,11 @@ final class NoSQLDokument implements Jezik_Interface {
      * ### Formatiranje niza kolumni
      * @since 0.6.0.alpha.M1
      *
-     * @param array $lista
+     * @param array $lista<p>
+     * Lista kolumni za formatiranje.
+     * </p>
      *
-     * @return array
+     * @return array Formtirani niz kolumni.
      */
     private function kolumne (array $lista):array {
 
