@@ -246,7 +246,7 @@ final class BazaPodataka extends Servis_Posluzitelj {
      * Lista kolumni za odabir.
      * </p>
      *
-     * @return $this
+     * @return $this Instanca Baze Podataka.
      */
     public function odaberi (array $kolumne):self {
 
@@ -266,7 +266,7 @@ final class BazaPodataka extends Servis_Posluzitelj {
      * Lista podataka za umetanje.
      * </p>
      *
-     * @return $this
+     * @return $this Instanca Baze Podataka.
      */
     public function umetni (array $podatci):self {
 
@@ -286,7 +286,7 @@ final class BazaPodataka extends Servis_Posluzitelj {
      * Lista podataka za ažuriranje.
      * </p>
      *
-     * @return $this
+     * @return $this Instanca Baze Podataka.
      */
     public function azuriraj (array $podatci):self {
 
@@ -302,7 +302,7 @@ final class BazaPodataka extends Servis_Posluzitelj {
      * ### Izbriši redak iz tabele
      * @since 0.6.0.alpha.M1
      *
-     * @return $this
+     * @return $this Instanca Baze Podataka.
      */
     public function izbrisi ():self {
 
@@ -328,7 +328,7 @@ final class BazaPodataka extends Servis_Posluzitelj {
      * Vrijednost za usporediti.
      * </p>
      *
-     * @return $this
+     * @return $this Instanca Baze Podataka.
      */
     public function gdje (string $naziv, string $operator, mixed $vrijednost):self {
 
@@ -350,7 +350,7 @@ final class BazaPodataka extends Servis_Posluzitelj {
      * ASC ili DESC.
      * </p>
      *
-     * @return $this
+     * @return $this Instanca Baze Podataka.
      */
     public function poredaj (string $poredaj, string $redoslijed):self {
 
@@ -372,7 +372,7 @@ final class BazaPodataka extends Servis_Posluzitelj {
      * Broj redaka koje odabiremo.
      * </p>
      *
-     * @return $this
+     * @return $this Instanca Baze Podataka.
      */
     public function limit (int $pomak, int $broj_redaka):self {
 
