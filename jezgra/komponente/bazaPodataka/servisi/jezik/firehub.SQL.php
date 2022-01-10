@@ -69,7 +69,7 @@ class SQL implements Jezik_Interface {
      * ### Odaberi podatke
      * @since 0.6.0.alpha.M1
      *
-     * @return $this
+     * @return $this Instanca Baze Podataka.
      */
     protected function odaberi ():self {
 
@@ -83,7 +83,7 @@ class SQL implements Jezik_Interface {
      * ### Umetni podatke
      * @since 0.6.0.alpha.M1
      *
-     * @return $this
+     * @return $this Instanca Baze Podataka.
      */
     protected function umetni ():self {
 
@@ -104,7 +104,7 @@ class SQL implements Jezik_Interface {
      * ### Ažuriraj podatke
      * @since 0.6.0.alpha.M1
      *
-     * @return $this
+     * @return $this Instanca Baze Podataka.
      */
     protected function azuriraj ():self {
 
@@ -125,7 +125,7 @@ class SQL implements Jezik_Interface {
      * ### Izbriši podatke
      * @since 0.6.0.alpha.M1
      *
-     * @return $this
+     * @return $this Instanca Baze Podataka.
      */
     protected function izbrisi ():self {
 
@@ -139,7 +139,7 @@ class SQL implements Jezik_Interface {
      * ### Filtar podataka
      * @since 0.6.0.alpha.M1
      *
-     * @return $this
+     * @return $this Instanca Baze Podataka.
      */
     protected function gdje ():self {
 
@@ -166,7 +166,7 @@ class SQL implements Jezik_Interface {
      * ### Limit rezultata upita
      * @since 0.6.0.alpha.M1
      *
-     * @return string
+     * @return string Upit za limit.
      */
     protected function limit ():string {
 
@@ -180,7 +180,7 @@ class SQL implements Jezik_Interface {
      * ### Redanje zapisa
      * @since 0.6.0.alpha.M1
      *
-     * @return string
+     * @return string Upit za poredaj.
      */
     protected function poredaj ():string {
 
@@ -192,7 +192,7 @@ class SQL implements Jezik_Interface {
      * ### Redoslijed redanje zapisa
      * @since 0.6.0.alpha.M1
      *
-     * @return string
+     * @return string Upit za redoslijed.
      */
     protected function poredaj_redoslijed ():string {
 
@@ -204,9 +204,11 @@ class SQL implements Jezik_Interface {
      * ### Formatiranje niza kolumni
      * @since 0.6.0.alpha.M1
      *
-     * @param array|string $lista
+     * @param array|string $lista <p>
+     * Lista kolumni za formatiranje.
+     * </p>
      *
-     * @return string
+     * @return string Formtirani niz kolumni.
      */
     protected function kolumne (array|string $lista):string {
 
@@ -231,9 +233,11 @@ class SQL implements Jezik_Interface {
      * ### Formatiranje vrijednosti
      * @since 0.6.0.alpha.M1
      *
-     * @param mixed $vrijednost
+     * @param mixed $vrijednost <p>
+     * Lista vrijednosti za formatiranje.
+     * </p>
      *
-     * @return mixed
+     * @return mixed Formtirani niz vrijednosti.
      */
     protected function format (mixed $vrijednost):mixed {
 
