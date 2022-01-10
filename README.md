@@ -1,5 +1,5 @@
 # FireHub
-> pre-alpha milestone 5 development
+> alpha milestone 1 development
 
 
 Web Application Framework
