@@ -18,7 +18,6 @@ use stdClass;
 
 /**
  * ### Osnovni interface za sve jezike baza podataka
- *
  * @since 0.6.0.alpha.M1
  *
  * @package Sustav\Jezgra
