@@ -69,7 +69,7 @@ class SQL implements Jezik_Interface {
      * ### Odaberi podatke
      * @since 0.6.0.alpha.M1
      *
-     * @return $this Instanca Baze Podataka.
+     * @return $this Instanca ovog objekta.
      */
     protected function odaberi ():self {
 
@@ -104,7 +104,7 @@ class SQL implements Jezik_Interface {
      * ### Ažuriraj podatke
      * @since 0.6.0.alpha.M1
      *
-     * @return $this Instanca Baze Podataka.
+     * @return $this Instanca ovog objekta.
      */
     protected function azuriraj ():self {
 
@@ -125,7 +125,7 @@ class SQL implements Jezik_Interface {
      * ### Izbriši podatke
      * @since 0.6.0.alpha.M1
      *
-     * @return $this Instanca Baze Podataka.
+     * @return $this Instanca ovog objekta.
      */
     protected function izbrisi ():self {
 
@@ -139,7 +139,7 @@ class SQL implements Jezik_Interface {
      * ### Filtar podataka
      * @since 0.6.0.alpha.M1
      *
-     * @return $this Instanca Baze Podataka.
+     * @return $this Instanca ovog objekta.
      */
     protected function gdje ():self {
 
