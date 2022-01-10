@@ -33,8 +33,9 @@ use FireHub\Jezgra\Atributi\Zadano;
  * @property-read int $odziv Maksimalni odziv servera u sekundama prilikom upita
  * @property-read bool $posalji_stream_pri_izvrsavanju Slanje svih podataka pri izvršavanju u upita ili u dijelovima
  * @property-read Kursor_Interface $kursor Način redoslijeda odabiranja redaka
- * @property-read string $upit Upit prema bazi podataka
- * @property-read array $transakcija Niz upita prema bazi podataka u obliku transakcije
+ * @property-read null|string $upit Upit prema bazi podataka
+ * @property-read null|string[] $transakcija Niz upita prema bazi podataka u obliku transakcije
+ * @property-read string $tabela Tabela za upit
  *
  * @method $this baza (string $naziv) Baza baze podataka
  * @method $this shema (string $naziv) Shema baze podataka
@@ -43,6 +44,7 @@ use FireHub\Jezgra\Atributi\Zadano;
  * @method $this posalji_stream_pri_izvrsavanju (bool $ukljuceno) Slanje svih podataka pri izvršavanju u upita ili u dijelovima
  * @method $this kursor (Kursor_Interface $vrsta) Način redoslijeda odabiranja redaka
  * @method $this upit (string $upit) Upit prema bazi podataka
+ * @method $this tabela (string $naziv) Tabela za upit
  */
 final class BazaPodataka extends Servis_Posluzitelj {
 
@@ -144,6 +146,12 @@ final class BazaPodataka extends Servis_Posluzitelj {
      * @todo Dodati slagalicu upita na bazu podataka.
      */
     protected ?array $transakcija = null;
+
+    /**
+     * ### Tabela za upit
+     * @var string
+     */
+    private string $tabela;
 
     /**
      * ### Server baze podataka
