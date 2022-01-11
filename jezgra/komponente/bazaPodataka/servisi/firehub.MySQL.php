@@ -81,32 +81,23 @@ final class MySQL implements BazaPodataka_Interface {
 
         }
 
-        // provjera vrste upita
-        switch (!null) {
+        if (!is_null($this->posluzitelj->upit) && property_exists($this->posluzitelj->upit, 'sirovi')) {
 
-            case $this->posluzitelj->upit->sirovi :
+            $this->upit($this->posluzitelj->upit->sirovi);
 
-                $this->upit($this->posluzitelj->upit->sirovi);
+        } else if (!is_null($this->posluzitelj->upit) && property_exists($this->posluzitelj->upit, 'vrsta')) {
 
-                break;
+            $this->upit(
+                $this->jezik->obradi($this->posluzitelj->baza, $this->posluzitelj->tabela, $this->posluzitelj->upit)
+            );
 
-            case $this->posluzitelj->upit : // ako postoji upit
+        } else if (!is_null($this->posluzitelj->transakcija)) {
 
-                $this->upit(
-                    $this->jezik->obradi($this->posluzitelj->baza, $this->posluzitelj->tabela, $this->posluzitelj->upit)
-                );
+            $this->transakcija();
 
-                break;
+        } else {
 
-            case $this->posluzitelj->transakcija :
-
-                $this->transakcija();
-
-                break;
-
-            default :
-
-                throw new BazaPodataka_Greska(_('Ne postoji niti upit niti transakcija prema bazi podataka!'));
+            throw new BazaPodataka_Greska(_('Ne postoji niti upit niti transakcija prema bazi podataka!'));
 
         }
 
