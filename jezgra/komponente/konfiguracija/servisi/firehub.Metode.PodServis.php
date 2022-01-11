@@ -469,6 +469,15 @@ final class Metode_PodServis {
      */
     private function aplikacija_preduvjeti (string|int ...$opcije):bool {
 
+        // provjeri FireHub verziju
+        if ($opcije['firehub_verzija'] !== $this->rezultat['sustav']['informacije']['verzija'].'.'.$this->rezultat['sustav']['informacije']['ciklus']) {
+
+            zapisnik(Level::HITNO, sprintf(_('Aplikacija zahtjeva da verzija FireHub-a mora biti %s'), $this->rezultat['sustav']['informacije']['verzija'].'.'.$this->rezultat['sustav']['informacije']['ciklus']));
+            throw new KonfiguracijaMetoda_Greska(sprintf(_('Aplikacija zahtjeva da verzija FireHub-a mora biti %s'), $this->rezultat['sustav']['informacije']['verzija'].'.'.$this->rezultat['sustav']['informacije']['ciklus']));
+
+        }
+
+        // provjeri PHP verziju
         if (version_compare(PHP_VERSION, $opcije['php_verzija'], '<')) {
 
             zapisnik(Level::HITNO, sprintf(_('Aplikacija zahtjeva da verzija PHP-a mora biti najmanje %s'), $opcije['php_verzija']));
