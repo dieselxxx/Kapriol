@@ -134,16 +134,12 @@ final class BazaPodataka extends Servis_Posluzitelj {
     /**
      * ### Upit prema bazi podataka
      * @var null|stdClass
-     *
-     * @todo Dodati slagalicu upita na bazu podataka.
      */
     protected ?stdClass $upit = null;
 
     /**
      * ### Niz upita prema bazi podataka u obliku transakcije
      * @var null|string[]
-     *
-     * @todo Dodati slagalicu upita na bazu podataka.
      */
     protected ?array $transakcija = null;
 
@@ -196,6 +192,32 @@ final class BazaPodataka extends Servis_Posluzitelj {
 
         $this->korisnicko_ime = $korisnicko_ime;
         $this->lozinka = $lozinka;
+
+        return $this;
+
+    }
+
+    /**
+     * ### Opcije za spajanje na server baze podataka
+     * @since @since 0.6.0.alpha.M1
+     *
+     * @param int $odziv <p>
+     * Maksimalni odziv servera u sekundama prilikom upita.
+     * </p>
+     * @param bool $posalji_stream_pri_izvrsavanju <p>
+     * KSlanje svih podataka pri izvršavanju u upita ili u dijelovima.
+     * </p>
+     * @param Kursor_Interface $kursor <p>
+     * Način redoslijeda odabiranja redaka.
+     * </p>
+     *
+     * @return $this
+     */
+    public function opcije (int $odziv, bool $posalji_stream_pri_izvrsavanju, Kursor_Interface $kursor):self {
+
+        $this->odziv = $odziv;
+        $this->posalji_stream_pri_izvrsavanju = $posalji_stream_pri_izvrsavanju;
+        $this->kursor = $kursor;
 
         return $this;
 
