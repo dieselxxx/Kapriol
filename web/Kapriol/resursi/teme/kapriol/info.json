@@ -1,6 +1,7 @@
 {
     "css": [
-        "css/normaliziranje.css"
+        "css/normaliziranje.css",
+        "css/kapriol.css"
     ],
     "javascript": {
     }

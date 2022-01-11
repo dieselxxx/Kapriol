@@ -1,0 +1,5 @@
+body {background-color: #ffffff;}
+
+#zaglavlje {height: 300px; width: 100%;}
+#zaglavlje_gore {height: 50px; width: 100%;}
+#zaglavlje #logo {background-image: url("/kapriol/resursi/grafika/logo/120x270.png"); height: 120px; width: 270px;}
