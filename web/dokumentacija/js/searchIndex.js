@@ -636,41 +636,6 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/FireHub-Jezgra-Komponente-Datoteka-Servisi-Datoteka-Servis.html#property_posluzitelj"
         },                {
-            "fqsen": "\\FireHub\\Aplikacija\\FireHubTest\\Kontroler\\Test_Kontroler",
-            "name": "Test_Kontroler",
-            "summary": "\u0023\u0023\u0023\u0020Abstrakt\u0020klasa\u0020za\u0020glavni\u0020kontroler",
-            "url": "classes/FireHub-Aplikacija-FireHubTest-Kontroler-Test-Kontroler.html"
-        },                {
-            "fqsen": "\\FireHub\\Aplikacija\\FireHubTest\\Kontroler\\Test_Kontroler\u003A\u003Aindex\u0028\u0029",
-            "name": "index",
-            "summary": "\u0023\u0023\u0023\u0020Index\u0020metoda",
-            "url": "classes/FireHub-Aplikacija-FireHubTest-Kontroler-Test-Kontroler.html#method_index"
-        },                {
-            "fqsen": "\\FireHub\\Aplikacija\\FireHubTest\\Kontroler\\Test_Kontroler\u003A\u003Aindex2\u0028\u0029",
-            "name": "index2",
-            "summary": "",
-            "url": "classes/FireHub-Aplikacija-FireHubTest-Kontroler-Test-Kontroler.html#method_index2"
-        },                {
-            "fqsen": "\\FireHub\\Aplikacija\\FireHubTest\\Kontroler\\Test_Kontroler\u003A\u003Aindex3\u0028\u0029",
-            "name": "index3",
-            "summary": "",
-            "url": "classes/FireHub-Aplikacija-FireHubTest-Kontroler-Test-Kontroler.html#method_index3"
-        },                {
-            "fqsen": "\\FireHub\\Aplikacija\\FireHubTestDva\\Kontroler\\Naslovna_Kontroler",
-            "name": "Naslovna_Kontroler",
-            "summary": "\u0023\u0023\u0023\u0020Abstrakt\u0020klasa\u0020za\u0020glavni\u0020kontroler",
-            "url": "classes/FireHub-Aplikacija-FireHubTestDva-Kontroler-Naslovna-Kontroler.html"
-        },                {
-            "fqsen": "\\FireHub\\Aplikacija\\FireHubTestDva\\Kontroler\\Naslovna_Kontroler\u003A\u003Aindex\u0028\u0029",
-            "name": "index",
-            "summary": "\u0023\u0023\u0023\u0020Index\u0020metoda",
-            "url": "classes/FireHub-Aplikacija-FireHubTestDva-Kontroler-Naslovna-Kontroler.html#method_index"
-        },                {
-            "fqsen": "\\FireHub\\Aplikacija\\FireHubTestDva\\Kontroler\\Naslovna_Kontroler\u003A\u003Aindex2\u0028\u0029",
-            "name": "index2",
-            "summary": "",
-            "url": "classes/FireHub-Aplikacija-FireHubTestDva-Kontroler-Naslovna-Kontroler.html#method_index2"
-        },                {
             "fqsen": "\\FireHub\\Jezgra\\HTTP\\Greske\\Ruter_Greska",
             "name": "Ruter_Greska",
             "summary": "\u0023\u0023\u0023\u0020Ruter\u0020gre\u0161ke",
@@ -870,6 +835,11 @@ Search.appendIndex(
             "name": "predmemorija_server",
             "summary": "\u0023\u0023\u0023\u0020Provjera\u0020i\u0020postavljenje\u0020odabrane\u0020predmemorije",
             "url": "classes/FireHub-Jezgra-Komponente-Konfiguracija-Servisi-Metode-PodServis.html#method_predmemorija_server"
+        },                {
+            "fqsen": "\\FireHub\\Jezgra\\Komponente\\Konfiguracija\\Servisi\\Metode_PodServis\u003A\u003Asesija_vrsta\u0028\u0029",
+            "name": "sesija_vrsta",
+            "summary": "\u0023\u0023\u0023\u0020Provjera\u0020i\u0020postavljenje\u0020odabrane\u0020vrste\u0020sesije",
+            "url": "classes/FireHub-Jezgra-Komponente-Konfiguracija-Servisi-Metode-PodServis.html#method_sesija_vrsta"
         },                {
             "fqsen": "\\FireHub\\Jezgra\\Komponente\\Konfiguracija\\Servisi\\Metode_PodServis\u003A\u003Aaplikacija_preduvjeti\u0028\u0029",
             "name": "aplikacija_preduvjeti",
@@ -1296,40 +1266,370 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/FireHub-Jezgra-Komponente-Predmemorija-Servisi-MemCache.html#property_posluzitelj"
         },                {
+            "fqsen": "\\FireHub\\Jezgra\\Komponente\\BazaPodataka\\Kursor_Interface",
+            "name": "Kursor_Interface",
+            "summary": "\u0023\u0023\u0023\u0020Interface\u0020za\u0020vrstu\u0020kursora",
+            "url": "classes/FireHub-Jezgra-Komponente-BazaPodataka-Kursor-Interface.html"
+        },                {
+            "fqsen": "\\FireHub\\Jezgra\\Komponente\\BazaPodataka\\Kursor_Interface\u003A\u003Avrijednost\u0028\u0029",
+            "name": "vrijednost",
+            "summary": "\u0023\u0023\u0023\u0020Vrijednost\u0020trenutnog\u0020kursora",
+            "url": "classes/FireHub-Jezgra-Komponente-BazaPodataka-Kursor-Interface.html#method_vrijednost"
+        },                {
+            "fqsen": "\\FireHub\\Jezgra\\Komponente\\BazaPodataka\\Greske\\BazaPodataka_Greska",
+            "name": "BazaPodataka_Greska",
+            "summary": "\u0023\u0023\u0023\u0020Klasa\u0020za\u0020gre\u0161ke\u0020baze\u0020podataka",
+            "url": "classes/FireHub-Jezgra-Komponente-BazaPodataka-Greske-BazaPodataka-Greska.html"
+        },                {
+            "fqsen": "\\FireHub\\Jezgra\\Komponente\\BazaPodataka\\Servisi\\Jezik_Interface",
+            "name": "Jezik_Interface",
+            "summary": "\u0023\u0023\u0023\u0020Osnovni\u0020interface\u0020za\u0020sve\u0020jezike\u0020baza\u0020podataka",
+            "url": "classes/FireHub-Jezgra-Komponente-BazaPodataka-Servisi-Jezik-Interface.html"
+        },                {
+            "fqsen": "\\FireHub\\Jezgra\\Komponente\\BazaPodataka\\Servisi\\Jezik_Interface\u003A\u003Aobradi\u0028\u0029",
+            "name": "obradi",
+            "summary": "\u0023\u0023\u0023\u0020Obradi\u0020upit",
+            "url": "classes/FireHub-Jezgra-Komponente-BazaPodataka-Servisi-Jezik-Interface.html#method_obradi"
+        },                {
+            "fqsen": "\\FireHub\\Jezgra\\Komponente\\BazaPodataka\\Servisi\\MongoDB",
+            "name": "MongoDB",
+            "summary": "\u0023\u0023\u0023\u0020Servis\u0020MongoDB\u0020baze\u0020podataka",
+            "url": "classes/FireHub-Jezgra-Komponente-BazaPodataka-Servisi-MongoDB.html"
+        },                {
+            "fqsen": "\\FireHub\\Jezgra\\Komponente\\BazaPodataka\\Servisi\\MongoDB\u003A\u003A__construct\u0028\u0029",
+            "name": "__construct",
+            "summary": "\u0023\u0023\u0023\u0020Konstruktor",
+            "url": "classes/FireHub-Jezgra-Komponente-BazaPodataka-Servisi-MongoDB.html#method___construct"
+        },                {
+            "fqsen": "\\FireHub\\Jezgra\\Komponente\\BazaPodataka\\Servisi\\MongoDB\u003A\u003Aredak\u0028\u0029",
+            "name": "redak",
+            "summary": "\u0023\u0023\u0023\u0020Vra\u0107a\u0020prvi\u0020redak\u0020iz\u0020baze\u0020podataka\u0020kao\u0020niz",
+            "url": "classes/FireHub-Jezgra-Komponente-BazaPodataka-Servisi-MongoDB.html#method_redak"
+        },                {
+            "fqsen": "\\FireHub\\Jezgra\\Komponente\\BazaPodataka\\Servisi\\MongoDB\u003A\u003Aobjekt\u0028\u0029",
+            "name": "objekt",
+            "summary": "\u0023\u0023\u0023\u0020Vra\u0107a\u0020prvi\u0020redak\u0020iz\u0020baze\u0020podataka\u0020kao\u0020objekt",
+            "url": "classes/FireHub-Jezgra-Komponente-BazaPodataka-Servisi-MongoDB.html#method_objekt"
+        },                {
+            "fqsen": "\\FireHub\\Jezgra\\Komponente\\BazaPodataka\\Servisi\\MongoDB\u003A\u003Aniz\u0028\u0029",
+            "name": "niz",
+            "summary": "\u0023\u0023\u0023\u0020Vra\u0107a\u0020sve\u0020rezultate\u0020iz\u0020baze\u0020podataka\u0020kao\u0020niz",
+            "url": "classes/FireHub-Jezgra-Komponente-BazaPodataka-Servisi-MongoDB.html#method_niz"
+        },                {
+            "fqsen": "\\FireHub\\Jezgra\\Komponente\\BazaPodataka\\Servisi\\MongoDB\u003A\u003Arezultat\u0028\u0029",
+            "name": "rezultat",
+            "summary": "\u0023\u0023\u0023\u0020Lista\u0020odra\u0111enih\u0020naredbi\u0020transakcije",
+            "url": "classes/FireHub-Jezgra-Komponente-BazaPodataka-Servisi-MongoDB.html#method_rezultat"
+        },                {
+            "fqsen": "\\FireHub\\Jezgra\\Komponente\\BazaPodataka\\Servisi\\MongoDB\u003A\u003A\u0024upit",
+            "name": "upit",
+            "summary": "\u0023\u0023\u0023\u0020Upit\u0020prema\u0020MongoDB\u0020serveru",
+            "url": "classes/FireHub-Jezgra-Komponente-BazaPodataka-Servisi-MongoDB.html#property_upit"
+        },                {
+            "fqsen": "\\FireHub\\Jezgra\\Komponente\\BazaPodataka\\Servisi\\MongoDB\u003A\u003Atransakcija\u0028\u0029",
+            "name": "transakcija",
+            "summary": "\u0023\u0023\u0023\u0020Po\u0161alji\u0020transakciju\u0020prema\u0020MongoDB\u0020serveru",
+            "url": "classes/FireHub-Jezgra-Komponente-BazaPodataka-Servisi-MongoDB.html#method_transakcija"
+        },                {
+            "fqsen": "\\FireHub\\Jezgra\\Komponente\\BazaPodataka\\Servisi\\MongoDB\u003A\u003A\u0024konekcija",
+            "name": "konekcija",
+            "summary": "\u0023\u0023\u0023\u0020Konekcija\u0020na\u0020MongoDB\u0020server",
+            "url": "classes/FireHub-Jezgra-Komponente-BazaPodataka-Servisi-MongoDB.html#property_konekcija"
+        },                {
+            "fqsen": "\\FireHub\\Jezgra\\Komponente\\BazaPodataka\\Servisi\\MongoDB\u003A\u003A\u0024lista_upita",
+            "name": "lista_upita",
+            "summary": "\u0023\u0023\u0023\u0020Lista\u0020upita\u0020transakcije",
+            "url": "classes/FireHub-Jezgra-Komponente-BazaPodataka-Servisi-MongoDB.html#property_lista_upita"
+        },                {
+            "fqsen": "\\FireHub\\Jezgra\\Komponente\\BazaPodataka\\Servisi\\MongoDB\u003A\u003A\u0024posluzitelj",
+            "name": "posluzitelj",
+            "summary": "",
+            "url": "classes/FireHub-Jezgra-Komponente-BazaPodataka-Servisi-MongoDB.html#property_posluzitelj"
+        },                {
+            "fqsen": "\\FireHub\\Jezgra\\Komponente\\BazaPodataka\\Servisi\\MongoDB\u003A\u003A\u0024jezik",
+            "name": "jezik",
+            "summary": "",
+            "url": "classes/FireHub-Jezgra-Komponente-BazaPodataka-Servisi-MongoDB.html#property_jezik"
+        },                {
+            "fqsen": "\\FireHub\\Jezgra\\Komponente\\BazaPodataka\\Servisi\\Upit",
+            "name": "Upit",
+            "summary": "\u0023\u0023\u0023\u0020Upit\u0020prema\u0020bazi\u0020podataka",
+            "url": "classes/FireHub-Jezgra-Komponente-BazaPodataka-Servisi-Upit.html"
+        },                {
+            "fqsen": "\\FireHub\\Jezgra\\Komponente\\BazaPodataka\\Servisi\\Upit\u003A\u003A\u0024sirovi",
+            "name": "sirovi",
+            "summary": "\u0023\u0023\u0023\u0020Sirovi\u0020upit\u0020prema\u0020bazi\u0020podataka",
+            "url": "classes/FireHub-Jezgra-Komponente-BazaPodataka-Servisi-Upit.html#property_sirovi"
+        },                {
+            "fqsen": "\\FireHub\\Jezgra\\Komponente\\BazaPodataka\\Servisi\\Upit\u003A\u003A\u0024vrsta",
+            "name": "vrsta",
+            "summary": "\u0023\u0023\u0023\u0020Vrsta\u0020upita\u0020prema\u0020bazi\u0020podataka\u0020\u0028odaberi,\u0020umetni,\u0020azuriraj\u0029",
+            "url": "classes/FireHub-Jezgra-Komponente-BazaPodataka-Servisi-Upit.html#property_vrsta"
+        },                {
+            "fqsen": "\\FireHub\\Jezgra\\Komponente\\BazaPodataka\\Servisi\\Upit\u003A\u003A\u0024kolumne",
+            "name": "kolumne",
+            "summary": "\u0023\u0023\u0023\u0020Lista\u0020kolumni\u0020za\u0020odabir",
+            "url": "classes/FireHub-Jezgra-Komponente-BazaPodataka-Servisi-Upit.html#property_kolumne"
+        },                {
+            "fqsen": "\\FireHub\\Jezgra\\Komponente\\BazaPodataka\\Servisi\\Upit\u003A\u003A\u0024podatci",
+            "name": "podatci",
+            "summary": "\u0023\u0023\u0023\u0020Lista\u0020podataka\u0020za\u0020umetanje",
+            "url": "classes/FireHub-Jezgra-Komponente-BazaPodataka-Servisi-Upit.html#property_podatci"
+        },                {
+            "fqsen": "\\FireHub\\Jezgra\\Komponente\\BazaPodataka\\Servisi\\Upit\u003A\u003A\u0024gdje",
+            "name": "gdje",
+            "summary": "\u0023\u0023\u0023\u0020Filtri\u0020vrijednost\u0020po\u0020nazivu\u0020kolumne\u0020\u0028\u0027naziv\u0027\u0020\u003D\u003E\u0020\u0024naziv,\u0020\u0027operator\u0027\u0020\u003D\u003E\u0020\u0024operator,\u0020\u0027vrijednost\u0027\u0020\u003D\u003E\u0020\u0024vrijednost\u0029",
+            "url": "classes/FireHub-Jezgra-Komponente-BazaPodataka-Servisi-Upit.html#property_gdje"
+        },                {
+            "fqsen": "\\FireHub\\Jezgra\\Komponente\\BazaPodataka\\Servisi\\Upit\u003A\u003A\u0024poredaj",
+            "name": "poredaj",
+            "summary": "\u0023\u0023\u0023\u0020Kolumna\u0020po\u0020kojoj\u0020redamo\u0020zapise",
+            "url": "classes/FireHub-Jezgra-Komponente-BazaPodataka-Servisi-Upit.html#property_poredaj"
+        },                {
+            "fqsen": "\\FireHub\\Jezgra\\Komponente\\BazaPodataka\\Servisi\\Upit\u003A\u003A\u0024poredaj_redoslijed",
+            "name": "poredaj_redoslijed",
+            "summary": "\u0023\u0023\u0023\u0020Redolijed\u0020po\u0020kojoj\u0020redamo\u0020zapise\u0020\u0028ASC\u0020ili\u0020DESC\u0029",
+            "url": "classes/FireHub-Jezgra-Komponente-BazaPodataka-Servisi-Upit.html#property_poredaj_redoslijed"
+        },                {
+            "fqsen": "\\FireHub\\Jezgra\\Komponente\\BazaPodataka\\Servisi\\Upit\u003A\u003A\u0024limit_pomak",
+            "name": "limit_pomak",
+            "summary": "\u0023\u0023\u0023\u0020Pomak\u0020od\u0020kojeg\u0020se\u0020limitiraju\u0020zapisi",
+            "url": "classes/FireHub-Jezgra-Komponente-BazaPodataka-Servisi-Upit.html#property_limit_pomak"
+        },                {
+            "fqsen": "\\FireHub\\Jezgra\\Komponente\\BazaPodataka\\Servisi\\Upit\u003A\u003A\u0024limit_broj_redaka",
+            "name": "limit_broj_redaka",
+            "summary": "\u0023\u0023\u0023\u0020Broj\u0020redaka\u0020koje\u0020odabiremo",
+            "url": "classes/FireHub-Jezgra-Komponente-BazaPodataka-Servisi-Upit.html#property_limit_broj_redaka"
+        },                {
+            "fqsen": "\\FireHub\\Jezgra\\Komponente\\BazaPodataka\\Servisi\\Jezik\\NoSQLDokument",
+            "name": "NoSQLDokument",
+            "summary": "\u0023\u0023\u0023\u0020Podservis\u0020za\u0020NoSQL\u0020dokument\u0020query\u0020jezik",
+            "url": "classes/FireHub-Jezgra-Komponente-BazaPodataka-Servisi-Jezik-NoSQLDokument.html"
+        },                {
+            "fqsen": "\\FireHub\\Jezgra\\Komponente\\BazaPodataka\\Servisi\\Jezik\\NoSQLDokument\u003A\u003Aobradi\u0028\u0029",
+            "name": "obradi",
+            "summary": "\u0023\u0023\u0023\u0020Obradi\u0020upit",
+            "url": "classes/FireHub-Jezgra-Komponente-BazaPodataka-Servisi-Jezik-NoSQLDokument.html#method_obradi"
+        },                {
+            "fqsen": "\\FireHub\\Jezgra\\Komponente\\BazaPodataka\\Servisi\\Jezik\\NoSQLDokument\u003A\u003Aodaberi\u0028\u0029",
+            "name": "odaberi",
+            "summary": "\u0023\u0023\u0023\u0020Odaberi\u0020podatke",
+            "url": "classes/FireHub-Jezgra-Komponente-BazaPodataka-Servisi-Jezik-NoSQLDokument.html#method_odaberi"
+        },                {
+            "fqsen": "\\FireHub\\Jezgra\\Komponente\\BazaPodataka\\Servisi\\Jezik\\NoSQLDokument\u003A\u003Aumetni\u0028\u0029",
+            "name": "umetni",
+            "summary": "\u0023\u0023\u0023\u0020Umetni\u0020podatke",
+            "url": "classes/FireHub-Jezgra-Komponente-BazaPodataka-Servisi-Jezik-NoSQLDokument.html#method_umetni"
+        },                {
+            "fqsen": "\\FireHub\\Jezgra\\Komponente\\BazaPodataka\\Servisi\\Jezik\\NoSQLDokument\u003A\u003Aazuriraj\u0028\u0029",
+            "name": "azuriraj",
+            "summary": "\u0023\u0023\u0023\u0020A\u017Euriraj\u0020podatke",
+            "url": "classes/FireHub-Jezgra-Komponente-BazaPodataka-Servisi-Jezik-NoSQLDokument.html#method_azuriraj"
+        },                {
+            "fqsen": "\\FireHub\\Jezgra\\Komponente\\BazaPodataka\\Servisi\\Jezik\\NoSQLDokument\u003A\u003Aizbrisi\u0028\u0029",
+            "name": "izbrisi",
+            "summary": "\u0023\u0023\u0023\u0020Izbri\u0161i\u0020podatke",
+            "url": "classes/FireHub-Jezgra-Komponente-BazaPodataka-Servisi-Jezik-NoSQLDokument.html#method_izbrisi"
+        },                {
+            "fqsen": "\\FireHub\\Jezgra\\Komponente\\BazaPodataka\\Servisi\\Jezik\\NoSQLDokument\u003A\u003Agdje\u0028\u0029",
+            "name": "gdje",
+            "summary": "\u0023\u0023\u0023\u0020Filtar\u0020podataka",
+            "url": "classes/FireHub-Jezgra-Komponente-BazaPodataka-Servisi-Jezik-NoSQLDokument.html#method_gdje"
+        },                {
+            "fqsen": "\\FireHub\\Jezgra\\Komponente\\BazaPodataka\\Servisi\\Jezik\\NoSQLDokument\u003A\u003Alimit\u0028\u0029",
+            "name": "limit",
+            "summary": "\u0023\u0023\u0023\u0020Limit\u0020rezultata\u0020upita",
+            "url": "classes/FireHub-Jezgra-Komponente-BazaPodataka-Servisi-Jezik-NoSQLDokument.html#method_limit"
+        },                {
+            "fqsen": "\\FireHub\\Jezgra\\Komponente\\BazaPodataka\\Servisi\\Jezik\\NoSQLDokument\u003A\u003Apomak\u0028\u0029",
+            "name": "pomak",
+            "summary": "\u0023\u0023\u0023\u0020Pomak\u0020rezultata\u0020upita",
+            "url": "classes/FireHub-Jezgra-Komponente-BazaPodataka-Servisi-Jezik-NoSQLDokument.html#method_pomak"
+        },                {
+            "fqsen": "\\FireHub\\Jezgra\\Komponente\\BazaPodataka\\Servisi\\Jezik\\NoSQLDokument\u003A\u003Aporedaj\u0028\u0029",
+            "name": "poredaj",
+            "summary": "\u0023\u0023\u0023\u0020Redanje\u0020zapisa",
+            "url": "classes/FireHub-Jezgra-Komponente-BazaPodataka-Servisi-Jezik-NoSQLDokument.html#method_poredaj"
+        },                {
+            "fqsen": "\\FireHub\\Jezgra\\Komponente\\BazaPodataka\\Servisi\\Jezik\\NoSQLDokument\u003A\u003Aporedaj_redoslijed\u0028\u0029",
+            "name": "poredaj_redoslijed",
+            "summary": "\u0023\u0023\u0023\u0020Redoslijed\u0020redanje\u0020zapisa",
+            "url": "classes/FireHub-Jezgra-Komponente-BazaPodataka-Servisi-Jezik-NoSQLDokument.html#method_poredaj_redoslijed"
+        },                {
+            "fqsen": "\\FireHub\\Jezgra\\Komponente\\BazaPodataka\\Servisi\\Jezik\\NoSQLDokument\u003A\u003Akolumne\u0028\u0029",
+            "name": "kolumne",
+            "summary": "\u0023\u0023\u0023\u0020Formatiranje\u0020niza\u0020kolumni",
+            "url": "classes/FireHub-Jezgra-Komponente-BazaPodataka-Servisi-Jezik-NoSQLDokument.html#method_kolumne"
+        },                {
+            "fqsen": "\\FireHub\\Jezgra\\Komponente\\BazaPodataka\\Servisi\\Jezik\\NoSQLDokument\u003A\u003A\u0024upit",
+            "name": "upit",
+            "summary": "\u0023\u0023\u0023\u0020Objekt\u0020upita",
+            "url": "classes/FireHub-Jezgra-Komponente-BazaPodataka-Servisi-Jezik-NoSQLDokument.html#property_upit"
+        },                {
+            "fqsen": "\\FireHub\\Jezgra\\Komponente\\BazaPodataka\\Servisi\\Jezik\\NoSQLDokument\u003A\u003A\u0024rezultat",
+            "name": "rezultat",
+            "summary": "\u0023\u0023\u0023\u0020Rezultat",
+            "url": "classes/FireHub-Jezgra-Komponente-BazaPodataka-Servisi-Jezik-NoSQLDokument.html#property_rezultat"
+        },                {
+            "fqsen": "\\FireHub\\Jezgra\\Komponente\\Kolacic\\Kolacic_Interface",
+            "name": "Kolacic_Interface",
+            "summary": "\u0023\u0023\u0023\u0020Interface\u002Da\u0020za\u0020kola\u010Di\u0107\u0020servise",
+            "url": "classes/FireHub-Jezgra-Komponente-Kolacic-Kolacic-Interface.html"
+        },                {
+            "fqsen": "\\FireHub\\Jezgra\\Komponente\\Kolacic\\Kolacic_Interface\u003A\u003Aspremi\u0028\u0029",
+            "name": "spremi",
+            "summary": "\u0023\u0023\u0023\u0020Spremi\u0020kola\u010Di\u0107",
+            "url": "classes/FireHub-Jezgra-Komponente-Kolacic-Kolacic-Interface.html#method_spremi"
+        },                {
+            "fqsen": "\\FireHub\\Jezgra\\Komponente\\Kolacic\\Kolacic_Interface\u003A\u003Aprocitaj\u0028\u0029",
+            "name": "procitaj",
+            "summary": "\u0023\u0023\u0023\u0020Pro\u010Ditaj\u0020vrijednost\u0020kola\u010Di\u0107a",
+            "url": "classes/FireHub-Jezgra-Komponente-Kolacic-Kolacic-Interface.html#method_procitaj"
+        },                {
+            "fqsen": "\\FireHub\\Jezgra\\Komponente\\Kolacic\\Kolacic_Interface\u003A\u003Aizbrisi\u0028\u0029",
+            "name": "izbrisi",
+            "summary": "\u0023\u0023\u0023\u0020Izbri\u0161i\u0020kola\u010Di\u0107",
+            "url": "classes/FireHub-Jezgra-Komponente-Kolacic-Kolacic-Interface.html#method_izbrisi"
+        },                {
+            "fqsen": "\\FireHub\\Jezgra\\Komponente\\Kolacic\\Servisi\\Kolacic_Servis",
+            "name": "Kolacic_Servis",
+            "summary": "\u0023\u0023\u0023\u0020Servis\u0020za\u0020upravljanje\u0020kola\u010Di\u0107ima",
+            "url": "classes/FireHub-Jezgra-Komponente-Kolacic-Servisi-Kolacic-Servis.html"
+        },                {
+            "fqsen": "\\FireHub\\Jezgra\\Komponente\\Kolacic\\Servisi\\Kolacic_Servis\u003A\u003A__construct\u0028\u0029",
+            "name": "__construct",
+            "summary": "\u0023\u0023\u0023\u0020Kontruktor",
+            "url": "classes/FireHub-Jezgra-Komponente-Kolacic-Servisi-Kolacic-Servis.html#method___construct"
+        },                {
+            "fqsen": "\\FireHub\\Jezgra\\Komponente\\Kolacic\\Servisi\\Kolacic_Servis\u003A\u003Aspremi\u0028\u0029",
+            "name": "spremi",
+            "summary": "\u0023\u0023\u0023\u0020Spremi\u0020kola\u010Di\u0107",
+            "url": "classes/FireHub-Jezgra-Komponente-Kolacic-Servisi-Kolacic-Servis.html#method_spremi"
+        },                {
+            "fqsen": "\\FireHub\\Jezgra\\Komponente\\Kolacic\\Servisi\\Kolacic_Servis\u003A\u003Aprocitaj\u0028\u0029",
+            "name": "procitaj",
+            "summary": "\u0023\u0023\u0023\u0020Pro\u010Ditaj\u0020vrijednost\u0020kola\u010Di\u0107a",
+            "url": "classes/FireHub-Jezgra-Komponente-Kolacic-Servisi-Kolacic-Servis.html#method_procitaj"
+        },                {
+            "fqsen": "\\FireHub\\Jezgra\\Komponente\\Kolacic\\Servisi\\Kolacic_Servis\u003A\u003Aizbrisi\u0028\u0029",
+            "name": "izbrisi",
+            "summary": "\u0023\u0023\u0023\u0020Izbri\u0161i\u0020kola\u010Di\u0107",
+            "url": "classes/FireHub-Jezgra-Komponente-Kolacic-Servisi-Kolacic-Servis.html#method_izbrisi"
+        },                {
+            "fqsen": "\\FireHub\\Jezgra\\Komponente\\Kolacic\\Servisi\\Kolacic_Servis\u003A\u003A\u0024posluzitelj",
+            "name": "posluzitelj",
+            "summary": "",
+            "url": "classes/FireHub-Jezgra-Komponente-Kolacic-Servisi-Kolacic-Servis.html#property_posluzitelj"
+        },                {
+            "fqsen": "\\FireHub\\Jezgra\\Komponente\\Sesija\\Sesija_Interface",
+            "name": "Sesija_Interface",
+            "summary": "\u0023\u0023\u0023\u0020Interface\u002Da\u0020za\u0020sesija\u0020servise",
+            "url": "classes/FireHub-Jezgra-Komponente-Sesija-Sesija-Interface.html"
+        },                {
+            "fqsen": "\\FireHub\\Jezgra\\Komponente\\Sesija\\Sesija_Interface\u003A\u003Astatus\u0028\u0029",
+            "name": "status",
+            "summary": "\u0023\u0023\u0023\u0020Status\u0020sesije",
+            "url": "classes/FireHub-Jezgra-Komponente-Sesija-Sesija-Interface.html#method_status"
+        },                {
+            "fqsen": "\\FireHub\\Jezgra\\Komponente\\Sesija\\Sesija_Interface\u003A\u003Azapisi\u0028\u0029",
+            "name": "zapisi",
+            "summary": "\u0023\u0023\u0023\u0020Zapi\u0161i\u0020vrijednost\u0020u\u0020sesiju",
+            "url": "classes/FireHub-Jezgra-Komponente-Sesija-Sesija-Interface.html#method_zapisi"
+        },                {
+            "fqsen": "\\FireHub\\Jezgra\\Komponente\\Sesija\\Sesija_Interface\u003A\u003Aprocitaj\u0028\u0029",
+            "name": "procitaj",
+            "summary": "\u0023\u0023\u0023\u0020Pro\u010Ditaj\u0020vrijednost\u0020iz\u0020sesije",
+            "url": "classes/FireHub-Jezgra-Komponente-Sesija-Sesija-Interface.html#method_procitaj"
+        },                {
+            "fqsen": "\\FireHub\\Jezgra\\Komponente\\Sesija\\Sesija_Interface\u003A\u003Auredi\u0028\u0029",
+            "name": "uredi",
+            "summary": "\u0023\u0023\u0023\u0020Uredi\u0020vrijednost\u0020u\u0020sesiju",
+            "url": "classes/FireHub-Jezgra-Komponente-Sesija-Sesija-Interface.html#method_uredi"
+        },                {
+            "fqsen": "\\FireHub\\Jezgra\\Komponente\\Sesija\\Sesija_Interface\u003A\u003Aizbrisi\u0028\u0029",
+            "name": "izbrisi",
+            "summary": "\u0023\u0023\u0023\u0020Izbri\u0161i\u0020vrijednost\u0020iz\u0020sesije",
+            "url": "classes/FireHub-Jezgra-Komponente-Sesija-Sesija-Interface.html#method_izbrisi"
+        },                {
+            "fqsen": "\\FireHub\\Jezgra\\Komponente\\Sesija\\Sesija_Interface\u003A\u003Aunisti\u0028\u0029",
+            "name": "unisti",
+            "summary": "\u0023\u0023\u0023\u0020Uni\u0161ti\u0020sve\u0020podatke\u0020vezane\u0020za\u0020sesiju",
+            "url": "classes/FireHub-Jezgra-Komponente-Sesija-Sesija-Interface.html#method_unisti"
+        },                {
+            "fqsen": "\\FireHub\\Jezgra\\Komponente\\Sesija\\Greske\\Sesija_Greska",
+            "name": "Sesija_Greska",
+            "summary": "\u0023\u0023\u0023\u0020Gre\u0161ke\u0020sesije",
+            "url": "classes/FireHub-Jezgra-Komponente-Sesija-Greske-Sesija-Greska.html"
+        },                {
+            "fqsen": "\\FireHub\\Jezgra\\Komponente\\Sesija\\Servisi\\Datoteka",
+            "name": "Datoteka",
+            "summary": "\u0023\u0023\u0023\u0020Servis\u0020za\u0020upravljanje\u0020sesijama",
+            "url": "classes/FireHub-Jezgra-Komponente-Sesija-Servisi-Datoteka.html"
+        },                {
+            "fqsen": "\\FireHub\\Jezgra\\Komponente\\Sesija\\Servisi\\Datoteka\u003A\u003A__construct\u0028\u0029",
+            "name": "__construct",
+            "summary": "\u0023\u0023\u0023\u0020Kontruktor",
+            "url": "classes/FireHub-Jezgra-Komponente-Sesija-Servisi-Datoteka.html#method___construct"
+        },                {
+            "fqsen": "\\FireHub\\Jezgra\\Komponente\\Sesija\\Servisi\\Datoteka\u003A\u003Astatus\u0028\u0029",
+            "name": "status",
+            "summary": "\u0023\u0023\u0023\u0020Status\u0020sesije",
+            "url": "classes/FireHub-Jezgra-Komponente-Sesija-Servisi-Datoteka.html#method_status"
+        },                {
+            "fqsen": "\\FireHub\\Jezgra\\Komponente\\Sesija\\Servisi\\Datoteka\u003A\u003Azapisi\u0028\u0029",
+            "name": "zapisi",
+            "summary": "\u0023\u0023\u0023\u0020Zapi\u0161i\u0020vrijednost\u0020u\u0020sesiju",
+            "url": "classes/FireHub-Jezgra-Komponente-Sesija-Servisi-Datoteka.html#method_zapisi"
+        },                {
+            "fqsen": "\\FireHub\\Jezgra\\Komponente\\Sesija\\Servisi\\Datoteka\u003A\u003Aprocitaj\u0028\u0029",
+            "name": "procitaj",
+            "summary": "\u0023\u0023\u0023\u0020Pro\u010Ditaj\u0020vrijednost\u0020iz\u0020sesije",
+            "url": "classes/FireHub-Jezgra-Komponente-Sesija-Servisi-Datoteka.html#method_procitaj"
+        },                {
+            "fqsen": "\\FireHub\\Jezgra\\Komponente\\Sesija\\Servisi\\Datoteka\u003A\u003Auredi\u0028\u0029",
+            "name": "uredi",
+            "summary": "\u0023\u0023\u0023\u0020Uredi\u0020vrijednost\u0020u\u0020sesiju",
+            "url": "classes/FireHub-Jezgra-Komponente-Sesija-Servisi-Datoteka.html#method_uredi"
+        },                {
+            "fqsen": "\\FireHub\\Jezgra\\Komponente\\Sesija\\Servisi\\Datoteka\u003A\u003Aizbrisi\u0028\u0029",
+            "name": "izbrisi",
+            "summary": "\u0023\u0023\u0023\u0020Izbri\u0161i\u0020vrijednost\u0020iz\u0020sesije",
+            "url": "classes/FireHub-Jezgra-Komponente-Sesija-Servisi-Datoteka.html#method_izbrisi"
+        },                {
+            "fqsen": "\\FireHub\\Jezgra\\Komponente\\Sesija\\Servisi\\Datoteka\u003A\u003Aunisti\u0028\u0029",
+            "name": "unisti",
+            "summary": "\u0023\u0023\u0023\u0020Uni\u0161ti\u0020sve\u0020podatke\u0020vezane\u0020za\u0020sesiju",
+            "url": "classes/FireHub-Jezgra-Komponente-Sesija-Servisi-Datoteka.html#method_unisti"
+        },                {
+            "fqsen": "\\FireHub\\Jezgra\\Komponente\\Sesija\\Servisi\\Datoteka\u003A\u003ApostaviNaziv\u0028\u0029",
+            "name": "postaviNaziv",
+            "summary": "\u0023\u0023\u0023\u0020Postavi\u0020naziv\u0020sesije",
+            "url": "classes/FireHub-Jezgra-Komponente-Sesija-Servisi-Datoteka.html#method_postaviNaziv"
+        },                {
+            "fqsen": "\\FireHub\\Jezgra\\Komponente\\Sesija\\Servisi\\Datoteka\u003A\u003ApostaviLokaciju\u0028\u0029",
+            "name": "postaviLokaciju",
+            "summary": "\u0023\u0023\u0023\u0020Postavi\u0020lokaciju\u0020za\u0020spremanje\u0020datoteka",
+            "url": "classes/FireHub-Jezgra-Komponente-Sesija-Servisi-Datoteka.html#method_postaviLokaciju"
+        },                {
+            "fqsen": "\\FireHub\\Jezgra\\Komponente\\Sesija\\Servisi\\Datoteka\u003A\u003ApostaviParametere\u0028\u0029",
+            "name": "postaviParametere",
+            "summary": "\u0023\u0023\u0023\u0020Postavi\u0020parametre\u0020sesije",
+            "url": "classes/FireHub-Jezgra-Komponente-Sesija-Servisi-Datoteka.html#method_postaviParametere"
+        },                {
+            "fqsen": "\\FireHub\\Jezgra\\Komponente\\Sesija\\Servisi\\Datoteka\u003A\u003A__destruct\u0028\u0029",
+            "name": "__destruct",
+            "summary": "\u0023\u0023\u0023\u0020Zatvori\u0020sesiju",
+            "url": "classes/FireHub-Jezgra-Komponente-Sesija-Servisi-Datoteka.html#method___destruct"
+        },                {
+            "fqsen": "\\FireHub\\Jezgra\\Komponente\\Sesija\\Servisi\\Datoteka\u003A\u003A\u0024posluzitelj",
+            "name": "posluzitelj",
+            "summary": "",
+            "url": "classes/FireHub-Jezgra-Komponente-Sesija-Servisi-Datoteka.html#property_posluzitelj"
+        },                {
             "fqsen": "\\",
             "name": "\\",
             "summary": "",
             "url": "namespaces/default.html"
-        },                {
-            "fqsen": "\\FireHub\\Aplikacija\\FireHubTest\\Kontroler",
-            "name": "Kontroler",
-            "summary": "",
-            "url": "namespaces/firehub-aplikacija-firehubtest-kontroler.html"
-        },                {
-            "fqsen": "\\FireHub\\Aplikacija\\FireHubTest",
-            "name": "FireHubTest",
-            "summary": "",
-            "url": "namespaces/firehub-aplikacija-firehubtest.html"
-        },                {
-            "fqsen": "\\FireHub\\Aplikacija",
-            "name": "Aplikacija",
-            "summary": "",
-            "url": "namespaces/firehub-aplikacija.html"
-        },                {
-            "fqsen": "\\FireHub",
-            "name": "FireHub",
-            "summary": "",
-            "url": "namespaces/firehub.html"
-        },                {
-            "fqsen": "\\FireHub\\Aplikacija\\FireHubTestDva\\Kontroler",
-            "name": "Kontroler",
-            "summary": "",
-            "url": "namespaces/firehub-aplikacija-firehubtestdva-kontroler.html"
-        },                {
-            "fqsen": "\\FireHub\\Aplikacija\\FireHubTestDva",
-            "name": "FireHubTestDva",
-            "summary": "",
-            "url": "namespaces/firehub-aplikacija-firehubtestdva.html"
         },                {
             "fqsen": "\\FireHub\\Jezgra\\Atributi",
             "name": "Atributi",
@@ -1340,6 +1640,11 @@ Search.appendIndex(
             "name": "Jezgra",
             "summary": "",
             "url": "namespaces/firehub-jezgra.html"
+        },                {
+            "fqsen": "\\FireHub",
+            "name": "FireHub",
+            "summary": "",
+            "url": "namespaces/firehub.html"
         },                {
             "fqsen": "\\FireHub\\Jezgra\\Greske",
             "name": "Greske",
@@ -1360,6 +1665,21 @@ Search.appendIndex(
             "name": "BazaPodataka",
             "summary": "",
             "url": "namespaces/firehub-jezgra-komponente-bazapodataka.html"
+        },                {
+            "fqsen": "\\FireHub\\Jezgra\\Komponente\\BazaPodataka\\Greske",
+            "name": "Greske",
+            "summary": "",
+            "url": "namespaces/firehub-jezgra-komponente-bazapodataka-greske.html"
+        },                {
+            "fqsen": "\\FireHub\\Jezgra\\Komponente\\BazaPodataka\\Servisi",
+            "name": "Servisi",
+            "summary": "",
+            "url": "namespaces/firehub-jezgra-komponente-bazapodataka-servisi.html"
+        },                {
+            "fqsen": "\\FireHub\\Jezgra\\Komponente\\BazaPodataka\\Servisi\\Jezik",
+            "name": "Jezik",
+            "summary": "",
+            "url": "namespaces/firehub-jezgra-komponente-bazapodataka-servisi-jezik.html"
         },                {
             "fqsen": "\\FireHub\\Jezgra\\Komponente\\Datoteka",
             "name": "Datoteka",
@@ -1411,6 +1731,16 @@ Search.appendIndex(
             "summary": "",
             "url": "namespaces/firehub-jezgra-kontejner.html"
         },                {
+            "fqsen": "\\FireHub\\Jezgra\\Komponente\\Kolacic",
+            "name": "Kolacic",
+            "summary": "",
+            "url": "namespaces/firehub-jezgra-komponente-kolacic.html"
+        },                {
+            "fqsen": "\\FireHub\\Jezgra\\Komponente\\Kolacic\\Servisi",
+            "name": "Servisi",
+            "summary": "",
+            "url": "namespaces/firehub-jezgra-komponente-kolacic-servisi.html"
+        },                {
             "fqsen": "\\FireHub\\Jezgra\\Komponente\\Konfiguracija",
             "name": "Konfiguracija",
             "summary": "",
@@ -1460,6 +1790,21 @@ Search.appendIndex(
             "name": "Rute",
             "summary": "",
             "url": "namespaces/firehub-jezgra-komponente-rute.html"
+        },                {
+            "fqsen": "\\FireHub\\Jezgra\\Komponente\\Sesija",
+            "name": "Sesija",
+            "summary": "",
+            "url": "namespaces/firehub-jezgra-komponente-sesija.html"
+        },                {
+            "fqsen": "\\FireHub\\Jezgra\\Komponente\\Sesija\\Greske",
+            "name": "Greske",
+            "summary": "",
+            "url": "namespaces/firehub-jezgra-komponente-sesija-greske.html"
+        },                {
+            "fqsen": "\\FireHub\\Jezgra\\Komponente\\Sesija\\Servisi",
+            "name": "Servisi",
+            "summary": "",
+            "url": "namespaces/firehub-jezgra-komponente-sesija-servisi.html"
         },                {
             "fqsen": "\\FireHub\\Jezgra\\Kontroler",
             "name": "Kontroler",
