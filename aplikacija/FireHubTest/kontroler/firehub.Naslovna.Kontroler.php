@@ -60,15 +60,16 @@ final class Naslovna_Kontroler extends Kontroler {
                     ->odaberi(['test', 'test1'])
                     ->gdje('test', '>', 0)
                     ->gdje('test1', '=', 't1')
+                    ->poredaj('test1', 'ASC')
                     ->limit(50, 2),
-                (new BazaPodataka())->tabela('Test2')
+                (new BazaPodataka())->tabela('Test')
                     ->izbrisi()
                     ->gdje('test', '>', 0)
                     ->gdje('test1', '<>', 't2'),
-                (new BazaPodataka())->tabela('Test2')
+                (new BazaPodataka())->tabela('Test')
                     ->umetni([
                         'test' => 10,
-                        'test1' => 'dvadeset'
+                        'test1' => 'xxx'
                     ])
             )->napravi();
         var_dump($odabir_test->rezultat());
