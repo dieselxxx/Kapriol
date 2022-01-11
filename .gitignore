@@ -1,5 +1,6 @@
-# JetBrains
-.idea/
+# sve
+*
 
-#phpDocumentor
-.phpdoc/
+#aplikacija
+!aplikacija/Kapriol/
+!web/Kapriol/
