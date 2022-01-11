@@ -110,6 +110,7 @@ final class Datoteka implements Rute_Interface {
     private function datotekaRuta (string $metoda, string $url):array|false {
 
         // napuni rute u servis iz datoteke
+        $this->rute = [];
         $this->datotekaPodServis->ucitaj(APLIKACIJA_ROOT . 'podatci' . RAZDJELNIK_MAPE . 'rute' .  RAZDJELNIK_MAPE . '*.php');
 
         // zapiši rute u predmemoriju
