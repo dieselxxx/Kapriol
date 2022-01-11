@@ -81,11 +81,12 @@ final class MySQL implements BazaPodataka_Interface {
 
         }
 
-        if (!is_null($this->posluzitelj->upit) && property_exists($this->posluzitelj->upit, 'sirovi')) {
+        // provjera vrste upita
+        if (isset($this->posluzitelj->upit->sirovi)) {
 
             $this->upit($this->posluzitelj->upit->sirovi);
 
-        } else if (!is_null($this->posluzitelj->upit) && property_exists($this->posluzitelj->upit, 'vrsta')) {
+        } else if (isset($this->posluzitelj->upit->vrsta)) {
 
             $this->upit(
                 $this->jezik->obradi($this->posluzitelj->baza, $this->posluzitelj->tabela, $this->posluzitelj->upit)

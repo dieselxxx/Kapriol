@@ -68,8 +68,8 @@ final class Naslovna_Kontroler extends Kontroler {
                     ->gdje('test1', '<>', 't2'),
                 (new BazaPodataka())->tabela('Test')
                     ->umetni([
-                        'test' => 10,
-                        'test1' => 'xxx'
+                        'test' => 20,
+                        'test1' => 'yyy'
                     ])
             )->napravi();
         var_dump($odabir_test->rezultat());

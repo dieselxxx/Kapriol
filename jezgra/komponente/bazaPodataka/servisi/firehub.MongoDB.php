@@ -90,25 +90,19 @@ final class MongoDB implements BazaPodataka_Interface {
         }
 
         // provjera vrste upita
-        switch (!null) {
+        if (isset($this->posluzitelj->upit->vrsta)) {
 
-            case $this->posluzitelj->upit : // ako postoji upit
+            $this->upit(
+                unserialize($this->jezik->obradi($this->posluzitelj->baza, $this->posluzitelj->tabela, $this->posluzitelj->upit), [Jezik_Interface::class])
+            );
 
-                $this->upit(
-                    unserialize($this->jezik->obradi($this->posluzitelj->baza, $this->posluzitelj->tabela, $this->posluzitelj->upit), [Jezik_Interface::class])
-                );
+        } else if (!is_null($this->posluzitelj->transakcija)) {
 
-                break;
+            $this->transakcija();
 
-            case $this->posluzitelj->transakcija :
+        } else {
 
-                $this->transakcija();
-
-                break;
-
-            default :
-
-                throw new BazaPodataka_Greska(_('Ne postoji niti upit niti transakcija prema bazi podataka!'));
+            throw new BazaPodataka_Greska(_('Ne postoji niti upit niti transakcija prema bazi podataka!'));
 
         }
 
