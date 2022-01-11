@@ -20,14 +20,8 @@ final class Naslovna_Kontroler extends Kontroler {
     //#[\FireHub\Jezgra\Komponente\Kolacic\Atributi\Kolacic('test', 'yxx', http: false)]
     public function index (BazaPodataka $bazaPodataka = null, $par1 = 'test', int $par2 = 5):Sadrzaj {
 
-        //$x = (new BazaPodataka())->upit('SELECT * FROM test2')->napravi();
-        //var_dump($x->niz());
-
-        $y = (new BazaPodataka())->sirovi('SELECT * FROM test LIMIT 3')->napravi();
-        var_dump($y->niz());
-
-        //$z = (new BazaPodataka())->tabela('test')->napravi();
-        //var_dump($z->niz());
+        $x = $bazaPodataka->sirovi('SELECT * FROM test')->napravi();
+        var_dump($x->niz());
 
         return sadrzaj()->datoteka('test.html')->format(Sadrzaj_Vrsta::HTML)->podatci([
             'prvi_podatak' => 'naslovna-index',
@@ -37,10 +31,19 @@ final class Naslovna_Kontroler extends Kontroler {
 
     }
 
-    #[Zaglavlja(vrsta: Vrsta::JSON)]
+    #[Zaglavlja(vrsta: Vrsta::HTML)]
     public function index2 ():Sadrzaj {
 
-        return sadrzaj()->datoteka('test.html')->format(Sadrzaj_Vrsta::JSON)->podatci([
+        $odabir_test = (new BazaPodataka())
+            ->tabela('Test')
+            ->odaberi(['test', 'test1'])
+            ->gdje('test', '>=', 1)
+            ->poredaj('test1', 'ASC')
+            ->limit(0, 2)
+            ->napravi();
+        var_dump($odabir_test->niz());
+
+        return sadrzaj()->datoteka('test.html')->format(Sadrzaj_Vrsta::HTML)->podatci([
             'prvi_podatak' => 'naslovna-index2',
             'drugi_podatak' => 'naslovna-index2',
             'treći_podatak' => 'naslovna-index2'
@@ -50,6 +53,25 @@ final class Naslovna_Kontroler extends Kontroler {
     }
 
     public function index3 ():Sadrzaj {
+
+        $odabir_test = (new BazaPodataka())
+            ->transakcija(
+                (new BazaPodataka())->tabela('Test')
+                    ->odaberi(['test', 'test1'])
+                    ->gdje('test', '>', 0)
+                    ->gdje('test1', '=', 't1')
+                    ->limit(50, 2),
+                (new BazaPodataka())->tabela('Test2')
+                    ->izbrisi()
+                    ->gdje('test', '>', 0)
+                    ->gdje('test1', '<>', 't2'),
+                (new BazaPodataka())->tabela('Test2')
+                    ->umetni([
+                        'test' => 10,
+                        'test1' => 'dvadeset'
+                    ])
+            )->napravi();
+        var_dump($odabir_test->rezultat());
 
         return sadrzaj()->datoteka('test.html')->format(Sadrzaj_Vrsta::HTML)->podatci([
             'prvi_podatak' => 'naslovna-index3',
