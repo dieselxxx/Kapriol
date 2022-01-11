@@ -35,7 +35,7 @@ final class Naslovna_Kontroler extends Kontroler {
 
         return sadrzaj()->datoteka('naslovna.html')->podatci([
             'predlozak_naslov' => 'Naslovna',
-            'drugi_podatak' => 'naslovna-index'
+            'prvi_podatak' => 'naslovna-index'
         ]);
 
     }
