@@ -16,8 +16,8 @@ namespace FireHub\Jezgra\Komponente\BazaPodataka;
 
 use FireHub\Jezgra\Komponente\Servis_Kontejner;
 use FireHub\Jezgra\Komponente\Servis_Posluzitelj;
+use FireHub\Jezgra\Komponente\BazaPodataka\Servisi\Upit;
 use FireHub\Jezgra\Atributi\Zadano;
-use stdClass;
 
 /**
  * ### Poslužitelj za bazu podataka
@@ -34,7 +34,7 @@ use stdClass;
  * @property-read int $odziv Maksimalni odziv servera u sekundama prilikom upita
  * @property-read bool $posalji_stream_pri_izvrsavanju Slanje svih podataka pri izvršavanju u upita ili u dijelovima
  * @property-read Kursor_Interface $kursor Način redoslijeda odabiranja redaka
- * @property-read null|stdClass $upit Upit prema bazi podataka
+ * @property-read null|Upit $upit Upit prema bazi podataka
  * @property-read null|string[] $transakcija Niz upita prema bazi podataka u obliku transakcije
  * @property-read string $tabela Tabela za upit
  *
@@ -133,9 +133,9 @@ final class BazaPodataka extends Servis_Posluzitelj {
 
     /**
      * ### Upit prema bazi podataka
-     * @var null|stdClass
+     * @var null|Upit
      */
-    protected ?stdClass $upit = null;
+    protected ?Upit $upit = null;
 
     /**
      * ### Niz upita prema bazi podataka u obliku transakcije
@@ -235,7 +235,7 @@ final class BazaPodataka extends Servis_Posluzitelj {
      */
     public function sirovi (string $upit):self {
 
-        $this->upit = new stdClass();
+        $this->upit = new Upit();
         $this->upit->sirovi = $upit;
 
         return $this;
@@ -272,7 +272,7 @@ final class BazaPodataka extends Servis_Posluzitelj {
      */
     public function odaberi (array $kolumne):self {
 
-        $this->upit = new stdClass();
+        $this->upit = new Upit();
         $this->upit->vrsta = 'odaberi';
         $this->upit->kolumne = $kolumne;
 
@@ -292,7 +292,7 @@ final class BazaPodataka extends Servis_Posluzitelj {
      */
     public function umetni (array $podatci):self {
 
-        $this->upit = new stdClass();
+        $this->upit = new Upit();
         $this->upit->vrsta = 'umetni';
         $this->upit->podatci = $podatci;
 
@@ -312,7 +312,7 @@ final class BazaPodataka extends Servis_Posluzitelj {
      */
     public function azuriraj (array $podatci):self {
 
-        $this->upit = new stdClass();
+        $this->upit = new Upit();
         $this->upit->vrsta = 'azuriraj';
         $this->upit->podatci = $podatci;
 
@@ -328,7 +328,7 @@ final class BazaPodataka extends Servis_Posluzitelj {
      */
     public function izbrisi ():self {
 
-        $this->upit = new stdClass();
+        $this->upit = new Upit();
         $this->upit->vrsta = 'izbrisi';
 
         return $this;

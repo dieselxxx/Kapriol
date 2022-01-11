@@ -15,7 +15,7 @@
 namespace FireHub\Jezgra\Komponente\BazaPodataka\Servisi\Jezik;
 
 use FireHub\Jezgra\Komponente\BazaPodataka\Servisi\Jezik_Interface;
-use stdClass;
+use FireHub\Jezgra\Komponente\BazaPodataka\Servisi\Upit;
 
 /**
  * ### Podservis za NoSQL dokument query jezik
@@ -27,9 +27,9 @@ final class NoSQLDokument implements Jezik_Interface {
 
     /**
      * ### Objekt upita
-     * @var stdClass
+     * @var Upit
      */
-    protected stdClass $upit;
+    protected Upit $upit;
 
     /**
      * ### Rezultat
@@ -40,7 +40,7 @@ final class NoSQLDokument implements Jezik_Interface {
     /**
      * @inheritDoc
      */
-    public function obradi (string $baza, string $tabela, stdClass $upit):string {
+    public function obradi (string $baza, string $tabela, Upit $upit):string {
 
         $this->upit = $upit;
 

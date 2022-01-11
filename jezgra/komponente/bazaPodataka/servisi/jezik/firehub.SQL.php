@@ -15,7 +15,7 @@
 namespace FireHub\Jezgra\Komponente\BazaPodataka\Servisi\Jezik;
 
 use FireHub\Jezgra\Komponente\BazaPodataka\Servisi\Jezik_Interface;
-use stdClass;
+use FireHub\Jezgra\Komponente\BazaPodataka\Servisi\Upit;
 
 /**
  * ### Podservis za SQL query jezik
@@ -33,9 +33,9 @@ class SQL implements Jezik_Interface {
 
     /**
      * ### Objekt upita
-     * @var stdClass
+     * @var Upit
      */
-    protected stdClass $upit;
+    protected Upit $upit;
 
     /**
      * ### Rezultat
@@ -46,7 +46,7 @@ class SQL implements Jezik_Interface {
     /**
      * @inheritDoc
      */
-    public function obradi (string $baza, string $tabela, stdClass $upit):string {
+    public function obradi (string $baza, string $tabela, Upit $upit):string {
 
         $this->tabela = '['.$baza.'].'.'['.konfiguracija('baza_podataka.shema').'].['.$tabela.']';
         $this->upit = $upit;
