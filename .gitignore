@@ -23,3 +23,6 @@ vendor/*
 #predmemorija
 predmemorija/phpunit/*
 !predmemorija/phpunit/.gitkeep
+
+#aplikacija
+aplikacija/*
