@@ -1,5 +1,9 @@
-body {background-color: #ffffff;}
+body {background-color: #fffff; height: auto; min-height: 100vh; width: 100%; font-family: 'Kapriol', sans-serif; font-size: 0.8rem; font-weight: 400;}
 
-#zaglavlje {height: 300px; width: 100%;}
-#zaglavlje_gore {height: 50px; width: 100%;}
-#zaglavlje #logo {background-image: url("/kapriol/resursi/grafika/logo/120x270.png"); height: 120px; width: 270px;}
+header {display: grid;}
+header #info {grid-column: 1/8; grid-row: 1/2; background-color: #f6f6f6; height: 50px;}
+header #logo {grid-column: 2/4; grid-row: 2/3; background-image: url('/kapriol/resursi/grafika/logo/120x270.png'); height: 120px; width: 270px; align-self: center; justify-self: left;}
+
+main {background-image: url('/kapriol/resursi/grafika/ikone/kapriol_siva.svg'); background-position: bottom left; background-repeat: no-repeat;}
+
+footer {background-image: url('/kapriol/resursi/grafika/ikone/kapriol_crna.svg'); background-position: bottom left; background-repeat: no-repeat; background-color: #162125;}
