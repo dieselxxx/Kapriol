@@ -1,5 +1,5 @@
-body {display: grid; grid-template-areas: 'zaglavlje zaglavlje zaglavlje zaglavlje' 'sadrzaj sadrzaj sadrzaj sadrzaj' 'podnozje podnozje podnozje podnozje'; grid-template-columns: 1fr 1fr 1fr 1fr; grid-template-rows: 200px auto 500px;}
-header {display: grid; grid-area: zaglavlje; grid-template-columns: auto repeat(5, 280px) auto; grid-template-rows: 50px 150px;}
+body {display: grid; grid-template-areas: 'zaglavlje zaglavlje zaglavlje zaglavlje' 'sadrzaj sadrzaj sadrzaj sadrzaj' 'podnozje podnozje podnozje podnozje'; grid-template-columns: 1fr 1fr 1fr 1fr; grid-template-rows: 250px auto 500px;}
+header {display: grid; grid-area: zaglavlje; grid-template-columns: auto repeat(5, 280px) auto; grid-template-rows: 50px 150px 50px;}
 main {display: grid; grid-area: sadrzaj; grid-template-columns: auto repeat(5, 280px) auto; grid-auto-rows: minmax(min-content, max-content);}
 footer {display: grid; grid-area: podnozje; grid-template-columns: auto repeat(5, 280px) auto;}
 
