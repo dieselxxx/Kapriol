@@ -35,8 +35,6 @@ final class Naslovna_Kontroler extends Kontroler {
 
         return sadrzaj()->datoteka('naslovna.html')->podatci([
             'predlozak_naslov' => 'Naslovna',
-            'Upišite pojam za traženje' => 'Upišite pojam za traženje',
-            'Pretražite proizvode po nazivu, brandu ili robnoj grupi...' => 'Pretražite proizvode po nazivu, brandu ili robnoj grupi...',
             'prvi_podatak' => 'naslovna-index'
         ]);
 

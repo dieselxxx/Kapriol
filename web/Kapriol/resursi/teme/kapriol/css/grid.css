@@ -2,3 +2,9 @@ body {display: grid; grid-template-areas: 'zaglavlje zaglavlje zaglavlje zaglavl
 header {display: grid; grid-area: zaglavlje; grid-template-columns: auto repeat(5, 280px) auto; grid-template-rows: 50px 150px;}
 main {display: grid; grid-area: sadrzaj; grid-template-columns: auto repeat(5, 280px) auto; grid-auto-rows: minmax(min-content, max-content);}
 footer {display: grid; grid-area: podnozje; grid-template-columns: auto repeat(5, 280px) auto;}
+
+@media only screen and (max-width: 1400px) {
+
+    header, main, footer {grid-template-columns: repeat(5, auto);}
+
+}
