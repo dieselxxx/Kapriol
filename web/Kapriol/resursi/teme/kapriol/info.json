@@ -1,5 +1,6 @@
 {
     "css": [
+        "css/root.css",
         "css/normaliziranje.css",
         "css/grid.css",
         "css/kapriol.css"
