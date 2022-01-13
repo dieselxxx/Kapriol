@@ -24,56 +24,56 @@ final class Upit {
 
     /**
      * ### Sirovi upit prema bazi podataka
-     * @var string
+     * @var ?string
      */
-    public string $sirovi;
+    public ?string $sirovi = null;
 
     /**
      * ### Vrsta upita prema bazi podataka (odaberi, umetni, azuriraj)
-     * @var string
+     * @var ?string
      */
-    public string $vrsta;
+    public ?string $vrsta = null;
 
     /**
      * ### Lista kolumni za odabir
-     * @var array
+     * @var ?array
      */
-    public array $kolumne;
+    public ?array $kolumne = null;
 
     /**
      * ### Lista podataka za umetanje
-     * @var array
+     * @var ?array
      */
-    public array $podatci;
+    public ?array $podatci = null;
 
     /**
      * ### Filtri vrijednost po nazivu kolumne ('naziv' => $naziv, 'operator' => $operator, 'vrijednost' => $vrijednost)
-     * @var array
+     * @var ?array
      */
-    public array $gdje;
+    public ?array $gdje = null;
 
     /**
      * ### Kolumna po kojoj redamo zapise
-     * @var string
+     * @var ?string
      */
-    public string $poredaj;
+    public ?string $poredaj = null;
 
     /**
      * ### Redolijed po kojoj redamo zapise (ASC ili DESC)
-     * @var string
+     * @var ?string
      */
-    public string $poredaj_redoslijed;
+    public ?string $poredaj_redoslijed = null;
 
     /**
      * ### Pomak od kojeg se limitiraju zapisi
-     * @var int
+     * @var ?int
      */
-    public int $limit_pomak;
+    public ?int $limit_pomak = null;
 
     /**
      * ### Broj redaka koje odabiremo
-     * @var int
+     * @var ?int
      */
-    public int $limit_broj_redaka;
+    public ?int $limit_broj_redaka = null;
 
 }
