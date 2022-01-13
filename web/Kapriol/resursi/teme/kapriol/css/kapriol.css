@@ -1,6 +1,6 @@
-body {background-color: var(--boja-pozadina); height: auto; min-height: 100vh; width: 100%; font-family: 'Kapriol', sans-serif; font-size: 1rem; font-weight: 500; -webkit-transition: all 0.5s ease; -moz-transition: all 0.5s ease; -o-transition: all 0.5s ease; transition: all 0.5s ease;}
+body {background-color: var(--boja-pozadina); height: auto; min-height: 100vh; width: 100%; font-family: 'Kapriol', sans-serif; font-size: 1rem; font-weight: 400; -webkit-transition: all 0.5s ease; -moz-transition: all 0.5s ease; -o-transition: all 0.5s ease; transition: all 0.5s ease;}
 a {color: var(--boja-kapriol);}
-a:hover {text-decoration: none;}
+a:hover {color: var(--boja-kapriol); text-decoration: none;}
 a:after {content: ''; position: absolute; display: block; background: var(--boja-kapriol); left: 0; bottom: 0; height: 1px; width: 100%; opacity: 0; -webkit-transition: all 0.5s ease; -moz-transition: all 0.5s ease; -o-transition: all 0.5s ease; transition: all 0.5s ease;}
 a:hover:after {opacity: 100%;}
 iframe {border: 0;}
@@ -213,15 +213,20 @@ header > form[data-oznaka="trazi_artikal"] > label {padding: 15px; line-height: 
 header > form[data-oznaka="trazi_artikal"] > label > .naslov {text-indent: 5px;}
 header > a#prijava {grid-column: 5 / 6; grid-row: 2 / 3; align-self: center}
 header > a#kosarica {grid-column: 6 / 7; grid-row: 2 / 3; align-self: center;}
-header > nav {grid-column: 1 / 8; grid-row: 3 / 4; display: grid; grid-template-columns: auto 1400px auto; background-color: var(--boja-pozadina_tamna);}
-header > nav > ul {grid-column: 2 / 3; justify-self: center; width: 100%;}
-header > nav > ul > li {float: left; height: 50px;}
-header > nav > ul > li > svg {float: left; fill: var(--boja-kapriol); padding: 10px; height: 50px; width: 50px;}
-header > nav > ul > li > span {float: left; height: 50px; line-height: 50px; font-weight: 700; color: var(--boja-tekst-svjetlije); text-indent: 7px; text-transform: uppercase;}
+header nav {grid-column: 1 / 8; grid-row: 3 / 4; display: grid; grid-template-columns: auto 1400px auto; background-color: var(--boja-pozadina_tamna);}
+nav > ul {grid-column: 2 / 3; justify-self: center; width: 100%;}
+nav > ul > li {float: left; height: 50px;}
+nav > ul > li > svg {float: left; fill: var(--boja-kapriol); padding: 10px; height: 50px; width: 50px;}
+nav > ul > li > span {float: left; height: 50px; line-height: 50px; font-weight: 700; color: var(--boja-tekst-svjetlije); text-indent: 7px; text-transform: uppercase;}
 
 main {background-image: url('/kapriol/resursi/grafika/ikone/kapriol_siva.svg'); background-size: 300px; background-position: bottom left; background-repeat: no-repeat;;}
 
-footer {background-image: url('/kapriol/resursi/grafika/ikone/kapriol_crna.svg'); background-size: 300px; background-position: bottom left; background-repeat: no-repeat; background-color: var(--boja-pozadina_tamna);}
+footer {background-image: url('/kapriol/resursi/grafika/ikone/kapriol_crna.svg'); background-size: 300px; background-position: bottom left; background-repeat: no-repeat; background-color: var(--boja-pozadina_tamna); color: var(--boja-tekst-svjetlije);}
+footer a {color: var(--boja-tekst-svjetlije);}
+footer nav {grid-column: 2 / 7; grid-row: 1 / 2; display: grid; grid-template-columns: repeat(3, 467px); align-content: center;}
+footer nav h2 {color: var(--boja-kapriol);}
+footer nav ul {grid-column: 1 / 4;}
+nav > ul > li > span {text-transform: initial;}
 
 @media only screen and (max-width: 1400px) {
 
