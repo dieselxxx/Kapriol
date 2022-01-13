@@ -8,3 +8,10 @@ footer {display: grid; grid-area: podnozje; grid-template-columns: auto repeat(5
     header, main, footer {grid-template-columns: repeat(5, auto);}
 
 }
+
+@media only screen and (max-width: 1024px) {
+
+    body {grid-template-rows: 350px auto 500px;}
+    header {grid-template-rows: 50px 150px 100px 50px;}
+
+}
