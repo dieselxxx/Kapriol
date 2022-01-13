@@ -1,8 +1,8 @@
 <?php declare(strict_types = 1);
 
 /**
- * Naslovna
- * @since 0.1.0.pre-alpha.M1
+ * Rezultat
+ * @since 0.1.1.pre-alpha.M1
  *
  * @author Danijel Galić
  * @copyright 2022 Kapriol Web Trgovina
@@ -21,12 +21,12 @@ use FireHub\Jezgra\Kontejner\Greske\Kontejner_Greska;
 use FireHub\Jezgra\Kontroler\Greske\Kontroler_Greska;
 
 /**
- * ### Naslovna
- * @since 0.1.0.pre-alpha.M1
+ * ### Rezultat
+ * @since 0.1.1.pre-alpha.M1
  *
  * @package Aplikacija\Kontroler
  */
-final class Naslovna_Kontroler extends Kontroler {
+final class Rezultat_Kontroler extends Kontroler {
 
     /**
      * ## index
@@ -37,14 +37,14 @@ final class Naslovna_Kontroler extends Kontroler {
      *
      * @return Sadrzaj Sadržaj stranice.
      */
-    public function index ():Sadrzaj {
+    public function index (string $stranica = '', string $kategorija = ''):Sadrzaj {
 
         $kategorije = $this->model(Kategorije_Model::class);
 
-        return sadrzaj()->datoteka('naslovna.html')->podatci([
-            'predlozak_naslov' => 'Naslovna',
+        return sadrzaj()->datoteka('rezultat.html')->podatci([
+            'predlozak_naslov' => ucfirst($kategorija),
             'kategorije' => $kategorije->glavni_meni(),
-            'vi_ste_ovdje' => 'Vi ste ovdje: Naslovna'
+            'vi_ste_ovdje' => 'Vi ste ovdje: ' . ucfirst($kategorija)
         ]);
 
     }

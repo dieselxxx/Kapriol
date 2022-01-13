@@ -15,3 +15,4 @@
 use FireHub\Jezgra\Komponente\Rute\Rute;
 
 Rute::sve('naslovna/index', [\FireHub\Aplikacija\Kapriol\Kontroler\Naslovna_Kontroler::class, 'index']);
+Rute::sve('rezultat/index', [\FireHub\Aplikacija\Kapriol\Kontroler\Rezultat_Kontroler::class, 'index']);
