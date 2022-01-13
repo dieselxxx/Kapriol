@@ -16,6 +16,7 @@ namespace FireHub\Aplikacija\Kapriol\Kontroler;
 
 use FireHub\Jezgra\Kontroler\Kontroler;
 use FireHub\Jezgra\Sadrzaj\Sadrzaj;
+use FireHub\Jezgra\Komponente\BazaPodataka\BazaPodataka;
 
 /**
  * ### Naslovna
@@ -31,11 +32,14 @@ final class Naslovna_Kontroler extends Kontroler {
      *
      * @return Sadrzaj Sadržaj stranice.
      */
-    public function index ():Sadrzaj {
+    public function index (BazaPodataka $bazaPodataka = null):Sadrzaj {
+
+        $artikli = $bazaPodataka->tabela('kategorije')->odaberi(['kategorija'])->poredaj('ID', 'ASC')->napravi();
 
         return sadrzaj()->datoteka('naslovna.html')->podatci([
             'predlozak_naslov' => 'Naslovna',
-            'prvi_podatak' => 'naslovna-index'
+            'prvi_podatak' => 'naslovna-index',
+            'kategorije' => serialize($artikli->niz())
         ]);
 
     }
