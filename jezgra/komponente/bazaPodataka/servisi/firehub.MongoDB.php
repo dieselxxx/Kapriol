@@ -171,6 +171,17 @@ final class MongoDB implements BazaPodataka_Interface {
     }
 
     /**
+     * {@inheritDoc}
+     *
+     * @todo Napraviti metodu
+     */
+    public function broj_zapisa ():int {
+
+        return 0;
+
+    }
+
+    /**
      * ### Pošalji upit prema MongoDB serveru
      * @since 0.6.0.alpha.M1
      *
