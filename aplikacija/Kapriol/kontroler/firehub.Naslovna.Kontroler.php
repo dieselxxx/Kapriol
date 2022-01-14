@@ -44,7 +44,7 @@ final class Naslovna_Kontroler extends Kontroler {
         return sadrzaj()->datoteka('naslovna.html')->podatci([
             'predlozak_naslov' => 'Naslovna',
             'kategorije' => $kategorije->glavni_meni(),
-            'vi_ste_ovdje' => 'Vi ste ovdje: Naslovna'
+            'vi_ste_ovdje' => 'Vi ste ovdje : <a href="/">Kapriol Web Trgovina</a>'
         ]);
 
     }
