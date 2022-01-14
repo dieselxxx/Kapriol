@@ -5,7 +5,7 @@ footer {display: grid; grid-area: podnozje; grid-template-columns: auto repeat(5
 
 @media only screen and (max-width: 1400px) {
 
-    header, main, footer {grid-template-columns: repeat(5, auto);}
+    header, main, footer {grid-template-columns: repeat(6, auto);}
 
 }
 
@@ -13,5 +13,12 @@ footer {display: grid; grid-area: podnozje; grid-template-columns: auto repeat(5
 
     body {grid-template-rows: 350px auto 500px;}
     header {grid-template-rows: 50px 150px 100px 50px;}
+
+}
+
+@media only screen and (max-width: 768px) {
+
+    body {grid-template-rows: 430px auto 500px;}
+    header {grid-template-rows: 50px 150px 80px 100px 50px;}
 
 }

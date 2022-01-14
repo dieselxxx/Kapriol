@@ -44,7 +44,7 @@ final class Rezultat_Kontroler extends Kontroler {
         return sadrzaj()->datoteka('rezultat.html')->podatci([
             'predlozak_naslov' => ucfirst($kategorija),
             'kategorije' => $kategorije->glavni_meni(),
-            'vi_ste_ovdje' => 'Vi ste ovdje: ' . ucfirst($kategorija)
+            'vi_ste_ovdje' => 'Vi ste ovdje: Kapriol Web Trgovina \\\\ ' . ucfirst($kategorija)
         ]);
 
     }
