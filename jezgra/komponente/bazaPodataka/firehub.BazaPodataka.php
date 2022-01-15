@@ -336,6 +336,30 @@ final class BazaPodataka extends Servis_Posluzitelj {
     }
 
     /**
+     * ### Spoji tabelu na postojeći upit
+     * @since 0.6.0.alpha.M1
+     *
+     * @param string $tabela <p>
+     * Tabela na koju se spajamo.
+     * </p>
+     * @param string $kolumna_lijevo <p>
+     * Kolumna koju tražimo u novog tabeli.
+     * </p>
+     * @param mixed $kolumna_desno <p>
+     * Kolumna koju spajamo u postojećoj tabeli.
+     * </p>
+     *
+     * @return $this Instanca Baze Podataka.
+     */
+    public function spoji (string $tabela, string $kolumna_lijevo, string $kolumna_desno):self {
+
+        $this->upit->spoji[] = ['tabela' => $tabela, 'kolumna_lijevo' => $kolumna_lijevo, 'kolumna_desno' => $kolumna_desno];
+
+        return $this;
+
+    }
+
+    /**
      * ### Filtar vrijednost po nazivu kolumne
      * @since 0.6.0.alpha.M1
      *

@@ -34,10 +34,10 @@ final class MySQL extends SQL implements Jezik_Interface {
         $this->upit = $upit;
 
         match ($upit->vrsta) {
-            'odaberi' => $this->odaberi()->gdje(),
+            'odaberi' => $this->odaberi()->spoji()->gdje(),
             'umetni' => $this->umetni(),
             'azuriraj' => $this->azuriraj(),
-            'izbrisi' => $this->izbrisi()->gdje()
+            'izbrisi' => $this->izbrisi()->spoji()->gdje()
         };
 
         return match ($upit->vrsta) {

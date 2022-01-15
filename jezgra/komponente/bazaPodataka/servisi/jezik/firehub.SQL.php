@@ -52,10 +52,10 @@ class SQL implements Jezik_Interface {
         $this->upit = $upit;
 
         match ($upit->vrsta) {
-            'odaberi' => $this->odaberi()->gdje(),
+            'odaberi' => $this->odaberi()->spoji()->gdje(),
             'umetni' => $this->umetni(),
             'azuriraj' => $this->azuriraj(),
-            'izbrisi' => $this->izbrisi()->gdje()
+            'izbrisi' => $this->izbrisi()->spoji()->gdje()
         };
 
         return match ($upit->vrsta) {
@@ -130,6 +130,28 @@ class SQL implements Jezik_Interface {
     protected function izbrisi ():self {
 
         $this->rezultat = "DELETE FROM $this->tabela";
+
+        return $this;
+
+    }
+
+    /**
+     * ### Spoji dodatnu tabelu
+     * @since 0.6.0.alpha.M1
+     *
+     * @return $this Instanca ovog objekta.
+     */
+    protected function spoji ():self {
+
+        if (!empty($this->upit->spoji)) {
+
+            foreach ($this->upit->spoji as $spoji) {
+
+                $this->rezultat .= 'LEFT JOIN '.$spoji['tabela'].' ON '.$spoji['kolumna_lijevo'].' = '.$spoji['kolumna_desno'];
+
+            }
+
+        }
 
         return $this;
 
