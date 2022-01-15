@@ -63,7 +63,8 @@ final class Rezultat_Kontroler extends Kontroler {
             $artikli_html .= <<<Artikal
             
                 <div class="artikal">
-                    <img src="/kapriol/resursi/grafika/ikone/kapriol_siva.svg" alt=""/>
+                    <!--<img src="/kapriol/resursi/grafika/ikone/kapriol_siva.svg" alt=""/>-->
+                    <img src="/kapriol/resursi/grafika/artikli/{$artikal['Slika']}" alt="" loading="lazy"/>
                     <span class="naslov">{$artikal['Naziv']}</span>
                     <span class="cijena">{$artikal['Cijena']} KM</span>
                     <span class="zaliha"></span>

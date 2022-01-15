@@ -55,10 +55,12 @@ final class Artikli_Model extends Model {
     public function artikli (int|string $kategorija, int $pomak, int $limit):array {
 
         $artikli = $this->bazaPodataka->tabela('artikliview')
-            ->odaberi(['Naziv', 'Link', 'Opis', 'Cijena', 'CijenaAkcija'])
+            ->odaberi(['Naziv', 'Link', 'Opis', 'Cijena', 'CijenaAkcija', 'Slika'])
+            ->spoji('slikeartikal', 'ClanakID', 'artikliview.ID')
             ->gdje('KategorijaID', '=', $kategorija)
             ->gdje('Aktivan' , '=', 1)
             ->gdje('Ba', '=', 1)
+            ->gdje('Zadana', '=', 1)
             ->limit($pomak, $limit)
             ->poredaj('Naziv', 'ASC')
             ->napravi();
