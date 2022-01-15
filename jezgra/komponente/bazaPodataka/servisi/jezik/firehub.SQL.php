@@ -147,7 +147,7 @@ class SQL implements Jezik_Interface {
 
             foreach ($this->upit->spoji as $spoji) {
 
-                $this->rezultat .= 'LEFT JOIN '.$spoji['tabela'].' ON '.$spoji['kolumna_lijevo'].' = '.$spoji['kolumna_desno'];
+                $this->rezultat .= ' LEFT JOIN '.$spoji['tabela'].' ON '.$spoji['kolumna_lijevo'].' = '.$spoji['kolumna_desno'];
 
             }
 
