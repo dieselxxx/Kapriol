@@ -174,6 +174,15 @@ final class MySQL implements BazaPodataka_Interface {
     }
 
     /**
+     * @inheritDoc
+     */
+    public function broj_zapisa ():int {
+
+        return mysqli_num_rows($this->upit);
+
+    }
+
+    /**
      * ### Pošalji upit prema MySQL serveru
      * @since 0.5.1.pre-alpha.M5
      *

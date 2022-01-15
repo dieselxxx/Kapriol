@@ -180,6 +180,15 @@ final class MSSQL implements BazaPodataka_Interface {
     }
 
     /**
+     * @inheritDoc
+     */
+    public function broj_zapisa ():int {
+
+        return sqlsrv_num_rows($this->upit);
+
+    }
+
+    /**
      * ### Pošalji upit prema MSSQL serveru
      * @since 0.5.1.pre-alpha.M5
      *

@@ -56,4 +56,12 @@ interface BazaPodataka_Interface extends Servis_Interface {
      */
     public function rezultat ():array;
 
+    /**
+     * ### Broj zapisa rezultata
+     * @since 0.6.0.alpha.M1
+     *
+     * @return int Broj zapisa rezultata.
+     */
+    public function broj_zapisa ():int;
+
 }
