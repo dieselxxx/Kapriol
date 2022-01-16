@@ -35,6 +35,42 @@ final class Kategorije_Model extends Model {
     ) {}
 
     /**
+     * ### Sve kategorije za glavni meni sa uključenim menijom
+     * @since 0.1.1.pre-alpha.M1
+     *
+     * @throws Kontejner_Greska Ukoliko se ne može spremiti instanca objekta.
+     *
+     * @return string HTML za glavni meni sa uključenim menijom.
+     */
+    public function glavniMeni ():string {
+
+        $kategorije_meni = array_filter(
+            $this->kategorije(),
+            function ($kategorija) {
+                if ($kategorija['Meni'] === '1') {
+                    return $kategorija;
+                }
+                return [];
+            }
+        );
+
+        $rezultat = '';
+        foreach ($kategorije_meni as $kategorija) {
+
+            $rezultat .= '
+                <li>
+                    <svg><use xlink:href="/kapriol/resursi/grafika/simboli/simbol.ikone.svg#'.$kategorija['Ikona'].'"></use></svg>
+                    <span><a href="/rezultat/'.$kategorija['Link'].'">'.$kategorija['Kategorija'].'</a></span>
+                </li>
+            ';
+
+        }
+
+        return $rezultat;
+
+    }
+
+    /**
      * ### Sve kategorije za glavni meni
      * @since 0.1.1.pre-alpha.M1
      *
@@ -42,15 +78,10 @@ final class Kategorije_Model extends Model {
      *
      * @return string HTML za glavni meni.
      */
-    public function glavni_meni ():string {
-
-        $kategorije = $this->bazaPodataka->tabela('kategorijeview')
-            ->odaberi(['Kategorija', 'Link', 'Ikona'])
-            ->gdje('Meni' , '=', 1)
-            ->poredaj('Prioritet', 'ASC')->napravi();
+    public function glavniMeniHamburger ():string {
 
         $rezultat = '';
-        foreach ($kategorije->niz() as $kategorija) {
+        foreach ($this->kategorije() as $kategorija) {
 
             $rezultat .= '
                 <li>
@@ -94,6 +125,24 @@ final class Kategorije_Model extends Model {
         }
 
         return $redak;
+
+    }
+
+    /**
+     * ### Sve kategorije
+     * @since 0.1.1.pre-alpha.M1
+     *
+     * @throws Kontejner_Greska Ukoliko se ne može spremiti instanca objekta.
+     *
+     * @return array Niz kateogorija.
+     */
+    private function kategorije ():array {
+
+        $kategorije = $this->bazaPodataka->tabela('kategorijeview')
+            ->odaberi(['Kategorija', 'Link', 'Ikona', 'Meni'])
+            ->poredaj('Prioritet', 'ASC')->napravi();
+
+        return $kategorije->niz();
 
     }
 

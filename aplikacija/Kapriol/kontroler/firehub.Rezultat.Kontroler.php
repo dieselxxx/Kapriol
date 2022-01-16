@@ -85,7 +85,8 @@ final class Rezultat_Kontroler extends Kontroler {
 
         return sadrzaj()->datoteka('rezultat.html')->podatci([
             'predlozak_naslov' => $trenutna_kategorija['Kategorija'],
-            'kategorije' => $kategorije->glavni_meni(),
+            'glavni_meni' => $kategorije->glavniMeni(),
+            'glavni_meni_hamburger' => $kategorije->glavniMeniHamburger(),
             'vi_ste_ovdje' => 'Vi ste ovdje : <a href="/">Kapriol Web Trgovina</a> \\\\ ' . $trenutna_kategorija['Kategorija'],
             'artikli' => $artikli_html,
             'navigacija' => $navigacija
