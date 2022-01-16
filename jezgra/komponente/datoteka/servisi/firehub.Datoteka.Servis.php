@@ -43,7 +43,7 @@ final class Datoteka_Servis implements Datoteka_Interface {
         private Datoteka $posluzitelj
     ) {
 
-        // provjeri da li je ispravna env datoteka
+        // provjeri da li je ispravna datoteka
         if (!is_file($this->posluzitelj->datoteka)) {
 
             zapisnik(Level::GRESKA, sprintf(_('Ne mogu učitati datoteku %s'), $this->posluzitelj->datoteka));
