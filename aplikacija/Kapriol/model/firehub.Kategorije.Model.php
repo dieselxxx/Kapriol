@@ -80,7 +80,7 @@ final class Kategorije_Model extends Model {
     public function kategorija (string $kategorija):array {
 
         $id = $this->bazaPodataka->tabela('kategorijeview')
-            ->odaberi(['ID', 'Kategorija'])
+            ->odaberi(['ID', 'Kategorija', 'Link'])
             ->gdje('Link', '=', $kategorija)
             ->napravi();
 

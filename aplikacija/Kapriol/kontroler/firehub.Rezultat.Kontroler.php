@@ -57,6 +57,15 @@ final class Rezultat_Kontroler extends Kontroler {
         $limit = 12;
         $artikli = $this->model(Artikli_Model::class)->artikli($trenutna_kategorija['ID'], ($stranica - 1) * $limit, $limit);
 
+        $broj_zapisa = $this->model(Artikli_Model::class)->ukupnoRedakaHTML($trenutna_kategorija['ID'], 12, '/rezultat/'.$trenutna_kategorija['Link'], $stranica);
+
+        $navigacija = '';
+        foreach ($broj_zapisa as $zapis) {
+
+            $navigacija .= $zapis;
+
+        }
+
         $artikli_html = '';
         foreach ($artikli as $artikal) {
 
@@ -78,7 +87,8 @@ final class Rezultat_Kontroler extends Kontroler {
             'predlozak_naslov' => $trenutna_kategorija['Kategorija'],
             'kategorije' => $kategorije->glavni_meni(),
             'vi_ste_ovdje' => 'Vi ste ovdje : <a href="/">Kapriol Web Trgovina</a> \\\\ ' . $trenutna_kategorija['Kategorija'],
-            'artikli' => $artikli_html
+            'artikli' => $artikli_html,
+            'navigacija' => $navigacija
         ]);
 
     }
