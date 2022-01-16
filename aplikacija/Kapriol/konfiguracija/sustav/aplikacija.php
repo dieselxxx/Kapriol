@@ -40,7 +40,7 @@ return [
      * @var array<string, array<string, mixed>>
      */
     'preduvjeti' => [
-        'firehub_verzija' => '0.6.0.alpha.M1',
+        'firehub_verzija' => '0.6.1.alpha.M1',
         'php_verzija' => '8.1.0'
     ]
 
