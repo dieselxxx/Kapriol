@@ -434,7 +434,7 @@ final class Metode_PodServis {
      */
     private function sesija_vrsta (string $opcija):string {
 
-        // provjeri da li je odabrana baza podataka dostupna
+        // provjeri da li je odabrana sesija dostupna
         if (!array_key_exists($opcija, $this->rezultat['sesija']['vrste'])) {
             zapisnik(Level::HITNO, sprintf(_('Sesija %s nije dostupna kao izbor!'), $opcija));
             throw new KonfiguracijaMetoda_Greska(sprintf(_('Sesija %s nije dostupna kao izbor!'), $opcija));
@@ -446,6 +446,52 @@ final class Metode_PodServis {
             function ($vrijednost, $parametar):void {
                 if (!array_key_exists($parametar, $this->rezultat['sesija'])) {
                     $this->rezultat['sesija'][$parametar] = $vrijednost;
+                }
+            }
+        );
+
+        return $opcija;
+
+    }
+
+    /**
+     * ### Provjera i postavljenje odabrane vrste slika
+     * @since 0.6.1.alpha.M6
+     *
+     * @param string $opcija <p>
+     * Opcija sesije.
+     * </p>
+     *
+     * @throws KonfiguracijaMetoda_Greska Ukoliko vrsta slika nije dostupna kao izbor.
+     * @throws Kontejner_Greska Ukoliko se može spremiti instanca objekt Log-a.
+     *
+     * @return string Opcija.
+     */
+    private function slika_servis (string $opcija):string {
+
+        // provjeri da li je odabrani servis vrsta slika dostupan
+        if (!array_key_exists($opcija, $this->rezultat['slika']['servisi'])) {
+            zapisnik(Level::HITNO, sprintf(_('Servis slika %s nije dostupan kao izbor!'), $opcija));
+            throw new KonfiguracijaMetoda_Greska(sprintf(_('Servis slika %s nije dostupna kao izbor!'), $opcija));
+        }
+
+        // provjeri da li su sve ekstenzije učitane
+        array_walk(
+            $this->rezultat['slika']['servisi'][$opcija]['ekstenzije'],
+            static function ($ekstenzija) use ($opcija):void {
+                if (!extension_loaded($ekstenzija)) {
+                    zapisnik(Level::HITNO, sprintf(_('Ekstenzija potrebna %s za korištenje %s nije dostupna!'), $ekstenzija, $opcija));
+                    throw new KonfiguracijaMetoda_Greska(sprintf(_('Ekstenzija potrebna %s za korištenje %s nije dostupna!'), $ekstenzija, $opcija));
+                }
+            }
+        );
+
+        // dodaj zadane parametre u rezultat koji nisu navedeni
+        array_walk(
+            $this->rezultat['slika']['servisi'][$opcija]['parametri'],
+            function ($vrijednost, $parametar):void {
+                if (!array_key_exists($parametar, $this->rezultat['slika'])) {
+                    $this->rezultat['slika'][$parametar] = $vrijednost;
                 }
             }
         );

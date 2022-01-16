@@ -50,7 +50,8 @@ abstract class Konfiguracija_Abstrakt implements Konfiguracija_Interface {
         'sustav' => '',
         'debug' => '',
         'baza_podataka' => ['konekcije' => ''],
-        'predmemorija' => ['konekcije' => '']
+        'predmemorija' => ['konekcije' => ''],
+        'slika' => ['servisi' => '']
     ];
 
     /**
@@ -60,6 +61,7 @@ abstract class Konfiguracija_Abstrakt implements Konfiguracija_Interface {
     private array $crna_lista_zapisa = [
         'baza_podataka' => 'konekcije',
         'predmemorija' => 'konekcije',
+        'slika' => 'servisi',
         'sustav' => 'aplikacije', 'preduvjeti'
     ];
 
