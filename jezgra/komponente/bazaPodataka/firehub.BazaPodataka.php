@@ -432,7 +432,7 @@ final class BazaPodataka extends Servis_Posluzitelj {
     /**
      * {@inheritDoc}
      *
-     * @return BazaPodataka_Interface Objekt Predmemorije servisa.
+     * @return BazaPodataka_Interface Objekt Baze podataka servisa.
      */
     public function napravi ():object {
 
