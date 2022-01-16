@@ -29,7 +29,7 @@ return [
     'informacije' => [
         'naziv' => 'FireHub',
         'ciklus' => 'alpha.M1',
-        'verzija' => '0.6.0'
+        'verzija' => '0.6.1'
     ],
 
     /**
