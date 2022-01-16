@@ -46,6 +46,6 @@ return [
      *
      * @var array<string, string>
      */
-    'servis' => 'slika'
+    'servis_slika' => 'slika'
 
 ];

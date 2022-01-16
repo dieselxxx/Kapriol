@@ -467,7 +467,7 @@ final class Metode_PodServis {
      *
      * @return string Opcija.
      */
-    private function slika_servis (string $opcija):string {
+    private function slika_servis_slika (string $opcija):string {
 
         // provjeri da li je odabrani servis vrsta slika dostupan
         if (!array_key_exists($opcija, $this->rezultat['slika']['servisi'])) {
