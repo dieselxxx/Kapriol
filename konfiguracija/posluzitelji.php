@@ -78,6 +78,12 @@ return [
         'servisi' => [
             \FireHub\Jezgra\Komponente\Sesija\Servisi\Datoteka::class => []
         ]
+    ],
+
+    FireHub\Jezgra\Komponente\Slika\Slika::class => [
+        'servisi' => [
+            \FireHub\Jezgra\Komponente\Slika\Servisi\Slika_Servis::class => []
+        ]
     ]
 
 ];
