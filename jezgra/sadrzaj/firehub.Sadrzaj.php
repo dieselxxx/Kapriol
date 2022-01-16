@@ -20,6 +20,7 @@ use FireHub\Jezgra\Sadrzaj\Vrste\JSON;
 use FireHub\Jezgra\Komponente\Log\Enumeratori\Level;
 use FireHub\Jezgra\Kontejner\Greske\Kontejner_Greska;
 use FireHub\Jezgra\Sadrzaj\Greske\Sadrzaj_Greska;
+use FireHub\Jezgra\Sadrzaj\Vrste\SLIKA;
 use JsonException;
 
 /**
@@ -137,7 +138,8 @@ final class Sadrzaj {
                     konfiguracija('predmemorija.ukljuceno')
                 )
             )->ispisi(),
-            Vrsta::JSON => (new JSON($this->podatci))->ispisi()
+            Vrsta::JSON => (new JSON($this->podatci))->ispisi(),
+            Vrsta::SLIKA => (new SLIKA($this->podatci))->ispisi()
         };
 
     }

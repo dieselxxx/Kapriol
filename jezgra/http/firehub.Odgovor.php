@@ -25,6 +25,8 @@ use FireHub\Jezgra\Komponente\Log\Log;
 use FireHub\Jezgra\Komponente\Log\Servisi\AutoPosalji;
 use FireHub\Jezgra\Kontejner\Greske\Kontejner_Greska;
 use FireHub\Jezgra\Komponente\Datoteka\Greske\Datoteka_Greska;
+use FireHub\Jezgra\Sadrzaj\Sadrzaj;
+use FireHub\Jezgra\Komponente\Slika\Servisi\Slika_Servis;
 use Throwable;
 
 /**
@@ -64,7 +66,7 @@ final class Odgovor implements Odgovor_Interface {
      * @param int $predmemorija_vrijeme <p>
      * Maksimalno vrijeme trajanja predmemorije.
      * </p>
-     * @param string $sadrzaj <p>
+     * @param Sadrzaj|Slika_Servis $sadrzaj <p>
      * Sadržaj HTTP odgovora.
      * </p>
      *
@@ -79,7 +81,7 @@ final class Odgovor implements Odgovor_Interface {
         public readonly string $jezik ,
         public readonly array $predmemorija,
         public readonly int $predmemorija_vrijeme,
-        private string $sadrzaj
+        private Sadrzaj|Slika_Servis $sadrzaj
     ) {
 
         // postavi HTTP zaglavlja
@@ -101,20 +103,9 @@ final class Odgovor implements Odgovor_Interface {
 
         //ob_start('ob_gzhandler');
 
-        $x = array_filter(
-            get_declared_classes(),
-            function($className) {
-                return !call_user_func(
-                    array(new \ReflectionClass($className), 'isInternal')
-                );
-            }
-        );
-
-        //var_dump($x);
-
         try {
 
-            return $this->sadrzaj . '<br><b>' . round(memory_get_peak_usage()/1048576, 2) . ' mb</b><br>';
+            return $this->sadrzaj->ispisi();
 
         } catch (Throwable $objekt) {
 

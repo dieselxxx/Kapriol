@@ -30,9 +30,7 @@ use FireHub\Jezgra\Greske\Kernel_Greska;
 use FireHub\Jezgra\Kontejner\Greske\Kontejner_Greska;
 use FireHub\Jezgra\Komponente\Datoteka\Greske\Datoteka_Greska;
 use FireHub\Jezgra\HTTP\Greske\Ruter_Greska;
-use FireHub\Jezgra\Sadrzaj\Greske\Sadrzaj_Greska;
 use ReflectionException;
-use JsonException;
 use Throwable;
 
 /**
@@ -183,8 +181,6 @@ final class Kernel extends OsnovniKernel {
      *
      * @throws Datoteka_Greska Ukoliko se ne može pročitati naziv datoteke.
      * @throws Kontejner_Greska Ukoliko se može spremiti instanca Log-a ili predmemorije.
-     * @throws Sadrzaj_Greska Ukoliko se ne mogu obraditi podatci na datoteci, nema podataka predloška, ne mogu učitati konfiguracijsku json datoteku ili je datoteka prazna.
-     * @throws JsonException Ukoliko se dogodila greška sa čitanjem JSON formata.
      *
      * @return HTTP_Odgovor Odgovor za HTTP.
      */
@@ -198,7 +194,7 @@ final class Kernel extends OsnovniKernel {
             jezik: $this->ruter->http_odgovor()['jezik'] ?? 'hr',
             predmemorija: $this->ruter->http_odgovor()['predmemorija'] ?? [HTTP_Predmemorija::BEZ_SPREMANJA, HTTP_Predmemorija::BEZ_PREDMEMORIJE, HTTP_Predmemorija::MORA_PONOVNO_POTVRDITI],
             predmemorija_vrijeme: $this->ruter->http_odgovor()['predmemorija_vrijeme'] ?? 31536000,
-            sadrzaj: $this->ruter->sadrzaj->ispisi() ?? ''
+            sadrzaj: $this->ruter->sadrzaj ?? ''
         ));
 
     }

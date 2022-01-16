@@ -19,6 +19,7 @@ use FireHub\Jezgra\Komponente\Rute\Rute;
 use FireHub\Jezgra\Kontroler\Kontroler_Kontejner;
 use FireHub\Jezgra\Kontroler\Kontroler;
 use FireHub\Jezgra\Sadrzaj\Sadrzaj;
+use FireHub\Jezgra\Komponente\Slika\Servisi\Slika_Servis;
 use FireHub\Jezgra\Komponente\Log\Enumeratori\Level;
 use FireHub\Jezgra\Kontejner\Greske\Kontejner_Greska;
 use FireHub\Jezgra\HTTP\Greske\Ruter_Greska;
@@ -66,9 +67,9 @@ final class Ruter {
 
     /**
      * ### Sadržaj iz kontrolera
-     * @var Sadrzaj
+     * @var Sadrzaj|Slika_Servis
      */
-    public readonly Sadrzaj $sadrzaj;
+    public readonly Sadrzaj|Slika_Servis $sadrzaj;
 
     /**
      * ### Konstruktor
