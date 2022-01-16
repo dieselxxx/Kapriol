@@ -93,7 +93,7 @@ final class Slika_Servis implements Slika_Interface {
      * @throws Slika_Greska Ukoliko se ne može učitati datoteka ili slika nije u podržanom obliku.
      * @throws Kontejner_Greska Ukoliko se ne može spremiti instanca Log-a.
      */
-    private function napraviSliku () {
+    private function napraviSliku ():void {
 
         if (!$vrsta = exif_imagetype($this->posluzitelj->slika)) {
 

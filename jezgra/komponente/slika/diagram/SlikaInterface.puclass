@@ -1,0 +1,11 @@
+@startuml
+
+package Sustav\Jezgra <<Node>> #FBE9E7 {
+    namespace FireHub\Jezgra\Komponente\Slika {
+        interface Slika_Interface #00897B;line:00796B {
+            + ispisi ():void
+        }
+    }
+}
+
+@enduml

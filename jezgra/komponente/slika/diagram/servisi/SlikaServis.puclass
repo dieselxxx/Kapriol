@@ -1,0 +1,18 @@
+@startuml
+
+package Sustav\Jezgra <<Node>> #FBE9E7 {
+    namespace FireHub\Jezgra\Komponente\Slika\Servisi {
+        class Slika_Servis #00897B;line:00796B {
+            - GdImage $slika
+            - Slika $posluzitelj
+            + __construct (Slika $posluzitelj):void
+            + ispisi ():void
+            - napraviSliku ():void
+            - postaviDimenzije ():GdImage
+            - UcitajVisinu ():int
+            - UcitajSirinu ():int
+        }
+    }
+}
+
+@enduml

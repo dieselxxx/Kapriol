@@ -12,7 +12,6 @@ package Sustav\Jezgra <<Node>> #FBE9E7 {
             # bool $http
             # string $ista_stranica
             # string $lokacija
-            + __construct ():void
             + naziv (string $naziv):self
             + vrijeme (int $vrijeme):self
             + putanja (string $putanja):self

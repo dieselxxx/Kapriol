@@ -1,0 +1,21 @@
+@startuml
+
+package Sustav\Jezgra <<Node>> #FBE9E7 {
+    namespace FireHub\Jezgra\Komponente\Slika {
+        class Slika #00897B;line:00796B {
+            # ?string $servis
+            # string $slika
+            # Vrsta $vrsta
+            # int $visina
+            # int $sirina
+            # int $kvaliteta
+            + slika (string $slika):self
+            + vrsta (Vrsta $vrsta):self
+            + kvaliteta (int $postotak):self
+            + dimenzije (int $visina, int $sirina):self
+            + napravi ():Slika_Interface
+        }
+    }
+}
+
+@enduml

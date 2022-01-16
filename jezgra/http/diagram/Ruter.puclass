@@ -8,7 +8,7 @@ package HTTP <<Node>> #FBE9E7 {
             - string $metoda
             - array $parametri
             - array $http_odgovor
-            + Sadrzaj $sadrzaj
+            + Sadrzaj|Slika_Servis $sadrzaj
             - HTTP_Zahtjev $http_zahtjev
             - Rute $rute
             + __construct (HTTP_Zahtjev $http_zahtjev, Rute $rute):void

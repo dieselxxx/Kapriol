@@ -13,7 +13,7 @@
  */
 
 namespace FireHub\Jezgra\Komponente\Slika;
-;
+
 use FireHub\Jezgra\Komponente\Servis_Kontejner;
 use FireHub\Jezgra\Komponente\Servis_Posluzitelj;
 use FireHub\Jezgra\Komponente\Slika\Enumeratori\Vrsta;
@@ -29,8 +29,8 @@ use FireHub\Jezgra\Atributi\Zadano;
  * @property-read int $sirina Širina slike
  * @property-read int $kvaliteta Kvaliteta slike u postocima, od 1 do 100
  *
- * @method $this slika(string $slika) Puna putanja do slike
- * @method $this vrsta(Vrsta $vrsta) Vrsta slike
+ * @method $this slika (string $slika) Puna putanja do slike
+ * @method $this vrsta (Vrsta $vrsta) Vrsta slike
  * @method $this kvaliteta (int $postotak) Kvaliteta slike u postocima, od 1 do 100
  */
 final class Slika extends Servis_Posluzitelj {

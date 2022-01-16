@@ -10,7 +10,7 @@ package HTTP <<Node>> #FBE9E7 {
             + string $jezik
             + array $predmemorija
             + int $predmemorija_vrijeme
-            - string $sadrzaj
+            - Sadrzaj|Slika_Servis $sadrzaj
             + __construct (Datoteka $datoteka, HTTP_StatusKod $kod, HTTP_Vrsta $vrsta, string $karakteri, string $jezik, array $predmemorija, int $predmemorija_vrijeme, string $sadrzaj):void
             + sadrzaj ():string
             - postaviStatus ():self
