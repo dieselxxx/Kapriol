@@ -18,7 +18,7 @@ use FireHub\Jezgra\Sadrzaj\Vrsta_Interface;
 use JsonException;
 
 /**
- * ### Klasa ya JSON sadržaj
+ * ### Klasa za JSON sadržaj
  * @since 0.4.4.pre-alpha.M4
  *
  * @package Sustav\Sadrzaj
