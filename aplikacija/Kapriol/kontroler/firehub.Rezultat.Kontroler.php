@@ -82,7 +82,7 @@ final class Rezultat_Kontroler extends Kontroler {
             
                 <div class="artikal">
                     <img src="/slika/malaslika/{$artikal['Slika']}" alt="" loading="lazy"/>
-                    <span class="naslov">{$artikal['Naziv']}</span>
+                    <a class="naslov" href="/artikl/{$artikal['Link']}">{$artikal['Naziv']}</a>
                     <span class="cijena">{$artikal['Cijena']} KM</span>
                     <span class="zaliha"></span>
                 </div>

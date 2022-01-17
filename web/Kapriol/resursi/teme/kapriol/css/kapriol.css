@@ -1,4 +1,4 @@
-body {background-color: var(--boja-pozadina); height: auto; min-height: 100vh; width: 100%; font-family: 'Poppins', sans-serif; font-size: 1rem; font-weight: 300; -webkit-transition: all 0.5s ease; -moz-transition: all 0.5s ease; -o-transition: all 0.5s ease; transition: all 0.5s ease;}
+body {background-color: var(--boja-pozadina); height: auto; min-height: 100vh; width: 100%; font-family: 'Poppins', sans-serif; font-size: 1rem; font-weight: 300; color: var(--boja-tekst-tamnije); -webkit-transition: all 0.5s ease; -moz-transition: all 0.5s ease; -o-transition: all 0.5s ease; transition: all 0.5s ease;}
 a {color: var(--boja-kapriol);}
 a:hover {color: var(--boja-kapriol); text-decoration: none;}
 table {border-spacing: 0;}
@@ -244,13 +244,20 @@ main > div#sadrzaj.rezultat > div.artikli {grid-column: 2 / 5; grid-row: 2 / 3; 
 main > div#sadrzaj.rezultat > div.artikli > div.artikal {display: grid; grid-template-columns: minmax(200px, 1fr); grid-template-rows: 280px 40px 40px 40px; grid-gap: 10px; padding: 10px; text-align: center; border: 1px solid var(--boja-granica);}
 main > div#sadrzaj.rezultat > div.artikli > div.artikal > * {justify-self: center; align-self: center;}
 main > div#sadrzaj.rezultat > div.artikli > div.artikal > img {object-fit: contain; height: 100%; width: 100%;}
-main > div#sadrzaj.rezultat > div.artikli > div.artikal > span.naslov {font-weight: 500;}
+main > div#sadrzaj.rezultat > div.artikli > div.artikal > a.naslov {font-weight: 500; color: var(--boja-tekst-tamnije);}
+main > div#sadrzaj.rezultat > div.artikli > div.artikal > a.naslov:hover {color: var(--boja-kapriol);}
 main > div#sadrzaj.rezultat > div.artikli > div.artikal > span.cijena {font-size: 1.4rem;}
 main > div#sadrzaj.rezultat > div.artikli > div.artikal > span.zaliha {}
 main > div#sadrzaj.rezultat > nav.navigacija {grid-column: 2 / 5; grid-row: 3 / 4; justify-self: center; align-self: center;}
 main > div#sadrzaj.rezultat > nav.navigacija > ul {width: auto;}
 main > div#sadrzaj.rezultat > nav.navigacija > ul > li {display: inline-grid; height: auto;}
 main > div#sadrzaj.rezultat > nav.navigacija > ul > li > a.gumb {margin: 8px; min-width: 54px;}
+main > div#sadrzaj.artikl > div.artikl {display: grid; grid-template-columns: 600px auto; grid-template-rows: repeat(5, 100px); grid-gap: 15px;}
+main > div#sadrzaj.artikl > div.artikl > img {grid-column: 1 / 2; grid-row: 1 / 5; object-fit: contain; height: 100%; width: 100%;}
+main > div#sadrzaj.artikl > div.artikl > ul {grid-column: 1 / 2; grid-row: 5 / 6;}
+main > div#sadrzaj.artikl > div.artikl > span.naslov {grid-column: 2 / 3; grid-row: 1 / 2;}
+main > div#sadrzaj.artikl > div.artikl > span.cijena {grid-column: 2 / 3; grid-row: 2 / 3;}
+main > div#sadrzaj.artikl > div.artikl > span.zaliha {grid-column: 2 / 3; grid-row: 3 / 4;}
 
 footer {justify-content: center; background-color: var(--boja-pozadina_svijetla);}
 footer a {color: var(--boja-tekst);}

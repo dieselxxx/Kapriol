@@ -16,4 +16,5 @@ use FireHub\Jezgra\Komponente\Rute\Rute;
 
 Rute::sve('naslovna/index', [\FireHub\Aplikacija\Kapriol\Kontroler\Naslovna_Kontroler::class, 'index']);
 Rute::sve('rezultat/index', [\FireHub\Aplikacija\Kapriol\Kontroler\Rezultat_Kontroler::class, 'index']);
+Rute::sve('artikl/index', [\FireHub\Aplikacija\Kapriol\Kontroler\Artikl_Kontroler::class, 'index']);
 Rute::sve('slika/malaslika', [\FireHub\Aplikacija\Kapriol\Kontroler\Slika_Kontroler::class, 'malaslika']);
