@@ -39,10 +39,26 @@
         <span>Košarica</span>
     </a>
 
-    <nav>
-        <ul>
-            {{kategorije}}
+    <nav class="glavni_meni">
+
+        <ul class="glavni_meni_standardni">
+            {{glavni_meni}}
         </ul>
+
+        <div class="glavni_meni_hamburger">
+
+            <input id="hamburger-menu-toggle" type="checkbox" />
+            <label class="hamburger-menu_gumb" for="hamburger-menu-toggle">
+                <p>Sve kategorije</p>
+                <span></span>
+            </label>
+
+            <ul class="hamburger-menu_ul">
+                {{glavni_meni_hamburger}}
+            </ul>
+
+        </div>
+
     </nav>
 
 </header>

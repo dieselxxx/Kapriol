@@ -209,12 +209,31 @@ header > form[data-oznaka="trazi_artikal"] > label {padding: 15px; line-height: 
 header > form[data-oznaka="trazi_artikal"] > label > .naslov {text-indent: 5px;}
 header > a#prijava {grid-column: 5 / 6; grid-row: 2 / 3; align-self: center;}
 header > a#kosarica {grid-column: 6 / 7; grid-row: 2 / 3; align-self: center;}
-header > nav {grid-column: 1 / 8; grid-row: 3 / 4; display: grid; grid-template-columns: auto 1400px auto; background-color: var(--boja-pozadina_tamna);}
 nav > ul {grid-column: 2 / 3; justify-self: center; width: 100%;}
 nav > ul > li {display: inline-flex; height: 50px;}
 nav > ul > li > svg {fill: var(--boja-kapriol); padding: 13px 0 13px 13px; height: 50px; width: 50px;}
 nav > ul > li > span {height: 50px; line-height: 50px; font-weight: 400; color: var(--boja-tekst-svjetlije); text-transform: uppercase;}
 nav > ul > li > span > a {font-weight: 300; color: var(--boja-tekst-svjetlije);}
+header > nav.glavni_meni {grid-column: 1 / 8; grid-row: 3 / 4; background-color: var(--boja-pozadina_tamna); display: grid; grid-template-columns: auto 1200px 200px auto; overflow: hidden;}
+header > nav.glavni_meni .glavni_meni_standardni {grid-column: 2 / 3;}
+header > nav.glavni_meni .glavni_meni_hamburger {grid-column: 3 / 4;}
+header > nav.glavni_meni .glavni_meni_hamburger #hamburger-menu-toggle {display: none;}
+header > nav.glavni_meni .glavni_meni_hamburger #hamburger-menu-toggle:checked ~ .hamburger-menu_gumb > span {transform: rotate(45deg);}
+header > nav.glavni_meni .glavni_meni_hamburger #hamburger-menu-toggle:checked ~ .hamburger-menu_gumb > span::before {top: 0;transform: rotate(0);}
+header > nav.glavni_meni .glavni_meni_hamburger #hamburger-menu-toggle:checked ~ .hamburger-menu_gumb > span::after {top: 0;transform: rotate(90deg);}
+header > nav.glavni_meni .glavni_meni_hamburger #hamburger-menu-toggle:checked ~ .hamburger-menu_ul {visibility: visible; left: 0;}
+header > nav.glavni_meni .glavni_meni_hamburger .hamburger-menu_gumb {display: flex; align-items: center; padding-left: 13px; height: 50px; width: 100%; cursor: pointer;}
+header > nav.glavni_meni .glavni_meni_hamburger .hamburger-menu_gumb:hover > p {color: var(--boja-kapriol);}
+header > nav.glavni_meni .glavni_meni_hamburger .hamburger-menu_gumb > p {padding-left: 30px; color: var(--boja-tekst-svjetlije);}
+header > nav.glavni_meni .glavni_meni_hamburger .hamburger-menu_gumb > span, header > nav.glavni_meni .glavni_meni_hamburger .hamburger-menu_gumb > span::before, header > nav.glavni_meni .glavni_meni_hamburger .hamburger-menu_gumb > span::after {position: absolute; display: block; height: 2px; width: 26px; background-color: var(--boja-tekst-svjetlije) ;transition-duration: .25s;}
+header > nav.glavni_meni .glavni_meni_hamburger .hamburger-menu_gumb > span::before {content: ''; top: -8px; background-color: var(--boja-kapriol);}
+header > nav.glavni_meni .glavni_meni_hamburger .hamburger-menu_gumb > span::after {content: ''; top: 8px; background-color: var(--boja-kapriol);}
+header > nav.glavni_meni .glavni_meni_hamburger ul {position: fixed; visibility: hidden; display: block; background-color: var(--boja-pozadina_tamna); top: 0; left: -100%; margin: 0; height: 100%; width: 300px; transition-duration: .25s; overflow-y: scroll;}
+header > nav.glavni_meni .glavni_meni_hamburger ul li {display: flex; height: 50px; transition-duration: .25s;}
+header > nav.glavni_meni .glavni_meni_hamburger ul li svg {fill: var(--boja-kapriol); padding: 13px 0 13px 13px; height: 50px; width: 50px;}
+header > nav.glavni_meni .glavni_meni_hamburger ul li span {height: 50px; line-height: 50px; font-weight: 400; color: var(--boja-tekst-svjetlije); text-transform: uppercase;}
+header > nav.glavni_meni .glavni_meni_hamburger ul li span a {font-weight: 300; color: var(--boja-tekst-svjetlije);}
+header > nav.glavni_meni .glavni_meni_hamburger ul li span a:hover {color: var(--boja-kapriol);}
 
 main {background-image: url('/kapriol/resursi/grafika/ikone/kapriol_siva.svg'); background-size: 300px; background-position: bottom left; background-repeat: no-repeat;}
 main > div#sadrzaj {grid-column: 2 / 7; grid-row: 1 / 2; display: grid; grid-template-columns: 200px repeat(3, 1fr); grid-template-rows: 30px auto; grid-gap: 15px; padding: 10px;}
@@ -247,8 +266,9 @@ footer nav ul {grid-column: 1 / 4;}
     header > form[data-oznaka="trazi_artikal"] {grid-column: 2 / 5;}
     header > a#prijava {grid-column: 5 / 6;}
     header > a#kosarica {grid-column: 6 / 7;}
-    header > nav {grid-column: 1 / 7; grid-template-columns: auto;}
-    header > nav > ul {grid-column: 1 / 2;}
+    header > nav.glavni_meni {grid-column: 1 / 7; grid-template-columns: auto 200px;}
+    header > nav.glavni_meni .glavni_meni_standardni {grid-column: 1 / 2;}
+    header > nav.glavni_meni .glavni_meni_hamburger {grid-column: 2 / 3;}
 
     main > div#sadrzaj {grid-column: 1 / 7;}
 
@@ -262,7 +282,7 @@ footer nav ul {grid-column: 1 / 4;}
     header > a#prijava {grid-column: 3 / 5;}
     header > a#kosarica {grid-column: 5 / 7;}
     header > form[data-oznaka="trazi_artikal"] {grid-column: 1 / 7; grid-row: 3 / 4;}
-    header > nav {grid-row: 4 / 5;}
+    header > nav.glavni_meni {grid-row: 4 / 5;}
 
     main > div#sadrzaj.rezultat > div.artikli {grid-template-columns: repeat(2, 1fr);}
 
@@ -274,7 +294,7 @@ footer nav ul {grid-column: 1 / 4;}
     header > a#prijava {grid-column: 1 / 4; grid-row: 3 / 4;}
     header > a#kosarica {grid-column: 4 / 7; grid-row: 3 / 4;}
     header > form[data-oznaka="trazi_artikal"] {grid-row: 4 / 5;}
-    header > nav {grid-row: 5 / 6;}
+    header > nav.glavni_meni {grid-row: 5 / 6;}
 
     main > div#sadrzaj.rezultat > div.meni {display: none;}
     main > div#sadrzaj.rezultat > div.artikli {grid-column: 1 / 5; grid-template-columns: 1fr;}
