@@ -51,10 +51,11 @@ final class Artikl_Model extends Model {
         $artikl = $this->bazaPodataka->tabela('artikliview')
             ->sirovi("
                 SELECT
-                    artikliview.ID, artikliview.Naziv, artikliview.Opis,
-                    kategorije.Kategorija
+                    artikliview.ID, artikliview.Naziv, artikliview.Opis, artikliview.Cijena,
+                    kategorije.Kategorija, slikeartikal.Slika
                 FROM artikliview
                 LEFT JOIN kategorije ON kategorije.ID = artikliview.KategorijaID
+                LEFT JOIN slikeartikal ON slikeartikal.ClanakID = artikliview.ID AND slikeartikal.Zadana = 1
                 WHERE artikliview.Link = '$link' AND artikliview.Aktivan = 1 AND artikliview.Ba = 1
                 LIMIT 1
             ")
@@ -86,14 +87,37 @@ final class Artikl_Model extends Model {
      *
      * @return array Artikl.
      */
-    public function slike (string|int $artiklID) {
+    public function slike (string|int $artiklID):array {
 
         $slike = $this->bazaPodataka->tabela('slikeartikal')
             ->odaberi(['Slika'])
             ->gdje('ClanakID', '=', $artiklID)
-            ->poredaj('Zadana', 'ASC')->napravi();
+            ->poredaj('Zadana', 'DESC')->napravi();
 
         return $slike->niz();
+
+    }
+
+    /**
+     * ### Dohvati karakteristike artikl
+     * @since 0.1.2.pre-alpha.M1
+     *
+     * @param string|int $artiklID <p>
+     * ID artikla.
+     * </p>
+     *
+     * @throws Kontejner_Greska Ukoliko se ne može spremiti instanca objekta.
+     *
+     * @return array Artikl.
+     */
+    public function zaliha (string|int $artiklID):array {
+
+        $karakteristike = $this->bazaPodataka->tabela('artiklikarakteristike')
+            ->odaberi(['Sifra', 'Velicina'])
+            ->gdje('ArtikalID', '=', $artiklID)
+            ->poredaj('ID', 'ASC')->napravi();
+
+        return $karakteristike->niz();
 
     }
 

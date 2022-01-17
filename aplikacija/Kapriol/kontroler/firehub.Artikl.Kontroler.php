@@ -54,7 +54,6 @@ final class Artikl_Kontroler extends Kontroler {
         $trenutni_artikl = $artikl_model->artikl($artikl);
 
         $artikl_slike = $artikl_model->slike($trenutni_artikl['ID']);
-
         $artikl_slike_html = '';
         foreach ($artikl_slike as $slike) {
 
@@ -65,13 +64,28 @@ final class Artikl_Kontroler extends Kontroler {
 
         }
 
+        $artikl_zaliha = $artikl_model->zaliha($trenutni_artikl['ID']);
+        $artikl_zaliha_html = '';
+        foreach ($artikl_zaliha as $zaliha) {
+
+            $artikl_zaliha_html .= '
+                <li>
+                    '.$zaliha['Sifra'].'
+                </li>';
+
+        }
+
         return sadrzaj()->datoteka('artikl.html')->podatci([
             'predlozak_naslov' => $trenutni_artikl['Naziv'],
             'glavni_meni' => $kategorije->glavniMeni(),
             'glavni_meni_hamburger' => $kategorije->glavniMeniHamburger(),
             'vi_ste_ovdje' => 'Vi ste ovdje : <a href="/">Kapriol Web Trgovina</a> \\\\ '.$trenutni_artikl['Kategorija'].' \\\\ ' . $trenutni_artikl['Naziv'],
-            'artikl_slika' => 'x',
-            'artikl_slike' => $artikl_slike_html
+            'artikl_slika' => $trenutni_artikl['Slika'],
+            'artikl_slike' => $artikl_slike_html,
+            'artikl_naziv' => $trenutni_artikl['Naziv'],
+            'artikl_cijena' => $trenutni_artikl['Cijena'],
+            'artikl_zaliha' => $artikl_zaliha_html,
+            'artikl_opis' => $trenutni_artikl['Opis']
         ]);
 
     }

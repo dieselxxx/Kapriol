@@ -3,11 +3,20 @@
     <div class="vi_ste_ovdje">{{vi_ste_ovdje}}</div>
 
     <div class="artikl">
-        <img src="/slika/malaslika/{{artikl_slika}}" alt="" loading="lazy"/>
+        <div class="slika">
+            <img src="/slika/velikaslika/{{artikl_slika}}" alt="" loading="lazy"/>
+        </div>
         <ul class="slike">{{artikl_slike}}</ul>
-        <span class="naslov" href="/artikl/{{artikl_link}}">{$artikal['Naziv']}</span>
-        <span class="cijena">{{artikl_cijena}} KM</span>
-        <span class="zaliha"></span>
+        <h2 class="naziv">{{artikl_naziv}}</h2>
+        <h3 class="cijena">{{artikl_cijena}} KM</h3>
+        <span class="zaliha">{{artikl_zaliha}}</span>
+        <span class="kosarica">{{artikl_kosarica}}</span>
+        <span class="opis">
+            <h3>Specifikacije : </h3>
+            <span>{{artikl_opis}}</span>
+        </span>
     </div>
+
+    <div class="slicni_artikli"></div>
 
 </div>
