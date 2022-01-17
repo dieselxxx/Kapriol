@@ -47,22 +47,31 @@ final class Artikli_Model extends Model {
      * @param int $limit <p>
      * Broj redaka koje odabiremo.
      * </p>
+     * @param string $trazi <p>
+     * Traži artikl.
+     * </p>
+     * @param string $poredaj <p>
+     * Poredaj rezultate artikala.
+     * </p>
+     * @param string $poredaj_redoslijed <p>
+     * ASC ili DESC.
+     * </p>
      *
      * @throws Kontejner_Greska Ukoliko se ne može spremiti instanca objekta.
      *
      * @return array Niz artikala.
      */
-    public function artikli (int|string $kategorija, int $pomak, int $limit):array {
+    public function artikli (int|string $kategorija, int $pomak, int $limit, string $trazi, string $poredaj, string $poredaj_redoslijed):array {
 
         $artikli = $this->bazaPodataka->tabela('artikliview')
-            ->odaberi(['Naziv', 'Link', 'Opis', 'Cijena', 'CijenaAkcija', 'Slika'])
-            ->spoji('slikeartikal', 'ClanakID', 'artikliview.ID')
-            ->gdje('KategorijaID', '=', $kategorija)
-            ->gdje('Aktivan' , '=', 1)
-            ->gdje('Ba', '=', 1)
-            ->gdje('Zadana', '=', 1)
-            ->limit($pomak, $limit)
-            ->poredaj('Naziv', 'ASC')
+            ->sirovi("
+                SELECT ROW_NUMBER() OVER (ORDER BY $poredaj $poredaj_redoslijed) AS RedBroj, Naziv,Link,Opis,Cijena,CijenaAkcija,Slika
+                FROM 00_Kapriol.artikliview
+                LEFT JOIN slikeartikal ON ClanakID = artikliview.ID
+                WHERE KategorijaID = $kategorija AND Aktivan = 1 AND Ba = 1 AND Zadana = 1
+                {$this->trazi($trazi)}
+                LIMIT $pomak, $limit
+            ")
             ->napravi();
 
         return $artikli->niz() ?: [];
@@ -76,27 +85,59 @@ final class Artikli_Model extends Model {
      * @param int|string $kategorija <p>
      * ID kategorije.
      * </p>
+     * @param string $trazi <p>
+     * Traži artikl.
+     * </p>
      *
      * @throws Kontejner_Greska Ukoliko se ne može spremiti instanca objekta.
      *
      * @return int Broj pronađenih redaka.
      */
-    public function ukupnoRedaka (int|string $kategorija) {
+    public function ukupnoRedaka (int|string $kategorija, string $trazi) {
 
         $ukupno_redaka = $this->bazaPodataka->tabela('artikliview')
-            ->odaberi(['Naziv'])
-            ->gdje('KategorijaID', '=', $kategorija)
-            ->gdje('Aktivan' , '=', 1)
-            ->gdje('Ba', '=', 1)
+            ->sirovi("
+                SELECT Naziv
+                FROM 00_Kapriol.artikliview
+                WHERE KategorijaID = $kategorija AND Aktivan = 1 AND Ba = 1
+                {$this->trazi($trazi)}
+            ")
             ->napravi();
 
         return $ukupno_redaka->broj_zapisa();
 
     }
 
-    public function ukupnoRedakaHTML (int|string $kategorija, int $limit, string $url = '/', int $broj_stranice = 1, string $boja = 'boja', $poredaj = 'Naziv', $poredaj_redosijed = 'ASC') {
+    /**
+     * ### Navigacija HTML
+     * @since 0.1.1.pre-alpha.M1
+     *
+     * @param int|string $kategorija <p>
+     * Kategorija artikla.
+     * </p>
+     * @param string $trazi <p>
+     * Traži artikl.
+     * </p>
+     * @param int $limit <p>
+     * Limit artikala.
+     * </p>
+     * @param string $url <p>
+     * Trenutni URL.
+     * </p>
+     * @param int $broj_stranice <p>
+     * Trenutnu broj stranice.
+     * </p>
+     * @param string $boja <p>
+     * Boja gumbova.
+     * </p>
+     *
+     * @throws Kontejner_Greska Ukoliko se ne može spremiti instanca objekta.
+     *
+     * @return string[] Lista artikala.
+     */
+    public function ukupnoRedakaHTML (int|string $kategorija, string $trazi, int $limit, string $url = '/', int $broj_stranice = 1, string $boja = 'boja'):array {
 
-        $broj_zapisa = $this->ukupnoRedaka($kategorija);
+        $broj_zapisa = $this->ukupnoRedaka($kategorija, $trazi);
 
         $pocetak_link_stranice = "";
         $link_stranice = "";
@@ -147,6 +188,42 @@ final class Artikli_Model extends Model {
         }
 
         return array('pocetak' => $pocetak_link_stranice, 'stranice' => $link_stranice, 'kraj' => $kraj_link_stranice);
+
+    }
+
+    /**
+     * ### Traži artikl
+     * @since 0.1.1.pre-alpha.M1
+     *
+     * @param string $trazi <p>
+     * Traži artikl.
+     * </p>
+     *
+     * @return string Upit za traženje.
+     */
+    private function trazi (string $trazi):string {
+
+        if ($trazi <> 'sve') {
+
+            $trazi = explode(' ', $trazi);
+
+            $trazi_array = '';
+            foreach ($trazi as $stavka) {
+
+                $trazi_array .= "
+                    AND (
+                        Naziv LIKE '%{$stavka}%'
+                        OR Opis LIKE '%{$stavka}%'
+                    )
+                ";
+
+            }
+
+            return $trazi_array;
+
+        }
+
+        return '';
 
     }
 

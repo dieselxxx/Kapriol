@@ -39,30 +39,39 @@ final class Rezultat_Kontroler extends Kontroler {
      * @param string $kategorija [optional] <p>
      * Trenutna kategorija.
      * </p>
+     * @param string $trazi [optional] <p>
+     * Traži artikl.
+     * </p>
+     * @param string $poredaj [optional] <p>
+     * Poredaj rezultate artikala.
+     * </p>
+     * @param string $poredaj_redoslijed [optional] <p>
+     * ASC ili DESC.
+     * </p>
      * @param int $stranica [optional] <p>
      * Trenutna stranica.
-     * </p>
+     * </p.
      *
      * @throws Kontejner_Greska Ukoliko se ne može spremiti instanca Log-a.
      * @throws Kontroler_Greska Ukoliko objekt nije validan model.
      *
      * @return Sadrzaj Sadržaj stranice.
      */
-    public function index (string $kontroler = '', string $kategorija = '', int $stranica = 1):Sadrzaj {
+    public function index (string $kontroler = '', string $kategorija = '', string $trazi = 'sve', string $poredaj = 'naziv', string $poredaj_redoslijed = 'asc', int $stranica = 1):Sadrzaj {
 
         $kategorije = $this->model(Kategorije_Model::class);
 
         $trenutna_kategorija = $kategorije->kategorija($kategorija);
 
         $limit = 12;
-        $artikli = $this->model(Artikli_Model::class)->artikli($trenutna_kategorija['ID'], ($stranica - 1) * $limit, $limit);
+        $artikli = $this->model(Artikli_Model::class)->artikli($trenutna_kategorija['ID'], ($stranica - 1) * $limit, $limit, $trazi, $poredaj, $poredaj_redoslijed);
 
-        $broj_zapisa = $this->model(Artikli_Model::class)->ukupnoRedakaHTML($trenutna_kategorija['ID'], 12, '/rezultat/'.$trenutna_kategorija['Link'], $stranica);
+        $navigacija = $this->model(Artikli_Model::class)->ukupnoRedakaHTML($trenutna_kategorija['ID'], $trazi, 12, '/rezultat/'.$trenutna_kategorija['Link'].'/'.$trazi.'/'.$poredaj.'/'.$poredaj_redoslijed, $stranica);
 
-        $navigacija = '';
-        foreach ($broj_zapisa as $zapis) {
+        $navigacija_html = '';
+        foreach ($navigacija as $redak) {
 
-            $navigacija .= $zapis;
+            $navigacija_html .= $redak;
 
         }
 
@@ -72,7 +81,6 @@ final class Rezultat_Kontroler extends Kontroler {
             $artikli_html .= <<<Artikal
             
                 <div class="artikal">
-                    <!--<img src="/kapriol/resursi/grafika/ikone/kapriol_siva.svg" alt=""/>-->
                     <img src="/slika/malaslika/{$artikal['Slika']}" alt="" loading="lazy"/>
                     <span class="naslov">{$artikal['Naziv']}</span>
                     <span class="cijena">{$artikal['Cijena']} KM</span>
@@ -89,7 +97,7 @@ final class Rezultat_Kontroler extends Kontroler {
             'glavni_meni_hamburger' => $kategorije->glavniMeniHamburger(),
             'vi_ste_ovdje' => 'Vi ste ovdje : <a href="/">Kapriol Web Trgovina</a> \\\\ ' . $trenutna_kategorija['Kategorija'],
             'artikli' => $artikli_html,
-            'navigacija' => $navigacija
+            'navigacija' => $navigacija_html
         ]);
 
     }
