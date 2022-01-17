@@ -5,6 +5,8 @@
         "css/grid.css",
         "css/kapriol.css"
     ],
-    "javascript": {
-    }
+    "javascript": [
+        "js/biblioteke.js",
+        "js/kapriol.min.js"
+    ]
 }
