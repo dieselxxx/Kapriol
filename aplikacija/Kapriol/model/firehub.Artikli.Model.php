@@ -63,6 +63,23 @@ final class Artikli_Model extends Model {
      */
     public function artikli (int|string $kategorija, int $pomak, int $limit, string $trazi, string $poredaj, string $poredaj_redoslijed):array {
 
+        if ($kategorija === 'sve') {
+
+            $artikli = $this->bazaPodataka->tabela('artikliview')
+                ->sirovi("
+                SELECT ROW_NUMBER() OVER (ORDER BY $poredaj $poredaj_redoslijed) AS RedBroj, Naziv,Link,Opis,Cijena,CijenaAkcija,Slika
+                FROM 00_Kapriol.artikliview
+                LEFT JOIN slikeartikal ON ClanakID = artikliview.ID
+                WHERE Aktivan = 1 AND Ba = 1 AND Zadana = 1
+                {$this->trazi($trazi)}
+                LIMIT $pomak, $limit
+            ")
+                ->napravi();
+
+            return $artikli->niz() ?: [];
+
+        }
+
         $artikli = $this->bazaPodataka->tabela('artikliview')
             ->sirovi("
                 SELECT ROW_NUMBER() OVER (ORDER BY $poredaj $poredaj_redoslijed) AS RedBroj, Naziv,Link,Opis,Cijena,CijenaAkcija,Slika
@@ -94,6 +111,21 @@ final class Artikli_Model extends Model {
      * @return int Broj pronađenih redaka.
      */
     public function ukupnoRedaka (int|string $kategorija, string $trazi) {
+
+        if ($kategorija === 'sve') {
+
+            $ukupno_redaka = $this->bazaPodataka->tabela('artikliview')
+                ->sirovi("
+                SELECT Naziv
+                FROM 00_Kapriol.artikliview
+                WHERE Aktivan = 1 AND Ba = 1
+                {$this->trazi($trazi)}
+            ")
+                ->napravi();
+
+            return $ukupno_redaka->broj_zapisa();
+
+        }
 
         $ukupno_redaka = $this->bazaPodataka->tabela('artikliview')
             ->sirovi("

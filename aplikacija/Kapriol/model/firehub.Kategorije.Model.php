@@ -110,6 +110,16 @@ final class Kategorije_Model extends Model {
      */
     public function kategorija (string $kategorija):array {
 
+        if ($kategorija === 'sve') {
+
+            return [
+                'ID' => 'sve',
+                'Kategorija' => 'Sve kategorije',
+                'Link' => 'sve'
+            ];
+
+        }
+
         $id = $this->bazaPodataka->tabela('kategorijeview')
             ->odaberi(['ID', 'Kategorija', 'Link'])
             ->gdje('Link', '=', $kategorija)
@@ -119,7 +129,8 @@ final class Kategorije_Model extends Model {
 
             $redak = [
                 'ID' => 0,
-                'Kategorija' => 'Kategorija ne postoji'
+                'Kategorija' => 'Kategorija ne postoji',
+                'Link' => ''
             ];
 
         }
