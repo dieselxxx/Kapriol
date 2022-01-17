@@ -2,7 +2,22 @@
 
     <div class="vi_ste_ovdje">{{vi_ste_ovdje}}</div>
 
-    <div class="meni">{{meni}}</div>
+    <div class="meni">
+
+        <form data-oznaka="rezultat_poredak" method="post" enctype="multipart/form-data" action="">
+
+            <label data-boja="boja" class="select">
+                <select data-oznaka="redoslijed" name="poredaj" required>
+                    {{poredaj_izbornik}}
+                </select>
+                <span class="select-odabrano"></span>
+                <span class="select-granica"></span>
+                <label class="select-odaberite">Poredaj po</label>
+            </label>
+
+        </form>
+
+    </div>
 
     <div class="artikli">{{artikli}}</div>
 

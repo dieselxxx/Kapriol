@@ -91,13 +91,27 @@ final class Rezultat_Kontroler extends Kontroler {
 
         }
 
+        // poredaj izbornik
+        if ($poredaj === 'naziv' && $poredaj_redoslijed == 'asc') {$poredaj_izbornik_odabrano_1 = 'selected';} else {$poredaj_izbornik_odabrano_1 = '';}
+        if ($poredaj === 'naziv' && $poredaj_redoslijed == 'desc') {$poredaj_izbornik_odabrano_2 = 'selected';} else {$poredaj_izbornik_odabrano_2 = '';}
+        if ($poredaj === 'cijena' && $poredaj_redoslijed == 'asc') {$poredaj_izbornik_odabrano_3 = 'selected';} else {$poredaj_izbornik_odabrano_3 = '';}
+        if ($poredaj === 'cijena' && $poredaj_redoslijed == 'desc') {$poredaj_izbornik_odabrano_4 = 'selected';} else {$poredaj_izbornik_odabrano_4 = '';}
+
+        $poredaj_izbornik = '
+            <option value="/rezultat/'.$kategorija.'/'.$trazi.'/naziv/asc/" '.$poredaj_izbornik_odabrano_1.'>Naziv A-Z</option>
+            <option value="/rezultat/'.$kategorija.'/'.$trazi.'/naziv/desc/" '.$poredaj_izbornik_odabrano_2.'>Naziv Z-A</option>
+            <option value="/rezultat/'.$kategorija.'/'.$trazi.'/cijena/asc/" '.$poredaj_izbornik_odabrano_3.'>Cijena manja prema većoj</option>
+            <option value="/rezultat/'.$kategorija.'/'.$trazi.'/cijena/desc/" '.$poredaj_izbornik_odabrano_4.'>Cijena veća prema manjoj</option>
+        ';
+
         return sadrzaj()->datoteka('rezultat.html')->podatci([
             'predlozak_naslov' => $trenutna_kategorija['Kategorija'],
             'glavni_meni' => $kategorije->glavniMeni(),
             'glavni_meni_hamburger' => $kategorije->glavniMeniHamburger(),
             'vi_ste_ovdje' => 'Vi ste ovdje : <a href="/">Kapriol Web Trgovina</a> \\\\ ' . $trenutna_kategorija['Kategorija'],
             'artikli' => $artikli_html,
-            'navigacija' => $navigacija_html
+            'navigacija' => $navigacija_html,
+            "poredaj_izbornik" => $poredaj_izbornik
         ]);
 
     }
