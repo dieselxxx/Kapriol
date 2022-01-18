@@ -48,6 +48,21 @@ interface Sesija_Interface extends Servis_Interface {
     public function zapisi (string $kljuc, mixed $vrijednost):bool;
 
     /**
+     * ### Dodaj zapis u niz
+     * @since 0.6.1.alpha.M1
+     *
+     * @param string $niz <p>
+     * Naziv niza u koji dodajemo zapis.
+     * </p>
+     * @param mixed $vrijednost <p>
+     * Vrijednost koju zapisujemo u sesiju.
+     * </p>
+     *
+     * @return bool Da li je dodan zapis sesije u niz.
+     */
+    public function dodaj (string $niz, mixed $vrijednost):bool;
+
+    /**
      * ### Pročitaj vrijednost iz sesije
      * @since 0.5.3.pre-alpha.M5
      *

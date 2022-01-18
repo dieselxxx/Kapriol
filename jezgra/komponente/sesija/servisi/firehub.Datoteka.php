@@ -114,6 +114,27 @@ final class Datoteka implements Sesija_Interface {
     /**
      * @inheritDoc
      */
+    public function dodaj (string $niz, mixed $vrijednost):bool {
+
+        if (!isset($_SESSION[$niz])) {
+
+            $_SESSION[$niz] = [];
+
+        }
+
+        if (!array_push($_SESSION[$niz], $vrijednost) > 0) {
+
+            return false;
+
+        }
+
+        return true;
+
+    }
+
+    /**
+     * @inheritDoc
+     */
     public function procitaj (string $kljuc):mixed {
 
         if (!isset($_SESSION[$kljuc])) {
