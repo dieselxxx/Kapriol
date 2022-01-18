@@ -300,6 +300,7 @@ main > div#sadrzaj.artikl > form.artikl > ul.zaliha,
 main > div#sadrzaj.artikl > form.artikl > span.kosarica,
 main > div#sadrzaj.artikl > form.artikl > span.opis {padding: 20px; border-bottom: 1px solid var(--boja-granica);}
 main > div#sadrzaj.artikl > div.slicni_artikli {grid-column: 1 / 5; grid-row: 3 / 4;}
+main > div#sadrzaj.kosarica > div.artikli {grid-column: 1 / 5; grid-row: 2 / 3;}
 
 footer {justify-content: center; background-color: var(--boja-pozadina_svijetla);}
 footer a {color: var(--boja-tekst);}

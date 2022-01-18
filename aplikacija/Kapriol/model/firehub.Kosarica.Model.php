@@ -45,11 +45,53 @@ final class Kosarica_Model extends Master_Model {
 
     }
 
+    /**
+     * ### Artikli iz košarice
+     * @since 0.1.2.pre-alpha.M1
+     *
+     * @return array Niz artikala.
+     */
     public function artikli ():array {
 
-        if (isset($_SESSION)) {
+        if ($this->sesija->procitaj('kosarica')) {
 
-            var_dump($_SESSION);
+            $id = array_keys($this->sesija->procitaj('kosarica'));
+
+            $sifra_array = '';
+            foreach ($id as $kljuc => $vrijednost) {
+
+                if ($kljuc === array_key_first($id)) {
+
+                    $sifra_array .= "
+                        artiklikarakteristike.Sifra = $vrijednost
+                    ";
+
+                } else {
+
+                    $sifra_array .= "
+                        OR artiklikarakteristike.Sifra = $vrijednost
+                    ";
+
+                }
+
+            }
+
+            var_dump($sifra_array);
+
+            $artikli = $this->bazaPodataka->tabela('artikliview')
+                ->sirovi("
+                    SELECT
+                        ROW_NUMBER() OVER (ORDER BY Naziv ASC) AS RedBroj,
+                           artikliview.ID, artikliview.Naziv, artikliview.Link, artikliview.Cijena, artikliview.CijenaAkcija, slikeartikal.Slika
+                    FROM artikliview
+                    LEFT JOIN slikeartikal ON slikeartikal.ClanakID = artikliview.ID
+                    LEFT JOIN artiklikarakteristike ON artiklikarakteristike.ArtikalID = artikliview.ID
+                    WHERE artikliview.Aktivan = 1 AND artikliview.Ba = 1 AND slikeartikal.Zadana = 1
+                    AND ($sifra_array)
+                ")
+                ->napravi();
+
+            return $artikli->niz() ?: [];
 
         }
 
@@ -57,7 +99,7 @@ final class Kosarica_Model extends Master_Model {
 
     }
 
-    /**
+        /**
      * ### Dodaj artikl u košaricu
      * @since 0.1.2.pre-alpha.M1
      *
@@ -86,7 +128,15 @@ final class Kosarica_Model extends Master_Model {
 
         }
 
-        $this->sesija->dodaj('kosarica', [$velicina => $vrijednost]);
+        if (isset($this->sesija->procitaj('kosarica')[$velicina])) {
+
+            $this->sesija->dodaj('kosarica', $velicina, $vrijednost + $this->sesija->procitaj('kosarica')[$velicina]);
+
+        } else {
+
+            $this->sesija->dodaj('kosarica', $velicina, $vrijednost);
+
+        }
 
         return true;
 

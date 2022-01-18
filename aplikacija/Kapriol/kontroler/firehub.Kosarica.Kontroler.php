@@ -45,13 +45,30 @@ final class Kosarica_Kontroler extends Master_Kontroler {
 
         // artikli
         $kosarica_artikli = $kosarica_model->artikli();
+        var_dump($kosarica_artikli);
+        $kosarica_artikli_html = '';
+        if (!empty($kosarica_artikli)) {
+
+            foreach ($kosarica_artikli as $artikal) {
+
+                $kosarica_artikli_html .= '
+                    <div></div>
+                ';
+
+            }
+
+        } else {
+
+            $kosarica_artikli_html = '<h2>Vaša košarica je prazna!</h2>';
+
+        }
 
         return sadrzaj()->datoteka('kosarica.html')->podatci([
             'predlozak_naslov' => 'Košarica',
             'glavni_meni' => $kategorije->glavniMeni(),
             'glavni_meni_hamburger' => $kategorije->glavniMeniHamburger(),
             'vi_ste_ovdje' => '<a href="/">Kapriol Web Trgovina</a> \\\\ Košarica',
-            'artikli' => ''
+            'kosarica_artikli' => $kosarica_artikli_html
         ]);
 
     }
