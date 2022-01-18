@@ -90,7 +90,7 @@ final class Artikl_Kontroler extends Master_Kontroler {
 
                 $artikl_zaliha_html .= '<li><span class="gumb dostupno">'.$zaliha['Velicina'].'</span></li>';
 
-                $artikl_kosarica_velicine .= '<option value="'.$zaliha['artiklikarakteristikeID'].'">'.$zaliha['Velicina'].'</option>';
+                $artikl_kosarica_velicine .= '<option value="'.$zaliha['artiklikarakteristikeSifra'].'">'.$zaliha['Velicina'].'</option>';
 
             } else {
 

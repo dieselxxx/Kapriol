@@ -15,6 +15,9 @@
 namespace FireHub\Aplikacija\Kapriol\Kontroler;
 
 use FireHub\Jezgra\Kontroler\Kontroler;
+use FireHub\Aplikacija\Kapriol\Model\Kosarica_Model;
+use FireHub\Jezgra\Komponente\Sesija\Sesija;
+use FireHub\Jezgra\Kontejner\Greske\Kontejner_Greska;
 
 /**
  * ### Master
@@ -27,12 +30,23 @@ abstract class Master_Kontroler extends Kontroler {
     /**
      * ### Konstruktor
      * @since 0.1.2.pre-alpha.M1
+     *
+     * @param Sesija $sesija <p>
+     * Sesija.
+     * </p>
+     *
+     * @throws Kontejner_Greska Ukoliko se ne može spremiti instanca Sesije.
      */
-    public function __construct () {
+    public function __construct (private Sesija $sesija) {
 
-        if (isset($_POST['test'])) {
-            var_dump('test');
+        if (isset($_POST['kosarica_dodaj'])) {
+
+            $this->model(Kosarica_Model::class)->dodaj($_POST['velicina'] ?? 0, (int)$_POST['vrijednost'] ?? 0);
+
         }
+
+        // napravi sesiju
+        $this->sesija->naziv('Kapriol')->napravi();
 
     }
 

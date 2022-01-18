@@ -116,7 +116,7 @@ final class Artikl_Model extends Model {
             ->sirovi("
                 SELECT
                     SUM(StanjeSkladiste) AS StanjeSkladiste, IF(SUM(StanjeSkladiste) > 0, TRUE, FALSE) AS StanjeSkladisteTF,
-                    artiklikarakteristike.ID AS artiklikarakteristikeID, Velicina
+                    artiklikarakteristike.Sifra AS artiklikarakteristikeSifra, Velicina
                 FROM 00_kapriol.artiklikarakteristike
                 LEFT JOIN 00_kapriol.stanjeskladista ON stanjeskladista.Sifra = artiklikarakteristike.Sifra
                 WHERE ArtikalID = $artiklID
