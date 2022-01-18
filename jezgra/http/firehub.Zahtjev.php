@@ -39,7 +39,6 @@ final class Zahtjev implements Zahtjev_Interface {
     public function url ():string {
 
         $uri = isset($_SERVER['UNENCODED_URL']) ? filter_var(rawurldecode($_SERVER['UNENCODED_URL'])) : false;
-        var_dump($uri);
 
         return $uri ? strtolower(parse_url(rawurldecode($uri), PHP_URL_PATH)) : '/';
 
