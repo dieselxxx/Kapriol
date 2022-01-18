@@ -114,7 +114,7 @@ final class Datoteka implements Sesija_Interface {
     /**
      * @inheritDoc
      */
-    public function dodaj (string $niz, mixed $vrijednost):bool {
+    public function dodaj (string $niz, string $kljuc, mixed $vrijednost):bool {
 
         if (!isset($_SESSION[$niz])) {
 
@@ -122,11 +122,7 @@ final class Datoteka implements Sesija_Interface {
 
         }
 
-        if (!array_push($_SESSION[$niz], $vrijednost) > 0) {
-
-            return false;
-
-        }
+        $_SESSION[$niz][$kljuc] = $vrijednost;
 
         return true;
 
