@@ -8,11 +8,36 @@
         </div>
         <ul class="slike">{{artikl_slike}}</ul>
         <h2 class="naziv">{{artikl_naziv}}</h2>
-        <h3 class="cijena">{{artikl_cijena}} KM</h3>
-        <span class="zaliha">{{artikl_zaliha}}</span>
-        <span class="kosarica">{{artikl_kosarica}}</span>
+        <span class="cijena">{{artikl_cijena}}</span>
+        <ul class="zaliha">
+            <h3>Dostupne veličine :</h3>
+            {{artikl_zaliha}}
+        </ul>
+        <span class="kosarica">
+            <label data-boja="boja" class="select">
+                <select name="velicina" required>
+                    {{artikl_kosarica_velicine}}
+                </select>
+                <span class="select-odabrano"></span>
+                <span class="select-granica"></span>
+                <label class="select-odaberite">Odaberite veličinu</label>
+            </label>
+            <button type="button" class="gumb" onclick="ArtikalPlusMinus(this, $vrsta = 'minus');">-</button>
+            <label data-boja="boja" class="unos">
+                <input type="number" name="vrijednost" data-pakiranje="1" data-maxpakiranje="1000" value="0" min="0" max="100" step="1" autocomplete="off" pattern="0-9">
+                <span class="naslov">
+                    <span></span>
+                </span>
+                <span class="granica"></span>
+            </label>
+            <button type="button" class="gumb" onclick="ArtikalPlusMinus(this, $vrsta = 'plus');">+</button>
+            <button type="button" class="gumb ikona" name="dodaj" onclick="$_KosaricaUmetni(this);">
+                <svg><use xlink:href="/kapriol/resursi/grafika/simboli/simbol.ikone.svg#kosarica"></use></svg>
+                <span>Dodaj</span>
+            </button>
+        </span>
         <span class="opis">
-            <h3>Specifikacije : </h3>
+            <h3>Specifikacije :</h3>
             <span>{{artikl_opis}}</span>
         </span>
     </div>

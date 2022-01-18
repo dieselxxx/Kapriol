@@ -53,6 +53,7 @@ final class Artikl_Kontroler extends Kontroler {
 
         $trenutni_artikl = $artikl_model->artikl($artikl);
 
+        // slike
         $artikl_slike = $artikl_model->slike($trenutni_artikl['ID']);
         $artikl_slike_html = '';
         foreach ($artikl_slike as $slike) {
@@ -64,14 +65,39 @@ final class Artikl_Kontroler extends Kontroler {
 
         }
 
+        // cijene
+        if ($trenutni_artikl['CijenaAkcija'] > 0) {
+
+            $artikl_cijena = '
+                <span class="prekrizi">'.$trenutni_artikl['Cijena'].' KM</span>
+                <h2 class="akcija">'.$trenutni_artikl['CijenaAkcija'].' KM</h2>
+            ';
+
+        } else {
+
+            $artikl_cijena = '
+                <h2>'.$trenutni_artikl['Cijena'].' KM</h2>
+            ';
+
+        }
+
+        // zaliha
         $artikl_zaliha = $artikl_model->zaliha($trenutni_artikl['ID']);
         $artikl_zaliha_html = '';
+        $artikl_kosarica_velicine = '';
         foreach ($artikl_zaliha as $zaliha) {
 
-            $artikl_zaliha_html .= '
-                <li>
-                    '.$zaliha['Sifra'].'
-                </li>';
+            if ((int)$zaliha['StanjeSkladisteTF'] === 1) {
+
+                $artikl_zaliha_html .= '<li><span class="gumb dostupno">'.$zaliha['Velicina'].'</span></li>';
+
+                $artikl_kosarica_velicine .= '<option name="'.$zaliha['artiklikarakteristikeID'].'">'.$zaliha['Velicina'].'</option>';
+
+            } else {
+
+                $artikl_zaliha_html .= '<li><span class="gumb nedostupno">'.$zaliha['Velicina'].'</span></li>';
+
+            }
 
         }
 
@@ -83,8 +109,9 @@ final class Artikl_Kontroler extends Kontroler {
             'artikl_slika' => $trenutni_artikl['Slika'],
             'artikl_slike' => $artikl_slike_html,
             'artikl_naziv' => $trenutni_artikl['Naziv'],
-            'artikl_cijena' => $trenutni_artikl['Cijena'],
+            'artikl_cijena' => $artikl_cijena,
             'artikl_zaliha' => $artikl_zaliha_html,
+            'artikl_kosarica_velicine' => $artikl_kosarica_velicine,
             'artikl_opis' => $trenutni_artikl['Opis']
         ]);
 

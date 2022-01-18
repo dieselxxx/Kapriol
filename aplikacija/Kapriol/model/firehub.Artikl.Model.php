@@ -51,7 +51,7 @@ final class Artikl_Model extends Model {
         $artikl = $this->bazaPodataka->tabela('artikliview')
             ->sirovi("
                 SELECT
-                    artikliview.ID, artikliview.Naziv, artikliview.Opis, artikliview.Cijena,
+                    artikliview.ID, artikliview.Naziv, artikliview.Opis, artikliview.Cijena, artikliview.CijenaAkcija,
                     kategorije.Kategorija, slikeartikal.Slika
                 FROM artikliview
                 LEFT JOIN kategorije ON kategorije.ID = artikliview.KategorijaID
@@ -76,7 +76,7 @@ final class Artikl_Model extends Model {
     }
 
     /**
-     * ### Dohvati slike artikl
+     * ### Dohvati slike artikla
      * @since 0.1.2.pre-alpha.M1
      *
      * @param string|int $artiklID <p>
@@ -99,7 +99,7 @@ final class Artikl_Model extends Model {
     }
 
     /**
-     * ### Dohvati karakteristike artikl
+     * ### Dohvati karakteristike artikla
      * @since 0.1.2.pre-alpha.M1
      *
      * @param string|int $artiklID <p>
@@ -113,9 +113,17 @@ final class Artikl_Model extends Model {
     public function zaliha (string|int $artiklID):array {
 
         $karakteristike = $this->bazaPodataka->tabela('artiklikarakteristike')
-            ->odaberi(['Sifra', 'Velicina'])
-            ->gdje('ArtikalID', '=', $artiklID)
-            ->poredaj('ID', 'ASC')->napravi();
+            ->sirovi("
+                SELECT
+                    SUM(StanjeSkladiste) AS StanjeSkladiste, IF(SUM(StanjeSkladiste) > 0, TRUE, FALSE) AS StanjeSkladisteTF,
+                    artiklikarakteristike.ID AS artiklikarakteristikeID, Velicina
+                FROM 00_kapriol.artiklikarakteristike
+                LEFT JOIN 00_kapriol.stanjeskladista ON stanjeskladista.Sifra = artiklikarakteristike.Sifra
+                WHERE ArtikalID = $artiklID
+                GROUP BY Velicina
+                ORDER BY artiklikarakteristike.ID
+            ")
+            ->napravi();
 
         return $karakteristike->niz();
 
