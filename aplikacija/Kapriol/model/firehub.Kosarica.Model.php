@@ -14,8 +14,6 @@
 
 namespace FireHub\Aplikacija\Kapriol\Model;
 
-use FireHub\Jezgra\Model\Model;
-use FireHub\Jezgra\Komponente\Sesija\Sesija;
 use FireHub\Jezgra\Komponente\Log\Enumeratori\Level;
 use FireHub\Jezgra\Komponente\BazaPodataka\BazaPodataka;
 use FireHub\Jezgra\Kontroler\Greske\Kontroler_Greska;
@@ -27,16 +25,37 @@ use FireHub\Jezgra\Kontejner\Greske\Kontejner_Greska;
  *
  * @package Aplikacija\Model
  */
-final class Kosarica_Model extends Model {
+final class Kosarica_Model extends Master_Model {
 
     /**
      * ### Konstruktor
      * @since 0.1.2.pre-alpha.M1
+     *
+     * @param BazaPodataka $bazaPodataka <p>
+     * Baza podataka.
+     * </p>
+     *
+     * @throws Kontejner_Greska Ukoliko se ne može spremiti instanca Sesije.
      */
     public function __construct (
-        private BazaPodataka $bazaPodataka,
-        private Sesija $sesija
-    ) {}
+        private BazaPodataka $bazaPodataka
+    ) {
+
+        parent::__construct();
+
+    }
+
+    public function artikli ():array {
+
+        if (isset($_SESSION)) {
+
+            var_dump($_SESSION);
+
+        }
+
+        return [];
+
+    }
 
     /**
      * ### Dodaj artikl u košaricu
@@ -67,20 +86,9 @@ final class Kosarica_Model extends Model {
 
         }
 
-        // napravi sesiju
-        $sesija = $this->sesija->naziv('Kapriol')->napravi();
-
-        $sesija->zapisi('velicina_'.$velicina, $vrijednost);
+        $this->sesija->dodaj('kosarica', [$velicina => $vrijednost]);
 
         return true;
-
-    }
-
-    public function artikli ():array {
-
-        var_dump($_SESSION);
-
-        return [];
 
     }
 

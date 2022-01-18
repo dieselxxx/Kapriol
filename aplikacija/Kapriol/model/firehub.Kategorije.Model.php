@@ -14,7 +14,6 @@
 
 namespace FireHub\Aplikacija\Kapriol\Model;
 
-use FireHub\Jezgra\Model\Model;
 use FireHub\Jezgra\Komponente\BazaPodataka\BazaPodataka;
 use FireHub\Jezgra\Kontejner\Greske\Kontejner_Greska;
 
@@ -24,15 +23,21 @@ use FireHub\Jezgra\Kontejner\Greske\Kontejner_Greska;
  *
  * @package Aplikacija\Model
  */
-final class Kategorije_Model extends Model {
+final class Kategorije_Model extends Master_Model {
 
     /**
      * ### Konstruktor
      * @since 0.1.1.pre-alpha.M1
+     *
+     * @throws Kontejner_Greska Ukoliko se ne može spremiti instanca Sesije.
      */
     public function __construct (
         private BazaPodataka $bazaPodataka
-    ) {}
+    ) {
+
+        parent::__construct();
+
+    }
 
     /**
      * ### Sve kategorije za glavni meni sa uključenim menijom

@@ -18,6 +18,7 @@ use FireHub\Jezgra\Kontroler\Kontroler;
 use FireHub\Aplikacija\Kapriol\Model\Kosarica_Model;
 use FireHub\Jezgra\Komponente\Sesija\Sesija;
 use FireHub\Jezgra\Kontejner\Greske\Kontejner_Greska;
+use FireHub\Jezgra\Kontroler\Greske\Kontroler_Greska;
 
 /**
  * ### Master
@@ -35,7 +36,8 @@ abstract class Master_Kontroler extends Kontroler {
      * Sesija.
      * </p>
      *
-     * @throws Kontejner_Greska Ukoliko se ne može spremiti instanca Sesije.
+     * @throws Kontejner_Greska Ukoliko se ne može spremiti instanca Baze podataka Log-a.
+     * @throws Kontroler_Greska Ukoliko objekt nije validan model.
      */
     public function __construct (private Sesija $sesija) {
 
@@ -44,9 +46,6 @@ abstract class Master_Kontroler extends Kontroler {
             $this->model(Kosarica_Model::class)->dodaj($_POST['velicina'] ?? 0, (int)$_POST['vrijednost'] ?? 0);
 
         }
-
-        // napravi sesiju
-        $this->sesija->naziv('Kapriol')->napravi();
 
     }
 
