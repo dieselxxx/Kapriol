@@ -13,8 +13,7 @@
  */
 
 namespace FireHub\Aplikacija\Kapriol\Kontroler;
-;
-use FireHub\Jezgra\Kontroler\Kontroler;
+
 use FireHub\Jezgra\Sadrzaj\Sadrzaj;
 use FireHub\Aplikacija\Kapriol\Model\Kategorije_Model;
 use FireHub\Aplikacija\Kapriol\Model\Artikl_Model;
@@ -27,7 +26,7 @@ use FireHub\Jezgra\Kontroler\Greske\Kontroler_Greska;
  *
  * @package Aplikacija\Kontroler
  */
-final class Artikl_Kontroler extends Kontroler {
+final class Artikl_Kontroler extends Master_Kontroler {
 
     /**
      * ## index
@@ -91,7 +90,7 @@ final class Artikl_Kontroler extends Kontroler {
 
                 $artikl_zaliha_html .= '<li><span class="gumb dostupno">'.$zaliha['Velicina'].'</span></li>';
 
-                $artikl_kosarica_velicine .= '<option name="'.$zaliha['artiklikarakteristikeID'].'">'.$zaliha['Velicina'].'</option>';
+                $artikl_kosarica_velicine .= '<option value="'.$zaliha['artiklikarakteristikeID'].'">'.$zaliha['Velicina'].'</option>';
 
             } else {
 

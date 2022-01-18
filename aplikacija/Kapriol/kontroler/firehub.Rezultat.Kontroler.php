@@ -14,7 +14,6 @@
 
 namespace FireHub\Aplikacija\Kapriol\Kontroler;
 
-use FireHub\Jezgra\Kontroler\Kontroler;
 use FireHub\Jezgra\Sadrzaj\Sadrzaj;
 use FireHub\Aplikacija\Kapriol\Model\Kategorije_Model;
 use FireHub\Aplikacija\Kapriol\Model\Artikli_Model;
@@ -27,7 +26,7 @@ use FireHub\Jezgra\Kontroler\Greske\Kontroler_Greska;
  *
  * @package Aplikacija\Kontroler
  */
-final class Rezultat_Kontroler extends Kontroler {
+final class Rezultat_Kontroler extends Master_Kontroler {
 
     /**
      * ## index

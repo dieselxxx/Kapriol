@@ -19,3 +19,4 @@ Rute::sve('rezultat/index', [\FireHub\Aplikacija\Kapriol\Kontroler\Rezultat_Kont
 Rute::sve('artikl/index', [\FireHub\Aplikacija\Kapriol\Kontroler\Artikl_Kontroler::class, 'index']);
 Rute::sve('slika/malaslika', [\FireHub\Aplikacija\Kapriol\Kontroler\Slika_Kontroler::class, 'malaslika']);
 Rute::sve('slika/velikaslika', [\FireHub\Aplikacija\Kapriol\Kontroler\Slika_Kontroler::class, 'velikaslika']);
+Rute::sve('kosarica/dodaj', [\FireHub\Aplikacija\Kapriol\Kontroler\Kosarica_Kontroler::class, 'dodaj']);

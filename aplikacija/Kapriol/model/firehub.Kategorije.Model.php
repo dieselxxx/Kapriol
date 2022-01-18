@@ -145,7 +145,7 @@ final class Kategorije_Model extends Model {
      *
      * @throws Kontejner_Greska Ukoliko se ne može spremiti instanca objekta.
      *
-     * @return array Niz kateogorija.
+     * @return array Niz kategorija.
      */
     private function kategorije ():array {
 

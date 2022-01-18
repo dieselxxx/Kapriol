@@ -14,7 +14,6 @@
 
 namespace FireHub\Aplikacija\Kapriol\Kontroler;
 
-use FireHub\Jezgra\Kontroler\Kontroler;
 use FireHub\Jezgra\Sadrzaj\Sadrzaj;
 use FireHub\Jezgra\Komponente\Slika\Slika;
 use FireHub\Jezgra\HTTP\Atributi\Zaglavlja;
@@ -30,7 +29,7 @@ use FireHub\Jezgra\Kontejner\Greske\Kontejner_Greska;
  *
  * @package Aplikacija\Kontroler
  */
-final class Slika_Kontroler extends Kontroler {
+final class Slika_Kontroler extends Master_Kontroler {
 
     /**
      * ### index
