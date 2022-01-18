@@ -2,7 +2,7 @@
 
     <div class="vi_ste_ovdje">{{vi_ste_ovdje}}</div>
 
-    <div class="artikl">
+    <form class="artikl" method="post" enctype="multipart/form-data" action="">
         <div class="slika">
             <img src="/slika/velikaslika/{{artikl_slika}}" alt="" loading="lazy"/>
         </div>
@@ -31,7 +31,7 @@
                 <span class="granica"></span>
             </label>
             <button type="button" class="gumb" onclick="ArtikalPlusMinus(this, $vrsta = 'plus');">+</button>
-            <button type="button" class="gumb ikona" name="dodaj" onclick="$_KosaricaUmetni(this);">
+            <button type="submit" class="gumb ikona" name="dodaj">
                 <svg><use xlink:href="/kapriol/resursi/grafika/simboli/simbol.ikone.svg#kosarica"></use></svg>
                 <span>Dodaj</span>
             </button>
@@ -40,7 +40,7 @@
             <h3>Specifikacije :</h3>
             <span>{{artikl_opis}}</span>
         </span>
-    </div>
+    </form>
 
     <div class="slicni_artikli"></div>
 

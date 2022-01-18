@@ -62,29 +62,40 @@ final class Rezultat_Kontroler extends Master_Kontroler {
 
         $trenutna_kategorija = $kategorije->kategorija($kategorija);
 
+        // navigacija
         $limit = 12;
         $artikli = $this->model(Artikli_Model::class)->artikli($trenutna_kategorija['ID'], ($stranica - 1) * $limit, $limit, $trazi, $poredaj, $poredaj_redoslijed);
-
         $navigacija = $this->model(Artikli_Model::class)->ukupnoRedakaHTML($trenutna_kategorija['ID'], $trazi, 12, '/rezultat/'.$trenutna_kategorija['Link'].'/'.$trazi.'/'.$poredaj.'/'.$poredaj_redoslijed, $stranica);
+        $navigacija_html = implode('', $navigacija);
 
-        $navigacija_html = '';
-        foreach ($navigacija as $redak) {
-
-            $navigacija_html .= $redak;
-
-        }
-
+        // artikli
         $artikli_html = '';
-        foreach ($artikli as $artikal) {
+        foreach ($artikli as $artikal) {;
+
+            // cijene
+            if ($artikal['CijenaAkcija'] > 0) {
+
+                $artikl_cijena = '
+                <span class="prekrizi">'.$artikal['Cijena'].' KM</span>
+                <h2 class="akcija">'.$artikal['CijenaAkcija'].' KM</h2>
+            ';
+
+            } else {
+
+                $artikl_cijena = '
+                <h2>'.$artikal['Cijena'].' KM</h2>
+            ';
+
+            }
 
             $artikli_html .= <<<Artikal
             
-                <div class="artikal">
+                <a class="artikal" href="/artikl/{$artikal['Link']}">
                     <img src="/slika/malaslika/{$artikal['Slika']}" alt="" loading="lazy"/>
-                    <a class="naslov" href="/artikl/{$artikal['Link']}">{$artikal['Naziv']}</a>
-                    <span class="cijena">{$artikal['Cijena']} KM</span>
+                    <span class="naslov">{$artikal['Naziv']}</span>
+                    <span class="cijena">$artikl_cijena</span>
                     <span class="zaliha"></span>
-                </div>
+                </a>
 
             Artikal;
 

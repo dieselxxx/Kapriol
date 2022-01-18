@@ -30,6 +30,10 @@ abstract class Master_Kontroler extends Kontroler {
      */
     public function __construct () {
 
+        if (isset($_POST['test'])) {
+            var_dump('test');
+        }
+
     }
 
 }

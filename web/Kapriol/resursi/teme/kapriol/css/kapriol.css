@@ -255,47 +255,50 @@ main > div#sadrzaj > div.vi_ste_ovdje {grid-column: 1 / 5; grid-row: 1 / 2; alig
 main > div#sadrzaj.rezultat > div.vi_ste_ovdje a:hover {text-decoration: underline;}
 main > div#sadrzaj.rezultat > div.meni {grid-column: 1 / 2; grid-row: 2 / 3;}
 main > div#sadrzaj.rezultat > div.artikli {grid-column: 2 / 5; grid-row: 2 / 3; display: grid; grid-template-columns: repeat(3, 1fr); grid-gap: 15px;}
-main > div#sadrzaj.rezultat > div.artikli > div.artikal {display: grid; grid-template-columns: minmax(200px, 1fr); grid-template-rows: 280px 40px 40px 40px; grid-gap: 10px; padding: 10px; text-align: center; border: 1px solid var(--boja-granica);}
-main > div#sadrzaj.rezultat > div.artikli > div.artikal > * {justify-self: center; align-self: center;}
-main > div#sadrzaj.rezultat > div.artikli > div.artikal > img {object-fit: contain; height: 100%; width: 100%;}
-main > div#sadrzaj.rezultat > div.artikli > div.artikal > a.naslov {font-weight: 500; color: var(--boja-tekst-tamnije);}
-main > div#sadrzaj.rezultat > div.artikli > div.artikal > a.naslov:hover {color: var(--boja-kapriol);}
-main > div#sadrzaj.rezultat > div.artikli > div.artikal > span.cijena {font-size: 1.4rem;}
-main > div#sadrzaj.rezultat > div.artikli > div.artikal > span.zaliha {}
+main > div#sadrzaj.rezultat > div.artikli > a.artikal {display: grid; grid-template-columns: minmax(200px, 1fr); grid-template-rows: 280px 40px 40px 40px; grid-gap: 10px; padding: 10px; text-align: center; border: 1px solid var(--boja-granica); transition: all .3s ease; transition-property: transform, border-color;}
+main > div#sadrzaj.rezultat > div.artikli > a.artikal:hover {border: 1px solid var(--boja-kapriol);}
+main > div#sadrzaj.rezultat > div.artikli > a.artikal > * {justify-self: center; align-self: center;}
+main > div#sadrzaj.rezultat > div.artikli > a.artikal > img {object-fit: contain; height: 100%; width: 100%;}
+main > div#sadrzaj.rezultat > div.artikli > a.artikal > span.naslov {font-weight: 500; color: var(--boja-tekst-tamnije);}
+main > div#sadrzaj.rezultat > div.artikli > a.artikal > span.cijena > h2 {color: var(--boja-tekst-tamnije);}
+main > div#sadrzaj.rezultat > div.artikli > a.artikal > span.cijena > h2.akcija {margin: 0; color: var(--boja-kapriol);}
+main > div#sadrzaj.rezultat > div.artikli > a.artikal > span.cijena > span.prekrizi {position: relative; font-size: 1.1rem; font-weight: 500; color: var(--boja-tekst-tamnije);}
+main > div#sadrzaj.rezultat > div.artikli > a.artikal > span.cijena > span.prekrizi:before {content: ""; position: absolute; top: 50%; left: 0; right: 0; border-top: 3px solid; border-color: var(--boja-kapriol); -webkit-transform:rotate(-5deg); -moz-transform:rotate(-5deg); -ms-transform:rotate(-5deg); -o-transform:rotate(-5deg); transform:rotate(-5deg);}
+main > div#sadrzaj.rezultat > div.artikli > a.artikal > span.zaliha {}
 main > div#sadrzaj.rezultat > nav.navigacija {grid-column: 2 / 5; grid-row: 3 / 4; justify-self: center; align-self: center;}
 main > div#sadrzaj.rezultat > nav.navigacija > ul {display: flex; width: auto;}
 main > div#sadrzaj.rezultat > nav.navigacija > ul > li {display: inline-grid; height: auto;}
 main > div#sadrzaj.rezultat > nav.navigacija > ul > li > a.gumb {margin: 8px; min-width: 54px;}
-main > div#sadrzaj.artikl > div.artikl {grid-column: 1 / 5; grid-row: 2 / 3; display: grid; grid-template-columns: 600px auto; grid-template-rows: repeat(4, 100px) auto auto; grid-gap: 15px; align-items: center;}
-main > div#sadrzaj.artikl > div.artikl > div.slika {grid-column: 1 / 2; grid-row: 1 / 5; object-fit: contain; height: 100%; width: 100%; border: 1px solid var(--boja-granica);}
-main > div#sadrzaj.artikl > div.artikl > div.slika > img {height: 100%; width: 100%;}
-main > div#sadrzaj.artikl > div.artikl > ul.slike {grid-column: 1 / 2; grid-row: 5 / 6; align-self: start;}
-main > div#sadrzaj.artikl > div.artikl > ul.slike > li {float: left; padding: 10px; height: 150px; width: 200px;}
-main > div#sadrzaj.artikl > div.artikl > ul.slike > li > a {display: block; height: 100%; width: 100%; border: 1px solid var(--boja-granica);}
-main > div#sadrzaj.artikl > div.artikl > ul.slike > li > a > img {height: 100%; width: 100%;}
-main > div#sadrzaj.artikl > div.artikl > h2.naziv {grid-column: 2 / 3; grid-row: 1 / 2;}
-main > div#sadrzaj.artikl > div.artikl > span.cijena {grid-column: 2 / 3; grid-row: 2 / 3;}
-main > div#sadrzaj.artikl > div.artikl > span.cijena > h2.akcija {color: var(--boja-kapriol);}
-main > div#sadrzaj.artikl > div.artikl > span.cijena > span.prekrizi {position: relative; font-size: 1.1rem; font-weight: 500;}
-main > div#sadrzaj.artikl > div.artikl > span.cijena > span.prekrizi:before {content: ""; position: absolute; top: 50%; left: 0; right: 0; border-top: 2px solid; border-color: var(--boja-kapriol); -webkit-transform:rotate(-5deg); -moz-transform:rotate(-5deg); -ms-transform:rotate(-5deg); -o-transform:rotate(-5deg); transform:rotate(-5deg);}
-main > div#sadrzaj.artikl > div.artikl > ul.zaliha {grid-column: 2 / 3; grid-row: 3 / 4;}
-main > div#sadrzaj.artikl > div.artikl > ul.zaliha > li {float: left;}
-main > div#sadrzaj.artikl > div.artikl > ul.zaliha > li > span {margin: 3px; padding: 5px 15px; height: auto; cursor: default;}
-main > div#sadrzaj.artikl > div.artikl > ul.zaliha > li > span.dostupno {background-color: var(--boja-kapriol); color: #ffffff;}
-main > div#sadrzaj.artikl > div.artikl > ul.zaliha > li > span.nedostupno {background-color: var(--boja-granica); color: #ffffff;}
-main > div#sadrzaj.artikl > div.artikl > span.kosarica {grid-column: 2 / 3; grid-row: 4 / 5; display: grid; grid-template-columns: 200px 60px 100px 60px 150px;}
-main > div#sadrzaj.artikl > div.artikl > span.kosarica > * {float: left; margin: 5px;}
-main > div#sadrzaj.artikl > div.artikl > span.kosarica > label.select {margin-top: 22px;}
-main > div#sadrzaj.artikl > div.artikl > span.kosarica > label.unos {grid-template-columns: auto;}
-main > div#sadrzaj.artikl > div.artikl > span.kosarica > label.unos > input {text-align: center;}
-main > div#sadrzaj.artikl > div.artikl > span.opis {grid-column: 1 / 3; grid-row: 6 / 7; line-height: 30px;}
-main > div#sadrzaj.artikl > div.artikl > span.opis > h3 {margin: 0 0 20px 0;}
-main > div#sadrzaj.artikl > div.artikl > span.opis > span > p {margin: 0;}
-main > div#sadrzaj.artikl > div.artikl > h2.naziv,
-main > div#sadrzaj.artikl > div.artikl > span.cijena,
-main > div#sadrzaj.artikl > div.artikl > ul.zaliha,
-main > div#sadrzaj.artikl > div.artikl > span.kosarica,
-main > div#sadrzaj.artikl > div.artikl > span.opis {padding: 20px; border-bottom: 1px solid var(--boja-granica);}
+main > div#sadrzaj.artikl > form.artikl {grid-column: 1 / 5; grid-row: 2 / 3; display: grid; grid-template-columns: 600px auto; grid-template-rows: repeat(4, 100px) auto auto; grid-gap: 15px; align-items: center;}
+main > div#sadrzaj.artikl > form.artikl > div.slika {grid-column: 1 / 2; grid-row: 1 / 5; object-fit: contain; height: 100%; width: 100%; border: 1px solid var(--boja-granica);}
+main > div#sadrzaj.artikl > form.artikl > div.slika > img {height: 100%; width: 100%;}
+main > div#sadrzaj.artikl > form.artikl > ul.slike {grid-column: 1 / 2; grid-row: 5 / 6; align-self: start;}
+main > div#sadrzaj.artikl > form.artikl > ul.slike > li {float: left; padding: 10px; height: 150px; width: 200px;}
+main > div#sadrzaj.artikl > form.artikl > ul.slike > li > a {display: block; height: 100%; width: 100%; border: 1px solid var(--boja-granica);}
+main > div#sadrzaj.artikl > form.artikl > ul.slike > li > a > img {height: 100%; width: 100%;}
+main > div#sadrzaj.artikl > form.artikl > h2.naziv {grid-column: 2 / 3; grid-row: 1 / 2;}
+main > div#sadrzaj.artikl > form.artikl > span.cijena {grid-column: 2 / 3; grid-row: 2 / 3;}
+main > div#sadrzaj.artikl > form.artikl > span.cijena > h2.akcija {color: var(--boja-kapriol);}
+main > div#sadrzaj.artikl > form.artikl > span.cijena > span.prekrizi {position: relative; font-size: 1.1rem; font-weight: 500;}
+main > div#sadrzaj.artikl > form.artikl > span.cijena > span.prekrizi:before {content: ""; position: absolute; top: 50%; left: 0; right: 0; border-top: 3px solid; border-color: var(--boja-kapriol); -webkit-transform:rotate(-5deg); -moz-transform:rotate(-5deg); -ms-transform:rotate(-5deg); -o-transform:rotate(-5deg); transform:rotate(-5deg);}
+main > div#sadrzaj.artikl > form.artikl > ul.zaliha {grid-column: 2 / 3; grid-row: 3 / 4;}
+main > div#sadrzaj.artikl > form.artikl > ul.zaliha > li {float: left;}
+main > div#sadrzaj.artikl > form.artikl > ul.zaliha > li > span {margin: 3px; padding: 5px 15px; height: auto; cursor: default;}
+main > div#sadrzaj.artikl > form.artikl > ul.zaliha > li > span.dostupno {background-color: var(--boja-kapriol); color: #ffffff;}
+main > div#sadrzaj.artikl > form.artikl > ul.zaliha > li > span.nedostupno {background-color: var(--boja-granica); color: #ffffff;}
+main > div#sadrzaj.artikl > form.artikl > span.kosarica {grid-column: 2 / 3; grid-row: 4 / 5; display: grid; grid-template-columns: 200px 60px 100px 60px 150px;}
+main > div#sadrzaj.artikl > form.artikl > span.kosarica > * {float: left; margin: 5px;}
+main > div#sadrzaj.artikl > form.artikl > span.kosarica > label.select {margin-top: 22px;}
+main > div#sadrzaj.artikl > form.artikl > span.kosarica > label.unos {grid-template-columns: auto;}
+main > div#sadrzaj.artikl > form.artikl > span.kosarica > label.unos > input {text-align: center;}
+main > div#sadrzaj.artikl > form.artikl > span.opis {grid-column: 1 / 3; grid-row: 6 / 7; line-height: 30px;}
+main > div#sadrzaj.artikl > form.artikl > span.opis > h3 {margin: 0 0 20px 0;}
+main > div#sadrzaj.artikl > form.artikl > span.opis > span > p {margin: 0;}
+main > div#sadrzaj.artikl > form.artikl > h2.naziv,
+main > div#sadrzaj.artikl > form.artikl > span.cijena,
+main > div#sadrzaj.artikl > form.artikl > ul.zaliha,
+main > div#sadrzaj.artikl > form.artikl > span.kosarica,
+main > div#sadrzaj.artikl > form.artikl > span.opis {padding: 20px; border-bottom: 1px solid var(--boja-granica);}
 main > div#sadrzaj.artikl > div.slicni_artikli {grid-column: 1 / 5; grid-row: 3 / 4;}
 
 footer {justify-content: center; background-color: var(--boja-pozadina_svijetla);}
@@ -331,14 +334,14 @@ footer nav ul {grid-column: 1 / 4;}
     header > nav.glavni_meni {grid-row: 4 / 5;}
 
     main > div#sadrzaj.rezultat > div.artikli {grid-template-columns: repeat(2, 1fr);}
-    main > div#sadrzaj.artikl > div.artikl {grid-template-columns: auto; grid-template-rows: auto;}
-    main > div#sadrzaj.artikl > div.artikl > div.slika {grid-column: 1 / 3;}
-    main > div#sadrzaj.artikl > div.artikl > ul.slike {grid-column: 1 / 3;}
-    main > div#sadrzaj.artikl > div.artikl > h2.naziv {grid-column: 1 / 3; grid-row: 6 / 7;}
-    main > div#sadrzaj.artikl > div.artikl > span.cijena {grid-column: 1 / 3; grid-row: 7 / 8;}
-    main > div#sadrzaj.artikl > div.artikl > ul.zaliha {grid-column: 1 / 3; grid-row: 8 / 9;}
-    main > div#sadrzaj.artikl > div.artikl > span.kosarica {grid-column: 1 / 3; grid-row: 9 / 10;}
-    main > div#sadrzaj.artikl > div.artikl > span.opis {grid-row: 10 / 11;}
+    main > div#sadrzaj.artikl > form.artikl {grid-template-columns: auto; grid-template-rows: auto;}
+    main > div#sadrzaj.artikl > form.artikl > div.slika {grid-column: 1 / 3;}
+    main > div#sadrzaj.artikl > form.artikl > ul.slike {grid-column: 1 / 3;}
+    main > div#sadrzaj.artikl > form.artikl > h2.naziv {grid-column: 1 / 3; grid-row: 6 / 7;}
+    main > div#sadrzaj.artikl > form.artikl > span.cijena {grid-column: 1 / 3; grid-row: 7 / 8;}
+    main > div#sadrzaj.artikl > form.artikl > ul.zaliha {grid-column: 1 / 3; grid-row: 8 / 9;}
+    main > div#sadrzaj.artikl > form.artikl > span.kosarica {grid-column: 1 / 3; grid-row: 9 / 10;}
+    main > div#sadrzaj.artikl > form.artikl > span.opis {grid-row: 10 / 11;}
 
 }
 

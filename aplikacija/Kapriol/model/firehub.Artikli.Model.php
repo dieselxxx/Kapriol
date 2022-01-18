@@ -67,13 +67,15 @@ final class Artikli_Model extends Model {
 
             $artikli = $this->bazaPodataka->tabela('artikliview')
                 ->sirovi("
-                SELECT ROW_NUMBER() OVER (ORDER BY $poredaj $poredaj_redoslijed) AS RedBroj, Naziv,Link,Opis,Cijena,CijenaAkcija,Slika
-                FROM 00_Kapriol.artikliview
-                LEFT JOIN slikeartikal ON ClanakID = artikliview.ID
-                WHERE Aktivan = 1 AND Ba = 1 AND Zadana = 1
-                {$this->trazi($trazi)}
-                LIMIT $pomak, $limit
-            ")
+                    SELECT
+                        ROW_NUMBER() OVER (ORDER BY $poredaj $poredaj_redoslijed) AS RedBroj,
+                           artikliview.ID, Naziv, Link, Opis, Cijena, CijenaAkcija, Slika
+                    FROM 00_Kapriol.artikliview
+                    LEFT JOIN slikeartikal ON ClanakID = artikliview.ID
+                    WHERE Aktivan = 1 AND Ba = 1 AND Zadana = 1
+                    {$this->trazi($trazi)}
+                    LIMIT $pomak, $limit
+                ")
                 ->napravi();
 
             return $artikli->niz() ?: [];
@@ -82,7 +84,9 @@ final class Artikli_Model extends Model {
 
         $artikli = $this->bazaPodataka->tabela('artikliview')
             ->sirovi("
-                SELECT ROW_NUMBER() OVER (ORDER BY $poredaj $poredaj_redoslijed) AS RedBroj, Naziv,Link,Opis,Cijena,CijenaAkcija,Slika
+                SELECT
+                    ROW_NUMBER() OVER (ORDER BY $poredaj $poredaj_redoslijed) AS RedBroj,
+                    artikliview.ID, Naziv, Link, Opis, Cijena, CijenaAkcija, Slika
                 FROM 00_Kapriol.artikliview
                 LEFT JOIN slikeartikal ON ClanakID = artikliview.ID
                 WHERE KategorijaID = $kategorija AND Aktivan = 1 AND Ba = 1 AND Zadana = 1
