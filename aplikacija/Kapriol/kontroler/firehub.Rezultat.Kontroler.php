@@ -70,20 +70,20 @@ final class Rezultat_Kontroler extends Master_Kontroler {
 
         // artikli
         $artikli_html = '';
-        foreach ($artikli as $artikal) {;
+        foreach ($artikli as $artikal) {
 
             // cijene
             if ($artikal['CijenaAkcija'] > 0) {
 
                 $artikl_cijena = '
-                <span class="prekrizi">'.$artikal['Cijena'].' KM</span>
-                <h2 class="akcija">'.$artikal['CijenaAkcija'].' KM</h2>
+                <span class="prekrizi">'.number_format((float)$artikal['Cijena'], 2, ',', '.').' KM</span>
+                <h2 class="akcija">'.number_format((float)$artikal['CijenaAkcija'], 2, ',', '.').' KM</h2>
             ';
 
             } else {
 
                 $artikl_cijena = '
-                <h2>'.$artikal['Cijena'].' KM</h2>
+                <h2>'.number_format((float)$artikal['Cijena'], 2, ',', '.').' KM</h2>
             ';
 
             }

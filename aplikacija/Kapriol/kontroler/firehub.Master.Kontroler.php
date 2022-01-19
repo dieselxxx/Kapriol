@@ -16,7 +16,6 @@ namespace FireHub\Aplikacija\Kapriol\Kontroler;
 
 use FireHub\Jezgra\Kontroler\Kontroler;
 use FireHub\Aplikacija\Kapriol\Model\Kosarica_Model;
-use FireHub\Jezgra\Komponente\Sesija\Sesija;
 use FireHub\Jezgra\Kontejner\Greske\Kontejner_Greska;
 use FireHub\Jezgra\Kontroler\Greske\Kontroler_Greska;
 
@@ -32,18 +31,26 @@ abstract class Master_Kontroler extends Kontroler {
      * ### Konstruktor
      * @since 0.1.2.pre-alpha.M1
      *
-     * @param Sesija $sesija <p>
-     * Sesija.
-     * </p>
-     *
      * @throws Kontejner_Greska Ukoliko se ne može spremiti instanca Baze podataka Log-a.
      * @throws Kontroler_Greska Ukoliko objekt nije validan model.
      */
-    public function __construct (private Sesija $sesija) {
+    public function __construct () {
 
         if (isset($_POST['kosarica_dodaj'])) {
 
             $this->model(Kosarica_Model::class)->dodaj($_POST['velicina'] ?? 0, (int)$_POST['vrijednost'] ?? 0);
+
+        }
+
+        if (isset($_POST['kosarica_izmijeni'])) {
+
+            $this->model(Kosarica_Model::class)->izmijeni($_POST['velicina'] ?? 0, (int)$_POST['vrijednost'] ?? 0);
+
+        }
+
+        if (isset($_POST['kosarica_izbrisi'])) {
+
+            $this->model(Kosarica_Model::class)->izbrisi($_POST['velicina'] ?? 0);
 
         }
 

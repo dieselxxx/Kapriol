@@ -68,14 +68,14 @@ final class Artikl_Kontroler extends Master_Kontroler {
         if ($trenutni_artikl['CijenaAkcija'] > 0) {
 
             $artikl_cijena = '
-                <span class="prekrizi">'.$trenutni_artikl['Cijena'].' KM</span>
-                <h2 class="akcija">'.$trenutni_artikl['CijenaAkcija'].' KM</h2>
+                <span class="prekrizi">'.number_format((float)$trenutni_artikl['Cijena'], 2, ',', '.').' KM</span>
+                <h2 class="akcija">'.number_format((float)$trenutni_artikl['CijenaAkcija'], 2, ',', '.').' KM</h2>
             ';
 
         } else {
 
             $artikl_cijena = '
-                <h2>'.$trenutni_artikl['Cijena'].' KM</h2>
+                <h2>'.number_format((float)$trenutni_artikl['Cijena'], 2, ',', '.').' KM</h2>
             ';
 
         }

@@ -49,6 +49,8 @@ final class Kosarica_Model extends Master_Model {
      * ### Artikli iz košarice
      * @since 0.1.2.pre-alpha.M1
      *
+     * @throws Kontejner_Greska Ukoliko se ne može spremiti instanca objekta.
+     *
      * @return array Niz artikala.
      */
     public function artikli ():array {
@@ -76,13 +78,12 @@ final class Kosarica_Model extends Master_Model {
 
             }
 
-            var_dump($sifra_array);
-
             $artikli = $this->bazaPodataka->tabela('artikliview')
                 ->sirovi("
                     SELECT
                         ROW_NUMBER() OVER (ORDER BY Naziv ASC) AS RedBroj,
-                           artikliview.ID, artikliview.Naziv, artikliview.Link, artikliview.Cijena, artikliview.CijenaAkcija, slikeartikal.Slika
+                           artikliview.ID, artikliview.Naziv, artikliview.Link, artikliview.Cijena, artikliview.CijenaAkcija, slikeartikal.Slika,
+                           artiklikarakteristike.Sifra, artiklikarakteristike.Velicina
                     FROM artikliview
                     LEFT JOIN slikeartikal ON slikeartikal.ClanakID = artikliview.ID
                     LEFT JOIN artiklikarakteristike ON artiklikarakteristike.ArtikalID = artikliview.ID
@@ -91,7 +92,27 @@ final class Kosarica_Model extends Master_Model {
                 ")
                 ->napravi();
 
-            return $artikli->niz() ?: [];
+            $rezultat = $artikli->niz();
+
+            $kosarica = $this->sesija->procitaj('kosarica');
+
+            foreach ($kosarica as $stavka => $vrijednost) {
+
+                $kljuc = array_search($stavka, array_column($rezultat, 'Sifra'));
+
+                // ukupno cijena
+                if ($rezultat[$kljuc]['CijenaAkcija'] > 0) {
+                    $rezultat[$kljuc]['CijenaUkupno'] = $vrijednost * $rezultat[$kljuc]['CijenaAkcija'];
+                } else {
+                    $rezultat[$kljuc]['CijenaUkupno'] = $vrijednost * $rezultat[$kljuc]['Cijena'];
+                }
+
+                // kolicina
+                $rezultat[$kljuc]['Kolicina'] = $vrijednost;
+
+            }
+
+            return $rezultat ?: [];
 
         }
 
@@ -99,7 +120,7 @@ final class Kosarica_Model extends Master_Model {
 
     }
 
-        /**
+    /**
      * ### Dodaj artikl u košaricu
      * @since 0.1.2.pre-alpha.M1
      *
@@ -128,6 +149,12 @@ final class Kosarica_Model extends Master_Model {
 
         }
 
+        if (!$vrijednost > 0) {
+
+            return false;
+
+        }
+
         if (isset($this->sesija->procitaj('kosarica')[$velicina])) {
 
             $this->sesija->dodaj('kosarica', $velicina, $vrijednost + $this->sesija->procitaj('kosarica')[$velicina]);
@@ -137,6 +164,73 @@ final class Kosarica_Model extends Master_Model {
             $this->sesija->dodaj('kosarica', $velicina, $vrijednost);
 
         }
+
+        return true;
+
+    }
+
+    /**
+     * ### Dodaj artikl u košaricu
+     * @since 0.1.2.pre-alpha.M1
+     *
+     * @throws Kontejner_Greska Ukoliko se ne može spremiti instanca Baze podataka Log-a.
+     * @throws Kontroler_Greska Ukoliko objekt nije validan model.
+     *
+     * @return bool Da li je artikl dodan u košaricu.
+     */
+    public function izmijeni (string $velicina = '', int $vrijednost = 0):bool {
+
+        $velicina_baza = $this->bazaPodataka->tabela('artiklikarakteristike')
+            ->sirovi("
+                SELECT
+                    SUM(StanjeSkladiste) AS StanjeSkladiste
+                FROM 00_kapriol.artiklikarakteristike
+                LEFT JOIN 00_kapriol.stanjeskladista ON stanjeskladista.Sifra = artiklikarakteristike.Sifra
+                WHERE artiklikarakteristike.Sifra = $velicina
+                GROUP BY Velicina
+            ")
+            ->napravi();
+
+        if (!$velicina_baza->redak()['StanjeSkladiste'] > 1) {
+
+            zapisnik(Level::KRITICNO, sprintf(_('Šifre artikla: "%s" nema na stanju!'), $velicina_baza));
+            throw new Kontroler_Greska(_('Ne mogu pokrenuti sustav, obratite se administratoru.'));
+
+        }
+
+        if (!$vrijednost > 0) {
+
+            return false;
+
+        }
+
+        if (!isset($this->sesija->procitaj('kosarica')[$velicina])) {
+
+            return false;
+
+        }
+
+        $this->sesija->dodaj('kosarica', $velicina, $vrijednost);
+
+        return true;
+
+    }
+
+    /**
+     * ### Dodaj artikl u košaricu
+     * @since 0.1.2.pre-alpha.M1
+     *
+     * @return bool Da li je artikl izbrisan iz košarice.
+     */
+    public function izbrisi (string $velicina = ''):bool {
+
+        if (!isset($this->sesija->procitaj('kosarica')[$velicina])) {
+
+            return false;
+
+        }
+
+        $this->sesija->izbrisiNiz('kosarica', $velicina);
 
         return true;
 
