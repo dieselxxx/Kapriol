@@ -66,6 +66,21 @@ interface Sesija_Interface extends Servis_Interface {
     public function dodaj (string $niz, string $kljuc, mixed $vrijednost):bool;
 
     /**
+     * ### Izbriši zapis iz niza
+     * @since 0.6.1.alpha.M1
+     *
+     * @param string $niz <p>
+     * Naziv niza iz kojeg brišemo zapis.
+     * </p>
+     * @param string $kljuc <p>
+     * Naziv zapisa kojeg brišemo iz niza.
+     * </p>
+     *
+     * @return bool Da li je izbrisan zapis sesije iz niza.
+     */
+    public function izbrisiNiz (string $niz, string $kljuc):bool;
+
+    /**
      * ### Pročitaj vrijednost iz sesije
      * @since 0.5.3.pre-alpha.M5
      *
