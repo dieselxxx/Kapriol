@@ -59,7 +59,12 @@ final class Kategorije_Model extends Master_Model {
             }
         );
 
-        $rezultat = '';
+        $rezultat = '
+            <li>
+                <svg><use xlink:href="/kapriol/resursi/grafika/simboli/simbol.ikone.svg#akcija"></use></svg>
+                <span><a href="/rezultat/akcija">Na akciji</a></span>
+            </li>
+        ';
         foreach ($kategorije_meni as $kategorija) {
 
             $rezultat .= '
@@ -121,6 +126,14 @@ final class Kategorije_Model extends Master_Model {
                 'ID' => 'sve',
                 'Kategorija' => 'Sve kategorije',
                 'Link' => 'sve'
+            ];
+
+        } else if ($kategorija === 'akcija') {
+
+            return [
+                'ID' => 'akcija',
+                'Kategorija' => 'Akcija',
+                'Link' => 'akcija'
             ];
 
         }

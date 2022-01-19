@@ -85,6 +85,23 @@ final class Artikli_Model extends Master_Model {
 
             return $artikli->niz() ?: [];
 
+        } else if ($kategorija === 'akcija') {
+
+            $artikli = $this->bazaPodataka->tabela('artikliview')
+                ->sirovi("
+                    SELECT
+                        ROW_NUMBER() OVER (ORDER BY $poredaj $poredaj_redoslijed) AS RedBroj,
+                           artikliview.ID, Naziv, Link, Opis, Cijena, CijenaAkcija, Slika
+                    FROM 00_Kapriol.artikliview
+                    LEFT JOIN slikeartikal ON ClanakID = artikliview.ID
+                    WHERE Aktivan = 1 AND Ba = 1 AND Zadana = 1 AND CijenaAkcija > 0
+                    {$this->trazi($trazi)}
+                    LIMIT $pomak, $limit
+                ")
+                ->napravi();
+
+            return $artikli->niz() ?: [];
+
         }
 
         $artikli = $this->bazaPodataka->tabela('artikliview')
@@ -128,6 +145,19 @@ final class Artikli_Model extends Master_Model {
                 SELECT Naziv
                 FROM 00_Kapriol.artikliview
                 WHERE Aktivan = 1 AND Ba = 1
+                {$this->trazi($trazi)}
+            ")
+                ->napravi();
+
+            return $ukupno_redaka->broj_zapisa();
+
+        } else if ($kategorija === 'akcija') {
+
+            $ukupno_redaka = $this->bazaPodataka->tabela('artikliview')
+                ->sirovi("
+                SELECT Naziv
+                FROM 00_Kapriol.artikliview
+                WHERE Aktivan = 1 AND Ba = 1 AND CijenaAkcija > 1
                 {$this->trazi($trazi)}
             ")
                 ->napravi();
