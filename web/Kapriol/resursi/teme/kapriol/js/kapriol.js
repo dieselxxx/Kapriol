@@ -58,7 +58,7 @@ $(document).ready(function () {
 
         vrijednost = vrijednost.replace('/', ' ');
 
-        window.location.href = '/rezultat/sve/' + vrijednost + '/naziv/asc';
+        window.location.href = '/rezultat/sve/sve velicine/' + vrijednost + '/naziv/asc';
 
         return false;
 

@@ -52,6 +52,9 @@ final class Artikli_Model extends Master_Model {
      * @param int $limit <p>
      * Broj redaka koje odabiremo.
      * </p>
+     * @param int|string $velicina <p>
+     * Veličina artikla.
+     * </p>
      * @param string $trazi <p>
      * Traži artikl.
      * </p>
@@ -66,7 +69,7 @@ final class Artikli_Model extends Master_Model {
      *
      * @return array Niz artikala.
      */
-    public function artikli (int|string $kategorija, int $pomak, int $limit, string $trazi, string $poredaj, string $poredaj_redoslijed):array {
+    public function artikli (int|string $kategorija, int $pomak, int $limit, int|string $velicina, string $trazi, string $poredaj, string $poredaj_redoslijed):array {
 
         if ($kategorija === 'sve') {
 
@@ -74,11 +77,15 @@ final class Artikli_Model extends Master_Model {
                 ->sirovi("
                     SELECT
                         ROW_NUMBER() OVER (ORDER BY $poredaj $poredaj_redoslijed) AS RedBroj,
-                           artikliview.ID, Naziv, Link, Opis, Cijena, CijenaAkcija, Slika
+                           artikliview.ID, Naziv, Link, Opis, Cijena, CijenaAkcija, Slika,
+                           GROUP_CONCAT(DISTINCT artiklikarakteristike.Velicina) AS Velicine
                     FROM 00_Kapriol.artikliview
                     LEFT JOIN slikeartikal ON ClanakID = artikliview.ID
+                    LEFT JOIN artiklikarakteristike ON artiklikarakteristike.ArtikalID = artikliview.ID
                     WHERE Aktivan = 1 AND Ba = 1 AND Zadana = 1
                     {$this->trazi($trazi)}
+                    GROUP BY artikliview.ID
+                    {$this->velicineUpit($velicina)}
                     LIMIT $pomak, $limit
                 ")
                 ->napravi();
@@ -91,11 +98,15 @@ final class Artikli_Model extends Master_Model {
                 ->sirovi("
                     SELECT
                         ROW_NUMBER() OVER (ORDER BY $poredaj $poredaj_redoslijed) AS RedBroj,
-                           artikliview.ID, Naziv, Link, Opis, Cijena, CijenaAkcija, Slika
+                           artikliview.ID, Naziv, Link, Opis, Cijena, CijenaAkcija, Slika,
+                           GROUP_CONCAT(DISTINCT artiklikarakteristike.Velicina) AS Velicine
                     FROM 00_Kapriol.artikliview
                     LEFT JOIN slikeartikal ON ClanakID = artikliview.ID
+                    LEFT JOIN artiklikarakteristike ON artiklikarakteristike.ArtikalID = artikliview.ID
                     WHERE Aktivan = 1 AND Ba = 1 AND Zadana = 1 AND CijenaAkcija > 0
                     {$this->trazi($trazi)}
+                    GROUP BY artikliview.ID
+                    {$this->velicineUpit($velicina)}
                     LIMIT $pomak, $limit
                 ")
                 ->napravi();
@@ -108,12 +119,40 @@ final class Artikli_Model extends Master_Model {
             ->sirovi("
                 SELECT
                     ROW_NUMBER() OVER (ORDER BY $poredaj $poredaj_redoslijed) AS RedBroj,
-                    artikliview.ID, Naziv, Link, Opis, Cijena, CijenaAkcija, Slika
+                    artikliview.ID, Naziv, Link, Opis, Cijena, CijenaAkcija, Slika,
+                    GROUP_CONCAT(DISTINCT artiklikarakteristike.Velicina) AS Velicine
                 FROM 00_Kapriol.artikliview
                 LEFT JOIN slikeartikal ON ClanakID = artikliview.ID
+                LEFT JOIN artiklikarakteristike ON artiklikarakteristike.ArtikalID = artikliview.ID
                 WHERE KategorijaID = $kategorija AND Aktivan = 1 AND Ba = 1 AND Zadana = 1
                 {$this->trazi($trazi)}
+                GROUP BY artikliview.ID
+                {$this->velicineUpit($velicina)}
                 LIMIT $pomak, $limit
+            ")
+            ->napravi();
+
+        return $artikli->niz() ?: [];
+
+    }
+
+    /**
+     * ### Pronađi veličine artilala
+     * @since 0.1.2.pre-alpha.M1
+     *
+     * @throws Kontejner_Greska Ukoliko se ne može spremiti instanca objekta.
+     *
+     * @return array Pronađene veličine.
+     */
+    public function velicine ():array {
+
+        $artikli = $this->bazaPodataka->tabela('artiklikarakteristike')
+            ->sirovi("
+                SELECT
+                    artiklikarakteristike.Velicina
+                FROM 00_Kapriol.artiklikarakteristike
+                GROUP BY artiklikarakteristike.Velicina
+                ORDER BY artiklikarakteristike.Velicina
             ")
             ->napravi();
 
@@ -128,6 +167,9 @@ final class Artikli_Model extends Master_Model {
      * @param int|string $kategorija <p>
      * ID kategorije.
      * </p>
+     * @param int|string $velicina <p>
+     * Veličina artikla.
+     * </p>
      * @param string $trazi <p>
      * Traži artikl.
      * </p>
@@ -136,16 +178,19 @@ final class Artikli_Model extends Master_Model {
      *
      * @return int Broj pronađenih redaka.
      */
-    public function ukupnoRedaka (int|string $kategorija, string $trazi) {
+    public function ukupnoRedaka (int|string $kategorija, int|string $velicina, string $trazi) {
 
         if ($kategorija === 'sve') {
 
             $ukupno_redaka = $this->bazaPodataka->tabela('artikliview')
                 ->sirovi("
-                SELECT Naziv
+                SELECT Naziv, GROUP_CONCAT(DISTINCT artiklikarakteristike.Velicina) AS Velicine
                 FROM 00_Kapriol.artikliview
+                LEFT JOIN artiklikarakteristike ON artiklikarakteristike.ArtikalID = artikliview.ID
                 WHERE Aktivan = 1 AND Ba = 1
                 {$this->trazi($trazi)}
+                GROUP BY artikliview.ID
+                {$this->velicineUpit($velicina)}
             ")
                 ->napravi();
 
@@ -155,10 +200,13 @@ final class Artikli_Model extends Master_Model {
 
             $ukupno_redaka = $this->bazaPodataka->tabela('artikliview')
                 ->sirovi("
-                SELECT Naziv
+                SELECT Naziv, GROUP_CONCAT(DISTINCT artiklikarakteristike.Velicina) AS Velicine
                 FROM 00_Kapriol.artikliview
+                LEFT JOIN artiklikarakteristike ON artiklikarakteristike.ArtikalID = artikliview.ID
                 WHERE Aktivan = 1 AND Ba = 1 AND CijenaAkcija > 1
                 {$this->trazi($trazi)}
+                GROUP BY artikliview.ID
+                {$this->velicineUpit($velicina)}
             ")
                 ->napravi();
 
@@ -168,10 +216,13 @@ final class Artikli_Model extends Master_Model {
 
         $ukupno_redaka = $this->bazaPodataka->tabela('artikliview')
             ->sirovi("
-                SELECT Naziv
+                SELECT Naziv, GROUP_CONCAT(DISTINCT artiklikarakteristike.Velicina) AS Velicine
                 FROM 00_Kapriol.artikliview
+                LEFT JOIN artiklikarakteristike ON artiklikarakteristike.ArtikalID = artikliview.ID
                 WHERE KategorijaID = $kategorija AND Aktivan = 1 AND Ba = 1
                 {$this->trazi($trazi)}
+                GROUP BY artikliview.ID
+                {$this->velicineUpit($velicina)}
             ")
             ->napravi();
 
@@ -185,6 +236,9 @@ final class Artikli_Model extends Master_Model {
      *
      * @param int|string $kategorija <p>
      * Kategorija artikla.
+     * </p>
+     * @param int|string $velicina <p>
+     * Veličina artikla.
      * </p>
      * @param string $trazi <p>
      * Traži artikl.
@@ -206,9 +260,9 @@ final class Artikli_Model extends Master_Model {
      *
      * @return string[] Lista artikala.
      */
-    public function ukupnoRedakaHTML (int|string $kategorija, string $trazi, int $limit, string $url = '/', int $broj_stranice = 1, string $boja = 'boja'):array {
+    public function ukupnoRedakaHTML (int|string $kategorija, int|string $velicina, string $trazi, int $limit, string $url = '/', int $broj_stranice = 1, string $boja = 'boja'):array {
 
-        $broj_zapisa = $this->ukupnoRedaka($kategorija, $trazi);
+        $broj_zapisa = $this->ukupnoRedaka($kategorija, $velicina, $trazi);
 
         $pocetak_link_stranice = "";
         $link_stranice = "";
@@ -274,7 +328,7 @@ final class Artikli_Model extends Master_Model {
      */
     private function trazi (string $trazi):string {
 
-        if ($trazi <> 'sve') {
+        if ($trazi <> 'svi artikli') {
 
             $trazi = explode(' ', $trazi);
 
@@ -295,6 +349,30 @@ final class Artikli_Model extends Master_Model {
         }
 
         return '';
+
+    }
+
+    /**
+     * ### Upit za veličine artikla
+     * @since 0.1.2.pre-alpha.M1
+     *
+     * @param int|string $velicina <p>
+     * Veličina artikla.
+     * </p>
+     *
+     * @return string Upit za veličine artikla.
+     */
+    private function velicineUpit (int|string $velicina):string {
+
+        if ($velicina === 'sve velicine') {
+
+            return "";
+
+        } else {
+
+            return "HAVING Find_In_Set('$velicina', Velicine)";
+
+        }
 
     }
 

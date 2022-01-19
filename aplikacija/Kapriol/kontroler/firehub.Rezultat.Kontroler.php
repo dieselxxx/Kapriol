@@ -41,6 +41,9 @@ final class Rezultat_Kontroler extends Master_Kontroler {
      * @param string $trazi [optional] <p>
      * Traži artikl.
      * </p>
+     * @param int|string $velicina [optional] <p>
+     * Veličina artikla.
+     * </p>
      * @param string $poredaj [optional] <p>
      * Poredaj rezultate artikala.
      * </p>
@@ -56,7 +59,7 @@ final class Rezultat_Kontroler extends Master_Kontroler {
      *
      * @return Sadrzaj Sadržaj stranice.
      */
-    public function index (string $kontroler = '', string $kategorija = 'sve', string $trazi = 'sve', string $poredaj = 'naziv', string $poredaj_redoslijed = 'asc', int $stranica = 1):Sadrzaj {
+    public function index (string $kontroler = '', string $kategorija = 'sve', int|string $velicina = 'sve velicine', string $trazi = 'svi artikli', string $poredaj = 'naziv', string $poredaj_redoslijed = 'asc', int $stranica = 1):Sadrzaj {
 
         $kategorije = $this->model(Kategorije_Model::class);
 
@@ -64,8 +67,8 @@ final class Rezultat_Kontroler extends Master_Kontroler {
 
         // navigacija
         $limit = 12;
-        $artikli = $this->model(Artikli_Model::class)->artikli($trenutna_kategorija['ID'], ($stranica - 1) * $limit, $limit, $trazi, $poredaj, $poredaj_redoslijed);
-        $navigacija = $this->model(Artikli_Model::class)->ukupnoRedakaHTML($trenutna_kategorija['ID'], $trazi, 12, '/rezultat/'.$trenutna_kategorija['Link'].'/'.$trazi.'/'.$poredaj.'/'.$poredaj_redoslijed, $stranica);
+        $artikli = $this->model(Artikli_Model::class)->artikli($trenutna_kategorija['ID'], ($stranica - 1) * $limit, $limit, $velicina, $trazi, $poredaj, $poredaj_redoslijed);
+        $navigacija = $this->model(Artikli_Model::class)->ukupnoRedakaHTML($trenutna_kategorija['ID'], $velicina, $trazi, 12, '/rezultat/'.$trenutna_kategorija['Link'].'/'.$velicina.'/'.$trazi.'/'.$poredaj.'/'.$poredaj_redoslijed, $stranica);
         $navigacija_html = implode('', $navigacija);
 
         // artikli
@@ -108,20 +111,28 @@ final class Rezultat_Kontroler extends Master_Kontroler {
         if ($poredaj === 'cijena' && $poredaj_redoslijed == 'desc') {$poredaj_izbornik_odabrano_4 = 'selected';} else {$poredaj_izbornik_odabrano_4 = '';}
 
         $poredaj_izbornik = '
-            <option value="/rezultat/'.$kategorija.'/'.$trazi.'/naziv/asc/" '.$poredaj_izbornik_odabrano_1.'>Naziv A-Z</option>
-            <option value="/rezultat/'.$kategorija.'/'.$trazi.'/naziv/desc/" '.$poredaj_izbornik_odabrano_2.'>Naziv Z-A</option>
-            <option value="/rezultat/'.$kategorija.'/'.$trazi.'/cijena/asc/" '.$poredaj_izbornik_odabrano_3.'>Cijena manja prema većoj</option>
-            <option value="/rezultat/'.$kategorija.'/'.$trazi.'/cijena/desc/" '.$poredaj_izbornik_odabrano_4.'>Cijena veća prema manjoj</option>
+            <option value="/rezultat/'.$kategorija.'/'.$velicina.'/'.$trazi.'/naziv/asc/" '.$poredaj_izbornik_odabrano_1.'>Naziv A-Z</option>
+            <option value="/rezultat/'.$kategorija.'/'.$velicina.'/'.$trazi.'/naziv/desc/" '.$poredaj_izbornik_odabrano_2.'>Naziv Z-A</option>
+            <option value="/rezultat/'.$kategorija.'/'.$velicina.'/'.$trazi.'/cijena/asc/" '.$poredaj_izbornik_odabrano_3.'>Cijena manja prema većoj</option>
+            <option value="/rezultat/'.$kategorija.'/'.$velicina.'/'.$trazi.'/cijena/desc/" '.$poredaj_izbornik_odabrano_4.'>Cijena veća prema manjoj</option>
         ';
+
+        // veličine
+        $velicine = $this->model(Artikli_Model::class)->velicine();
+        $velicine_html = '';
+        foreach ($velicine as $velicina_artikla) {
+            $velicine_html .= '<li><a class="gumb mali" href="/rezultat/'.$trenutna_kategorija['Link'].'/'.$velicina_artikla['Velicina'].'/'.$trazi.'/'.$poredaj.'/'.$poredaj_redoslijed.'">'.$velicina_artikla['Velicina'].'</a></li>';
+        }
 
         return sadrzaj()->datoteka('rezultat.html')->podatci([
             'predlozak_naslov' => $trenutna_kategorija['Kategorija'],
             'glavni_meni' => $kategorije->glavniMeni(),
             'glavni_meni_hamburger' => $kategorije->glavniMeniHamburger(),
-            'vi_ste_ovdje' => 'Vi ste ovdje : <a href="/">Kapriol Web Trgovina</a> \\\\ ' . $trenutna_kategorija['Kategorija'] . ' \\\\ ' . $trazi,
+            'vi_ste_ovdje' => 'Vi ste ovdje : <a href="/">Kapriol Web Trgovina</a> \\\\ ' . $trenutna_kategorija['Kategorija'] . ' \\\\ ' . $velicina . ' \\\\ ' . $trazi,
             'artikli' => $artikli_html,
             'navigacija' => $navigacija_html,
-            "poredaj_izbornik" => $poredaj_izbornik
+            "poredaj_izbornik" => $poredaj_izbornik,
+            "rezultat_velicine" => $velicine_html
         ]);
 
     }
