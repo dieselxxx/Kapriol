@@ -140,17 +140,61 @@ final class Artikli_Model extends Master_Model {
      * ### Pronađi veličine artilala
      * @since 0.1.2.pre-alpha.M1
      *
+     * @param int|string $kategorija <p>
+     * ID kategorije.
+     * </p>
+     * @param string $trazi <p>
+     * Traži artikl.
+     * </p>
+     *
      * @throws Kontejner_Greska Ukoliko se ne može spremiti instanca objekta.
      *
      * @return array Pronađene veličine.
      */
-    public function velicine ():array {
+    public function velicine (int|string $kategorija, string $trazi):array {
+
+        if ($kategorija === 'sve') {
+
+            $artikli = $this->bazaPodataka->tabela('artiklikarakteristike')
+                ->sirovi("
+                SELECT
+                    artiklikarakteristike.Velicina
+                FROM 00_Kapriol.artiklikarakteristike
+                LEFT JOIN artikliview ON artikliview.ID = artiklikarakteristike.ArtikalID
+                WHERE Aktivan = 1 AND Ba = 1
+                {$this->trazi($trazi)}
+                GROUP BY artiklikarakteristike.Velicina
+                ORDER BY artiklikarakteristike.Velicina
+            ")
+            ->napravi();
+
+            return $artikli->niz() ?: [];
+
+        } else if ($kategorija === 'akcija') {
+
+            $artikli = $this->bazaPodataka->tabela('artiklikarakteristike')
+                ->sirovi("
+                SELECT
+                    artiklikarakteristike.Velicina
+                FROM 00_Kapriol.artiklikarakteristike
+                LEFT JOIN artikliview ON artikliview.ID = artiklikarakteristike.ArtikalID
+                WHERE Aktivan = 1 AND Ba = 1 AND CijenaAkcija > 0
+                GROUP BY artiklikarakteristike.Velicina
+                ORDER BY artiklikarakteristike.Velicina
+            ")
+            ->napravi();
+
+            return $artikli->niz() ?: [];
+
+        }
 
         $artikli = $this->bazaPodataka->tabela('artiklikarakteristike')
             ->sirovi("
                 SELECT
                     artiklikarakteristike.Velicina
                 FROM 00_Kapriol.artiklikarakteristike
+                LEFT JOIN artikliview ON artikliview.ID = artiklikarakteristike.ArtikalID
+                WHERE artikliview.KategorijaID = $kategorija AND Aktivan = 1 AND Ba = 1
                 GROUP BY artiklikarakteristike.Velicina
                 ORDER BY artiklikarakteristike.Velicina
             ")

@@ -118,7 +118,7 @@ final class Rezultat_Kontroler extends Master_Kontroler {
         ';
 
         // veličine
-        $velicine = $this->model(Artikli_Model::class)->velicine();
+        $velicine = $this->model(Artikli_Model::class)->velicine($trenutna_kategorija['ID'], $trazi);
         $velicine_html = '';
         foreach ($velicine as $velicina_artikla) {
             $velicine_html .= '<li><a class="gumb mali" href="/rezultat/'.$trenutna_kategorija['Link'].'/'.$velicina_artikla['Velicina'].'/'.$trazi.'/'.$poredaj.'/'.$poredaj_redoslijed.'">'.$velicina_artikla['Velicina'].'</a></li>';
