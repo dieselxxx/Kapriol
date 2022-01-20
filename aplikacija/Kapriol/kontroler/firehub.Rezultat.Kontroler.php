@@ -128,6 +128,7 @@ final class Rezultat_Kontroler extends Master_Kontroler {
             'predlozak_naslov' => $trenutna_kategorija['Kategorija'],
             'glavni_meni' => $kategorije->glavniMeni(),
             'glavni_meni_hamburger' => $kategorije->glavniMeniHamburger(),
+            'zaglavlje_kosarica_artikli' => $this->kosaricaArtikli(),
             'vi_ste_ovdje' => 'Vi ste ovdje : <a href="/">Kapriol Web Trgovina</a> \\\\ ' . $trenutna_kategorija['Kategorija'] . ' \\\\ ' . $velicina . ' \\\\ ' . $trazi,
             'artikli' => $artikli_html,
             'navigacija' => $navigacija_html,

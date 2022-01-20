@@ -56,4 +56,41 @@ abstract class Master_Kontroler extends Kontroler {
 
     }
 
+    /**
+     * ### Broj komada u košarici
+     * @since 0.1.2.pre-alpha.M1
+     *
+     * @throws Kontejner_Greska Ukoliko se ne može spremiti instanca Log-a.
+     * @throws Kontroler_Greska Ukoliko objekt nije validan model.
+     *
+     * @return string Broj komada u košarici.
+     */
+    protected function kosaricaArtikli ():string {
+
+        $kosarica_model = $this->model(Kosarica_Model::class);
+
+        // artikli
+        $kosarica_artikli = $kosarica_model->artikli();
+        $total_kolicina = 0;
+        $total_cijena = 0;
+        if (!empty($kosarica_artikli)) {
+
+            foreach ($kosarica_artikli as $artikal) {
+
+                // ukupno
+                $total_kolicina += $artikal['Kolicina'];
+                $total_cijena += $artikal['CijenaUkupno'];
+
+            }
+
+            return ''.$total_kolicina.' kom';
+
+        } else {
+
+            return '0';
+
+        }
+
+    }
+
 }

@@ -17,7 +17,6 @@ namespace FireHub\Aplikacija\Kapriol\Kontroler;
 use FireHub\Jezgra\Sadrzaj\Sadrzaj;
 use FireHub\Aplikacija\Kapriol\Model\Kategorije_Model;
 use FireHub\Aplikacija\Kapriol\Model\Kosarica_Model;
-use FireHub\Aplikacija\Kapriol\Jezgra\Email;
 use FireHub\Jezgra\Kontejner\Greske\Kontejner_Greska;
 use FireHub\Jezgra\Kontroler\Greske\Kontroler_Greska;
 
@@ -128,6 +127,7 @@ final class Kosarica_Kontroler extends Master_Kontroler {
             'predlozak_naslov' => 'Košarica',
             'glavni_meni' => $kategorije->glavniMeni(),
             'glavni_meni_hamburger' => $kategorije->glavniMeniHamburger(),
+            'zaglavlje_kosarica_artikli' => $this->kosaricaArtikli(),
             'vi_ste_ovdje' => '<a href="/">Kapriol Web Trgovina</a> \\\\ Košarica',
             'kosarica_artikli' => $artikli_html,
             'kosarica_artikli_ukupno' => $kosarica_artikli_ukupno
@@ -171,6 +171,7 @@ final class Kosarica_Kontroler extends Master_Kontroler {
             'predlozak_naslov' => 'Narudžba',
             'glavni_meni' => $kategorije->glavniMeni(),
             'glavni_meni_hamburger' => $kategorije->glavniMeniHamburger(),
+            'zaglavlje_kosarica_artikli' => $this->kosaricaArtikli(),
             'vi_ste_ovdje' => '<a href="/">Kapriol Web Trgovina</a> \\\\ Narudžba',
             'narudzba_greska' => $narudzba_greska,
             'forma_ime' => $_POST['ime'] ?? '',
@@ -203,6 +204,7 @@ final class Kosarica_Kontroler extends Master_Kontroler {
             'predlozak_naslov' => 'Naslovna',
             'glavni_meni' => $kategorije->glavniMeni(),
             'glavni_meni_hamburger' => $kategorije->glavniMeniHamburger(),
+            'zaglavlje_kosarica_artikli' => $this->kosaricaArtikli(),
             'vi_ste_ovdje' => 'Vi ste ovdje : <a href="/">Kapriol Web Trgovina</a>'
         ]);
 
