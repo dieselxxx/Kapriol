@@ -88,9 +88,9 @@ $datotekaFireHub = static function (array $putanja_niz, string $objekt):string {
  */
 $datotekaBiblioteka = static function (array $putanja_niz, string $objekt):string {
 
-    $putanja = 'Biblioteke' . DIRECTORY_SEPARATOR . implode(DIRECTORY_SEPARATOR, $putanja_niz);
+    $putanja = implode(DIRECTORY_SEPARATOR, $putanja_niz);
 
-    return realpath($_SERVER['DOCUMENT_ROOT']) . DIRECTORY_SEPARATOR . $putanja . DIRECTORY_SEPARATOR . $objekt . '.php';
+    return $putanja . DIRECTORY_SEPARATOR . $objekt . '.php';
 
 };
 
@@ -141,7 +141,7 @@ $datoteka = static function (string $auto_objekt) use ($datotekaFireHub, $datote
 
     }
 
-    if ($namespace === 'Bibliteka') { // datoteka iz biblioteke
+    if ($namespace === 'Biblioteke') { // datoteka iz biblioteke
 
         $datoteka = $datotekaBiblioteka($putanja_niz, $objekt);
 
