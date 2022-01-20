@@ -16,6 +16,9 @@ namespace FireHub\Aplikacija\Kapriol\Model;
 
 use FireHub\Jezgra\Komponente\Log\Enumeratori\Level;
 use FireHub\Jezgra\Komponente\BazaPodataka\BazaPodataka;
+use FireHub\Aplikacija\Kapriol\Jezgra\Validacija;
+use FireHub\Aplikacija\Kapriol\Jezgra\Email;
+use FireHub\Jezgra\Greske\Greska;
 use FireHub\Jezgra\Kontroler\Greske\Kontroler_Greska;
 use FireHub\Jezgra\Kontejner\Greske\Kontejner_Greska;
 
@@ -233,6 +236,150 @@ final class Kosarica_Model extends Master_Model {
         $this->sesija->izbrisiNiz('kosarica', $velicina);
 
         return true;
+
+    }
+
+    public function naruci () {
+
+        $ime = $_POST['ime'];
+        $prezime = $_POST['prezime'];
+        $email = $_POST['email'];
+        $grad = $_POST['grad'];
+        $telefon = $_POST['telefon'];
+        $adresa = $_POST['adresa'];
+        $zip = $_POST['zip'];
+        $tvrtka = $_POST['tvrtka'];
+        $oib = $_POST['oib'];
+        $napomena = $_POST['napomena'];
+        $broj_1 = $_POST['broj_1'];
+        $broj_2 = $_POST['broj_2'];
+        $zastita = $_POST['zastita'];
+
+        $ime = Validacija::Prilagodjen('/^[a-zšđčćžA-ZŠĐČĆŽ -]+$/i', "Vaše ime", $ime, 2, 20);
+        $prezime = Validacija::Prilagodjen('/^[a-zšđčćžA-ZŠĐČĆŽ -]+$/i', "Vaše prezime", $prezime, 2, 20);
+        $email = Validacija::Email("Vaš email", $email, 5, 100);
+        $grad = Validacija::Prilagodjen('/^[a-zšđčćžA-ZŠĐČĆŽ -]+$/i', "Vaše ime", $grad,  3, 50);
+        $telefon = Validacija::Telefon(_('Vaš broj telefona'), $telefon, 9, 15);
+        $adresa = Validacija::String(_('Vaša adresa'), $adresa, 5, 300);
+        $zip = Validacija::Broj(_('Vaš poštanski broj'), $zip, 5, 5);
+        $tvrtka = Validacija::Prilagodjen('/^[a-zšđčćžA-ZŠĐČĆŽ0-9-. ]+$/i', _('Vaša tvrtka'), $tvrtka, 0, 100);
+        $oib = Validacija::Broj(_('Vaš OIB \ PDV \ ID tvrtke'), $oib, 0, 20);
+        $napomena = Validacija::String("Vaša napomena", $napomena, 0, 1000);
+        $broj_1 = Validacija::Broj("Broj 1", $broj_1, 1, 2);
+        $broj_2 = Validacija::Broj("Broj 2", $broj_2, 1, 2);
+        $zastita = Validacija::Broj("Zbroj", $zastita, 1, 2);
+
+        if (($broj_1 + $broj_2) <> $zastita) {
+
+            // logger
+            throw new Greska(sprintf(_('Zbroj %d i %d nije točan, provjerite vaš odgovor. (kod: %d)'), $broj_1, $broj_2, 1), 1);
+
+        }
+
+        // pošalji email
+        $email_artikli_korisnik = '';
+        $artikli = $this->artikli();
+        $total_kolicina = 0;
+        $total_cijena = 0;
+        foreach ($artikli as $artikal) {
+
+            // cijene
+            if ($artikal['CijenaAkcija'] > 0) {
+
+                $artikl_cijena = number_format((float)$artikal['CijenaAkcija'], 2, ',', '.');
+
+            } else {
+
+                $artikl_cijena = number_format((float)$artikal['Cijena'], 2, ',', '.');
+
+            }
+
+            // ukupno
+            $total_kolicina += $artikal['Kolicina'];
+            $total_cijena += $artikal['CijenaUkupno'];
+
+            $email_artikli_korisnik .= "
+            <tr>
+                <td>{$artikal['Sifra']}</td>
+                <td>{$artikal['Naziv']}</td>
+                <td>{$artikal['Velicina']}</td>
+                <td>{$artikal['Kolicina']} kom</td>
+                <td>$artikl_cijena KM</td>
+                <td>{$artikal['CijenaUkupno']} KM</td>
+            </tr>";
+        }
+
+        $total_cijena = number_format((float)$total_cijena, 2, ',', '.');
+
+        $email_slanje = new Email('narudzba_korisnik.html');
+        $email_slanje->Naslov('Vaša narudžba je zaprimljena');
+        $email_slanje->Adresa(array(
+            array("adresa" => $email, "ime" => $ime . ' ' . $prezime)
+        ));
+        $email_slanje->PredlozakKomponente(array(
+            "ime" => $ime,
+            "prezime" => $prezime,
+            "email" => $email,
+            "grad" => $grad,
+            "telefon" => $telefon,
+            "adresa" => $adresa,
+            "zip" => $zip,
+            "tvrtka" => $tvrtka,
+            "oib" => $oib,
+            "napomena" => $napomena,
+            "artikli" => $email_artikli_korisnik,
+            "total_kolicina" => $total_kolicina . ' kom',
+            "total_cijena" => $total_cijena . ' KM'
+        ));
+        $email_slanje->Posalji();
+
+        $email_slanje_tvrtka = new Email('narudzba_tvrtka.html');
+        $email_slanje_tvrtka->Naslov('Vaša narudžba je zaprimljena');
+        $email_slanje_tvrtka->Adresa(array(
+            array("adresa" => 'danijel.galic@outlook.com', "ime" => 'Kapriol')
+        ));
+        $email_slanje_tvrtka->PredlozakKomponente(array(
+            "ime" => $ime,
+            "prezime" => $prezime,
+            "email" => $email,
+            "grad" => $grad,
+            "telefon" => $telefon,
+            "adresa" => $adresa,
+            "zip" => $zip,
+            "tvrtka" => $tvrtka,
+            "oib" => $oib,
+            "napomena" => $napomena,
+            "artikli" => $email_artikli_korisnik,
+            "total_kolicina" => $total_kolicina . ' kom',
+            "total_cijena" => $total_cijena . ' KM'
+        ));
+        $email_slanje_tvrtka->Posalji();
+
+        $this->sesija->unisti();
+
+    }
+
+    /**
+     * ### Kreira prvi broj.
+     * @since 0.1.2.pre-alpha.M1
+     *
+     * @return int
+     */
+    public static function RandomBroj1 ():int {
+
+        return random_int(0, 10);
+
+    }
+
+    /**
+     * Kreira drugi broj.
+     * @since 0.1.2.pre-alpha.M1
+     *
+     * @return int
+     */
+    public static function RandomBroj2 ():int {
+
+        return random_int(0, 10);
 
     }
 

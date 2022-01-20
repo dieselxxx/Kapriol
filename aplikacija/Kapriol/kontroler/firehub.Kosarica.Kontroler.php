@@ -17,6 +17,7 @@ namespace FireHub\Aplikacija\Kapriol\Kontroler;
 use FireHub\Jezgra\Sadrzaj\Sadrzaj;
 use FireHub\Aplikacija\Kapriol\Model\Kategorije_Model;
 use FireHub\Aplikacija\Kapriol\Model\Kosarica_Model;
+use FireHub\Aplikacija\Kapriol\Jezgra\Email;
 use FireHub\Jezgra\Kontejner\Greske\Kontejner_Greska;
 use FireHub\Jezgra\Kontroler\Greske\Kontroler_Greska;
 
@@ -149,11 +150,60 @@ final class Kosarica_Kontroler extends Master_Kontroler {
 
         $kosarica_model = $this->model(Kosarica_Model::class);
 
+        $narudzba_greska = '';
+        if (isset($_POST['naruci'])) {
+
+            try {
+
+                $this->model(Kosarica_Model::class)->naruci();
+
+                header("Location: /kosarica/ispravno");
+
+            } catch (\Throwable $greska) {
+
+                $narudzba_greska = $greska->getMessage();
+
+            }
+
+        }
+
         return sadrzaj()->datoteka('narudzba.html')->podatci([
             'predlozak_naslov' => 'Narudžba',
             'glavni_meni' => $kategorije->glavniMeni(),
             'glavni_meni_hamburger' => $kategorije->glavniMeniHamburger(),
-            'vi_ste_ovdje' => '<a href="/">Kapriol Web Trgovina</a> \\\\ Narudžba'
+            'vi_ste_ovdje' => '<a href="/">Kapriol Web Trgovina</a> \\\\ Narudžba',
+            'narudzba_greska' => $narudzba_greska,
+            'forma_ime' => $_POST['ime'] ?? '',
+            'forma_prezime' => $_POST['prezime'] ?? '',
+            'forma_email' => $_POST['email'] ?? '',
+            'forma_grad' => $_POST['grad'] ?? '',
+            'forma_telefon' => $_POST['telefon'] ?? '',
+            'forma_adresa' => $_POST['adresa'] ?? '',
+            'forma_zip' => $_POST['zip'] ?? '',
+            'forma_tvrtka' => $_POST['tvrtka'] ?? '',
+            'forma_oib' => $_POST['oib'] ?? '',
+            'forma_napomena' => $_POST['napomena'] ?? '',
+            'random_broj_1' => ''.$kosarica_model::RandomBroj1().'',
+            'random_broj_2' => ''.$kosarica_model::RandomBroj2().''
+        ]);
+
+    }
+
+    /**
+     * ### Ispravna narudžba
+     * @since 0.1.2.pre-alpha.M1
+     *
+     * @return Sadrzaj Sadržaj stranice.
+     */
+    public function ispravno ():Sadrzaj {
+
+        $kategorije = $this->model(Kategorije_Model::class);
+
+        return sadrzaj()->datoteka('narudzba_ispravno.html')->podatci([
+            'predlozak_naslov' => 'Naslovna',
+            'glavni_meni' => $kategorije->glavniMeni(),
+            'glavni_meni_hamburger' => $kategorije->glavniMeniHamburger(),
+            'vi_ste_ovdje' => 'Vi ste ovdje : <a href="/">Kapriol Web Trgovina</a>'
         ]);
 
     }
