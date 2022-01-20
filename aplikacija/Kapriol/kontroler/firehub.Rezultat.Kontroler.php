@@ -38,7 +38,7 @@ final class Rezultat_Kontroler extends Master_Kontroler {
      * @param string $kategorija [optional] <p>
      * Trenutna kategorija.
      * </p>
-     * @param string $trazi [optional] <p>
+     * @param int|string $trazi [optional] <p>
      * Traži artikl.
      * </p>
      * @param int|string $velicina [optional] <p>
@@ -59,7 +59,7 @@ final class Rezultat_Kontroler extends Master_Kontroler {
      *
      * @return Sadrzaj Sadržaj stranice.
      */
-    public function index (string $kontroler = '', string $kategorija = 'sve', int|string $velicina = 'sve velicine', string $trazi = 'svi artikli', string $poredaj = 'naziv', string $poredaj_redoslijed = 'asc', int $stranica = 1):Sadrzaj {
+    public function index (string $kontroler = '', string $kategorija = 'sve', int|string $velicina = 'sve velicine', int|string $trazi = 'svi artikli', string $poredaj = 'naziv', string $poredaj_redoslijed = 'asc', int $stranica = 1):Sadrzaj {
 
         $kategorije = $this->model(Kategorije_Model::class);
 

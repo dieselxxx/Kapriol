@@ -93,9 +93,11 @@ final class Kategorije_Model extends Master_Model {
         $rezultat = '';
         foreach ($this->kategorije() as $kategorija) {
 
+            $ikona = !is_null($kategorija['Ikona']) ? $kategorija['Ikona'] : 'strelica_desno_duplo2';
+
             $rezultat .= '
                 <li>
-                    <svg><use xlink:href="/kapriol/resursi/grafika/simboli/simbol.ikone.svg#'.$kategorija['Ikona'].'"></use></svg>
+                    <svg><use xlink:href="/kapriol/resursi/grafika/simboli/simbol.ikone.svg#'.$ikona.'"></use></svg>
                     <span><a href="/rezultat/'.$kategorija['Link'].'">'.$kategorija['Kategorija'].'</a></span>
                 </li>
             ';

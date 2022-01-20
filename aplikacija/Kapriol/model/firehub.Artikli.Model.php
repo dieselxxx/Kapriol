@@ -55,7 +55,7 @@ final class Artikli_Model extends Master_Model {
      * @param int|string $velicina <p>
      * Veličina artikla.
      * </p>
-     * @param string $trazi <p>
+     * @param int|string $trazi <p>
      * Traži artikl.
      * </p>
      * @param string $poredaj <p>
@@ -69,7 +69,7 @@ final class Artikli_Model extends Master_Model {
      *
      * @return array Niz artikala.
      */
-    public function artikli (int|string $kategorija, int $pomak, int $limit, int|string $velicina, string $trazi, string $poredaj, string $poredaj_redoslijed):array {
+    public function artikli (int|string $kategorija, int $pomak, int $limit, int|string $velicina, int|string $trazi, string $poredaj, string $poredaj_redoslijed):array {
 
         if ($kategorija === 'sve') {
 
@@ -143,7 +143,7 @@ final class Artikli_Model extends Master_Model {
      * @param int|string $kategorija <p>
      * ID kategorije.
      * </p>
-     * @param string $trazi <p>
+     * @param int|string $trazi <p>
      * Traži artikl.
      * </p>
      *
@@ -151,7 +151,7 @@ final class Artikli_Model extends Master_Model {
      *
      * @return array Pronađene veličine.
      */
-    public function velicine (int|string $kategorija, string $trazi):array {
+    public function velicine (int|string $kategorija, int|string $trazi):array {
 
         if ($kategorija === 'sve') {
 
@@ -214,7 +214,7 @@ final class Artikli_Model extends Master_Model {
      * @param int|string $velicina <p>
      * Veličina artikla.
      * </p>
-     * @param string $trazi <p>
+     * @param int|string $trazi <p>
      * Traži artikl.
      * </p>
      *
@@ -222,7 +222,7 @@ final class Artikli_Model extends Master_Model {
      *
      * @return int Broj pronađenih redaka.
      */
-    public function ukupnoRedaka (int|string $kategorija, int|string $velicina, string $trazi) {
+    public function ukupnoRedaka (int|string $kategorija, int|string $velicina, int|string $trazi) {
 
         if ($kategorija === 'sve') {
 
@@ -284,7 +284,7 @@ final class Artikli_Model extends Master_Model {
      * @param int|string $velicina <p>
      * Veličina artikla.
      * </p>
-     * @param string $trazi <p>
+     * @param int|string $trazi <p>
      * Traži artikl.
      * </p>
      * @param int $limit <p>
@@ -304,7 +304,7 @@ final class Artikli_Model extends Master_Model {
      *
      * @return string[] Lista artikala.
      */
-    public function ukupnoRedakaHTML (int|string $kategorija, int|string $velicina, string $trazi, int $limit, string $url = '/', int $broj_stranice = 1, string $boja = 'boja'):array {
+    public function ukupnoRedakaHTML (int|string $kategorija, int|string $velicina, int|string $trazi, int $limit, string $url = '/', int $broj_stranice = 1, string $boja = 'boja'):array {
 
         $broj_zapisa = $this->ukupnoRedaka($kategorija, $velicina, $trazi);
 
@@ -364,17 +364,17 @@ final class Artikli_Model extends Master_Model {
      * ### Traži artikl
      * @since 0.1.1.pre-alpha.M1
      *
-     * @param string $trazi <p>
+     * @param int|string $trazi <p>
      * Traži artikl.
      * </p>
      *
      * @return string Upit za traženje.
      */
-    private function trazi (string $trazi):string {
+    private function trazi (int|string $trazi):string {
 
         if ($trazi <> 'svi artikli') {
 
-            $trazi = explode(' ', $trazi);
+            $trazi = explode(' ', (string)$trazi);
 
             $trazi_array = '';
             foreach ($trazi as $stavka) {
