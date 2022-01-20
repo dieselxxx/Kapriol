@@ -44,8 +44,7 @@ final class Naslovna_Kontroler extends Master_Kontroler {
             'predlozak_naslov' => 'Naslovna',
             'glavni_meni' => $kategorije->glavniMeni(),
             'glavni_meni_hamburger' => $kategorije->glavniMeniHamburger(),
-            'zaglavlje_kosarica_artikli' => $this->kosaricaArtikli(),
-            'vi_ste_ovdje' => 'Vi ste ovdje : <a href="/">Kapriol Web Trgovina</a>'
+            'zaglavlje_kosarica_artikli' => $this->kosaricaArtikli()
         ]);
 
     }

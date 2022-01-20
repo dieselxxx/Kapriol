@@ -93,4 +93,29 @@ final class Slika_Kontroler extends Master_Kontroler {
 
     }
 
+    /**
+     * ### Baner slika
+     * @since 0.1.2.pre-alpha.M1
+     *
+     * @param string $kontroler [optional] <p>
+     * Trenutni kontroler.
+     * </p>
+     * @param string $metoda [optional] <p>
+     * Trenutna metoda.
+     * </p>
+     * @param string $slika [optional] <p>
+     * Trenutna slika.
+     * </p>
+     *
+     * @throws Kontejner_Greska Ukoliko se ne može spremiti instanca Slike.
+     *
+     * @return Slika_Interface Objekt slike.
+     */
+    #[Zaglavlja(vrsta: Vrsta::JPEG, predmemorija: [Predmemorija::JAVNO])]
+    public function baner (string $kontroler = '', string $metoda = '', string $slika = ''):Slika_Interface {
+
+        return (new Slika())->slika(FIREHUB_ROOT.'web\kapriol\resursi\grafika\baneri\\'.$slika)->kvaliteta(90)->dimenzije(600, 2000)->napravi();
+
+    }
+
 }
