@@ -71,7 +71,26 @@ final class Artikli_Model extends Master_Model {
      */
     public function artikli (int|string $kategorija, int $pomak, int $limit, int|string $velicina, int|string $trazi, string $poredaj, string $poredaj_redoslijed):array {
 
-        if ($kategorija === 'sve') {
+        if ($kategorija === 'izdvojeno') {
+
+            $artikli = $this->bazaPodataka->tabela('artikliview')
+                ->sirovi("
+                    SELECT
+                           artikliview.ID, Naziv, Link, Opis, Cijena, CijenaAkcija, Slika,
+                           GROUP_CONCAT(DISTINCT artiklikarakteristike.Velicina) AS Velicine
+                    FROM artikliview
+                    LEFT JOIN slikeartikal ON ClanakID = artikliview.ID
+                    LEFT JOIN artiklikarakteristike ON artiklikarakteristike.ArtikalID = artikliview.ID
+                    WHERE Aktivan = 1 AND Ba = 1 AND Zadana = 1 AND Izdvojeno = 1
+                    GROUP BY artikliview.ID
+                    ORDER BY ".ucwords($poredaj)." $poredaj_redoslijed
+                    LIMIT 12
+                ")
+                ->napravi();
+
+            return $artikli->niz() ?: [];
+
+        } else if ($kategorija === 'sve') {
 
             $artikli = $this->bazaPodataka->tabela('artikliview')
                 ->sirovi("
