@@ -146,6 +146,12 @@ final class Kosarica_Kontroler extends Master_Kontroler {
      */
     public function narudzba ():Sadrzaj {
 
+        if ($this->kosaricaArtikli() === '0') {
+
+            //header('Location: /');
+
+        }
+
         $kategorije = $this->model(Kategorije_Model::class);
 
         $kosarica_model = $this->model(Kosarica_Model::class);
