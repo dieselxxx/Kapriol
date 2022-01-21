@@ -86,7 +86,7 @@ button, .gumb {position: relative; display: block; background-color: var(--boja-
 button:after, .gumb:after {content: ''; display: none; position: absolute; background-color: rgba(0, 0, 0, 0.3); top: 10%; left: 10%; margin-top: -50px; margin-left: -50px; height: 100px; width: 100px; border-radius: 50%; opacity: 0; animation: GumbAktivno 1s;}
 button:focus:not(:active):after, .gumb:focus:not(:active):after {display: block;}
 button.mali, .gumb.mali {padding: 0 20px; height: 30px;}
-button.ikona, .gumb.ikona {display: inline-flex;}
+button.ikona, .gumb.ikona {display: inline-flex; justify-content: center;}
 button.ikona > svg, .gumb.ikona > svg {fill: var(--boja-kapriol); height: 30px; width: 30px;}
 button.ikona > span, .gumb.ikona > span {text-indent: 15px;}
 button.ikona[data-boja] > svg, .gumb.ikona > svg {fill: var(--boja-tekst-svjetlije);}
@@ -223,7 +223,7 @@ header > form[data-oznaka="trazi_artikal"] {grid-column: 3 / 5; grid-row: 2 / 3;
 header > form[data-oznaka="trazi_artikal"] > label {padding: 15px; line-height: initial;}
 header > form[data-oznaka="trazi_artikal"] > label > .naslov {text-indent: 5px;}
 header > a#prijava {grid-column: 5 / 6; grid-row: 2 / 3; align-self: center;}
-header > a#kosarica {grid-column: 6 / 7; grid-row: 2 / 3; align-self: center;}
+header > a#kosarica {grid-column: 5 / 7; grid-row: 2 / 3; justify-self: center; align-self: center;width: 230px;}
 nav > ul {grid-column: 2 / 3; justify-self: center; width: 100%;}
 nav > ul > li {display: inline-flex; height: 50px;}
 nav > ul > li > svg {fill: var(--boja-kapriol); padding: 13px 0 13px 13px; height: 50px; width: 50px;}
@@ -409,7 +409,7 @@ footer nav ul {grid-column: 1 / 4;}
 
     header a#logo {grid-column: 1 / 7; justify-self: center;}
     header > a#prijava {grid-column: 1 / 4; grid-row: 3 / 4;}
-    header > a#kosarica {grid-column: 4 / 7; grid-row: 3 / 4;}
+    header > a#kosarica {grid-column: 1 / 7; grid-row: 3 / 4;}
     header > form[data-oznaka="trazi_artikal"] {grid-row: 4 / 5;}
     header > nav.glavni_meni {grid-row: 5 / 6;}
 
