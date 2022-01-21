@@ -394,16 +394,21 @@ final class Metode_PodServis {
             throw new KonfiguracijaMetoda_Greska(sprintf(_('Predmemorija %s nije dostupna kao izbor!'), $opcija));
         }
 
-        // provjeri da li su sve ekstenzije učitane
-        array_walk(
-            $this->rezultat['predmemorija']['konekcije'][$opcija]['ekstenzije'],
-            static function ($ekstenzija) use ($opcija):void {
-                if (!extension_loaded($ekstenzija)) {
-                    zapisnik(Level::HITNO, sprintf(_('Ekstenzija potrebna %s za korištenje %s nije dostupna!'), $ekstenzija, $opcija));
-                    throw new KonfiguracijaMetoda_Greska(sprintf(_('Ekstenzija potrebna %s za korištenje %s nije dostupna!'), $ekstenzija, $opcija));
+        var_dump($this->rezultat['predmemorija']['ukljuceno']);
+
+        // ukoliko je uključena predmemorija provjeri da li su sve ekstenzije učitane
+        if ($this->rezultat['predmemorija']['ukljuceno']) {
+            var_dump('x');
+            array_walk(
+                $this->rezultat['predmemorija']['konekcije'][$opcija]['ekstenzije'],
+                static function ($ekstenzija) use ($opcija):void {
+                    if (!extension_loaded($ekstenzija)) {
+                        zapisnik(Level::HITNO, sprintf(_('Ekstenzija potrebna %s za korištenje %s nije dostupna!'), $ekstenzija, $opcija));
+                        throw new KonfiguracijaMetoda_Greska(sprintf(_('Ekstenzija potrebna %s za korištenje %s nije dostupna!'), $ekstenzija, $opcija));
+                    }
                 }
-            }
-        );
+            );
+        }
 
         // dodaj zadane parametre u rezultat koji nisu navedeni
         array_walk(
