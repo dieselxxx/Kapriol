@@ -396,7 +396,6 @@ final class Metode_PodServis {
 
         // ukoliko je uključena predmemorija provjeri da li su sve ekstenzije učitane
         if ($this->rezultat['predmemorija']['ukljuceno']) {
-            var_dump('x');
             array_walk(
                 $this->rezultat['predmemorija']['konekcije'][$opcija]['ekstenzije'],
                 static function ($ekstenzija) use ($opcija):void {
