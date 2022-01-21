@@ -1,12 +1,7 @@
 RewriteEngine On
-Options -Indexes
 
-DirectoryIndex web/index.php
+RewriteCond %{REQUEST_URI}::$1 ^(.*?/)(.*)::\2
+RewriteCond %{DOCUMENT_ROOT}%1web/%2 -f
+RewriteRule ^(.*)$  web/$1 [END]
 
-RewriteBase /
-
-RewriteCond %{REQUEST_FILENAME} !-d
-RewriteCond %{REQUEST_FILENAME} !-f
-RewriteCond %{REQUEST_FILENAME} !-l
-
-RewriteRule ^(.+)$ index.php?url=$1 [QSA,L]
+RewriteRule . web/index.php?url=$1 [QSA,L]
