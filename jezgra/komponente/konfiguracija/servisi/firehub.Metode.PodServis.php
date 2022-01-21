@@ -394,8 +394,6 @@ final class Metode_PodServis {
             throw new KonfiguracijaMetoda_Greska(sprintf(_('Predmemorija %s nije dostupna kao izbor!'), $opcija));
         }
 
-        var_dump($this->rezultat['predmemorija']['ukljuceno']);
-
         // ukoliko je uključena predmemorija provjeri da li su sve ekstenzije učitane
         if ($this->rezultat['predmemorija']['ukljuceno']) {
             var_dump('x');
