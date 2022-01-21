@@ -6,7 +6,7 @@ table tr {height: 80px;}
 svg {touch-action: none;}
 *::selection, *::-moz-selection {background: var(--boja-kapriol); color: #ffffff;}
 
-/** animacijee **/
+/** animacije **/
 @-webkit-keyframes GumbAktivno {
     from {transform: scale(0); opacity: 1;} to {transform: scale(10); opacity: 0;}
 }
