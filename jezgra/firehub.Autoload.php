@@ -110,7 +110,7 @@ $datotekaBiblioteka = static function (array $putanja_niz, string $objekt):strin
 $datoteka = static function (string $auto_objekt) use ($datotekaFireHub, $datotekaBiblioteka):?string {
 
     // komponente argumenta
-    $putanja_niz = explode(DIRECTORY_SEPARATOR, $auto_objekt);
+    $putanja_niz = explode('\\', $auto_objekt);
     $namespace = reset($putanja_niz); // prva komponenta
     $objekt = end($putanja_niz); // zadnja komponenta
 
