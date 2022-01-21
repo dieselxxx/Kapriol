@@ -76,7 +76,7 @@ final class Artikli_Model extends Master_Model {
             $artikli = $this->bazaPodataka->tabela('artikliview')
                 ->sirovi("
                     SELECT
-                        ROW_NUMBER() OVER (ORDER BY $poredaj $poredaj_redoslijed) AS RedBroj,
+                        ROW_NUMBER() OVER (ORDER BY ".ucwords($poredaj)." $poredaj_redoslijed) AS RedBroj,
                            artikliview.ID, Naziv, Link, Opis, Cijena, CijenaAkcija, Slika,
                            GROUP_CONCAT(DISTINCT artiklikarakteristike.Velicina) AS Velicine
                     FROM artikliview
@@ -97,7 +97,7 @@ final class Artikli_Model extends Master_Model {
             $artikli = $this->bazaPodataka->tabela('artikliview')
                 ->sirovi("
                     SELECT
-                        ROW_NUMBER() OVER (ORDER BY $poredaj $poredaj_redoslijed) AS RedBroj,
+                        ROW_NUMBER() OVER (ORDER BY ".ucwords($poredaj)." $poredaj_redoslijed) AS RedBroj,
                            artikliview.ID, Naziv, Link, Opis, Cijena, CijenaAkcija, Slika,
                            GROUP_CONCAT(DISTINCT artiklikarakteristike.Velicina) AS Velicine
                     FROM artikliview
@@ -118,7 +118,7 @@ final class Artikli_Model extends Master_Model {
         $artikli = $this->bazaPodataka->tabela('artikliview')
             ->sirovi("
                 SELECT
-                    ROW_NUMBER() OVER (ORDER BY $poredaj $poredaj_redoslijed) AS RedBroj,
+                    ROW_NUMBER() OVER (ORDER BY ".ucwords($poredaj)." $poredaj_redoslijed) AS RedBroj,
                     artikliview.ID, Naziv, Link, Opis, Cijena, CijenaAkcija, Slika,
                     GROUP_CONCAT(DISTINCT artiklikarakteristike.Velicina) AS Velicine
                 FROM artikliview
