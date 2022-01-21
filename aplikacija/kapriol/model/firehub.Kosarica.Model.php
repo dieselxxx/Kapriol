@@ -239,7 +239,15 @@ final class Kosarica_Model extends Master_Model {
 
     }
 
-    public function naruci () {
+    /**
+     * ### Naruči
+     *
+     * @throws Greska
+     * @throws Kontejner_Greska
+     *
+     * @return void
+     */
+    public function naruci ():void {
 
         $ime = $_POST['ime'];
         $prezime = $_POST['prezime'];
@@ -262,8 +270,8 @@ final class Kosarica_Model extends Master_Model {
         $telefon = Validacija::Telefon(_('Vaš broj telefona'), $telefon, 9, 15);
         $adresa = Validacija::String(_('Vaša adresa'), $adresa, 5, 300);
         $zip = Validacija::Broj(_('Vaš poštanski broj'), $zip, 5, 5);
-        $tvrtka = Validacija::Prilagodjen('/^[a-zšđčćžA-ZŠĐČĆŽ0-9-. ]+$/i', _('Vaša tvrtka'), $tvrtka, 0, 100);
-        $oib = Validacija::Broj(_('Vaš OIB \ PDV \ ID tvrtke'), $oib, 0, 20);
+        if(!empty($tvrtka)){$tvrtka = Validacija::Prilagodjen('/^[a-zšđčćžA-ZŠĐČĆŽ0-9-. ]+$/i', _('Vaša tvrtka'), $tvrtka, 4, 100);} else {$tvrtka = '';}
+        if(!empty($oib)){$oib = Validacija::Broj(_('Vaš OIB \ PDV \ ID tvrtke'), $oib, 9, 20);} else {$oib = '';}
         $napomena = Validacija::String("Vaša napomena", $napomena, 0, 1000);
         $broj_1 = Validacija::Broj("Broj 1", $broj_1, 1, 2);
         $broj_2 = Validacija::Broj("Broj 2", $broj_2, 1, 2);
