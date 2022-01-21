@@ -84,7 +84,6 @@ final class Kosarica_Model extends Master_Model {
             $artikli = $this->bazaPodataka->tabela('artikliview')
                 ->sirovi("
                     SELECT
-                        ROW_NUMBER() OVER (ORDER BY Naziv ASC) AS RedBroj,
                            artikliview.ID, artikliview.Naziv, artikliview.Link, artikliview.Cijena, artikliview.CijenaAkcija, slikeartikal.Slika,
                            artiklikarakteristike.Sifra, artiklikarakteristike.Velicina
                     FROM artikliview
@@ -92,6 +91,7 @@ final class Kosarica_Model extends Master_Model {
                     LEFT JOIN artiklikarakteristike ON artiklikarakteristike.ArtikalID = artikliview.ID
                     WHERE artikliview.Aktivan = 1 AND artikliview.Ba = 1 AND slikeartikal.Zadana = 1
                     AND ($sifra_array)
+                    ORDER BY Naziv ASC
                 ")
                 ->napravi();
 
