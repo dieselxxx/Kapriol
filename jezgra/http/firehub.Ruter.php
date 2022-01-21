@@ -234,7 +234,7 @@ final class Ruter {
 
         return match (true) {
             ($this->ruta) && (isset($this->ruta[0])) && (is_a($this->ruta[0], Kontroler::class, true)) => $this->ruta[0], // provjera da li postoji prvi ključ u nizu rute i ključ je kontroler
-            isset($this->url()[0]) && class_exists($aplikacija_kontroler_putanja . $this->url()[0]. '_Kontroler') => $aplikacija_kontroler_putanja . $this->url()[0]. '_Kontroler', // provjera da li postoji klasa sa prvom vrijednosti iz URL-a
+            isset($this->url()[0]) && class_exists($aplikacija_kontroler_putanja . ucwords($this->url()[0]). '_Kontroler') => $aplikacija_kontroler_putanja . $this->url()[0]. '_Kontroler', // provjera da li postoji klasa sa prvom vrijednosti iz URL-a
             default => $this->kontroler // pozovi zadani kontroler
         };
 
