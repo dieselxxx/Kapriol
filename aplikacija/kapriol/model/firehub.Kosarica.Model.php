@@ -138,8 +138,8 @@ final class Kosarica_Model extends Master_Model {
             ->sirovi("
                 SELECT
                     SUM(StanjeSkladiste) AS StanjeSkladiste
-                FROM 00_kapriol.artiklikarakteristike
-                LEFT JOIN 00_kapriol.stanjeskladista ON stanjeskladista.Sifra = artiklikarakteristike.Sifra
+                FROM artiklikarakteristike
+                LEFT JOIN stanjeskladista ON stanjeskladista.Sifra = artiklikarakteristike.Sifra
                 WHERE artiklikarakteristike.Sifra = $velicina
                 GROUP BY Velicina
             ")
@@ -187,8 +187,8 @@ final class Kosarica_Model extends Master_Model {
             ->sirovi("
                 SELECT
                     SUM(StanjeSkladiste) AS StanjeSkladiste
-                FROM 00_kapriol.artiklikarakteristike
-                LEFT JOIN 00_kapriol.stanjeskladista ON stanjeskladista.Sifra = artiklikarakteristike.Sifra
+                FROM artiklikarakteristike
+                LEFT JOIN stanjeskladista ON stanjeskladista.Sifra = artiklikarakteristike.Sifra
                 WHERE artiklikarakteristike.Sifra = $velicina
                 GROUP BY Velicina
             ")

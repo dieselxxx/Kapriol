@@ -122,8 +122,8 @@ final class Artikl_Model extends Master_Model {
                 SELECT
                     SUM(StanjeSkladiste) AS StanjeSkladiste, IF(SUM(StanjeSkladiste) > 0, TRUE, FALSE) AS StanjeSkladisteTF,
                     artiklikarakteristike.Sifra AS artiklikarakteristikeSifra, Velicina
-                FROM 00_kapriol.artiklikarakteristike
-                LEFT JOIN 00_kapriol.stanjeskladista ON stanjeskladista.Sifra = artiklikarakteristike.Sifra
+                FROM artiklikarakteristike
+                LEFT JOIN stanjeskladista ON stanjeskladista.Sifra = artiklikarakteristike.Sifra
                 WHERE ArtikalID = $artiklID
                 GROUP BY Velicina
                 ORDER BY artiklikarakteristike.ID
