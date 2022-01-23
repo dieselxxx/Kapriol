@@ -197,6 +197,8 @@ final class MySQL implements BazaPodataka_Interface {
      */
     private function upit (string $upit):void {
 
+        $this->konekcija->set_charset('utf8');
+
         if (
             !$this->upit = mysqli_query(
                 $this->konekcija,
