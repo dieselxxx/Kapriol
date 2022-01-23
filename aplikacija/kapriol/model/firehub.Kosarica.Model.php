@@ -266,7 +266,7 @@ final class Kosarica_Model extends Master_Model {
         $ime = Validacija::Prilagodjen('/^[a-zšđčćžA-ZŠĐČĆŽ -]+$/i', "Vaše ime", $ime, 2, 20);
         $prezime = Validacija::Prilagodjen('/^[a-zšđčćžA-ZŠĐČĆŽ -]+$/i', "Vaše prezime", $prezime, 2, 20);
         $email = Validacija::Email("Vaš email", $email, 5, 100);
-        $grad = Validacija::Prilagodjen('/^[a-zšđčćžA-ZŠĐČĆŽ -]+$/i', "Vaše ime", $grad,  3, 50);
+        $grad = Validacija::Prilagodjen('/^[a-zšđčćžA-ZŠĐČĆŽ -]+$/i', "Vaš grad", $grad,  3, 50);
         $telefon = Validacija::Telefon(_('Vaš broj telefona'), $telefon, 9, 15);
         $adresa = Validacija::String(_('Vaša adresa'), $adresa, 5, 300);
         $zip = Validacija::Broj(_('Vaš poštanski broj'), $zip, 5, 5);

@@ -164,7 +164,7 @@ final class Kosarica_Kontroler extends Master_Kontroler {
 
                 $this->model(Kosarica_Model::class)->naruci();
 
-                header("Location: /kosarica/ispravno");
+                header("Location: ".Server::URL()."/kosarica/ispravno");
 
             } catch (\Throwable $greska) {
 
