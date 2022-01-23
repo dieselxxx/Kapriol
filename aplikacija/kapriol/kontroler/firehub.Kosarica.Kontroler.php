@@ -17,6 +17,7 @@ namespace FireHub\Aplikacija\Kapriol\Kontroler;
 use FireHub\Jezgra\Sadrzaj\Sadrzaj;
 use FireHub\Aplikacija\Kapriol\Model\Kategorije_Model;
 use FireHub\Aplikacija\Kapriol\Model\Kosarica_Model;
+use FireHub\Aplikacija\Kapriol\Jezgra\Server;
 use FireHub\Jezgra\Kontejner\Greske\Kontejner_Greska;
 use FireHub\Jezgra\Kontroler\Greske\Kontroler_Greska;
 
@@ -148,7 +149,7 @@ final class Kosarica_Kontroler extends Master_Kontroler {
 
         if ($this->kosaricaArtikli() === '0') {
 
-            //header('Location: /');
+            header("Location: ".Server::URL());
 
         }
 
