@@ -432,7 +432,7 @@ footer > div.info > ul > li > span {float: left; height: 20px; font-size: 1.1rem
 
 @media only screen and (max-width: 768px) {
 
-    header a#logo {grid-column: 1 / 7; justify-self: center;}
+    header a.logo {grid-column: 1 / 7; justify-self: center;}
     header > a#prijava {grid-column: 1 / 4; grid-row: 3 / 4;}
     header > a#kosarica {grid-column: 1 / 7; grid-row: 3 / 4;}
     header > form[data-oznaka="trazi_artikal"] {grid-row: 4 / 5;}
@@ -458,7 +458,7 @@ footer > div.info > ul > li > span {float: left; height: 20px; font-size: 1.1rem
 
     footer > nav {justify-items: left; justify-content: center;}
     footer > nav > div.dostava {grid-column: 1 / 4; grid-row: 1 / 2;}
-    footer > nav > div.kapriol {grid-column: 1 / 2; grid-row: 2 / 3;}
+    footer > nav > div.kapriol {grid-column: 1 / 4; grid-row: 2 / 3;}
     footer > nav > div.izbornik {grid-column: 1 / 4; grid-row: 3 / 4;}
     footer > div.info {grid-template-rows: 150px 150px;}
     footer > div.info > a.logo {grid-column: 1 / 6; grid-row: 1 / 2; justify-self: center;}
@@ -476,5 +476,11 @@ footer > div.info > ul > li > span {float: left; height: 20px; font-size: 1.1rem
     main > div#sadrzaj.artikl > form.artikl > span.kosarica > label.unos {grid-column: 2 / 3;}
     main > div#sadrzaj.artikl > form.artikl > span.kosarica > button.plus {grid-column: 3 / 4;}
     main > div#sadrzaj.artikl > form.artikl > span.kosarica > button.gumb.ikona {grid-column: 4 / 5;}
+    footer > nav {grid-template-columns: 10px 1fr;}
+    footer > nav > div.dostava {grid-column: 2 / 3;}
+    footer > nav > div.kapriol {grid-column: 2 / 3;}
+    footer > nav > div.izbornik {grid-column: 2 / 3;}
+    footer > div.info > ul {grid-template-columns: 1fr; grid-template-rows: 1fr 1fr; justify-items: center;}
+    footer > div.info > ul > li {height: auto;}
 
 }
