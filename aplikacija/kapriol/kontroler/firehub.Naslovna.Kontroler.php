@@ -17,6 +17,7 @@ namespace FireHub\Aplikacija\Kapriol\Kontroler;
 use FireHub\Jezgra\Sadrzaj\Sadrzaj;
 use FireHub\Aplikacija\Kapriol\Model\Kategorije_Model;
 use FireHub\Aplikacija\Kapriol\Model\Artikli_Model;
+use FireHub\Aplikacija\Kapriol\Jezgra\Domena;
 use FireHub\Jezgra\Kontejner\Greske\Kontejner_Greska;
 use FireHub\Jezgra\Kontroler\Greske\Kontroler_Greska;
 
@@ -51,14 +52,14 @@ final class Naslovna_Kontroler extends Master_Kontroler {
             if ($artikal['CijenaAkcija'] > 0) {
 
                 $artikl_cijena = '
-                <span class="prekrizi">'.number_format((float)$artikal['Cijena'], 2, ',', '.').' KM</span>
-                <h2 class="akcija">'.number_format((float)$artikal['CijenaAkcija'], 2, ',', '.').' KM</h2>
+                <span class="prekrizi">'.number_format((float)$artikal['Cijena'], 2, ',', '.').' '.Domena::valuta().'</span>
+                <h2 class="akcija">'.number_format((float)$artikal['CijenaAkcija'], 2, ',', '.').' '.Domena::valuta().'</h2>
             ';
 
             } else {
 
                 $artikl_cijena = '
-                <h2>'.number_format((float)$artikal['Cijena'], 2, ',', '.').' KM</h2>
+                <h2>'.number_format((float)$artikal['Cijena'], 2, ',', '.').' '.Domena::valuta().'</h2>
             ';
 
             }

@@ -15,6 +15,7 @@
 namespace FireHub\Aplikacija\Kapriol\Model;
 
 use FireHub\Jezgra\Komponente\BazaPodataka\BazaPodataka;
+use FireHub\Aplikacija\Kapriol\Jezgra\Domena;
 use FireHub\Jezgra\Kontejner\Greske\Kontejner_Greska;
 
 /**
@@ -56,12 +57,12 @@ final class Artikl_Model extends Master_Model {
         $artikl = $this->bazaPodataka->tabela('artikliview')
             ->sirovi("
                 SELECT
-                    artikliview.ID, artikliview.Naziv, artikliview.Opis, artikliview.Cijena, artikliview.CijenaAkcija,
+                    artikliview.ID, artikliview.Naziv, artikliview.Opis, artikliview.".Domena::sqlCijena()." AS Cijena, artikliview.".Domena::sqlCijenaAkcija()." AS CijenaAkcija,
                     kategorije.Kategorija, slikeartikal.Slika
                 FROM artikliview
                 LEFT JOIN kategorije ON kategorije.ID = artikliview.KategorijaID
                 LEFT JOIN slikeartikal ON slikeartikal.ClanakID = artikliview.ID AND slikeartikal.Zadana = 1
-                WHERE artikliview.Link = '$link' AND artikliview.Aktivan = 1 AND artikliview.Ba = 1
+                WHERE artikliview.Link = '$link' AND artikliview.Aktivan = 1 AND artikliview.".Domena::sqlTablica()." = 1
                 LIMIT 1
             ")
             ->napravi();

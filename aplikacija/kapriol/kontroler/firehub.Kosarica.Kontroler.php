@@ -18,6 +18,7 @@ use FireHub\Jezgra\Sadrzaj\Sadrzaj;
 use FireHub\Aplikacija\Kapriol\Model\Kategorije_Model;
 use FireHub\Aplikacija\Kapriol\Model\Kosarica_Model;
 use FireHub\Aplikacija\Kapriol\Jezgra\Server;
+use FireHub\Aplikacija\Kapriol\Jezgra\Domena;
 use FireHub\Jezgra\Kontejner\Greske\Kontejner_Greska;
 use FireHub\Jezgra\Kontroler\Greske\Kontroler_Greska;
 
@@ -58,14 +59,14 @@ final class Kosarica_Kontroler extends Master_Kontroler {
                 if ($artikal['CijenaAkcija'] > 0) {
 
                     $artikl_cijena = '
-                        <span class="akcija">'.number_format((float)$artikal['CijenaAkcija'], 2, ',', '.').' KM</span>
-                        <span class="prekrizi">'.number_format((float)$artikal['Cijena'], 2, ',', '.').' KM</span>
+                        <span class="akcija">'.number_format((float)$artikal['CijenaAkcija'], 2, ',', '.').' '.Domena::valuta().'</span>
+                        <span class="prekrizi">'.number_format((float)$artikal['Cijena'], 2, ',', '.').' '.Domena::valuta().'</span>
                     ';
 
                 } else {
 
                     $artikl_cijena = '
-                        <span>'.number_format((float)$artikal['Cijena'], 2, ',', '.').' KM</span>
+                        <span>'.number_format((float)$artikal['Cijena'], 2, ',', '.').' '.Domena::valuta().'</span>
                     ';
 
                 }
@@ -77,7 +78,7 @@ final class Kosarica_Kontroler extends Master_Kontroler {
                         <a class="naslov" href="/artikl/'.$artikal['Link'].'">'.$artikal['Naziv'].'</a>
                         <span class="velicina">Veličina: '.$artikal['Velicina'].'</span>
                         <span class="cijena">'.$artikl_cijena.'</span>
-                        <h3 class="ukupno">Ukupno: '.number_format((float)$artikal['CijenaUkupno'], 2, ',', '.').'</h3>
+                        <h3 class="ukupno">Ukupno: '.number_format((float)$artikal['CijenaUkupno'], 2, ',', '.').' '.Domena::valuta().'</h3>
                         <div class="kosarica">
                             <button type="button" class="gumb" onclick="ArtikalPlusMinus(this, $vrsta = \'minus\');">-</button>
                             <label data-boja="boja" class="unos">
@@ -108,7 +109,7 @@ final class Kosarica_Kontroler extends Master_Kontroler {
                 $kosarica_artikli_ukupno = '
                     <ul>
                         <li>Ukupna količina: '.$total_kolicina.'</li>
-                        <li class="ukupno">Ukupna cijena: <span>'.number_format((float)$total_cijena, 2, ',', '.').' KM</span></li>
+                        <li class="ukupno">Ukupna cijena: <span>'.number_format((float)$total_cijena, 2, ',', '.').' '.Domena::valuta().'</span></li>
                     </ul>
                     <a data-boja="boja" class="gumb ikona" href="/kosarica/narudzba">
                         <svg><use xlink:href="/kapriol/resursi/grafika/simboli/simbol.ikone.svg#strelica_desno_duplo2"></use></svg>

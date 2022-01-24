@@ -15,6 +15,7 @@
 namespace FireHub\Aplikacija\Kapriol\Model;
 
 use FireHub\Jezgra\Komponente\BazaPodataka\BazaPodataka;
+use FireHub\Aplikacija\Kapriol\Jezgra\Domena;
 use FireHub\Jezgra\Kontejner\Greske\Kontejner_Greska;
 
 /**
@@ -76,12 +77,12 @@ final class Artikli_Model extends Master_Model {
             $artikli = $this->bazaPodataka->tabela('artikliview')
                 ->sirovi("
                     SELECT
-                           artikliview.ID, Naziv, Link, Opis, Cijena, CijenaAkcija, Slika,
+                           artikliview.ID, Naziv, Link, Opis, ".Domena::sqlCijena()." AS Cijena, ".Domena::sqlCijenaAkcija()." AS CijenaAkcija, Slika,
                            GROUP_CONCAT(DISTINCT artiklikarakteristike.Velicina) AS Velicine
                     FROM artikliview
                     LEFT JOIN slikeartikal ON ClanakID = artikliview.ID
                     LEFT JOIN artiklikarakteristike ON artiklikarakteristike.ArtikalID = artikliview.ID
-                    WHERE Aktivan = 1 AND Ba = 1 AND Zadana = 1 AND Izdvojeno = 1
+                    WHERE Aktivan = 1 AND ".Domena::sqlTablica()." = 1 AND Zadana = 1 AND Izdvojeno = 1
                     GROUP BY artikliview.ID
                     ORDER BY ".ucwords($poredaj)." $poredaj_redoslijed
                     LIMIT 12
@@ -95,12 +96,12 @@ final class Artikli_Model extends Master_Model {
             $artikli = $this->bazaPodataka->tabela('artikliview')
                 ->sirovi("
                     SELECT
-                           artikliview.ID, Naziv, Link, Opis, Cijena, CijenaAkcija, Slika,
+                           artikliview.ID, Naziv, Link, Opis, ".Domena::sqlCijena()." AS Cijena, ".Domena::sqlCijenaAkcija()." AS CijenaAkcija, Slika,
                            GROUP_CONCAT(DISTINCT artiklikarakteristike.Velicina) AS Velicine
                     FROM artikliview
                     LEFT JOIN slikeartikal ON ClanakID = artikliview.ID
                     LEFT JOIN artiklikarakteristike ON artiklikarakteristike.ArtikalID = artikliview.ID
-                    WHERE Aktivan = 1 AND Ba = 1 AND Zadana = 1
+                    WHERE Aktivan = 1 AND ".Domena::sqlTablica()." = 1 AND Zadana = 1
                     {$this->trazi($trazi)}
                     GROUP BY artikliview.ID
                     {$this->velicineUpit($velicina)}
@@ -116,12 +117,12 @@ final class Artikli_Model extends Master_Model {
             $artikli = $this->bazaPodataka->tabela('artikliview')
                 ->sirovi("
                     SELECT
-                           artikliview.ID, Naziv, Link, Opis, Cijena, CijenaAkcija, Slika,
+                           artikliview.ID, Naziv, Link, Opis, ".Domena::sqlCijena()." AS Cijena, ".Domena::sqlCijenaAkcija()." AS CijenaAkcija, Slika,
                            GROUP_CONCAT(DISTINCT artiklikarakteristike.Velicina) AS Velicine
                     FROM artikliview
                     LEFT JOIN slikeartikal ON ClanakID = artikliview.ID
                     LEFT JOIN artiklikarakteristike ON artiklikarakteristike.ArtikalID = artikliview.ID
-                    WHERE Aktivan = 1 AND Ba = 1 AND Zadana = 1 AND CijenaAkcija > 0
+                    WHERE Aktivan = 1 AND ".Domena::sqlTablica()." = 1 AND Zadana = 1 AND CijenaAkcija > 0
                     {$this->trazi($trazi)}
                     GROUP BY artikliview.ID
                     {$this->velicineUpit($velicina)}
@@ -137,12 +138,12 @@ final class Artikli_Model extends Master_Model {
         $artikli = $this->bazaPodataka->tabela('artikliview')
             ->sirovi("
                 SELECT
-                    artikliview.ID, Naziv, Link, Opis, Cijena, CijenaAkcija, Slika,
+                    artikliview.ID, Naziv, Link, Opis, ".Domena::sqlCijena()." AS Cijena, ".Domena::sqlCijenaAkcija()." AS CijenaAkcija, Slika,
                     GROUP_CONCAT(DISTINCT artiklikarakteristike.Velicina) AS Velicine
                 FROM artikliview
                 LEFT JOIN slikeartikal ON ClanakID = artikliview.ID
                 LEFT JOIN artiklikarakteristike ON artiklikarakteristike.ArtikalID = artikliview.ID
-                WHERE KategorijaID = $kategorija AND Aktivan = 1 AND Ba = 1 AND Zadana = 1
+                WHERE KategorijaID = $kategorija AND Aktivan = 1 AND ".Domena::sqlTablica()." = 1 AND Zadana = 1
                 {$this->trazi($trazi)}
                 GROUP BY artikliview.ID
                 {$this->velicineUpit($velicina)}
@@ -180,7 +181,7 @@ final class Artikli_Model extends Master_Model {
                     artiklikarakteristike.Velicina
                 FROM artiklikarakteristike
                 LEFT JOIN artikliview ON artikliview.ID = artiklikarakteristike.ArtikalID
-                WHERE Aktivan = 1 AND Ba = 1
+                WHERE Aktivan = 1 AND ".Domena::sqlTablica()." = 1
                 {$this->trazi($trazi)}
                 GROUP BY artiklikarakteristike.Velicina
                 ORDER BY artiklikarakteristike.Velicina
@@ -197,7 +198,7 @@ final class Artikli_Model extends Master_Model {
                     artiklikarakteristike.Velicina
                 FROM artiklikarakteristike
                 LEFT JOIN artikliview ON artikliview.ID = artiklikarakteristike.ArtikalID
-                WHERE Aktivan = 1 AND Ba = 1 AND CijenaAkcija > 0
+                WHERE Aktivan = 1 AND ".Domena::sqlTablica()." = 1 AND ".Domena::sqlCijenaAkcija()." > 0
                 GROUP BY artiklikarakteristike.Velicina
                 ORDER BY artiklikarakteristike.Velicina
             ")
@@ -213,7 +214,7 @@ final class Artikli_Model extends Master_Model {
                     artiklikarakteristike.Velicina
                 FROM artiklikarakteristike
                 LEFT JOIN artikliview ON artikliview.ID = artiklikarakteristike.ArtikalID
-                WHERE artikliview.KategorijaID = $kategorija AND Aktivan = 1 AND Ba = 1
+                WHERE artikliview.KategorijaID = $kategorija AND Aktivan = 1 AND ".Domena::sqlTablica()." = 1
                 GROUP BY artiklikarakteristike.Velicina
                 ORDER BY artiklikarakteristike.Velicina
             ")
@@ -250,7 +251,7 @@ final class Artikli_Model extends Master_Model {
                 SELECT Naziv, GROUP_CONCAT(DISTINCT artiklikarakteristike.Velicina) AS Velicine
                 FROM artikliview
                 LEFT JOIN artiklikarakteristike ON artiklikarakteristike.ArtikalID = artikliview.ID
-                WHERE Aktivan = 1 AND Ba = 1
+                WHERE Aktivan = 1 AND ".Domena::sqlTablica()." = 1
                 {$this->trazi($trazi)}
                 GROUP BY artikliview.ID
                 {$this->velicineUpit($velicina)}
@@ -266,7 +267,7 @@ final class Artikli_Model extends Master_Model {
                 SELECT Naziv, GROUP_CONCAT(DISTINCT artiklikarakteristike.Velicina) AS Velicine
                 FROM artikliview
                 LEFT JOIN artiklikarakteristike ON artiklikarakteristike.ArtikalID = artikliview.ID
-                WHERE Aktivan = 1 AND Ba = 1 AND CijenaAkcija > 1
+                WHERE Aktivan = 1 AND ".Domena::sqlTablica()." = 1 AND ".Domena::sqlCijenaAkcija()." > 1
                 {$this->trazi($trazi)}
                 GROUP BY artikliview.ID
                 {$this->velicineUpit($velicina)}
@@ -282,7 +283,7 @@ final class Artikli_Model extends Master_Model {
                 SELECT Naziv, GROUP_CONCAT(DISTINCT artiklikarakteristike.Velicina) AS Velicine
                 FROM artikliview
                 LEFT JOIN artiklikarakteristike ON artiklikarakteristike.ArtikalID = artikliview.ID
-                WHERE KategorijaID = $kategorija AND Aktivan = 1 AND Ba = 1
+                WHERE KategorijaID = $kategorija AND Aktivan = 1 AND ".Domena::sqlTablica()." = 1
                 {$this->trazi($trazi)}
                 GROUP BY artikliview.ID
                 {$this->velicineUpit($velicina)}

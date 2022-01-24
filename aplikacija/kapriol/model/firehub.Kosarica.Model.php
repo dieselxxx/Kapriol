@@ -14,10 +14,11 @@
 
 namespace FireHub\Aplikacija\Kapriol\Model;
 
-use FireHub\Jezgra\Komponente\Log\Enumeratori\Level;
 use FireHub\Jezgra\Komponente\BazaPodataka\BazaPodataka;
 use FireHub\Aplikacija\Kapriol\Jezgra\Validacija;
 use FireHub\Aplikacija\Kapriol\Jezgra\Email;
+use FireHub\Aplikacija\Kapriol\Jezgra\Domena;
+use FireHub\Jezgra\Komponente\Log\Enumeratori\Level;
 use FireHub\Jezgra\Greske\Greska;
 use FireHub\Jezgra\Kontroler\Greske\Kontroler_Greska;
 use FireHub\Jezgra\Kontejner\Greske\Kontejner_Greska;
@@ -84,12 +85,12 @@ final class Kosarica_Model extends Master_Model {
             $artikli = $this->bazaPodataka->tabela('artikliview')
                 ->sirovi("
                     SELECT
-                           artikliview.ID, artikliview.Naziv, artikliview.Link, artikliview.Cijena, artikliview.CijenaAkcija, slikeartikal.Slika,
+                           artikliview.ID, artikliview.Naziv, artikliview.Link, artikliview.".Domena::sqlCijena()." AS Cijena, artikliview.".Domena::sqlCijenaAkcija()." AS CijenaAkcija, slikeartikal.Slika,
                            artiklikarakteristike.Sifra, artiklikarakteristike.Velicina
                     FROM artikliview
                     LEFT JOIN slikeartikal ON slikeartikal.ClanakID = artikliview.ID
                     LEFT JOIN artiklikarakteristike ON artiklikarakteristike.ArtikalID = artikliview.ID
-                    WHERE artikliview.Aktivan = 1 AND artikliview.Ba = 1 AND slikeartikal.Zadana = 1
+                    WHERE artikliview.Aktivan = 1 AND artikliview.".Domena::sqlTablica()." = 1 AND slikeartikal.Zadana = 1
                     AND ($sifra_array)
                     ORDER BY Naziv ASC
                 ")
@@ -312,8 +313,8 @@ final class Kosarica_Model extends Master_Model {
                 <td>{$artikal['Naziv']}</td>
                 <td>{$artikal['Velicina']}</td>
                 <td>{$artikal['Kolicina']} kom</td>
-                <td>$artikl_cijena KM</td>
-                <td>{$artikal['CijenaUkupno']} KM</td>
+                <td>$artikl_cijena ".Domena::valuta()."</td>
+                <td>{$artikal['CijenaUkupno']} ".Domena::valuta()."</td>
             </tr>";
         }
 
@@ -337,7 +338,7 @@ final class Kosarica_Model extends Master_Model {
             "napomena" => $napomena,
             "artikli" => $email_artikli_korisnik,
             "total_kolicina" => $total_kolicina . ' kom',
-            "total_cijena" => $total_cijena . ' KM'
+            "total_cijena" => $total_cijena . ' '.Domena::valuta()
         ));
         $email_slanje->Posalji();
 
@@ -359,7 +360,7 @@ final class Kosarica_Model extends Master_Model {
             "napomena" => $napomena,
             "artikli" => $email_artikli_korisnik,
             "total_kolicina" => $total_kolicina . ' kom',
-            "total_cijena" => $total_cijena . ' KM'
+            "total_cijena" => $total_cijena . ' '.Domena::valuta()
         ));
         $email_slanje_tvrtka->Posalji();
 
