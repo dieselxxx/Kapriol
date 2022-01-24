@@ -91,7 +91,14 @@ final class Kategorije_Model extends Master_Model {
      */
     public function glavniMeniHamburger ():string {
 
-        $rezultat = '';
+        $rezultat = '
+            <li>
+                <label class="hamburger-menu_gumb" for="hamburger-menu-toggle">
+                    <p>Zatvori</p>
+                    <span></span>
+                </label>
+            </li>
+        ';
         foreach ($this->kategorije() as $kategorija) {
 
             $ikona = !is_null($kategorija['Ikona']) ? $kategorija['Ikona'] : 'strelica_desno_duplo2';
