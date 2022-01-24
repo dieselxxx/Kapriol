@@ -1,7 +1,7 @@
 <?php declare(strict_types = 1);
 
 /**
- * Master
+ * Prijava
  * @since 0.1.2.pre-alpha.M1
  *
  * @author Danijel Galić
@@ -15,34 +15,26 @@
 namespace FireHub\Aplikacija\Administrator\Kontroler;
 
 use FireHub\Jezgra\Kontroler\Kontroler;
-use FireHub\Jezgra\Komponente\Sesija\Sesija;
-use FireHub\Jezgra\Komponente\Sesija\Sesija_Interface;
-use FireHub\Aplikacija\Kapriol\Jezgra\Server;
+use FireHub\Jezgra\Sadrzaj\Sadrzaj;
 
 /**
- * ### Master
+ * ### Prijava
  * @since 0.1.2.pre-alpha.M1
  *
  * @package Aplikacija\Kontroler
  */
-abstract class Master_Kontroler extends Kontroler {
-
-    private Sesija_Interface $sesija;
+final class Prijava_Kontroler extends Kontroler {
 
     /**
-     * ### Konstruktor
+     * ## index
      * @since 0.1.2.pre-alpha.M1
+     *
+     * @return Sadrzaj Sadržaj stranice.
      */
-    public function __construct () {
+    public function index ():Sadrzaj {
 
-        // napravi sesiju
-        $this->sesija = (new Sesija())->naziv('Kapriol')->napravi();
-
-        if (!$this->sesija->procitaj('korisnik')) {
-
-            header("Location: ".Server::URL()."/administrator/prijava");
-
-        }
+        return sadrzaj()->datoteka('prijava.html')->podatci([
+        ]);
 
     }
 

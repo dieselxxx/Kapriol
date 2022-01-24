@@ -15,9 +15,6 @@
 namespace FireHub\Aplikacija\Administrator\Model;
 
 use FireHub\Jezgra\Model\Model;
-use FireHub\Jezgra\Komponente\Sesija\Sesija;
-use FireHub\Jezgra\Komponente\Sesija\Sesija_Interface;
-use FireHub\Jezgra\Kontejner\Greske\Kontejner_Greska;
 
 /**
  * ### Master Model
@@ -27,20 +24,11 @@ use FireHub\Jezgra\Kontejner\Greske\Kontejner_Greska;
  */
 abstract class Master_Model extends Model {
 
-    protected Sesija_Interface $sesija;
-
     /**
      * ### Konstruktor
      * @since 0.1.2.pre-alpha.M1
-     *
-     * @throws Kontejner_Greska Ukoliko se ne može spremiti instanca Sesije.
      */
     public function __construct (
-    ) {
-
-        // napravi sesiju
-        $this->sesija = (new Sesija())->naziv('Kapriol')->napravi();
-
-    }
+    ) {}
 
 }
