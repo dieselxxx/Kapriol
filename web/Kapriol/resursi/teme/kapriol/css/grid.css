@@ -1,7 +1,7 @@
 body {display: grid; grid-template-areas: 'zaglavlje zaglavlje zaglavlje zaglavlje' 'sadrzaj sadrzaj sadrzaj sadrzaj' 'podnozje podnozje podnozje podnozje'; grid-template-columns: 1fr 1fr 1fr 1fr; grid-template-rows: 250px auto auto;}
 header {display: grid; grid-area: zaglavlje; grid-template-columns: auto repeat(5, 280px) auto; grid-template-rows: 50px 150px 50px;}
 main {display: grid; grid-area: sadrzaj; grid-template-columns: auto repeat(5, 280px) auto; grid-auto-rows: minmax(min-content, max-content);}
-footer {display: grid; grid-area: podnozje; grid-template-columns: 1fr repeat(5, 280px) 1fr; grid-template-rows: auto 150px;}
+footer {display: grid; grid-area: podnozje; grid-template-columns: 1fr repeat(5, 280px) 1fr; grid-template-rows: auto 200px;}
 
 @media only screen and (max-width: 1400px) {
 
@@ -13,7 +13,6 @@ footer {display: grid; grid-area: podnozje; grid-template-columns: 1fr repeat(5,
 
     body {grid-template-rows: 350px auto auto;}
     header {grid-template-rows: 50px 150px 100px 50px;}
-    footer {grid-template-rows: auto 200px;}
 
 }
 
@@ -21,8 +20,6 @@ footer {display: grid; grid-area: podnozje; grid-template-columns: 1fr repeat(5,
 
     body {grid-template-rows: 430px auto auto;}
     header {grid-template-rows: 50px 150px 80px 100px 50px;}
-    footer {grid-template-rows: 600px 300px;}
-
-    footer {grid-template-rows: auto 300px;}
+    footer {grid-template-rows: 600px 200px;}
 
 }
