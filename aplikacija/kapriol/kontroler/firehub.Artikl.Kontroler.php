@@ -108,6 +108,7 @@ final class Artikl_Kontroler extends Master_Kontroler {
             'zaglavlje_kosarica_artikli' => $this->kosaricaArtikli(),
             'zaglavlje_tel' => Domena::telefon(),
             'zaglavlje_adresa' => Domena::adresa(),
+            'podnozje_dostava' => Domena::podnozjeDostava(),
             'vi_ste_ovdje' => 'Vi ste ovdje : <a href="/">Kapriol Web Trgovina</a> \\\\ '.$trenutni_artikl['Kategorija'].' \\\\ ' . $trenutni_artikl['Naziv'],
             'artikl_slika' => $trenutni_artikl['Slika'],
             'artikl_slike' => $artikl_slike_html,

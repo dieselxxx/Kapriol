@@ -84,6 +84,7 @@ final class Naslovna_Kontroler extends Master_Kontroler {
             'zaglavlje_kosarica_artikli' => $this->kosaricaArtikli(),
             'zaglavlje_tel' => Domena::telefon(),
             'zaglavlje_adresa' => Domena::adresa(),
+            'podnozje_dostava' => Domena::podnozjeDostava(),
             'artikli' => $artikli_html
         ]);
 

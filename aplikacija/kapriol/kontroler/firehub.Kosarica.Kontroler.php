@@ -132,6 +132,7 @@ final class Kosarica_Kontroler extends Master_Kontroler {
             'zaglavlje_kosarica_artikli' => $this->kosaricaArtikli(),
             'zaglavlje_tel' => Domena::telefon(),
             'zaglavlje_adresa' => Domena::adresa(),
+            'podnozje_dostava' => Domena::podnozjeDostava(),
             'vi_ste_ovdje' => '<a href="/">Kapriol Web Trgovina</a> \\\\ Košarica',
             'kosarica_artikli' => $artikli_html,
             'kosarica_artikli_ukupno' => $kosarica_artikli_ukupno
@@ -184,6 +185,7 @@ final class Kosarica_Kontroler extends Master_Kontroler {
             'zaglavlje_kosarica_artikli' => $this->kosaricaArtikli(),
             'zaglavlje_tel' => Domena::telefon(),
             'zaglavlje_adresa' => Domena::adresa(),
+            'podnozje_dostava' => Domena::podnozjeDostava(),
             'vi_ste_ovdje' => '<a href="/">Kapriol Web Trgovina</a> \\\\ Narudžba',
             'narudzba_greska' => $narudzba_greska,
             'forma_ime' => $_POST['ime'] ?? '',
@@ -219,6 +221,7 @@ final class Kosarica_Kontroler extends Master_Kontroler {
             'zaglavlje_kosarica_artikli' => $this->kosaricaArtikli(),
             'zaglavlje_tel' => Domena::telefon(),
             'zaglavlje_adresa' => Domena::adresa(),
+            'podnozje_dostava' => Domena::podnozjeDostava(),
             'vi_ste_ovdje' => 'Vi ste ovdje : <a href="/">Kapriol Web Trgovina</a>'
         ]);
 

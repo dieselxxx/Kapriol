@@ -132,6 +132,7 @@ final class Rezultat_Kontroler extends Master_Kontroler {
             'zaglavlje_kosarica_artikli' => $this->kosaricaArtikli(),
             'zaglavlje_tel' => Domena::telefon(),
             'zaglavlje_adresa' => Domena::adresa(),
+            'podnozje_dostava' => Domena::podnozjeDostava(),
             'vi_ste_ovdje' => 'Vi ste ovdje : <a href="/">Kapriol Web Trgovina</a> \\\\ ' . $trenutna_kategorija['Kategorija'] . ' \\\\ ' . $velicina . ' \\\\ ' . $trazi,
             'artikli' => $artikli_html,
             'navigacija' => $navigacija_html,
