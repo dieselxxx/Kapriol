@@ -83,6 +83,7 @@ final class Naslovna_Kontroler extends Master_Kontroler {
             'glavni_meni_hamburger' => $kategorije->glavniMeniHamburger(),
             'zaglavlje_kosarica_artikli' => $this->kosaricaArtikli(),
             'zaglavlje_tel' => Domena::telefon(),
+            'zaglavlje_adresa' => Domena::adresa(),
             'artikli' => $artikli_html
         ]);
 

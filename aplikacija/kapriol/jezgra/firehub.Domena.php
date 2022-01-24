@@ -99,4 +99,16 @@ final class Domena {
 
     }
 
+    public static function adresa ():string {
+
+        if (self::Hr()) {
+
+            return 'Glavina Donja 336, 21260 Imotski';
+
+        }
+
+        return 'Dubrovačka bb (SC Piramida), 88000 Mostar';
+
+    }
+
 }
