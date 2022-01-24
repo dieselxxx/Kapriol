@@ -87,4 +87,16 @@ final class Domena {
 
     }
 
+    public static function telefon ():string {
+
+        if (self::Hr()) {
+
+            return '+385 21 486 385';
+
+        }
+
+        return '+387 36 349 223';
+
+    }
+
 }

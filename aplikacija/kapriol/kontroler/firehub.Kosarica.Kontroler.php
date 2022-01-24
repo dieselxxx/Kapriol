@@ -130,6 +130,7 @@ final class Kosarica_Kontroler extends Master_Kontroler {
             'glavni_meni' => $kategorije->glavniMeni(),
             'glavni_meni_hamburger' => $kategorije->glavniMeniHamburger(),
             'zaglavlje_kosarica_artikli' => $this->kosaricaArtikli(),
+            'zaglavlje_tel' => Domena::telefon(),
             'vi_ste_ovdje' => '<a href="/">Kapriol Web Trgovina</a> \\\\ Košarica',
             'kosarica_artikli' => $artikli_html,
             'kosarica_artikli_ukupno' => $kosarica_artikli_ukupno
@@ -180,6 +181,7 @@ final class Kosarica_Kontroler extends Master_Kontroler {
             'glavni_meni' => $kategorije->glavniMeni(),
             'glavni_meni_hamburger' => $kategorije->glavniMeniHamburger(),
             'zaglavlje_kosarica_artikli' => $this->kosaricaArtikli(),
+            'zaglavlje_tel' => Domena::telefon(),
             'vi_ste_ovdje' => '<a href="/">Kapriol Web Trgovina</a> \\\\ Narudžba',
             'narudzba_greska' => $narudzba_greska,
             'forma_ime' => $_POST['ime'] ?? '',

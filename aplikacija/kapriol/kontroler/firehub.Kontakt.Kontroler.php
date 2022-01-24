@@ -16,6 +16,7 @@ namespace FireHub\Aplikacija\Kapriol\Kontroler;
 
 use FireHub\Jezgra\Sadrzaj\Sadrzaj;
 use FireHub\Aplikacija\Kapriol\Model\Kategorije_Model;
+use FireHub\Aplikacija\Kapriol\Jezgra\Domena;
 use FireHub\Jezgra\Kontejner\Greske\Kontejner_Greska;
 use FireHub\Jezgra\Kontroler\Greske\Kontroler_Greska;
 
@@ -45,6 +46,7 @@ final class Kontakt_Kontroler extends Master_Kontroler {
             'glavni_meni' => $kategorije->glavniMeni(),
             'glavni_meni_hamburger' => $kategorije->glavniMeniHamburger(),
             'zaglavlje_kosarica_artikli' => $this->kosaricaArtikli(),
+            'zaglavlje_tel' => Domena::telefon(),
             'vi_ste_ovdje' => '<a href="/">Kapriol Web Trgovina</a> \\\\ Kontakt'
         ]);
 
