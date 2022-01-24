@@ -15,6 +15,7 @@
 namespace FireHub\Aplikacija\Kapriol\Model;
 
 use FireHub\Jezgra\Komponente\BazaPodataka\BazaPodataka;
+use FireHub\Aplikacija\Kapriol\Jezgra\Domena;
 use FireHub\Jezgra\Kontejner\Greske\Kontejner_Greska;
 
 /**
@@ -170,8 +171,17 @@ final class Kategorije_Model extends Master_Model {
     private function kategorije ():array {
 
         $kategorije = $this->bazaPodataka->tabela('kategorijeview')
-            ->odaberi(['Kategorija', 'Link', 'Ikona', 'Meni'])
-            ->poredaj('Prioritet', 'ASC')->napravi();
+            ->sirovi("
+                SELECT 
+                    kategorijeview.Kategorija, kategorijeview.Link, kategorijeview.Ikona, kategorijeview.Meni
+                FROM kategorijeview
+                LEFT JOIN artikli ON artikli.KategorijaID = kategorijeview.ID AND artikli.".Domena::sqlTablica()." = 1
+                LEFT JOIN artiklikarakteristike ON artiklikarakteristike.ArtikalID = artikli.ID
+                LEFT JOIN stanjeskladista ON stanjeskladista.Sifra = artiklikarakteristike.Sifra
+                GROUP BY kategorijeview.Kategorija, kategorijeview.Link, kategorijeview.Ikona, kategorijeview.Meni
+                HAVING SUM(StanjeSkladiste) > 0
+                ORDER BY kategorijeview.Prioritet ASC
+            ")->napravi();
 
         return $kategorije->niz();
 
