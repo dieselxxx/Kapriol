@@ -111,4 +111,16 @@ final class Domena {
 
     }
 
+    public static function poslovnice ():string {
+
+        if (self::Hr()) {
+
+            return 'poslovnice_hr.html';
+
+        }
+
+        return 'poslovnice.html';
+
+    }
+
 }

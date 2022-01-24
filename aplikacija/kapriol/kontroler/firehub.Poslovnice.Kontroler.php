@@ -41,7 +41,7 @@ final class Poslovnice_Kontroler extends Master_Kontroler {
 
         $kategorije = $this->model(Kategorije_Model::class);
 
-        return sadrzaj()->datoteka('poslovnice.html')->podatci([
+        return sadrzaj()->datoteka(Domena::poslovnice())->podatci([
             'predlozak_naslov' => 'Poslovnice',
             'glavni_meni' => $kategorije->glavniMeni(),
             'glavni_meni_hamburger' => $kategorije->glavniMeniHamburger(),
