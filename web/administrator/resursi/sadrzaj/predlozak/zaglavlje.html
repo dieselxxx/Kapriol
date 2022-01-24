@@ -1,0 +1,33 @@
+<header>
+
+    <button class="navigacija_gumb">
+        <span class="bar gore"></span>
+        <span class="bar sredina"></span>
+        <span class="bar dole"></span>
+    </button>
+
+    <nav id="profil">
+        <ul>
+            <li>
+                <a>
+                    <svg><use xlink:href="/imovina/grafika/simboli/simbol.ikone.php#korisnik2"></use></svg>
+                    {{korisnik_status}}
+                </a>
+                <ul class="podmeni">
+                    <li>
+                        {{korisnik_naziv}}
+                    </li>
+                    <li class="granica"></li>
+                    <li class="granica"></li>
+                    <li>
+                        <a onclick="$_Odjava()">
+                            <svg><use xlink:href="/imovina/grafika/simboli/simbol.ikone.php#odjava"></use></svg>
+                            <span>{{Odjavi se}}</span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </nav>
+
+</header>

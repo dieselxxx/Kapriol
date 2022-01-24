@@ -1,0 +1,173 @@
+body {position: initial; background-color: #ededed; height: 100vh; width: 100vw; font-family: 'Poppins', sans-serif; font-size: 1rem; font-weight: 300; overflow: hidden;}
+
+/** dialog **/
+#dialog_okolo {display: none; position: fixed; background-color: rgba(0, 0, 0, 0.4); top: 0; left: 0; right: 0; bottom: 0; z-index: 1000; overflow-y: scroll;}
+#dialog {display: none; grid-template-columns: 15px auto 15px; grid-template-rows: 50px auto auto; grid-row-gap: 15px; background-color: #ffffff; margin: 100px auto; height: auto; width: max-content; max-width: max-content; min-width: 600px; box-shadow: 0 27px 24px 0 rgba(0, 0, 0, 0.2), 0 40px 77px 0 rgba(0, 0, 0, 0.22); border-radius: 6px;}
+#dialog > .naslov {grid-column: 2 / 3; grid-row: 1 / 2; display: flex; background: linear-gradient(60deg, var(--boja-kapriol), var(--boja-kapriol)); margin: -15px 0 20px 0; padding: 0; width: 100%; color: #ffffff; border-radius: 3px; box-shadow: 0 4px 20px 0 rgba(0, 0, 0, 0.14), 0 7px 10px -5px var(--boja-kapriol-rgba);}
+#dialog > .naslov h4 {margin-left: 52px; width: 100%; line-height: 5px; font-size: 0.9rem; font-weight: 300; text-align: center;}
+#dialog .dialog_zatvori {margin: 15px}
+#dialog .dialog_zatvori svg {fill: #ffffff; height: 16px; width: 16px; cursor: pointer;}
+#dialog .dialog_zatvori svg:hover {fill: var(--boja-tekst);}
+#dialog .sadrzaj {grid-column: 2 / 3; grid-row: 2 / 3;}
+#dialog .sadrzaj > div > h2 {text-align: center;}
+#dialog .sadrzaj .podatci div.naruci label.unos input::placeholder {font-size: 0.5rem;}
+#dialog .kontrole {grid-column: 2 / 3; grid-row: 3 / 4; display: flex; flex-wrap: wrap; justify-self: center; align-items: center; max-width: 500px;}
+#dialog .kontrole > * {margin: 5px 0 5px 0;}
+#dialog .kontrole button[name="prijavi_se"] {flex-basis: 100%;}
+#dialog .kontrole a.zaboravljena_lozinka {margin-left: auto;}
+#dialog .kontrole span.registracija, #dialog .kontrole .prijava {flex-basis: 100%; text-align: center;}
+
+/** prijava **/
+form[data-oznaka="prijava"] {background-image: url("/imovina/grafika/gtgwebshop.jpg"); background-size: cover;}
+form[data-oznaka="prijava"]:before {content: ""; position: absolute; display: block; background: rgba(0, 0, 0, 0.5); top: 0; left: 0; height: 100%; width: 100%; z-index: 1;}
+form[data-oznaka="prijava"] .logo {width: 400px; stroke: var(--boja-kapriol); stroke-dasharray: 300; stroke-dashoffset: 300; animation: logo_animacija 4s linear forwards;}
+form[data-oznaka="prijava"] section {grid-column: 1 / 2; grid-row: 2 / 3; grid-template-rows: 40px auto 70px; width: 400px; z-index: 2;}
+form[data-oznaka="prijava"] section div.zaglavlje {width: 100%;}
+form[data-oznaka="prijava"] section div.zaglavlje h4 {margin: 13px auto;}
+form[data-oznaka="prijava"] section button {margin: 10px;}
+
+/** zaglavlje **/
+header {border-bottom: 1px solid var(--boja-granica); box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.14); z-index: 2;}
+header .navigacija_gumb {float: left; background: transparent; padding: 22px; border: 1px solid transparent; cursor: pointer;}
+header .navigacija_gumb:focus {outline-width: 0;}
+header .navigacija_gumb:focus:not(:active)::after {display: none;}
+header .navigacija_gumb .bar {display: block; background: var(--boja-tekst); margin-bottom: 4px; height: 2px; width: 25px; border-radius: 2px; -webkit-transform: rotate(0deg); transform: rotate(0deg); -webkit-transition: .2s ease all; transition: .2s ease all;}
+.zatvoren header .navigacija_gumb .bar.gore {-webkit-transform: rotate(45deg); transform: rotate(45deg); -webkit-transform-origin: 15% 15%; transform-origin: 15% 15%;}
+.zatvoren header .navigacija_gumb .bar.sredina {opacity: 0;}
+.zatvoren header .navigacija_gumb .bar.dole {-webkit-transform: rotate(45deg); transform: rotate(-45deg); -webkit-transform-origin: 15% 95%; transform-origin: 15% 95%;}
+header nav#profil {position: absolute; top: 0; right: 0; height: 60px; width: auto; cursor: pointer;}
+header nav#profil ul li {float: left; position: relative; display: inline-block; height: 60px; width: 60px; line-height: initial;}
+header nav#profil ul li a {position: relative; display: inline-block; background-color: #ffffff; margin: 10px; height: 40px; width: 40px; border: 1px solid transparent; border-radius: 50%; box-shadow: 0 4px 20px 0 rgba(0, 0, 0, 0.14), 0 7px 10px -5px rgba(60, 72, 88, 0.4); -webkit-box-sizing: content-box; -moz-box-sizing: content-box; box-sizing: content-box;}
+header nav#profil:hover ul li a {border-color: var(--boja-kapriol);}
+header nav#profil:hover ul li a:after {display: none;}
+header nav#profil ul li a svg {fill: var(--boja-kapriol); height: 40px; width: 40px; border-radius: 50%;}
+header nav#profil ul li a img {height: 40px; width: 40px; border-radius: 50%;}
+header nav#profil ul li a div[data-korisnik-status] {position: absolute; background-color: var(--boja-pozadina); right: 0; bottom: -3px; height: 10px; width: 10px; border: 2px solid #ffffff; border-radius: 50px; box-shadow: 0 4px 20px 0 rgba(0, 0, 0, 0.14), 0 7px 10px -5px rgba(60, 72, 88, 0.4);}
+header nav#profil ul li ul {float: left; display: none; position: absolute; background-color: #ffffff; top: 60px; right: 0; width: 175px; border-radius: 2px; box-shadow: 0 2px 15px rgba(0, 0, 0, 0.175); z-index: 999;}
+header nav#profil ul li ul li {height: 27px; width: 100%;}
+header nav#profil ul li ul li:first-child {padding: 10px; text-transform: uppercase; text-align: center;}
+header nav#profil ul li ul li.granica {margin: 5px 0 5px 0; height: 1px; border-top: 1px solid var(--boja-granica);}
+header nav#profil ul li ul li a {display: block; margin: 0; height: 27px; width: 100%; border: 0; border-radius: 0; box-shadow: none; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box;}
+header nav#profil ul li ul li a:hover {opacity: 1; background-color: var(--boja-kapriol); color: #ffffff;}
+header nav#profil ul li ul li a svg {float: left; fill: var(--boja-kapriol); margin: 0 10px 0 20px; height: 27px; width: 13px; border-radius: initial;}
+header nav#profil ul li ul li:hover a svg {fill: #ffffff;}
+header nav#profil ul li ul li a span {float: left; line-height: 27px;}
+header nav#profil ul li ul li a span span {margin: 0 12px 0 20px;}
+header nav#profil ul li ul.podmeni {display: none;}
+header nav#profil ul li ul.podmeni li.treci_level {position: relative;}
+header nav#profil ul li ul.podmeni li.treci_level ul {position: absolute; top: 0; right: 100%;}
+
+/** navigacija **/
+aside {position: relative; box-shadow: 0 16px 38px -12px rgba(0, 0, 0, 0.56), 0 4px 25px 0 rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(0, 0, 0, 0.2); z-index: 2;}
+aside:before {grid-area: navigacija; content: ""; display: inherit; background-color: var(--boja-kapriol); height: 100%; opacity: 0.7;}
+aside svg.logo {position: absolute; top: 10px; left: 30px; height: 80px; width: 200px; fill: white;}
+aside nav {position: absolute; top: 100px; width: 100%;}
+aside nav ul, aside nav ul li {display: block; position: relative;}
+aside nav ul li a {display: flex;}
+aside nav ul ul {display: none; margin-top: 5px;}
+aside nav ul svg {fill: #ffffff; margin-right: 10px; height: 18px; width: 18px;}
+aside nav ul li ul svg {height: 13px; width: 13px;}
+aside nav > ul li.aktivan {background-color: #ffffff;}
+aside nav > ul > li > ul > li > ul li.aktivan {box-shadow: 0 4px 20px 0 rgba(0, 0, 0, 0.14), 0 7px 10px -5px rgba(60, 72, 88, 0.4);}
+aside nav > ul > li {margin: 10px;}
+aside nav > ul > li.aktivan > a {color: var(--boja-kapriol);}
+aside nav > ul > li.aktivan > a :before, aside nav > ul > li.aktivan > a :after {background-color: var(--boja-kapriol);}
+aside nav > ul > li.aktivan > a > svg {fill: var(--boja-kapriol);}
+aside nav > ul li.aktivan > ul {display: block;}
+aside nav > ul > li > a {padding: 10px 12px; font-size: 0.9rem; font-weight: 300; color: #ffffff; text-decoration: none; cursor: pointer; z-index: 2; -webkit-transition: color 0.2s ease; -o-transition: color 0.2s ease; transition: color 0.2s ease;}
+aside nav > ul > li > a:hover, aside nav > ul li.otvoren > a {background-color: rgba(255, 255 ,255 , 0.1);}
+aside nav > ul > li.podmeni.aktivan > a {color : var(--boja-kapriol);}
+aside nav > ul > li.podmeni.aktivan > a:before, aside nav > ul > li.podmeni.aktivan > a:after {background-color: var(--boja-kapriol);}
+aside nav > ul > li.podmeni.aktivan > a > svg {fill: var(--boja-kapriol);}
+aside nav ul > li.podmeni > a:before, aside nav ul > li.podmeni > a:after {content: ""; position: absolute; background: #ffffff; left: initial; bottom: initial; opacity: initial; z-index: 5; -webkit-transition: all 0.1s ease-out; -moz-transition: all 0.1s ease-out; -ms-transition: all 0.1s ease-out; -o-transition: all 0.1s ease-out; transition: all 0.1s ease-out;}
+aside nav ul > li.podmeni > a:before {top: 20px; right: 22px; height: 2px; width: 10px;}
+aside nav ul > li.podmeni > a:after {top: 16px; right: 26px; height: 10px; width: 2px;}
+aside nav ul > li.podmeni > ul > li.podmeni a:before {display: initial; top: 16px; right: 20px; height: 2px; width: 8px;}
+aside nav ul > li.podmeni > ul > li.podmeni a:after {display: initial; top: 13px; right: 23px; height: 8px; width: 2px;}
+aside nav ul > li.podmeni.otvoren > a:after, aside nav ul > li.podmeni.otvoren > a:before {-webkit-transform: rotate(45deg); -moz-transform: rotate(45deg); -ms-transform: rotate(45deg); -o-transform: rotate(45deg); transform: rotate(45deg);}
+aside nav ul ul li a {padding: 10px 20px; font-size: 0.7rem; font-weight: 300; color: #ffffff; cursor: pointer; z-index: 2; -webkit-transition: color 0.2s ease; -o-transition: color 0.2s ease; transition: color 0.2s ease;}
+aside nav ul ul ul li a {padding-left: 32px;}
+aside nav > ul > li.podmeni.aktivan > ul > li.podmeni > a {color: var(--boja-kapriol);}
+aside nav > ul > li.podmeni.aktivan > ul > li.podmeni > a:before, aside nav > ul > li.podmeni.aktivan > ul > li.podmeni > a:after {background-color: var(--boja-kapriol);}
+aside nav > ul > li.podmeni.aktivan > ul > li.podmeni > a > svg {fill: var(--boja-kapriol);}
+aside nav > ul > li.podmeni.aktivan > ul > li.podmeni > ul > li > a {color: var(--boja-kapriol);}
+body.zatvoren > aside svg.logo {top: 10px; left: 5px; height: 50px; width: 50px;}
+body.zatvoren > aside svg.logo use.logo {display: none;}
+body.zatvoren > aside svg.logo use.ikona {display: initial;}
+body.zatvoren > aside nav > ul > li > a > span {display: none;}
+body.zatvoren > aside nav ul svg {margin-right: 0;}
+body.zatvoren > aside nav ul li ul li svg {margin-right: 10px;}
+body.zatvoren > aside nav > ul > li.aktivan > ul {display: none;}
+body.zatvoren > aside nav ul > li.podmeni > ul {position: absolute; background-color: var(--boja-kapriol); top: 0; left: 50px; width: 120px;}
+body.zatvoren > aside nav ul > li.podmeni > ul ul {left: 120px; width: 120px;}
+body.zatvoren > aside nav ul > li.podmeni > ul ul li a {padding: 10px;}
+body.zatvoren > aside nav ul > li.podmeni > a:before, body.zatvoren > aside nav ul > li.podmeni > a:after {display: none;}
+body.zatvoren > aside nav > ul > li.podmeni.aktivan > ul > li.podmeni > a {color: #ffffff;}
+body.zatvoren > aside nav > ul > li.podmeni.aktivan > ul > li.podmeni > a:before, body.zatvoren > aside nav > ul > li.podmeni.aktivan > ul > li.podmeni > a:after {background-color: #ffffff;}
+body.zatvoren > aside nav > ul > li.podmeni.aktivan > ul > li.podmeni > a > svg {fill: #ffffff;}
+body.zatvoren > aside nav > ul > li.podmeni.aktivan > ul > li.podmeni.aktivan > a {color: var(--boja-kapriol);}
+body.zatvoren > aside nav > ul > li.podmeni.aktivan > ul > li.podmeni.aktivan > a:before, body.zatvoren > aside nav > ul > li.podmeni.aktivan > ul > li.podmeni.aktivan > a:after {background-color: var(--boja-kapriol);}
+body.zatvoren > aside nav > ul > li.podmeni.aktivan > ul > li.podmeni.aktivan > a > svg {fill: var(--boja-kapriol);}
+body.zatvoren > aside nav > ul > li.podmeni.aktivan > ul > li.podmeni > ul > li > a {color: #ffffff;}
+body.zatvoren > aside nav > ul > li.podmeni.aktivan > ul > li.podmeni > ul > li.aktivan > a {color: var(--boja-kapriol);}
+
+/** sadrzaj **/
+main {padding: 10px; -webkit-transition: all 0.5s ease; -moz-transition: all 0.5s ease; -o-transition: all 0.5s ease; transition: all 0.5s ease;}
+main form {margin-top: 0; padding-top: 20px; -webkit-transition: all 0.5s ease; -moz-transition: all 0.2s ease; -o-transition: all 0.2s ease; transition: all 0.2s ease;}
+main > form[data-oznaka="slike"] img, main > form[data-oznaka="slike_podnozje"] img, main > form[data-oznaka="ikona"] img {height: 100px; width: auto;}
+main > form > section {margin-bottom: 30px; min-width: 800px;}
+main > form > section .zaglavlje.veliko {display: grid; grid-template-columns: 35px auto; grid-template-rows: repeat(2, 1fr); grid-gap: 5px; margin: -20px 0 0 0;}
+main > form > section .zaglavlje.veliko svg {grid-column: 1 / 2; grid-row: 1 / 3; fill: #ffffff; height: 35px; width: 35px;}
+main > form > section .zaglavlje.veliko h4 {grid-column: 2 / 3; margin: 15px 0 0 10px; font-size: 1.125rem; font-weight: 300; text-transform: initial;}
+main > form > section .zaglavlje.veliko h6 {grid-column: 2 / 3; margin: 5px 0 15px 10px; font-size: 0.875rem; font-weight: 100;}
+main > form > section div.kontrole ul li {float: left; padding: 3px;}
+main#naslovna {display: grid; grid-template-columns: repeat(6, 1fr); grid-template-rows: max-content;}
+main#naslovna > form[data-oznaka="grafikon_promet"] {grid-column: 1 / 7; grid-row: 1 / 2;}
+main#naslovna > form[data-oznaka="grafikon_promet"] canvas {height: 400px;}
+main#naslovna > form[data-oznaka="artikli_vlasnik_lista"] {grid-column: 1 / 4; grid-row: 2 / 3;}
+main#naslovna > form[data-oznaka="grafikon_promet_skladista"] {grid-column: 4 / 7; grid-row: 2 / 3; padding-left: 10px;}
+main#naslovna > form[data-oznaka="grafikon_promet_skladista"] canvas {height: 500px;}
+main > form[data-oznaka="osnovno"] section {margin-bottom: 40px;}
+canvas#grafikon_promet, canvas#grafikon_artikli_promet, canvas#grafikon_promet_skladista {min-height: 300px;}
+main#preuzimanja > form[data-oznaka="preuzimanja_lista"] table.tabela tbody tr td > div {display: flex; align-items: center;}
+main#preuzimanja > form[data-oznaka="preuzimanja_lista"] table.tabela tbody tr td > div svg {height: 30px; width: 30px;}
+main#verzija > form[data-oznaka="verzija"] section div.sadrzaj nav h2 {margin: 0; padding: 20px 0 0 0;}
+main#verzija > form[data-oznaka="verzija"] section div.sadrzaj nav h5 {margin: 0; padding: 0 0 5px 0; font-weight: 300;}
+main#verzija > form[data-oznaka="verzija"] section div.sadrzaj nav ul li {height: 20px; font-size: 0.75rem;}
+main#verzija > form[data-oznaka="verzija"] section div.sadrzaj nav ul li.naslov {display: flex; margin: 5px; font-weight: 500;}
+main#verzija > form[data-oznaka="verzija"] section div.sadrzaj nav ul li.naslov svg {height: 15px; width: 15px;}
+main#verzija > form[data-oznaka="verzija"] section div.sadrzaj nav ul li.naslov span {margin: 2px;}
+main#linkovi textarea {height: 200px;}
+
+/** podnozje **/
+footer {line-height: 25px; text-align: right; border-top: 1px solid var(--boja-granica);}
+footer a {padding-right: 10px; font-size: 0.7rem;}
+
+@media only screen and (max-width: 768px) {
+
+    header .navigacija_gumb {display: none;}
+    header nav#financije {font-size: 0.6rem;}
+    header nav#financije ul li {grid-template-columns: auto;}
+    header nav#financije ul li svg {display: none;}
+
+    aside svg.logo {top: 10px; left: 5px; height: 50px; width: 50px;}
+    aside svg.logo use.logo {display: none;}
+    aside svg.logo use.ikona {display: initial;}
+    aside nav > ul > li > a > span {display: none;}
+    aside nav ul svg {margin-right: 0;}
+    aside nav > ul > li.aktivan > ul {display: none;}
+    aside nav ul li ul li svg {margin-right: 10px;}
+    aside nav ul > li.podmeni > ul {position: absolute; background-color: var(--boja-kapriol); top: 0; left: 50px; width: 120px;}
+    aside nav ul > li.podmeni > ul ul {left: 120px; width: 120px;}
+    aside nav ul > li.podmeni > ul ul li a {padding: 10px;}
+    aside nav ul > li.podmeni > a:before, aside nav ul > li.podmeni > a:after {display: none;}
+    aside nav > ul > li.podmeni.aktivan > ul > li.podmeni > a {color: #ffffff;}
+    aside nav > ul > li.podmeni.aktivan > ul > li.podmeni > a:before, aside nav > ul > li.podmeni.aktivan > ul > li.podmeni > a:after {background-color: #ffffff;}
+    aside nav > ul > li.podmeni.aktivan > ul > li.podmeni > a > svg {fill: #ffffff;}
+    aside nav > ul > li.podmeni.aktivan > ul > li.podmeni.aktivan > a {color: var(--boja-kapriol);}
+    aside nav > ul > li.podmeni.aktivan > ul > li.podmeni.aktivan > a:before, aside nav > ul > li.podmeni.aktivan > ul > li.podmeni.aktivan > a:after {background-color: var(--boja-kapriol);}
+    aside nav > ul > li.podmeni.aktivan > ul > li.podmeni.aktivan > a > svg {fill: var(--boja-kapriol);}
+    aside nav > ul > li.podmeni.aktivan > ul > li.podmeni > ul > li > a {color: #ffffff;}
+    aside nav > ul > li.podmeni.aktivan > ul > li.podmeni > ul > li.aktivan > a {color: var(--boja-kapriol);}
+
+}
