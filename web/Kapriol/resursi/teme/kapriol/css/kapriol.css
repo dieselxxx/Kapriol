@@ -375,13 +375,13 @@ footer > nav > div > ul > li > div > svg {fill: var(--boja-kapriol); height: 30p
 footer > nav > div > ul > li > div > span {line-height: 30px; text-indent: 10px; color: #ffffff;}
 footer > div.info {grid-column: 1 / 8; grid-row: 2 / 3; background-color: var(--boja-pozadina_tamna_total); display: grid; grid-template-columns: 1fr repeat(3, 467px) 1fr; grid-template-rows: 150px 50px; align-content: center; border-width: 1px 0 0 0; border-style: solid; border-color: var(--boja-granica-tamnije); box-shadow: 0 3px 39px 0 rgba(0,0,0,0.04); -webkit-box-shadow: 0 3px 39px 0 rgba(0,0,0,0.04); -moz-box-shadow: 0 3px 39px 0 rgba(0,0,0,0.04);}
 footer > div.info > a.logo {grid-column: 2 / 3; grid-row: 1 / 3; display: block; background-image: url('/kapriol/resursi/grafika/logo/120x270.png'); height: 120px; width: 270px; align-self: center; justify-self: left;}
-footer > div.info > ul {justify-self: center; align-self: end;}
-footer > div.info > ul.adresa {grid-column: 3 / 4; grid-row: 1 / 2;}
-footer > div.info > ul.kontakt {grid-column: 4 / 5; grid-row: 1 / 2;}
+footer > div.info > ul {align-self: end; padding: 20px;}
+footer > div.info > ul.adresa {grid-column: 3 / 4; grid-row: 1 / 2; justify-self: end; border-right: 1px solid var(--boja-kapriol);}
+footer > div.info > ul.kontakt {grid-column: 4 / 5; grid-row: 1 / 2; justify-self: start;}
 footer > div.info > ul > li {display: flex; align-items: center; padding-top: 10px;}
 footer > div.info > ul > li > svg {float: left; fill: var(--boja-kapriol); height: 30px; width: 30px;}
 footer > div.info > ul > li > span {float: left; height: 20px; font-size: 0.7rem; line-height: 20px; text-indent: 7px; color: white;}
-footer > div.info > span {grid-column: 3 / 5; grid-row: 2 / 3; justify-self: end; align-self: center; color: #ffffff;}
+footer > div.info > span {grid-column: 3 / 5; grid-row: 2 / 3; justify-self: center; align-self: center; color: #ffffff;}
 
 @media only screen and (max-width: 1400px) {
 
@@ -466,11 +466,11 @@ footer > div.info > span {grid-column: 3 / 5; grid-row: 2 / 3; justify-self: end
     footer > nav {grid-template-rows: 100px 100px; justify-items: left; justify-content: center;}
     footer > nav > div.dostava {grid-column: 1 / 4; grid-row: 1 / 2;}
     footer > nav > div.izbornik {grid-column: 1 / 4; grid-row: 2 / 3;}
-    footer > div.info {grid-template-rows: 150px 100px 50px;}
+    footer > div.info {grid-template-rows: 150px 150px 50px;}
     footer > div.info > a.logo {grid-column: 1 / 6; grid-row: 1 / 2; justify-self: center;}
     footer > div.info > ul {grid-column: 1 / 6; grid-row: 2 / 3; justify-content: center;}
     footer > div.info > ul.adresa {grid-column: 1 / 3; grid-row: 2 / 3;}
-    footer > div.info > ul.kontakt {grid-column: 4 / 6; grid-row: 2 / 3;}
+    footer > div.info > ul.kontakt {grid-column: 3 / 6; grid-row: 2 / 3;}
     footer > div.info > span {grid-column: 1 / 6; grid-row: 3 / 4; justify-self: center;}
 
 }
@@ -493,7 +493,7 @@ footer > div.info > span {grid-column: 3 / 5; grid-row: 2 / 3; justify-self: end
     footer > nav > div.izbornik {grid-column: 2 / 3; grid-row: 2 / 3;}
     footer > div.info {grid-template-rows: 150px 200px 50px;}
     footer > div.info > ul {grid-template-columns: 1fr; grid-template-rows: 1fr 1fr; justify-items: center;}
-    footer > div.info > ul.adresa {grid-column: 1 / 6; grid-row: 2 / 3; justify-self: left; align-self: start; padding-left: 50px;}
+    footer > div.info > ul.adresa {grid-column: 1 / 6; grid-row: 2 / 3; justify-self: left; align-self: start; padding-left: 50px; border-right: 0;}
     footer > div.info > ul.kontakt {grid-column: 1 / 6; grid-row: 2 / 3; justify-self: left; align-self: end; padding-left: 50px;}
     footer > div.info > ul > li {height: auto;}
     footer > div.info > span {font-size: 0.7rem;}

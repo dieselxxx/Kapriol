@@ -20,7 +20,7 @@ footer {display: grid; grid-area: podnozje; grid-template-columns: 1fr repeat(5,
 
     body {grid-template-rows: 430px auto auto;}
     header {grid-template-rows: 50px 150px 80px 100px 50px;}
-    footer {grid-template-rows: 300px 300px;}
+    footer {grid-template-rows: 300px 350px;}
 
 }
 
