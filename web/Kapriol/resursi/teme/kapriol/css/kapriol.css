@@ -463,6 +463,7 @@ footer > div.info > span {grid-column: 3 / 5; grid-row: 2 / 3; justify-self: cen
     main > div#sadrzaj.rezultat > div.meni {grid-column: 1 / 5; grid-row: 2 / 3; grid-template-columns: 1fr; grid-template-rows: max-content;}
     main > div#sadrzaj.rezultat > div.meni > div.velicine {grid-column: 2 / 3; grid-row: 1 / 2;}
     main > div#sadrzaj.rezultat > div.artikli {grid-column: 1 / 5; grid-row: 3 / 4; grid-template-columns: 1fr 1fr;}
+    main > div#sadrzaj.kosarica > div.artikli > form.artikl {grid-template-columns: 105px auto auto;}
     main > div#sadrzaj.rezultat > nav.navigacija {grid-column: 1 / 5; grid-row: 4 / 5;}
     main > div#sadrzaj.artikl > form.artikl > ul.slike > li {padding: 5px; height: 80px; width: 120px;}
     main > div#sadrzaj.narudzba > form.podatci {grid-template-columns: 1fr;}
