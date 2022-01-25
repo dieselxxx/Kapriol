@@ -247,6 +247,7 @@ final class Kosarica_Kontroler extends Master_Kontroler {
             'zaglavlje_adresa' => Domena::adresa(),
             'podnozje_dostava' => Domena::podnozjeDostava(),
             'vi_ste_ovdje' => '<a href="/">Kapriol Web Trgovina</a> \\\\ Narudžba',
+            'domena_oibpdv' => Domena::OIBPDV(),
             'narudzba_greska' => $narudzba_greska,
             'forma_ime' => $_POST['ime'] ?? '',
             'forma_prezime' => $_POST['prezime'] ?? '',

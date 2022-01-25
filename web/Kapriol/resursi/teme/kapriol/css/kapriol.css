@@ -501,6 +501,7 @@ footer > div.info > span {grid-column: 3 / 5; grid-row: 2 / 3; justify-self: cen
     main > div#sadrzaj.artikl > form.artikl > span.kosarica > label.unos {grid-column: 2 / 3;}
     main > div#sadrzaj.artikl > form.artikl > span.kosarica > button.plus {grid-column: 3 / 4;}
     main > div#sadrzaj.artikl > form.artikl > span.kosarica > button.gumb.ikona {grid-column: 4 / 5;}
+    main > div#sadrzaj.kosarica > div.artikli > form.artikl > div.kosarica > button.ikona > span {display: none;}
 
     footer > nav {grid-template-columns: 10px 1fr;}
     footer > nav > div.dostava {grid-column: 2 / 3; grid-row: 1 / 2;}

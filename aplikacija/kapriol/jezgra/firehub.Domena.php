@@ -145,4 +145,16 @@ final class Domena {
 
     }
 
+    public static function OIBPDV ():string {
+
+        if (self::Hr()) {
+
+            return 'OIB';
+
+        }
+
+        return 'PDV';
+
+    }
+
 }
