@@ -119,11 +119,11 @@ final class Rezultat_Kontroler extends Master_Kontroler {
         ';
 
         // veličine
-        $velicine = $this->model(Artikli_Model::class)->velicine($trenutna_kategorija['ID'], $trazi);
-        $velicine_html = '';
-        foreach ($velicine as $velicina_artikla) {
-            $velicine_html .= '<li><a class="gumb mali" href="/rezultat/'.$trenutna_kategorija['Link'].'/'.$velicina_artikla['Velicina'].'/'.$trazi.'/'.$poredaj.'/'.$poredaj_redoslijed.'">'.$velicina_artikla['Velicina'].'</a></li>';
-        }
+        //$velicine = $this->model(Artikli_Model::class)->velicine($trenutna_kategorija['ID'], $trazi);
+        //$velicine_html = '';
+        //foreach ($velicine as $velicina_artikla) {
+            //$velicine_html .= '<li><a class="gumb mali" href="/rezultat/'.$trenutna_kategorija['Link'].'/'.$velicina_artikla['Velicina'].'/'.$trazi.'/'.$poredaj.'/'.$poredaj_redoslijed.'">'.$velicina_artikla['Velicina'].'</a></li>';
+        //}
 
         return sadrzaj()->datoteka('rezultat.html')->podatci([
             'predlozak_naslov' => $trenutna_kategorija['Kategorija'],
@@ -137,7 +137,7 @@ final class Rezultat_Kontroler extends Master_Kontroler {
             'artikli' => $artikli_html,
             'navigacija' => $navigacija_html,
             "poredaj_izbornik" => $poredaj_izbornik,
-            "rezultat_velicine" => $velicine_html
+            //"rezultat_velicine" => $velicine_html
         ]);
 
     }
