@@ -18,6 +18,8 @@ use FireHub\Jezgra\Sadrzaj\Sadrzaj;
 use FireHub\Aplikacija\Kapriol\Model\Kategorije_Model;
 use FireHub\Aplikacija\Kapriol\Model\Artikl_Model;
 use FireHub\Aplikacija\Kapriol\Jezgra\Domena;
+use FireHub\Aplikacija\Kapriol\Jezgra\Validacija;
+use FireHub\Aplikacija\Kapriol\Model\Kosarica_Model;
 use FireHub\Jezgra\Kontejner\Greske\Kontejner_Greska;
 use FireHub\Jezgra\Kontroler\Greske\Kontroler_Greska;
 
@@ -92,8 +94,6 @@ final class Artikl_Kontroler extends Master_Kontroler {
 
             if ((int)$zaliha['StanjeSkladisteTF'] === 1) {
 
-                //$artikl_zaliha_html .= '<li><span class="gumb dostupno">'.$zaliha['Velicina'].'</span></li>';
-
                 $artikl_zaliha_html .= '
                 <li>
                     <div class="radio">
@@ -113,7 +113,31 @@ final class Artikl_Kontroler extends Master_Kontroler {
                         <label for="'.$zaliha['Velicina'].'">'.$zaliha['Velicina'].'</label>
                     </div>
                 </li>';
-                //$artikl_zaliha_html .= '<li><span class="gumb nedostupno">'.$zaliha['Velicina'].'</span></li>';
+
+            }
+
+        }
+
+        $kosarica_greska = '';
+        if (isset($_POST['kosarica_dodaj'])) {
+
+            try {
+
+                if (isset($_POST['velicina'])) {
+
+                    $velicina =  Validacija::String('Veličina', $_POST['velicina'], 1, 10);
+
+                    $this->model(Kosarica_Model::class)->dodaj($velicina, (int)$_POST['vrijednost'] ?? 0);
+
+                } else {
+
+                    throw new Kontroler_Greska('Molimo odaberite veličinu artikla!');
+
+                }
+
+            } catch (\Throwable $greska) {
+
+                $kosarica_greska = $greska->getMessage();
 
             }
 
@@ -134,7 +158,8 @@ final class Artikl_Kontroler extends Master_Kontroler {
             'artikl_cijena' => $artikl_cijena,
             'artikl_zaliha' => $artikl_zaliha_html,
             'artikl_kosarica_velicine' => $artikl_kosarica_velicine,
-            'artikl_opis' => $trenutni_artikl['Opis']
+            'artikl_opis' => $trenutni_artikl['Opis'],
+            'kosarica_greska' => $kosarica_greska
         ]);
 
     }
