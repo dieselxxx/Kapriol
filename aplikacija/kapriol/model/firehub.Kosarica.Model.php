@@ -266,8 +266,6 @@ final class Kosarica_Model extends Master_Model {
         $telefon = Validacija::Telefon(_('Vaš broj telefona'), $telefon, 9, 15);
         $adresa = Validacija::String(_('Vaša adresa'), $adresa, 5, 300);
         $zip = Validacija::Broj(_('Vaš poštanski broj'), $zip, 5, 5);
-        if(!empty($tvrtka)){$tvrtka = Validacija::Prilagodjen('/^[a-zšđčćžA-ZŠĐČĆŽ0-9-. ]+$/i', _('Vaša tvrtka'), $tvrtka, 4, 100);} else {$tvrtka = '';}
-        if(!empty($oib)){$oib = Validacija::Broj(_('Vaš OIB \ PDV \ ID tvrtke'), $oib, 9, 20);} else {$oib = '';}
         $napomena = Validacija::String("Vaša napomena", $napomena, 0, 1000);
 
         // pošalji email
