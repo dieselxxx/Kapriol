@@ -111,7 +111,7 @@ final class Kosarica_Kontroler extends Master_Kontroler {
                         <li>Ukupna količina: '.$total_kolicina.'</li>
                         <li class="ukupno">Ukupna cijena: <span>'.number_format((float)$total_cijena, 2, ',', '.').' '.Domena::valuta().'</span></li>
                     </ul>
-                    <a data-boja="boja" class="gumb ikona" href="/kosarica/narudzba">
+                    <a data-boja="boja" class="gumb ikona" href="/kosarica/odabir">
                         <svg><use xlink:href="/kapriol/resursi/grafika/simboli/simbol.ikone.svg#strelica_desno_duplo2"></use></svg>
                         <span>Nastavi</span>
                     </a>
@@ -195,11 +195,92 @@ final class Kosarica_Kontroler extends Master_Kontroler {
             'forma_telefon' => $_POST['telefon'] ?? '',
             'forma_adresa' => $_POST['adresa'] ?? '',
             'forma_zip' => $_POST['zip'] ?? '',
+            'forma_napomena' => $_POST['napomena'] ?? ''
+        ]);
+
+    }
+
+    /**
+     * ### Narudzba B2B
+     * @since 0.1.2.pre-alpha.M1
+     *
+     * @throws Kontejner_Greska Ukoliko se ne može spremiti instanca Log-a.
+     * @throws Kontroler_Greska Ukoliko objekt nije validan model.
+     *
+     * @return Sadrzaj Sadržaj stranice.
+     */
+    public function narudzbab2b ():Sadrzaj {
+
+        if ($this->kosaricaArtikli() === '0') {
+
+            header("Location: ".Server::URL());
+
+        }
+
+        $kategorije = $this->model(Kategorije_Model::class);
+
+        $kosarica_model = $this->model(Kosarica_Model::class);
+
+        $narudzba_greska = '';
+        if (isset($_POST['naruci'])) {
+
+            try {
+
+                $this->model(Kosarica_Model::class)->narucib2b();
+
+                header("Location: ".Server::URL()."/kosarica/ispravno");
+
+            } catch (\Throwable $greska) {
+
+                $narudzba_greska = $greska->getMessage();
+
+            }
+
+        }
+
+        return sadrzaj()->datoteka('narudzba_b2b.html')->podatci([
+            'predlozak_naslov' => 'Narudžba',
+            'glavni_meni' => $kategorije->glavniMeni(),
+            'glavni_meni_hamburger' => $kategorije->glavniMeniHamburger(),
+            'zaglavlje_kosarica_artikli' => $this->kosaricaArtikli(),
+            'zaglavlje_tel' => Domena::telefon(),
+            'zaglavlje_adresa' => Domena::adresa(),
+            'podnozje_dostava' => Domena::podnozjeDostava(),
+            'vi_ste_ovdje' => '<a href="/">Kapriol Web Trgovina</a> \\\\ Narudžba',
+            'narudzba_greska' => $narudzba_greska,
+            'forma_ime' => $_POST['ime'] ?? '',
+            'forma_prezime' => $_POST['prezime'] ?? '',
+            'forma_email' => $_POST['email'] ?? '',
+            'forma_grad' => $_POST['grad'] ?? '',
+            'forma_telefon' => $_POST['telefon'] ?? '',
+            'forma_adresa' => $_POST['adresa'] ?? '',
+            'forma_zip' => $_POST['zip'] ?? '',
             'forma_tvrtka' => $_POST['tvrtka'] ?? '',
             'forma_oib' => $_POST['oib'] ?? '',
-            'forma_napomena' => $_POST['napomena'] ?? '',
-            'random_broj_1' => ''.$kosarica_model::RandomBroj1().'',
-            'random_broj_2' => ''.$kosarica_model::RandomBroj2().''
+            'forma_napomena' => $_POST['napomena'] ?? ''
+        ]);
+
+    }
+
+    /**
+     * ### Odabir vrste narudžbe
+     * @since 0.1.2.pre-alpha.M1
+     *
+     * @return Sadrzaj Sadržaj stranice.
+     */
+    public function odabir ():Sadrzaj {
+
+        $kategorije = $this->model(Kategorije_Model::class);
+
+        return sadrzaj()->datoteka('narudzba_vrsta.html')->podatci([
+            'predlozak_naslov' => 'Vrsta narudžbe',
+            'glavni_meni' => $kategorije->glavniMeni(),
+            'glavni_meni_hamburger' => $kategorije->glavniMeniHamburger(),
+            'zaglavlje_kosarica_artikli' => $this->kosaricaArtikli(),
+            'zaglavlje_tel' => Domena::telefon(),
+            'zaglavlje_adresa' => Domena::adresa(),
+            'podnozje_dostava' => Domena::podnozjeDostava(),
+            'vi_ste_ovdje' => '<a href="/">Kapriol Web Trgovina</a> \\\\ Vrsta narudžbe',
         ]);
 
     }
