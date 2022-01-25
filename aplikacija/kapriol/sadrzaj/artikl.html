@@ -3,25 +3,17 @@
     <div class="vi_ste_ovdje">{{vi_ste_ovdje}}</div>
 
     <form class="artikl" method="post" enctype="multipart/form-data" action="">
+        <h2 class="naziv">{{artikl_naziv}}</h2>
         <div class="slika">
             <img src="/slika/velikaslika/{{artikl_slika}}" alt="" loading="lazy"/>
         </div>
         <ul class="slike">{{artikl_slike}}</ul>
-        <h2 class="naziv">{{artikl_naziv}}</h2>
         <span class="cijena">{{artikl_cijena}}</span>
         <ul class="zaliha">
-            <h3>Dostupne veličine :</h3>
+            <h3>Odaberite veličinu :</h3>
             {{artikl_zaliha}}
         </ul>
         <span class="kosarica">
-            <label data-boja="boja" class="select">
-                <select name="velicina" required>
-                    {{artikl_kosarica_velicine}}
-                </select>
-                <span class="select-odabrano"></span>
-                <span class="select-granica"></span>
-                <label class="select-odaberite">Odaberite veličinu</label>
-            </label>
             <button type="button" class="gumb minus" onclick="ArtikalPlusMinus(this, $vrsta = 'minus');">-</button>
             <label data-boja="boja" class="unos">
                 <input type="number" name="vrijednost" data-pakiranje="1" data-maxpakiranje="1000" value="0" min="0" max="100" step="1" autocomplete="off" pattern="0-9">

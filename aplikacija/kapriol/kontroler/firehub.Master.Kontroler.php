@@ -14,6 +14,7 @@
 
 namespace FireHub\Aplikacija\Kapriol\Kontroler;
 
+use FireHub\Aplikacija\Kapriol\Jezgra\Validacija;
 use FireHub\Jezgra\Kontroler\Kontroler;
 use FireHub\Aplikacija\Kapriol\Model\Kosarica_Model;
 use FireHub\Jezgra\Kontejner\Greske\Kontejner_Greska;
@@ -38,19 +39,37 @@ abstract class Master_Kontroler extends Kontroler {
 
         if (isset($_POST['kosarica_dodaj'])) {
 
-            $this->model(Kosarica_Model::class)->dodaj($_POST['velicina'] ?? 0, (int)$_POST['vrijednost'] ?? 0);
+            if (isset($_POST['velicina'])) {
+
+                $velicina =  Validacija::String('Veličina', $_POST['velicina'], 1, 10);
+
+                $this->model(Kosarica_Model::class)->dodaj($velicina, (int)$_POST['vrijednost'] ?? 0);
+
+            }
 
         }
 
         if (isset($_POST['kosarica_izmijeni'])) {
 
-            $this->model(Kosarica_Model::class)->izmijeni($_POST['velicina'] ?? 0, (int)$_POST['vrijednost'] ?? 0);
+            if (isset($_POST['velicina'])) {
+
+                $velicina =  Validacija::String('Veličina', $_POST['velicina'], 1, 10);
+
+                $this->model(Kosarica_Model::class)->izmijeni($velicina, (int)$_POST['vrijednost'] ?? 0);
+
+            }
 
         }
 
         if (isset($_POST['kosarica_izbrisi'])) {
 
-            $this->model(Kosarica_Model::class)->izbrisi($_POST['velicina'] ?? 0);
+            if (isset($_POST['velicina'])) {
+
+                $velicina =  Validacija::String('Veličina', $_POST['velicina'], 1, 10);
+
+                $this->model(Kosarica_Model::class)->izbrisi($velicina);
+
+            }
 
         }
 

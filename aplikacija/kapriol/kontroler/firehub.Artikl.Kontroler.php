@@ -92,13 +92,28 @@ final class Artikl_Kontroler extends Master_Kontroler {
 
             if ((int)$zaliha['StanjeSkladisteTF'] === 1) {
 
-                $artikl_zaliha_html .= '<li><span class="gumb dostupno">'.$zaliha['Velicina'].'</span></li>';
+                //$artikl_zaliha_html .= '<li><span class="gumb dostupno">'.$zaliha['Velicina'].'</span></li>';
+
+                $artikl_zaliha_html .= '
+                <li>
+                    <div class="radio">
+                        <input id="'.$zaliha['Velicina'].'" type="radio" name="velicina" value="'.$zaliha['artiklikarakteristikeSifra'].'">
+                        <label for="'.$zaliha['Velicina'].'">'.$zaliha['Velicina'].'</label>
+                    </div>
+                </li>';
 
                 $artikl_kosarica_velicine .= '<option value="'.$zaliha['artiklikarakteristikeSifra'].'">'.$zaliha['Velicina'].'</option>';
 
             } else {
 
-                $artikl_zaliha_html .= '<li><span class="gumb nedostupno">'.$zaliha['Velicina'].'</span></li>';
+                $artikl_zaliha_html .= '
+                <li>
+                    <div class="radio">
+                        <input id="'.$zaliha['Velicina'].'" type="radio" name="velicina" value="'.$zaliha['artiklikarakteristikeSifra'].'" disabled>
+                        <label for="'.$zaliha['Velicina'].'">'.$zaliha['Velicina'].'</label>
+                    </div>
+                </li>';
+                //$artikl_zaliha_html .= '<li><span class="gumb nedostupno">'.$zaliha['Velicina'].'</span></li>';
 
             }
 
