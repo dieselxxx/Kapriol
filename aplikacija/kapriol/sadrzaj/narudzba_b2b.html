@@ -109,6 +109,38 @@
             </table>
         </section>
 
+        <section class="tvrtka">
+            <h3>Vi predstavljate tvrtku ?</h3>
+            <table>
+                <tr>
+                    <td>
+                        <label data-boja="boja" class="unos">
+                            <input type="text" name="tvrtka" value="{{forma_tvrtka}}" maxlength="100" autocomplete="off" placeholder="Upišite naziv vaše tvrtke" pattern="[A-ZŠĐČĆŽa-zšđčćž0-9\-. ]{0,100}">
+                            <span class="naslov">
+                                <span>Tvrtka</span>
+                            </span>
+                            <span class="granica"></span>
+                            <svg><use xlink:href="/kapriol/resursi/grafika/simboli/simbol.ikone.svg#tvrtka"></use></svg>
+                            <span class="upozorenje"></span>
+                        </label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label data-boja="boja" class="unos">
+                            <input type="number" name="oib" value="{{forma_oib}}" min="00001" step="1" autocomplete="off" placeholder="Upišite OIB/PDV broj ili ID broj tvrtke">
+                            <span class="naslov">
+                                <span>OIB / PDV / ID broj tvrtke</span>
+                            </span>
+                            <span class="granica"></span>
+                            <svg><use xlink:href="/kapriol/resursi/grafika/simboli/simbol.ikone.svg#oib"></use></svg>
+                            <span class="upozorenje"></span>
+                        </label>
+                    </td>
+                </tr>
+            </table>
+        </section>
+
         <section class="napomena">
             <table>
                 <tr>
