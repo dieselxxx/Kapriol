@@ -51,9 +51,12 @@ final class Naslovna_Kontroler extends Master_Kontroler {
             // cijene
             if ($artikal['CijenaAkcija'] > 0) {
 
+                $artikal_popust = -($artikal['Cijena'] - $artikal['CijenaAkcija']) / ($artikal['Cijena']) * 100;
+
                 $artikl_cijena = '
                 <span class="prekrizi">'.number_format((float)$artikal['Cijena'], 2, ',', '.').' '.Domena::valuta().'</span>
                 <h2 class="akcija">'.number_format((float)$artikal['CijenaAkcija'], 2, ',', '.').' '.Domena::valuta().'</h2>
+                <span class="popust">'.number_format($artikal_popust, 2, ',').' %</span>
             ';
 
             } else {

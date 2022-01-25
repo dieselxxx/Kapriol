@@ -265,7 +265,7 @@ main > div#sadrzaj.naslovna > div.artikli > a.artikal > span.cijena > h2 {color:
 main > div#sadrzaj.naslovna > div.artikli > a.artikal > span.cijena > h2.akcija {margin: 0; color: var(--boja-kapriol);}
 main > div#sadrzaj.naslovna > div.artikli > a.artikal > span.cijena > span.prekrizi {position: relative; font-size: 0.9rem; font-weight: 500; color: var(--boja-tekst-tamnije);}
 main > div#sadrzaj.naslovna > div.artikli > a.artikal > span.cijena > span.prekrizi:before {content: ""; position: absolute; top: 50%; left: 0; right: 0; border-top: 2px solid; border-color: var(--boja-kapriol); -webkit-transform:rotate(-5deg); -moz-transform:rotate(-5deg); -ms-transform:rotate(-5deg); -o-transform:rotate(-5deg); transform:rotate(-5deg);}
-main > div#sadrzaj.naslovna > div.artikli > a.artikal > span.cijena > span.popust {position: absolute; top: 0;}
+main > div#sadrzaj.naslovna > div.artikli > a.artikal > span.cijena > span.popust {position: absolute; background-color: var(--boja-pozadina_tamna); top: 5px; left: 5px; padding: 5px; font-size: 0.9rem; font-weight: 500;}
 main > div#sadrzaj.rezultat > div.vi_ste_ovdje a:hover {text-decoration: underline;}
 main > div#sadrzaj.rezultat > div.meni {grid-column: 1 / 2; grid-row: 2 / 6; display: grid; grid-template-columns: 100%; grid-template-rows: 70px max-content; grid-gap: 0 30px; justify-content: start;}
 main > div#sadrzaj.rezultat > div.meni > form[data-oznaka="rezultat_poredak"] {grid-row: 1 / 2;}
@@ -278,14 +278,13 @@ main > div#sadrzaj.rezultat > div.artikli {grid-column: 2 / 5; grid-row: 2 / 3; 
 main > div#sadrzaj.rezultat > div.artikli > a.artikal {position: relative; display: grid; grid-template-columns: minmax(150px, 1fr); grid-template-rows: 280px 40px 40px; grid-gap: 10px; padding: 10px; text-align: center; border: 1px solid var(--boja-granica); transition: all .3s ease; transition-property: transform, border-color; box-shadow: 0 3px 39px 0 rgba(0,0,0,0.04); -webkit-box-shadow: 0 3px 39px 0 rgba(0,0,0,0.04); -moz-box-shadow: 0 3px 39px 0 rgba(0,0,0,0.04);}
 main > div#sadrzaj.rezultat > div.artikli > a.artikal:hover {border: 1px solid var(--boja-kapriol);}
 main > div#sadrzaj.rezultat > div.artikli > a.artikal > * {justify-self: center; align-self: center;}
-main > div#sadrzaj.rezultat > div.artikli > a.artikal > span.popust {}
 main > div#sadrzaj.rezultat > div.artikli > a.artikal > img {object-fit: contain; height: 100%; width: 100%;}
 main > div#sadrzaj.rezultat > div.artikli > a.artikal > span.naslov {font-weight: 500; color: var(--boja-tekst-tamnije);}
 main > div#sadrzaj.rezultat > div.artikli > a.artikal > span.cijena > h2 {color: var(--boja-tekst-tamnije);}
 main > div#sadrzaj.rezultat > div.artikli > a.artikal > span.cijena > h2.akcija {margin: 0; color: var(--boja-kapriol);}
 main > div#sadrzaj.rezultat > div.artikli > a.artikal > span.cijena > span.prekrizi {position: relative; font-size: 0.9rem; font-weight: 500; color: var(--boja-tekst-tamnije);}
 main > div#sadrzaj.rezultat > div.artikli > a.artikal > span.cijena > span.prekrizi:before {content: ""; position: absolute; top: 50%; left: 0; right: 0; border-top: 2px solid; border-color: var(--boja-kapriol); -webkit-transform:rotate(-5deg); -moz-transform:rotate(-5deg); -ms-transform:rotate(-5deg); -o-transform:rotate(-5deg); transform:rotate(-5deg);}
-main > div#sadrzaj.rezultat > div.artikli > a.artikal > span.cijena > span.popust {position: absolute; top: 0;}
+main > div#sadrzaj.rezultat > div.artikli > a.artikal > span.cijena > span.popust {position: absolute; background-color: var(--boja-pozadina_tamna); top: 5px; left: 5px; padding: 5px; font-size: 0.9rem; font-weight: 500;}
 main > div#sadrzaj.rezultat > nav.navigacija {grid-column: 2 / 5; grid-row: 3 / 4; justify-self: center; align-self: center;}
 main > div#sadrzaj.rezultat > nav.navigacija > ul {display: flex; flex-flow: wrap; width: auto;}
 main > div#sadrzaj.rezultat > nav.navigacija > ul > li {display: inline-grid; height: auto;}
@@ -302,7 +301,7 @@ main > div#sadrzaj.artikl > form.artikl > span.cijena {grid-column: 2 / 3; grid-
 main > div#sadrzaj.artikl > form.artikl > span.cijena > h2.akcija {color: var(--boja-kapriol);}
 main > div#sadrzaj.artikl > form.artikl > span.cijena > span.prekrizi {position: relative; font-size: 0.9rem; font-weight: 500;}
 main > div#sadrzaj.artikl > form.artikl > span.cijena > span.prekrizi:before {content: ""; position: absolute; top: 50%; left: 0; right: 0; border-top: 2px solid; border-color: var(--boja-kapriol); -webkit-transform:rotate(-5deg); -moz-transform:rotate(-5deg); -ms-transform:rotate(-5deg); -o-transform:rotate(-5deg); transform:rotate(-5deg);}
-main > div#sadrzaj.artikl > form.artikl > span.cijena > span.popust {position: absolute; top: 0;}
+main > div#sadrzaj.artikl > form.artikl > span.cijena > span.popust {position: absolute; background-color: var(--boja-pozadina_tamna); top: 5px; left: 5px; padding: 5px; font-size: 0.9rem; font-weight: 500;}
 main > div#sadrzaj.artikl > form.artikl > ul.zaliha {grid-column: 2 / 3; grid-row: 3 / 4;}
 main > div#sadrzaj.artikl > form.artikl > ul.zaliha > li {float: left;}
 main > div#sadrzaj.artikl > form.artikl > ul.zaliha > li > span {margin: 3px; padding: 5px 15px; height: auto; cursor: default;}
@@ -332,7 +331,7 @@ main > div#sadrzaj.kosarica > div.artikli > form.artikl > span.cijena {grid-colu
 main > div#sadrzaj.kosarica > div.artikli > form.artikl > span.cijena > span.akcija {color: var(--boja-kapriol);}
 main > div#sadrzaj.kosarica > div.artikli > form.artikl > span.cijena > span.prekrizi {position: relative;}
 main > div#sadrzaj.kosarica > div.artikli > form.artikl > span.cijena > span.prekrizi:before {content: ""; position: absolute; top: 50%; left: 0; right: 0; border-top: 2px solid; border-color: var(--boja-kapriol); -webkit-transform:rotate(-5deg); -moz-transform:rotate(-5deg); -ms-transform:rotate(-5deg); -o-transform:rotate(-5deg); transform:rotate(-5deg);}
-main > div#sadrzaj.kosarica > div.artikli > form.artikl > span.cijena > span.popust {position: absolute; top: 0;}
+main > div#sadrzaj.kosarica > div.artikli > form.artikl > span.cijena > span.popust {position: absolute; background-color: var(--boja-pozadina_tamna); top: 5px; left: 5px; padding: 5px; font-size: 0.9rem; font-weight: 500;}
 main > div#sadrzaj.kosarica > div.artikli > form.artikl > div.kosarica {grid-column: 3 / 5; grid-row: 3 / 5; justify-self: end;}
 main > div#sadrzaj.kosarica > div.artikli > form.artikl > div.kosarica > * {float: left; margin: 5px;}
 main > div#sadrzaj.kosarica > div.artikli > form.artikl > div.kosarica > label.unos {grid-template-columns: auto;}
