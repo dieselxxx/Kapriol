@@ -20,6 +20,12 @@ footer {display: grid; grid-area: podnozje; grid-template-columns: 1fr repeat(5,
 
     body {grid-template-rows: 430px auto auto;}
     header {grid-template-rows: 50px 150px 80px 100px 50px;}
-    footer {grid-template-rows: 600px 200px;}
+    footer {grid-template-rows: 600px 300px;}
+
+}
+
+@media only screen and (max-width: 600px) {
+
+    footer {grid-template-rows: 600px 400px;}
 
 }
