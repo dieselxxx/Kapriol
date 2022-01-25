@@ -100,6 +100,8 @@ final class Kosarica_Model extends Master_Model {
 
             $kosarica = $this->sesija->procitaj('kosarica');
 
+            // ukupne cijene i količine
+            $total_cijena = 0;
             foreach ($kosarica as $stavka => $vrijednost) {
 
                 $kljuc = array_search($stavka, array_column($rezultat, 'Sifra'));
@@ -113,6 +115,29 @@ final class Kosarica_Model extends Master_Model {
 
                 // kolicina
                 $rezultat[$kljuc]['Kolicina'] = $vrijednost;
+
+                // ukupno
+                $total_cijena += $rezultat[$kljuc]['CijenaUkupno'];
+
+            }
+
+            // dostava
+            if ($total_cijena <= Domena::dostavaLimit()) {
+
+                $dostava = [
+                    'ID' => '0',
+                    'Naziv' => 'Dostava',
+                    'Link' => '/',
+                    'Cijena' => ''.Domena::dostavaIznos().'',
+                    'CijenaAkcija' => '0',
+                    'Slika' => 'dostava.jpg',
+                    'Sifra' => '0',
+                    'Velicina' => '0',
+                    'CijenaUkupno' => Domena::dostavaIznos(),
+                    'Kolicina' => 1
+                ];
+
+                array_push($rezultat, $dostava);
 
             }
 

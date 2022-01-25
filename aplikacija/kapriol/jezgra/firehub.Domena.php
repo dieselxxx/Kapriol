@@ -157,4 +157,28 @@ final class Domena {
 
     }
 
+    public static function dostavaLimit ():int {
+
+        if (self::Hr()) {
+
+            return 400;
+
+        }
+
+        return 79;
+
+    }
+
+    public static function dostavaIznos ():int {
+
+        if (self::Hr()) {
+
+            return 25;
+
+        }
+
+        return 5;
+
+    }
+
 }

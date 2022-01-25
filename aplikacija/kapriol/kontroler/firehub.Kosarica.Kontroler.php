@@ -71,8 +71,11 @@ final class Kosarica_Kontroler extends Master_Kontroler {
 
                 }
 
-                // artikli
-                $artikli_html .= '
+                // ako nije dostava
+                if ($artikal['ID'] !== '0') {
+
+                    // artikli
+                    $artikli_html .= '
                     <form class="artikl" method="post" enctype="multipart/form-data" action="">
                         <img src="/slika/malaslika/'.$artikal['Slika'].'" alt="" loading="lazy"/>
                         <a class="naslov" href="/artikl/'.$artikal['Link'].'">'.$artikal['Naziv'].'</a>
@@ -101,6 +104,20 @@ final class Kosarica_Kontroler extends Master_Kontroler {
                         </div>
                     </form>
                 ';
+
+                } else {
+
+                    // artikli
+                    $artikli_html .= '
+                    <form class="artikl" method="post" enctype="multipart/form-data" action="">
+                        <img src="/slika/malaslika/'.$artikal['Slika'].'" alt="" loading="lazy"/>
+                        <a class="naslov" href="/artikl/'.$artikal['Link'].'">'.$artikal['Naziv'].'</a>
+                        <h3 class="ukupno">Ukupno: '.number_format((float)$artikal['CijenaUkupno'], 2, ',', '.').' '.Domena::valuta().'</h3>
+                    </form>
+                ';
+
+
+                }
 
                 // ukupno
                 $total_kolicina += $artikal['Kolicina'];
