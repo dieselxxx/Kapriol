@@ -82,6 +82,7 @@ final class Rezultat_Kontroler extends Master_Kontroler {
                 $artikl_cijena = '
                 <span class="prekrizi">'.number_format((float)$artikal['Cijena'], 2, ',', '.').' '.Domena::valuta().'</span>
                 <h2 class="akcija">'.number_format((float)$artikal['CijenaAkcija'], 2, ',', '.').' '.Domena::valuta().'</h2>
+                <span class="popust">x</span>
             ';
 
             } else {

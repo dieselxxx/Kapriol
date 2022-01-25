@@ -77,8 +77,8 @@ final class Artikli_Model extends Master_Model {
             $artikli = $this->bazaPodataka->tabela('artikliview')
                 ->sirovi("
                     SELECT
-                           artikliview.ID, Naziv, Link, Opis, ".Domena::sqlCijena()." AS Cijena, ".Domena::sqlCijenaAkcija()." AS CijenaAkcija, Slika,
-                           GROUP_CONCAT(DISTINCT artiklikarakteristike.Velicina) AS Velicine
+                       artikliview.ID, Naziv, Link, Opis, ".Domena::sqlCijena()." AS Cijena, ".Domena::sqlCijenaAkcija()." AS CijenaAkcija, Slika,
+                       GROUP_CONCAT(DISTINCT artiklikarakteristike.Velicina) AS Velicine
                     FROM artikliview
                     LEFT JOIN slikeartikal ON ClanakID = artikliview.ID
                     LEFT JOIN artiklikarakteristike ON artiklikarakteristike.ArtikalID = artikliview.ID
@@ -89,15 +89,13 @@ final class Artikli_Model extends Master_Model {
                 ")
                 ->napravi();
 
-            return $artikli->niz() ?: [];
-
         } else if ($kategorija === 'sve') {
 
             $artikli = $this->bazaPodataka->tabela('artikliview')
                 ->sirovi("
                     SELECT
-                           artikliview.ID, Naziv, Link, Opis, ".Domena::sqlCijena()." AS Cijena, ".Domena::sqlCijenaAkcija()." AS CijenaAkcija, Slika,
-                           GROUP_CONCAT(DISTINCT artiklikarakteristike.Velicina) AS Velicine
+                       artikliview.ID, Naziv, Link, Opis, ".Domena::sqlCijena()." AS Cijena, ".Domena::sqlCijenaAkcija()." AS CijenaAkcija, Slika,
+                       GROUP_CONCAT(DISTINCT artiklikarakteristike.Velicina) AS Velicine
                     FROM artikliview
                     LEFT JOIN slikeartikal ON ClanakID = artikliview.ID
                     LEFT JOIN artiklikarakteristike ON artiklikarakteristike.ArtikalID = artikliview.ID
@@ -110,19 +108,17 @@ final class Artikli_Model extends Master_Model {
                 ")
                 ->napravi();
 
-            return $artikli->niz() ?: [];
-
         } else if ($kategorija === 'akcija') {
 
             $artikli = $this->bazaPodataka->tabela('artikliview')
                 ->sirovi("
                     SELECT
-                           artikliview.ID, Naziv, Link, Opis, ".Domena::sqlCijena()." AS Cijena, ".Domena::sqlCijenaAkcija()." AS CijenaAkcija, Slika,
-                           GROUP_CONCAT(DISTINCT artiklikarakteristike.Velicina) AS Velicine
+                       artikliview.ID, Naziv, Link, Opis, ".Domena::sqlCijena()." AS Cijena, ".Domena::sqlCijenaAkcija()." AS CijenaAkcija, Slika,
+                       GROUP_CONCAT(DISTINCT artiklikarakteristike.Velicina) AS Velicine
                     FROM artikliview
                     LEFT JOIN slikeartikal ON ClanakID = artikliview.ID
                     LEFT JOIN artiklikarakteristike ON artiklikarakteristike.ArtikalID = artikliview.ID
-                    WHERE Aktivan = 1 AND ".Domena::sqlTablica()." = 1 AND Zadana = 1 AND CijenaAkcija > 0
+                    WHERE Aktivan = 1 AND ".Domena::sqlTablica()." = 1 AND Zadana = 1 AND ".Domena::sqlCijenaAkcija()." > 0
                     {$this->trazi($trazi)}
                     GROUP BY artikliview.ID
                     {$this->velicineUpit($velicina)}
@@ -131,12 +127,10 @@ final class Artikli_Model extends Master_Model {
                 ")
                 ->napravi();
 
-            return $artikli->niz() ?: [];
+        } else {
 
-        }
-
-        $artikli = $this->bazaPodataka->tabela('artikliview')
-            ->sirovi("
+            $artikli = $this->bazaPodataka->tabela('artikliview')
+                ->sirovi("
                 SELECT
                     artikliview.ID, Naziv, Link, Opis, ".Domena::sqlCijena()." AS Cijena, ".Domena::sqlCijenaAkcija()." AS CijenaAkcija, Slika,
                     GROUP_CONCAT(DISTINCT artiklikarakteristike.Velicina) AS Velicine
@@ -151,6 +145,8 @@ final class Artikli_Model extends Master_Model {
                 LIMIT $pomak, $limit
             ")
             ->napravi();
+
+        }
 
         return $artikli->niz() ?: [];
 
