@@ -116,6 +116,26 @@ final class Kategorije_Model extends Master_Model {
 
     }
 
+    public function kategorijeNaslovna ():string {
+
+        // artikli
+        $kategorija_html = '';
+        foreach ($this->kategorije() as $kategorija) {
+
+            $kategorija_html .= <<<Kategorija
+            
+                <a class="kategorija" href="/rezultat/{$kategorija['Link']}">
+                    <span class="naslov">{$kategorija['Kategorija']}</span>
+                </a>
+
+            Kategorija;
+
+        }
+
+        return $kategorija_html;
+
+    }
+
     /**
      * ### Dohvati kategoriju
      * @since 0.1.1.pre-alpha.M1
@@ -180,7 +200,7 @@ final class Kategorije_Model extends Master_Model {
         $kategorije = $this->bazaPodataka->tabela('kategorijeview')
             ->sirovi("
                 SELECT 
-                    kategorijeview.Kategorija, kategorijeview.Link, kategorijeview.Ikona, kategorijeview.Meni
+                    kategorijeview.Kategorija, kategorijeview.Link, kategorijeview.Slika, kategorijeview.Ikona, kategorijeview.Meni
                 FROM kategorijeview
                 LEFT JOIN artikli ON artikli.KategorijaID = kategorijeview.ID AND artikli.".Domena::sqlTablica()." = 1
                 LEFT JOIN artiklikarakteristike ON artiklikarakteristike.ArtikalID = artikli.ID
