@@ -15,8 +15,7 @@
 namespace FireHub\Aplikacija\Administrator\Kontroler;
 
 use FireHub\Jezgra\Kontroler\Kontroler;
-use FireHub\Jezgra\Komponente\Sesija\Sesija;
-use FireHub\Jezgra\Komponente\Sesija\Sesija_Interface;
+use FireHub\Aplikacija\Administrator\Model\Prijava_Model;
 use FireHub\Aplikacija\Kapriol\Jezgra\Server;
 
 /**
@@ -27,18 +26,15 @@ use FireHub\Aplikacija\Kapriol\Jezgra\Server;
  */
 abstract class Master_Kontroler extends Kontroler {
 
-    private Sesija_Interface $sesija;
-
     /**
      * ### Konstruktor
      * @since 0.1.2.pre-alpha.M1
      */
     public function __construct () {
 
-        // napravi sesiju
-        $this->sesija = (new Sesija())->naziv('Kapriol')->napravi();
+        $sesija = $this->model(Prijava_Model::class);
 
-        if (!$this->sesija->procitaj('korisnik')) {
+        if (!$sesija->procitaj('korisnik')) {
 
             header("Location: ".Server::URL()."/administrator/prijava");
 

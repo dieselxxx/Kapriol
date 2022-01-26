@@ -1,7 +1,7 @@
 <?php declare(strict_types = 1);
 
 /**
- * Master model
+ * Sesija model
  * @since 0.1.2.pre-alpha.M1
  *
  * @author Danijel Galić
@@ -14,26 +14,27 @@
 
 namespace FireHub\Aplikacija\Administrator\Model;
 
-use FireHub\Aplikacija\Kapriol\Jezgra\Server;
 use FireHub\Jezgra\Komponente\Sesija\Sesija;
-use FireHub\Jezgra\Komponente\Sesija\Sesija_Interface;
-use FireHub\Jezgra\Model\Model;
 
 /**
- * ### Master Model
+ * ### Sesija model
  * @since 0.1.2.pre-alpha.M1
  *
  * @package Aplikacija\Model
  */
-abstract class Master_Model extends Model {
-
-    protected Sesija_Interface $sesija;
+final class Sesija_Model extends Master_Model {
 
     /**
      * ### Konstruktor
      * @since 0.1.2.pre-alpha.M1
      */
-    public function __construct (
-    ) {}
+    public function __construct () {
+
+        parent::__construct();
+
+        // napravi sesiju
+        $this->sesija = (new Sesija())->naziv('Kapriol')->napravi();
+
+    }
 
 }

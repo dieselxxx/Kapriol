@@ -57,13 +57,14 @@ final class Prijava_Kontroler extends Kontroler {
             $model = $this->model(Prijava_Model::class);
 
             return sadrzaj()->format(Sadrzaj_Vrsta::JSON)->podatci([
-
+                'Validacija' => 'da'
             ]);
 
         } catch (Greska $greska) {
 
             return sadrzaj()->format(Sadrzaj_Vrsta::JSON)->podatci([
-                'greska' => $greska->getMessage()
+                'Validacija' => 'ne',
+                'Poruka' => $greska->getMessage()
             ]);
 
         }
