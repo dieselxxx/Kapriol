@@ -14,8 +14,13 @@
 
 namespace FireHub\Aplikacija\Administrator\Kontroler;
 
+use FireHub\Jezgra\Greske\Greska;
+use FireHub\Jezgra\HTTP\Atributi\Zaglavlja;
 use FireHub\Jezgra\Kontroler\Kontroler;
 use FireHub\Jezgra\Sadrzaj\Sadrzaj;
+use FireHub\Aplikacija\Administrator\Model\Prijava_Model;
+use FireHub\Jezgra\HTTP\Enumeratori\Vrsta;
+use FireHub\Jezgra\Sadrzaj\Enumeratori\Vrsta as Sadrzaj_Vrsta;
 
 /**
  * ### Prijava
@@ -33,8 +38,35 @@ final class Prijava_Kontroler extends Kontroler {
      */
     public function index ():Sadrzaj {
 
-        return sadrzaj()->predlozakPutanja('prijava'.RAZDJELNIK_MAPE)->datoteka('prijava.html')->podatci([
-        ]);
+        return sadrzaj()->predlozakPutanja('prijava'.RAZDJELNIK_MAPE)->datoteka('prijava.html')->podatci([]);
+
+    }
+
+    /**
+     * ## index
+     * @since 0.1.2.pre-alpha.M1
+     *
+     * @return Sadrzaj Sadržaj stranice.
+     */
+    #[Zaglavlja(vrsta: Vrsta::JSON)]
+    public function autorizacija ():Sadrzaj {
+
+        try {
+
+            // model
+            $model = $this->model(Prijava_Model::class);
+
+            return sadrzaj()->format(Sadrzaj_Vrsta::JSON)->podatci([
+
+            ]);
+
+        } catch (Greska $greska) {
+
+            return sadrzaj()->format(Sadrzaj_Vrsta::JSON)->podatci([
+                'greska' => $greska->getMessage()
+            ]);
+
+        }
 
     }
 
