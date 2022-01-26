@@ -116,15 +116,24 @@ final class Kategorije_Model extends Master_Model {
 
     }
 
+    /**
+     * ### Sve kategorije za naslovnu
+     * @since 0.1.2.pre-alpha.M1
+     *
+     * @throws Kontejner_Greska Ukoliko se ne može spremiti instanca objekta.
+     *
+     * @return string Ketegorije za naslovnu.
+     */
     public function kategorijeNaslovna ():string {
 
-        // artikli
+        // kategorije
         $kategorija_html = '';
         foreach ($this->kategorije() as $kategorija) {
 
             $kategorija_html .= <<<Kategorija
             
                 <a class="kategorija" href="/rezultat/{$kategorija['Link']}">
+                    <img src="/slika/kategorija/{$kategorija['Slika']}" alt="" loading="lazy"/>
                     <span class="naslov">{$kategorija['Kategorija']}</span>
                 </a>
 

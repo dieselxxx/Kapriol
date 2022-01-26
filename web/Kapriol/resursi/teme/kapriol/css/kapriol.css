@@ -263,8 +263,8 @@ main > div#sadrzaj.naslovna {grid-column: 1 / 8; grid-template-columns: auto rep
 main > div#sadrzaj.naslovna > div.baner {grid-column: 1 / 8; grid-row: 1 / 2;}
 main > div#sadrzaj.naslovna > div.baner > img {object-fit: cover; height: 100%; width: 100%;}
 main > div#sadrzaj.naslovna > h2 {grid-column: 2 / 5;}
-main > div#sadrzaj.naslovna > div.kategorije {grid-column: 2 / 7; grid-row: 3 / 4; display: grid; grid-template-columns: repeat(3, 1fr); grid-gap: 15px; background-color: var(--boja-pozadina_tamna_total); margin-bottom: 15px; padding: 15px;}
-main > div#sadrzaj.naslovna > div.kategorije > a.kategorija {position: relative; display: grid; grid-template-columns: minmax(200px, 1fr); grid-template-rows: 280px 40px 40px; grid-gap: 10px; padding: 10px; text-align: center; border: 1px solid var(--boja-granica-tamnije); transition: all .3s ease; transition-property: transform, border-color; box-shadow: 0 3px 39px 0 rgba(0,0,0,0.04); -webkit-box-shadow: 0 3px 39px 0 rgba(0,0,0,0.04); -moz-box-shadow: 0 3px 39px 0 rgba(0,0,0,0.04);}
+main > div#sadrzaj.naslovna > div.kategorije {grid-column: 2 / 7; grid-row: 3 / 4; display: grid; grid-template-columns: repeat(3, 1fr); grid-gap: 15px; background-color: var(--boja-pozadina_tamna_total); padding: 15px;}
+main > div#sadrzaj.naslovna > div.kategorije > a.kategorija {position: relative; display: grid; grid-template-columns: minmax(150px, 1fr); grid-template-rows: 280px 40px 40px; grid-gap: 10px; padding: 10px; text-align: center; border: 1px solid var(--boja-granica-tamnije); transition: all .3s ease; transition-property: transform, border-color; box-shadow: 0 3px 39px 0 rgba(0,0,0,0.04); -webkit-box-shadow: 0 3px 39px 0 rgba(0,0,0,0.04); -moz-box-shadow: 0 3px 39px 0 rgba(0,0,0,0.04);}
 main > div#sadrzaj.naslovna > div.kategorije > a.kategorija:hover {border: 1px solid var(--boja-kapriol);}
 main > div#sadrzaj.naslovna > div.kategorije > a.kategorija > img {object-fit: contain; height: 100%; width: 100%;}
 main > div#sadrzaj.rezultat > div.vi_ste_ovdje a:hover {text-decoration: underline;}
@@ -452,7 +452,8 @@ footer > div.info > span {grid-column: 3 / 5; grid-row: 2 / 3; justify-self: cen
     header > form[data-oznaka="trazi_artikal"] {grid-row: 4 / 5;}
     header > nav.glavni_meni {grid-row: 5 / 6;}
 
-    main > div#sadrzaj.naslovna > div.kategorije {grid-template-columns: 1fr;}
+    main > div#sadrzaj.naslovna > div.kategorije {grid-template-columns: 1fr 1fr;}
+    main > div#sadrzaj.naslovna > div.kategorije > a.kategorija {}
     main > div#sadrzaj.rezultat > div.meni {grid-column: 1 / 5; grid-row: 2 / 3; grid-template-columns: 1fr; grid-template-rows: max-content;}
     main > div#sadrzaj.rezultat > div.meni > div.velicine {grid-column: 2 / 3; grid-row: 1 / 2;}
     main > div#sadrzaj.rezultat > div.artikli {grid-column: 1 / 5; grid-row: 3 / 4; grid-template-columns: 1fr 1fr;}
