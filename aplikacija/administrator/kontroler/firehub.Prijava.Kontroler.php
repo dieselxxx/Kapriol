@@ -33,7 +33,7 @@ final class Prijava_Kontroler extends Kontroler {
      */
     public function index ():Sadrzaj {
 
-        return sadrzaj()->datoteka('prijava.html')->podatci([
+        return sadrzaj()->predlozakPutanja('prijava'.RAZDJELNIK_MAPE)->datoteka('prijava.html')->podatci([
         ]);
 
     }
