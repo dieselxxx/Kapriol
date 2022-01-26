@@ -2,8 +2,6 @@ $(document).ready(function () {
 
     /**
      * Navigacija status.
-     *
-     * @since 0.0.74 GTGwebShop alpha
      */
     let $lokalnaPohrana = new LokalnaPohrana();
     let NavigacijaStatus = $lokalnaPohrana.Procitaj("NavigacijaStatus");
