@@ -351,7 +351,7 @@ main#naslovna #loader_sadrzaj {grid-row: 2 / 3;}
 /** dialog **/
 #dialog_okolo {display: none; position: fixed; background-color: rgba(0, 0, 0, 0.4); top: 0; left: 0; right: 0; bottom: 0; z-index: 1000; overflow-y: scroll;}
 #dialog {display: none; grid-template-columns: 15px auto 15px; grid-template-rows: 50px auto auto; grid-row-gap: 15px; background-color: #ffffff; margin: 100px auto; height: auto; width: max-content; max-width: max-content; min-width: 600px; box-shadow: 0 27px 24px 0 rgba(0, 0, 0, 0.2), 0 40px 77px 0 rgba(0, 0, 0, 0.22); border-radius: 6px;}
-#dialog > .naslov {grid-column: 2 / 3; grid-row: 1 / 2; display: flex; background: linear-gradient(60deg, var(--boja-kapriol), var(--boja-kapriol)); margin: -15px 0 20px 0; padding: 0; width: 100%; color: #ffffff; border-radius: 3px; box-shadow: 0 4px 20px 0 rgba(0, 0, 0, 0.14), 0 7px 10px -5px var(--boja-kapriol-rgba);}
+#dialog > .naslov {grid-column: 2 / 3; grid-row: 1 / 2; display: flex; background: linear-gradient(60deg, var(--boja-kapriol), var(--boja-kapriol)); margin: -15px 0 20px 0; padding: 0; width: 100%; color: #ffffff; border-radius: 3px; box-shadow: 0 4px 20px 0 rgba(0, 0, 0, 0.14), 0 7px 10px -5px #000000;}
 #dialog > .naslov h4 {margin-left: 52px; width: 100%; line-height: 5px; font-size: 0.9rem; font-weight: 300; text-align: center;}
 #dialog .dialog_zatvori {margin: 15px}
 #dialog .dialog_zatvori svg {fill: #ffffff; height: 16px; width: 16px; cursor: pointer;}
