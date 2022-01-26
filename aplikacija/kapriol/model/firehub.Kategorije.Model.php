@@ -133,9 +133,7 @@ final class Kategorije_Model extends Master_Model {
             $kategorija_html .= <<<Kategorija
             
                 <a class="kategorija" href="/rezultat/{$kategorija['Link']}">
-                    <div class="slika_okvir">
                         <img src="/slika/kategorija/{$kategorija['Slika']}" alt="" loading="lazy"/>
-                    </div>
                     <span class="naslov">{$kategorija['Kategorija']}</span>
                 </a>
 
