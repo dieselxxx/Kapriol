@@ -38,6 +38,12 @@ final class Sadrzaj {
     private Vrsta $format = Vrsta::HTML;
 
     /**
+     * ### Putanja do mape sa predlošcima
+     * @var string
+     */
+    private string $predlozak_putanja = '';
+
+    /**
      * ### Datoteka sa sadržajem
      * @var string
      */
@@ -62,6 +68,25 @@ final class Sadrzaj {
     public function format (Vrsta $naziv):self {
 
         $this->format = $naziv;
+
+        return $this;
+
+    }
+
+
+    /**
+     * ### Datoteka sa sadržajem
+     * @since 0.6.1.alpha.M1
+     *
+     * @param string $putanja <p>
+     * Putanja do mape sa predlošcima.
+     * </p>
+     *
+     * @return $this Instanca Sadrzaj-a.
+     */
+    public function predlozakPutanja (string $putanja):self {
+
+        $this->predlozak_putanja = $putanja;
 
         return $this;
 
@@ -127,16 +152,16 @@ final class Sadrzaj {
         // ispiši sadržaj u ovisnosti o odabranoj vrsti sadržaja
         return match ($this->format) {
             Vrsta::HTML => (
-                new HTML(
-                    $this->podatci,
-                    $this->datoteka,
-                    FIREHUB_ROOT . konfiguracija('sustav.putanje.web') . 'resursi' . RAZDJELNIK_MAPE . 'sadrzaj' . RAZDJELNIK_MAPE . 'baza.html',
-                    FIREHUB_ROOT . konfiguracija('sustav.putanje.web') . APLIKACIJA . RAZDJELNIK_MAPE . 'resursi' . RAZDJELNIK_MAPE . 'sadrzaj' . RAZDJELNIK_MAPE . 'baza.html',
-                    FIREHUB_ROOT . konfiguracija('sustav.putanje.web') . APLIKACIJA . RAZDJELNIK_MAPE . 'resursi' . RAZDJELNIK_MAPE . 'sadrzaj' . RAZDJELNIK_MAPE . 'predlozak' . RAZDJELNIK_MAPE,
-                    konfiguracija('tema.odabrano'),
-                    FIREHUB_ROOT . konfiguracija('sustav.putanje.web') . APLIKACIJA . RAZDJELNIK_MAPE . 'resursi' . RAZDJELNIK_MAPE . 'teme' . RAZDJELNIK_MAPE . konfiguracija('tema.odabrano') . RAZDJELNIK_MAPE . 'info.json',
-                    konfiguracija('predmemorija.ukljuceno')
-                )
+            new HTML(
+                $this->podatci,
+                $this->datoteka,
+                FIREHUB_ROOT . konfiguracija('sustav.putanje.web') . 'resursi' . RAZDJELNIK_MAPE . 'sadrzaj' . RAZDJELNIK_MAPE . 'baza.html',
+                FIREHUB_ROOT . konfiguracija('sustav.putanje.web') . APLIKACIJA . RAZDJELNIK_MAPE . 'resursi' . RAZDJELNIK_MAPE . 'sadrzaj' . RAZDJELNIK_MAPE . 'baza.html',
+                FIREHUB_ROOT . konfiguracija('sustav.putanje.web') . APLIKACIJA . RAZDJELNIK_MAPE . 'resursi' . RAZDJELNIK_MAPE . 'sadrzaj' . RAZDJELNIK_MAPE . 'predlozak' . RAZDJELNIK_MAPE . $this->predlozak_putanja,
+                konfiguracija('tema.odabrano'),
+                FIREHUB_ROOT . konfiguracija('sustav.putanje.web') . APLIKACIJA . RAZDJELNIK_MAPE . 'resursi' . RAZDJELNIK_MAPE . 'teme' . RAZDJELNIK_MAPE . konfiguracija('tema.odabrano') . RAZDJELNIK_MAPE . 'info.json',
+                konfiguracija('predmemorija.ukljuceno')
+            )
             )->ispisi(),
             Vrsta::JSON => (new JSON($this->podatci))->ispisi(),
             Vrsta::SLIKA => (new SLIKA($this->podatci))->ispisi()
