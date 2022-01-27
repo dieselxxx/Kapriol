@@ -1,7 +1,7 @@
 <?php declare(strict_types = 1);
 
 /**
- * Prijava
+ * Odjava
  * @since 0.1.2.pre-alpha.M1
  *
  * @author Danijel Galić
@@ -16,19 +16,19 @@ namespace FireHub\Aplikacija\Administrator\Kontroler;
 
 use FireHub\Jezgra\Kontroler\Kontroler;
 use FireHub\Jezgra\Sadrzaj\Sadrzaj;
-use FireHub\Aplikacija\Administrator\Model\Prijava_Model;
+use FireHub\Aplikacija\Administrator\Model\Odjava_Model;
 use FireHub\Jezgra\HTTP\Enumeratori\Vrsta;
 use FireHub\Jezgra\Sadrzaj\Enumeratori\Vrsta as Sadrzaj_Vrsta;
 use FireHub\Jezgra\HTTP\Atributi\Zaglavlja;
 use FireHub\Jezgra\Greske\Greska;
 
 /**
- * ### Prijava
+ * ### Odjava
  * @since 0.1.2.pre-alpha.M1
  *
  * @package Aplikacija\Kontroler
  */
-final class Prijava_Kontroler extends Kontroler {
+final class Odjava_Kontroler extends Kontroler {
 
     /**
      * ## index
@@ -36,25 +36,13 @@ final class Prijava_Kontroler extends Kontroler {
      *
      * @return Sadrzaj Sadržaj stranice.
      */
-    public function index ():Sadrzaj {
-
-        return sadrzaj()->predlozakPutanja('prijava'.RAZDJELNIK_MAPE)->datoteka('prijava.html')->podatci([]);
-
-    }
-
-    /**
-     * ## Autorizacija
-     * @since 0.1.2.pre-alpha.M1
-     *
-     * @return Sadrzaj Sadržaj stranice.
-     */
     #[Zaglavlja(vrsta: Vrsta::JSON)]
-    public function autorizacija ():Sadrzaj {
+    public function index ():Sadrzaj {
 
         try {
 
             // model
-            $model = $this->model(Prijava_Model::class);
+            $model = $this->model(Odjava_Model::class);
 
             return sadrzaj()->format(Sadrzaj_Vrsta::JSON)->podatci([
                 'Validacija' => 'da'
