@@ -14,7 +14,7 @@
 
 namespace FireHub\Aplikacija\Administrator\Model;
 
-use FireHub\Jezgra\Komponente\Sesija\Sesija;
+use FireHub\Aplikacija\Kapriol\Jezgra\Server;
 
 /**
  * ### Sesija model
@@ -32,8 +32,11 @@ final class Sesija_Model extends Master_Model {
 
         parent::__construct();
 
-        // napravi sesiju
-        $this->sesija = (new Sesija())->naziv('Kapriol')->napravi();
+        if (!$this->sesija->procitaj('korisnik')) {
+
+            header("Location: ".Server::URL()."/administrator/prijava");
+
+        }
 
     }
 

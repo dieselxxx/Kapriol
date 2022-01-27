@@ -14,10 +14,9 @@
 
 namespace FireHub\Aplikacija\Administrator\Model;
 
-use FireHub\Aplikacija\Kapriol\Jezgra\Server;
+use FireHub\Jezgra\Model\Model;
 use FireHub\Jezgra\Komponente\Sesija\Sesija;
 use FireHub\Jezgra\Komponente\Sesija\Sesija_Interface;
-use FireHub\Jezgra\Model\Model;
 
 /**
  * ### Master Model
@@ -34,6 +33,11 @@ abstract class Master_Model extends Model {
      * @since 0.1.2.pre-alpha.M1
      */
     public function __construct (
-    ) {}
+    ) {
+
+        // napravi sesiju
+        $this->sesija = (new Sesija())->naziv('Kapriol')->napravi();
+
+    }
 
 }

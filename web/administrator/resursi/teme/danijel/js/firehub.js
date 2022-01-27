@@ -134,6 +134,7 @@ $(document).ready(function () {
 
                 if (odgovor.Validacija === 'da') {
                     //location.reload();
+                    window.location.href = "/administrator/";
                 }
             },
             error: function () {

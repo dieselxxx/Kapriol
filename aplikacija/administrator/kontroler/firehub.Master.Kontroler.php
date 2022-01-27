@@ -15,8 +15,7 @@
 namespace FireHub\Aplikacija\Administrator\Kontroler;
 
 use FireHub\Jezgra\Kontroler\Kontroler;
-use FireHub\Aplikacija\Administrator\Model\Prijava_Model;
-use FireHub\Aplikacija\Kapriol\Jezgra\Server;
+use FireHub\Aplikacija\Administrator\Model\Sesija_Model;
 
 /**
  * ### Master
@@ -32,13 +31,7 @@ abstract class Master_Kontroler extends Kontroler {
      */
     public function __construct () {
 
-        $sesija = $this->model(Prijava_Model::class);
-
-        if (!$sesija->procitaj('korisnik')) {
-
-            header("Location: ".Server::URL()."/administrator/prijava");
-
-        }
+        $this->model(Sesija_Model::class);
 
     }
 

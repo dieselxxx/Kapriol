@@ -17,7 +17,6 @@ namespace FireHub\Aplikacija\Administrator\Model;
 use FireHub\Jezgra\Komponente\BazaPodataka\BazaPodataka;
 use FireHub\Aplikacija\Kapriol\Jezgra\Validacija;
 use FireHub\Jezgra\Greske\Greska;
-use FireHub\Jezgra\Komponente\Sesija\Sesija;
 use FireHub\Jezgra\Kontejner\Greske\Kontejner_Greska;
 
 /**
@@ -59,7 +58,7 @@ final class Prijava_Model extends Master_Model {
         // dohvati korisnika
         if ($this->prijava()) {
 
-            //$this->sesija->zapisi();
+            $this->sesija->zapisi('korisnik', 'prijavljen');
 
         }
 
