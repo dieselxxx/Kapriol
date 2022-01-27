@@ -1,4 +1,10 @@
 body {position: initial; background-color: #ededed; height: 100vh; width: 100vw; font-family: 'Kapriol', sans-serif; font-size: 0.8rem; font-weight: 400; overflow: hidden;}
+a {color: var(--boja-kapriol);}
+a:hover {color: var(--boja-kapriol); text-decoration: none;}
+table {border-spacing: 0;}
+table tr {height: 80px;}
+svg {touch-action: none;}
+*::selection, *::-moz-selection {background: var(--boja-kapriol); color: #ffffff;}
 
 /** animacije **/
 @-webkit-keyframes GumbAktivno {
@@ -389,12 +395,12 @@ table.tabela thead tr th > div {display: flex; align-items: center; cursor: poin
 table.tabela thead tr th > div div.poredaj {margin-left: 10px; height: 32px; width: 15px;}
 table.tabela thead tr th > div svg {height: 15px; width: 15px; opacity: 0.1;}
 table.tabela thead tr th > div svg.aktivno {opacity: 1;}
-table.tabela tbody tr:hover {background-color: var(--boja-pozadina);}
+table.tabela tbody tr:hover {background-color: var(--boja-pozadina_svijetla);}
 table.tabela tbody tr td {height: 40px; border-bottom: 1px solid rgba(0,0,0,.06);}
 table.tabela tbody tr td img {height: 100px; width: 100px;}
-table.tabela tr td div.status {padding: 3px; font-size: 0.7rem; color: var(--boja-bijela); border-radius: 30%;}
-table.tabela tr td div.status[data-boja="zelena"] {background-color: var(--boja-zelena);}
-table.tabela tr td div.status[data-boja="crvena"] {background-color: var(--boja-crvena);}
+table.tabela tr td div.status {padding: 3px; font-size: 0.7rem; color: #ffffff; border-radius: 30%;}
+table.tabela tr td div.status[data-boja="zelena"] {background-color: darkgreen;}
+table.tabela tr td div.status[data-boja="crvena"] {background-color: darkred;}
 table.tabela tbody tr td.uredi {cursor: pointer;}
 table.tabela tfoot tr {font-weight: 600;}
 fieldset table.tabela thead th {padding: 0 70px 0 0;}
@@ -407,7 +413,7 @@ table.podatci tbody tr td > label.unos > span:first-of-type {display: flex; padd
 table.podatci tbody tr td label.kontrolni_okvir > span:first-of-type {line-height: 20px;}
 table.podatci tbody tr td span.kontrolni_okvir, table.podatci tbody tr td span.ukljuceno {padding: 0;}
 table.podatci tbody tr td div {display: flex; position: relative;}
-table.podatci tbody tr td div input {background-color: var(--boja-bijela);}
+table.podatci tbody tr td div input {background-color: #ffffff;}
 table.podatci tbody tr td div input {padding: 0 40px 0 10px; height: 35px; width: 100%; border: 1px solid var(--boja-granica);}
 table.podatci tbody tr td div input:hover {border: 1px solid var(--boja-granica);}
 table.podatci tbody tr td div input:disabled {background-color: var(--boja-pozadina); cursor: not-allowed;}
@@ -415,7 +421,7 @@ table.podatci tbody tr td div input[readonly] {background-color: var(--boja-poza
 table.podatci tbody tr td div input:focus {border: 1px solid var(--boja-kapriol);}
 table.podatci tbody tr td div input:focus + div {border: 1px solid var(--boja-kapriol);}
 table.podatci tbody tr td div div.ikona input {width: calc(100% - 35px);}
-table.podatci tbody tr td div div.ikona {order: -1; float: left; background-color: var(--boja-bijela); height: 35px; width: 35px; border-width: 1px 0 1px 1px; border-style: solid; border-color: var(--boja-granica);-webkit-transition: all 0.5s ease; -moz-transition: all 0.5s ease; -o-transition: all 0.5s ease; transition: all 0.5s ease;}
+table.podatci tbody tr td div div.ikona {order: -1; float: left; background-color: #ffffff; height: 35px; width: 35px; border-width: 1px 0 1px 1px; border-style: solid; border-color: var(--boja-granica);-webkit-transition: all 0.5s ease; -moz-transition: all 0.5s ease; -o-transition: all 0.5s ease; transition: all 0.5s ease;}
 table.podatci tbody tr td div div.ikona svg {margin: 9.5px; height: 15px; width: 15px;}
 form.mala .tabela thead tr th {font-size: 0.9rem;}
 form.mala .tabela tbody tr td {font-size: 0.75rem;}
@@ -568,7 +574,7 @@ main > form {margin-top: 0; padding-top: 20px; -webkit-transition: all 0.5s ease
 main > form.puni_zaslon {position: absolute; background-color: rgba(0, 0, 0, 0.4); top: 0; left: 0; right: 0; bottom: 0; margin: 0; padding: 30px 10px 0 10px; z-index: 3;}
 main > form.puni_zaslon > section {margin-bottom: 0;}
 main > form[data-oznaka="slike"] img, main > form[data-oznaka="slike_podnozje"] img, main > form[data-oznaka="ikona"] img {height: 100px; width: auto;}
-main > form > section {margin-bottom: 30px; min-width: 800px;}
+main > form > section {margin-bottom: 30px; min-width: 200px;}
 main > form > section .zaglavlje.veliko {display: grid; grid-template-columns: 35px auto; grid-template-rows: repeat(2, 1fr); grid-gap: 5px; margin: -20px 0 0 0;}
 main > form > section .zaglavlje.veliko svg {grid-column: 1 / 2; grid-row: 1 / 3; fill: #ffffff; height: 35px; width: 35px;}
 main > form > section .zaglavlje.veliko h4 {grid-column: 2 / 3; margin: 15px 0 0 10px; font-size: 1.125rem; font-weight: 300; text-transform: initial;}

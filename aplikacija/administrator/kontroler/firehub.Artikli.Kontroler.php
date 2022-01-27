@@ -57,7 +57,9 @@ final class Artikli_Kontroler extends Master_Kontroler {
 
             return sadrzaj()->format(Sadrzaj_Vrsta::JSON)->podatci([
                 'Validacija' => 'da',
-                'Artikli' => $artikli->lista($broj_stranice, $poredaj, $redoslijed)
+                'Artikli' => $artikli->lista($broj_stranice, $poredaj, $redoslijed),
+                'Zaglavlje' => $artikli->IspisiZaglavlje(),
+                'Navigacija' => $artikli->IspisiNavigaciju()
             ]);
 
         } catch (Greska $greska) {

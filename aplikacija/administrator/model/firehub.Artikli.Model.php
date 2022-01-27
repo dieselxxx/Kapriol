@@ -85,25 +85,21 @@ final class Artikli_Model extends Master_Model {
         if ($this->redoslijed <> 'asc' && $this->redoslijed <> 'desc') {throw new Greska(_('Redoslijed rezultata ima pogrešnu vrijednost'));}
 
         // potraži artikle
-        $pomak = ($broj_stranice - 1) * 10;
-        echo("SELECT
-                    ID, Naziv, Opis, Aktivan
-                FROM artikli
-                {$this->trazi()}
-                ORDER BY ".ucwords($poredaj)." $redoslijed
-                LIMIT $pomak, 10");
+        $pomak = ($broj_stranice - 1) * $this->limit_zapisa_po_stranici;
+
         $rezultat = $this->bazaPodataka
             ->sirovi("
                 SELECT
-                    ID, Naziv, Opis, Aktivan
+                    ID, Naziv, Aktivan
                 FROM artikli
+                WHERE ID <> 0
                 {$this->trazi()}
                 ORDER BY ".ucwords($poredaj)." $redoslijed
-                LIMIT $pomak, 10
+                LIMIT $pomak, $this->limit_zapisa_po_stranici
             ")
             ->napravi();
 
-        return $rezultat->niz();
+        return $rezultat->niz() ?: [];
 
     }
 
@@ -123,9 +119,8 @@ final class Artikli_Model extends Master_Model {
             foreach ($trazi as $stavka) {
 
                 $trazi_array .= "
-                    WHERE (
+                    AND (
                         Naziv LIKE '%{$stavka}%'
-                        OR Opis LIKE '%{$stavka}%'
                     )
                 ";
 
@@ -136,6 +131,123 @@ final class Artikli_Model extends Master_Model {
         }
 
         return '';
+
+    }
+
+    /**
+     * Zaglavlje artikala.
+     *
+     * @return string
+     */
+    public function IspisiZaglavlje () {
+
+        return '
+            <tr>
+                <th width="15%" onclick="$_Artikli(this,1,\'ID\',\''.$this->RedoslijedObrnuto().'\')">
+                    <div>
+                        <span>'._('ID artikla').'</span>
+                        <div class="poredaj">
+                            <svg class="gore '.$this->RedoslijedIkona('ID', 'desc').'"><use xlink:href="/imovina/grafika/simboli/simbol.ikone.php#strelica_gore"></use></svg>
+                            <svg class="dole '.$this->RedoslijedIkona('ID', 'asc').'"><use xlink:href="/imovina/grafika/simboli/simbol.ikone.php#strelica_dole"></use></svg>
+                        </div>
+                    </div>
+                </th>
+                <th width="85%" onclick="$_Artikli(this,1,\'Naziv\',\''.$this->RedoslijedObrnuto().'\')">
+                    <div>
+                        <span>'._('Naziv artikla').'</span>
+                        <div class="poredaj">
+                            <svg class="gore '.$this->RedoslijedIkona('Naziv', 'desc').'"><use xlink:href="/imovina/grafika/simboli/simbol.ikone.php#strelica_gore"></use></svg>
+                            <svg class="dole '.$this->RedoslijedIkona('Naziv', 'asc').'"><use xlink:href="/imovina/grafika/simboli/simbol.ikone.php#strelica_dole"></use></svg>
+                        </div>
+                    </div>
+                </th>
+                <th width="10%" onclick="$_Artikli(this,1,\'Aktivan\',\''.$this->RedoslijedObrnuto().'\')">
+                    <div>
+                        <span>'._('Aktivno').'</span>
+                        <div class="poredaj">
+                            <svg class="gore '.$this->RedoslijedIkona('Aktivan', 'desc').'"><use xlink:href="/imovina/grafika/simboli/simbol.ikone.php#strelica_gore"></use></svg>
+                            <svg class="dole '.$this->RedoslijedIkona('Aktivan', 'asc').'"><use xlink:href="/imovina/grafika/simboli/simbol.ikone.php#strelica_dole"></use></svg>
+                        </div>
+                    </div>
+                </th>
+            </tr>
+        ';
+
+    }
+
+    /**
+     * Navigacija.
+     *
+     * @param int $broj_stranice
+     *
+     * @return array
+     */
+    public function IspisiNavigaciju (int $broj_stranice = 1):array {
+
+        $pocetak_link_stranice = "";
+        $link_stranice = "";
+        $kraj_link_stranice = "";
+
+        $ukupno_stranica = ceil($this->brojZapisa() / $this->limit_zapisa_po_stranici);
+        if (($this->broj_stranice - 2) < 1) {$x = 1;} else {$x = ($this->broj_stranice - 2);}
+        if (($this->broj_stranice + 2) >= $ukupno_stranica) {$y = $ukupno_stranica;} else {$y = ($this->broj_stranice + 2);}
+
+        $artikli = '$_Artikli';
+
+        if ($this->broj_stranice >= 2) {
+
+            $prosla_stranica = $this->broj_stranice - 1;
+
+            $pocetak_link_stranice .= "<li><a class='gumb mali ikona' onclick='{$artikli}(this,1,\"{$this->poredaj}\",\"{$this->redoslijed}\")'><svg data-boja='boja'><use xlink:href=\"/kapriol/resursi/grafika/simboli/simbol.ikone.svg#strelica_lijevo_duplo\" /></svg></a></li>";
+            $pocetak_link_stranice .= "<li><a class='gumb mali ikona' onclick='{$artikli}(this,$prosla_stranica,\"{$this->poredaj}\",\"{$this->redoslijed}\")'><svg data-boja='boja'><use xlink:href=\"/kapriol/resursi/grafika/simboli/simbol.ikone.svg#strelica_lijevo\" /></svg></a></li>";
+
+        }
+
+        for ($i = $x; $i <= $y; $i++) {
+
+            if ($i == $this->broj_stranice) {
+
+                $link_stranice .= "<li><a class='gumb mali' data-boja='roza' onclick='{$artikli}(this,$i,\"{$this->poredaj}\",\"{$this->redoslijed}\")'>{$i}</a></li>";
+
+            }  else {
+
+                $link_stranice .= "<li><a class='gumb mali' onclick='{$artikli}(this,$i,\"{$this->poredaj}\",\"{$this->redoslijed}\")'>{$i}</a></li>";
+
+            }
+
+        }
+
+        if ($this->broj_stranice < $ukupno_stranica) {
+
+            $sljedeca_stranica = $this->broj_stranice + 1;
+
+            $kraj_link_stranice .= "<li><a class='gumb mali ikona' onclick='{$artikli}(this,$sljedeca_stranica,\"{$this->poredaj}\",\"{$this->redoslijed}\")'><svg data-boja='boja'><use xlink:href=\"/kapriol/resursi/grafika/simboli/simbol.ikone.svg#strelica_desno\" /></svg></a></li>";
+            $kraj_link_stranice .= "<li><a class='gumb mali ikona' onclick='{$artikli}(this,$ukupno_stranica,\"{$this->poredaj}\",\"{$this->redoslijed}\")'><svg data-boja='boja'><use xlink:href=\"/kapriol/resursi/grafika/simboli/simbol.ikone.svg#strelica_desno_duplo\" /></svg></a></li>";
+
+        }
+
+        return array('pocetak' => $pocetak_link_stranice, 'stranice' => $link_stranice, 'kraj' => $kraj_link_stranice);
+
+    }
+
+    /**
+     * Broj zapisa.
+     *
+     * @return int
+     */
+    private function brojZapisa():int {
+
+        $rezultat = $this->bazaPodataka
+            ->sirovi("
+                SELECT
+                    ID
+                FROM artikli
+                WHERE ID <> 0
+                {$this->trazi()}
+            ")
+            ->napravi();
+
+        return $rezultat->broj_zapisa();
 
     }
 
