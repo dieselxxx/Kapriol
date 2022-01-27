@@ -14,6 +14,7 @@
 
 namespace FireHub\Aplikacija\Administrator\Kontroler;
 
+use FireHub\Aplikacija\Administrator\Model\Artikl_Model;
 use FireHub\Jezgra\Sadrzaj\Sadrzaj;
 use FireHub\Aplikacija\Administrator\Model\Artikli_Model;
 use FireHub\Jezgra\HTTP\Enumeratori\Vrsta;
@@ -42,7 +43,7 @@ final class Artikli_Kontroler extends Master_Kontroler {
     }
 
     /**
-     * ## Autorizacija
+     * ## Lista artikala
      * @since 0.1.2.pre-alpha.M1
      *
      * @return Sadrzaj Sadržaj stranice.
@@ -70,6 +71,20 @@ final class Artikli_Kontroler extends Master_Kontroler {
             ]);
 
         }
+
+    }
+
+    /**
+     * ## Uredi artikl
+     * @since 0.1.2.pre-alpha.M1
+     *
+     * @return Sadrzaj Sadržaj stranice.
+     */
+    public function uredi (string $kontroler = '', string $metoda = '', int $id = 0) {
+
+        $artikl = $this->model(Artikl_Model::class);
+
+        return sadrzaj()->predlozakPutanja('prazno/')->datoteka('artikli/uredi.html')->podatci([]);
 
     }
 
