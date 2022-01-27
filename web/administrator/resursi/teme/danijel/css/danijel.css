@@ -521,7 +521,7 @@ aside nav > ul > li.aktivan > a :before, aside nav > ul > li.aktivan > a :after 
 aside nav > ul > li.aktivan > a > svg {fill: var(--boja-kapriol);}
 aside nav > ul li.aktivan > ul {display: block;}
 aside nav > ul > li > a {padding: 10px 12px; font-size: 0.9rem; font-weight: 300; color: #ffffff; text-decoration: none; cursor: pointer; z-index: 2; -webkit-transition: color 0.2s ease; -o-transition: color 0.2s ease; transition: color 0.2s ease;}
-aside nav > ul > li > a:hover, aside nav > ul li.otvoren > a {background-color: rgba(255, 255 ,255 , 0.1);}
+aside nav > ul > li > a:hover, aside nav > ul li.otvoren > a {background-color: rgba(255, 255 ,255 , 0.1); text-decoration: none;}
 aside nav > ul > li.podmeni.aktivan > a {color : var(--boja-kapriol);}
 aside nav > ul > li.podmeni.aktivan > a:before, aside nav > ul > li.podmeni.aktivan > a:after {background-color: var(--boja-kapriol);}
 aside nav > ul > li.podmeni.aktivan > a > svg {fill: var(--boja-kapriol);}
