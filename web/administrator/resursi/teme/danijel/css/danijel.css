@@ -564,7 +564,9 @@ body.zatvoren > aside nav > ul > li.podmeni.aktivan > ul > li > a > svg {fill: #
 
 /** sadrzaj **/
 main {padding: 10px; -webkit-transition: all 0.5s ease; -moz-transition: all 0.5s ease; -o-transition: all 0.5s ease; transition: all 0.5s ease;}
-main form {margin-top: 0; padding-top: 20px; -webkit-transition: all 0.5s ease; -moz-transition: all 0.2s ease; -o-transition: all 0.2s ease; transition: all 0.2s ease;}
+main > form {margin-top: 0; padding-top: 20px; -webkit-transition: all 0.5s ease; -moz-transition: all 0.2s ease; -o-transition: all 0.2s ease; transition: all 0.2s ease;}
+main > form.puni_zaslon {position: absolute; background-color: rgba(0, 0, 0, 0.4); top: 0; left: 0; right: 0; bottom: 0; margin: 0; padding: 30px 10px 0 10px; z-index: 3;}
+main > form.puni_zaslon > section {margin-bottom: 0;}
 main > form[data-oznaka="slike"] img, main > form[data-oznaka="slike_podnozje"] img, main > form[data-oznaka="ikona"] img {height: 100px; width: auto;}
 main > form > section {margin-bottom: 30px; min-width: 800px;}
 main > form > section .zaglavlje.veliko {display: grid; grid-template-columns: 35px auto; grid-template-rows: repeat(2, 1fr); grid-gap: 5px; margin: -20px 0 0 0;}

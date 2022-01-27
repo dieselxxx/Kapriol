@@ -18,3 +18,5 @@ Rute::sve('prijava/index', [\FireHub\Aplikacija\Administrator\Kontroler\Prijava_
 Rute::sve('prijava/autorizacija', [\FireHub\Aplikacija\Administrator\Kontroler\Prijava_Kontroler::class, 'autorizacija']);
 Rute::sve('odjava/index', [\FireHub\Aplikacija\Administrator\Kontroler\Odjava_Kontroler::class, 'index']);
 Rute::sve('naslovna/index', [\FireHub\Aplikacija\Administrator\Kontroler\Naslovna_Kontroler::class, 'index']);
+Rute::sve('artikli/index', [\FireHub\Aplikacija\Administrator\Kontroler\Artikli_Kontroler::class, 'index']);
+Rute::sve('artikli/lista', [\FireHub\Aplikacija\Administrator\Kontroler\Artikli_Kontroler::class, 'lista']);

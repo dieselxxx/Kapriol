@@ -188,3 +188,62 @@ $_Odjava = function () {
     });
 
 };
+
+/**
+ * Dohvati artikle.
+ *
+ * @param {object} element
+ * @param {int} $broj_stranice
+ * @param {string} $poredaj
+ * @param {string} $redoslijed
+ */
+$_Artikli = function (element = '', $broj_stranice = 1, $poredaj = 'Naziv', $redoslijed = 'asc') {
+
+    let podatci = $('form[data-oznaka="artikli_lista"]').serializeArray();
+
+    $.ajax({
+        type: 'POST',
+        url: '/administrator/artikli/lista/' + $broj_stranice + '/' + $poredaj + '/' + $redoslijed,
+        dataType: 'json',
+        data: podatci,
+        beforeSend: function () {
+            $('form[data-oznaka="artikli_lista"] > section table tbody').empty().html('<tr><td colspan="3">' + Loader_Krug + '</td></tr>');
+        },
+        success: function (odgovor) {
+            $('form[data-oznaka="artikli_lista"] > section table tbody').empty();
+            let Artikli = odgovor.Artikli;
+            $.each(Artikli, function (a, Artikal) {
+                if (Artikal.Aktivno) {Artikal.Aktivno = '\
+                    <label data-boja="roza" class="kontrolni_okvir">\
+                        <input type="checkbox" disabled checked><span class="kontrolni_okvir"><span class="ukljuceno"></span></span>\
+                    </label>\
+                ';} else {Artikal.Aktivno = '\
+                    <label data-boja="roza" class="kontrolni_okvir">\
+                        <input type="checkbox" disabled><span class="kontrolni_okvir"><span class="ukljuceno"></span></span>\
+                    </label>\
+                ';}
+                $('form[data-oznaka="artikli_lista"] > section table tbody').append('\
+                    <tr onclick="$_Artikl(\''+ Artikal.ID +'\')">\
+                        <td class="uredi">'+ Artikal.ID +'</td>\
+                        <td class="uredi">'+ Artikal.Naziv +'</td>\
+                        <td class="uredi">'+ Artikal.Aktivno +'</td>\
+                    </tr>\
+                ');
+            });
+            // zaglavlje
+            let Zaglavlje = odgovor.Zaglavlje;
+            $('form[data-oznaka="artikli_lista"] > section div.sadrzaj > table thead').empty().append(Zaglavlje);
+            // navigacija
+            let Navigacija = odgovor.Navigacija;
+            $('form[data-oznaka="artikli_lista"] > section div.kontrole').empty().append('<ul class="navigacija">' + Navigacija.pocetak + '' + Navigacija.stranice + '' + Navigacija.kraj + '</ul>');
+        },
+        error: function () {
+        },
+        complete: function (odgovor) {
+            //
+        }
+    });
+
+    return false;
+
+};
