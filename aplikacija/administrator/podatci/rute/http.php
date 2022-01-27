@@ -20,3 +20,4 @@ Rute::sve('odjava/index', [\FireHub\Aplikacija\Administrator\Kontroler\Odjava_Ko
 Rute::sve('naslovna/index', [\FireHub\Aplikacija\Administrator\Kontroler\Naslovna_Kontroler::class, 'index']);
 Rute::sve('artikli/index', [\FireHub\Aplikacija\Administrator\Kontroler\Artikli_Kontroler::class, 'index']);
 Rute::sve('artikli/lista', [\FireHub\Aplikacija\Administrator\Kontroler\Artikli_Kontroler::class, 'lista']);
+Rute::sve('artikli/uredi', [\FireHub\Aplikacija\Administrator\Kontroler\Artikli_Kontroler::class, 'uredi']);
