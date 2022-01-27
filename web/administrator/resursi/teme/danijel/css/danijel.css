@@ -525,6 +525,8 @@ aside nav > ul > li > a:hover, aside nav > ul li.otvoren > a {background-color: 
 aside nav > ul > li.podmeni.aktivan > a {color : var(--boja-kapriol);}
 aside nav > ul > li.podmeni.aktivan > a:before, aside nav > ul > li.podmeni.aktivan > a:after {background-color: var(--boja-kapriol);}
 aside nav > ul > li.podmeni.aktivan > a > svg {fill: var(--boja-kapriol);}
+aside nav > ul > li.podmeni.aktivan > ul > li > a {color : var(--boja-kapriol);}
+aside nav > ul > li.podmeni.aktivan > ul > li > a > svg {fill: var(--boja-kapriol);}
 aside nav ul > li.podmeni > a:before, aside nav ul > li.podmeni > a:after {content: ""; position: absolute; background: #ffffff; left: initial; bottom: initial; opacity: initial; z-index: 5; -webkit-transition: all 0.1s ease-out; -moz-transition: all 0.1s ease-out; -ms-transition: all 0.1s ease-out; -o-transition: all 0.1s ease-out; transition: all 0.1s ease-out;}
 aside nav ul > li.podmeni > a:before {top: 20px; right: 22px; height: 2px; width: 10px;}
 aside nav ul > li.podmeni > a:after {top: 16px; right: 26px; height: 10px; width: 2px;}
@@ -554,8 +556,11 @@ body.zatvoren > aside nav > ul > li.podmeni.aktivan > ul > li.podmeni > a > svg 
 body.zatvoren > aside nav > ul > li.podmeni.aktivan > ul > li.podmeni.aktivan > a {color: var(--boja-kapriol);}
 body.zatvoren > aside nav > ul > li.podmeni.aktivan > ul > li.podmeni.aktivan > a:before, body.zatvoren > aside nav > ul > li.podmeni.aktivan > ul > li.podmeni.aktivan > a:after {background-color: var(--boja-kapriol);}
 body.zatvoren > aside nav > ul > li.podmeni.aktivan > ul > li.podmeni.aktivan > a > svg {fill: var(--boja-kapriol);}
-body.zatvoren > aside nav > ul > li.podmeni.aktivan > ul > li.podmeni > ul > li > a {color: #ffffff;}
 body.zatvoren > aside nav > ul > li.podmeni.aktivan > ul > li.podmeni > ul > li.aktivan > a {color: var(--boja-kapriol);}
+body.zatvoren > aside nav > ul > li.podmeni.aktivan > ul > li.aktivan > a {color: var(--boja-kapriol);}
+body.zatvoren > aside nav > ul > li.podmeni.aktivan > ul > li > a {color: #ffffff;}
+body.zatvoren > aside nav > ul > li.podmeni.aktivan > ul > li.aktivan > a > svg {fill: var(--boja-kapriol);}
+body.zatvoren > aside nav > ul > li.podmeni.aktivan > ul > li > a > svg {fill: #ffffff;}
 
 /** sadrzaj **/
 main {padding: 10px; -webkit-transition: all 0.5s ease; -moz-transition: all 0.5s ease; -o-transition: all 0.5s ease; transition: all 0.5s ease;}
