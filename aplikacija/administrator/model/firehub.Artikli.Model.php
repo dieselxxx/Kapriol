@@ -207,7 +207,7 @@ final class Artikli_Model extends Master_Model {
 
             if ($i == $this->broj_stranice) {
 
-                $link_stranice .= "<li><a class='gumb mali' data-boja='roza' onclick='{$artikli}(this,$i,\"{$this->poredaj}\",\"{$this->redoslijed}\")'>{$i}</a></li>";
+                $link_stranice .= "<li><a class='gumb mali' data-boja='boja' onclick='{$artikli}(this,$i,\"{$this->poredaj}\",\"{$this->redoslijed}\")'>{$i}</a></li>";
 
             }  else {
 
