@@ -82,9 +82,24 @@ final class Artikli_Kontroler extends Master_Kontroler {
      */
     public function uredi (string $kontroler = '', string $metoda = '', int $id = 0) {
 
-        $artikl = $this->model(Artikl_Model::class);
+        $artikl_model = $this->model(Artikl_Model::class);
+        $artikl = $artikl_model->artikl($id);
 
-        return sadrzaj()->predlozakPutanja('prazno/')->datoteka('artikli/uredi.html')->podatci([]);
+        // formatiranje rezultata
+        if ($artikl['Izdvojeno'] === true) {$artikl['Izdvojeno'] = 'checked';} else {$artikl['Izdvojeno'] = '';}
+        if ($artikl['Aktivan'] === true) {$artikl['Aktivan'] = 'checked';} else {$artikl['Aktivan'] = '';}
+
+        return sadrzaj()->predlozakPutanja('prazno/')->datoteka('artikli/uredi.html')->podatci([
+            'id' => $artikl['ID'],
+            'naziv' => $artikl['Naziv'],
+            'opis' => $artikl['Opis'],
+            'cijena' => $artikl['Cijena'],
+            'cijena_akcija' => $artikl['CijenaAkcija'],
+            'cijena_hr' => $artikl['CijenaKn'],
+            'cijena_akcija_hr' => $artikl['CijenaAkcijaKn'],
+            'aktivno' => $artikl['Aktivan'],
+            'izdvojeno' => $artikl['Izdvojeno']
+        ]);
 
     }
 
