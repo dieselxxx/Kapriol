@@ -36,7 +36,7 @@ final class MySQL extends SQL implements Jezik_Interface {
         match ($upit->vrsta) {
             'odaberi' => $this->odaberi()->spoji()->gdje(),
             'umetni' => $this->umetni(),
-            'azuriraj' => $this->azuriraj(),
+            'azuriraj' => $this->azuriraj()->gdje(),
             'izbrisi' => $this->izbrisi()->spoji()->gdje()
         };
 
