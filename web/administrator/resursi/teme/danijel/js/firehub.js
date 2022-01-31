@@ -155,6 +155,71 @@ $(document).ready(function () {
 });
 
 /**
+ * Spremi slike.
+ */
+$(function() {
+
+    $("body").on('submit', 'form.slika', function() {
+
+        let oznaka = $(this).data("oznaka");
+
+        $_SpremiSlike('form[data-oznaka="' + oznaka + '"]');
+
+        return false;
+
+    }).on('change','form.slika input[type="file"]', function() {
+
+        let oznaka = $(this).closest('form').data("oznaka");
+
+        $('form[data-oznaka="' + oznaka + '"]').submit();
+
+        return false;
+
+    });
+
+});
+$_SpremiSlike = function ($url) {
+
+    // dialog prozor
+    let dialog = new Dialog();
+
+    $($url).ajaxSubmit({
+        beforeSend: function() {
+            Dialog.dialogOtvori(false);
+            dialog.naslov('Dodajem sliku');
+            dialog.sadrzaj('' +
+                '<div class="progres" style="display: block;">\
+                    <div class="bar" style="width: 0%;"></div>\
+                    <div class="postotak">0%</div>\
+                </div>'
+            );
+        },
+        uploadProgress: function(event, position, total, postotakZavrseno) {
+            $('#dialog .sadrzaj .bar').width(postotakZavrseno + '%');
+            $('#dialog .sadrzaj .postotak').html(postotakZavrseno + '%');
+        },
+        success: function(odgovor) {
+            Dialog.dialogOcisti();
+            dialog.naslov('Dodajem sliku');
+            dialog.sadrzaj(odgovor.Poruka);
+            dialog.kontrole('<button data-boja="boja" onclick="Dialog.dialogZatvori()">U redu</button>');
+        },
+        error: function () {
+            Dialog.dialogOcisti();
+            dialog.naslov('Greška');
+            dialog.sadrzaj('Dogodila se greška prilikom učitavanja podataka, molimo kontaktirajte administratora');
+            dialog.kontrole('<button data-boja="boja" onclick="Dialog.dialogZatvori()">Zatvori</button>');
+        },
+        complete: function(odgovor) {
+            location.reload();
+        }
+    });
+
+    return false;
+
+};
+
+/**
  * Odjavi se.
  */
 $_Odjava = function () {
