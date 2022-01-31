@@ -95,6 +95,38 @@ final class Validacija {
     }
 
     /**
+     * ### Validacija stringa.
+     * @since 0.1.2.pre-alpha.M1
+     *
+     * @param string $naziv
+     * @param $vrijednost
+     * @param int $min_znakova
+     * @param int $max_znakova
+     *
+     * @throws Greska
+     *
+     * @return string Vrijednost
+     */
+    public static function StringHTML (string $naziv, $vrijednost, int $min_znakova = 0, int $max_znakova = 99999):string {
+
+        $vrijednost = self::Trim($vrijednost);
+        $vrijednost = self::StripSlashes($vrijednost);
+
+        if (mb_strlen($vrijednost) < $min_znakova) {
+
+            throw new Greska(sprintf(_('%s mora biti najmanje %d znakova! (kod: %d)'), $naziv, $min_znakova, 1), 1);
+
+        } else if (mb_strlen($vrijednost) > $max_znakova) {
+
+            throw new Greska(sprintf(_('%s ne smije biti veće od %d znakova! (kod: %d)'), $naziv, $max_znakova, 1), 1);
+
+        }
+
+        return $vrijednost;
+
+    }
+
+    /**
      * ### Validacija telefonskog broja.
      * @since 0.1.2.pre-alpha.M1
      *
