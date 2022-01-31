@@ -42,12 +42,12 @@ final class Artikl_Model extends Master_Model {
      * ### Artikl
      * @since 0.1.2.pre-alpha.M1
      *
-     * @param int $artikal
+     * @param int $id
      *
      * @throws Kontejner_Greska
      * @return array|false|mixed[]
      */
-    public function artikl (int $id) {
+    public function artikl (int $id):array|false {
 
         $artikl = $this->bazaPodataka
             ->sirovi("
@@ -76,6 +76,30 @@ final class Artikl_Model extends Master_Model {
         if ($artikl['Hr']) {$artikl['Hr'] = true;} else {$artikl['Hr'] = false;}
 
         return $artikl;
+
+    }
+
+    /**
+     * ### Slike artikla
+     * @since 0.1.2.pre-alpha.M1
+     *
+     * @param int $id
+     *
+     * @throws Kontejner_Greska
+     * @return array
+     */
+    public function slike (int $id):array {
+
+        $slike = $this->bazaPodataka
+            ->sirovi("
+                SELECT
+                    slikeartikal.ID, slikeartikal.Slika
+                FROM slikeartikal
+                WHERE slikeartikal.ClanakID = $id
+            ")
+            ->napravi();
+
+        return $slike->niz() ?: [];
 
     }
 

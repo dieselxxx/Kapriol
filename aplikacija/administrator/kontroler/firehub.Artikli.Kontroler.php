@@ -95,11 +95,28 @@ final class Artikli_Kontroler extends Master_Kontroler {
         // kategorije
         $kategorije_model = $this->model(Kategorije_Model::class);
         $kategorije = $kategorije_model->lista(limit_zapisa_po_stranici: 100);
-
         $kategorije_html = '';
         foreach ($kategorije as $kategorija) {
 
             $kategorije_html .= "<option value='{$kategorija['ID']}'>{$kategorija['Kategorija']}</option>";
+
+        }
+
+        // slike
+        $slike = $artikl_model->slike($id);
+        $slike_html = '';
+        foreach ($slike as $slika) {
+
+            $slike_html .= '
+                <tr>
+                    <td>
+                        <img src="/slika/malaslika/'.$slika['Slika'].'" alt="'.$slika['Slika'].'" />
+                    </td>
+                    <td>
+                        <a class="gumb" data-boja="boja" onclick="$_ArtiklIzbrisiSliku(\''.$slika['ID'].'\')">Izbriši sliku</a>
+                    </td>
+                </tr>
+            ';
 
         }
 
@@ -117,7 +134,8 @@ final class Artikli_Kontroler extends Master_Kontroler {
             'hr' => $artikl['Hr'],
             'kategorija' => $artikl['KategorijaID'],
             'kategorija_naziv' => $artikl['Kategorija'],
-            'kategorije' => $kategorije_html
+            'kategorije' => $kategorije_html,
+            'slike' => $slike_html
         ]);
 
     }
