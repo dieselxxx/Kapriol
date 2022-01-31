@@ -16,7 +16,6 @@ namespace FireHub\Aplikacija\Administrator\Model;
 
 use FireHub\Jezgra\Komponente\BazaPodataka\BazaPodataka;
 use FireHub\Aplikacija\Kapriol\Jezgra\Validacija;
-use FireHub\Jezgra\Greske\Greska;
 use FireHub\Jezgra\Kontejner\Greske\Kontejner_Greska;
 
 /**
@@ -56,8 +55,10 @@ final class Artikl_Model extends Master_Model {
                     artikli.ID, artikli.Naziv, artikli.Opis,
                     artikli.Cijena, artikli.CijenaAkcija, artikli.CijenaKn, artikli.CijenaAkcijaKn,
                     artikli.Ba, artikli.Hr,
-                    artikli.Aktivan, artikli.Izdvojeno
+                    artikli.Aktivan, artikli.Izdvojeno,
+                    artikli.KategorijaID, kategorije.Kategorija
                 FROM artikli
+                LEFT JOIN kategorije ON kategorije.ID = artikli.KategorijaID
                 WHERE artikli.ID = $id
                 LIMIT 1
             ")
@@ -88,7 +89,7 @@ final class Artikl_Model extends Master_Model {
         $naziv = Validacija::String(_('Naziv artikla'), $naziv, 3, 100);
 
         $opis = $_REQUEST['opis'];
-        $opis = Validacija::String(_('Opis artikla'), $opis, 0, 1500);
+        $opis = Validacija::StringHTML(_('Opis artikla'), $opis, 0, 1500);
 
         $cijena = $_REQUEST['cijena'];
         $cijena = str_replace('.', '', $cijena);
@@ -122,6 +123,9 @@ final class Artikl_Model extends Master_Model {
         $aktivno = Validacija::Potvrda(_('Aktivno'), $aktivno);
         if ($aktivno == "on") {$aktivno = 1;} else {$aktivno = 0;}
 
+        $kategorija = $_REQUEST['kategorija'];
+        $kategorija = Validacija::Broj(_('Kategorija artikla'), $kategorija, 1, 7);
+
         $spremi = $this->bazaPodataka
             ->transakcija(
                 (new BazaPodataka())->tabela('artikli')
@@ -133,7 +137,8 @@ final class Artikl_Model extends Master_Model {
                         'CijenaKn' => $cijena_hr,
                         'CijenaAkcijaKn' => $cijena_akcija_hr,
                         'Izdvojeno' => $izdvojeno,
-                        'Aktivan' => $aktivno
+                        'Aktivan' => $aktivno,
+                        'KategorijaID' => $kategorija
                     ])
                     ->gdje('ID', '=', $id)
             )->napravi();

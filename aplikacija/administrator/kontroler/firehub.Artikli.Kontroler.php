@@ -15,6 +15,7 @@
 namespace FireHub\Aplikacija\Administrator\Kontroler;
 
 use FireHub\Aplikacija\Administrator\Model\Artikl_Model;
+use FireHub\Aplikacija\Administrator\Model\Kategorije_Model;
 use FireHub\Jezgra\Sadrzaj\Sadrzaj;
 use FireHub\Aplikacija\Administrator\Model\Artikli_Model;
 use FireHub\Jezgra\HTTP\Enumeratori\Vrsta;
@@ -89,6 +90,17 @@ final class Artikli_Kontroler extends Master_Kontroler {
         if ($artikl['Izdvojeno'] === true) {$artikl['Izdvojeno'] = 'checked';} else {$artikl['Izdvojeno'] = '';}
         if ($artikl['Aktivan'] === true) {$artikl['Aktivan'] = 'checked';} else {$artikl['Aktivan'] = '';}
 
+        // kategorije
+        $kategorije_model = $this->model(Kategorije_Model::class);
+        $kategorije = $kategorije_model->lista(limit_zapisa_po_stranici: 100);
+
+        $kategorije_html = '';
+        foreach ($kategorije as $kategorija) {
+
+            $kategorije_html .= "<option value='{$kategorija['ID']}'>{$kategorija['Kategorija']}</option>";
+
+        }
+
         return sadrzaj()->predlozakPutanja('prazno/')->datoteka('artikli/uredi.html')->podatci([
             'id' => $artikl['ID'],
             'naziv' => $artikl['Naziv'],
@@ -98,7 +110,10 @@ final class Artikli_Kontroler extends Master_Kontroler {
             'cijena_hr' => $artikl['CijenaKn'],
             'cijena_akcija_hr' => $artikl['CijenaAkcijaKn'],
             'aktivno' => $artikl['Aktivan'],
-            'izdvojeno' => $artikl['Izdvojeno']
+            'izdvojeno' => $artikl['Izdvojeno'],
+            'kategorija' => $artikl['KategorijaID'],
+            'kategorija_naziv' => $artikl['Kategorija'],
+            'kategorije' => $kategorije_html
         ]);
 
     }
