@@ -72,6 +72,8 @@ final class Artikl_Model extends Master_Model {
         $artikl['CijenaAkcijaKn'] = number_format((float)$artikl['CijenaAkcijaKn'], 2, ',', '.');
         if ($artikl['Izdvojeno']) {$artikl['Izdvojeno'] = true;} else {$artikl['Izdvojeno'] = false;}
         if ($artikl['Aktivan']) {$artikl['Aktivan'] = true;} else {$artikl['Aktivan'] = false;}
+        if ($artikl['Ba']) {$artikl['Ba'] = true;} else {$artikl['Ba'] = false;}
+        if ($artikl['Hr']) {$artikl['Hr'] = true;} else {$artikl['Hr'] = false;}
 
         return $artikl;
 
@@ -123,6 +125,14 @@ final class Artikl_Model extends Master_Model {
         $aktivno = Validacija::Potvrda(_('Aktivno'), $aktivno);
         if ($aktivno == "on") {$aktivno = 1;} else {$aktivno = 0;}
 
+        $ba = $_REQUEST["ba"] ?? null;
+        $ba = Validacija::Potvrda(_('Izdvojeno'), $ba);
+        if ($ba == "on") {$ba = 1;} else {$ba = 0;}
+
+        $hr = $_REQUEST["hr"] ?? null;
+        $hr = Validacija::Potvrda(_('Izdvojeno'), $hr);
+        if ($hr == "on") {$hr = 1;} else {$hr = 0;}
+
         $kategorija = $_REQUEST['kategorija'];
         $kategorija = Validacija::Broj(_('Kategorija artikla'), $kategorija, 1, 7);
 
@@ -136,6 +146,8 @@ final class Artikl_Model extends Master_Model {
                         'CijenaAkcija' => $cijena_akcija,
                         'CijenaKn' => $cijena_hr,
                         'CijenaAkcijaKn' => $cijena_akcija_hr,
+                        'Ba' => $ba,
+                        'Hr' => $hr,
                         'Izdvojeno' => $izdvojeno,
                         'Aktivan' => $aktivno,
                         'KategorijaID' => $kategorija

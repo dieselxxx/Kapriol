@@ -89,6 +89,8 @@ final class Artikli_Kontroler extends Master_Kontroler {
         // formatiranje rezultata
         if ($artikl['Izdvojeno'] === true) {$artikl['Izdvojeno'] = 'checked';} else {$artikl['Izdvojeno'] = '';}
         if ($artikl['Aktivan'] === true) {$artikl['Aktivan'] = 'checked';} else {$artikl['Aktivan'] = '';}
+        if ($artikl['Ba'] === true) {$artikl['Ba'] = 'checked';} else {$artikl['Ba'] = '';}
+        if ($artikl['Hr'] === true) {$artikl['Hr'] = 'checked';} else {$artikl['Hr'] = '';}
 
         // kategorije
         $kategorije_model = $this->model(Kategorije_Model::class);
@@ -111,6 +113,8 @@ final class Artikli_Kontroler extends Master_Kontroler {
             'cijena_akcija_hr' => $artikl['CijenaAkcijaKn'],
             'aktivno' => $artikl['Aktivan'],
             'izdvojeno' => $artikl['Izdvojeno'],
+            'ba' => $artikl['Ba'],
+            'hr' => $artikl['Hr'],
             'kategorija' => $artikl['KategorijaID'],
             'kategorija_naziv' => $artikl['Kategorija'],
             'kategorije' => $kategorije_html
