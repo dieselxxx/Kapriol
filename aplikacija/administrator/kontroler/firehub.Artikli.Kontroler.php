@@ -120,7 +120,7 @@ final class Artikli_Kontroler extends Master_Kontroler {
 
         }
 
-        return sadrzaj()->predlozakPutanja('prazno/')->datoteka('artikli/uredi.html')->podatci([
+        return sadrzaj()->format(Sadrzaj_Vrsta::HTMLP)->datoteka('artikli/uredi.html')->podatci([
             'id' => $artikl['ID'],
             'naziv' => $artikl['Naziv'],
             'opis' => $artikl['Opis'],
