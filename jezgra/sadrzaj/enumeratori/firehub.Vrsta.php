@@ -25,5 +25,6 @@ enum Vrsta:string {
     case HTML = 'HTML';
     case JSON = 'JSON';
     case SLIKA = 'SLIKA';
+    case HTMLP = 'HTMLP';
 
 }

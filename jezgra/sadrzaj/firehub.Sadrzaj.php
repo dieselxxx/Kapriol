@@ -16,11 +16,12 @@ namespace FireHub\Jezgra\Sadrzaj;
 
 use FireHub\Jezgra\Sadrzaj\Enumeratori\Vrsta;
 use FireHub\Jezgra\Sadrzaj\Vrste\HTML;
+use FireHub\Jezgra\Sadrzaj\Vrste\HTMLP;
 use FireHub\Jezgra\Sadrzaj\Vrste\JSON;
+use FireHub\Jezgra\Sadrzaj\Vrste\SLIKA;
 use FireHub\Jezgra\Komponente\Log\Enumeratori\Level;
 use FireHub\Jezgra\Kontejner\Greske\Kontejner_Greska;
 use FireHub\Jezgra\Sadrzaj\Greske\Sadrzaj_Greska;
-use FireHub\Jezgra\Sadrzaj\Vrste\SLIKA;
 use JsonException;
 
 /**
@@ -164,7 +165,8 @@ final class Sadrzaj {
             )
             )->ispisi(),
             Vrsta::JSON => (new JSON($this->podatci))->ispisi(),
-            Vrsta::SLIKA => (new SLIKA($this->podatci))->ispisi()
+            Vrsta::SLIKA => (new SLIKA($this->podatci))->ispisi(),
+            Vrsta::HTMLP => (new HTMLP($this->podatci, $this->datoteka))->ispisi()
         };
 
     }
