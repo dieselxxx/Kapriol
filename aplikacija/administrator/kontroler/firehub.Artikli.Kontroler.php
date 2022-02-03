@@ -171,4 +171,66 @@ final class Artikli_Kontroler extends Master_Kontroler {
 
     }
 
+    /**
+     * ### Spremi sliku artikla
+     * @since 0.1.2.pre-alpha.M1
+     *
+     * @return Sadrzaj
+     */
+    #[Zaglavlja(vrsta: Vrsta::JSON)]
+    public function dodajSliku (string $kontroler = '', string $metoda = '', int $id = 0):Sadrzaj {
+
+        try {
+
+            // model
+            $artikl = $this->model(Artikl_Model::class);
+            $artikl->dodajSliku($id);
+
+            return sadrzaj()->format(Sadrzaj_Vrsta::JSON)->podatci([
+                'Validacija' => 'da',
+                'Poruka' => _('Uspješno spremljeno')
+            ]);
+
+        } catch (Greska $greska) {
+
+            return sadrzaj()->format(Sadrzaj_Vrsta::JSON)->podatci([
+                'Validacija' => 'ne',
+                'Poruka' => $greska->getMessage()
+            ]);
+
+        }
+
+    }
+
+    /**
+     * ### Izbrisi sliku artikla
+     * @since 0.1.2.pre-alpha.M1
+     *
+     * @return Sadrzaj
+     */
+    #[Zaglavlja(vrsta: Vrsta::JSON)]
+    public function izbrisiSliku (string $kontroler = '', string $metoda = '', int $id = 0):Sadrzaj {
+
+        try {
+
+            // model
+            $artikl = $this->model(Artikl_Model::class);
+            $artikl->izbrisiSliku($id);
+
+            return sadrzaj()->format(Sadrzaj_Vrsta::JSON)->podatci([
+                'Validacija' => 'da',
+                'Poruka' => _('Uspješno izbrisano')
+            ]);
+
+        } catch (Greska $greska) {
+
+            return sadrzaj()->format(Sadrzaj_Vrsta::JSON)->podatci([
+                'Validacija' => 'ne',
+                'Poruka' => $greska->getMessage()
+            ]);
+
+        }
+
+    }
+
 }

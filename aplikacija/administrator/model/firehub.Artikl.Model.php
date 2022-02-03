@@ -16,7 +16,9 @@ namespace FireHub\Aplikacija\Administrator\Model;
 
 use FireHub\Jezgra\Komponente\BazaPodataka\BazaPodataka;
 use FireHub\Aplikacija\Kapriol\Jezgra\Validacija;
+use FireHub\Aplikacija\Administrator\Jezgra\PrijenosDatoteka;
 use FireHub\Jezgra\Kontejner\Greske\Kontejner_Greska;
+use FireHub\Jezgra\Greske\Greska;
 
 /**
  * ### Artikl
@@ -178,6 +180,59 @@ final class Artikl_Model extends Master_Model {
                     ])
                     ->gdje('ID', '=', $id)
             )->napravi();
+
+    }
+
+    /**
+     * ### Dodaj sliku artikla
+     * @since 0.1.2.pre-alpha.M1
+     */
+    public function dodajSliku (int $id) {
+
+        // prenesi sliku
+        $datoteka = new PrijenosDatoteka('slika');
+        $datoteka->Putanja(FIREHUB_ROOT.konfiguracija('sustav.putanje.web').'Kapriol'.RAZDJELNIK_MAPE.'resursi'.RAZDJELNIK_MAPE.'grafika'.RAZDJELNIK_MAPE.'artikli'.RAZDJELNIK_MAPE);
+        $datoteka->NovoIme($id . '_');
+        $datoteka->DozvoljeneVrste(array('image/jpeg'));
+        $datoteka->DozvoljenaVelicina(1000);
+        $datoteka->PrijenosDatoteke();
+        $datoteka->SlikaDimenzije(800, 600);
+
+         $this->bazaPodataka
+        ->sirovi("
+            INSERT INTO slikeartikal
+            (ClanakID, Slika, Zadana)
+            VALUES
+            ('$id', '{$datoteka->ImeDatoteke()}', 0)
+        ")
+        ->napravi();
+
+    }
+
+    /**
+     * ### Izbriši sliku artikla
+     * @since 0.1.2.pre-alpha.M1
+     */
+    public function izbrisiSliku (int $id) {
+
+        $naziv_sql = $this->bazaPodataka
+            ->sirovi("
+            SELECT Slika
+            FROM slikeartikal
+            WHERE ID = '$id'
+        ")
+        ->napravi();
+
+        $naziv = $naziv_sql->redak()['Slika'];
+
+        $this->bazaPodataka
+            ->sirovi("
+            DELETE FROM slikeartikal
+            WHERE ID = '$id'
+        ")
+        ->napravi();
+
+        unlink(FIREHUB_ROOT.konfiguracija('sustav.putanje.web').'Kapriol'.RAZDJELNIK_MAPE.'resursi'.RAZDJELNIK_MAPE.'grafika'.RAZDJELNIK_MAPE.'artikli'.RAZDJELNIK_MAPE.$naziv);
 
     }
 

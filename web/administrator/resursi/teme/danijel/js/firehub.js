@@ -496,7 +496,7 @@ $_ArtiklIzbrisiSliku = function ($slika) {
 
     $.ajax({
         type: 'POST',
-        url: '/administrator/artikli/izbrisisliku/' + $id + '/' + $slika,
+        url: '/administrator/artikli/izbrisisliku/' + $slika,
         dataType: 'json',
         data: $podatci,
         beforeSend: function () {
