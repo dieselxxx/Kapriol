@@ -1,7 +1,7 @@
 <?php declare(strict_types = 1);
 
 /**
- * Artikl
+ * Artiklx
  * @since 0.1.2.pre-alpha.M1
  *
  * @author Danijel Galić
