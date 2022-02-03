@@ -12,7 +12,7 @@
  * @package Aplikacija\Jezgra
  */
 
-Namespace FireHub\Aplikacija\Administrator\Jezgra;
+namespace FireHub\Aplikacija\Administrator\Jezgra;
 
 trait tTablicaEfekti {
 

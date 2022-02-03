@@ -421,3 +421,101 @@ $_ArtiklSpremi = function (element) {
     return false;
 
 };
+
+/**
+ * Spremi sliku artikla.
+ */
+$(function() {
+
+    $("body").on('submit', 'form[data-oznaka="artikl"]', function() {
+
+        let oznaka = $(this).data("oznaka");
+
+        $_ArtiklSpremiSliku('form[data-oznaka="' + oznaka + '"]');
+
+        return false;
+
+    }).on('change','form[data-oznaka="artikl"] input[type="file"]', function() {
+
+        let oznaka = $(this).closest('form').data("oznaka");
+
+        $('form[data-oznaka="' + oznaka + '"]').submit();
+
+        return false;
+
+    });
+
+});
+$_ArtiklSpremiSliku = function ($url) {
+
+    // dialog prozor
+    let dialog = new Dialog();
+
+    $($url).ajaxSubmit({
+        beforeSend: function() {
+            Dialog.dialogOtvori(false);
+            dialog.naslov('Dodajem sliku');
+            dialog.sadrzaj('' +
+                '<div class="progres" style="display: block;">\
+                    <div class="bar" style="width: 0%;"></div>\
+                    <div class="postotak">0%</div>\
+                </div>'
+            );
+        },
+        uploadProgress: function(event, position, total, postotakZavrseno) {
+            $('#dialog .sadrzaj .bar').width(postotakZavrseno + '%');
+            $('#dialog .sadrzaj .postotak').html(postotakZavrseno + '%');
+        },
+        success: function(odgovor) {
+            Dialog.dialogOcisti();
+            dialog.naslov('Dodajem sliku');
+            dialog.sadrzaj(odgovor.Poruka);
+            dialog.kontrole('<button data-boja="boja" onclick="Dialog.dialogZatvori()">U redu</button>');
+        },
+        error: function () {
+            Dialog.dialogOcisti();
+            dialog.naslov('Greška');
+            dialog.naslov('Dogodila se greška prilikom učitavanja podataka, molimo kontaktirajte administratora');
+            dialog.kontrole('<button data-boja="boja" onclick="Dialog.dialogZatvori()">Zatvori</button>');
+        },
+        complete: function(odgovor) {
+            //$_Artikl($id);
+        }
+    });
+
+    return false;
+
+};
+$_ArtiklIzbrisiSliku = function ($slika) {
+
+    let artikl_forma = $('form[data-oznaka="artikl"]');
+
+    let $id = artikl_forma.data("sifra");
+
+    let $podatci = artikl_forma.serializeArray();
+
+    $.ajax({
+        type: 'POST',
+        url: '/administrator/artikli/izbrisisliku/' + $id + '/' + $slika,
+        dataType: 'json',
+        data: $podatci,
+        beforeSend: function () {
+            //
+        },
+        success: function (odgovor) {
+            if (odgovor.Validacija === "da") {
+
+            } else {
+                //$(element).closest('form').find('table tr.poruka td').append(odgovor.Poruka);
+            }
+        },
+        error: function () {
+        },
+        complete: function (odgovor) {
+            $_Artikl($id);
+        }
+    });
+
+    return false;
+
+};
