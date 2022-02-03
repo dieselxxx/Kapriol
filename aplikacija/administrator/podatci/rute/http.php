@@ -22,3 +22,5 @@ Rute::sve('artikli/index', [\FireHub\Aplikacija\Administrator\Kontroler\Artikli_
 Rute::sve('artikli/lista', [\FireHub\Aplikacija\Administrator\Kontroler\Artikli_Kontroler::class, 'lista']);
 Rute::sve('artikli/uredi', [\FireHub\Aplikacija\Administrator\Kontroler\Artikli_Kontroler::class, 'uredi']);
 Rute::sve('artikli/spremi', [\FireHub\Aplikacija\Administrator\Kontroler\Artikli_Kontroler::class, 'spremi']);
+Rute::sve('artikli/dodajsliku', [\FireHub\Aplikacija\Administrator\Kontroler\Artikli_Kontroler::class, 'dodajsliku']);
+Rute::sve('artikli/izbrisisliku', [\FireHub\Aplikacija\Administrator\Kontroler\Artikli_Kontroler::class, 'izbrisisliku']);
