@@ -221,7 +221,8 @@ path[data-boja="boja"] {fill: var(--boja-kapriol);}
 fieldset[data-boja="boja"] table.tabela thead tr th {color: var(--boja-kapriol);}
 
 header {display: grid;}
-header > div#info {grid-column: 1 / 8; grid-row: 1 / 2; display: grid; grid-template-columns: auto 700px 700px auto; background-color: var(--boja-pozadina_svijetla); align-content: center; padding: 10px; height: 50px; border-width: 0 0 1px 0; border-style: solid; border-color: var(--boja-granica); box-shadow: 0 3px 39px 0 rgba(0,0,0,0.04); -webkit-box-shadow: 0 3px 39px 0 rgba(0,0,0,0.04); -moz-box-shadow: 0 3px 39px 0 rgba(0,0,0,0.04);}
+header > div#info {grid-column: 1 / 8; grid-row: 1 / 2; display: grid; grid-template-columns: auto 700px 700px auto; background-color: var(--boja-pozadina_svijetla); align-content: center; padding: 10px; height: 80px; border-width: 0 0 1px 0; border-style: solid; border-color: var(--boja-granica); box-shadow: 0 3px 39px 0 rgba(0,0,0,0.04); -webkit-box-shadow: 0 3px 39px 0 rgba(0,0,0,0.04); -moz-box-shadow: 0 3px 39px 0 rgba(0,0,0,0.04);}
+header > div#info > a.facebook {grid-column: 3 / 4; justify-self: right; background-image: url('/kapriol/resursi/grafika/ikone/facebook.png'); background-size: cover; height: 50px; width: 50px;}
 header > a.logo {grid-column: 2 / 3; grid-row: 2 / 3; background-image: url('/kapriol/resursi/grafika/logo/120x270.png'); height: 120px; width: 270px; align-self: center; justify-self: left;}
 header > form[data-oznaka="trazi_artikal"] {grid-column: 4 / 6; grid-row: 2 / 3; display: flex; flex-direction: column; justify-content: center;}
 header > form[data-oznaka="trazi_artikal"] > label {padding: 15px; line-height: initial;}
@@ -393,6 +394,7 @@ footer > div.info > span {grid-column: 3 / 5; grid-row: 2 / 3; justify-self: cen
 @media only screen and (max-width: 1400px) {
 
     header > div#info {grid-column: 1 / 7; grid-template-columns: 1fr 1fr;}
+    header > div#info > a.facebook {grid-column: 2 / 3;}
     header a.logo {grid-column: 1 / 2;}
     header > form[data-oznaka="trazi_artikal"] {grid-column: 3 / 6;}
     header > a#prijava {grid-column: 5 / 6;}

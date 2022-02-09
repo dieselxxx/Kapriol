@@ -130,6 +130,7 @@ final class Rezultat_Kontroler extends Master_Kontroler {
 
         return sadrzaj()->datoteka('rezultat.html')->podatci([
             'predlozak_naslov' => $trenutna_kategorija['Kategorija'],
+            'facebook_link' => Domena::facebook(),
             'glavni_meni' => $kategorije->glavniMeni(),
             'glavni_meni_hamburger' => $kategorije->glavniMeniHamburger(),
             'zaglavlje_kosarica_artikli' => $this->kosaricaArtikli(),

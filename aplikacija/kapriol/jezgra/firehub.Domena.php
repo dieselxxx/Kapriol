@@ -181,4 +181,16 @@ final class Domena {
 
     }
 
+    public static function facebook ():string {
+
+        if (self::Hr()) {
+
+            return 'https://www.facebook.com/kapriol.hr';
+
+        }
+
+        return 'https://www.facebook.com/kapriol.ba';
+
+    }
+
 }
