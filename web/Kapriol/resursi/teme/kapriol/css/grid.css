@@ -11,14 +11,14 @@ footer {display: grid; grid-area: podnozje; grid-template-columns: 1fr repeat(5,
 
 @media only screen and (max-width: 1024px) {
 
-    body {grid-template-rows: 380px auto auto;}
+    body {grid-template-rows: 360px auto auto;}
     header {grid-template-rows: 60px 150px 100px 50px;}
 
 }
 
 @media only screen and (max-width: 768px) {
 
-    body {grid-template-rows: 460px auto auto;}
+    body {grid-template-rows: 440px auto auto;}
     header {grid-template-rows: 60px 150px 80px 100px 50px;}
     footer {grid-template-rows: 300px 350px;}
 
