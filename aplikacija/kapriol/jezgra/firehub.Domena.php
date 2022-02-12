@@ -193,4 +193,16 @@ final class Domena {
 
     }
 
+    public static function mobitel ():string {
+
+        if (self::Hr()) {
+
+            return '385996039376';
+
+        }
+
+        return '38763363270';
+
+    }
+
 }

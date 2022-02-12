@@ -145,6 +145,7 @@ final class Kosarica_Kontroler extends Master_Kontroler {
         return sadrzaj()->datoteka('kosarica.html')->podatci([
             'predlozak_naslov' => 'Košarica',
             'facebook_link' => Domena::facebook(),
+            'mobitel' => Domena::mobitel(),
             'glavni_meni' => $kategorije->glavniMeni(),
             'glavni_meni_hamburger' => $kategorije->glavniMeniHamburger(),
             'zaglavlje_kosarica_artikli' => $this->kosaricaArtikli(),
@@ -199,6 +200,7 @@ final class Kosarica_Kontroler extends Master_Kontroler {
         return sadrzaj()->datoteka('narudzba.html')->podatci([
             'predlozak_naslov' => 'Narudžba',
             'facebook_link' => Domena::facebook(),
+            'mobitel' => Domena::mobitel(),
             'glavni_meni' => $kategorije->glavniMeni(),
             'glavni_meni_hamburger' => $kategorije->glavniMeniHamburger(),
             'zaglavlje_kosarica_artikli' => $this->kosaricaArtikli(),
@@ -296,6 +298,7 @@ final class Kosarica_Kontroler extends Master_Kontroler {
         return sadrzaj()->datoteka('narudzba_vrsta.html')->podatci([
             'predlozak_naslov' => 'Vrsta narudžbe',
             'facebook_link' => Domena::facebook(),
+            'mobitel' => Domena::mobitel(),
             'glavni_meni' => $kategorije->glavniMeni(),
             'glavni_meni_hamburger' => $kategorije->glavniMeniHamburger(),
             'zaglavlje_kosarica_artikli' => $this->kosaricaArtikli(),
@@ -320,6 +323,7 @@ final class Kosarica_Kontroler extends Master_Kontroler {
         return sadrzaj()->datoteka('narudzba_ispravno.html')->podatci([
             'predlozak_naslov' => 'Naslovna',
             'facebook_link' => Domena::facebook(),
+            'mobitel' => Domena::mobitel(),
             'glavni_meni' => $kategorije->glavniMeni(),
             'glavni_meni_hamburger' => $kategorije->glavniMeniHamburger(),
             'zaglavlje_kosarica_artikli' => $this->kosaricaArtikli(),

@@ -44,6 +44,7 @@ final class Poslovnice_Kontroler extends Master_Kontroler {
         return sadrzaj()->datoteka(Domena::poslovnice())->podatci([
             'predlozak_naslov' => 'Poslovnice',
             'facebook_link' => Domena::facebook(),
+            'mobitel' => Domena::mobitel(),
             'glavni_meni' => $kategorije->glavniMeni(),
             'glavni_meni_hamburger' => $kategorije->glavniMeniHamburger(),
             'zaglavlje_kosarica_artikli' => $this->kosaricaArtikli(),
