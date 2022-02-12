@@ -51,7 +51,9 @@ final class Naslovna_Kontroler extends Master_Kontroler {
             'zaglavlje_tel' => Domena::telefon(),
             'zaglavlje_adresa' => Domena::adresa(),
             'podnozje_dostava' => Domena::podnozjeDostava(),
-            'kategorije' => $kategorije->kategorijeNaslovna()
+            'kategorije' => $kategorije->kategorijeNaslovna(),
+            'dostavaLimit' => ''.Domena::dostavaLimit().'',
+            'valuta' => ''.Domena::valuta().''
         ]);
 
     }
