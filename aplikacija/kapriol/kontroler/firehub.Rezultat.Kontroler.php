@@ -66,6 +66,43 @@ final class Rezultat_Kontroler extends Master_Kontroler {
 
         $trenutna_kategorija = $kategorije->kategorija($kategorija);
 
+        // izdvojeno
+        $izdvojeno_html = '';
+        $izdvojeno = $this->model(Artikli_Model::class)->izdvojeno($trenutna_kategorija['ID']);
+        foreach ($izdvojeno as $artikal) {
+
+            // cijene
+            if ($artikal['CijenaAkcija'] > 0) {
+
+                $artikal_popust = -($artikal['Cijena'] - $artikal['CijenaAkcija']) / ($artikal['Cijena']) * 100;
+
+                $artikl_cijena = '
+                <span class="prekrizi">'.number_format((float)$artikal['Cijena'], 2, ',', '.').' '.Domena::valuta().'</span>
+                <h2 class="akcija">'.number_format((float)$artikal['CijenaAkcija'], 2, ',', '.').' '.Domena::valuta().'</h2>
+                <span class="popust">'.number_format($artikal_popust, 2, ',').' %</span>
+            ';
+
+            } else {
+
+                $artikl_cijena = '
+                <h2>'.number_format((float)$artikal['Cijena'], 2, ',', '.').' '.Domena::valuta().'</h2>
+            ';
+
+            }
+
+            $izdvojeno_html .= <<<Artikal
+            
+                <a class="artikal" href="/artikl/{$artikal['Link']}">
+                    <img src="/slika/malaslika/{$artikal['Slika']}" alt="" loading="lazy"/>
+                    <span class="naslov">{$artikal['Naziv']}</span>
+                    <span class="cijena">$artikl_cijena</span>
+                    <span class="zaliha"></span>
+                </a>
+
+            Artikal;
+
+        }
+
         // navigacija
         $limit = 12;
         $artikli = $this->model(Artikli_Model::class)->artikli($trenutna_kategorija['ID'], ($stranica - 1) * $limit, $limit, $velicina, $trazi, $poredaj, $poredaj_redoslijed);
@@ -139,6 +176,7 @@ final class Rezultat_Kontroler extends Master_Kontroler {
             'zaglavlje_adresa' => Domena::adresa(),
             'podnozje_dostava' => Domena::podnozjeDostava(),
             'vi_ste_ovdje' => 'Vi ste ovdje : <a href="/">Kapriol Web Trgovina</a> \\\\ ' . $trenutna_kategorija['Kategorija'] . ' \\\\ ' . $velicina . ' \\\\ ' . $trazi,
+            'izdvojeno' => $izdvojeno_html,
             'artikli' => $artikli_html,
             'navigacija' => $navigacija_html,
             "poredaj_izbornik" => $poredaj_izbornik,

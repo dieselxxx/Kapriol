@@ -153,6 +153,44 @@ final class Artikli_Model extends Master_Model {
     }
 
     /**
+     * ### Izdvojeni artikle
+     * @since 0.1.1.pre-alpha.M1
+     *
+     * @param int|string $kategorija <p>
+     * ID kategorije.
+     * </p>
+     *
+     * @throws Kontejner_Greska Ukoliko se ne može spremiti instanca objekta.
+     *
+     * @return array Niz artikala.
+     */
+    public function izdvojeno (int|string $kategorija) {
+
+        if ($kategorija === 'akcija') {
+
+            return [];
+
+        }
+
+        $artikli = $this->bazaPodataka->tabela('artikliview')
+            ->sirovi("
+                    SELECT
+                       artikliview.ID, Naziv, Link, Opis, ".Domena::sqlCijena()." AS Cijena, ".Domena::sqlCijenaAkcija()." AS CijenaAkcija, Slika,
+                       GROUP_CONCAT(DISTINCT artiklikarakteristike.Velicina) AS Velicine
+                    FROM artikliview
+                    LEFT JOIN slikeartikal ON ClanakID = artikliview.ID
+                    LEFT JOIN artiklikarakteristike ON artiklikarakteristike.ArtikalID = artikliview.ID
+                    WHERE KategorijaID = $kategorija AND Aktivan = 1 AND Izdvojeno = 1 AND ".Domena::sqlTablica()." = 1 AND Zadana = 1
+                    GROUP BY artikliview.ID
+                    LIMIT 2
+                ")
+            ->napravi();
+
+        return $artikli->niz() ?: [];
+
+    }
+
+    /**
      * ### Pronađi veličine artilala
      * @since 0.1.2.pre-alpha.M1
      *

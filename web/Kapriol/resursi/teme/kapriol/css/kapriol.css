@@ -291,7 +291,17 @@ main > div#sadrzaj.rezultat > div.meni > div.velicine > span {font-size: 0.8rem;
 main > div#sadrzaj.rezultat > div.meni > div.velicine > ul {margin-top: 15px;}
 main > div#sadrzaj.rezultat > div.meni > div.velicine > ul > li {float: left;}
 main > div#sadrzaj.rezultat > div.meni > div.velicine > ul > li > a {margin: 3px;}
-main > div#sadrzaj.rezultat > div.artikli {grid-column: 2 / 5; grid-row: 2 / 3; display: grid; grid-template-columns: repeat(3, 1fr); grid-gap: 15px;}
+main > div#sadrzaj.rezultat > div.izdvojeno {grid-column: 2 / 5; grid-row: 2 / 3; display: grid; grid-template-columns: repeat(2, 1fr); grid-gap: 15px; background-color: var(--boja-pozadina_tamna_total);}
+main > div#sadrzaj.rezultat > div.izdvojeno > a.artikal {position: relative; display: grid; grid-template-columns: minmax(150px, 1fr); grid-template-rows: 350px 40px 40px; grid-gap: 10px; padding: 10px; text-align: center; transition: all .3s ease; transition-property: transform, border-color; box-shadow: 0 3px 39px 0 rgba(0,0,0,0.04); -webkit-box-shadow: 0 3px 39px 0 rgba(0,0,0,0.04); -moz-box-shadow: 0 3px 39px 0 rgba(0,0,0,0.04);}
+main > div#sadrzaj.rezultat > div.izdvojeno > a.artikal > * {justify-self: center; align-self: center;}
+main > div#sadrzaj.rezultat > div.izdvojeno > a.artikal > img {object-fit: contain; height: 100%; width: 100%;}
+main > div#sadrzaj.rezultat > div.izdvojeno > a.artikal > span.naslov {font-weight: 500; color: var(--boja-kapriol);}
+main > div#sadrzaj.rezultat > div.izdvojeno > a.artikal > span.cijena > h2 {color: var(--boja-tekst-svjetlije);}
+main > div#sadrzaj.rezultat > div.izdvojeno > a.artikal > span.cijena > h2.akcija {margin: 0; color: var(--boja-kapriol);}
+main > div#sadrzaj.rezultat > div.izdvojeno > a.artikal > span.cijena > span.prekrizi {position: relative; font-size: 0.9rem; font-weight: 500; color: var(--boja-tekst-svjetlije);}
+main > div#sadrzaj.rezultat > div.izdvojeno > a.artikal > span.cijena > span.prekrizi:before {content: ""; position: absolute; top: 50%; left: 0; right: 0; border-top: 2px solid; border-color: var(--boja-kapriol); -webkit-transform:rotate(-5deg); -moz-transform:rotate(-5deg); -ms-transform:rotate(-5deg); -o-transform:rotate(-5deg); transform:rotate(-5deg);}
+main > div#sadrzaj.rezultat > div.izdvojeno > a.artikal > span.cijena > span.popust {position: absolute; background-color: var(--boja-tekst-svjetlije); top: 5px; left: 5px; padding: 5px; font-size: 0.9rem; font-weight: 500; color: var(--boja-kapriol);}
+main > div#sadrzaj.rezultat > div.artikli {grid-column: 2 / 5; grid-row: 3 / 4; display: grid; grid-template-columns: repeat(3, 1fr); grid-gap: 15px;}
 main > div#sadrzaj.rezultat > div.artikli > a.artikal {position: relative; display: grid; grid-template-columns: minmax(150px, 1fr); grid-template-rows: 280px 40px 40px; grid-gap: 10px; padding: 10px; text-align: center; border: 1px solid var(--boja-granica); transition: all .3s ease; transition-property: transform, border-color; box-shadow: 0 3px 39px 0 rgba(0,0,0,0.04); -webkit-box-shadow: 0 3px 39px 0 rgba(0,0,0,0.04); -moz-box-shadow: 0 3px 39px 0 rgba(0,0,0,0.04);}
 main > div#sadrzaj.rezultat > div.artikli > a.artikal:hover {border: 1px solid var(--boja-kapriol);}
 main > div#sadrzaj.rezultat > div.artikli > a.artikal > * {justify-self: center; align-self: center;}
@@ -302,7 +312,7 @@ main > div#sadrzaj.rezultat > div.artikli > a.artikal > span.cijena > h2.akcija 
 main > div#sadrzaj.rezultat > div.artikli > a.artikal > span.cijena > span.prekrizi {position: relative; font-size: 0.9rem; font-weight: 500; color: var(--boja-tekst-tamnije);}
 main > div#sadrzaj.rezultat > div.artikli > a.artikal > span.cijena > span.prekrizi:before {content: ""; position: absolute; top: 50%; left: 0; right: 0; border-top: 2px solid; border-color: var(--boja-kapriol); -webkit-transform:rotate(-5deg); -moz-transform:rotate(-5deg); -ms-transform:rotate(-5deg); -o-transform:rotate(-5deg); transform:rotate(-5deg);}
 main > div#sadrzaj.rezultat > div.artikli > a.artikal > span.cijena > span.popust {position: absolute; background-color: var(--boja-pozadina_tamna); top: 5px; left: 5px; padding: 5px; font-size: 0.9rem; font-weight: 500; color: var(--boja-kapriol);}
-main > div#sadrzaj.rezultat > nav.navigacija {grid-column: 2 / 5; grid-row: 3 / 4; justify-self: center; align-self: center;}
+main > div#sadrzaj.rezultat > nav.navigacija {grid-column: 2 / 5; grid-row: 4 / 5; justify-self: center; align-self: center;}
 main > div#sadrzaj.rezultat > nav.navigacija > ul {display: flex; flex-flow: wrap; width: auto;}
 main > div#sadrzaj.rezultat > nav.navigacija > ul > li {display: inline-grid; height: auto;}
 main > div#sadrzaj.rezultat > nav.navigacija > ul > li > a.gumb {margin: 8px; min-width: 54px;}
@@ -479,10 +489,12 @@ footer > div.info > span {grid-column: 3 / 5; grid-row: 2 / 3; justify-self: cen
     main > div#sadrzaj.naslovna > div.kategorije {grid-template-columns: 1fr 1fr;}
     main > div#sadrzaj.rezultat > div.meni {grid-column: 1 / 5; grid-row: 2 / 3; grid-template-columns: 1fr; grid-template-rows: max-content;}
     main > div#sadrzaj.rezultat > div.meni > div.velicine {grid-column: 2 / 3; grid-row: 1 / 2;}
-    main > div#sadrzaj.rezultat > div.artikli {grid-column: 1 / 5; grid-row: 3 / 4; grid-template-columns: 1fr 1fr;}
+    main > div#sadrzaj.rezultat > div.izdvojeno {grid-column: 1 / 5; grid-row: 3 / 4;}
+    main > div#sadrzaj.rezultat > div.izdvojeno > a.artikal {grid-template-rows: 220px 40px 40px;}
+    main > div#sadrzaj.rezultat > div.artikli {grid-column: 1 / 5; grid-row: 4 / 5; grid-template-columns: 1fr 1fr;}
     main > div#sadrzaj.kosarica > div.artikli > form.artikl {grid-template-columns: 105px auto auto;}
     main > div#sadrzaj.kosarica > div.ukupno {justify-self: center;}
-    main > div#sadrzaj.rezultat > nav.navigacija {grid-column: 1 / 5; grid-row: 4 / 5;}
+    main > div#sadrzaj.rezultat > nav.navigacija {grid-column: 1 / 5; grid-row: 5 / 6;}
     main > div#sadrzaj.artikl > form.artikl > ul.slike > li {padding: 5px; height: 80px; width: 120px;}
     main > div#sadrzaj.narudzba > form.podatci {grid-template-columns: 1fr;}
     main > div#sadrzaj.narudzba > form.podatci > section > table {width: 100%;}
