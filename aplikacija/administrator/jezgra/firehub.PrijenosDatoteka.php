@@ -88,9 +88,13 @@ final class PrijenosDatoteka {
     /**
      * Novo ime datoteke kao random string
      */
-    public function NovoIme (string $prefiks = ''):void {
+    public function NovoIme (string $prefiks = '', bool $random = true):void {
 
-        $novo_ime = bin2hex(random_bytes(20));
+        if ($random) {
+            $novo_ime = bin2hex(random_bytes(20));
+        } else {
+            $novo_ime = '';
+        }
 
         if ($prefiks <> '') {
 
