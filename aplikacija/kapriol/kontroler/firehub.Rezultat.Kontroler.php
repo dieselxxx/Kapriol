@@ -102,6 +102,7 @@ final class Rezultat_Kontroler extends Master_Kontroler {
             Artikal;
 
         }
+        if (!empty($izdvojeno_html)) {$izdvojeno_html = '<span>Izdvojeni artikli</span>' . $izdvojeno_html;}
 
         // navigacija
         $limit = 12;
