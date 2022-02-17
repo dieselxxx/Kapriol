@@ -62,7 +62,7 @@ final class Kategorije_Model extends Master_Model {
 
         $rezultat = '
             <li>
-                <svg><use xlink:href="/kapriol/resursi/grafika/simboli/simbol.ikone.svg#akcija"></use></svg>
+                <svg><use xlink:href="/kapriol/resursi/grafika/simboli/simbol.ikone.svg#akcija_novi"></use></svg>
                 <span><a href="/rezultat/akcija">Na akciji</a></span>
             </li>
         ';
