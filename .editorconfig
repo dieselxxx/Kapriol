@@ -13,5 +13,5 @@ indent_style = space
 indent_size = 4
 
 # 2 intent veličina
-[*.{yml,yaml, config}]
+[*.{yml,yaml, config}]ffff
 indent_size = 2
