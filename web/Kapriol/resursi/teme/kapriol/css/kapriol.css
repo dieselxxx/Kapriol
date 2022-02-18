@@ -266,8 +266,13 @@ main > div#sadrzaj {grid-column: 2 / 7; grid-row: 1 / 2; display: grid; grid-tem
 main > div#sadrzaj > div.vi_ste_ovdje {grid-column: 1 / 5; grid-row: 1 / 2; font-size: 0.8rem; line-height: 17px;}
 main > div#sadrzaj.naslovna {grid-column: 1 / 8; grid-template-columns: auto repeat(5, 268px) auto; grid-template-rows: auto; margin-top: -1px; padding: 0; background-image: url('/kapriol/resursi/grafika/logo/cipele.jpg'); background-size: cover;}
 main > div#sadrzaj.naslovna > div.naslov {grid-column: 2 / 7; grid-row: 3 / 4; background-color: var(--boja-tekst-tamnije); height: 50px; font-size: 1.2rem; line-height: 50px; text-align: center; color: #ffffff;}
-main > div#sadrzaj.naslovna > div.baner {grid-column: 2 / 7; grid-row: 1 / 2;}
-main > div#sadrzaj.naslovna > div.baner > img {object-fit: cover; height: 100%; width: 100%;}
+main > div#sadrzaj.naslovna > .obavijesti {grid-column: 2 / 7; grid-row: 1 / 2; position: relative; overflow: hidden;}
+main > div#sadrzaj.naslovna > .obavijesti .obavijesti_okolo {height: 100%; width: 100%;}
+main > div#sadrzaj.naslovna > .obavijesti .obavijest {display: none; height: 100%; width: 100%;}
+main > div#sadrzaj.naslovna > .obavijesti .obavijest > img {object-fit: cover; height: 100%; width: 100%;}
+main > div#sadrzaj.naslovna > .obavijesti .obavijest:first-child {display: block;}
+main > div#sadrzaj.naslovna > .obavijesti .strelice a {position: absolute; top: 43%; left: 15px; font-size: 42px; font-weight: 400; line-height: 1; color: black;}
+main > div#sadrzaj.naslovna > .obavijesti .strelice a.dalje {left: initial; right: 35px;}
 main > div#sadrzaj.naslovna >h2  {grid-column: 2 / 5;}
 main > div#sadrzaj.naslovna > div.kategorije {grid-column: 2 / 7; grid-row: 4 / 5; display: grid; grid-template-columns: repeat(4, 1fr); grid-gap: 25px; padding: 15px;}
 main > div#sadrzaj.naslovna > div.kategorije > a.kategorija {position: relative; display: grid; grid-template-columns: minmax(150px, 1fr); grid-template-rows: 1fr; border: 1px solid var(--boja-granica-tamnije); transition: all .3s ease; transition-property: transform, border-color; box-shadow: 0 3px 39px 0 rgba(0,0,0,0.04); -webkit-box-shadow: 0 3px 39px 0 rgba(0,0,0,0.04); -moz-box-shadow: 0 3px 39px 0 rgba(0,0,0,0.04);}
@@ -433,7 +438,7 @@ footer > div.info > span {grid-column: 3 / 5; grid-row: 2 / 3; justify-self: cen
     main > div#sadrzaj {grid-column: 1 / 7;}
     main > div#sadrzaj.naslovna {grid-template-columns: repeat(5, 1fr);}
     main > div#sadrzaj.naslovna > div.naslov {grid-column: 1 / 6;}
-    main > div#sadrzaj.naslovna > div.baner {grid-column: 1 / 6;}
+    main > div#sadrzaj.naslovna > .obavijesti {grid-column: 1 / 6;}
     main > div#sadrzaj.naslovna > div.kategorije {grid-column: 1 / 6;}
     main > div#sadrzaj.naslovna > div.dostava {grid-column: 1 / 6;}
     main > div#sadrzaj.naslovna > div.reklama1 {grid-column: 1 / 6;}
