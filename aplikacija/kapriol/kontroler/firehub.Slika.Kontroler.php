@@ -186,10 +186,10 @@ final class Slika_Kontroler extends Master_Kontroler {
      *
      * @return Slika_Interface Objekt slike.
      */
-    #[Zaglavlja(vrsta: Vrsta::JPEG, predmemorija: [Predmemorija::JAVNO])]
+    #[Zaglavlja(vrsta: Vrsta::PNG, predmemorija: [Predmemorija::JAVNO])]
     public function kategorija (string $kontroler = '', string $metoda = '', string $slika = ''):Slika_Interface {
 
-        return (new Slika())->slika(FIREHUB_ROOT.'web'.RAZDJELNIK_MAPE.'kapriol'.RAZDJELNIK_MAPE.'resursi'.RAZDJELNIK_MAPE.'grafika'.RAZDJELNIK_MAPE.'kategorije'.RAZDJELNIK_MAPE.$slika)->dimenzije(300, 400)->napravi();
+        return (new Slika())->slika(FIREHUB_ROOT.'web'.RAZDJELNIK_MAPE.'kapriol'.RAZDJELNIK_MAPE.'resursi'.RAZDJELNIK_MAPE.'grafika'.RAZDJELNIK_MAPE.'kategorije'.RAZDJELNIK_MAPE.$slika)->dimenzije(300, 400)->kvaliteta(9)->vrsta(\FireHub\Jezgra\Komponente\Slika\Enumeratori\Vrsta::PNG)->napravi();
 
     }
 
