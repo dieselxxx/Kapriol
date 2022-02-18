@@ -166,7 +166,7 @@ final class Artikli_Model extends Master_Model {
      */
     public function izdvojeno (int|string $kategorija) {
 
-        if ($kategorija === 'akcija') {
+        if ($kategorija === 'akcija' || $kategorija === 'sve') {
 
             return [];
 
