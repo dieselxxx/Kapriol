@@ -70,7 +70,7 @@ final class Kategorije_Model extends Master_Model {
 
             $rezultat .= '
                 <li>
-                    <svg><use xlink:href="/kapriol/resursi/grafika/simboli/simbol.ikone.svg#'.$kategorija['Ikona'].'"></use></svg>
+                    <svg><use xlink:href="/kapriol/resursi/grafika/simboli/simbol.ikone.svg#strelica_desno_duplo2"></use></svg>
                     <span><a href="/rezultat/'.$kategorija['Link'].'">'.$kategorija['Kategorija'].'</a></span>
                 </li>
             ';
@@ -105,7 +105,7 @@ final class Kategorije_Model extends Master_Model {
 
             $rezultat .= '
                 <li>
-                    <svg><use xlink:href="/kapriol/resursi/grafika/simboli/simbol.ikone.svg#'.$ikona.'"></use></svg>
+                    <svg><use xlink:href="/kapriol/resursi/grafika/simboli/simbol.ikone.svg#strelica_desno_duplo2"></use></svg>
                     <span><a href="/rezultat/'.$kategorija['Link'].'">'.$kategorija['Kategorija'].'</a></span>
                 </li>
             ';
