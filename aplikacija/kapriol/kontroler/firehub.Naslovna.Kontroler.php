@@ -63,6 +63,7 @@ final class Naslovna_Kontroler extends Master_Kontroler {
         return sadrzaj()->datoteka('naslovna.html')->podatci([
             'predlozak_naslov' => 'Naslovna',
             'facebook_link' => Domena::facebook(),
+            'instagram_link' => Domena::instagram(),
             'mobitel' => Domena::mobitel(),
             'glavni_meni' => $kategorije->glavniMeni(),
             'glavni_meni_hamburger' => $kategorije->glavniMeniHamburger(),

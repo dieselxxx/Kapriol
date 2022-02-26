@@ -146,6 +146,7 @@ final class Artikl_Kontroler extends Master_Kontroler {
         return sadrzaj()->datoteka('artikl.html')->podatci([
             'predlozak_naslov' => $trenutni_artikl['Naziv'],
             'facebook_link' => Domena::facebook(),
+            'instagram_link' => Domena::instagram(),
             'mobitel' => Domena::mobitel(),
             'glavni_meni' => $kategorije->glavniMeni(),
             'glavni_meni_hamburger' => $kategorije->glavniMeniHamburger(),

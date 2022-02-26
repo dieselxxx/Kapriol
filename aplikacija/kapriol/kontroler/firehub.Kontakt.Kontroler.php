@@ -44,6 +44,7 @@ final class Kontakt_Kontroler extends Master_Kontroler {
         return sadrzaj()->datoteka('kontakt.html')->podatci([
             'predlozak_naslov' => 'Kontakt',
             'facebook_link' => Domena::facebook(),
+            'instagram_link' => Domena::instagram(),
             'mobitel' => Domena::mobitel(),
             'glavni_meni' => $kategorije->glavniMeni(),
             'glavni_meni_hamburger' => $kategorije->glavniMeniHamburger(),

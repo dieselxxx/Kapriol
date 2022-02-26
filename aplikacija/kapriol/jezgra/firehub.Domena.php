@@ -193,6 +193,18 @@ final class Domena {
 
     }
 
+    public static function instagram ():string {
+
+        if (self::Hr()) {
+
+            return 'https://www.instagram.com/kapriol.hr/';
+
+        }
+
+        return 'https://www.instagram.com/kapriol.sa/';
+
+    }
+
     public static function mobitel ():string {
 
         if (self::Hr()) {
