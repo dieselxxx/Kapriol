@@ -462,10 +462,9 @@ $_Obavijesti = function (element = '', $broj_stranice = 1, $poredaj = 'Obavijest
                     </label>\
                 ';}
                         $('form[data-oznaka="obavijesti_lista"] > section table tbody').append('\
-                    <tr>\
-                        <td>'+ Obavijest.ID +'</td>\
-                        <td>'+ Obavijest.Obavijest +'</td>\
-                        <td></td>\
+                    <tr onclick="$_Obavijest(\''+ Obavijest.ID +'\')">\
+                        <td class="uredi">'+ Obavijest.ID +'</td>\
+                        <td class="uredi">'+ Obavijest.Obavijest +'</td>\
                     </tr>\
                 ');
                     });
@@ -485,6 +484,44 @@ $_Obavijesti = function (element = '', $broj_stranice = 1, $poredaj = 'Obavijest
             });
         },
         error: function () {
+        }
+    });
+
+    return false;
+
+};
+
+/**
+ * Uredi obavijest.
+ *
+ * @param {int} $id
+ */
+$_Obavijest = function ($id) {
+
+    // dialog prozor
+    let dialog = new Dialog();
+
+    $.ajax({
+        type: 'GET',
+        url: '/administrator/obavijesti/uredi/' + $id,
+        dataType: 'html',
+        context: this,
+        beforeSend: function () {
+            Dialog.dialogOtvori(true);
+            dialog.sadrzaj(Loader_Krug);
+        },
+        success: function (odgovor) {
+            Dialog.dialogOcisti();
+            dialog.naslov('Obavijest: ' + $id);
+            dialog.sadrzaj(odgovor);
+            dialog.kontrole('<button data-boja="boja" onclick="Dialog.dialogZatvori()">Zatvori</button>');
+            dialog.kontrole('<button type="button" class="ikona" onclick="$_ObavijestIzbrisi(this, \'forma\');"><svg><use xlink:href="/kapriol/resursi/grafika/simboli/simbol.ikone.svg#izbrisi"></use></svg><span>Izbrisi</span></button>');
+        },
+        error: function () {
+            Dialog.dialogOcisti();
+            dialog.naslov('Greška');
+            dialog.naslov('Dogodila se greška prilikom učitavanja podataka, molimo kontaktirajte administratora');
+            dialog.kontrole('<button data-boja="boja" onclick="Dialog.dialogZatvori()">Zatvori</button>');
         }
     });
 

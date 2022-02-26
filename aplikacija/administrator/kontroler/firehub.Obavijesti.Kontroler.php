@@ -14,6 +14,7 @@
 
 namespace FireHub\Aplikacija\Administrator\Kontroler;
 
+use FireHub\Aplikacija\Administrator\Model\Obavijest_Model;
 use FireHub\Aplikacija\Administrator\Model\Obavijesti_Model;
 use FireHub\Jezgra\Greske\Greska;
 use FireHub\Jezgra\HTTP\Atributi\Zaglavlja;
@@ -71,6 +72,23 @@ final class Obavijesti_Kontroler extends Master_Kontroler {
             ]);
 
         }
+
+    }
+
+    /**
+     * ## Uredi obavijest
+     * @since 0.1.2.pre-alpha.M1
+     *
+     * @return Sadrzaj Sadržaj stranice.
+     */
+    public function uredi (string $kontroler = '', string $metoda = '', int $id = 0) {
+
+        $obavijest_model = $this->model(Obavijest_Model::class);
+        $obavijest = $obavijest_model->obavijest($id);
+
+        return sadrzaj()->format(Sadrzaj_Vrsta::HTMLP)->datoteka('obavijesti/uredi.html')->podatci([
+            'id' => $obavijest['ID']
+        ]);
 
     }
 

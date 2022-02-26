@@ -161,11 +161,6 @@ final class Obavijesti_Model extends Master_Model {
                         </div>
                     </div>
                 </th>
-                <th width="10%">
-                    <div>
-                        <span>'._('Izbrisi').'</span>
-                    </div>
-                </th>
             </tr>
         ';
 
