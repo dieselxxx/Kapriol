@@ -62,4 +62,37 @@ final class Obavijest_Model extends Master_Model {
 
     }
 
+    /**
+     * ### Izbrisi
+     * @since 0.1.2.pre-alpha.M1
+     *
+     * @param int $id
+     */
+    public function izbrisi (int $id) {
+
+        $obavijest = $this->bazaPodataka
+            ->sirovi("
+                SELECT
+                    obavijesti.ID, obavijesti.Obavijest
+                FROM obavijesti
+                WHERE obavijesti.ID = $id
+                LIMIT 1
+            ")
+            ->napravi();
+
+        $izbrisi = $this->bazaPodataka
+            ->sirovi("
+                DELETE
+                FROM obavijesti
+                WHERE obavijesti.ID = $id
+                LIMIT 1
+            ")
+            ->napravi();
+
+        unlink(FIREHUB_ROOT.'web/kapriol/resursi/grafika/baneri/'.$obavijest->redak()['Obavijest']);
+
+        return 'ok';
+
+    }
+
 }

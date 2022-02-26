@@ -92,4 +92,33 @@ final class Obavijesti_Kontroler extends Master_Kontroler {
 
     }
 
+    /**
+     * ## Uredi obavijest
+     * @since 0.1.2.pre-alpha.M1
+     *
+     * @return Sadrzaj Sadržaj stranice.
+     */
+    public function izbrisi (string $kontroler = '', string $metoda = '', int $id = 0) {
+
+        $obavijest_model = $this->model(Obavijest_Model::class);
+
+        try {
+
+            $obavijest = $obavijest_model->izbrisi($id);
+
+            return sadrzaj()->format(Sadrzaj_Vrsta::JSON)->podatci([
+                'Validacija' => 'da'
+            ]);
+
+        } catch (Greska $greska) {
+
+            return sadrzaj()->format(Sadrzaj_Vrsta::JSON)->podatci([
+                'Validacija' => 'ne',
+                'Poruka' => $greska->getMessage()
+            ]);
+
+        }
+
+    }
+
 }

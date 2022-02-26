@@ -515,13 +515,59 @@ $_Obavijest = function ($id) {
             dialog.naslov('Obavijest: ' + $id);
             dialog.sadrzaj(odgovor);
             dialog.kontrole('<button data-boja="boja" onclick="Dialog.dialogZatvori()">Zatvori</button>');
-            dialog.kontrole('<button type="button" class="ikona" onclick="$_ObavijestIzbrisi(this, \'forma\');"><svg><use xlink:href="/kapriol/resursi/grafika/simboli/simbol.ikone.svg#izbrisi"></use></svg><span>Izbrisi</span></button>');
+            dialog.kontrole('<button type="button" class="ikona" onclick="$_ObavijestIzbrisi(this,  \'forma\');"><svg><use xlink:href="/kapriol/resursi/grafika/simboli/simbol.ikone.svg#izbrisi"></use></svg><span>Izbrisi</span></button>');
         },
         error: function () {
             Dialog.dialogOcisti();
             dialog.naslov('Greška');
             dialog.naslov('Dogodila se greška prilikom učitavanja podataka, molimo kontaktirajte administratora');
             dialog.kontrole('<button data-boja="boja" onclick="Dialog.dialogZatvori()">Zatvori</button>');
+        }
+    });
+
+    return false;
+
+};
+
+/**
+ * Izbriši obavijest.
+ */
+$_ObavijestIzbrisi = function (element) {
+
+    // dialog prozor
+    let dialog = new Dialog();
+
+    let obavijest_forma = $('form[data-oznaka="obavijest"]');
+
+    let $id = obavijest_forma.data("sifra");
+
+    $.ajax({
+        type: 'POST',
+        url: '/administrator/obavijesti/izbrisi/' + $id,
+        dataType: 'json',
+        beforeSend: function () {
+            $(element).closest('form').find('table tr.poruka td').empty();
+        },
+        success: function (odgovor) {
+            if (odgovor.Validacija === "da") {
+
+                Dialog.dialogOcisti();
+                dialog.naslov('Uspješno izbrisano');
+                dialog.sadrzaj('Obavijest je izbrisana!');
+                dialog.kontrole('<button data-boja="boja" onclick="Dialog.dialogZatvori()">Zatvori</button>');
+
+            } else {
+                $(element).closest('form').find('table tr.poruka td').append(odgovor.Poruka);
+            }
+        },
+        error: function () {
+            Dialog.dialogOcisti();
+            dialog.naslov('Greška');
+            dialog.sadrzaj('Dogodila se greška prilikom učitavanja podataka, molimo kontaktirajte administratora');
+            dialog.kontrole('<button data-boja="boja" onclick="Dialog.dialogZatvori()">Zatvori</button>');
+        },
+        complete: function (odgovor) {
+            $_Obavijesti();
         }
     });
 

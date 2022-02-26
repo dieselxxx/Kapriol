@@ -29,3 +29,4 @@ Rute::sve('reklame/dodajsliku', [\FireHub\Aplikacija\Administrator\Kontroler\Rek
 Rute::sve('obavijesti/index', [\FireHub\Aplikacija\Administrator\Kontroler\Obavijesti_Kontroler::class, 'index']);
 Rute::sve('obavijesti/lista', [\FireHub\Aplikacija\Administrator\Kontroler\Obavijesti_Kontroler::class, 'lista']);
 Rute::sve('obavijesti/uredi', [\FireHub\Aplikacija\Administrator\Kontroler\Obavijesti_Kontroler::class, 'uredi']);
+Rute::sve('obavijesti/izbrisi', [\FireHub\Aplikacija\Administrator\Kontroler\Obavijesti_Kontroler::class, 'izbrisi']);
