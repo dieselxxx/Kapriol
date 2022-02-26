@@ -64,7 +64,7 @@ final class Slika_Kontroler extends Master_Kontroler {
     #[Zaglavlja(vrsta: Vrsta::JPEG, predmemorija: [Predmemorija::JAVNO])]
     public function malaSlika (string $kontroler = '', string $metoda = '', string $slika = ''):Slika_Interface {
 
-        return (new Slika())->slika(FIREHUB_ROOT.'web'.RAZDJELNIK_MAPE.'kapriol'.RAZDJELNIK_MAPE.'resursi'.RAZDJELNIK_MAPE.'grafika'.RAZDJELNIK_MAPE.'artikli'.RAZDJELNIK_MAPE.$slika)->dimenzije(300, 400)->napravi();
+        return (new Slika())->slika(FIREHUB_ROOT.'web'.RAZDJELNIK_MAPE.'kapriol'.RAZDJELNIK_MAPE.'resursi'.RAZDJELNIK_MAPE.'grafika'.RAZDJELNIK_MAPE.'artikli'.RAZDJELNIK_MAPE.$slika)->dimenzije(400, 400)->napravi();
 
     }
 
