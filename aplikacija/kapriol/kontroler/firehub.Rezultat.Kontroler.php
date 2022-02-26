@@ -60,7 +60,7 @@ final class Rezultat_Kontroler extends Master_Kontroler {
      *
      * @return Sadrzaj Sadržaj stranice.
      */
-    public function index (string $kontroler = '', string $kategorija = 'sve', int|string $velicina = 'sve velicine', int|string $trazi = 'svi artikli', string $poredaj = 'naziv', string $poredaj_redoslijed = 'asc', int $stranica = 1):Sadrzaj {
+    public function index (string $kontroler = '', string $kategorija = 'sve', int|string $velicina = 'sve velicine', int|string $trazi = 'svi artikli', string $poredaj = 'cijena', string $poredaj_redoslijed = 'asc', int $stranica = 1):Sadrzaj {
 
         $kategorije = $this->model(Kategorije_Model::class);
 
@@ -115,9 +115,7 @@ final class Rezultat_Kontroler extends Master_Kontroler {
         if ($poredaj === 'cijena' && $poredaj_redoslijed == 'desc') {$poredaj_izbornik_odabrano_4 = 'selected';} else {$poredaj_izbornik_odabrano_4 = '';}
 
         $poredaj_izbornik = '
-            <option value="/rezultat/'.$kategorija.'/'.$velicina.'/'.$trazi.'/naziv/asc/" '.$poredaj_izbornik_odabrano_1.'>Naziv A-Z</option>
-            <option value="/rezultat/'.$kategorija.'/'.$velicina.'/'.$trazi.'/naziv/desc/" '.$poredaj_izbornik_odabrano_2.'>Naziv Z-A</option>
-            <option value="/rezultat/'.$kategorija.'/'.$velicina.'/'.$trazi.'/cijena/asc/" '.$poredaj_izbornik_odabrano_3.'>Cijena manja prema većoj</option>
+        <option value="/rezultat/'.$kategorija.'/'.$velicina.'/'.$trazi.'/cijena/asc/" '.$poredaj_izbornik_odabrano_3.'>Cijena manja prema većoj</option>
             <option value="/rezultat/'.$kategorija.'/'.$velicina.'/'.$trazi.'/cijena/desc/" '.$poredaj_izbornik_odabrano_4.'>Cijena veća prema manjoj</option>
         ';
 
