@@ -121,4 +121,35 @@ final class Obavijesti_Kontroler extends Master_Kontroler {
 
     }
 
+    /**
+     * ### Spremi reklamu
+     * @since 0.1.2.pre-alpha.M1
+     *
+     * @return Sadrzaj
+     */
+    #[Zaglavlja(vrsta: Vrsta::JSON)]
+    public function dodaj (string $kontroler = '', string $metoda = '', string $naziv_datoteke = ''):Sadrzaj {
+
+        try {
+
+            // model
+            $artikl = $this->model(Obavijest_Model::class);
+            $artikl->dodaj($naziv_datoteke);
+
+            return sadrzaj()->format(Sadrzaj_Vrsta::JSON)->podatci([
+                'Validacija' => 'da',
+                'Poruka' => _('Uspješno spremljeno')
+            ]);
+
+        } catch (Greska $greska) {
+
+            return sadrzaj()->format(Sadrzaj_Vrsta::JSON)->podatci([
+                'Validacija' => 'ne',
+                'Poruka' => $greska->getMessage()
+            ]);
+
+        }
+
+    }
+
 }

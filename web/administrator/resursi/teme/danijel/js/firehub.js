@@ -632,7 +632,7 @@ $_ArtiklSpremiSliku = function ($url) {
             dialog.kontrole('<button data-boja="boja" onclick="Dialog.dialogZatvori()">Zatvori</button>');
         },
         complete: function(odgovor) {
-            //$_Artikl($id);
+            $_Artikl($id);
         }
     });
 
