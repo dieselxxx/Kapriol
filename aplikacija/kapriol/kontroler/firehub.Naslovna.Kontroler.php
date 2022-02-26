@@ -14,6 +14,7 @@
 
 namespace FireHub\Aplikacija\Kapriol\Kontroler;
 
+use FireHub\Jezgra\Komponente\BazaPodataka\BazaPodataka;
 use FireHub\Jezgra\Sadrzaj\Sadrzaj;
 use FireHub\Aplikacija\Kapriol\Model\Kategorije_Model;
 use FireHub\Aplikacija\Kapriol\Jezgra\Domena;
@@ -37,9 +38,27 @@ final class Naslovna_Kontroler extends Master_Kontroler {
      *
      * @return Sadrzaj Sadržaj stranice.
      */
-    public function index ():Sadrzaj {
+    public function index (BazaPodataka $bazaPodataka = null):Sadrzaj {
 
         $kategorije = $this->model(Kategorije_Model::class);
+
+        $obavijest_html = '';
+        $obavijesti = $bazaPodataka->tabela('obavijesti')
+            ->sirovi("
+                SELECT 
+                    Obavijest
+                FROM obavijesti
+            ")->napravi();
+
+        foreach ($obavijesti->niz() as $obavijest) {
+
+            $obavijest_html .= "
+            <div class='obavijest'>
+                <img src='/slika/baner/{$obavijest['Obavijest']}' />
+            </div>
+            ";
+
+        }
 
         return sadrzaj()->datoteka('naslovna.html')->podatci([
             'predlozak_naslov' => 'Naslovna',
@@ -53,7 +72,8 @@ final class Naslovna_Kontroler extends Master_Kontroler {
             'podnozje_dostava' => Domena::podnozjeDostava(),
             'kategorije' => $kategorije->kategorijeNaslovna(),
             'dostavaLimit' => ''.Domena::dostavaLimit().'',
-            'valuta' => ''.Domena::valuta().''
+            'valuta' => ''.Domena::valuta().'',
+            'obavijesti' => $obavijest_html
         ]);
 
     }
