@@ -143,6 +143,7 @@ final class Rezultat_Kontroler extends Master_Kontroler {
             //'izdvojeno' => $izdvojeno_html,
             'artikli' => $artikli_html,
             'navigacija' => $navigacija_html,
+            "poredaj_izbornik" => $poredaj_izbornik,
             //"rezultat_velicine" => $velicine_html
         ]);
 
