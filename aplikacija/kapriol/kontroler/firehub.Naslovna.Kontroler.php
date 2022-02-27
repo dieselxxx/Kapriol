@@ -66,6 +66,7 @@ final class Naslovna_Kontroler extends Master_Kontroler {
             'instagram_link' => Domena::instagram(),
             'mobitel' => Domena::mobitel(),
             'glavni_meni' => $kategorije->glavniMeni(),
+            'opci_uvjeti' => Domena::opciUvjeti(),
             'glavni_meni_hamburger' => $kategorije->glavniMeniHamburger(),
             'zaglavlje_kosarica_artikli' => $this->kosaricaArtikli(),
             'zaglavlje_tel' => Domena::telefon(),

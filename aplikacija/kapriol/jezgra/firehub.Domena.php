@@ -217,4 +217,16 @@ final class Domena {
 
     }
 
+    public static function opciUvjeti ():string {
+
+        if (self::Hr()) {
+
+            return '<li><span><a href="/opciuvjeti">Opći uvjeti</a></span></li>';
+
+        }
+
+        return '';
+
+    }
+
 }

@@ -154,6 +154,7 @@ final class Kosarica_Kontroler extends Master_Kontroler {
             'zaglavlje_adresa' => Domena::adresa(),
             'podnozje_dostava' => Domena::podnozjeDostava(),
             'vi_ste_ovdje' => '<a href="/">Kapriol Web Trgovina</a> \\\\ Košarica',
+            'opci_uvjeti' => Domena::opciUvjeti(),
             'kosarica_artikli' => $artikli_html,
             'kosarica_artikli_ukupno' => $kosarica_artikli_ukupno
         ]);
@@ -209,6 +210,7 @@ final class Kosarica_Kontroler extends Master_Kontroler {
             'zaglavlje_adresa' => Domena::adresa(),
             'podnozje_dostava' => Domena::podnozjeDostava(),
             'vi_ste_ovdje' => '<a href="/">Kapriol Web Trgovina</a> \\\\ Narudžba',
+            'opci_uvjeti' => Domena::opciUvjeti(),
             'narudzba_greska' => $narudzba_greska,
             'forma_ime' => $_POST['ime'] ?? '',
             'forma_prezime' => $_POST['prezime'] ?? '',
@@ -271,6 +273,7 @@ final class Kosarica_Kontroler extends Master_Kontroler {
             'zaglavlje_adresa' => Domena::adresa(),
             'podnozje_dostava' => Domena::podnozjeDostava(),
             'vi_ste_ovdje' => '<a href="/">Kapriol Web Trgovina</a> \\\\ Narudžba',
+            'opci_uvjeti' => Domena::opciUvjeti(),
             'domena_oibpdv' => Domena::OIBPDV(),
             'narudzba_greska' => $narudzba_greska,
             'forma_ime' => $_POST['ime'] ?? '',
@@ -309,6 +312,7 @@ final class Kosarica_Kontroler extends Master_Kontroler {
             'zaglavlje_adresa' => Domena::adresa(),
             'podnozje_dostava' => Domena::podnozjeDostava(),
             'vi_ste_ovdje' => '<a href="/">Kapriol Web Trgovina</a> \\\\ Vrsta narudžbe',
+            'opci_uvjeti' => Domena::opciUvjeti()
         ]);
 
     }
@@ -334,7 +338,8 @@ final class Kosarica_Kontroler extends Master_Kontroler {
             'zaglavlje_tel' => Domena::telefon(),
             'zaglavlje_adresa' => Domena::adresa(),
             'podnozje_dostava' => Domena::podnozjeDostava(),
-            'vi_ste_ovdje' => 'Vi ste ovdje : <a href="/">Kapriol Web Trgovina</a>'
+            'vi_ste_ovdje' => 'Vi ste ovdje : <a href="/">Kapriol Web Trgovina</a>',
+            'opci_uvjeti' => Domena::opciUvjeti()
         ]);
 
     }

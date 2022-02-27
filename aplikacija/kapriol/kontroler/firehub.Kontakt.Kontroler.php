@@ -52,7 +52,8 @@ final class Kontakt_Kontroler extends Master_Kontroler {
             'zaglavlje_tel' => Domena::telefon(),
             'zaglavlje_adresa' => Domena::adresa(),
             'podnozje_dostava' => Domena::podnozjeDostava(),
-            'vi_ste_ovdje' => '<a href="/">Kapriol Web Trgovina</a> \\\\ Kontakt'
+            'vi_ste_ovdje' => '<a href="/">Kapriol Web Trgovina</a> \\\\ Kontakt',
+            'opci_uvjeti' => Domena::opciUvjeti(),
         ]);
 
     }

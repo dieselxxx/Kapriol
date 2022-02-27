@@ -52,7 +52,8 @@ final class Poslovnice_Kontroler extends Master_Kontroler {
             'zaglavlje_tel' => Domena::telefon(),
             'zaglavlje_adresa' => Domena::adresa(),
             'podnozje_dostava' => Domena::podnozjeDostava(),
-            'vi_ste_ovdje' => '<a href="/">Kapriol Web Trgovina</a> \\\\ Poslovnice'
+            'vi_ste_ovdje' => '<a href="/">Kapriol Web Trgovina</a> \\\\ Poslovnice',
+            'opci_uvjeti' => Domena::opciUvjeti(),
         ]);
 
     }

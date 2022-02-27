@@ -155,6 +155,7 @@ final class Artikl_Kontroler extends Master_Kontroler {
             'zaglavlje_adresa' => Domena::adresa(),
             'podnozje_dostava' => Domena::podnozjeDostava(),
             'vi_ste_ovdje' => 'Vi ste ovdje : <a href="/">Kapriol Web Trgovina</a> \\\\ '.$trenutni_artikl['Kategorija'].' \\\\ ' . $trenutni_artikl['Naziv'],
+            'opci_uvjeti' => Domena::opciUvjeti(),
             'artikl_slika' => $trenutni_artikl['Slika'],
             'artikl_slike' => $artikl_slike_html,
             'artikl_naziv' => $trenutni_artikl['Naziv'],
