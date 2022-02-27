@@ -128,7 +128,7 @@ final class Kosarica_Kontroler extends Master_Kontroler {
                         <li>Ukupna količina: '.$total_kolicina.'</li>
                         <li class="ukupno">Ukupna cijena: <span>'.number_format((float)$total_cijena, 2, ',', '.').' '.Domena::valuta().'</span></li>
                     </ul>
-                    <a data-boja="boja" class="gumb ikona" href="/kosarica/odabir">
+                    <a data-boja="boja" class="gumb ikona" href="/kosarica/narudzbab2b">
                         <svg><use xlink:href="/kapriol/resursi/grafika/simboli/simbol.ikone.svg#strelica_desno_duplo2"></use></svg>
                         <span>Nastavi</span>
                     </a>
