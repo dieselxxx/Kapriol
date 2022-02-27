@@ -380,7 +380,6 @@ final class Kosarica_Model extends Master_Model {
 
         $ime = $_POST['ime'];
         $email = $_POST['email'];
-        $grad = $_POST['grad'];
         $telefon = $_POST['telefon'];
         $adresa = $_POST['adresa'];
         $zip = $_POST['zip'];
@@ -390,12 +389,11 @@ final class Kosarica_Model extends Master_Model {
 
         $ime = Validacija::Prilagodjen('/^[a-zšđčćžA-ZŠĐČĆŽ -]+$/i', "Vaše ime", $ime, 2, 20);
         $email = Validacija::Email("Vaš email", $email, 5, 100);
-        $grad = Validacija::Prilagodjen('/^[a-zšđčćžA-ZŠĐČĆŽ -]+$/i', "Vaš grad", $grad,  3, 50);
         $telefon = Validacija::Telefon(_('Vaš broj telefona'), $telefon, 9, 15);
         $adresa = Validacija::String(_('Vaša adresa'), $adresa, 5, 300);
         $zip = Validacija::Broj(_('Vaš poštanski broj'), $zip, 5, 5);
-        $tvrtka = Validacija::Prilagodjen('/^[a-zšđčćžA-ZŠĐČĆŽ0-9-. ]+$/i', _('Vaša tvrtka'), $tvrtka, 4, 100);
-        $oib = Validacija::Broj(_('Vaš OIB \ PDV \ ID tvrtke'), $oib, 9, 20);
+        if($tvrtka <> '') {$tvrtka = Validacija::Prilagodjen('/^[a-zšđčćžA-ZŠĐČĆŽ0-9-. ]+$/i', _('Vaša tvrtka'), $tvrtka, 4, 100);}
+        if($oib <> '') {$oib = Validacija::Broj(_('Vaš OIB \ PDV \ ID tvrtke'), $oib, 9, 20);}
         $napomena = Validacija::String("Vaša napomena", $napomena, 0, 1000);
 
         // pošalji email
