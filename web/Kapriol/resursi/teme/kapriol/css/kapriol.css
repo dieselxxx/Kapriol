@@ -400,7 +400,7 @@ main > div#sadrzaj.opci_uvjeti ul > li.naslov > div > svg {height: 50px; width: 
 
 footer {justify-content: center; background-color: var(--boja-pozadina_tamna); border-width: 1px 0 0 0; border-style: solid; border-color: var(--boja-granica); box-shadow: 0 3px 39px 0 rgba(0,0,0,0.04); -webkit-box-shadow: 0 3px 39px 0 rgba(0,0,0,0.04); -moz-box-shadow: 0 3px 39px 0 rgba(0,0,0,0.04);}
 footer a {color: #ffffff;}
-footer > nav {grid-column: 2 / 7; grid-row: 1 / 2; display: grid; grid-template-columns: repeat(2, 700px); grid-template-rows: 200px; justify-items: center; align-content: center; align-items: center;}
+footer > nav {grid-column: 2 / 7; grid-row: 1 / 2; display: grid; grid-template-columns: repeat(2, 700px); grid-template-rows: 250px; justify-items: center; align-content: center; align-items: center;}
 footer > nav > div > h2 {color: var(--boja-kapriol);}
 footer > nav > div > ul {grid-column: 1 / 4;}
 footer > nav > div > ul > li {margin-top: 20px;}
@@ -523,7 +523,7 @@ footer > div.info > span {grid-column: 3 / 5; grid-row: 2 / 3; justify-self: cen
     main > div#sadrzaj.poslovnice div.vi_ste_ovdje {grid-column: 1 / 2;}
     main > div#sadrzaj.poslovnice {grid-template-columns: 1fr;}
 
-    footer > nav {grid-template-rows: 100px 100px; justify-items: left; justify-content: center;}
+    footer > nav {grid-template-rows: 150px 150px; justify-items: left; justify-content: center;}
     footer > nav > div.dostava {grid-column: 1 / 4; grid-row: 1 / 2;}
     footer > nav > div.izbornik {grid-column: 1 / 4; grid-row: 2 / 3;}
     footer > div.info {grid-template-rows: 150px 150px 50px;}
