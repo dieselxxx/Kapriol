@@ -381,6 +381,7 @@ final class Kosarica_Model extends Master_Model {
         $ime = $_POST['ime'];
         $email = $_POST['email'];
         $telefon = $_POST['telefon'];
+        $r1 = $_POST['r1'];
         $adresa = $_POST['adresa'];
         $zip = $_POST['zip'];
         $tvrtka = $_POST['tvrtka'];
@@ -389,7 +390,7 @@ final class Kosarica_Model extends Master_Model {
 
         $ime = Validacija::Prilagodjen('/^[a-zšđčćžA-ZŠĐČĆŽ -]+$/i', "Vaše ime", $ime, 2, 20);
         $email = Validacija::Email("Vaš email", $email, 5, 100);
-        $telefon = Validacija::Telefon(_('Vaš broj telefona'), $telefon, 9, 15);
+        $telefon = Validacija::Telefon(_('Vaš broj telefona'), $telefon, 1, 15);
         $adresa = Validacija::String(_('Vaša adresa'), $adresa, 5, 300);
         $zip = Validacija::Broj(_('Vaš poštanski broj'), $zip, 5, 5);
         if($tvrtka <> '') {$tvrtka = Validacija::Prilagodjen('/^[a-zšđčćžA-ZŠĐČĆŽ0-9-. ]+$/i', _('Vaša tvrtka'), $tvrtka, 4, 100);}
@@ -439,8 +440,8 @@ final class Kosarica_Model extends Master_Model {
         $email_slanje->PredlozakKomponente(array(
             "ime" => $ime,
             "email" => $email,
-            "grad" => $grad,
             "telefon" => $telefon,
+            "r1" => isset($r1) ? 'da': 'ne',
             "adresa" => $adresa,
             "zip" => $zip,
             "tvrtka" => $tvrtka,
@@ -461,8 +462,8 @@ final class Kosarica_Model extends Master_Model {
         $email_slanje_tvrtka->PredlozakKomponente(array(
             "ime" => $ime,
             "email" => $email,
-            "grad" => $grad,
             "telefon" => $telefon,
+            "r1" => isset($r1) ? 'da': 'ne',
             "adresa" => $adresa,
             "zip" => $zip,
             "tvrtka" => $tvrtka,
