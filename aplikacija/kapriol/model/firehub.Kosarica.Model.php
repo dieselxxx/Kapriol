@@ -276,7 +276,6 @@ final class Kosarica_Model extends Master_Model {
     public function naruci ():void {
 
         $ime = $_POST['ime'];
-        $prezime = $_POST['prezime'];
         $email = $_POST['email'];
         $grad = $_POST['grad'];
         $telefon = $_POST['telefon'];
@@ -284,8 +283,7 @@ final class Kosarica_Model extends Master_Model {
         $zip = $_POST['zip'];
         $napomena = $_POST['napomena'];
 
-        $ime = Validacija::Prilagodjen('/^[a-zšđčćžA-ZŠĐČĆŽ -]+$/i', "Vaše ime", $ime, 2, 20);
-        $prezime = Validacija::Prilagodjen('/^[a-zšđčćžA-ZŠĐČĆŽ -]+$/i', "Vaše prezime", $prezime, 2, 20);
+        $ime = Validacija::Prilagodjen('/^[a-zšđčćžA-ZŠĐČĆŽ -]+$/i', "Vaše ime", $ime, 5, 50);
         $email = Validacija::Email("Vaš email", $email, 5, 100);
         $grad = Validacija::Prilagodjen('/^[a-zšđčćžA-ZŠĐČĆŽ -]+$/i', "Vaš grad", $grad,  3, 50);
         $telefon = Validacija::Telefon(_('Vaš broj telefona'), $telefon, 9, 15);
@@ -331,11 +329,10 @@ final class Kosarica_Model extends Master_Model {
         $email_slanje = new Email('narudzba_korisnik.html');
         $email_slanje->Naslov('Vaša narudžba je zaprimljena');
         $email_slanje->Adresa(array(
-            array("adresa" => $email, "ime" => $ime . ' ' . $prezime)
+            array("adresa" => $email, "ime" => $ime)
         ));
         $email_slanje->PredlozakKomponente(array(
             "ime" => $ime,
-            "prezime" => $prezime,
             "email" => $email,
             "grad" => $grad,
             "telefon" => $telefon,
@@ -355,7 +352,6 @@ final class Kosarica_Model extends Master_Model {
         ));
         $email_slanje_tvrtka->PredlozakKomponente(array(
             "ime" => $ime,
-            "prezime" => $prezime,
             "email" => $email,
             "grad" => $grad,
             "telefon" => $telefon,
@@ -383,7 +379,6 @@ final class Kosarica_Model extends Master_Model {
     public function narucib2b ():void {
 
         $ime = $_POST['ime'];
-        $prezime = $_POST['prezime'];
         $email = $_POST['email'];
         $grad = $_POST['grad'];
         $telefon = $_POST['telefon'];
@@ -394,7 +389,6 @@ final class Kosarica_Model extends Master_Model {
         $napomena = $_POST['napomena'];
 
         $ime = Validacija::Prilagodjen('/^[a-zšđčćžA-ZŠĐČĆŽ -]+$/i', "Vaše ime", $ime, 2, 20);
-        $prezime = Validacija::Prilagodjen('/^[a-zšđčćžA-ZŠĐČĆŽ -]+$/i', "Vaše prezime", $prezime, 2, 20);
         $email = Validacija::Email("Vaš email", $email, 5, 100);
         $grad = Validacija::Prilagodjen('/^[a-zšđčćžA-ZŠĐČĆŽ -]+$/i', "Vaš grad", $grad,  3, 50);
         $telefon = Validacija::Telefon(_('Vaš broj telefona'), $telefon, 9, 15);
@@ -442,11 +436,10 @@ final class Kosarica_Model extends Master_Model {
         $email_slanje = new Email('narudzba_b2b_korisnik.html');
         $email_slanje->Naslov('Vaša narudžba je zaprimljena');
         $email_slanje->Adresa(array(
-            array("adresa" => $email, "ime" => $ime . ' ' . $prezime)
+            array("adresa" => $email, "ime" => $ime)
         ));
         $email_slanje->PredlozakKomponente(array(
             "ime" => $ime,
-            "prezime" => $prezime,
             "email" => $email,
             "grad" => $grad,
             "telefon" => $telefon,
@@ -469,7 +462,6 @@ final class Kosarica_Model extends Master_Model {
         ));
         $email_slanje_tvrtka->PredlozakKomponente(array(
             "ime" => $ime,
-            "prezime" => $prezime,
             "email" => $email,
             "grad" => $grad,
             "telefon" => $telefon,
