@@ -77,7 +77,8 @@ final class Artikli_Model extends Master_Model {
             $artikli = $this->bazaPodataka->tabela('artikliview')
                 ->sirovi("
                     SELECT
-                       artikliview.ID, Naziv, Link, Opis, ".Domena::sqlCijena()." AS Cijena, ".Domena::sqlCijenaAkcija()." AS CijenaAkcija, Slika,
+                       artikliview.ID, Naziv, Link, Opis, ".Domena::sqlCijena()." AS Cijena, ".Domena::sqlCijenaAkcija()." AS CijenaAkcija,
+                       IF(".Domena::sqlCijenaAkcija()." > 0, ".Domena::sqlCijenaAkcija().", ".Domena::sqlCijena().") AS Cijenafinal, Slika,
                        GROUP_CONCAT(DISTINCT artiklikarakteristike.Velicina) AS Velicine
                     FROM artikliview
                     LEFT JOIN slikeartikal ON ClanakID = artikliview.ID
@@ -94,7 +95,8 @@ final class Artikli_Model extends Master_Model {
             $artikli = $this->bazaPodataka->tabela('artikliview')
                 ->sirovi("
                     SELECT
-                       artikliview.ID, Naziv, Link, Opis, ".Domena::sqlCijena()." AS Cijena, ".Domena::sqlCijenaAkcija()." AS CijenaAkcija, Slika,
+                       artikliview.ID, Naziv, Link, Opis, ".Domena::sqlCijena()." AS Cijena, ".Domena::sqlCijenaAkcija()." AS CijenaAkcija,
+                       IF(".Domena::sqlCijenaAkcija()." > 0, ".Domena::sqlCijenaAkcija().", ".Domena::sqlCijena().") AS Cijenafinal, Slika,
                        GROUP_CONCAT(DISTINCT artiklikarakteristike.Velicina) AS Velicine
                     FROM artikliview
                     LEFT JOIN slikeartikal ON ClanakID = artikliview.ID
@@ -113,7 +115,8 @@ final class Artikli_Model extends Master_Model {
             $artikli = $this->bazaPodataka->tabela('artikliview')
                 ->sirovi("
                     SELECT
-                       artikliview.ID, Naziv, Link, Opis, ".Domena::sqlCijena()." AS Cijena, ".Domena::sqlCijenaAkcija()." AS CijenaAkcija, Slika,
+                       artikliview.ID, Naziv, Link, Opis, ".Domena::sqlCijena()." AS Cijena, ".Domena::sqlCijenaAkcija()." AS CijenaAkcija,
+                       IF(".Domena::sqlCijenaAkcija()." > 0, ".Domena::sqlCijenaAkcija().", ".Domena::sqlCijena().") AS Cijenafinal, Slika,
                        GROUP_CONCAT(DISTINCT artiklikarakteristike.Velicina) AS Velicine
                     FROM artikliview
                     LEFT JOIN slikeartikal ON ClanakID = artikliview.ID
@@ -132,7 +135,8 @@ final class Artikli_Model extends Master_Model {
             $artikli = $this->bazaPodataka->tabela('artikliview')
                 ->sirovi("
                 SELECT
-                    artikliview.ID, Naziv, Link, Opis, ".Domena::sqlCijena()." AS Cijena, ".Domena::sqlCijenaAkcija()." AS CijenaAkcija, Slika,
+                    artikliview.ID, Naziv, Link, Opis, ".Domena::sqlCijena()." AS Cijena, ".Domena::sqlCijenaAkcija()." AS CijenaAkcija,
+                    IF(".Domena::sqlCijenaAkcija()." > 0, ".Domena::sqlCijenaAkcija().", ".Domena::sqlCijena().") AS Cijenafinal, Slika,
                     GROUP_CONCAT(DISTINCT artiklikarakteristike.Velicina) AS Velicine
                 FROM artikliview
                 LEFT JOIN slikeartikal ON ClanakID = artikliview.ID
