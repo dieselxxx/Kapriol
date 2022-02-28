@@ -150,14 +150,14 @@ final class Kategorije_Model extends Master_Model {
      * @since 0.1.1.pre-alpha.M1
      *
      * @param string $kategorija <p>
-     * Naziv kategorije.
+     * Link kategorije.
      * </p>
      *
      * @throws Kontejner_Greska Ukoliko se ne može spremiti instanca objekta.
      *
      * @return array Kategorija.
      */
-    public function kategorija (string $kategorija):array {
+    public function kategorija (string $kategorija, string $naziv = ''):array {
 
         if ($kategorija === 'sve') {
 
@@ -177,10 +177,21 @@ final class Kategorije_Model extends Master_Model {
 
         }
 
-        $id = $this->bazaPodataka->tabela('kategorijeview')
-            ->odaberi(['ID', 'Kategorija', 'Link'])
-            ->gdje('Link', '=', $kategorija)
-            ->napravi();
+        if ($naziv !== '') {
+
+            $id = $this->bazaPodataka->tabela('kategorijeview')
+                ->odaberi(['ID', 'Kategorija', 'Link', 'CalcVelicina'])
+                ->gdje('Kategorija', '=', $naziv)
+                ->napravi();
+
+        } else {
+
+            $id = $this->bazaPodataka->tabela('kategorijeview')
+                ->odaberi(['ID', 'Kategorija', 'Link', 'CalcVelicina'])
+                ->gdje('Link', '=', $kategorija)
+                ->napravi();
+
+        }
 
         if (!$redak = $id->redak()) {
 

@@ -163,6 +163,7 @@ final class Artikl_Kontroler extends Master_Kontroler {
             'artikl_zaliha' => $artikl_zaliha_html,
             'artikl_kosarica_velicine' => $artikl_kosarica_velicine,
             'artikl_opis' => $trenutni_artikl['Opis'],
+            'calc_velicina' => $kategorije->kategorija('', $trenutni_artikl['Kategorija'])['CalcVelicina'] === '1' ? 'calc': '',
             'kosarica_greska' => $kosarica_greska
         ]);
 
