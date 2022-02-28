@@ -44,6 +44,10 @@ ArtikalPlusMinus = function (element, $vrsta) {
 
 $(document).ready(function () {
 
+    $('header > a.trazi').click(function() {
+        $('header > form[data-oznaka="trazi_artikal"]').slideToggle("fast");
+    });
+
     $('select[data-oznaka="redoslijed"]').on('change', function () {
 
         document.location.href = $(this).val();
