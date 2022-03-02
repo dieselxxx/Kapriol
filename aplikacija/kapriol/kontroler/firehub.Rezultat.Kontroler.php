@@ -14,6 +14,8 @@
 
 namespace FireHub\Aplikacija\Kapriol\Kontroler;
 
+use FireHub\Aplikacija\Kapriol\Jezgra\Validacija;
+use FireHub\Aplikacija\Kapriol\Model\Favorit_Model;
 use FireHub\Jezgra\Sadrzaj\Sadrzaj;
 use FireHub\Aplikacija\Kapriol\Model\Kategorije_Model;
 use FireHub\Aplikacija\Kapriol\Model\Artikli_Model;
@@ -97,14 +99,29 @@ final class Rezultat_Kontroler extends Master_Kontroler {
 
             $artikli_html .= <<<Artikal
             
-                <a class="artikal" href="/artikl/{$artikal['Link']}">
-                    <img src="/slika/malaslika/{$artikal['Slika']}" alt="" loading="lazy"/>
-                    <span class="naslov">{$artikal['Naziv']}</span>
-                    <span class="cijena">$artikl_cijena</span>
-                    <span class="zaliha"></span>
-                </a>
+                <form class="artikal" method="post" enctype="multipart/form-data" action="">
+                        <input type="hidden" name="ID" value="{$artikal['ID']}" />
+                        <button class="favorit gumb ikona" type="submit" name="favorit"></button>
+                        <img src="/slika/malaslika/{$artikal['Slika']}" alt="" loading="lazy"/>
+                        <a class="naslov" href="/artikl/{$artikal['Link']}">{$artikal['Naziv']}</a>
+                        <span class="cijena">$artikl_cijena</span>
+                        <span class="zaliha"></span>
+                </form>
 
             Artikal;
+
+        }
+
+        // favoriti
+        if (isset($_POST['favorit'])) {
+
+            if (isset($_POST['ID'])) {
+
+                $id =  Validacija::Broj('ID', $_POST['ID'], 1, 10);
+
+                $this->model(Favorit_Model::class)->dodaj($id);
+
+            }
 
         }
 
