@@ -143,6 +143,11 @@ final class Artikl_Kontroler extends Master_Kontroler {
 
         }
 
+        // calc veličine
+        $calc_velicina = $kategorije->kategorija('', $trenutni_artikl['Kategorija'])['CalcVelicina'] === '1'
+            ? '<img src="/kapriol/resursi/grafika/kapriol_size_guide.png" />'
+            : '';
+
         return sadrzaj()->datoteka('artikl.html')->podatci([
             'predlozak_naslov' => $trenutni_artikl['Naziv'],
             'facebook_link' => Domena::facebook(),
@@ -163,7 +168,7 @@ final class Artikl_Kontroler extends Master_Kontroler {
             'artikl_zaliha' => $artikl_zaliha_html,
             'artikl_kosarica_velicine' => $artikl_kosarica_velicine,
             'artikl_opis' => $trenutni_artikl['Opis'],
-            'calc_velicina' => $kategorije->kategorija('', $trenutni_artikl['Kategorija'])['CalcVelicina'] === '1' ? 'calc': '',
+            'calc_velicina' => $calc_velicina,
             'kosarica_greska' => $kosarica_greska
         ]);
 
