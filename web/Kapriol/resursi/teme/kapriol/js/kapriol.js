@@ -81,83 +81,22 @@ $(document).ready(function () {
     $('.slika > img').slika_zumiranje();
 
 
-    $(function() {
-        NaslovnaSlider('.obavijesti', true, 8000);
+    var swiper = new Swiper(".mySwiper", {
+        spaceBetween: 30,
+        centeredSlides: true,
+        autoplay: {
+            delay: 2500,
+            disableOnInteraction: false
+        },
+        pagination: {
+            el: ".swiper-pagination",
+            type: "progressbar",
+            clickable: true
+        },
+        navigation: {
+            nextEl: ".swiper-button-next",
+            prevEl: ".swiper-button-prev"
+        }
     });
-    function NaslovnaSlider(element = '.obavijesti', auto = false, pause) {
-
-        let $element = $(element);
-        let obavijesti_okolo = $element.children('.obavijesti_okolo');
-        let obavijesti = obavijesti_okolo.children('.obavijest');
-        let pager = $element.children('.pager');
-
-        let strelice = $element.children('.strelice');
-        let proslaObavijest = strelice.children('.prije');
-        let iducaobavijest = strelice.children('.dalje');
-
-        let brojObavijesti = obavijesti.length;
-
-        let trenutnaObavijest = obavijesti.first();
-        let trenutnaObavijestIndex = 1;
-
-        let autoPlay = null;
-
-        obavijesti.not(':first').css('display', 'none');
-        trenutnaObavijest.addClass('aktivno');
-
-        function fadeDalje() {
-            trenutnaObavijest.removeClass('aktivno').fadeOut(700);
-
-            if(trenutnaObavijestIndex === brojObavijesti) {
-                trenutnaObavijest = obavijesti.first();
-                trenutnaObavijest.delay(500).addClass('aktivno').fadeIn(700);
-                trenutnaObavijestIndex = 1;
-            } else {
-                trenutnaObavijestIndex++;
-                trenutnaObavijest = trenutnaObavijest.next();
-                trenutnaObavijest.delay(500).addClass('aktivno').fadeIn(700);
-            }
-
-            pager.text(trenutnaObavijestIndex+' / '+brojObavijesti);
-        }
-
-        function fadePrije() {
-            trenutnaObavijest.removeClass('aktivno').fadeOut(700);
-
-            if(trenutnaObavijestIndex === 1) {
-                trenutnaObavijest = obavijesti.last();
-                trenutnaObavijest.delay(500).addClass('aktivno').fadeIn();
-                trenutnaObavijestIndex = brojObavijesti;
-            } else {
-                trenutnaObavijestIndex--;
-                trenutnaObavijest = trenutnaObavijest.prev();
-                trenutnaObavijest.delay(500).addClass('aktivno').fadeIn(700);
-            }
-
-            pager.text(trenutnaObavijestIndex+' / '+brojObavijesti);
-        }
-
-        function AutoPlay() {
-            clearInterval(autoPlay);
-
-            if(auto === true)
-                autoPlay = setInterval(function() {fadeDalje()}, pause);
-        }
-
-        $(iducaobavijest).click(function(e) {
-            e.preventDefault();
-            fadeDalje();
-            AutoPlay();
-        });
-
-        $(proslaObavijest).click(function(e) {
-            e.preventDefault();
-            fadePrije();
-            AutoPlay();
-        });
-
-        AutoPlay();
-
-    }
 
 });

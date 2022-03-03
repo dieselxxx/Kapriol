@@ -53,7 +53,7 @@ final class Naslovna_Kontroler extends Master_Kontroler {
         foreach ($obavijesti->niz() as $obavijest) {
 
             $obavijest_html .= "
-            <div class='obavijest'>
+            <div class='swiper-slide'>
                 <img src='/slika/baner/{$obavijest['Obavijest']}' />
             </div>
             ";

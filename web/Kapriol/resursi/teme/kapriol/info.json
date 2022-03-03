@@ -3,7 +3,8 @@
         "css/root.css",
         "css/normaliziranje.css",
         "css/grid.css",
-        "css/kapriol.css"
+        "css/kapriol.css",
+        "css/swiper-bundle.min.css"
     ],
     "javascript": [
         "js/biblioteke.js",
