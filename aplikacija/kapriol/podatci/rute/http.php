@@ -31,3 +31,4 @@ Rute::sve('kosarica/ispravno', [\FireHub\Aplikacija\Kapriol\Kontroler\Kosarica_K
 Rute::sve('poslovnice/index', [\FireHub\Aplikacija\Kapriol\Kontroler\Poslovnice_Kontroler::class, 'index']);
 Rute::sve('kontakt/index', [\FireHub\Aplikacija\Kapriol\Kontroler\Kontakt_Kontroler::class, 'index']);
 Rute::sve('kontakt/ispravno', [\FireHub\Aplikacija\Kapriol\Kontroler\Kontakt_Kontroler::class, 'ispravno']);
+Rute::sve('favorit/index', [\FireHub\Aplikacija\Kapriol\Kontroler\Favorit_Kontroler::class, 'ispravno']);
