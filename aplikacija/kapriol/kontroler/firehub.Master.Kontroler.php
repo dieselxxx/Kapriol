@@ -91,7 +91,7 @@ abstract class Master_Kontroler extends Kontroler {
 
             }
 
-            return ''.$total_kolicina.' kom';
+            return ''.$total_kolicina.'';
 
         } else {
 
@@ -114,7 +114,7 @@ abstract class Master_Kontroler extends Kontroler {
 
         $artikli = $this->model(Favorit_Model::class);
 
-        return $artikli->artikli() > 0 ? $artikli->artikli() . ' kom' : '0';
+        return $artikli->artikli() > 0 ? ''.$artikli->artikli().'' : '0';
 
     }
 
