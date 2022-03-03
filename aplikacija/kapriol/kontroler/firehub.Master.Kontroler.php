@@ -14,6 +14,7 @@
 
 namespace FireHub\Aplikacija\Kapriol\Kontroler;
 
+use FireHub\Aplikacija\Kapriol\Model\Favorit_Model;
 use FireHub\Jezgra\Kontroler\Kontroler;
 use FireHub\Aplikacija\Kapriol\Model\Kosarica_Model;
 use FireHub\Aplikacija\Kapriol\Jezgra\Validacija;
@@ -97,6 +98,23 @@ abstract class Master_Kontroler extends Kontroler {
             return '0';
 
         }
+
+    }
+
+    /**
+     * ### Broj komada u košarici
+     * @since 0.1.2.pre-alpha.M1
+     *
+     * @throws Kontejner_Greska Ukoliko se ne može spremiti instanca Log-a.
+     * @throws Kontroler_Greska Ukoliko objekt nije validan model.
+     *
+     * @return string Broj komada u košarici.
+     */
+    protected function favoritArtikli ():string {
+
+        $artikli = $this->model(Favorit_Model::class);
+
+        return $artikli->artikli() > 0 ? $artikli->artikli() . ' kom' : '0';
 
     }
 

@@ -54,4 +54,19 @@ final class Favorit_Model extends Master_Model {
 
     }
 
+    /**
+     * @return int
+     */
+    public function artikli ():int {
+
+        if ($this->sesija->procitaj('favorit')) {
+
+            return count($this->sesija->procitaj('favorit'));
+
+        }
+
+        return 0;
+
+    }
+
 }
