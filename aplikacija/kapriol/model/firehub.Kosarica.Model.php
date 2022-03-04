@@ -381,20 +381,20 @@ final class Kosarica_Model extends Master_Model {
         $ime = $_POST['ime'];
         $email = $_POST['email'];
         $telefon = $_POST['telefon'];
-        $r1 = $_POST['r1'];
+        $r1 = $_POST['r1'] ?? false;
         $adresa = $_POST['adresa'];
         $zip = $_POST['zip'];
         $tvrtka = $_POST['tvrtka'];
         $oib = $_POST['oib'];
         $napomena = $_POST['napomena'];
 
-        $ime = Validacija::Prilagodjen('/^[a-zšđčćžA-ZŠĐČĆŽ -]+$/i', "Vaše ime", $ime, 2, 20);
-        $email = Validacija::Email("Vaš email", $email, 5, 100);
-        $telefon = Validacija::Telefon(_('Vaš broj telefona'), $telefon, 1, 15);
-        $adresa = Validacija::String(_('Vaša adresa'), $adresa, 5, 300);
-        $zip = Validacija::Broj(_('Vaš poštanski broj'), $zip, 5, 5);
+        $ime = Validacija::Prilagodjen('/^[a-zšđčćžA-ZŠĐČĆŽ -]+$/i', "Vaše ime", $ime, 2, 50);
+        //$email = Validacija::Prilagodjen('', "Vaš email", $email, 2, 100);
+        //$telefon = Validacija::Telefon(_('Vaš broj telefona'), $telefon, 1, 15);
+        //$adresa = Validacija::String(_('Vaša adresa'), $adresa, 5, 300);
+        //$zip = Validacija::Broj(_('Vaš poštanski broj'), $zip, 5, 5);
         if($tvrtka <> '') {$tvrtka = Validacija::Prilagodjen('/^[a-zšđčćžA-ZŠĐČĆŽ0-9-. ]+$/i', _('Vaša tvrtka'), $tvrtka, 4, 100);}
-        if($oib <> '') {$oib = Validacija::Broj(_('Vaš OIB \ PDV \ ID tvrtke'), $oib, 9, 20);}
+        if($oib <> '') {$oib = Validacija::Broj(_('Vaš OIB \ PDV \ ID tvrtke'), $oib, 1, 100);}
         $napomena = Validacija::String("Vaša napomena", $napomena, 0, 1000);
 
         // pošalji email
@@ -441,7 +441,7 @@ final class Kosarica_Model extends Master_Model {
             "ime" => $ime,
             "email" => $email,
             "telefon" => $telefon,
-            "r1" => isset($r1) ? 'da': 'ne',
+            "r1" => $r1 ? 'da' : 'ne',
             "adresa" => $adresa,
             "zip" => $zip,
             "tvrtka" => $tvrtka,
@@ -463,7 +463,7 @@ final class Kosarica_Model extends Master_Model {
             "ime" => $ime,
             "email" => $email,
             "telefon" => $telefon,
-            "r1" => isset($r1) ? 'da': 'ne',
+            "r1" => $r1 ? 'da' : 'ne',
             "adresa" => $adresa,
             "zip" => $zip,
             "tvrtka" => $tvrtka,
