@@ -308,7 +308,8 @@ main > div#sadrzaj.rezultat > div.artikli > form.artikal:hover {border: 1px soli
 main > div#sadrzaj.rezultat > div.artikli > form.artikal > * {justify-self: center; align-self: center;}
 main > div#sadrzaj.rezultat > div.artikli > form.artikal > button.favorit {position: absolute; background-image: url("/kapriol/resursi/grafika/ikone/kapriol_crna.svg"); background-size: cover; background-repeat: no-repeat; background-position: initial; background-color: transparent; top: 5px; right: 5px; height: 50px; width: 40px; border: 0;}
 main > div#sadrzaj.rezultat > div.artikli > form.artikal > button.favorit:hover {background-image: url("/kapriol/resursi/grafika/ikone/kapriol.svg");}
-main > div#sadrzaj.rezultat > div.artikli > form.artikal > img {object-fit: contain; height: 100%; width: 100%;}
+main > div#sadrzaj.rezultat > div.artikli > form.artikal > a {display: block; height: 100%; width: 100%;}
+main > div#sadrzaj.rezultat > div.artikli > form.artikal > a > img {object-fit: contain; height: 100%; width: 100%;}
 main > div#sadrzaj.rezultat > div.artikli > form.artikal > a.naslov {font-weight: 500; color: var(--boja-tekst-tamnije);}
 main > div#sadrzaj.rezultat > div.artikli > form.artikal > a.naslov:hover {color: var(--boja-kapriol);}
 main > div#sadrzaj.rezultat > div.artikli > form.artikal > span.cijena > h2 {color: var(--boja-tekst-tamnije);}

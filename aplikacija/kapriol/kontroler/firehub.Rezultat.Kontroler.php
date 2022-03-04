@@ -102,7 +102,7 @@ final class Rezultat_Kontroler extends Master_Kontroler {
                 <form class="artikal" method="post" enctype="multipart/form-data" action="">
                         <input type="hidden" name="ID" value="{$artikal['ID']}" />
                         <button class="favorit gumb ikona" type="submit" name="favorit"></button>
-                        <img src="/slika/malaslika/{$artikal['Slika']}" alt="" loading="lazy"/>
+                        <a href="/artikl/{$artikal['Link']}"><img src="/slika/malaslika/{$artikal['Slika']}" alt="" loading="lazy"/></a>
                         <a class="naslov" href="/artikl/{$artikal['Link']}">{$artikal['Naziv']}</a>
                         <span class="cijena">$artikl_cijena</span>
                         <span class="zaliha"></span>
