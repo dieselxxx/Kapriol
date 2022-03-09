@@ -294,10 +294,11 @@ $_Artikli = function (element = '', $broj_stranice = 1, $poredaj = 'Naziv', $red
                     </label>\
                 ';}
                         $('form[data-oznaka="artikli_lista"] > section table tbody').append('\
-                    <tr onclick="$_Artikl(\''+ Artikal.ID +'\')">\
-                        <td class="uredi">'+ Artikal.ID +'</td>\
-                        <td class="uredi">'+ Artikal.Naziv +'</td>\
-                        <td class="uredi">'+ Artikal.Aktivan +'</td>\
+                    <tr>\
+                        <td onclick="$_Artikl(\''+ Artikal.ID +'\')" class="uredi">'+ Artikal.ID +'</td>\
+                        <td onclick="$_Artikl(\''+ Artikal.ID +'\')" class="uredi">'+ Artikal.Naziv +'</td>\
+                        <td><a onclick="$_ArtiklZaliha(\''+ Artikal.ID +'\')">Uredi zalihu</a></td>\
+                        <td onclick="$_Artikl(\''+ Artikal.ID +'\')" class="uredi">'+ Artikal.Aktivan +'</td>\
                     </tr>\
                 ');
                     });
@@ -366,6 +367,46 @@ $_Artikl = function ($id) {
                     width: '100%'
                 });
             });
+        }
+    });
+
+    return false;
+
+};
+
+/**
+ * Uredi zalihu artikla.
+ *
+ * @param {int} $id
+ */
+$_ArtiklZaliha = function ($id) {
+
+    // dialog prozor
+    let dialog = new Dialog();
+
+    $.ajax({
+        type: 'GET',
+        url: '/administrator/artikli/uredizalihu/' + $id,
+        dataType: 'html',
+        context: this,
+        beforeSend: function () {
+            Dialog.dialogOtvori(true);
+            dialog.sadrzaj(Loader_Krug);
+        },
+        success: function (odgovor) {
+            Dialog.dialogOcisti();
+            dialog.naslov('Artikl: ' + $id);
+            dialog.sadrzaj(odgovor);
+            dialog.kontrole('<button data-boja="boja" onclick="Dialog.dialogZatvori()">Zatvori</button>');
+            dialog.kontrole('<button type="button" class="ikona" onclick="$_ArtiklSpremi(this, \'forma\');"><svg><use xlink:href="/kapriol/resursi/grafika/simboli/simbol.ikone.svg#spremi"></use></svg><span>Spremi</span></button>');
+        },
+        error: function () {
+            Dialog.dialogOcisti();
+            dialog.naslov('Greška');
+            dialog.naslov('Dogodila se greška prilikom učitavanja podataka, molimo kontaktirajte administratora');
+            dialog.kontrole('<button data-boja="boja" onclick="Dialog.dialogZatvori()">Zatvori</button>');
+        },
+        complete: function (odgovor) {
         }
     });
 

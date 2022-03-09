@@ -147,26 +147,31 @@ final class Artikli_Model extends Master_Model {
                     <div>
                         <span>'._('ID artikla').'</span>
                         <div class="poredaj">
-                            <svg class="gore '.$this->RedoslijedIkona('ID', 'desc').'"><use xlink:href="/imovina/grafika/simboli/simbol.ikone.php#strelica_gore"></use></svg>
-                            <svg class="dole '.$this->RedoslijedIkona('ID', 'asc').'"><use xlink:href="/imovina/grafika/simboli/simbol.ikone.php#strelica_dole"></use></svg>
+                            <svg class="gore '.$this->RedoslijedIkona('ID', 'desc').'"><use xlink:href="/kapriol/resursi/grafika/simboli/simbol.ikone.svg#strelica_gore"></use></svg>
+                            <svg class="dole '.$this->RedoslijedIkona('ID', 'asc').'"><use xlink:href="/kapriol/resursi/grafika/simboli/simbol.ikone.svg#strelica_dole"></use></svg>
                         </div>
                     </div>
                 </th>
-                <th width="85%" onclick="$_Artikli(this,1,\'Naziv\',\''.$this->RedoslijedObrnuto().'\')">
+                <th width="75%" onclick="$_Artikli(this,1,\'Naziv\',\''.$this->RedoslijedObrnuto().'\')">
                     <div>
                         <span>'._('Naziv artikla').'</span>
                         <div class="poredaj">
-                            <svg class="gore '.$this->RedoslijedIkona('Naziv', 'desc').'"><use xlink:href="/imovina/grafika/simboli/simbol.ikone.php#strelica_gore"></use></svg>
-                            <svg class="dole '.$this->RedoslijedIkona('Naziv', 'asc').'"><use xlink:href="/imovina/grafika/simboli/simbol.ikone.php#strelica_dole"></use></svg>
+                            <svg class="gore '.$this->RedoslijedIkona('Naziv', 'desc').'"><use xlink:href="/kapriol/resursi/grafika/simboli/simbol.ikone.svg#strelica_gore"></use></svg>
+                            <svg class="dole '.$this->RedoslijedIkona('Naziv', 'asc').'"><use xlink:href="/kapriol/resursi/grafika/simboli/simbol.ikone.svg#strelica_dole"></use></svg>
                         </div>
+                    </div>
+                </th>
+                <th width="10%">
+                    <div>
+                        <span>'._('Zaliha').'</span>
                     </div>
                 </th>
                 <th width="10%" onclick="$_Artikli(this,1,\'Aktivan\',\''.$this->RedoslijedObrnuto().'\')">
                     <div>
                         <span>'._('Aktivno').'</span>
                         <div class="poredaj">
-                            <svg class="gore '.$this->RedoslijedIkona('Aktivan', 'desc').'"><use xlink:href="/imovina/grafika/simboli/simbol.ikone.php#strelica_gore"></use></svg>
-                            <svg class="dole '.$this->RedoslijedIkona('Aktivan', 'asc').'"><use xlink:href="/imovina/grafika/simboli/simbol.ikone.php#strelica_dole"></use></svg>
+                            <svg class="gore '.$this->RedoslijedIkona('Aktivan', 'desc').'"><use xlink:href="/kapriol/resursi/grafika/simboli/simbol.ikone.svg#strelica_gore"></use></svg>
+                            <svg class="dole '.$this->RedoslijedIkona('Aktivan', 'asc').'"><use xlink:href="/kapriol/resursi/grafika/simboli/simbol.ikone.svg#strelica_dole"></use></svg>
                         </div>
                     </div>
                 </th>
