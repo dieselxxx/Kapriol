@@ -104,7 +104,7 @@ final class Rezultat_Kontroler extends Master_Kontroler {
                         <button class="favorit gumb ikona" type="submit" name="favorit"></button>
                         <a href="/artikl/{$artikal['Link']}"><img src="/slika/malaslika/{$artikal['Slika']}" alt="" loading="lazy"/></a>
                         <a class="naslov" href="/artikl/{$artikal['Link']}">{$artikal['Naziv']}</a>
-                        <span class="cijena">$artikl_cijena</span>
+                        <a href="/artikl/{$artikal['Link']}" class="cijena">$artikl_cijena</a>
                         <span class="zaliha"></span>
                 </form>
 
