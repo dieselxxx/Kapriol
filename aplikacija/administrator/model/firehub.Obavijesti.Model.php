@@ -152,9 +152,18 @@ final class Obavijesti_Model extends Master_Model {
                         </div>
                     </div>
                 </th>
-                <th width="85%" onclick="$_Obavijesti(this,1,\'Obavijest\',\''.$this->RedoslijedObrnuto().'\')">
+                <th width="55%" onclick="$_Obavijesti(this,1,\'Obavijest\',\''.$this->RedoslijedObrnuto().'\')">
                     <div>
                         <span>'._('Obavijest').'</span>
+                        <div class="poredaj">
+                            <svg class="gore '.$this->RedoslijedIkona('Obavijest', 'desc').'"><use xlink:href="/imovina/grafika/simboli/simbol.ikone.php#strelica_gore"></use></svg>
+                            <svg class="dole '.$this->RedoslijedIkona('Obavijest', 'asc').'"><use xlink:href="/imovina/grafika/simboli/simbol.ikone.php#strelica_dole"></use></svg>
+                        </div>
+                    </div>
+                </th>
+                <th width="30%" onclick="$_Obavijesti(this,1,\'Obavijest\',\''.$this->RedoslijedObrnuto().'\')">
+                    <div>
+                        <span>'._('Slika').'</span>
                         <div class="poredaj">
                             <svg class="gore '.$this->RedoslijedIkona('Obavijest', 'desc').'"><use xlink:href="/imovina/grafika/simboli/simbol.ikone.php#strelica_gore"></use></svg>
                             <svg class="dole '.$this->RedoslijedIkona('Obavijest', 'asc').'"><use xlink:href="/imovina/grafika/simboli/simbol.ikone.php#strelica_dole"></use></svg>
