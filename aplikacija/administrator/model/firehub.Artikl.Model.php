@@ -152,11 +152,11 @@ final class Artikl_Model extends Master_Model {
         if ($aktivno == "on") {$aktivno = 1;} else {$aktivno = 0;}
 
         $ba = $_REQUEST["ba"] ?? null;
-        $ba = Validacija::Potvrda(_('Izdvojeno'), $ba);
+        $ba = Validacija::Potvrda(_('BA'), $ba);
         if ($ba == "on") {$ba = 1;} else {$ba = 0;}
 
         $hr = $_REQUEST["hr"] ?? null;
-        $hr = Validacija::Potvrda(_('Izdvojeno'), $hr);
+        $hr = Validacija::Potvrda(_('HR'), $hr);
         if ($hr == "on") {$hr = 1;} else {$hr = 0;}
 
         $kategorija = $_REQUEST['kategorija'];

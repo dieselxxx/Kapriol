@@ -86,9 +86,15 @@ final class Obavijesti_Kontroler extends Master_Kontroler {
         $obavijest_model = $this->model(Obavijest_Model::class);
         $obavijest = $obavijest_model->obavijest($id);
 
+        // formatiranje rezultata
+        if ($obavijest['Ba'] === true) {$obavijest['Ba'] = 'checked';} else {$obavijest['Ba'] = '';}
+        if ($obavijest['Hr'] === true) {$obavijest['Hr'] = 'checked';} else {$obavijest['Hr'] = '';}
+
         return sadrzaj()->format(Sadrzaj_Vrsta::HTMLP)->datoteka('obavijesti/uredi.html')->podatci([
             'id' => $obavijest['ID'],
-            'redoslijed' => $obavijest['Redoslijed']
+            'redoslijed' => $obavijest['Redoslijed'],
+            'ba' => $obavijest['Ba'],
+            'hr' => $obavijest['Hr']
         ]);
 
     }

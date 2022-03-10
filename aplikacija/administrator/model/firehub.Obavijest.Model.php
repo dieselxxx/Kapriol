@@ -53,14 +53,20 @@ final class Obavijest_Model extends Master_Model {
         $obavijest = $this->bazaPodataka
             ->sirovi("
                 SELECT
-                    obavijesti.ID, obavijesti.Obavijest, obavijesti.Redoslijed
+                    obavijesti.ID, obavijesti.Obavijest, obavijesti.Redoslijed,
+                    obavijesti.Ba, obavijesti.Hr
                 FROM obavijesti
                 WHERE obavijesti.ID = $id
                 LIMIT 1
             ")
             ->napravi();
 
-        return $obavijest->redak();
+        $obavijest = $obavijest->redak();
+
+        if ($obavijest['Ba']) {$obavijest['Ba'] = true;} else {$obavijest['Ba'] = false;}
+        if ($obavijest['Hr']) {$obavijest['Hr'] = true;} else {$obavijest['Hr'] = false;}
+
+        return $obavijest;
 
     }
 
@@ -75,10 +81,18 @@ final class Obavijest_Model extends Master_Model {
         $redoslijed = $_REQUEST['redoslijed'];
         $redoslijed = Validacija::Broj(_('Redoslijed obavijesti'), $redoslijed, 1, 5);
 
+        $ba = $_REQUEST["ba"] ?? null;
+        $ba = Validacija::Potvrda(_('BA'), $ba);
+        if ($ba == "on") {$ba = 1;} else {$ba = 0;}
+
+        $hr = $_REQUEST["hr"] ?? null;
+        $hr = Validacija::Potvrda(_('HR'), $hr);
+        if ($hr == "on") {$hr = 1;} else {$hr = 0;}
+
         $obavijest = $this->bazaPodataka
             ->sirovi("
                 UPDATE obavijesti
-                    SET Redoslijed = $redoslijed
+                    SET Redoslijed = $redoslijed, Ba = $ba, Hr = $hr
                 WHERE obavijesti.ID = $id
             ")
             ->napravi();
