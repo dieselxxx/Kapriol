@@ -90,7 +90,7 @@ final class Obavijesti_Model extends Master_Model {
         $rezultat = $this->bazaPodataka
             ->sirovi("
                 SELECT
-                    ID, Obavijest
+                    ID, Obavijest, Redoslijed
                 FROM obavijesti
                 WHERE ID <> 0
                 {$this->trazi()}
@@ -161,12 +161,21 @@ final class Obavijesti_Model extends Master_Model {
                         </div>
                     </div>
                 </th>
-                <th width="30%" onclick="$_Obavijesti(this,1,\'Obavijest\',\''.$this->RedoslijedObrnuto().'\')">
+                <th width="20%" onclick="$_Obavijesti(this,1,\'Obavijest\',\''.$this->RedoslijedObrnuto().'\')">
                     <div>
                         <span>'._('Slika').'</span>
                         <div class="poredaj">
                             <svg class="gore '.$this->RedoslijedIkona('Obavijest', 'desc').'"><use xlink:href="/imovina/grafika/simboli/simbol.ikone.php#strelica_gore"></use></svg>
                             <svg class="dole '.$this->RedoslijedIkona('Obavijest', 'asc').'"><use xlink:href="/imovina/grafika/simboli/simbol.ikone.php#strelica_dole"></use></svg>
+                        </div>
+                    </div>
+                </th>
+                <th width="10%" onclick="$_Obavijesti(this,1,\'Redoslijed\',\''.$this->RedoslijedObrnuto().'\')">
+                    <div>
+                        <span>'._('Redoslijed').'</span>
+                        <div class="poredaj">
+                            <svg class="gore '.$this->RedoslijedIkona('Redoslijed', 'desc').'"><use xlink:href="/imovina/grafika/simboli/simbol.ikone.php#strelica_gore"></use></svg>
+                            <svg class="dole '.$this->RedoslijedIkona('Redoslijed', 'asc').'"><use xlink:href="/imovina/grafika/simboli/simbol.ikone.php#strelica_dole"></use></svg>
                         </div>
                     </div>
                 </th>

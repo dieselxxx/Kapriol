@@ -48,6 +48,7 @@ final class Naslovna_Kontroler extends Master_Kontroler {
                 SELECT 
                     Obavijest
                 FROM obavijesti
+                ORDER BY Redoslijed ASC
             ")->napravi();
 
         foreach ($obavijesti->niz() as $obavijest) {

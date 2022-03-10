@@ -507,6 +507,7 @@ $_Obavijesti = function (element = '', $broj_stranice = 1, $poredaj = 'Obavijest
                         <td class="uredi">'+ Obavijest.ID +'</td>\
                         <td class="uredi">'+ Obavijest.Obavijest +'</td>\
                         <td class="uredi"><img src="/slika/baner/'+ Obavijest.Obavijest +'" /></td>\
+                        <td class="uredi">'+ Obavijest.Redoslijed +'</td>\
                     </tr>\
                 ');
                     });
