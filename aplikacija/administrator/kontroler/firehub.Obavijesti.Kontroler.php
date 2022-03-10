@@ -87,8 +87,39 @@ final class Obavijesti_Kontroler extends Master_Kontroler {
         $obavijest = $obavijest_model->obavijest($id);
 
         return sadrzaj()->format(Sadrzaj_Vrsta::HTMLP)->datoteka('obavijesti/uredi.html')->podatci([
-            'id' => $obavijest['ID']
+            'id' => $obavijest['ID'],
+            'redoslijed' => $obavijest['Redoslijed']
         ]);
+
+    }
+
+    /**
+     * ## Spremi obavijest
+     * @since 0.1.2.pre-alpha.M1
+     *
+     * @return Sadrzaj Sadržaj stranice.
+     */
+    public function spremi (string $kontroler = '', string $metoda = '', int $id = 0) {
+
+        try {
+
+            // model
+            $artikl = $this->model(Obavijest_Model::class);
+            $artikl->spremi($id);
+
+            return sadrzaj()->format(Sadrzaj_Vrsta::JSON)->podatci([
+                'Validacija' => 'da',
+                'Poruka' => _('Postavke spremljene')
+            ]);
+
+        } catch (Greska $greska) {
+
+            return sadrzaj()->format(Sadrzaj_Vrsta::JSON)->podatci([
+                'Validacija' => 'ne',
+                'Poruka' => $greska->getMessage()
+            ]);
+
+        }
 
     }
 

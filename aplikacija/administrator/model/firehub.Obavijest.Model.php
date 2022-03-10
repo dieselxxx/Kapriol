@@ -15,6 +15,7 @@
 namespace FireHub\Aplikacija\Administrator\Model;
 
 use FireHub\Aplikacija\Administrator\Jezgra\PrijenosDatoteka;
+use FireHub\Aplikacija\Kapriol\Jezgra\Validacija;
 use FireHub\Jezgra\Komponente\BazaPodataka\BazaPodataka;
 use FireHub\Jezgra\Kontejner\Greske\Kontejner_Greska;
 
@@ -52,7 +53,7 @@ final class Obavijest_Model extends Master_Model {
         $obavijest = $this->bazaPodataka
             ->sirovi("
                 SELECT
-                    obavijesti.ID, obavijesti.Obavijest
+                    obavijesti.ID, obavijesti.Obavijest, obavijesti.Redoslijed
                 FROM obavijesti
                 WHERE obavijesti.ID = $id
                 LIMIT 1
@@ -64,12 +65,35 @@ final class Obavijest_Model extends Master_Model {
     }
 
     /**
-     * ### Izbrisi
+     * ### Spremi obavijest
+     * @since 0.1.2.pre-alpha.M1
+     */
+    public function spremi (int $id) {
+
+        $id = Validacija::Broj(_('ID obavijesti'), $id, 1, 10);
+
+        $redoslijed = $_REQUEST['redoslijed'];
+        $redoslijed = Validacija::Broj(_('Redoslijed obavijesti'), $redoslijed, 1, 5);
+
+        $obavijest = $this->bazaPodataka
+            ->sirovi("
+                UPDATE obavijesti
+                    SET Redoslijed = $redoslijed
+                WHERE obavijesti.ID = $id
+            ")
+            ->napravi();
+
+    }
+
+    /**
+     * ### Izbrisi Obavijest
      * @since 0.1.2.pre-alpha.M1
      *
      * @param int $id
      */
     public function izbrisi (int $id) {
+
+        $id = Validacija::Broj(_('ID obavijesti'), $id, 1, 10);
 
         $obavijest = $this->bazaPodataka
             ->sirovi("

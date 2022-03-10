@@ -558,6 +558,7 @@ $_Obavijest = function ($id) {
             dialog.naslov('Obavijest: ' + $id);
             dialog.sadrzaj(odgovor);
             dialog.kontrole('<button data-boja="boja" onclick="Dialog.dialogZatvori()">Zatvori</button>');
+            dialog.kontrole('<button type="button" class="ikona" onclick="$_ObavijestSpremi(this, \'forma\');"><svg><use xlink:href="/kapriol/resursi/grafika/simboli/simbol.ikone.svg#spremi"></use></svg><span>Spremi</span></button>');
             dialog.kontrole('<button type="button" class="ikona" onclick="$_ObavijestIzbrisi(this,  \'forma\');"><svg><use xlink:href="/kapriol/resursi/grafika/simboli/simbol.ikone.svg#izbrisi"></use></svg><span>Izbrisi</span></button>');
         },
         error: function () {
@@ -565,6 +566,55 @@ $_Obavijest = function ($id) {
             dialog.naslov('Greška');
             dialog.naslov('Dogodila se greška prilikom učitavanja podataka, molimo kontaktirajte administratora');
             dialog.kontrole('<button data-boja="boja" onclick="Dialog.dialogZatvori()">Zatvori</button>');
+        }
+    });
+
+    return false;
+
+};
+
+/**
+ * Spremi obavijest.
+ */
+$_ObavijestSpremi = function (element) {
+
+    // dialog prozor
+    let dialog = new Dialog();
+
+    let obavijest_forma = $('form[data-oznaka="obavijest"]');
+
+    let $id = obavijest_forma.data("sifra");
+
+    let $podatci = obavijest_forma.serializeArray();
+
+    $.ajax({
+        type: 'POST',
+        url: '/administrator/obavijesti/spremi/' + $id,
+        dataType: 'json',
+        data: $podatci,
+        beforeSend: function () {
+            $(element).closest('form').find('table tr.poruka td').empty();
+        },
+        success: function (odgovor) {
+            if (odgovor.Validacija === "da") {
+
+                Dialog.dialogOcisti();
+                dialog.naslov('Uspješno spremljeno');
+                dialog.sadrzaj('Postavke obavijesti su spremljene!');
+                dialog.kontrole('<button data-boja="boja" onclick="Dialog.dialogZatvori()">Zatvori</button>');
+
+            } else {
+                $(element).closest('form').find('table tr.poruka td').append(odgovor.Poruka);
+            }
+        },
+        error: function () {
+            Dialog.dialogOcisti();
+            dialog.naslov('Greška');
+            dialog.naslov('Dogodila se greška prilikom učitavanja podataka, molimo kontaktirajte administratora');
+            dialog.kontrole('<button data-boja="boja" onclick="Dialog.dialogZatvori()">Zatvori</button>');
+        },
+        complete: function (odgovor) {
+            $_Obavijesti();
         }
     });
 
