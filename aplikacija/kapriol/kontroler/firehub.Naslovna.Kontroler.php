@@ -48,6 +48,7 @@ final class Naslovna_Kontroler extends Master_Kontroler {
                 SELECT 
                     Obavijest
                 FROM obavijesti
+                WHERE ".Domena::sqlTablica()." = 1
                 ORDER BY Redoslijed ASC
             ")->napravi();
 
