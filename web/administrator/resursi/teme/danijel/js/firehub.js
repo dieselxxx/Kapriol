@@ -398,7 +398,7 @@ $_ArtiklZaliha = function ($id) {
             dialog.naslov('Artikl: ' + $id);
             dialog.sadrzaj(odgovor);
             dialog.kontrole('<button data-boja="boja" onclick="Dialog.dialogZatvori()">Zatvori</button>');
-            dialog.kontrole('<button type="button" class="ikona" onclick="$_ArtiklSpremi(this, \'forma\');"><svg><use xlink:href="/kapriol/resursi/grafika/simboli/simbol.ikone.svg#spremi"></use></svg><span>Spremi</span></button>');
+            dialog.kontrole('<button type="button" class="ikona" onclick="$_ArtiklZalihaSpremi(this, \'forma\');"><svg><use xlink:href="/kapriol/resursi/grafika/simboli/simbol.ikone.svg#spremi"></use></svg><span>Spremi</span></button>');
         },
         error: function () {
             Dialog.dialogOcisti();
@@ -456,6 +456,54 @@ $_ArtiklSpremi = function (element) {
         },
         complete: function (odgovor) {
             $_Artikli();
+        }
+    });
+
+    return false;
+
+};
+
+/**
+ * Spremi zalihu artikla.
+ */
+$_ArtiklZalihaSpremi = function (element) {
+
+    // dialog prozor
+    let dialog = new Dialog();
+
+    let artikl_forma = $('form[data-oznaka="artiklzaliha"]');
+
+    let $id = artikl_forma.data("sifra");
+
+    let $podatci = artikl_forma.serializeArray();
+
+    $.ajax({
+        type: 'POST',
+        url: '/administrator/artikli/zalihaspremi/' + $id,
+        dataType: 'json',
+        data: $podatci,
+        beforeSend: function () {
+            $(element).closest('form').find('table tr.poruka td').empty();
+        },
+        success: function (odgovor) {
+            if (odgovor.Validacija === "da") {
+
+                Dialog.dialogOcisti();
+                dialog.naslov('Uspješno spremljeno');
+                dialog.sadrzaj('Postavke artikla su spremljene!');
+                dialog.kontrole('<button data-boja="boja" onclick="Dialog.dialogZatvori()">Zatvori</button>');
+
+            } else {
+                $(element).closest('form').find('table tr.poruka td').append(odgovor.Poruka);
+            }
+        },
+        error: function () {
+            Dialog.dialogOcisti();
+            dialog.naslov('Greška');
+            dialog.naslov('Dogodila se greška prilikom učitavanja podataka, molimo kontaktirajte administratora');
+            dialog.kontrole('<button data-boja="boja" onclick="Dialog.dialogZatvori()">Zatvori</button>');
+        },
+        complete: function (odgovor) {
         }
     });
 
