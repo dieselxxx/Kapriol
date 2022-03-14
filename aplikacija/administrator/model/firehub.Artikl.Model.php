@@ -256,7 +256,7 @@ final class Artikl_Model extends Master_Model {
                     artiklikarakteristike.ID, artiklikarakteristike.Sifra AS artiklikarakteristikeSifra, Velicina
                 FROM artiklikarakteristike
                 LEFT JOIN stanjeskladista ON stanjeskladista.Sifra = artiklikarakteristike.Sifra
-                WHERE ArtikalID = $id
+                WHERE ArtikalID = '$id'
                 GROUP BY Velicina
                 ORDER BY artiklikarakteristike.ID
             ")
@@ -285,7 +285,7 @@ final class Artikl_Model extends Master_Model {
                 LEFT JOIN skladiste ON skladiste.ID = stanjeskladista.SkladisteID
                 LEFT JOIN artiklikarakteristike ON artiklikarakteristike.Sifra = stanjeskladista.Sifra
                 LEFT JOIN artikli ON artikli.ID = artiklikarakteristike.ArtikalID
-                WHERE stanjeskladista.Sifra = $id AND skladiste.ID = $skladiste
+                WHERE stanjeskladista.Sifra = '$id' AND skladiste.ID = '$skladiste'
                 LIMIT 1
             ")
             ->napravi();
