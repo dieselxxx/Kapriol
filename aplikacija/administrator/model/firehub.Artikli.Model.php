@@ -152,13 +152,18 @@ final class Artikli_Model extends Master_Model {
                         </div>
                     </div>
                 </th>
-                <th width="75%" onclick="$_Artikli(this,1,\'Naziv\',\''.$this->RedoslijedObrnuto().'\')">
+                <th width="65%" onclick="$_Artikli(this,1,\'Naziv\',\''.$this->RedoslijedObrnuto().'\')">
                     <div>
                         <span>'._('Naziv artikla').'</span>
                         <div class="poredaj">
                             <svg class="gore '.$this->RedoslijedIkona('Naziv', 'desc').'"><use xlink:href="/kapriol/resursi/grafika/simboli/simbol.ikone.svg#strelica_gore"></use></svg>
                             <svg class="dole '.$this->RedoslijedIkona('Naziv', 'asc').'"><use xlink:href="/kapriol/resursi/grafika/simboli/simbol.ikone.svg#strelica_dole"></use></svg>
                         </div>
+                    </div>
+                </th>
+                <th width="10%">
+                    <div>
+                        <span>'._('Šifre').'</span>
                     </div>
                 </th>
                 <th width="10%">

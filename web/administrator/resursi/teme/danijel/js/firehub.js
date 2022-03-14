@@ -297,6 +297,7 @@ $_Artikli = function (element = '', $broj_stranice = 1, $poredaj = 'Naziv', $red
                     <tr>\
                         <td onclick="$_Artikl(\''+ Artikal.ID +'\')" class="uredi">'+ Artikal.ID +'</td>\
                         <td onclick="$_Artikl(\''+ Artikal.ID +'\')" class="uredi">'+ Artikal.Naziv +'</td>\
+                        <td><a onclick="$_ArtiklSifre(\''+ Artikal.ID +'\')">Uredi šifre</a></td>\
                         <td><a onclick="$_ArtiklZaliha(\''+ Artikal.ID +'\')">Uredi zalihu</a></td>\
                         <td onclick="$_Artikl(\''+ Artikal.ID +'\')" class="uredi">'+ Artikal.Aktivan +'</td>\
                     </tr>\
@@ -480,6 +481,178 @@ $_ArtiklZalihaSpremi = function (element) {
     $.ajax({
         type: 'POST',
         url: '/administrator/artikli/zalihaspremi/' + $id,
+        dataType: 'json',
+        data: $podatci,
+        beforeSend: function () {
+            $(element).closest('form').find('table tr.poruka td').empty();
+        },
+        success: function (odgovor) {
+            if (odgovor.Validacija === "da") {
+
+                Dialog.dialogOcisti();
+                dialog.naslov('Uspješno spremljeno');
+                dialog.sadrzaj('Postavke artikla su spremljene!');
+                dialog.kontrole('<button data-boja="boja" onclick="Dialog.dialogZatvori()">Zatvori</button>');
+
+            } else {
+                $(element).closest('form').find('table tr.poruka td').append(odgovor.Poruka);
+            }
+        },
+        error: function () {
+            Dialog.dialogOcisti();
+            dialog.naslov('Greška');
+            dialog.naslov('Dogodila se greška prilikom učitavanja podataka, molimo kontaktirajte administratora');
+            dialog.kontrole('<button data-boja="boja" onclick="Dialog.dialogZatvori()">Zatvori</button>');
+        },
+        complete: function (odgovor) {
+        }
+    });
+
+    return false;
+
+};
+
+/**
+ * Uredi šifre artikla.
+ *
+ * @param {int} $id
+ */
+$_ArtiklSifre = function ($id) {
+
+    // dialog prozor
+    let dialog = new Dialog();
+
+    $.ajax({
+        type: 'GET',
+        url: '/administrator/artikli/artiklsifre/' + $id,
+        dataType: 'html',
+        context: this,
+        beforeSend: function () {
+            Dialog.dialogOtvori(true);
+            dialog.sadrzaj(Loader_Krug);
+        },
+        success: function (odgovor) {
+            Dialog.dialogOcisti();
+            dialog.naslov('Artikl: ' + $id);
+            dialog.sadrzaj(odgovor);
+            dialog.kontrole('<button data-boja="boja" onclick="Dialog.dialogZatvori()">Zatvori</button>');
+            dialog.kontrole('<button type="button" class="ikona" onclick="$_ArtiklSifreNova(this, \'forma\');"><svg><use xlink:href="/kapriol/resursi/grafika/simboli/simbol.ikone.svg#artikl"></use></svg><span>Nova šifra</span></button>');
+            dialog.kontrole('<button type="button" class="ikona" onclick="$_ArtiklSifreSpremi(this, \'forma\');"><svg><use xlink:href="/kapriol/resursi/grafika/simboli/simbol.ikone.svg#spremi"></use></svg><span>Spremi</span></button>');
+        },
+        error: function () {
+            Dialog.dialogOcisti();
+            dialog.naslov('Greška');
+            dialog.naslov('Dogodila se greška prilikom učitavanja podataka, molimo kontaktirajte administratora');
+            dialog.kontrole('<button data-boja="boja" onclick="Dialog.dialogZatvori()">Zatvori</button>');
+        },
+        complete: function (odgovor) {
+        }
+    });
+
+    return false;
+
+};
+
+/**
+ * Nova šifre artikla.
+ */
+$_ArtiklSifreNova = function (element) {
+
+    $(element).closest('form').find('table tbody').append('\
+        <tr>\
+            <td>\
+                <label data-boja="boja" class="unos">\
+                    <input type="text" name="zaliha[]" value="" maxlength="50" autocomplete="off">\
+                    <span class="naslov">\
+                        <span>Šifra</span>\
+                    </span>\
+                    <span class="granica"></span>\
+                    <svg><use xlink:href="/kapriol/resursi/grafika/simboli/simbol.ikone.svg#cijena"></use></svg>\
+                    <span class="upozorenje"></span>\
+                </label>\
+            </td>\
+            <td>\
+                <label data-boja="boja" class="unos">\
+                    <input type="text" name="velicina[]" value="" maxlength="50" autocomplete="off">\
+                    <span class="naslov">\
+                        <span>Veličina</span>\
+                    </span>\
+                    <span class="granica"></span>\
+                    <svg><use xlink:href="/kapriol/resursi/grafika/simboli/simbol.ikone.svg#cijena"></use></svg>\
+                    <span class="upozorenje"></span>\
+                </label>\
+            </td>\
+            <td>\
+                <button type="button" class="ikona" onclick="$_ArtiklSifreIzbrisi(this, 0, 0)"><svg><use xlink:href="/kapriol/resursi/grafika/simboli/simbol.ikone.svg#izbrisi"></use></svg><span></span></button>\
+            </td>\
+        </tr>\
+        ');
+
+    return false;
+
+};
+
+/**
+ * Izbriši šifru artikla.
+ *
+ * @param {object} element
+ * @package {int} $id
+ */
+$_ArtiklSifreIzbrisi = function (element, $id, $artikl) {
+
+    if ($id == 0) {
+
+        $(element).closest('tr').remove();
+
+    } else {
+
+        $.ajax({
+            type: 'POST',
+            url: '/administrator/artikli/artiklsifreizbrisi/' + $id,
+            dataType: 'json',
+            beforeSend: function () {
+                $(element).closest('form').find('table tr.poruka td').empty();
+            },
+            success: function (odgovor) {
+                if (odgovor.Validacija === "da") {
+                } else {
+                    $(element).closest('form').find('table tr.poruka td').append(odgovor.Poruka);
+                }
+            },
+            error: function () {
+                Dialog.dialogOcisti();
+                dialog.naslov('Greška');
+                dialog.sadrzaj('Dogodila se greška prilikom učitavanja podataka, molimo kontaktirajte administratora');
+                dialog.kontrole('<button data-boja="boja" onclick="Dialog.dialogZatvori()">Zatvori</button>');
+            },
+            complete: function (odgovor) {
+                $_ArtiklSifre($artikl);
+            }
+        });
+
+    }
+
+    return false;
+
+};
+
+/**
+ * Spremi šifre artikla.
+ */
+$_ArtiklSifreSpremi = function (element) {
+
+    // dialog prozor
+    let dialog = new Dialog();
+
+    let artikl_forma = $('form[data-oznaka="artiklsifre"]');
+
+    let $id = artikl_forma.data("sifra");
+
+    let $podatci = artikl_forma.serializeArray();
+
+    $.ajax({
+        type: 'POST',
+        url: '/administrator/artikli/artiklsifrespremi/' + $id,
         dataType: 'json',
         data: $podatci,
         beforeSend: function () {
