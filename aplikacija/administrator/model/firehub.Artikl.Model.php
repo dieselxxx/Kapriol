@@ -162,24 +162,48 @@ final class Artikl_Model extends Master_Model {
         $kategorija = $_REQUEST['kategorija'];
         $kategorija = Validacija::Broj(_('Kategorija artikla'), $kategorija, 1, 7);
 
-        $spremi = $this->bazaPodataka
-            ->transakcija(
-                (new BazaPodataka())->tabela('artikli')
-                    ->azuriraj([
-                        'Naziv' => $naziv,
-                        'Opis' => $opis,
-                        'Cijena' => $cijena,
-                        'CijenaAkcija' => $cijena_akcija,
-                        'CijenaKn' => $cijena_hr,
-                        'CijenaAkcijaKn' => $cijena_akcija_hr,
-                        'Ba' => $ba,
-                        'Hr' => $hr,
-                        'Izdvojeno' => $izdvojeno,
-                        'Aktivan' => $aktivno,
-                        'KategorijaID' => $kategorija
-                    ])
-                    ->gdje('ID', '=', $id)
-            )->napravi();
+        if ($id !== 0) {
+
+            $spremi = $this->bazaPodataka
+                ->transakcija(
+                    (new BazaPodataka())->tabela('artikli')
+                        ->azuriraj([
+                            'Naziv' => $naziv,
+                            'Opis' => $opis,
+                            'Cijena' => $cijena,
+                            'CijenaAkcija' => $cijena_akcija,
+                            'CijenaKn' => $cijena_hr,
+                            'CijenaAkcijaKn' => $cijena_akcija_hr,
+                            'Ba' => $ba,
+                            'Hr' => $hr,
+                            'Izdvojeno' => $izdvojeno,
+                            'Aktivan' => $aktivno,
+                            'KategorijaID' => $kategorija
+                        ])
+                        ->gdje('ID', '=', $id)
+                )->napravi();
+
+        } else {
+
+            $spremi = $this->bazaPodataka
+                ->transakcija(
+                    (new BazaPodataka())->tabela('artikli')
+                        ->umetni([
+                            'Naziv' => $naziv,
+                            'Opis' => $opis,
+                            'Cijena' => $cijena,
+                            'CijenaAkcija' => $cijena_akcija,
+                            'CijenaKn' => $cijena_hr,
+                            'CijenaAkcijaKn' => $cijena_akcija_hr,
+                            'Ba' => $ba,
+                            'Hr' => $hr,
+                            'Izdvojeno' => $izdvojeno,
+                            'Aktivan' => $aktivno,
+                            'KategorijaID' => $kategorija
+                        ])
+                )->napravi();
+
+        }
 
     }
 

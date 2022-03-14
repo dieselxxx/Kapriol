@@ -141,6 +141,31 @@ final class Artikli_Kontroler extends Master_Kontroler {
     }
 
     /**
+     * ## Novi artikl
+     * @since 0.1.2.pre-alpha.M1
+     *
+     * @return Sadrzaj Sadržaj stranice.
+     */
+    public function novi (string $kontroler = '', string $metoda = '', int $id = 0) {
+
+        // kategorije
+        $kategorije_model = $this->model(Kategorije_Model::class);
+        $kategorije = $kategorije_model->lista(limit_zapisa_po_stranici: 100);
+        $kategorije_html = '';
+        foreach ($kategorije as $kategorija) {
+
+            $kategorije_html .= "<option value='{$kategorija['ID']}'>{$kategorija['Kategorija']}</option>";
+
+        }
+
+        return sadrzaj()->format(Sadrzaj_Vrsta::HTMLP)->datoteka('artikli/novi.html')->podatci([
+            'id' => '0',
+            'kategorije' => $kategorije_html
+        ]);
+
+    }
+
+    /**
      * ### Spremi artikl
      * @since 0.1.2.pre-alpha.M1
      *
