@@ -38,3 +38,8 @@ Rute::sve('obavijesti/uredi', [\FireHub\Aplikacija\Administrator\Kontroler\Obavi
 Rute::sve('obavijesti/spremi', [\FireHub\Aplikacija\Administrator\Kontroler\Obavijesti_Kontroler::class, 'spremi']);
 Rute::sve('obavijesti/izbrisi', [\FireHub\Aplikacija\Administrator\Kontroler\Obavijesti_Kontroler::class, 'izbrisi']);
 Rute::sve('obavijesti/dodaj', [\FireHub\Aplikacija\Administrator\Kontroler\Obavijesti_Kontroler::class, 'dodaj']);
+Rute::sve('kategorije/index', [\FireHub\Aplikacija\Administrator\Kontroler\Kategorije_Kontroler::class, 'index']);
+Rute::sve('kategorije/lista', [\FireHub\Aplikacija\Administrator\Kontroler\Kategorije_Kontroler::class, 'lista']);
+Rute::sve('kategorije/uredi', [\FireHub\Aplikacija\Administrator\Kontroler\Kategorije_Kontroler::class, 'uredi']);
+Rute::sve('kategorije/spremi', [\FireHub\Aplikacija\Administrator\Kontroler\Kategorije_Kontroler::class, 'spremi']);
+Rute::sve('kategorije/dodajsliku', [\FireHub\Aplikacija\Administrator\Kontroler\Kategorije_Kontroler::class, 'dodajsliku']);
