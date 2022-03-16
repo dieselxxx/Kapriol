@@ -14,6 +14,7 @@
 
 namespace FireHub\Aplikacija\Kapriol\Kontroler;
 
+use FireHub\Aplikacija\Kapriol\Model\Gdpr_Model;
 use FireHub\Jezgra\Sadrzaj\Sadrzaj;
 use FireHub\Aplikacija\Kapriol\Model\Kategorije_Model;
 use FireHub\Aplikacija\Kapriol\Model\Artikl_Model;
@@ -48,6 +49,8 @@ final class Artikl_Kontroler extends Master_Kontroler {
      * @return Sadrzaj Sadržaj stranice.
      */
     public function index (string $kontroler = '', string $artikl = ''):Sadrzaj {
+
+        $gdpr = $this->model(Gdpr_Model::class);
 
         $kategorije = $this->model(Kategorije_Model::class);
 
@@ -160,6 +163,7 @@ final class Artikl_Kontroler extends Master_Kontroler {
             'zaglavlje_tel' => Domena::telefon(),
             'zaglavlje_adresa' => Domena::adresa(),
             'podnozje_dostava' => Domena::podnozjeDostava(),
+            'gdpr' => $gdpr->html(),
             'vi_ste_ovdje' => 'Vi ste ovdje : <a href="/">Kapriol Web Trgovina</a> \\\\ '.$trenutni_artikl['Kategorija'].' \\\\ ' . $trenutni_artikl['Naziv'],
             'opci_uvjeti' => Domena::opciUvjeti(),
             'artikl_slika' => $trenutni_artikl['Slika'],

@@ -1,7 +1,7 @@
 <?php declare(strict_types = 1);
 
 /**
- * O nama
+ * Kolacic
  * @since 0.1.0.pre-alpha.M1
  *
  * @author Danijel Galić
@@ -16,39 +16,65 @@ namespace FireHub\Aplikacija\Kapriol\Kontroler;
 
 use FireHub\Aplikacija\Kapriol\Jezgra\Domena;
 use FireHub\Aplikacija\Kapriol\Model\Gdpr_Model;
-use FireHub\Jezgra\Komponente\BazaPodataka\BazaPodataka;
-use FireHub\Jezgra\Sadrzaj\Sadrzaj;
 use FireHub\Aplikacija\Kapriol\Model\Kategorije_Model;
-use FireHub\Jezgra\Kontejner\Greske\Kontejner_Greska;
-use FireHub\Jezgra\Kontroler\Greske\Kontroler_Greska;
+use FireHub\Jezgra\Greske\Greska;
+use FireHub\Jezgra\HTTP\Atributi\Zaglavlja;
+use FireHub\Jezgra\HTTP\Enumeratori\Vrsta;
+use FireHub\Jezgra\Sadrzaj\Enumeratori\Vrsta as Sadrzaj_Vrsta;
+use FireHub\Jezgra\Sadrzaj\Sadrzaj;
 
 /**
- * ### O nama
+ * ### Kolacic
  * @since 0.1.0.pre-alpha.M1
  *
  * @package Aplikacija\Kontroler
  */
-final class Onama_Kontroler extends Master_Kontroler {
+final class Kolacic_Kontroler extends Master_Kontroler {
 
     /**
      * ## index
      * @since 0.1.0.pre-alpha.M1
      *
-     * @throws Kontejner_Greska Ukoliko se ne može spremiti instanca Log-a.
-     * @throws Kontroler_Greska Ukoliko objekt nije validan model.
+     * @return Sadrzaj Sadržaj stranice.
+     */
+    #[Zaglavlja(vrsta: Vrsta::JSON)]
+    public function index (string $kolacic = ''):Sadrzaj {
+
+        try {
+
+            // model
+            $gdpr = $this->model(Gdpr_Model::class);
+            $gdpr->prihvati();
+
+            return sadrzaj()->format(Sadrzaj_Vrsta::JSON)->podatci([
+                'Validacija' => 'da'
+            ]);
+
+        } catch (Greska $greska) {
+
+            return sadrzaj()->format(Sadrzaj_Vrsta::JSON)->podatci([
+                'Validacija' => 'ne',
+                'Poruka' => $greska->getMessage()
+            ]);
+
+        }
+
+    }
+
+    /**
+     * ## Osobni podatci
+     * @since 0.1.0.pre-alpha.M1
      *
      * @return Sadrzaj Sadržaj stranice.
      */
-    public function index (BazaPodataka $bazaPodataka = null):Sadrzaj {
+    public function osobniPodatci ():Sadrzaj {
 
         $gdpr = $this->model(Gdpr_Model::class);
 
         $kategorije = $this->model(Kategorije_Model::class);
 
-        $html_onama = Domena::Hr() ? 'onama_hr.html' : 'onama_ba.html' ;
-
-        return sadrzaj()->datoteka($html_onama)->podatci([
-            'predlozak_naslov' => 'O nama',
+        return sadrzaj()->datoteka('osobni_podatci.html')->podatci([
+            'predlozak_naslov' => 'Osobni podatci',
             'facebook_link' => Domena::facebook(),
             'instagram_link' => Domena::instagram(),
             'mobitel' => Domena::mobitel(),
@@ -60,8 +86,8 @@ final class Onama_Kontroler extends Master_Kontroler {
             'zaglavlje_adresa' => Domena::adresa(),
             'podnozje_dostava' => Domena::podnozjeDostava(),
             'gdpr' => $gdpr->html(),
-            'vi_ste_ovdje' => '<a href="/">Kapriol Web Trgovina</a> \\\\ O nama',
-            'opci_uvjeti' => Domena::opciUvjeti()
+            'vi_ste_ovdje' => '<a href="/">Kapriol Web Trgovina</a> \\\\ Osobni podatci',
+            'opci_uvjeti' => Domena::opciUvjeti(),
         ]);
 
     }

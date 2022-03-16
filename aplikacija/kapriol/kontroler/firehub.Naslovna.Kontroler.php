@@ -14,6 +14,7 @@
 
 namespace FireHub\Aplikacija\Kapriol\Kontroler;
 
+use FireHub\Aplikacija\Kapriol\Model\Gdpr_Model;
 use FireHub\Jezgra\Komponente\BazaPodataka\BazaPodataka;
 use FireHub\Jezgra\Sadrzaj\Sadrzaj;
 use FireHub\Aplikacija\Kapriol\Model\Kategorije_Model;
@@ -39,6 +40,8 @@ final class Naslovna_Kontroler extends Master_Kontroler {
      * @return Sadrzaj Sadržaj stranice.
      */
     public function index (BazaPodataka $bazaPodataka = null):Sadrzaj {
+
+        $gdpr = $this->model(Gdpr_Model::class);
 
         $kategorije = $this->model(Kategorije_Model::class);
 
@@ -76,6 +79,7 @@ final class Naslovna_Kontroler extends Master_Kontroler {
             'zaglavlje_adresa' => Domena::adresa(),
             'podnozje_dostava' => Domena::podnozjeDostava(),
             'kategorije' => $kategorije->kategorijeNaslovna(),
+            'gdpr' => $gdpr->html(),
             'dostavaLimit' => ''.Domena::dostavaLimit().'',
             'valuta' => ''.Domena::valuta().'',
             'obavijesti' => $obavijest_html

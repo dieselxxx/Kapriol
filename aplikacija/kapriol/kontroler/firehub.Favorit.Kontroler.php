@@ -16,7 +16,8 @@ namespace FireHub\Aplikacija\Kapriol\Kontroler;
 
 use FireHub\Aplikacija\Kapriol\Jezgra\Domena;
 use FireHub\Aplikacija\Kapriol\Model\Favorit_Model;
-use FireHub\Aplikacija\Kapriol\Model\Kategorije_Model;;
+use FireHub\Aplikacija\Kapriol\Model\Gdpr_Model;
+use FireHub\Aplikacija\Kapriol\Model\Kategorije_Model;
 use FireHub\Jezgra\Kontejner\Greske\Kontejner_Greska;
 use FireHub\Jezgra\Kontroler\Greske\Kontroler_Greska;
 use FireHub\Jezgra\Sadrzaj\Sadrzaj;
@@ -40,6 +41,8 @@ final class Favorit_Kontroler extends Master_Kontroler {
      * @return Sadrzaj Sadržaj stranice.
      */
     public function index ():Sadrzaj {
+
+        $gdpr = $this->model(Gdpr_Model::class);
 
         $kategorije = $this->model(Kategorije_Model::class);
 
@@ -100,6 +103,7 @@ final class Favorit_Kontroler extends Master_Kontroler {
             'zaglavlje_tel' => Domena::telefon(),
             'zaglavlje_adresa' => Domena::adresa(),
             'podnozje_dostava' => Domena::podnozjeDostava(),
+            'gdpr' => $gdpr->html(),
             'vi_ste_ovdje' => '<a href="/">Kapriol Web Trgovina</a> \\\\ Favoriti',
             'opci_uvjeti' => Domena::opciUvjeti(),
             'favorit_artikli' => $artikli_html

@@ -15,6 +15,7 @@
 namespace FireHub\Aplikacija\Kapriol\Kontroler;
 
 use FireHub\Aplikacija\Kapriol\Jezgra\Domena;
+use FireHub\Aplikacija\Kapriol\Model\Gdpr_Model;
 use FireHub\Jezgra\Komponente\BazaPodataka\BazaPodataka;
 use FireHub\Jezgra\Sadrzaj\Sadrzaj;
 use FireHub\Aplikacija\Kapriol\Model\Kategorije_Model;
@@ -40,6 +41,8 @@ final class OpciUvjeti_Kontroler extends Master_Kontroler {
      */
     public function index (BazaPodataka $bazaPodataka = null):Sadrzaj {
 
+        $gdpr = $this->model(Gdpr_Model::class);
+
         $kategorije = $this->model(Kategorije_Model::class);
 
         return sadrzaj()->datoteka('opci_uvjeti.html')->podatci([
@@ -54,6 +57,7 @@ final class OpciUvjeti_Kontroler extends Master_Kontroler {
             'zaglavlje_tel' => Domena::telefon(),
             'zaglavlje_adresa' => Domena::adresa(),
             'podnozje_dostava' => Domena::podnozjeDostava(),
+            'gdpr' => $gdpr->html(),
             'vi_ste_ovdje' => '<a href="/">Kapriol Web Trgovina</a> \\\\ Opći uvjeti',
             'opci_uvjeti' => Domena::opciUvjeti()
         ]);

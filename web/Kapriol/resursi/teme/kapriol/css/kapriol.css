@@ -218,6 +218,10 @@ svg[data-boja="boja"] {fill: var(--boja-kapriol) !important;}
 path[data-boja="boja"] {fill: var(--boja-kapriol);}
 fieldset[data-boja="boja"] table.tabela thead tr th {color: var(--boja-kapriol);}
 
+/** gdpr **/
+#gdpr {position: fixed; display: block; background-color: rgba(0, 0, 0, 0.4); top: 0; left: 0; right: 0; bottom: 0; z-index: 9998;}
+#gdpr div {position: fixed; display: block; background-color: white; left: 0; right: 0; bottom: 0; text-align: center; border-top: 3px solid var(--boja-kapriol); z-index: 9999;}
+
 /** galerija **/
 .swiper {width: 100%; height: 100%;}
 .swiper-slide {text-align: center;font-size: 18px;background: #fff;display: -webkit-box;display: -ms-flexbox;display: -webkit-flex;display: flex;-webkit-box-pack: center;-ms-flex-pack: center;-webkit-justify-content: center;justify-content: center;-webkit-box-align: center;-ms-flex-align: center;-webkit-align-items: center;align-items: center;}

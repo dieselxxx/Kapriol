@@ -42,6 +42,26 @@ ArtikalPlusMinus = function (element, $vrsta) {
 
 };
 
+$_Cookie = function ($odgovor) {
+
+    if ($odgovor === 'da') {
+
+        $.ajax({
+            type: 'POST',
+            url: '/kolacic/gdpr',
+            complete: function (odgovor) {
+                $("#gdpr").remove();
+            }
+        });
+
+    } else {
+
+        window.history.back();
+
+    }
+
+};
+
 $(document).ready(function () {
 
     $('header > a.trazi').click(function() {

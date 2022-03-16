@@ -32,3 +32,5 @@ Rute::sve('poslovnice/index', [\FireHub\Aplikacija\Kapriol\Kontroler\Poslovnice_
 Rute::sve('kontakt/index', [\FireHub\Aplikacija\Kapriol\Kontroler\Kontakt_Kontroler::class, 'index']);
 Rute::sve('kontakt/ispravno', [\FireHub\Aplikacija\Kapriol\Kontroler\Kontakt_Kontroler::class, 'ispravno']);
 Rute::sve('favorit/index', [\FireHub\Aplikacija\Kapriol\Kontroler\Favorit_Kontroler::class, 'ispravno']);
+Rute::sve('kolacic/index', [\FireHub\Aplikacija\Kapriol\Kontroler\Kolacic_Kontroler::class, 'index']);
+Rute::sve('kolacic/osobnipodatci', [\FireHub\Aplikacija\Kapriol\Kontroler\Kolacic_Kontroler::class, 'osobnipodatci']);

@@ -14,6 +14,7 @@
 
 namespace FireHub\Aplikacija\Kapriol\Kontroler;
 
+use FireHub\Aplikacija\Kapriol\Model\Gdpr_Model;
 use FireHub\Jezgra\Sadrzaj\Sadrzaj;
 use FireHub\Aplikacija\Kapriol\Model\Kategorije_Model;
 use FireHub\Aplikacija\Kapriol\Model\Kosarica_Model;
@@ -40,6 +41,8 @@ final class Kosarica_Kontroler extends Master_Kontroler {
      * @return Sadrzaj Sadržaj stranice.
      */
     public function index ():Sadrzaj {
+
+        $gdpr = $this->model(Gdpr_Model::class);
 
         $kategorije = $this->model(Kategorije_Model::class);
 
@@ -154,6 +157,7 @@ final class Kosarica_Kontroler extends Master_Kontroler {
             'zaglavlje_tel' => Domena::telefon(),
             'zaglavlje_adresa' => Domena::adresa(),
             'podnozje_dostava' => Domena::podnozjeDostava(),
+            'gdpr' => $gdpr->html(),
             'vi_ste_ovdje' => '<a href="/">Kapriol Web Trgovina</a> \\\\ Košarica',
             'opci_uvjeti' => Domena::opciUvjeti(),
             'kosarica_artikli' => $artikli_html,
@@ -172,6 +176,8 @@ final class Kosarica_Kontroler extends Master_Kontroler {
      * @return Sadrzaj Sadržaj stranice.
      */
     public function narudzba ():Sadrzaj {
+
+        $gdpr = $this->model(Gdpr_Model::class);
 
         if ($this->kosaricaArtikli() === '0') {
 
@@ -211,6 +217,7 @@ final class Kosarica_Kontroler extends Master_Kontroler {
             'zaglavlje_tel' => Domena::telefon(),
             'zaglavlje_adresa' => Domena::adresa(),
             'podnozje_dostava' => Domena::podnozjeDostava(),
+            'gdpr' => $gdpr->html(),
             'vi_ste_ovdje' => '<a href="/">Kapriol Web Trgovina</a> \\\\ Narudžba',
             'opci_uvjeti' => Domena::opciUvjeti(),
             'narudzba_greska' => $narudzba_greska,
@@ -234,6 +241,8 @@ final class Kosarica_Kontroler extends Master_Kontroler {
      * @return Sadrzaj Sadržaj stranice.
      */
     public function narudzbab2b ():Sadrzaj {
+
+        $gdpr = $this->model(Gdpr_Model::class);
 
         if ($this->kosaricaArtikli() === '0') {
 
@@ -273,6 +282,7 @@ final class Kosarica_Kontroler extends Master_Kontroler {
             'zaglavlje_tel' => Domena::telefon(),
             'zaglavlje_adresa' => Domena::adresa(),
             'podnozje_dostava' => Domena::podnozjeDostava(),
+            'gdpr' => $gdpr->html(),
             'vi_ste_ovdje' => '<a href="/">Kapriol Web Trgovina</a> \\\\ Narudžba',
             'opci_uvjeti' => Domena::opciUvjeti(),
             'domena_oibpdv' => Domena::OIBPDV(),
@@ -298,6 +308,8 @@ final class Kosarica_Kontroler extends Master_Kontroler {
      */
     public function odabir ():Sadrzaj {
 
+        $gdpr = $this->model(Gdpr_Model::class);
+
         $kategorije = $this->model(Kategorije_Model::class);
 
         return sadrzaj()->datoteka('narudzba_vrsta.html')->podatci([
@@ -312,6 +324,7 @@ final class Kosarica_Kontroler extends Master_Kontroler {
             'zaglavlje_tel' => Domena::telefon(),
             'zaglavlje_adresa' => Domena::adresa(),
             'podnozje_dostava' => Domena::podnozjeDostava(),
+            'gdpr' => $gdpr->html(),
             'vi_ste_ovdje' => '<a href="/">Kapriol Web Trgovina</a> \\\\ Vrsta narudžbe',
             'opci_uvjeti' => Domena::opciUvjeti()
         ]);
@@ -325,6 +338,8 @@ final class Kosarica_Kontroler extends Master_Kontroler {
      * @return Sadrzaj Sadržaj stranice.
      */
     public function ispravno ():Sadrzaj {
+
+        $gdpr = $this->model(Gdpr_Model::class);
 
         $kategorije = $this->model(Kategorije_Model::class);
 
@@ -340,6 +355,7 @@ final class Kosarica_Kontroler extends Master_Kontroler {
             'zaglavlje_tel' => Domena::telefon(),
             'zaglavlje_adresa' => Domena::adresa(),
             'podnozje_dostava' => Domena::podnozjeDostava(),
+            'gdpr' => $gdpr->html(),
             'vi_ste_ovdje' => 'Vi ste ovdje : <a href="/">Kapriol Web Trgovina</a>',
             'opci_uvjeti' => Domena::opciUvjeti()
         ]);
