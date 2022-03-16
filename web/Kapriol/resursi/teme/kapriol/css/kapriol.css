@@ -173,22 +173,20 @@ label.unos.tag input:focus + div.tagovi_input + span.naslov, label.unos.tag inpu
 label.unos.tag input:focus:invalid:not(:placeholder-shown) + div.tagovi_input + span.naslov, label.unos.tag input:invalid:not(:placeholder-shown) + div.tagovi_input + span.naslov {color: red;}
 label.unos.tag input + div.tagovi_input + span.naslov {top: -13px; background: transparent; font-size: 0.8rem;}
 
-/**
-div.radio {margin: 16px 0;}
-div.radio input[type="radio"] {display: none;}
-div.radio input[type="radio"]:checked + label:before {border-color: var(--boja-granica); animation: radio_animacija 0.2s linear forwards;}
-div.radio input[type="radio"]:checked + label:after {transform: scale(1);}
-div.radio label {display: inline-block; position: relative; padding: 0 10px 0 25px; margin-bottom: 0; vertical-align: bottom; min-height: 20px; line-height: 20px; cursor: pointer;}
-div.radio label:before, .radio label:after {content: ''; position: absolute; transition: all .3s ease; transition-property: transform, border-color;}
-div.radio label:before {top: 0; left: 0; height: 50px; width: 50px; border: 3px solid var(--boja-granica);}
-div.radio label:after {background: var(--boja-pozadina_tamna); top: 5px; left: 5px; height: 10px; width: 10px; transform: scale(0);}
-**/
+div.narudzba div.radio {margin: 16px 0;}
+div.narudzba div.radio input[type="radio"] {display: none;}
+div.narudzba div.radio input[type="radio"]:checked + label:before {border-color: var(--boja-granica); animation: radio_animacija 0.2s linear forwards;}
+div.narudzba div.radio input[type="radio"]:checked + label:after {transform: scale(1);}
+div.narudzba div.radio label {display: inline-block; position: relative; padding: 0 30px; margin-bottom: 0; vertical-align: bottom; min-height: 20px; line-height: 20px; cursor: pointer;}
+div.narudzba div.radio label:before, .radio label:after {content: ''; position: absolute; border-radius: 50%; transition: all .3s ease; transition-property: transform, border-color;}
+div.narudzba div.radio label:before {top: 0; left: 0; height: 20px; width: 20px; border: 1px solid var(--boja-granica);}
+div.narudzba div.radio label:after {background: var(--boja-kapriol); top: 5px; left: 5px; height: 10px; width: 10px; transform: scale(0);}
 
-div.radio {padding: 3px;}
-div.radio > input {display: none; height: 0; width: 0; -webkit-appearance: none; -moz-appearance: none; appearance: none;}
-div.radio > input + label {display: inline-block; background-color: var(--boja-kapriol); margin-bottom: 0.5em; padding: 0.75em 1.25em; color: #ffffff; cursor: pointer;}
-div.radio > input:checked + label {background-color: var(--boja-pozadina_tamna); color: white;}
-div.radio > input[disabled] + label {background-color: var(--boja-granica); cursor: not-allowed;}
+div.artikl div.radio {padding: 3px;}
+div.artikl div.radio > input {display: none; height: 0; width: 0; -webkit-appearance: none; -moz-appearance: none; appearance: none;}
+div.artikl div.radio > input + label {display: inline-block; background-color: var(--boja-kapriol); margin-bottom: 0.5em; padding: 0.75em 1.25em; color: #ffffff; cursor: pointer;}
+div.artikl div.radio > input:checked + label {background-color: var(--boja-pozadina_tamna); color: white;}
+div.artikl div.radio > input[disabled] + label {background-color: var(--boja-granica); cursor: not-allowed;}
 
 fieldset {border: 3px solid var(--boja-granica);}
 fieldset legend {visibility: visible; padding: 0 5px; color: var(--boja-tekst-svjetlije);}
