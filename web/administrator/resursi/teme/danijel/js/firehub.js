@@ -1060,6 +1060,146 @@ $_KategorijaSpremi = function (element) {
 };
 
 /**
+ * Dohvati kategorije.
+ *
+ * @param {object} element
+ * @param {int} $broj_stranice
+ * @param {string} $poredaj
+ * @param {string} $redoslijed
+ */
+$_Kategorije = function (element = '', $broj_stranice = 1, $poredaj = 'Kategorija', $redoslijed = 'asc') {
+
+    let podatci = $('form[data-oznaka="kategorije_lista"]').serializeArray();
+
+    $.ajax({
+        type: 'POST',
+        url: '/administrator/kategorije/lista/' + $broj_stranice + '/' + $poredaj + '/' + $redoslijed,
+        dataType: 'json',
+        data: podatci,
+        success: function (odgovor) {
+            $('form[data-oznaka="kategorije_lista"] > section table tbody').empty();
+            let Kategorije = odgovor.Kategorije;
+            $.each(Kategorije, function (a, Kategorija) {
+                if (Kategorija.CalcVelicina === "1") {Kategorija.CalcVelicina = '\
+                    <label data-boja="boja" class="kontrolni_okvir">\
+                        <input type="checkbox" disabled checked><span class="kontrolni_okvir"><span class="ukljuceno"></span></span>\
+                    </label>\
+                ';} else {Kategorija.CalcVelicina = '\
+                    <label data-boja="boja" class="kontrolni_okvir">\
+                        <input type="checkbox" disabled><span class="kontrolni_okvir"><span class="ukljuceno"></span></span>\
+                    </label>\
+                ';}
+                $('form[data-oznaka="kategorije_lista"] > section table tbody').append('\
+                    <tr onclick="$_Kategorija(\''+ Kategorija.ID +'\')">\
+                        <td class="uredi">'+ Kategorija.ID +'</td>\
+                        <td class="uredi">'+ Kategorija.Kategorija +'</td>\
+                        <td class="uredi">'+ Kategorija.CalcVelicina +'</td>\
+                    </tr>\
+                ');
+            });
+            // zaglavlje
+            let Zaglavlje = odgovor.Zaglavlje;
+            $('form[data-oznaka="kategorije_lista"] > section div.sadrzaj > table thead').empty().append(Zaglavlje);
+            // navigacija
+            let Navigacija = odgovor.Navigacija;
+            $('form[data-oznaka="kategorije_lista"] > section div.kontrole').empty().append('<ul class="navigacija">' + Navigacija.pocetak + '' + Navigacija.stranice + '' + Navigacija.kraj + '</ul>');
+        },
+        error: function () {
+        }
+    });
+
+    return false;
+
+};
+
+/**
+ * Uredi kategoriju.
+ *
+ * @param {int} $id
+ */
+$_Kategorija = function ($id) {
+
+    // dialog prozor
+    let dialog = new Dialog();
+
+    $.ajax({
+        type: 'GET',
+        url: '/administrator/kategorije/uredi/' + $id,
+        dataType: 'html',
+        context: this,
+        beforeSend: function () {
+            Dialog.dialogOtvori(true);
+            dialog.sadrzaj(Loader_Krug);
+        },
+        success: function (odgovor) {
+            Dialog.dialogOcisti();
+            dialog.naslov('Kategorija: ' + $id);
+            dialog.sadrzaj(odgovor);
+            dialog.kontrole('<button data-boja="boja" onclick="Dialog.dialogZatvori()">Zatvori</button>');
+            dialog.kontrole('<button type="button" class="ikona" onclick="$_KategorijaSpremi(this, \'forma\');"><svg><use xlink:href="/kapriol/resursi/grafika/simboli/simbol.ikone.svg#spremi"></use></svg><span>Spremi</span></button>');
+        },
+        error: function () {
+            Dialog.dialogOcisti();
+            dialog.naslov('Greška');
+            dialog.naslov('Dogodila se greška prilikom učitavanja podataka, molimo kontaktirajte administratora');
+            dialog.kontrole('<button data-boja="boja" onclick="Dialog.dialogZatvori()">Zatvori</button>');
+        }
+    });
+
+    return false;
+
+};
+
+/**
+ * Spremi obavijest.
+ */
+$_KategorijaSpremi = function (element) {
+
+    // dialog prozor
+    let dialog = new Dialog();
+
+    let kategorija_forma = $('form[data-oznaka="kategorija"]');
+
+    let $id = kategorija_forma.data("sifra");
+
+    let $podatci = kategorija_forma.serializeArray();
+
+    $.ajax({
+        type: 'POST',
+        url: '/administrator/kategorije/spremi/' + $id,
+        dataType: 'json',
+        data: $podatci,
+        beforeSend: function () {
+            $(element).closest('form').find('table tr.poruka td').empty();
+        },
+        success: function (odgovor) {
+            if (odgovor.Validacija === "da") {
+
+                Dialog.dialogOcisti();
+                dialog.naslov('Uspješno spremljeno');
+                dialog.sadrzaj('Postavke kategorije su spremljene!');
+                dialog.kontrole('<button data-boja="boja" onclick="Dialog.dialogZatvori()">Zatvori</button>');
+
+            } else {
+                $(element).closest('form').find('table tr.poruka td').append(odgovor.Poruka);
+            }
+        },
+        error: function () {
+            Dialog.dialogOcisti();
+            dialog.naslov('Greška');
+            dialog.naslov('Dogodila se greška prilikom učitavanja podataka, molimo kontaktirajte administratora');
+            dialog.kontrole('<button data-boja="boja" onclick="Dialog.dialogZatvori()">Zatvori</button>');
+        },
+        complete: function (odgovor) {
+            $_Kategorije();
+        }
+    });
+
+    return false;
+
+};
+
+/**
  * Spremi sliku artikla.
  */
 $(function() {
@@ -1117,6 +1257,71 @@ $_ArtiklSpremiSliku = function ($url) {
         },
         complete: function(odgovor) {
             $_Artikl($id);
+        }
+    });
+
+    return false;
+
+};
+
+/**
+ * Spremi sliku kateogrije.
+ */
+$(function() {
+
+    $("body").on('submit', 'form[data-oznaka="kategorija"]', function() {
+
+        let oznaka = $(this).data("oznaka");
+
+        $_KategorijaSpremiSliku('form[data-oznaka="' + oznaka + '"]');
+
+        return false;
+
+    }).on('change','form[data-oznaka="kategorija"] input[type="file"]', function() {
+
+        let oznaka = $(this).closest('form').data("oznaka");
+
+        $('form[data-oznaka="' + oznaka + '"]').submit();
+
+        return false;
+
+    });
+
+});
+$_KategorijaSpremiSliku = function ($url) {
+
+    // dialog prozor
+    let dialog = new Dialog();
+
+    $($url).ajaxSubmit({
+        beforeSend: function() {
+            Dialog.dialogOtvori(false);
+            dialog.naslov('Dodajem sliku');
+            dialog.sadrzaj('' +
+                '<div class="progres" style="display: block;">\
+                    <div class="bar" style="width: 0%;"></div>\
+                    <div class="postotak">0%</div>\
+                </div>'
+            );
+        },
+        uploadProgress: function(event, position, total, postotakZavrseno) {
+            $('#dialog .sadrzaj .bar').width(postotakZavrseno + '%');
+            $('#dialog .sadrzaj .postotak').html(postotakZavrseno + '%');
+        },
+        success: function(odgovor) {
+            Dialog.dialogOcisti();
+            dialog.naslov('Dodajem sliku');
+            dialog.sadrzaj(odgovor.Poruka);
+            dialog.kontrole('<button data-boja="boja" onclick="Dialog.dialogZatvori()">U redu</button>');
+        },
+        error: function () {
+            Dialog.dialogOcisti();
+            dialog.naslov('Greška');
+            dialog.naslov('Dogodila se greška prilikom učitavanja podataka, molimo kontaktirajte administratora');
+            dialog.kontrole('<button data-boja="boja" onclick="Dialog.dialogZatvori()">Zatvori</button>');
+        },
+        complete: function(odgovor) {
+            $_Kategorija($id);
         }
     });
 
