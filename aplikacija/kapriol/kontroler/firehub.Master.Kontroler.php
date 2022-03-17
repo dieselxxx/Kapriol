@@ -68,8 +68,6 @@ abstract class Master_Kontroler extends Kontroler {
 
                 $id =  Validacija::Broj('Veličina', $_POST['ID'], 1, 10);
 
-                var_dump($id);
-
                 $this->model(Favorit_Model::class)->izbrisi($id);
 
             }
