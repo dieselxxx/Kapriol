@@ -143,11 +143,18 @@ final class Rezultat_Kontroler extends Master_Kontroler {
 
         // filtar kategorije
         $podkategorije = $kategorije->podkategorije($trenutna_kategorija['ID']);
-        $podkategorije_html = '';
+        $podkategorije_html = '<option value="/rezultat/'.$kategorija.'/sve/'.$velicina.'/'.$trazi.'/">Sve podkategorije</option>';
         foreach ($podkategorije as $podkategorija) {
 
+            $odabrano = '';
+            if ($podkategorija['Link'] === $trenutna_podkategorija['Link']) {
+
+                $odabrano = ' selected';
+
+            }
+
             $podkategorije_html .= '
-                <option value="'.$podkategorija['ID'].'">'.$podkategorija['Podkategorija'].'</option>
+                <option value="/rezultat/'.$kategorija.'/'.$podkategorija['Link'].'/'.$velicina.'/'.$trazi.'/"'.$odabrano.'>'.$podkategorija['Podkategorija'].'</option>
             ';
 
         }

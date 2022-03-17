@@ -73,6 +73,11 @@ $(document).ready(function () {
         document.location.href = $(this).val();
 
     });
+    $('select[data-oznaka="podkategorija"]').on('change', function () {
+
+        document.location.href = $(this).val();
+
+    });
 
     $('form[data-oznaka="trazi_artikal"]').submit(function (odgovor) {
 
