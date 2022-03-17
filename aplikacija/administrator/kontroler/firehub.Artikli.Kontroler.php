@@ -98,7 +98,16 @@ final class Artikli_Kontroler extends Master_Kontroler {
         $kategorije_html = '';
         foreach ($kategorije as $kategorija) {
 
-            $kategorije_html .= "<option value='{$kategorija['ID']}'>{$kategorija['Kategorija']}</option>";
+            $kategorije_html .= "<option value='{$kategorija['ID']},0'>{$kategorija['Kategorija']}</option>";
+
+            // podkategorije
+            $podkategorije = $kategorije_model->podkategorije($kategorija['ID']);
+
+            foreach ($podkategorije as $podkategorija) {
+
+                $kategorije_html .= "<option value='{$kategorija['ID']},{$podkategorija['ID']}'>{$kategorija['Kategorija']} ->> {$podkategorija['Podkategorija']}</option>";
+
+            }
 
         }
 
@@ -134,6 +143,8 @@ final class Artikli_Kontroler extends Master_Kontroler {
             'hr' => $artikl['Hr'],
             'kategorija' => $artikl['KategorijaID'],
             'kategorija_naziv' => $artikl['Kategorija'],
+            'podkategorija' => $artikl['PodKategorijaID'] ?? '0',
+            'podkategorija_naziv' => $artikl['PodKategorija'] ? ' ->> '.$artikl['PodKategorija'] : '',
             'kategorije' => $kategorije_html,
             'slike' => $slike_html
         ]);
@@ -154,7 +165,16 @@ final class Artikli_Kontroler extends Master_Kontroler {
         $kategorije_html = '';
         foreach ($kategorije as $kategorija) {
 
-            $kategorije_html .= "<option value='{$kategorija['ID']}'>{$kategorija['Kategorija']}</option>";
+            $kategorije_html .= "<option value='{$kategorija['ID']},0'>{$kategorija['Kategorija']}</option>";
+
+            // podkategorije
+            $podkategorije = $kategorije_model->podkategorije($kategorija['ID']);
+
+            foreach ($podkategorije as $podkategorija) {
+
+                $kategorije_html .= "<option value='{$kategorija['ID']},{$podkategorija['ID']}'>{$kategorija['Kategorija']} ->> {$podkategorija['Podkategorija']}</option>";
+
+            }
 
         }
 

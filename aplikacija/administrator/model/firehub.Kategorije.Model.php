@@ -106,6 +106,30 @@ final class Kategorije_Model extends Master_Model {
     }
 
     /**
+     * ### Sve podkategorije neke kategorije
+     *
+     * @param int|string $kategorijaID <p>
+     * ID kategorije.
+     * </p>
+     *
+     * @return array Niz podkategorija.
+     */
+    public function podkategorije (int|string $kategorijaID):array {
+
+        $podkategorije = $this->bazaPodataka->tabela('podkategorijeview')
+            ->sirovi("
+                SELECT 
+                    podkategorijeview.ID, podkategorijeview.PodKategorija
+                FROM podkategorijeview
+                WHERE podkategorijeview.KategorijaID = '$kategorijaID'
+                ORDER BY podkategorijeview.PodKategorija ASC
+            ")->napravi();
+
+        return $podkategorije->niz() ?: [];
+
+    }
+
+    /**
      * ### Traži kategoriju
      * @since 0.1.2.pre-alpha.M1
      *

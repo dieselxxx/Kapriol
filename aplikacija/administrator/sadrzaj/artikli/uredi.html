@@ -92,12 +92,12 @@
                     <td>
                         <label data-boja="boja" class="select">
                             <select class="input-select" name="kategorija" required>
-                                <option value="{{kategorija}}">{{kategorija_naziv}}</option>
+                                <option value="{{kategorija}},{{podkategorija}}">{{kategorija_naziv}}{{podkategorija_naziv}}</option>
                                 {{kategorije}}
                             </select>
                             <span class="select-odabrano"></span>
                             <span class="select-granica"></span>
-                            <label class="select-odaberite">Kategorija</label>
+                            <label class="select-odaberite">Kategorija ->> Podkategorija</label>
                         </label>
                     </td>
                 </tr>

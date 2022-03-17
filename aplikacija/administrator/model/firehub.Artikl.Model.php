@@ -18,7 +18,6 @@ use FireHub\Jezgra\Komponente\BazaPodataka\BazaPodataka;
 use FireHub\Aplikacija\Kapriol\Jezgra\Validacija;
 use FireHub\Aplikacija\Administrator\Jezgra\PrijenosDatoteka;
 use FireHub\Jezgra\Kontejner\Greske\Kontejner_Greska;
-use FireHub\Jezgra\Greske\Greska;
 
 /**
  * ### Artikl
@@ -58,9 +57,11 @@ final class Artikl_Model extends Master_Model {
                     artikli.Cijena, artikli.CijenaAkcija, artikli.CijenaKn, artikli.CijenaAkcijaKn,
                     artikli.Ba, artikli.Hr,
                     artikli.Aktivan, artikli.Izdvojeno,
-                    artikli.KategorijaID, kategorije.Kategorija
+                    artikli.KategorijaID, kategorije.Kategorija,
+                    artikli.PodKategorijaID, podkategorije.PodKategorija
                 FROM artikli
                 LEFT JOIN kategorije ON kategorije.ID = artikli.KategorijaID
+                LEFT JOIN podkategorije ON podkategorije.ID = artikli.PodKategorijaID
                 WHERE artikli.ID = $id
                 LIMIT 1
             ")
@@ -159,8 +160,10 @@ final class Artikl_Model extends Master_Model {
         $hr = Validacija::Potvrda(_('HR'), $hr);
         if ($hr == "on") {$hr = 1;} else {$hr = 0;}
 
-        $kategorija = $_REQUEST['kategorija'];
-        $kategorija = Validacija::Broj(_('Kategorija artikla'), $kategorija, 1, 7);
+        $kategorija_stavke= $_REQUEST['kategorija'];
+        $kategorija_stavke = explode(',', $kategorija_stavke);
+        $kategorija = Validacija::Broj(_('Kategorija artikla'), $kategorija_stavke[0], 1, 7);
+        $podkategorija = Validacija::Broj(_('Podkategorija artikla'), $kategorija_stavke[1], 1, 7);
 
         if ($id !== 0) {
 
@@ -178,7 +181,8 @@ final class Artikl_Model extends Master_Model {
                             'Hr' => $hr,
                             'Izdvojeno' => $izdvojeno,
                             'Aktivan' => $aktivno,
-                            'KategorijaID' => $kategorija
+                            'KategorijaID' => $kategorija,
+                            'PodKategorijaID' => $podkategorija
                         ])
                         ->gdje('ID', '=', $id)
                 )->napravi();
@@ -199,7 +203,8 @@ final class Artikl_Model extends Master_Model {
                             'Hr' => $hr,
                             'Izdvojeno' => $izdvojeno,
                             'Aktivan' => $aktivno,
-                            'KategorijaID' => $kategorija
+                            'KategorijaID' => $kategorija,
+                            'PodKategorijaID' => $podkategorija
                         ])
                 )->napravi();
 
