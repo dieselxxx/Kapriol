@@ -234,4 +234,99 @@ final class Kategorije_Model extends Master_Model {
 
     }
 
+    /**
+     * ### Dohvati podkategoriju
+     * @since 0.1.1.pre-alpha.M1
+     *
+     * @param string $podkategorija <p>
+     * Link podkategorije.
+     * </p>
+     *
+     * @throws Kontejner_Greska Ukoliko se ne može spremiti instanca objekta.
+     *
+     * @return array Podkategorija.
+     */
+    public function podkategorija (string $podkategorija, string $naziv = ''):array {
+
+        if ($podkategorija === 'sve') {
+
+            return [
+                'ID' => 'sve',
+                'Podkategorija' => 'Sve podkategorije',
+                'Link' => 'sve'
+            ];
+
+        } else if ($podkategorija === 'akcija') {
+
+            return [
+                'ID' => 'akcija',
+                'Podkategorija' => 'Akcija',
+                'Link' => 'akcija'
+            ];
+
+        }
+
+        if ($naziv !== '') {
+
+            $id = $this->bazaPodataka->tabela('podkategorijeview')
+                ->odaberi(['ID', 'Podkategorija', 'Link'])
+                ->gdje('Podkategorija', '=', $naziv)
+                ->napravi();
+
+        } else {
+
+            $id = $this->bazaPodataka->tabela('podkategorijeview')
+                ->odaberi(['ID', 'Podkategorija', 'Link'])
+                ->gdje('Link', '=', $podkategorija)
+                ->napravi();
+
+        }
+
+        if (!$redak = $id->redak()) {
+
+            $redak = [
+                'ID' => 0,
+                'Podkategorija' => 'Podkategorija ne postoji',
+                'Link' => ''
+            ];
+
+        }
+
+        return $redak;
+
+    }
+
+    /**
+     * ### Sve podkategorije neke kategorije
+     * @since 0.1.1.pre-alpha.M1
+     *
+     * @param int|string $kategorija <p>
+     * ID kategorije.
+     * </p>
+     *
+     * @throws Kontejner_Greska Ukoliko se ne može spremiti instanca objekta.
+     *
+     * @return array Niz kategorija.
+     */
+    public function podkategorije (int|string $kategorijaID):array {
+
+        $podkategorije = $this->bazaPodataka->tabela('podkategorijeview')
+            ->sirovi("
+                SELECT 
+                    podkategorijeview.ID, podkategorijeview.PodKategorija, podkategorijeview.Link
+                FROM podkategorijeview
+                LEFT JOIN kategorijeview ON kategorijeview.ID = podkategorijeview.KategorijaID
+                LEFT JOIN artikli ON artikli.KategorijaID = kategorijeview.ID AND artikli.".Domena::sqlTablica()." = 1
+                LEFT JOIN artiklikarakteristike ON artiklikarakteristike.ArtikalID = artikli.ID
+                LEFT JOIN stanjeskladista ON stanjeskladista.Sifra = artiklikarakteristike.Sifra
+                WHERE podkategorijeview.KategorijaID = '$kategorijaID'
+                GROUP BY podkategorijeview.ID, podkategorijeview.PodKategorija, podkategorijeview.Link
+                HAVING SUM(StanjeSkladiste) > 0
+                ORDER BY podkategorijeview.PodKategorija ASC
+            ")->napravi();
+
+        return $podkategorije->niz() ?: [];
+
+    }
+
 }

@@ -47,6 +47,9 @@ final class Artikli_Model extends Master_Model {
      * @param int|string $kategorija <p>
      * ID kategorije.
      * </p>
+     * @param int|string $podkategorija <p>
+     * ID podkategorije.
+     * </p>
      * @param int $pomak <p>
      * Pomak od kojeg se limitiraju zapisi.
      * </p>
@@ -70,7 +73,7 @@ final class Artikli_Model extends Master_Model {
      *
      * @return array Niz artikala.
      */
-    public function artikli (int|string $kategorija, int $pomak, int $limit, int|string $velicina, int|string $trazi, string $poredaj, string $poredaj_redoslijed):array {
+    public function artikli (int|string $kategorija, int|string $podkategorija, int $pomak, int $limit, int|string $velicina, int|string $trazi, string $poredaj, string $poredaj_redoslijed):array {
 
         if ($kategorija === 'izdvojeno') {
 
@@ -130,6 +133,26 @@ final class Artikli_Model extends Master_Model {
                 ")
                 ->napravi();
 
+        } else if ($podkategorija === 'sve') {
+
+            $artikli = $this->bazaPodataka->tabela('artikliview')
+                ->sirovi("
+                SELECT
+                    artikliview.ID, Naziv, Link, Opis, ".Domena::sqlCijena()." AS Cijena, ".Domena::sqlCijenaAkcija()." AS CijenaAkcija,
+                    IF(".Domena::sqlCijenaAkcija()." > 0, ".Domena::sqlCijenaAkcija().", ".Domena::sqlCijena().") AS Cijenafinal, Slika,
+                    GROUP_CONCAT(DISTINCT artiklikarakteristike.Velicina) AS Velicine
+                FROM artikliview
+                LEFT JOIN slikeartikal ON ClanakID = artikliview.ID
+                LEFT JOIN artiklikarakteristike ON artiklikarakteristike.ArtikalID = artikliview.ID
+                WHERE KategorijaID = '$kategorija' AND Aktivan = 1 AND ".Domena::sqlTablica()." = 1 AND Zadana = 1
+                {$this->trazi($trazi)}
+                GROUP BY artikliview.ID
+                {$this->velicineUpit($velicina)}
+                ORDER BY ".ucwords($poredaj)." $poredaj_redoslijed
+                LIMIT $pomak, $limit
+            ")
+                ->napravi();
+
         } else {
 
             $artikli = $this->bazaPodataka->tabela('artikliview')
@@ -141,7 +164,7 @@ final class Artikli_Model extends Master_Model {
                 FROM artikliview
                 LEFT JOIN slikeartikal ON ClanakID = artikliview.ID
                 LEFT JOIN artiklikarakteristike ON artiklikarakteristike.ArtikalID = artikliview.ID
-                WHERE KategorijaID = $kategorija AND Aktivan = 1 AND ".Domena::sqlTablica()." = 1 AND Zadana = 1
+                WHERE KategorijaID = '$kategorija' AND PodKategorijaID = '$podkategorija' AND Aktivan = 1 AND ".Domena::sqlTablica()." = 1 AND Zadana = 1
                 {$this->trazi($trazi)}
                 GROUP BY artikliview.ID
                 {$this->velicineUpit($velicina)}
@@ -269,6 +292,9 @@ final class Artikli_Model extends Master_Model {
      * @param int|string $kategorija <p>
      * ID kategorije.
      * </p>
+     * @param int|string $podkategorija <p>
+     * Podkategorija artikla.
+     * </p>
      * @param int|string $velicina <p>
      * Veličina artikla.
      * </p>
@@ -280,7 +306,7 @@ final class Artikli_Model extends Master_Model {
      *
      * @return int Broj pronađenih redaka.
      */
-    public function ukupnoRedaka (int|string $kategorija, int|string $velicina, int|string $trazi) {
+    public function ukupnoRedaka (int|string $kategorija, int|string $podkategorija, int|string $velicina, int|string $trazi) {
 
         if ($kategorija === 'sve') {
 
@@ -316,8 +342,10 @@ final class Artikli_Model extends Master_Model {
 
         }
 
-        $ukupno_redaka = $this->bazaPodataka->tabela('artikliview')
-            ->sirovi("
+        if ($podkategorija === 'sve') {
+
+            $ukupno_redaka = $this->bazaPodataka->tabela('artikliview')
+                ->sirovi("
                 SELECT Naziv, GROUP_CONCAT(DISTINCT artiklikarakteristike.Velicina) AS Velicine
                 FROM artikliview
                 LEFT JOIN artiklikarakteristike ON artiklikarakteristike.ArtikalID = artikliview.ID
@@ -326,7 +354,23 @@ final class Artikli_Model extends Master_Model {
                 GROUP BY artikliview.ID
                 {$this->velicineUpit($velicina)}
             ")
-            ->napravi();
+                ->napravi();
+
+        } else {
+
+            $ukupno_redaka = $this->bazaPodataka->tabela('artikliview')
+                ->sirovi("
+                SELECT Naziv, GROUP_CONCAT(DISTINCT artiklikarakteristike.Velicina) AS Velicine
+                FROM artikliview
+                LEFT JOIN artiklikarakteristike ON artiklikarakteristike.ArtikalID = artikliview.ID
+                WHERE KategorijaID = '$kategorija' AND PodKategorijaID = '$podkategorija' AND Aktivan = 1 AND ".Domena::sqlTablica()." = 1
+                {$this->trazi($trazi)}
+                GROUP BY artikliview.ID
+                {$this->velicineUpit($velicina)}
+            ")
+                ->napravi();
+
+        }
 
         return $ukupno_redaka->broj_zapisa();
 
@@ -338,6 +382,9 @@ final class Artikli_Model extends Master_Model {
      *
      * @param int|string $kategorija <p>
      * Kategorija artikla.
+     * </p>
+     * @param int|string $podkategorija <p>
+     * Podkategorija artikla.
      * </p>
      * @param int|string $velicina <p>
      * Veličina artikla.
@@ -362,9 +409,9 @@ final class Artikli_Model extends Master_Model {
      *
      * @return string[] Lista artikala.
      */
-    public function ukupnoRedakaHTML (int|string $kategorija, int|string $velicina, int|string $trazi, int $limit, string $url = '/', int $broj_stranice = 1, string $boja = 'boja'):array {
+    public function ukupnoRedakaHTML (int|string $kategorija, int|string $podkategorija, int|string $velicina, int|string $trazi, int $limit, string $url = '/', int $broj_stranice = 1, string $boja = 'boja'):array {
 
-        $broj_zapisa = $this->ukupnoRedaka($kategorija, $velicina, $trazi);
+        $broj_zapisa = $this->ukupnoRedaka($kategorija, $podkategorija, $velicina, $trazi);
 
         $pocetak_link_stranice = "";
         $link_stranice = "";

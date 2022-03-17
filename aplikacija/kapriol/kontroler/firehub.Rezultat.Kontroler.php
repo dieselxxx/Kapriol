@@ -39,8 +39,8 @@ final class Rezultat_Kontroler extends Master_Kontroler {
      * @param string $kontroler [optional] <p>
      * Trenutni kontroler.
      * </p>
-     * @param string $kategorija [optional] <p>
-     * Trenutna kategorija.
+     * @param string $podkategorija [optional] <p>
+     * Trenutna podkategorija.
      * </p>
      * @param int|string $trazi [optional] <p>
      * Traži artikl.
@@ -63,7 +63,7 @@ final class Rezultat_Kontroler extends Master_Kontroler {
      *
      * @return Sadrzaj Sadržaj stranice.
      */
-    public function index (string $kontroler = '', string $kategorija = 'sve', int|string $velicina = 'sve velicine', int|string $trazi = 'svi artikli', string $poredaj = 'cijenafinal', string $poredaj_redoslijed = 'asc', int $stranica = 1):Sadrzaj {
+    public function index (string $kontroler = '', string $kategorija = 'sve', string $podkategorija = 'sve', int|string $velicina = 'sve velicine', int|string $trazi = 'svi artikli', string $poredaj = 'cijenafinal', string $poredaj_redoslijed = 'asc', int $stranica = 1):Sadrzaj {
 
         $gdpr = $this->model(Gdpr_Model::class);
 
@@ -71,10 +71,12 @@ final class Rezultat_Kontroler extends Master_Kontroler {
 
         $trenutna_kategorija = $kategorije->kategorija($kategorija);
 
+        $trenutna_podkategorija = $kategorije->podkategorija($podkategorija);
+
         // navigacija
         $limit = 12;
-        $artikli = $this->model(Artikli_Model::class)->artikli($trenutna_kategorija['ID'], ($stranica - 1) * $limit, $limit, $velicina, $trazi, $poredaj, $poredaj_redoslijed);
-        $navigacija = $this->model(Artikli_Model::class)->ukupnoRedakaHTML($trenutna_kategorija['ID'], $velicina, $trazi, 12, '/rezultat/'.$trenutna_kategorija['Link'].'/'.$velicina.'/'.$trazi.'/'.$poredaj.'/'.$poredaj_redoslijed, $stranica);
+        $artikli = $this->model(Artikli_Model::class)->artikli($trenutna_kategorija['ID'], $trenutna_podkategorija['ID'], ($stranica - 1) * $limit, $limit, $velicina, $trazi, $poredaj, $poredaj_redoslijed);
+        $navigacija = $this->model(Artikli_Model::class)->ukupnoRedakaHTML($trenutna_kategorija['ID'], $trenutna_podkategorija['ID'], $velicina, $trazi, 12, '/rezultat/'.$trenutna_kategorija['Link'].'/'.$trenutna_podkategorija['Link'].'/'.$velicina.'/'.$trazi.'/'.$poredaj.'/'.$poredaj_redoslijed, $stranica);
         $navigacija_html = implode('', $navigacija);
 
         // artikli
@@ -135,9 +137,20 @@ final class Rezultat_Kontroler extends Master_Kontroler {
         if ($poredaj === 'cijenafinal' && $poredaj_redoslijed == 'desc') {$poredaj_izbornik_odabrano_4 = 'selected';} else {$poredaj_izbornik_odabrano_4 = '';}
 
         $poredaj_izbornik = '
-        <option value="/rezultat/'.$kategorija.'/'.$velicina.'/'.$trazi.'/cijenafinal/asc/" '.$poredaj_izbornik_odabrano_3.'>Cijena manja prema većoj</option>
-            <option value="/rezultat/'.$kategorija.'/'.$velicina.'/'.$trazi.'/cijenafinal/desc/" '.$poredaj_izbornik_odabrano_4.'>Cijena veća prema manjoj</option>
+            <option value="/rezultat/'.$kategorija.'/'.$podkategorija.'/'.$velicina.'/'.$trazi.'/cijenafinal/asc/" '.$poredaj_izbornik_odabrano_3.'>Cijena manja prema većoj</option>
+            <option value="/rezultat/'.$kategorija.'/'.$podkategorija.'/'.$velicina.'/'.$trazi.'/cijenafinal/desc/" '.$poredaj_izbornik_odabrano_4.'>Cijena veća prema manjoj</option>
         ';
+
+        // filtar kategorije
+        $podkategorije = $kategorije->podkategorije($trenutna_kategorija['ID']);
+        $podkategorije_html = '';
+        foreach ($podkategorije as $podkategorija) {
+
+            $podkategorije_html .= '
+                <option value="'.$podkategorija['ID'].'">'.$podkategorija['Podkategorija'].'</option>
+            ';
+
+        }
 
         // veličine
         //$velicine = $this->model(Artikli_Model::class)->velicine($trenutna_kategorija['ID'], $trazi);
@@ -159,12 +172,13 @@ final class Rezultat_Kontroler extends Master_Kontroler {
             'zaglavlje_adresa' => Domena::adresa(),
             'podnozje_dostava' => Domena::podnozjeDostava(),
             'gdpr' => $gdpr->html(),
-            'vi_ste_ovdje' => 'Vi ste ovdje : <a href="/">Kapriol Web Trgovina</a> \\\\ ' . $trenutna_kategorija['Kategorija'] . ' \\\\ ' . $velicina . ' \\\\ ' . $trazi,
+            'vi_ste_ovdje' => 'Vi ste ovdje : <a href="/">Kapriol Web Trgovina</a> \\\\ ' . $trenutna_kategorija['Kategorija'] . ' \\\\ ' . $trenutna_podkategorija['Podkategorija'] . ' \\\\ ' . $velicina . ' \\\\ ' . $trazi,
             'opci_uvjeti' => Domena::opciUvjeti(),
             //'izdvojeno' => $izdvojeno_html,
             'artikli' => $artikli_html,
             'navigacija' => $navigacija_html,
             "poredaj_izbornik" => $poredaj_izbornik,
+            "podkategorije_html" => $podkategorije_html
             //"rezultat_velicine" => $velicine_html
         ]);
 

@@ -17,6 +17,18 @@
 
         </form>
 
+        <form data-oznaka="rezultat_podkategorije" method="post" enctype="multipart/form-data" action="">
+            <label data-boja="boja" class="select">
+                <select data-oznaka="podkategorija" name="podkategorija" required>
+                    <option value="sve">Sve podkategorije</option>
+                    {{podkategorije_html}}
+                </select>
+                <span class="select-odabrano"></span>
+                <span class="select-granica"></span>
+                <label class="select-odaberite">Podkategorije</label>
+            </label>
+        </form>
+
         <!--<div class="velicine">
             <span>Dostupne veličine</span>
             <ul>
