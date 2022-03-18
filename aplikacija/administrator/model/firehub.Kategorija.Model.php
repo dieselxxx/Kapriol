@@ -16,6 +16,7 @@ namespace FireHub\Aplikacija\Administrator\Model;
 
 use FireHub\Aplikacija\Administrator\Jezgra\PrijenosDatoteka;
 use FireHub\Aplikacija\Kapriol\Jezgra\Validacija;
+use FireHub\Jezgra\Greske\Greska;
 use FireHub\Jezgra\Komponente\BazaPodataka\BazaPodataka;
 use FireHub\Jezgra\Kontejner\Greske\Kontejner_Greska;
 
@@ -102,6 +103,37 @@ final class Kategorija_Model extends Master_Model {
                 ->napravi();
 
         }
+
+    }
+
+    /**
+     * ### Izbrisi kategoriju
+     * @since 0.1.2.pre-alpha.M1
+     */
+    public function izbrisi (int $id) {
+
+        $id = Validacija::Broj(_('ID kategorije'), $id, 1, 10);
+
+        $broj = $this->bazaPodataka
+            ->sirovi("
+                SELECT *
+                FROM artikli
+                WHERE KategorijaID = $id
+            ")
+            ->napravi();
+
+        if ($broj->broj_zapisa() > 0) {
+
+            throw new Greska('Ne možete izbrisati kategoriju jer imate artikala u njoj!');
+
+        }
+
+        $kategorija = $this->bazaPodataka
+            ->sirovi("
+                DELETE FROM kategorije
+                WHERE kategorije.ID = $id
+            ")
+            ->napravi();
 
     }
 

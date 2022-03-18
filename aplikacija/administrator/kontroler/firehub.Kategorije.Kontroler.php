@@ -145,6 +145,36 @@ final class Kategorije_Kontroler extends Master_Kontroler {
     }
 
     /**
+     * ## Izbrisi kategoriju
+     * @since 0.1.2.pre-alpha.M1
+     *
+     * @return Sadrzaj Sadržaj stranice.
+     */
+    public function izbrisi (string $kontroler = '', string $metoda = '', int $id = 0) {
+
+        try {
+
+            // model
+            $kategorija = $this->model(Kategorija_Model::class);
+            $kategorija->izbrisi($id);
+
+            return sadrzaj()->format(Sadrzaj_Vrsta::JSON)->podatci([
+                'Validacija' => 'da',
+                'Poruka' => _('Postavke spremljene')
+            ]);
+
+        } catch (Greska $greska) {
+
+            return sadrzaj()->format(Sadrzaj_Vrsta::JSON)->podatci([
+                'Validacija' => 'ne',
+                'Poruka' => $greska->getMessage()
+            ]);
+
+        }
+
+    }
+
+    /**
      * ### Spremi sliku kateogrije
      * @since 0.1.2.pre-alpha.M1
      *
