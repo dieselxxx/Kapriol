@@ -1012,7 +1012,7 @@ $_Kategorija = function ($id) {
 };
 
 /**
- * Spremi obavijest.
+ * Spremi kategoriju.
  */
 $_KategorijaSpremi = function (element) {
 
@@ -1149,51 +1149,227 @@ $_KategorijaIzbrisi = function (element) {
 };
 
 /**
- * Dohvati kategorije.
+ * Dohvati podkategorije.
  *
  * @param {object} element
  * @param {int} $broj_stranice
  * @param {string} $poredaj
  * @param {string} $redoslijed
  */
-$_Kategorije = function (element = '', $broj_stranice = 1, $poredaj = 'Kategorija', $redoslijed = 'asc') {
+$_PodKategorije = function (element = '', $broj_stranice = 1, $poredaj = 'PodKategorija', $redoslijed = 'asc') {
 
-    let podatci = $('form[data-oznaka="kategorije_lista"]').serializeArray();
+    let podatci = $('form[data-oznaka="podkategorije_lista"]').serializeArray();
 
     $.ajax({
         type: 'POST',
-        url: '/administrator/kategorije/lista/' + $broj_stranice + '/' + $poredaj + '/' + $redoslijed,
+        url: '/administrator/podkategorije/lista/' + $broj_stranice + '/' + $poredaj + '/' + $redoslijed,
         dataType: 'json',
         data: podatci,
         success: function (odgovor) {
-            $('form[data-oznaka="kategorije_lista"] > section table tbody').empty();
-            let Kategorije = odgovor.Kategorije;
-            $.each(Kategorije, function (a, Kategorija) {
-                if (Kategorija.CalcVelicina === "1") {Kategorija.CalcVelicina = '\
+            $('form[data-oznaka="podkategorije_lista"] > section table tbody').empty();
+            let PodKategorije = odgovor.PodKategorije;
+            $.each(PodKategorije, function (a, PodKategorija) {
+                if (PodKategorija.CalcVelicina === "1") {PodKategorija.CalcVelicina = '\
                     <label data-boja="boja" class="kontrolni_okvir">\
                         <input type="checkbox" disabled checked><span class="kontrolni_okvir"><span class="ukljuceno"></span></span>\
                     </label>\
-                ';} else {Kategorija.CalcVelicina = '\
+                ';} else {PodKategorija.CalcVelicina = '\
                     <label data-boja="boja" class="kontrolni_okvir">\
                         <input type="checkbox" disabled><span class="kontrolni_okvir"><span class="ukljuceno"></span></span>\
                     </label>\
                 ';}
-                $('form[data-oznaka="kategorije_lista"] > section table tbody').append('\
-                    <tr onclick="$_Kategorija(\''+ Kategorija.ID +'\')">\
-                        <td class="uredi">'+ Kategorija.ID +'</td>\
-                        <td class="uredi">'+ Kategorija.Kategorija +'</td>\
-                        <td class="uredi">'+ Kategorija.CalcVelicina +'</td>\
+                $('form[data-oznaka="podkategorije_lista"] > section table tbody').append('\
+                    <tr onclick="$_PodKategorija(\''+ PodKategorija.ID +'\')">\
+                        <td class="uredi">'+ PodKategorija.ID +'</td>\
+                        <td class="uredi">'+ PodKategorija.Podkategorija +'</td>\
+                        <td class="uredi">'+ PodKategorija.Kategorija +'</td>\
                     </tr>\
                 ');
             });
             // zaglavlje
             let Zaglavlje = odgovor.Zaglavlje;
-            $('form[data-oznaka="kategorije_lista"] > section div.sadrzaj > table thead').empty().append(Zaglavlje);
+            $('form[data-oznaka="podkategorije_lista"] > section div.sadrzaj > table thead').empty().append(Zaglavlje);
             // navigacija
             let Navigacija = odgovor.Navigacija;
-            $('form[data-oznaka="kategorije_lista"] > section div.kontrole').empty().append('<ul class="navigacija">' + Navigacija.pocetak + '' + Navigacija.stranice + '' + Navigacija.kraj + '</ul>');
+            $('form[data-oznaka="podkategorije_lista"] > section div.kontrole').empty().append('<ul class="navigacija">' + Navigacija.pocetak + '' + Navigacija.stranice + '' + Navigacija.kraj + '</ul>');
         },
         error: function () {
+        }
+    });
+
+    return false;
+
+};
+
+/**
+ * Uredi podkategoriju.
+ *
+ * @param {int} $id
+ */
+$_PodKategorija = function ($id) {
+
+    // dialog prozor
+    let dialog = new Dialog();
+
+    $.ajax({
+        type: 'GET',
+        url: '/administrator/podkategorije/uredi/' + $id,
+        dataType: 'html',
+        context: this,
+        beforeSend: function () {
+            Dialog.dialogOtvori(true);
+            dialog.sadrzaj(Loader_Krug);
+        },
+        success: function (odgovor) {
+            Dialog.dialogOcisti();
+            dialog.naslov('PodKategorija: ' + $id);
+            dialog.sadrzaj(odgovor);
+            dialog.kontrole('<button data-boja="boja" onclick="Dialog.dialogZatvori()">Zatvori</button>');
+            dialog.kontrole('<button type="button" class="ikona" onclick="$_PodKategorijaIzbrisi(this, \'forma\');"><svg><use xlink:href="/kapriol/resursi/grafika/simboli/simbol.ikone.svg#izbrisi"></use></svg><span>Izbriši</span></button>');
+            dialog.kontrole('<button type="button" class="ikona" onclick="$_PodKategorijaSpremi(this, \'forma\');"><svg><use xlink:href="/kapriol/resursi/grafika/simboli/simbol.ikone.svg#spremi"></use></svg><span>Spremi</span></button>');
+        },
+        error: function () {
+            Dialog.dialogOcisti();
+            dialog.naslov('Greška');
+            dialog.naslov('Dogodila se greška prilikom učitavanja podataka, molimo kontaktirajte administratora');
+            dialog.kontrole('<button data-boja="boja" onclick="Dialog.dialogZatvori()">Zatvori</button>');
+        }
+    });
+
+    return false;
+
+};
+
+/**
+ * Spremi podkategoriju.
+ */
+$_PodKategorijaSpremi = function (element) {
+
+    // dialog prozor
+    let dialog = new Dialog();
+
+    let podkategorija_forma = $('form[data-oznaka="podkategorija"]');
+
+    let $id = podkategorija_forma.data("sifra");
+
+    let $podatci = podkategorija_forma.serializeArray();
+
+    $.ajax({
+        type: 'POST',
+        url: '/administrator/podkategorije/spremi/' + $id,
+        dataType: 'json',
+        data: $podatci,
+        beforeSend: function () {
+            $(element).closest('form').find('table tr.poruka td').empty();
+        },
+        success: function (odgovor) {
+            if (odgovor.Validacija === "da") {
+
+                Dialog.dialogOcisti();
+                dialog.naslov('Uspješno spremljeno');
+                dialog.sadrzaj('Postavke podkategorije su spremljene!');
+                dialog.kontrole('<button data-boja="boja" onclick="Dialog.dialogZatvori()">Zatvori</button>');
+
+            } else {
+                $(element).closest('form').find('table tr.poruka td').append(odgovor.Poruka);
+            }
+        },
+        error: function () {
+            Dialog.dialogOcisti();
+            dialog.naslov('Greška');
+            dialog.naslov('Dogodila se greška prilikom učitavanja podataka, molimo kontaktirajte administratora');
+            dialog.kontrole('<button data-boja="boja" onclick="Dialog.dialogZatvori()">Zatvori</button>');
+        },
+        complete: function (odgovor) {
+            $_PodKategorije();
+        }
+    });
+
+    return false;
+
+};
+
+/**
+ * Nova podkategorija.
+ */
+$_PodKategorijaNova = function (element) {
+
+    // dialog prozor
+    let dialog = new Dialog();
+
+    $.ajax({
+        type: 'GET',
+        url: '/administrator/podkategorije/nova/',
+        dataType: 'html',
+        context: this,
+        beforeSend: function () {
+            Dialog.dialogOtvori(true);
+            dialog.sadrzaj(Loader_Krug);
+        },
+        success: function (odgovor) {
+            Dialog.dialogOcisti();
+            dialog.naslov('Nova podkategorija');
+            dialog.sadrzaj(odgovor);
+            dialog.kontrole('<button data-boja="boja" onclick="Dialog.dialogZatvori()">Zatvori</button>');
+            dialog.kontrole('<button type="button" class="ikona" onclick="$_PodKategorijaSpremi(this, \'forma\');"><svg><use xlink:href="/kapriol/resursi/grafika/simboli/simbol.ikone.svg#spremi"></use></svg><span>Spremi</span></button>');
+        },
+        error: function () {
+            Dialog.dialogOcisti();
+            dialog.naslov('Greška');
+            dialog.naslov('Dogodila se greška prilikom učitavanja podataka, molimo kontaktirajte administratora');
+            dialog.kontrole('<button data-boja="boja" onclick="Dialog.dialogZatvori()">Zatvori</button>');
+        },
+        complete: function (odgovor) {
+            $_PodKategorije();
+        }
+    });
+
+    return false;
+
+};
+
+/**
+ * Izbrisi podkategoriju.
+ */
+$_PodKategorijaIzbrisi = function (element) {
+
+    // dialog prozor
+    let dialog = new Dialog();
+
+    let podkategorija_forma = $('form[data-oznaka="podkategorija"]');
+
+    let $id = podkategorija_forma.data("sifra");
+
+    let $podatci = podkategorija_forma.serializeArray();
+
+    $.ajax({
+        type: 'POST',
+        url: '/administrator/podkategorije/izbrisi/' + $id,
+        dataType: 'json',
+        data: $podatci,
+        beforeSend: function () {
+            $(element).closest('form').find('table tr.poruka td').empty();
+        },
+        success: function (odgovor) {
+            if (odgovor.Validacija === "da") {
+
+                Dialog.dialogOcisti();
+                dialog.naslov('Uspješno izbrisano');
+                dialog.sadrzaj('Podkategorija je izbrisana!');
+                dialog.kontrole('<button data-boja="boja" onclick="Dialog.dialogZatvori()">Zatvori</button>');
+
+            } else {
+                $(element).closest('form').find('table tr.poruka td').append(odgovor.Poruka);
+            }
+        },
+        error: function () {
+            Dialog.dialogOcisti();
+            dialog.naslov('Greška');
+            dialog.sadrzaj('Dogodila se greška prilikom učitavanja podataka, molimo kontaktirajte administratora');
+            dialog.kontrole('<button data-boja="boja" onclick="Dialog.dialogZatvori()">Zatvori</button>');
+        },
+        complete: function (odgovor) {
+            $_PodKategorije();
         }
     });
 
