@@ -91,8 +91,25 @@ final class Kategorije_Kontroler extends Master_Kontroler {
         return sadrzaj()->format(Sadrzaj_Vrsta::HTMLP)->datoteka('kategorije/uredi.html')->podatci([
             'id' => $kategorija['ID'],
             'naziv' => $kategorija['Kategorija'],
-            'slika' => $kategorija['Slika'],
+            'slika' => $kategorija['Slika'] ?? '',
             'calc_velicina' => $kategorija['CalcVelicina']
+        ]);
+
+    }
+
+    /**
+     * ## Nova kategorija
+     * @since 0.1.2.pre-alpha.M1
+     *
+     * @return Sadrzaj Sadržaj stranice.
+     */
+    public function nova (string $kontroler = '', string $metoda = '', int $id = 0) {
+
+        // kategorije
+        $kategorije_model = $this->model(Kategorije_Model::class);
+
+        return sadrzaj()->format(Sadrzaj_Vrsta::HTMLP)->datoteka('kategorije/nova.html')->podatci([
+            'id' => '0'
         ]);
 
     }

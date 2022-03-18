@@ -83,13 +83,25 @@ final class Kategorija_Model extends Master_Model {
         $calc_velcina = Validacija::Potvrda(_('BA'), $calc_velcina);
         if ($calc_velcina == "on") {$calc_velcina = 1;} else {$calc_velcina = 0;}
 
-        $obavijest = $this->bazaPodataka
-            ->sirovi("
+        if ($id !== 0) {
+
+            $kategorija = $this->bazaPodataka
+                ->sirovi("
                 UPDATE kategorije
                     SET Kategorija = '$naziv', CalcVelicina = '$calc_velcina'
                 WHERE kategorije.ID = $id
             ")
-            ->napravi();
+                ->napravi();
+
+        } else {
+
+            $kategorija = $this->bazaPodataka
+                ->sirovi("
+                INSERT INTO kategorije (Kategorija, CalcVelicina) VALUES ('$naziv', '$calc_velcina')
+            ")
+                ->napravi();
+
+        }
 
     }
 
