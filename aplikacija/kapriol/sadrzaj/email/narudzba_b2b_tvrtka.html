@@ -13,35 +13,40 @@
 
 <body style="background-color: #162125; margin: 0; padding: 0; color: #162125;">
 
-<table cellpadding="0" cellspacing="10" border="0" width="800" align="center" role="presentation" style="background-color: #E9E9E9; width: 800px; text-align: center; border-width: 3px 1px 1px 1px; border-style: solid; border-color: #ec6c00;">
+<table cellpadding="0" cellspacing="10" border="0" width="800" align="center" role="presentation" style="background-color: white; width: 800px; text-align: center; border-width: 1px; border-style: solid; border-color: #ec6c00;">
     <tr>
-        <td width="800">
-            <table cellpadding="0" cellspacing="20" border="0" align="center" style="text-align: center;">
-                <tr>
-                    <td>
-                        <img src="cid:logo" height="100" width="auto" alt="webshop_logo" />
-                    </td>
-                </tr>
-                <tr style="text-align: left;">
-                    <td>
-                        Kapriol,<br><br>
-                        Dobili ste novu narudžbu od <b>'{{ime}}'</b>
-                    </td>
-                </tr>
+        <td width="200" style="text-align: left; width: 200px; border-width: 1px; border-style: solid; border-color: black;">
+            <table cellpadding="0" cellspacing="0" border="0">
+                <tr><td>Kupac: <b>'{{ime}}'</b></td></tr>
+                <tr><td>Adresa: <b>'{{adresa}}'</b></td></tr>
+                <tr><td>Poštanski broj: <b>'{{zip}}'</b></td></tr>
+                <tr><td>Telefon: <b>'{{telefon}}'</b></td></tr>
+                <tr><td>Email: <b>'{{email}}'</b></td></tr>
+                <tr><td>Potreban R1 račun: <b>'{{r1}}'</b></td></tr>
+                <tr><td>Tvrtka: <b>'{{tvrtka}}'</b></td></tr>
+                <tr><td>'{{domena_oibpdv}}': <b>'{{oib}}'</b></td></tr>
             </table>
+        </td>
+        <td width="300" style="width: 300px;">
+            <img src="cid:logo" height="100" width="auto" alt="webshop_logo" />
+        </td>
+        <td width="300" style="text-align: left; width: 300px;">
+            ONLINE NARUDŽBA KAPRIOL PRO WEB SHOP<br>
+            Datum: <b>'{{datum}}'</b><br><br>
+            Valuta: <b>'{{valuta}}'</b>
         </td>
     </tr>
     <tr>
-        <td width="800">
-            <table cellpadding="10" cellspacing="0" border="0">
+        <td width="800" colspan="3" style="width: 800px;">
+            <table width="800" style="width: 800px" cellpadding="5" cellspacing="0" border="0">
                 <thead>
                 <tr>
-                    <th style="border-bottom: 1px solid #ec6c00">Šifra artikla</th>
-                    <th style="border-bottom: 1px solid #ec6c00">Naziv artikla</th>
-                    <th style="border-bottom: 1px solid #ec6c00">Veličina artikla</th>
-                    <th style="border-bottom: 1px solid #ec6c00">Količina</th>
-                    <th style="border-bottom: 1px solid #ec6c00">Jedinična cijena</th>
-                    <th style="border-bottom: 1px solid #ec6c00">Ukupna cijena</th>
+                    <th style="background-color: #E9E9E9; border: 1px solid black">Šifra</th>
+                    <th style="background-color: #E9E9E9; border: 1px solid black">Veličina</th>
+                    <th style="background-color: #E9E9E9; border: 1px solid black">Naziv</th>
+                    <th style="background-color: #E9E9E9; border: 1px solid black">Količina</th>
+                    <th style="background-color: #E9E9E9; border: 1px solid black">Jedinična cijena</th>
+                    <th style="background-color: #E9E9E9; border: 1px solid black">Ukupna cijena</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -51,25 +56,32 @@
         </td>
     </tr>
     <tr>
-        <td width="800" style="text-align: right;">
-            <table cellpadding="0" cellspacing="10" border="0">
-                <tr><td>Ukupna količina: <b>'{{total_kolicina}}'</b></td></tr>
-                <tr><td>Ukupna cijena: <b>'{{total_cijena}}'</b></td></tr>
+        <td colspan="2" width="600" style="text-align: left; width: 600px;">
+            <table>
+                <tr><td>istaknute cijene su maloprodajne sa uračunatim PDV !</td></tr>
+                <tr><td style="height: 100px; width: 400px; border: 1px solid #E9E9E9">'{{napomena}}'</td></tr>
+            </table>
+        </td>
+        <td width="200" style="text-align: right; width: 200px;">
+            <table cellpadding="0" cellspacing="0" border="0">
+                <tr><td>Ukupno '{{valuta}}': <b>'{{total_cijena}}'</b></td></tr>
+                <tr><td>Vrsta plaćanja: <b>'{{placanje}}'</b></td></tr>
             </table>
         </td>
     </tr>
     <tr>
-        <td width="800" style="text-align: left;">
-            <table cellpadding="0" cellspacing="10" border="0">
-                <tr><td>Telefon: <b>'{{telefon}}'</b></td></tr>
-                <tr><td>Potreban R1 račun: <b>'{{r1}}'</b></td></tr>
-                <tr><td>Adresa: <b>'{{adresa}}'</b></td></tr>
-                <tr><td>Poštanski broj: <b>'{{zip}}'</b></td></tr>
-                <tr><td>Tvrtka: <b>'{{tvrtka}}'</b></td></tr>
-                <tr><td>'{{domena_oibpdv}}': <b>'{{oib}}'</b></td></tr>
-                <tr><td>Plaćanje: <b>'{{placanje}}'</b></td></tr>
-                <tr><td>Napomena: <b>'{{napomena}}'</b></td></tr>
-            </table>
+        <td colspan="3" width="800" style="text-align: center; width: 800px;">
+            Poštovani , hvala vam na kupovini na Kapriol PRO web trgovini !<br>
+            Vaša narudžba je zaprimljena i u najkraćem roku kontaktirati će vas naš odjel web prodaje putem maila ili telefonski
+        </td>
+    </tr>
+    <tr>
+        <td colspan="3" width="800" style="text-align: center; width: 800px;">
+            <b>KAPRIOL POINT d.o.o.</b><br>
+            '{{tvrtka_adresa}}'<br>
+            Tel/Fax: '{{tvrtka_telefon}}'<br>
+            Viber\WhatsUp: '{{tvrtka_mobitel}}'<br>
+            info@kapriol-point.com
         </td>
     </tr>
 </table>

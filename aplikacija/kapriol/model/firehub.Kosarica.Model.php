@@ -424,8 +424,8 @@ final class Kosarica_Model extends Master_Model {
             $email_artikli_korisnik .= "
             <tr>
                 <td>{$artikal['Sifra']}</td>
-                <td>{$artikal['Naziv']}</td>
                 <td>{$artikal['Velicina']}</td>
+                <td>{$artikal['Naziv']}</td>
                 <td>{$artikal['Kolicina']} kom</td>
                 <td>$artikl_cijena ".Domena::valuta()."</td>
                 <td>{$artikal['CijenaUkupno']} ".Domena::valuta()."</td>
@@ -451,9 +451,14 @@ final class Kosarica_Model extends Master_Model {
             "placanje" => $placanje == 1 ? 'Plaćanje pouzećem - gotovina' : 'Virman',
             "domena_oibpdv" => Domena::OIBPDV(),
             "napomena" => $napomena,
+            "datum" =>  date("d.m.Y"),
+            "valuta" => Domena::valuta(),
             "artikli" => $email_artikli_korisnik,
             "total_kolicina" => $total_kolicina . ' kom',
-            "total_cijena" => $total_cijena . ' '.Domena::valuta()
+            "total_cijena" => $total_cijena . ' '.Domena::valuta(),
+            "tvrtka_adresa" => Domena::adresa(),
+            "tvrtka_telefon" => Domena::telefon(),
+            "tvrtka_mobitel" => Domena::mobitel()
         ));
         $email_slanje->Posalji();
 
@@ -474,9 +479,14 @@ final class Kosarica_Model extends Master_Model {
             "placanje" => $placanje == 1 ? 'Plaćanje pouzećem - gotovina' : 'Virman',
             "domena_oibpdv" => Domena::OIBPDV(),
             "napomena" => $napomena,
+            "datum" =>  date("d.m.Y"),
+            "valuta" => Domena::valuta(),
             "artikli" => $email_artikli_korisnik,
             "total_kolicina" => $total_kolicina . ' kom',
-            "total_cijena" => $total_cijena . ' '.Domena::valuta()
+            "total_cijena" => $total_cijena . ' '.Domena::valuta(),
+            "tvrtka_adresa" => Domena::adresa(),
+            "tvrtka_telefon" => Domena::telefon(),
+            "tvrtka_mobitel" => Domena::mobitel()
         ));
         $email_slanje_tvrtka->Posalji();
 
