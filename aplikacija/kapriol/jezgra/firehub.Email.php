@@ -104,16 +104,16 @@ final class Email {
             ]
         ];
         $this->email->SMTPAuth = true;
-        $this->email->Username = 'grafotisak.website@gmail.com';
-        $this->email->Password = 'Grude443#99';
-        $this->email->SetFrom('grafotisak.website@gmail.com', 'Kapriol Web Trgovina');
+        $this->email->Username = 'kapriolwebservis@gmail.com';
+        $this->email->Password = 'Kapriol357!!';
+        $this->email->SetFrom('kapriolwebservis@gmail.com', 'Kapriol Web Trgovina');
         $this->email->CharSet = 'UTF-8';
         $this->email->Encoding = 'base64';
         $this->email->IsHTML(true);
 
         $this->email->Subject = $this->naslov;
 
-        $this->email->AddEmbeddedImage(konfiguracija('sustav.putanje.web') . 'Kapriol' . RAZDJELNIK_MAPE . 'resursi' . RAZDJELNIK_MAPE . 'grafika' . RAZDJELNIK_MAPE . 'logo' . RAZDJELNIK_MAPE . '120x270.png', "logo");
+        $this->email->AddEmbeddedImage(RAZDJELNIK_MAPE . konfiguracija('sustav.putanje.web') . 'Kapriol' . RAZDJELNIK_MAPE . 'resursi' . RAZDJELNIK_MAPE . 'grafika' . RAZDJELNIK_MAPE . 'logo' . RAZDJELNIK_MAPE . '120x270.png', "logo");
         $this->email->msgHTML($this->predlozak);
         $this->email->AltBody = 'Za pregled ove poruke potrebno je imati HTML kompatibilni email preglednik!';
 
