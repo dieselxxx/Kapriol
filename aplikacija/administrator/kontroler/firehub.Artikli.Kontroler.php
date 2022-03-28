@@ -37,9 +37,12 @@ final class Artikli_Kontroler extends Master_Kontroler {
      *
      * @return Sadrzaj Sadržaj stranice.
      */
-    public function index ():Sadrzaj {
+    public function index (string $kontroler = '', string|int $kategorija = '', string|int $podkategorija = ''):Sadrzaj {
 
-        return sadrzaj()->datoteka('artikli/lista.html')->podatci([]);
+        return sadrzaj()->datoteka('artikli/lista.html')->podatci([
+            'kategorija' => ''.$kategorija.'',
+            'podkategorija' => ''.$podkategorija.''
+        ]);
 
     }
 
@@ -50,7 +53,7 @@ final class Artikli_Kontroler extends Master_Kontroler {
      * @return Sadrzaj Sadržaj stranice.
      */
     #[Zaglavlja(vrsta: Vrsta::JSON)]
-    public function lista (string $kontroler = '', string $metoda = '', int $broj_stranice = 1, string $poredaj = 'Naziv', string $redoslijed = 'asc'):Sadrzaj {
+    public function lista (string $kontroler = '', string $metoda = '', int $broj_stranice = 1, string $poredaj = 'Naziv', string $redoslijed = 'asc', string|int $kategorija = '', string|int $podkategorija = ''):Sadrzaj {
 
         try {
 
@@ -59,7 +62,7 @@ final class Artikli_Kontroler extends Master_Kontroler {
 
             return sadrzaj()->format(Sadrzaj_Vrsta::JSON)->podatci([
                 'Validacija' => 'da',
-                'Artikli' => $artikli->lista($broj_stranice, $poredaj, $redoslijed),
+                'Artikli' => $artikli->lista($broj_stranice, $poredaj, $redoslijed, $kategorija, $podkategorija),
                 'Zaglavlje' => $artikli->IspisiZaglavlje(),
                 'Navigacija' => $artikli->IspisiNavigaciju()
             ]);

@@ -34,6 +34,8 @@ final class Artikli_Model extends Master_Model {
     protected string $redoslijed;
     private string $pretraga;
     public int $limit_zapisa_po_stranici = 10;
+    private string|int $kategorija;
+    private string|int $podkategorija;
 
     /**
      * ### Konstruktor
@@ -53,12 +55,14 @@ final class Artikli_Model extends Master_Model {
      * @param int $broj_stranice
      * @param string $poredaj
      * @param string $redoslijed
+     * @param string|int $kategorija
+     * @param string|int $podkategorija
      *
      * @throws Greska
      *
      * @return array
      */
-    public function lista (int $broj_stranice = 1, string $poredaj = 'Naziv', string $redoslijed = 'asc'):array {
+    public function lista (int $broj_stranice = 1, string $poredaj = 'Naziv', string $redoslijed = 'asc', string|int $kategorija = '', string|int $podkategorija = ''):array {
 
         if (isset($_REQUEST['pretraga']) && $_REQUEST['pretraga'] <> '') {
 
@@ -84,11 +88,46 @@ final class Artikli_Model extends Master_Model {
         $this->redoslijed = Validacija::Slova(_('Redoslijed rezultata'), $this->redoslijed, 3, 4);
         if ($this->redoslijed <> 'asc' && $this->redoslijed <> 'desc') {throw new Greska(_('Redoslijed rezultata ima pogrešnu vrijednost'));}
 
+        $this->kategorija = $kategorija;
+        $this->podkategorija = $podkategorija;
+
         // potraži artikle
         $pomak = ($broj_stranice - 1) * $this->limit_zapisa_po_stranici;
 
-        $rezultat = $this->bazaPodataka
-            ->sirovi("
+        if ($kategorija !== '') {
+
+            $rezultat = $this->bazaPodataka
+                ->sirovi("
+                SELECT
+                    ID, Naziv, Aktivan
+                FROM artikli
+                WHERE ID <> 0
+                AND KategorijaID = '$kategorija'
+                {$this->trazi()}
+                ORDER BY ".ucwords($poredaj)." $redoslijed
+                LIMIT $pomak, $this->limit_zapisa_po_stranici
+            ")
+                ->napravi();
+
+        } else if ($podkategorija !== '') {
+
+            $rezultat = $this->bazaPodataka
+                ->sirovi("
+                SELECT
+                    ID, Naziv, Aktivan
+                FROM artikli
+                WHERE ID <> 0
+                AND PodKategorijaID = '$podkategorija'
+                {$this->trazi()}
+                ORDER BY ".ucwords($poredaj)." $redoslijed
+                LIMIT $pomak, $this->limit_zapisa_po_stranici
+            ")
+                ->napravi();
+
+        } else {
+
+            $rezultat = $this->bazaPodataka
+                ->sirovi("
                 SELECT
                     ID, Naziv, Aktivan
                 FROM artikli
@@ -97,7 +136,9 @@ final class Artikli_Model extends Master_Model {
                 ORDER BY ".ucwords($poredaj)." $redoslijed
                 LIMIT $pomak, $this->limit_zapisa_po_stranici
             ")
-            ->napravi();
+                ->napravi();
+
+        }
 
         return $rezultat->niz() ?: [];
 
@@ -188,11 +229,9 @@ final class Artikli_Model extends Master_Model {
     /**
      * Navigacija.
      *
-     * @param int $broj_stranice
-     *
      * @return array
      */
-    public function IspisiNavigaciju (int $broj_stranice = 1):array {
+    public function IspisiNavigaciju ():array {
 
         $pocetak_link_stranice = "";
         $link_stranice = "";
@@ -208,8 +247,8 @@ final class Artikli_Model extends Master_Model {
 
             $prosla_stranica = $this->broj_stranice - 1;
 
-            $pocetak_link_stranice .= "<li><a class='gumb mali ikona' onclick='{$artikli}(this,1,\"{$this->poredaj}\",\"{$this->redoslijed}\")'><svg data-boja='boja'><use xlink:href=\"/kapriol/resursi/grafika/simboli/simbol.ikone.svg#strelica_lijevo_duplo\" /></svg></a></li>";
-            $pocetak_link_stranice .= "<li><a class='gumb mali ikona' onclick='{$artikli}(this,$prosla_stranica,\"{$this->poredaj}\",\"{$this->redoslijed}\")'><svg data-boja='boja'><use xlink:href=\"/kapriol/resursi/grafika/simboli/simbol.ikone.svg#strelica_lijevo\" /></svg></a></li>";
+            $pocetak_link_stranice .= "<li><a class='gumb mali ikona' onclick='{$artikli}(this,1,\"{$this->poredaj}\",\"{$this->redoslijed}\",\"{$this->kategorija}\",\"{$this->podkategorija}\")'><svg data-boja='boja'><use xlink:href=\"/kapriol/resursi/grafika/simboli/simbol.ikone.svg#strelica_lijevo_duplo\" /></svg></a></li>";
+            $pocetak_link_stranice .= "<li><a class='gumb mali ikona' onclick='{$artikli}(this,$prosla_stranica,\"{$this->poredaj}\",\"{$this->redoslijed}\",\"{$this->kategorija}\",\"{$this->podkategorija}\")'><svg data-boja='boja'><use xlink:href=\"/kapriol/resursi/grafika/simboli/simbol.ikone.svg#strelica_lijevo\" /></svg></a></li>";
 
         }
 
@@ -217,11 +256,11 @@ final class Artikli_Model extends Master_Model {
 
             if ($i == $this->broj_stranice) {
 
-                $link_stranice .= "<li><a class='gumb mali' data-boja='boja' onclick='{$artikli}(this,$i,\"{$this->poredaj}\",\"{$this->redoslijed}\")'>{$i}</a></li>";
+                $link_stranice .= "<li><a class='gumb mali' data-boja='boja' onclick='{$artikli}(this,$i,\"{$this->poredaj}\",\"{$this->redoslijed}\",\"{$this->kategorija}\",\"{$this->podkategorija}\")'>{$i}</a></li>";
 
             }  else {
 
-                $link_stranice .= "<li><a class='gumb mali' onclick='{$artikli}(this,$i,\"{$this->poredaj}\",\"{$this->redoslijed}\")'>{$i}</a></li>";
+                $link_stranice .= "<li><a class='gumb mali' onclick='{$artikli}(this,$i,\"{$this->poredaj}\",\"{$this->redoslijed}\",\"{$this->kategorija}\",\"{$this->podkategorija}\")'>{$i}</a></li>";
 
             }
 
@@ -231,8 +270,8 @@ final class Artikli_Model extends Master_Model {
 
             $sljedeca_stranica = $this->broj_stranice + 1;
 
-            $kraj_link_stranice .= "<li><a class='gumb mali ikona' onclick='{$artikli}(this,$sljedeca_stranica,\"{$this->poredaj}\",\"{$this->redoslijed}\")'><svg data-boja='boja'><use xlink:href=\"/kapriol/resursi/grafika/simboli/simbol.ikone.svg#strelica_desno\" /></svg></a></li>";
-            $kraj_link_stranice .= "<li><a class='gumb mali ikona' onclick='{$artikli}(this,$ukupno_stranica,\"{$this->poredaj}\",\"{$this->redoslijed}\")'><svg data-boja='boja'><use xlink:href=\"/kapriol/resursi/grafika/simboli/simbol.ikone.svg#strelica_desno_duplo\" /></svg></a></li>";
+            $kraj_link_stranice .= "<li><a class='gumb mali ikona' onclick='{$artikli}(this,$sljedeca_stranica,\"{$this->poredaj}\",\"{$this->redoslijed}\",\"{$this->kategorija}\",\"{$this->podkategorija}\")'><svg data-boja='boja'><use xlink:href=\"/kapriol/resursi/grafika/simboli/simbol.ikone.svg#strelica_desno\" /></svg></a></li>";
+            $kraj_link_stranice .= "<li><a class='gumb mali ikona' onclick='{$artikli}(this,$ukupno_stranica,\"{$this->poredaj}\",\"{$this->redoslijed}\",\"{$this->kategorija}\",\"{$this->podkategorija}\")'><svg data-boja='boja'><use xlink:href=\"/kapriol/resursi/grafika/simboli/simbol.ikone.svg#strelica_desno_duplo\" /></svg></a></li>";
 
         }
 
@@ -247,15 +286,45 @@ final class Artikli_Model extends Master_Model {
      */
     private function brojZapisa():int {
 
-        $rezultat = $this->bazaPodataka
-            ->sirovi("
+        if ($this->kategorija !== '') {
+
+            $rezultat = $this->bazaPodataka
+                ->sirovi("
+                SELECT
+                    ID
+                FROM artikli
+                WHERE ID <> 0
+                AND KategorijaID = '$this->kategorija'
+                {$this->trazi()}
+            ")
+                ->napravi();
+
+        } else if ($this->podkategorija !== '') {
+
+            $rezultat = $this->bazaPodataka
+                ->sirovi("
+                SELECT
+                    ID
+                FROM artikli
+                WHERE ID <> 0
+                AND PodKategorijaID = '$this->podkategorija'
+                {$this->trazi()}
+            ")
+                ->napravi();
+
+        } else {
+
+            $rezultat = $this->bazaPodataka
+                ->sirovi("
                 SELECT
                     ID
                 FROM artikli
                 WHERE ID <> 0
                 {$this->trazi()}
             ")
-            ->napravi();
+                ->napravi();
+
+        }
 
         return $rezultat->broj_zapisa();
 

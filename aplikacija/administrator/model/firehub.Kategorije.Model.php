@@ -178,7 +178,7 @@ final class Kategorije_Model extends Master_Model {
                         </div>
                     </div>
                 </th>
-                <th width="75%" onclick="$_Kategorije(this,1,\'Kategorija\',\''.$this->RedoslijedObrnuto().'\')">
+                <th width="55%" onclick="$_Kategorije(this,1,\'Kategorija\',\''.$this->RedoslijedObrnuto().'\')">
                     <div>
                         <span>'._('Kategorija').'</span>
                         <div class="poredaj">
@@ -187,13 +187,22 @@ final class Kategorije_Model extends Master_Model {
                         </div>
                     </div>
                 </th>
-                <th width="10%" onclick="$_Kategorije(this,1,\'CalcVelicina\',\''.$this->RedoslijedObrnuto().'\')">
+                <th width="15%" onclick="$_Kategorije(this,1,\'CalcVelicina\',\''.$this->RedoslijedObrnuto().'\')">
                     <div>
                         <span>'._('CalcVelicina').'</span>
                         <div class="poredaj">
                             <svg class="gore '.$this->RedoslijedIkona('CalcVelicina', 'desc').'"><use xlink:href="/imovina/grafika/simboli/simbol.ikone.php#strelica_gore"></use></svg>
                             <svg class="dole '.$this->RedoslijedIkona('CalcVelicina', 'asc').'"><use xlink:href="/imovina/grafika/simboli/simbol.ikone.php#strelica_dole"></use></svg>
                         </div>
+                    </div>
+                </th>
+                "><use xlink:href="/imovina/grafika/simboli/simbol.ikone.php#strelica_dole"></use></svg>
+                        </div>
+                    </div>
+                </th>
+                <th width="15%">
+                    <div>
+                        <span>'._('Artikli iz kategorije').'</span>
                     </div>
                 </th>
             </tr>

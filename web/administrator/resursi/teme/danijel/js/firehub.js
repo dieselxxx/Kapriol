@@ -261,62 +261,47 @@ $_Odjava = function () {
  * @param {int} $broj_stranice
  * @param {string} $poredaj
  * @param {string} $redoslijed
+ * @param {string} $kategorija
+ * @param {string} $podkategorija
  */
-$_Artikli = function (element = '', $broj_stranice = 1, $poredaj = 'Naziv', $redoslijed = 'asc') {
+$_Artikli = function (element = '', $broj_stranice = 1, $poredaj = 'Naziv', $redoslijed = 'asc', $kategorija = '', $podkategorija = '') {
 
     let podatci = $('form[data-oznaka="artikli_lista"]').serializeArray();
 
     $.ajax({
         type: 'POST',
-        url: '/administrator/artikli/lista/' + $broj_stranice + '/' + $poredaj + '/' + $redoslijed,
+        url: '/administrator/artikli/lista/' + $broj_stranice + '/' + $poredaj + '/' + $redoslijed + '/' + $kategorija + '/' + $podkategorija,
         dataType: 'json',
         data: podatci,
         success: function (odgovor) {
-            $.ajax({
-                type: 'POST',
-                url: '/administrator/artikli/lista/' + $broj_stranice + '/' + $poredaj + '/' + $redoslijed,
-                dataType: 'json',
-                data: podatci,
-                beforeSend: function () {
-                    $('form[data-oznaka="artikli_lista"] > section table tbody').empty().html('<tr><td colspan="3">' + Loader_Krug + '</td></tr>');
-                },
-                success: function (odgovor) {
-                    $('form[data-oznaka="artikli_lista"] > section table tbody').empty();
-                    let Artikli = odgovor.Artikli;
-                    $.each(Artikli, function (a, Artikal) {
-                        if (Artikal.Aktivan === "1") {Artikal.Aktivan = '\
-                    <label data-boja="boja" class="kontrolni_okvir">\
-                        <input type="checkbox" disabled checked><span class="kontrolni_okvir"><span class="ukljuceno"></span></span>\
-                    </label>\
-                ';} else {Artikal.Aktivan = '\
-                    <label data-boja="boja" class="kontrolni_okvir">\
-                        <input type="checkbox" disabled><span class="kontrolni_okvir"><span class="ukljuceno"></span></span>\
-                    </label>\
-                ';}
-                        $('form[data-oznaka="artikli_lista"] > section table tbody').append('\
-                    <tr>\
-                        <td onclick="$_Artikl(\''+ Artikal.ID +'\')" class="uredi">'+ Artikal.ID +'</td>\
-                        <td onclick="$_Artikl(\''+ Artikal.ID +'\')" class="uredi">'+ Artikal.Naziv +'</td>\
-                        <td><a onclick="$_ArtiklSifre(\''+ Artikal.ID +'\')">Uredi šifre</a></td>\
-                        <td><a onclick="$_ArtiklZaliha(\''+ Artikal.ID +'\')">Uredi zalihu</a></td>\
-                        <td onclick="$_Artikl(\''+ Artikal.ID +'\')" class="uredi">'+ Artikal.Aktivan +'</td>\
-                    </tr>\
-                ');
-                    });
-                    // zaglavlje
-                    let Zaglavlje = odgovor.Zaglavlje;
-                    $('form[data-oznaka="artikli_lista"] > section div.sadrzaj > table thead').empty().append(Zaglavlje);
-                    // navigacija
-                    let Navigacija = odgovor.Navigacija;
-                    $('form[data-oznaka="artikli_lista"] > section div.kontrole').empty().append('<ul class="navigacija">' + Navigacija.pocetak + '' + Navigacija.stranice + '' + Navigacija.kraj + '</ul>');
-
-                },
-                error: function () {
-                },
-                complete: function (odgovor) {
-                    //
-                }
+            $('form[data-oznaka="artikli_lista"] > section table tbody').empty();
+            let Artikli = odgovor.Artikli;
+            $.each(Artikli, function (a, Artikal) {
+                if (Artikal.Aktivan === "1") {Artikal.Aktivan = '\
+                <label data-boja="boja" class="kontrolni_okvir">\
+                    <input type="checkbox" disabled checked><span class="kontrolni_okvir"><span class="ukljuceno"></span></span>\
+                </label>\
+            ';} else {Artikal.Aktivan = '\
+                <label data-boja="boja" class="kontrolni_okvir">\
+                    <input type="checkbox" disabled><span class="kontrolni_okvir"><span class="ukljuceno"></span></span>\
+                </label>\
+            ';}
+                $('form[data-oznaka="artikli_lista"] > section table tbody').append('\
+                <tr>\
+                    <td onclick="$_Artikl(\''+ Artikal.ID +'\')" class="uredi">'+ Artikal.ID +'</td>\
+                    <td onclick="$_Artikl(\''+ Artikal.ID +'\')" class="uredi">'+ Artikal.Naziv +'</td>\
+                    <td><a onclick="$_ArtiklSifre(\''+ Artikal.ID +'\')">Uredi šifre</a></td>\
+                    <td><a onclick="$_ArtiklZaliha(\''+ Artikal.ID +'\')">Uredi zalihu</a></td>\
+                    <td onclick="$_Artikl(\''+ Artikal.ID +'\')" class="uredi">'+ Artikal.Aktivan +'</td>\
+                </tr>\
+            ');
             });
+            // zaglavlje
+            let Zaglavlje = odgovor.Zaglavlje;
+            $('form[data-oznaka="artikli_lista"] > section div.sadrzaj > table thead').empty().append(Zaglavlje);
+            // navigacija
+            let Navigacija = odgovor.Navigacija;
+            $('form[data-oznaka="artikli_lista"] > section div.kontrole').empty().append('<ul class="navigacija">' + Navigacija.pocetak + '' + Navigacija.stranice + '' + Navigacija.kraj + '</ul>');
         },
         error: function () {
         }
@@ -954,6 +939,7 @@ $_Kategorije = function (element = '', $broj_stranice = 1, $poredaj = 'Kategorij
                         <td class="uredi">'+ Kategorija.ID +'</td>\
                         <td class="uredi">'+ Kategorija.Kategorija +'</td>\
                         <td class="uredi">'+ Kategorija.CalcVelicina +'</td>\
+                        <td><a href="/administrator/artikli/'+ Kategorija.ID +'">Artikli</a></td>\
                     </tr>\
                 ');
             });
@@ -1183,6 +1169,7 @@ $_PodKategorije = function (element = '', $broj_stranice = 1, $poredaj = 'PodKat
                         <td class="uredi">'+ PodKategorija.ID +'</td>\
                         <td class="uredi">'+ PodKategorija.Podkategorija +'</td>\
                         <td class="uredi">'+ PodKategorija.Kategorija +'</td>\
+                        <td><a href="/administrator/artikli//'+ PodKategorija.ID +'">Artikli</a></td>\
                     </tr>\
                 ');
             });

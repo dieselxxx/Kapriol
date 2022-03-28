@@ -155,7 +155,7 @@ final class PodKategorije_Model extends Master_Model {
                         </div>
                     </div>
                 </th>
-                <th width="75%" onclick="$_PodKategorije(this,1,\'Podkategorija\',\''.$this->RedoslijedObrnuto().'\')">
+                <th width="55%" onclick="$_PodKategorije(this,1,\'Podkategorija\',\''.$this->RedoslijedObrnuto().'\')">
                     <div>
                         <span>'._('PodKategorija').'</span>
                         <div class="poredaj">
@@ -164,13 +164,18 @@ final class PodKategorije_Model extends Master_Model {
                         </div>
                     </div>
                 </th>
-                <th width="10%" onclick="$_PodKategorije(this,1,\'Kategorija\',\''.$this->RedoslijedObrnuto().'\')">
+                <th width="15%" onclick="$_PodKategorije(this,1,\'Kategorija\',\''.$this->RedoslijedObrnuto().'\')">
                     <div>
                         <span>'._('Kategorija').'</span>
                         <div class="poredaj">
                             <svg class="gore '.$this->RedoslijedIkona('Kategorija', 'desc').'"><use xlink:href="/imovina/grafika/simboli/simbol.ikone.php#strelica_gore"></use></svg>
                             <svg class="dole '.$this->RedoslijedIkona('Kategorija', 'asc').'"><use xlink:href="/imovina/grafika/simboli/simbol.ikone.php#strelica_dole"></use></svg>
                         </div>
+                    </div>
+                </th>
+                <th width="15%">
+                    <div>
+                        <span>'._('Artikli iz podkategorije').'</span>
                     </div>
                 </th>
             </tr>
