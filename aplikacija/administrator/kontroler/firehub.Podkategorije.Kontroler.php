@@ -29,7 +29,7 @@ use FireHub\Jezgra\Sadrzaj\Sadrzaj;
  *
  * @package Aplikacija\Kontroler
  */
-final class PodKategorije_Kontroler extends Master_Kontroler {
+final class Podkategorije_Kontroler extends Master_Kontroler {
 
     /**
      * ## index

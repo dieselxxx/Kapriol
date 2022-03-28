@@ -45,9 +45,9 @@ Rute::sve('kategorije/spremi', [\FireHub\Aplikacija\Administrator\Kontroler\Kate
 Rute::sve('kategorije/nova', [\FireHub\Aplikacija\Administrator\Kontroler\Kategorije_Kontroler::class, 'nova']);
 Rute::sve('kategorije/izbrisi', [\FireHub\Aplikacija\Administrator\Kontroler\Kategorije_Kontroler::class, 'izbrisi']);
 Rute::sve('kategorije/dodajsliku', [\FireHub\Aplikacija\Administrator\Kontroler\Kategorije_Kontroler::class, 'dodajsliku']);
-Rute::sve('podkategorije/index', [\FireHub\Aplikacija\Administrator\Kontroler\PodKategorije_Kontroler::class, 'index']);
-Rute::sve('podkategorije/lista', [\FireHub\Aplikacija\Administrator\Kontroler\PodKategorije_Kontroler::class, 'lista']);
-Rute::sve('podkategorije/uredi', [\FireHub\Aplikacija\Administrator\Kontroler\PodKategorije_Kontroler::class, 'uredi']);
-Rute::sve('podkategorije/spremi', [\FireHub\Aplikacija\Administrator\Kontroler\PodKategorije_Kontroler::class, 'spremi']);
-Rute::sve('podkategorije/nova', [\FireHub\Aplikacija\Administrator\Kontroler\PodKategorije_Kontroler::class, 'nova']);
-Rute::sve('podkategorije/izbrisi', [\FireHub\Aplikacija\Administrator\Kontroler\PodKategorije_Kontroler::class, 'izbrisi']);
+Rute::sve('podkategorije/index', [\FireHub\Aplikacija\Administrator\Kontroler\Podkategorije_Kontroler::class, 'index']);
+Rute::sve('podkategorije/lista', [\FireHub\Aplikacija\Administrator\Kontroler\Podkategorije_Kontroler::class, 'lista']);
+Rute::sve('podkategorije/uredi', [\FireHub\Aplikacija\Administrator\Kontroler\Podkategorije_Kontroler::class, 'uredi']);
+Rute::sve('podkategorije/spremi', [\FireHub\Aplikacija\Administrator\Kontroler\Podkategorije_Kontroler::class, 'spremi']);
+Rute::sve('podkategorije/nova', [\FireHub\Aplikacija\Administrator\Kontroler\Podkategorije_Kontroler::class, 'nova']);
+Rute::sve('podkategorije/izbrisi', [\FireHub\Aplikacija\Administrator\Kontroler\Podkategorije_Kontroler::class, 'izbrisi']);
