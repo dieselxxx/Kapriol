@@ -97,8 +97,14 @@ abstract class Master_Kontroler extends Kontroler {
 
             foreach ($kosarica_artikli as $artikal) {
 
-                // ukupno
-                $total_kolicina += $artikal['Kolicina'];
+                if ($artikal['Naziv'] !== 'Dostava') {
+
+                    // ukupno količina
+                    $total_kolicina += $artikal['Kolicina'];
+
+                }
+
+                // ukupno cijena
                 $total_cijena += $artikal['CijenaUkupno'];
 
             }
