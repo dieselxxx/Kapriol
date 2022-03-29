@@ -48,6 +48,43 @@
                         </label>
                     </td>
                 </tr>
+            </table>
+        </section>
+
+        <section class="dostava">
+            <h3>Podatci za dostavu :</h3>
+            <table>
+                <tr>
+                    <td>
+                        <label data-boja="boja" class="unos">
+                            <input type="text" name="adresa" value="{{forma_adresa}}" maxlength="300" autocomplete="off" placeholder="Upišite vašu adresu za isporuku">
+                            <span class="naslov">
+                                <span>Adresa</span>
+                            </span>
+                            <span class="granica"></span>
+                            <svg><use xlink:href="/kapriol/resursi/grafika/simboli/simbol.ikone.svg#adresa"></use></svg>
+                            <span class="upozorenje"></span>
+                        </label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label data-boja="boja" class="unos">
+                            <input type="number" name="zip" value="{{forma_zip}}" min="00001" step="1" autocomplete="off" placeholder="Upišite vaš poštanski broj">
+                            <span class="naslov">
+                                <span>Poštanski broj</span>
+                            </span>
+                            <span class="granica"></span>
+                            <svg><use xlink:href="/kapriol/resursi/grafika/simboli/simbol.ikone.svg#zip"></use></svg>
+                            <span class="upozorenje"></span>
+                        </label>
+                    </td>
+                </tr>
+            </table>
+        </section>
+
+        <section class="opcije">
+            <table>
                 <tr>
                     <td>
                         <label>
@@ -87,38 +124,6 @@
                                 </div>
                             </label>
                         </div>
-                    </td>
-                </tr>
-            </table>
-        </section>
-
-        <section class="dostava">
-            <h3>Podatci za dostavu :</h3>
-            <table>
-                <tr>
-                    <td>
-                        <label data-boja="boja" class="unos">
-                            <input type="text" name="adresa" value="{{forma_adresa}}" maxlength="300" autocomplete="off" placeholder="Upišite vašu adresu za isporuku">
-                            <span class="naslov">
-                                <span>Adresa</span>
-                            </span>
-                            <span class="granica"></span>
-                            <svg><use xlink:href="/kapriol/resursi/grafika/simboli/simbol.ikone.svg#adresa"></use></svg>
-                            <span class="upozorenje"></span>
-                        </label>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <label data-boja="boja" class="unos">
-                            <input type="number" name="zip" value="{{forma_zip}}" min="00001" step="1" autocomplete="off" placeholder="Upišite vaš poštanski broj">
-                            <span class="naslov">
-                                <span>Poštanski broj</span>
-                            </span>
-                            <span class="granica"></span>
-                            <svg><use xlink:href="/kapriol/resursi/grafika/simboli/simbol.ikone.svg#zip"></use></svg>
-                            <span class="upozorenje"></span>
-                        </label>
                     </td>
                 </tr>
             </table>
