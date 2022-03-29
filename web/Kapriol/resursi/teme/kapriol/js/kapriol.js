@@ -133,4 +133,10 @@ $(document).ready(function () {
         }
     });
 
+    $('input[name="r1"]').on('change', function() {
+
+        $('main > div#sadrzaj.narudzba > form.podatci > section.tvrtka').toggle();
+
+    });
+
 });
