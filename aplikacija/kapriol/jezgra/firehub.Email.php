@@ -113,7 +113,7 @@ final class Email {
 
         $this->email->Subject = $this->naslov;
 
-        $this->email->AddEmbeddedImage(APLIKACIJA_ROOT.'../../web/Kapriol/resursi/grafika/logo/120x270.png', "logo");
+        $this->email->AddEmbeddedImage(APLIKACIJA_ROOT.'../../web/kapriol/resursi/grafika/logo/120x270.png', "logo");
         $this->email->msgHTML($this->predlozak);
         $this->email->AltBody = 'Za pregled ove poruke potrebno je imati HTML kompatibilni email preglednik!';
 
