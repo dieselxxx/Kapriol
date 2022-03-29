@@ -420,15 +420,16 @@ final class Kosarica_Model extends Master_Model {
             // ukupno
             $total_kolicina += $artikal['Kolicina'];
             $total_cijena += $artikal['CijenaUkupno'];
+            $artikal['CijenaUkupno'] = number_format((float)$artikal['CijenaUkupno'], 2, ',', '.');
 
             $email_artikli_korisnik .= "
             <tr>
                 <td>{$artikal['Sifra']}</td>
-                <td>{$artikal['Velicina']}</td>
+                <td align='center' style='text-align: center;'>{$artikal['Velicina']}</td>
                 <td>{$artikal['Naziv']}</td>
-                <td>{$artikal['Kolicina']} kom</td>
-                <td>$artikl_cijena ".Domena::valuta()."</td>
-                <td>{$artikal['CijenaUkupno']} ".Domena::valuta()."</td>
+                <td align='center' style='text-align: center;'>{$artikal['Kolicina']} kom</td>
+                <td align='right' style='text-align: right;'>$artikl_cijena ".Domena::valuta()."</td>
+                <td align='right' style='text-align: right;'>{$artikal['CijenaUkupno']} ".Domena::valuta()."</td>
             </tr>";
         }
 
