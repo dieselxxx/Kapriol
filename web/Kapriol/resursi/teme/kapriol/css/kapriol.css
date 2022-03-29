@@ -218,9 +218,14 @@ svg[data-boja="boja"] {fill: var(--boja-kapriol) !important;}
 path[data-boja="boja"] {fill: var(--boja-kapriol);}
 fieldset[data-boja="boja"] table.tabela thead tr th {color: var(--boja-kapriol);}
 
-/** gdpr **/
+/** fiksno **/
 #gdpr {position: fixed; display: block; background-color: rgba(0, 0, 0, 0.4); top: 0; left: 0; right: 0; bottom: 0; z-index: 9998;}
 #gdpr div {position: fixed; display: block; background-color: white; left: 0; right: 0; bottom: 0; text-align: center; border-top: 3px solid var(--boja-kapriol); z-index: 9999;}
+#kosarica_fixed, #whatsup_fixed {position: fixed; display: flex; justify-content: center; bottom: 0; left: 0; background-color: var(--boja-pozadina_svijetla); height: 50px; width: 60px; border-width: 1px 1px 0 0; border-style: solid; border-color: var(--boja-granica);}
+#whatsup_fixed {left: initial; right: 0; border-width: 1px 0 0 1px;}
+#kosarica_fixed svg, #whatsup_fixed svg {fill: var(--boja-kapriol); align-self: center; height: 30px; width: 30px;}
+#whatsup_fixed svg {fill: var(--boja-tekst-svjetlije);}
+#kosarica_fixed span {align-self: center; padding-top: 25px; font-size: 0.8rem; color: var(--boja-kapriol);}
 
 /** galerija **/
 .swiper {width: 100%; height: 100%;}
