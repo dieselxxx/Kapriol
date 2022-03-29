@@ -65,6 +65,13 @@
                             <label for="1">
                                 <img src="/kapriol/resursi/grafika/simboli/virman.jpg" />
                                 <span>Plaćanje pouzećem - gotovina</span>
+                                <div class="popup" onclick="popup1()">
+                                    <svg><use xlink:href="/kapriol/resursi/grafika/simboli/simbol.ikone.svg#info"></use></svg>
+                                    <span class="popuptext" id="popup1">
+                                        Virman / opća uplatnica : plaćanje se vrši općom uplatnicom na temelju predračuna ili ponude<br>
+                                        koji će biti dostavljen nakon provjere dostupnosti naručenih artikala.
+                                    </span>
+                                </div>
                             </label>
                         </div>
                         <div class="radio">
@@ -72,6 +79,12 @@
                             <label for="2">
                                 <img src="/kapriol/resursi/grafika/simboli/gotovina.jpg" />
                                 <span>Virman</span>
+                                <div class="popup" onclick="popup2()">
+                                    <svg><use xlink:href="/kapriol/resursi/grafika/simboli/simbol.ikone.svg#info"></use></svg>
+                                    <span class="popuptext" id="popup2">
+                                        Plaćanje pouzećem / gotovina : plaćanje se vrši gotovinski u {{domena_valuta}} prilikom preuzimanja pošiljke.
+                                    </span>
+                                </div>
                             </label>
                         </div>
                     </td>

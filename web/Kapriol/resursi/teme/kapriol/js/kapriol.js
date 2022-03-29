@@ -62,6 +62,15 @@ $_Cookie = function ($odgovor) {
 
 };
 
+function popup1() {
+    let popup = document.getElementById("popup1");
+    popup.classList.toggle("show");
+}
+function popup2() {
+    let popup = document.getElementById("popup2");
+    popup.classList.toggle("show");
+}
+
 $(document).ready(function () {
 
     $('header > a.trazi').click(function() {

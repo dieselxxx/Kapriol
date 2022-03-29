@@ -232,6 +232,17 @@ fieldset[data-boja="boja"] table.tabela thead tr th {color: var(--boja-kapriol);
 .swiper-slide {text-align: center;font-size: 18px;background: #fff;display: -webkit-box;display: -ms-flexbox;display: -webkit-flex;display: flex;-webkit-box-pack: center;-ms-flex-pack: center;-webkit-justify-content: center;justify-content: center;-webkit-box-align: center;-ms-flex-align: center;-webkit-align-items: center;align-items: center;}
 .swiper-slide img {display: block; width: 100%; height: 100%; object-fit: cover;}
 
+/** popup **/
+.popup {position: relative; display: inline-block; cursor: pointer; -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none;}
+.popup .popuptext {visibility: hidden; position: absolute; background-color: #555; padding: 8px 0; left: 50%; bottom: 125%; width: 300px; text-align: center; color: #fff; border-radius: 6px; z-index: 1;}
+.popup .popuptext::after {content: ""; position: absolute; top: 100%; left: 50%; margin-left: -5px; border-width: 5px; border-style: solid; border-color: #555 transparent transparent transparent;}
+.popup #popup1 {margin-left: -250px;}
+.popup #popup2 {margin-left: -100px;}
+.popup .show {visibility: visible; -webkit-animation: fadeIn 1s;animation: fadeIn 1s;}
+.popup svg {fill: var(--boja-kapriol); height: 30px; width: 50px;}
+@-webkit-keyframes fadeIn {from {opacity: 0;} to {opacity: 1;}}
+@keyframes fadeIn {from {opacity: 0;} to {opacity:1;}}
+
 header {display: grid;}
 header > div#info {grid-column: 1 / 8; grid-row: 1 / 2; display: grid; grid-template-columns: auto 700px 700px auto; background-color: var(--boja-pozadina_svijetla); align-content: center; padding: 10px; height: 60px; border-width: 0 0 1px 0; border-style: solid; border-color: var(--boja-granica); box-shadow: 0 3px 39px 0 rgba(0,0,0,0.04); -webkit-box-shadow: 0 3px 39px 0 rgba(0,0,0,0.04); -moz-box-shadow: 0 3px 39px 0 rgba(0,0,0,0.04);}
 header > div#info > a.facebook {grid-column: 3 / 4; grid-row: 1 / 2; justify-self: right; background-size: cover; margin-right: 50px; height: 30px; width: 30px;}
