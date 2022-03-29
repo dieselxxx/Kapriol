@@ -326,6 +326,9 @@ main > div#sadrzaj.rezultat > nav.navigacija > ul > li > a.gumb {margin: 8px; mi
 main > div#sadrzaj.artikl {grid-template-rows: 60px auto auto;}
 main > div#sadrzaj.artikl > div.greska {grid-column: 1 / 5; grid-row: 2 / 3; color: var(--boja-kapriol);}
 main > div#sadrzaj.artikl > form.artikl {position: relative; grid-column: 1 / 5; grid-row: 3 / 4; display: grid; grid-template-columns: 600px auto; grid-template-rows: 50px repeat(4, 100px) auto; grid-gap: 15px; align-items: center;}
+main > div#sadrzaj.artikl > form.artikl > div.slika {position: relative;}
+main > div#sadrzaj.artikl > form.artikl > div.slika > button.favorit {position: absolute; background-image: url("/kapriol/resursi/grafika/ikone/kapriol.svg"); background-size: contain; background-repeat: no-repeat; background-position: center; background-color: transparent; margin: 0; top: 12px; right: 5px; height: 35px; width: 35px; border: 0; z-index: 10000;}
+main > div#sadrzaj.artikl > form.artikl > div.slika > button.favorit:hover {background-image: url("/kapriol/resursi/grafika/ikone/kapriol.svg");}
 main > div#sadrzaj.artikl > form.artikl > div.slika {grid-column: 1 / 2; grid-row: 2 / 6; object-fit: contain; height: 100%; width: 100%; border: 1px solid var(--boja-granica); box-shadow: 0 3px 39px 0 rgba(0,0,0,0.04); -webkit-box-shadow: 0 3px 39px 0 rgba(0,0,0,0.04); -moz-box-shadow: 0 3px 39px 0 rgba(0,0,0,0.04);}
 main > div#sadrzaj.artikl > form.artikl > div.slika > img {height: 100%; width: 100%;}
 main > div#sadrzaj.artikl > form.artikl > ul.slike {grid-column: 1 / 2; grid-row: 6 / 7; align-self: start;}

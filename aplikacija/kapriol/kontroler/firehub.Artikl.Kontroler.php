@@ -14,6 +14,7 @@
 
 namespace FireHub\Aplikacija\Kapriol\Kontroler;
 
+use FireHub\Aplikacija\Kapriol\Model\Favorit_Model;
 use FireHub\Aplikacija\Kapriol\Model\Gdpr_Model;
 use FireHub\Jezgra\Sadrzaj\Sadrzaj;
 use FireHub\Aplikacija\Kapriol\Model\Kategorije_Model;
@@ -146,6 +147,19 @@ final class Artikl_Kontroler extends Master_Kontroler {
 
         }
 
+        // favoriti
+        if (isset($_POST['favorit'])) {
+
+            if (isset($_POST['ID'])) {
+
+                $id =  Validacija::Broj('ID', $_POST['ID'], 1, 10);
+
+                $this->model(Favorit_Model::class)->dodaj($id);
+
+            }
+
+        }
+
         // calc veličine
         $calc_velicina = $kategorije->kategorija('', $trenutni_artikl['Kategorija'])['CalcVelicina'] === '1'
             ? '<img src="/kapriol/resursi/grafika/kapriol_size_guide.png" />'
@@ -166,6 +180,7 @@ final class Artikl_Kontroler extends Master_Kontroler {
             'gdpr' => $gdpr->html(),
             'vi_ste_ovdje' => 'Vi ste ovdje : <a href="/">Kapriol Web Trgovina</a> \\\\ '.$trenutni_artikl['Kategorija'].' \\\\ ' . $trenutni_artikl['Naziv'],
             'opci_uvjeti' => Domena::opciUvjeti(),
+            'artikl_id' => $trenutni_artikl['ID'],
             'artikl_slika' => $trenutni_artikl['Slika'],
             'artikl_slike' => $artikl_slike_html,
             'artikl_naziv' => $trenutni_artikl['Naziv'],
