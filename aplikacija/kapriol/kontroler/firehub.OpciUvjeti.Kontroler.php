@@ -53,6 +53,7 @@ final class OpciUvjeti_Kontroler extends Master_Kontroler {
             'glavni_meni' => $kategorije->glavniMeni(),
             'glavni_meni_hamburger' => $kategorije->glavniMeniHamburger(),
             'zaglavlje_kosarica_artikli' => $this->kosaricaArtikli(),
+            'zaglavlje_kosarica_artikli_html' => $this->kosaricaArtikliHTML(),
             'zaglavlje_favorit_artikli' => $this->favoritArtikli(),
             'zaglavlje_tel' => Domena::telefon(),
             'zaglavlje_adresa' => Domena::adresa(),

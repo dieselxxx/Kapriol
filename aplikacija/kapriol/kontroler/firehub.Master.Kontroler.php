@@ -120,6 +120,32 @@ abstract class Master_Kontroler extends Kontroler {
     }
 
     /**
+     * ### Broj komada u košarici HTML
+     * @since 0.1.2.pre-alpha.M1
+     *
+     * @throws Kontejner_Greska Ukoliko se ne može spremiti instanca Log-a.
+     * @throws Kontroler_Greska Ukoliko objekt nije validan model.
+     *
+     * @return string Broj komada u košarici.
+     */
+    protected function kosaricaArtikliHTML ():string {
+
+        if ($this->kosaricaArtikli() === '0') {
+
+            return '';
+
+        }
+
+        return '
+        <a data-boja="boja" id="kosarica_fixed" href="/kosarica">
+            <svg><use xlink:href="/kapriol/resursi/grafika/simboli/simbol.ikone.svg#kosarica"></use></svg>
+            <span>('.$this->kosaricaArtikli().')</span>
+        </a>
+        ';
+
+    }
+
+    /**
      * ### Broj komada u košarici
      * @since 0.1.2.pre-alpha.M1
      *
