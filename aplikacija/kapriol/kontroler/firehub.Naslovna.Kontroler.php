@@ -49,18 +49,21 @@ final class Naslovna_Kontroler extends Master_Kontroler {
         $obavijesti = $bazaPodataka->tabela('obavijesti')
             ->sirovi("
                 SELECT 
-                    Obavijest
+                    Obavijest, artikliview.Link
                 FROM obavijesti
-                WHERE ".Domena::sqlTablica()." = 1
-                ORDER BY Redoslijed ASC
+                LEFT JOIN artikliview ON artikliview.ID = obavijesti.ArtikalID
+                WHERE obavijesti.".Domena::sqlTablica()." = 1
+                ORDER BY obavijesti.Redoslijed ASC
             ")->napravi();
 
         foreach ($obavijesti->niz() as $obavijest) {
 
+            $link = $obavijest['Link'] ? 'href="/artikl/'.$obavijest['Link'].'"' : '' ;
+
             $obavijest_html .= "
-            <div class='swiper-slide'>
+            <a class='swiper-slide' $link>
                 <img src='/slika/baner/{$obavijest['Obavijest']}' />
-            </div>
+            </a>
             ";
 
         }
