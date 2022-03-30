@@ -54,8 +54,9 @@ final class Obavijest_Model extends Master_Model {
             ->sirovi("
                 SELECT
                     obavijesti.ID, obavijesti.Obavijest, obavijesti.Redoslijed,
-                    obavijesti.Ba, obavijesti.Hr
+                    obavijesti.Ba, obavijesti.Hr, obavijesti.ArtikalID, artikli.Naziv
                 FROM obavijesti
+                LEFT JOIN artikli ON artikli.ID = obavijesti.ArtikalID
                 WHERE obavijesti.ID = $id
                 LIMIT 1
             ")
@@ -89,10 +90,13 @@ final class Obavijest_Model extends Master_Model {
         $hr = Validacija::Potvrda(_('HR'), $hr);
         if ($hr == "on") {$hr = 1;} else {$hr = 0;}
 
+        $artikl = $_REQUEST['artikl'];
+        $artikl = empty($artikl) ? 'null' : $artikl;
+
         $obavijest = $this->bazaPodataka
             ->sirovi("
                 UPDATE obavijesti
-                    SET Redoslijed = $redoslijed, Ba = $ba, Hr = $hr
+                    SET Redoslijed = $redoslijed, Ba = $ba, Hr = $hr, ArtikalID = $artikl
                 WHERE obavijesti.ID = $id
             ")
             ->napravi();
