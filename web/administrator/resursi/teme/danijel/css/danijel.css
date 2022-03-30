@@ -117,7 +117,7 @@ label.select {position: relative; display: block;}
 label.select select {position: relative; background-color: transparent; padding: 8px 8px 8px 4px; width: 100%; border: none; border-bottom: 1px solid rgba(0, 0, 0, 0.12); appearance: none; -webkit-appearance:none}
 label.select select:focus {border-bottom: 1px solid rgba(0, 0, 0, 0); outline: none;}
 label.select:after {content: ''; position: absolute; top: 10px; right: 7px; padding: 0; height: 0; width: 0; border-top: 6px solid var(--boja-granica); border-left: 6px solid transparent; border-right: 6px solid transparent; pointer-events: none;}
-label.select .select-odaberite {position: absolute; top: 0; left: 0; color: var(--boja-placeholder); pointer-events: none; transition: 350ms ease top, 350ms ease font-size;}
+label.select .select-odaberite {position: absolute; top: -10px; left: 0; color: var(--boja-placeholder); pointer-events: none; transition: 350ms ease top, 350ms ease font-size;}
 label.select select:focus ~ .select-odaberite, label.select select:valid ~ .select-odaberite, label.select select:focus ~ .select-odaberite {top: -20px; font-size: 0.7rem;}
 label.select .select-granica {position: relative; display: block; width: auto;}
 label.select .select-granica:before, label.select .select-granica:after {content: ''; position: absolute; bottom: 1px; height: 2px; width: 0; transition: 350ms ease width;}
