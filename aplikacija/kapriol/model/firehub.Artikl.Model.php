@@ -100,7 +100,7 @@ final class Artikl_Model extends Master_Model {
             ->gdje('ClanakID', '=', $artiklID)
             ->poredaj('Zadana', 'DESC')->napravi();
 
-        return $slike->niz();
+        return $slike->niz() ?: [];
 
     }
 
