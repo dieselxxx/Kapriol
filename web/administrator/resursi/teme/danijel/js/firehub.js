@@ -802,6 +802,17 @@ $_Obavijest = function ($id) {
             dialog.naslov('Greška');
             dialog.naslov('Dogodila se greška prilikom učitavanja podataka, molimo kontaktirajte administratora');
             dialog.kontrole('<button data-boja="boja" onclick="Dialog.dialogZatvori()">Zatvori</button>');
+        },
+        complete: function (odgovor) {
+            $(function () {
+                $('.tagovi').tagovi_input({
+                    width: 'auto'
+                });
+                $(".input-select").chosen({
+                    search_contains: true,
+                    width: '100%'
+                });
+            });
         }
     });
 
