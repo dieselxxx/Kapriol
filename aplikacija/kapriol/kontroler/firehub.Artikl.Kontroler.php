@@ -59,6 +59,27 @@ final class Artikl_Kontroler extends Master_Kontroler {
 
         $trenutni_artikl = $artikl_model->artikl($artikl);
 
+        if ($trenutni_artikl['ID'] === 0) {
+
+            return sadrzaj()->datoteka('artikl_ne_postoji.html')->podatci([
+                'predlozak_naslov' => $trenutni_artikl['Naziv'],
+                'facebook_link' => Domena::facebook(),
+                'instagram_link' => Domena::instagram(),
+                'mobitel' => Domena::mobitel(),
+                'glavni_meni' => $kategorije->glavniMeni(),
+                'glavni_meni_hamburger' => $kategorije->glavniMeniHamburger(),
+                'zaglavlje_kosarica_artikli' => $this->kosaricaArtikli(),
+                'zaglavlje_kosarica_artikli_html' => $this->kosaricaArtikliHTML(),
+                'zaglavlje_favorit_artikli' => $this->favoritArtikli(),
+                'zaglavlje_tel' => Domena::telefon(),
+                'zaglavlje_adresa' => Domena::adresa(),
+                'podnozje_dostava' => Domena::podnozjeDostava(),
+                'gdpr' => $gdpr->html(),
+                'vi_ste_ovdje' => 'Vi ste ovdje : <a href="/">Kapriol Web Trgovina</a> \\\\ '.$trenutni_artikl['Kategorija'].' \\\\ ' . $trenutni_artikl['Naziv']
+            ]);
+
+        }
+
         // slike
         $artikl_slike = $artikl_model->slike($trenutni_artikl['ID']);
         $artikl_slike_html = '';
