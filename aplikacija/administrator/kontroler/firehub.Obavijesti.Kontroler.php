@@ -14,6 +14,7 @@
 
 namespace FireHub\Aplikacija\Administrator\Kontroler;
 
+use FireHub\Aplikacija\Administrator\Model\Artikli_Model;
 use FireHub\Aplikacija\Administrator\Model\Obavijest_Model;
 use FireHub\Aplikacija\Administrator\Model\Obavijesti_Model;
 use FireHub\Jezgra\Greske\Greska;
@@ -90,11 +91,25 @@ final class Obavijesti_Kontroler extends Master_Kontroler {
         if ($obavijest['Ba'] === true) {$obavijest['Ba'] = 'checked';} else {$obavijest['Ba'] = '';}
         if ($obavijest['Hr'] === true) {$obavijest['Hr'] = 'checked';} else {$obavijest['Hr'] = '';}
 
+        // artikli
+        $artikli_model = $this->model(Artikli_Model::class);
+        $artikli_model->limit_zapisa_po_stranici = 10000;
+        $artikli = $artikli_model->lista();
+        $artikli_html = '';
+        foreach ($artikli as $artikl) {
+
+            $artikli_html .= "<option value='{$artikl['ID']}'>{$artikl['Naziv']}</option>";
+
+        }
+
         return sadrzaj()->format(Sadrzaj_Vrsta::HTMLP)->datoteka('obavijesti/uredi.html')->podatci([
             'id' => $obavijest['ID'],
             'redoslijed' => $obavijest['Redoslijed'],
             'ba' => $obavijest['Ba'],
-            'hr' => $obavijest['Hr']
+            'hr' => $obavijest['Hr'],
+            'artikal' => is_null($obavijest['ArtikalID']) ? '' : $obavijest['ArtikalID'],
+            'artikal_naziv' => is_null($obavijest['Naziv']) ? '' : $obavijest['Naziv'],
+            'artikli' => $artikli_html
         ]);
 
     }
