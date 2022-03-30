@@ -16,6 +16,20 @@
             </tr>
             <tr>
                 <td>
+                    <label data-boja="boja" class="select">
+                        <select class="input-select" name="artikl">
+                            <option value="{{artikal}}">{{artikal_naziv}}</option>
+                            <option value="">=== bez artikla ===</option>
+                            {{artikli}}
+                        </select>
+                        <span class="select-odabrano"></span>
+                        <span class="select-granica"></span>
+                        <label class="select-odaberite">Artikal</label>
+                    </label>
+                </td>
+            </tr>
+            <tr>
+                <td>
                     <label data-boja="boja" class="unos">
                         <input type="number" name="redoslijed" value="{{redoslijed}}" maxlength="10" autocomplete="off" placeholder="1">
                         <span class="naslov">
