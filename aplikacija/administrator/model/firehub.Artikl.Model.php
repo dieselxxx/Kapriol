@@ -291,7 +291,7 @@ final class Artikl_Model extends Master_Model {
             ")
             ->napravi();
 
-        return $karakteristike->niz();
+        return $karakteristike->niz() ?: [];
 
     }
 
