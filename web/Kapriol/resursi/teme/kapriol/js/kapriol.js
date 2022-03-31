@@ -62,15 +62,6 @@ $_Cookie = function ($odgovor) {
 
 };
 
-function popup1() {
-    let popup = document.getElementById("popup1");
-    popup.classList.toggle("show");
-}
-function popup2() {
-    let popup = document.getElementById("popup2");
-    popup.classList.toggle("show");
-}
-
 $(document).ready(function () {
 
     $('header > a.trazi').click(function() {
@@ -143,6 +134,13 @@ $(document).ready(function () {
             $('main > div#sadrzaj.narudzba > form.podatci > section.tvrtka').hide();
         }
 
+    });
+
+    tippy('#popup1', {
+        content: 'Virman / opća uplatnica : plaćanje se vrši općom uplatnicom na temelju predračuna ili ponude koji će biti dostavljen nakon provjere dostupnosti naručenih artikala!',
+    });
+    tippy('#popup2', {
+        content: 'Plaćanje pouzećem / gotovina : plaćanje se vrši gotovinski prilikom preuzimanja pošiljke!',
     });
 
 });
