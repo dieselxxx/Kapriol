@@ -294,6 +294,7 @@ final class Kosarica_Kontroler extends Master_Kontroler {
             'forma_ime' => $_POST['ime'] ?? '',
             'forma_email' => $_POST['email'] ?? '',
             'forma_telefon' => $_POST['telefon'] ?? '',
+            'forma_grad' => $_POST['grad'] ?? '',
             'forma_adresa' => $_POST['adresa'] ?? '',
             'forma_zip' => $_POST['zip'] ?? '',
             'forma_tvrtka' => $_POST['tvrtka'] ?? '',

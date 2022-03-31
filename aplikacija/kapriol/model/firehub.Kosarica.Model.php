@@ -382,6 +382,7 @@ final class Kosarica_Model extends Master_Model {
         $email = $_POST['email'];
         $telefon = $_POST['telefon'];
         $r1 = $_POST['r1'] ?? false;
+        $grad = $_POST['grad'];
         $adresa = $_POST['adresa'];
         $zip = $_POST['zip'];
         $tvrtka = $_POST['tvrtka'];
@@ -445,6 +446,7 @@ final class Kosarica_Model extends Master_Model {
             "email" => $email,
             "telefon" => $telefon,
             "r1" => $r1 ? 'da' : 'ne',
+            "grad" => $grad,
             "adresa" => $adresa,
             "zip" => $zip,
             "tvrtka" => $tvrtka,
@@ -473,6 +475,7 @@ final class Kosarica_Model extends Master_Model {
             "email" => $email,
             "telefon" => $telefon,
             "r1" => $r1 ? 'da' : 'ne',
+            "grad" => $grad,
             "adresa" => $adresa,
             "zip" => $zip,
             "tvrtka" => $tvrtka,
