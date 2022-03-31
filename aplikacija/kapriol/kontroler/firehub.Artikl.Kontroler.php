@@ -59,7 +59,9 @@ final class Artikl_Kontroler extends Master_Kontroler {
 
         $trenutni_artikl = $artikl_model->artikl($artikl);
 
-        if ($trenutni_artikl['ID'] === 0) {
+        $artikl_zaliha = $artikl_model->zaliha($trenutni_artikl['ID']);
+
+        if ($trenutni_artikl['ID'] === 0 || empty($artikl_zaliha)) {
 
             return sadrzaj()->datoteka('artikl_ne_postoji.html')->podatci([
                 'predlozak_naslov' => $trenutni_artikl['Naziv'],
@@ -112,7 +114,6 @@ final class Artikl_Kontroler extends Master_Kontroler {
         }
 
         // zaliha
-        $artikl_zaliha = $artikl_model->zaliha($trenutni_artikl['ID']);
         $artikl_zaliha_html = '';
         $artikl_kosarica_velicine = '';
         foreach ($artikl_zaliha as $zaliha) {
