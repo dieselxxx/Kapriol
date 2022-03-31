@@ -100,16 +100,6 @@
             <table>
                 <tr>
                     <td>
-                        <label>
-                            <label data-boja="boja" class="kontrolni_okvir">
-                                <span>Potreban mi je R1 račun</span>
-                                <input name="r1" type="checkbox"><span class="kontrolni_okvir"><span class="ukljuceno"></span></span>
-                            </label>
-                        </label>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
                         <div class="radio">
                             <input id="1" type="radio" name="placanje" value="1">
                             <label for="1">
@@ -132,18 +122,28 @@
                         </div>
                     </td>
                 </tr>
+                <tr>
+                    <td>
+                        <label>
+                            <label data-boja="boja" class="kontrolni_okvir">
+                                <span>Potreban mi je R1 račun</span>
+                                <input name="r1" type="checkbox"><span class="kontrolni_okvir"><span class="ukljuceno"></span></span>
+                            </label>
+                        </label>
+                    </td>
+                </tr>
             </table>
         </section>
 
         <section class="tvrtka">
-            <h3>Podatci tvrtke :</h3>
+            <h3>Podatci firme ili obrta :</h3>
             <table>
                 <tr>
                     <td>
                         <label data-boja="boja" class="unos">
-                            <input type="text" name="tvrtka" value="{{forma_tvrtka}}" maxlength="100" autocomplete="off" placeholder="Upišite naziv vaše tvrtke">
+                            <input type="text" name="tvrtka" value="{{forma_tvrtka}}" maxlength="100" autocomplete="off" placeholder="Upišite naziv vaše firme ili obrta">
                             <span class="naslov">
-                                <span>Tvrtka</span>
+                                <span>Naziv firme ili obrta</span>
                             </span>
                             <span class="granica"></span>
                             <svg><use xlink:href="/kapriol/resursi/grafika/simboli/simbol.ikone.svg#tvrtka"></use></svg>
@@ -160,6 +160,19 @@
                             </span>
                             <span class="granica"></span>
                             <svg><use xlink:href="/kapriol/resursi/grafika/simboli/simbol.ikone.svg#oib"></use></svg>
+                            <span class="upozorenje"></span>
+                        </label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label data-boja="boja" class="unos">
+                            <input type="text" name="tvrtkaadresa" value="{{forma_tvrtka_adresa}}" maxlength="100" autocomplete="off" placeholder="Upišite adresu vaše firme ili obrta">
+                            <span class="naslov">
+                                <span>Adresa firme ili obrta</span>
+                            </span>
+                            <span class="granica"></span>
+                            <svg><use xlink:href="/kapriol/resursi/grafika/simboli/simbol.ikone.svg#adresa"></use></svg>
                             <span class="upozorenje"></span>
                         </label>
                     </td>

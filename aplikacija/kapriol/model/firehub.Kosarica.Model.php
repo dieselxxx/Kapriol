@@ -387,6 +387,7 @@ final class Kosarica_Model extends Master_Model {
         $zip = $_POST['zip'];
         $tvrtka = $_POST['tvrtka'];
         $oib = $_POST['oib'];
+        $tvrtkaadresa = $_POST['tvrtkaadresa'];
         $placanje = $_POST['placanje'];
         $napomena = $_POST['napomena'];
 
@@ -397,6 +398,7 @@ final class Kosarica_Model extends Master_Model {
         //$zip = Validacija::Broj(_('Vaš poštanski broj'), $zip, 5, 5);
         if($tvrtka <> '') {$tvrtka = Validacija::Prilagodjen('/^[a-zšđčćžA-ZŠĐČĆŽ0-9-. ]+$/i', _('Vaša tvrtka'), $tvrtka, 4, 100);}
         if($oib <> '') {$oib = Validacija::Broj(_('Vaš OIB \ PDV \ ID tvrtke'), $oib, 1, 100);}
+        if($tvrtkaadresa <> '') {$tvrtkaadresa = Validacija::String(_('Vaša adresa tvrtka'), $tvrtkaadresa, 4, 100);}
         $placanje = Validacija::Broj(_('Plaćanje'), $placanje, 1, 1);
         $napomena = Validacija::String("Vaša napomena", $napomena, 0, 1000);
 
@@ -451,6 +453,7 @@ final class Kosarica_Model extends Master_Model {
             "zip" => $zip,
             "tvrtka" => $tvrtka,
             "oib" => $oib,
+            "tvrtkaadresa" => $tvrtkaadresa,
             "placanje" => $placanje == 1 ? 'Plaćanje pouzećem - gotovina' : 'Virman',
             "domena_oibpdv" => Domena::OIBPDV(),
             "napomena" => $napomena,
@@ -479,6 +482,7 @@ final class Kosarica_Model extends Master_Model {
             "adresa" => $adresa,
             "zip" => $zip,
             "tvrtka" => $tvrtka,
+            "tvrtkaadresa" => $tvrtkaadresa,
             "oib" => $oib,
             "placanje" => $placanje == 1 ? 'Plaćanje pouzećem - gotovina' : 'Virman',
             "domena_oibpdv" => Domena::OIBPDV(),
