@@ -86,7 +86,9 @@ final class Naslovna_Kontroler extends Master_Kontroler {
             'gdpr' => $gdpr->html(),
             'dostavaLimit' => ''.Domena::dostavaLimit().'',
             'valuta' => ''.Domena::valuta().'',
-            'obavijesti' => $obavijest_html
+            'obavijesti' => $obavijest_html,
+            'reklama1vrijeme' => ''.filemtime(APLIKACIJA_ROOT.'../../'.konfiguracija('sustav.putanje.web').'kapriol/resursi/grafika/reklame/reklama1.jpg').'',
+            'reklama2vrijeme' => ''.filemtime(APLIKACIJA_ROOT.'../../'.konfiguracija('sustav.putanje.web').'kapriol/resursi/grafika/reklame/reklama2.jpg').''
         ]);
 
     }
