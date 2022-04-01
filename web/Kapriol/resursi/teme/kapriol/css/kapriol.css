@@ -578,10 +578,11 @@ footer > div.info > span {grid-column: 3 / 5; grid-row: 2 / 3; justify-self: cen
     main > div#sadrzaj.narudzba > form.podatci > section.greska {grid-column: 1 / 2;}
     main > div#sadrzaj.narudzba > form.podatci > section.podatci {grid-column: 1 / 2; grid-row: 2 / 3;}
     main > div#sadrzaj.narudzba > form.podatci > section.dostava {grid-column: 1 / 2; grid-row: 3 / 4;}
-    main > div#sadrzaj.narudzba > form.podatci > section.tvrtka {grid-column: 1 / 2; grid-row: 4 / 5;}
-    main > div#sadrzaj.narudzba > form.podatci > section.zastita {grid-column: 1 / 2; grid-row: 5 / 6;}
-    main > div#sadrzaj.narudzba > form.podatci > section.napomena {grid-column: 1 / 2; grid-row: 6 / 7;}
-    main > div#sadrzaj.narudzba > form.podatci > section.posalji {grid-column: 1 / 2; grid-row: 7 / 8;}
+    main > div#sadrzaj.narudzba > form.podatci > section.opcije {grid-column: 1 / 2; grid-row: 4 / 5;}
+    main > div#sadrzaj.narudzba > form.podatci > section.tvrtka {grid-column: 1 / 2; grid-row: 5 / 6;}
+    main > div#sadrzaj.narudzba > form.podatci > section.zastita {grid-column: 1 / 2; grid-row: 6 / 7;}
+    main > div#sadrzaj.narudzba > form.podatci > section.napomena {grid-column: 1 / 2; grid-row: 7 / 8;}
+    main > div#sadrzaj.narudzba > form.podatci > section.posalji {grid-column: 1 / 2; grid-row: 8 / 9;}
     main > div#sadrzaj.poslovnice {grid-template-columns: 1fr;}
     main > div#sadrzaj.poslovnice div.vi_ste_ovdje {grid-column: 1 / 2;}
     main > div#sadrzaj.poslovnice iframe {grid-column: 1 / 2; grid-row: 2 / 3;}
