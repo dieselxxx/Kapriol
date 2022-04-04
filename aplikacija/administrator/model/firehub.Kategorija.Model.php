@@ -98,6 +98,11 @@ final class Kategorija_Model extends Master_Model {
                 ->napravi();
             
         } else {
+            
+            $kategorija = $this->bazaPodataka
+                ->sirovi("
+            ")
+                ->napravi();
 
         }
     
