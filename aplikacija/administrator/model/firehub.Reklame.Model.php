@@ -15,6 +15,8 @@
 namespace FireHub\Aplikacija\Administrator\Model;
 
 use FireHub\Aplikacija\Administrator\Jezgra\PrijenosDatoteka;
+use FireHub\Aplikacija\Kapriol\Jezgra\Validacija;
+use FireHub\Jezgra\Komponente\BazaPodataka\BazaPodataka;
 
 /**
  * ### Reklame
@@ -24,6 +26,18 @@ use FireHub\Aplikacija\Administrator\Jezgra\PrijenosDatoteka;
  * @package Aplikacija\Model
  */
 final class Reklame_Model extends Master_Model {
+
+    /**
+     * ### Konstruktor
+     * @since 0.1.2.pre-alpha.M1
+     */
+    public function __construct (
+        private BazaPodataka $bazaPodataka
+    ){
+
+        parent::__construct();
+
+    }
 
     /**
      * ### Dodaj sliku artikla
@@ -39,6 +53,26 @@ final class Reklame_Model extends Master_Model {
         $datoteka->DozvoljenaVelicina(5000);
         $datoteka->PrijenosDatoteke();
         $datoteka->SlikaDimenzije(1400, 700);
+
+    }
+
+    /**
+     * ### Spremi reklamu
+     * @since 0.1.2.pre-alpha.M1
+     */
+    public function spremi (string $id) {
+
+        $id = Validacija::String(_('ID reklame'), $id, 1, 10);
+
+        $artikal = $_REQUEST[$id];
+
+        $reklama = $this->bazaPodataka
+            ->sirovi("
+                UPDATE reklame
+                    SET ArtikalID = '$artikal'
+                WHERE reklame.Naziv = '$id'
+            ")
+            ->napravi();
 
     }
 
