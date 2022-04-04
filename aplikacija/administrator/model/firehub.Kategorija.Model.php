@@ -68,3 +68,60 @@ final class Kategorija_Model extends Master_Model {
         return $kategorija;
 
     }
+    
+    /**
+     * ### Izbrisi kategoriju
+     * @since 0.1.2.pre-alpha.M1
+     */
+    public function izbrisi (int $id) {
+
+        $id = Validacija::Broj(_('ID kategorije'), $id, 1, 10);
+
+        $broj = $this->bazaPodataka
+            ->sirovi("
+                SELECT *
+                FROM artikli
+                WHERE KategorijaID = $id
+            ")
+            ->napravi();
+
+        if ($broj->broj_zapisa() > 0) {
+
+            throw new Greska('Ne možete izbrisati kategoriju jer imate artikala u njoj!');
+
+        }
+
+        $kategorija = $this->bazaPodataka
+            ->sirovi("
+                DELETE FROM kategorije
+                WHERE kategorije.ID = $id
+            ")
+            ->napravi();
+
+    }
+
+    /**
+     * ### Dodaj sliku kategorije
+     * @since 0.1.2.pre-alpha.M1
+     */
+    public function dodajSliku (int $id) {
+
+        // prenesi sliku
+        $datoteka = new PrijenosDatoteka('slika');
+        $datoteka->Putanja(FIREHUB_ROOT.konfiguracija('sustav.putanje.web').'kapriol'.RAZDJELNIK_MAPE.'resursi'.RAZDJELNIK_MAPE.'grafika'.RAZDJELNIK_MAPE.'kategorije'.RAZDJELNIK_MAPE);
+        $datoteka->DozvoljeneVrste(array('image/jpeg', 'image/png'));
+        $datoteka->DozvoljenaVelicina(1000);
+        $datoteka->PrijenosDatoteke();
+        $datoteka->SlikaDimenzije(800, 600);
+
+        $this->bazaPodataka
+            ->sirovi("
+            UPDATE kategorije
+            SET Slika = '{$datoteka->ImeDatoteke()}'
+            WHERE kategorije.ID = $id
+        ")
+            ->napravi();
+
+    }
+
+}
