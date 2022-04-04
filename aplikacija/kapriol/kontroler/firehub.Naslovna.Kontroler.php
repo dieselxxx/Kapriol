@@ -88,7 +88,8 @@ final class Naslovna_Kontroler extends Master_Kontroler {
             'valuta' => ''.Domena::valuta().'',
             'obavijesti' => $obavijest_html,
             'reklama1vrijeme' => ''.filemtime(APLIKACIJA_ROOT.'../../'.konfiguracija('sustav.putanje.web').'kapriol/resursi/grafika/reklame/reklama1.jpg').'',
-            'reklama2vrijeme' => ''.filemtime(APLIKACIJA_ROOT.'../../'.konfiguracija('sustav.putanje.web').'kapriol/resursi/grafika/reklame/reklama2.jpg').''
+            'reklama2vrijeme' => ''.filemtime(APLIKACIJA_ROOT.'../../'.konfiguracija('sustav.putanje.web').'kapriol/resursi/grafika/reklame/reklama2.jpg').'',
+            'reklama3vrijeme' => ''.filemtime(APLIKACIJA_ROOT.'../../'.konfiguracija('sustav.putanje.web').'kapriol/resursi/grafika/reklame/reklama3.jpg').''
         ]);
 
     }
