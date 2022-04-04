@@ -18,7 +18,7 @@ final class Domena {
 
     public static function Ba ():bool {
 
-        if (Server::Domena() === 'privremenadomena.lin77.host25.com') {
+        if (Server::Domena() === 'localhost:223') {
 
             return true;
 
@@ -28,7 +28,7 @@ final class Domena {
 
     public static function Hr ():bool {
 
-        if (Server::Domena() === 'localhost:223') {
+        if (Server::Domena() === 'privremenadomena.lin77.host25.com') {
 
             return true;
 
