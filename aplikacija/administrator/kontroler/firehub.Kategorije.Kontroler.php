@@ -92,6 +92,7 @@ final class Kategorije_Kontroler extends Master_Kontroler {
             'id' => $kategorija['ID'],
             'naziv' => $kategorija['Kategorija'],
             'slika' => $kategorija['Slika'] ?? '',
+            'redoslijed' => $kategorija['Prioritet'],
             'calc_velicina' => $kategorija['CalcVelicina']
         ]);
 
