@@ -70,6 +70,14 @@ final class Kategorija_Model extends Master_Model {
     }
     
     /**
+     * ### Spremi kategoriju
+     * @since 0.1.2.pre-alpha.M1
+     */
+    public function spremi (int $id) {
+    
+    }
+    
+    /**
      * ### Izbrisi kategoriju
      * @since 0.1.2.pre-alpha.M1
      */
