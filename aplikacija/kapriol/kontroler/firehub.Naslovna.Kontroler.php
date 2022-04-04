@@ -45,6 +45,7 @@ final class Naslovna_Kontroler extends Master_Kontroler {
 
         $kategorije = $this->model(Kategorije_Model::class);
 
+        // obavijesti
         $obavijest_html = '';
         $obavijesti = $bazaPodataka->tabela('obavijesti')
             ->sirovi("
@@ -68,6 +69,16 @@ final class Naslovna_Kontroler extends Master_Kontroler {
 
         }
 
+        // reklame
+        $reklame = $bazaPodataka->tabela('reklame')
+            ->sirovi("
+                SELECT 
+                    artikliview.Link
+                FROM reklame
+                LEFT JOIN artikliview ON artikliview.ID = reklame.ArtikalID
+            ")->napravi();
+        $reklame_niz = $reklame->niz();
+
         return sadrzaj()->datoteka('naslovna.html')->podatci([
             'predlozak_naslov' => 'Naslovna',
             'facebook_link' => Domena::facebook(),
@@ -89,7 +100,10 @@ final class Naslovna_Kontroler extends Master_Kontroler {
             'obavijesti' => $obavijest_html,
             'reklama1vrijeme' => ''.filemtime(APLIKACIJA_ROOT.'../../'.konfiguracija('sustav.putanje.web').'kapriol/resursi/grafika/reklame/reklama1.jpg').'',
             'reklama2vrijeme' => ''.filemtime(APLIKACIJA_ROOT.'../../'.konfiguracija('sustav.putanje.web').'kapriol/resursi/grafika/reklame/reklama2.jpg').'',
-            'reklama3vrijeme' => ''.filemtime(APLIKACIJA_ROOT.'../../'.konfiguracija('sustav.putanje.web').'kapriol/resursi/grafika/reklame/reklama3.jpg').''
+            'reklama3vrijeme' => ''.filemtime(APLIKACIJA_ROOT.'../../'.konfiguracija('sustav.putanje.web').'kapriol/resursi/grafika/reklame/reklama3.jpg').'',
+            'reklama1link' => $reklame_niz[0]['Link'] ? 'href="/artikl/'.$reklame_niz[0]['Link'].'"' : '',
+            'reklama2link' => $reklame_niz[1]['Link'] ? 'href="/artikl/'.$reklame_niz[1]['Link'].'"': '',
+            'reklama3link' => $reklame_niz[2]['Link'] ? 'href="/artikl/'.$reklame_niz[2]['Link'].'"': ''
         ]);
 
     }
