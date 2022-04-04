@@ -427,9 +427,9 @@ final class Kosarica_Model extends Master_Model {
 
             $email_artikli_korisnik .= "
             <tr>
-                <td>{$artikal['Sifra']}</td>
+                <td align='center'>{$artikal['Sifra']}</td>
                 <td align='center' style='text-align: center;'>{$artikal['Velicina']}</td>
-                <td>{$artikal['Naziv']}</td>
+                <td align='left'>{$artikal['Naziv']}</td>
                 <td align='center' style='text-align: center;'>{$artikal['Kolicina']} kom</td>
                 <td align='right' style='text-align: right;'>$artikl_cijena ".Domena::valuta()."</td>
                 <td align='right' style='text-align: right;'>{$artikal['CijenaUkupno']} ".Domena::valuta()."</td>
@@ -447,15 +447,14 @@ final class Kosarica_Model extends Master_Model {
             "ime" => $ime,
             "email" => $email,
             "telefon" => $telefon,
-            "r1" => $r1 ? 'da' : 'ne',
+            "r1" => $r1 ? '<tr><td align="left">Potreban R1 račun: <b>da</b></td></tr>' : '',
             "grad" => $grad,
             "adresa" => $adresa,
             "zip" => $zip,
-            "tvrtka" => $tvrtka,
-            "oib" => $oib,
-            "tvrtkaadresa" => $tvrtkaadresa,
+            "tvrtka" => $tvrtka ? '<tr><td align="left">Tvrtka: <b>'.$tvrtka.'</b></td></tr>': '',
+            "oib" => $oib ? '<tr><td align="left">'.Domena::OIBPDV().': <b>'.$oib.'</b></td></tr>' : '',
+            "tvrtkaadresa" => $tvrtkaadresa ? '<tr><td align="left">Adresa tvrtke: <b>'.$tvrtkaadresa.'</b></td></tr>' : '',
             "placanje" => $placanje == 1 ? 'Plaćanje pouzećem - gotovina' : 'Virman',
-            "domena_oibpdv" => Domena::OIBPDV(),
             "napomena" => $napomena,
             "datum" =>  date("d.m.Y"),
             "valuta" => Domena::valuta(),
