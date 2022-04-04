@@ -405,6 +405,10 @@ final class Kosarica_Model extends Master_Model {
         // pošalji email
         $email_artikli_korisnik = '';
         $artikli = $this->artikli();
+        if (empty($artikli)) {
+            zapisnik(Level::KRITICNO, 'Prazna košarica!');
+            throw new Kontroler_Greska(_('Vaša košarica je prazna.'));
+        }
         $total_kolicina = 0;
         $total_cijena = 0;
         foreach ($artikli as $artikal) {
