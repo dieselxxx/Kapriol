@@ -102,6 +102,7 @@ final class Kategorija_Model extends Master_Model {
             $kategorija = $this->bazaPodataka
                 ->sirovi("
                 UPDATE kategorije
+                SET Kategorija = '$naziv', Prioritet = '$redoslijed', CalcVelicina = '$calc_velcina'
                 WHERE kategorije.ID = $id
             ")
                 ->napravi();
