@@ -79,6 +79,13 @@ final class Kategorija_Model extends Master_Model {
 
         $naziv = $_REQUEST['naziv'];
         $naziv = Validacija::String(_('Naziv kategorije'), $naziv, 3, 250);
+        
+        $redoslijed = $_REQUEST['redoslijed'];
+        $redoslijed = Validacija::Broj(_('Redoslijed kategorije'), $redoslijed, 1, 10);
+
+        $calc_velcina = $_REQUEST["calc_velicina"] ?? null;
+        $calc_velcina = Validacija::Potvrda(_('BA'), $calc_velcina);
+        if ($calc_velcina == "on") {$calc_velcina = 1;} else {$calc_velcina = 0;}
     
     }
     
