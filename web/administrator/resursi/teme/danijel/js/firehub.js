@@ -1602,3 +1602,51 @@ $_KategorijaSpremiSliku = function ($url) {
     return false;
 
 };
+
+/**
+ * Spremi reklamu.
+ */
+$_ReklamaSpremi = function (element) {
+
+    // dialog prozor
+    let dialog = new Dialog();
+
+    let reklama_forma = $(element).closest('form');
+
+    let $id = reklama_forma.data("id");
+
+    let $podatci = reklama_forma.serializeArray();
+
+    $.ajax({
+        type: 'POST',
+        url: '/administrator/reklame/spremi/' + $id,
+        dataType: 'json',
+        data: $podatci,
+        beforeSend: function () {
+            $(element).closest('form').find('table tr.poruka td').empty();
+        },
+        success: function (odgovor) {
+            if (odgovor.Validacija === "da") {
+                Dialog.dialogOcisti();
+                Dialog.dialogOtvori();
+                dialog.naslov('Uspješno spremljeno');
+                dialog.sadrzaj('Postavke reklame su spremljene!');
+                dialog.kontrole('<button data-boja="boja" onclick="Dialog.dialogZatvori()">Zatvori</button>');
+
+            } else {
+                $(element).closest('form').find('table tr.poruka td').append(odgovor.Poruka);
+            }
+        },
+        error: function () {
+            Dialog.dialogOcisti();
+            dialog.naslov('Greška');
+            dialog.naslov('Dogodila se greška prilikom učitavanja podataka, molimo kontaktirajte administratora');
+            dialog.kontrole('<button data-boja="boja" onclick="Dialog.dialogZatvori()">Zatvori</button>');
+        },
+        complete: function (odgovor) {
+        }
+    });
+
+    return false;
+
+};

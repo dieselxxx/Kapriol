@@ -1,4 +1,4 @@
-<form class="slika" data-oznaka="slika1" method="post" enctype="multipart/form-data" action="/administrator/reklame/dodajsliku/reklama1">
+<form class="slika" data-oznaka="slika1" data-id="reklama1" method="post" enctype="multipart/form-data" action="/administrator/reklame/dodajsliku/reklama1">
 
     <section>
         <div class="zaglavlje veliko">
@@ -21,6 +21,24 @@
                             </label>
                         </td>
                     </tr>
+                    <tr>
+                        <td>
+                            <label data-boja="boja" class="select">
+                                <select class="input-select" name="reklama1">
+                                    <option value="">=== odaberite artikl ===</option>
+                                    {{artikli}}
+                                </select>
+                                <span class="select-odabrano"></span>
+                                <span class="select-granica"></span>
+                                <label class="select-odaberite">Artikal</label>
+                            </label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <button type="button" class="ikona" onclick="$_ReklamaSpremi(this, 'forma');"><svg><use xlink:href="/kapriol/resursi/grafika/simboli/simbol.ikone.svg#spremi"></use></svg><span>Spremi</span></button>
+                        </td>
+                    </tr>
                 </tbody>
             </table>
         </div>
@@ -28,7 +46,7 @@
 
 </form>
 
-<form class="slika" data-oznaka="slika2" method="post" enctype="multipart/form-data" action="/administrator/reklame/dodajsliku/reklama2">
+<form class="slika" data-oznaka="slika2" data-id="reklama2" method="post" enctype="multipart/form-data" action="/administrator/reklame/dodajsliku/reklama2">
     <section>
         <div class="zaglavlje veliko">
             <svg><use xlink:href="/kapriol/resursi/grafika/simboli/simbol.ikone.svg#artikl"></use></svg>
@@ -50,13 +68,31 @@
                             </label>
                         </td>
                     </tr>
+                    <tr>
+                        <td>
+                            <label data-boja="boja" class="select">
+                                <select class="input-select" name="reklama2">
+                                    <option value="">=== odaberite artikl ===</option>
+                                    {{artikli}}
+                                </select>
+                                <span class="select-odabrano"></span>
+                                <span class="select-granica"></span>
+                                <label class="select-odaberite">Artikal</label>
+                            </label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <button type="button" class="ikona" onclick="$_ReklamaSpremi(this, 'forma');"><svg><use xlink:href="/kapriol/resursi/grafika/simboli/simbol.ikone.svg#spremi"></use></svg><span>Spremi</span></button>
+                        </td>
+                    </tr>
                 </tbody>
             </table>
         </div>
     </section>
 </form>
 
-<form class="slika" data-oznaka="slika3" method="post" enctype="multipart/form-data" action="/administrator/reklame/dodajsliku/reklama3">
+<form class="slika" data-oznaka="slika3" data-id="reklama3" method="post" enctype="multipart/form-data" action="/administrator/reklame/dodajsliku/reklama3">
     <section>
         <div class="zaglavlje veliko">
             <svg><use xlink:href="/kapriol/resursi/grafika/simboli/simbol.ikone.svg#artikl"></use></svg>
@@ -66,18 +102,36 @@
         <div class="sadrzaj">
             <table>
                 <tbody>
-                <tr>
-                    <td>
-                        <label>
-                            <div class="input_slika">
-                                <label for="reklama3">
-                                    <img width="500px" src="/slika/reklama/reklama3.jpg">
-                                </label>
-                                <input type="file" name="reklama3" id="reklama3" accept="image/jpeg">
-                            </div>
-                        </label>
-                    </td>
-                </tr>
+                    <tr>
+                        <td>
+                            <label>
+                                <div class="input_slika">
+                                    <label for="reklama3">
+                                        <img width="500px" src="/slika/reklama/reklama3.jpg">
+                                    </label>
+                                    <input type="file" name="reklama3" id="reklama3" accept="image/jpeg">
+                                </div>
+                            </label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label data-boja="boja" class="select">
+                                <select class="input-select" name="reklama3">
+                                    <option value="">=== odaberite artikl ===</option>
+                                    {{artikli}}
+                                </select>
+                                <span class="select-odabrano"></span>
+                                <span class="select-granica"></span>
+                                <label class="select-odaberite">Artikal</label>
+                            </label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <button data-id="reklama3" type="button" class="ikona" onclick="$_ReklamaSpremi(this, 'forma');"><svg><use xlink:href="/kapriol/resursi/grafika/simboli/simbol.ikone.svg#spremi"></use></svg><span>Spremi</span></button>
+                        </td>
+                    </tr>
                 </tbody>
             </table>
         </div>
