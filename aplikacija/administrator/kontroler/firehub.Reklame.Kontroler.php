@@ -15,6 +15,7 @@
 namespace FireHub\Aplikacija\Administrator\Kontroler;
 
 use FireHub\Aplikacija\Administrator\Model\Artikl_Model;
+use FireHub\Aplikacija\Administrator\Model\Artikli_Model;
 use FireHub\Aplikacija\Administrator\Model\Reklame_Model;
 use FireHub\Jezgra\Greske\Greska;
 use FireHub\Jezgra\HTTP\Atributi\Zaglavlja;
@@ -38,7 +39,20 @@ final class Reklame_Kontroler extends Master_Kontroler {
      */
     public function index ():Sadrzaj {
 
-        return sadrzaj()->datoteka('reklame.html')->podatci([]);
+        // artikli
+        $artikli_model = $this->model(Artikli_Model::class);
+        $artikli_model->limit_zapisa_po_stranici = 10000;
+        $artikli = $artikli_model->lista();
+        $artikli_html = '';
+        foreach ($artikli as $artikl) {
+
+            $artikli_html .= "<option value='{$artikl['ID']}'>{$artikl['Naziv']}</option>";
+
+        }
+
+        return sadrzaj()->datoteka('reklame.html')->podatci([
+            'artikli' => $artikli_html
+        ]);
 
     }
 
@@ -60,6 +74,36 @@ final class Reklame_Kontroler extends Master_Kontroler {
             return sadrzaj()->format(Sadrzaj_Vrsta::JSON)->podatci([
                 'Validacija' => 'da',
                 'Poruka' => _('Uspješno spremljeno')
+            ]);
+
+        } catch (Greska $greska) {
+
+            return sadrzaj()->format(Sadrzaj_Vrsta::JSON)->podatci([
+                'Validacija' => 'ne',
+                'Poruka' => $greska->getMessage()
+            ]);
+
+        }
+
+    }
+
+    /**
+     * ## Spremi reklamu
+     * @since 0.1.2.pre-alpha.M1
+     *
+     * @return Sadrzaj Sadržaj stranice.
+     */
+    public function spremi (string $kontroler = '', string $metoda = '', string $id = '') {
+
+        try {
+
+            // model
+            $artikl = $this->model(Reklame_Model::class);
+            $artikl->spremi($id);
+
+            return sadrzaj()->format(Sadrzaj_Vrsta::JSON)->podatci([
+                'Validacija' => 'da',
+                'Poruka' => _('Postavke spremljene')
             ]);
 
         } catch (Greska $greska) {
