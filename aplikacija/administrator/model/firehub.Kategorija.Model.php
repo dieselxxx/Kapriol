@@ -96,6 +96,10 @@ final class Kategorija_Model extends Master_Model {
                 WHERE kategorije.ID = $id
             ")
                 ->napravi();
+            
+        } else {
+
+        }
     
     }
     
