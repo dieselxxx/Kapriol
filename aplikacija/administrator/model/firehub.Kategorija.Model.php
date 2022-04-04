@@ -74,6 +74,11 @@ final class Kategorija_Model extends Master_Model {
      * @since 0.1.2.pre-alpha.M1
      */
     public function spremi (int $id) {
+        
+        $id = Validacija::Broj(_('ID kategorije'), $id, 1, 10);
+
+        $naziv = $_REQUEST['naziv'];
+        $naziv = Validacija::String(_('Naziv kategorije'), $naziv, 3, 250);
     
     }
     
