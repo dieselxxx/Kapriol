@@ -72,7 +72,7 @@ final class Reklame_Model extends Master_Model {
         $reklama = $this->bazaPodataka
             ->sirovi("
                 UPDATE reklame
-                    SET ArtikalID = '$artikal'
+                    SET KategorijaID = '$kategorija', PodKategorijaID = '$podkategorija'
                 WHERE reklame.Naziv = '$id'
             ")
             ->napravi();
