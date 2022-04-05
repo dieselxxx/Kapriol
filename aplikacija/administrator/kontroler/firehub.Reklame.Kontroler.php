@@ -16,6 +16,7 @@ namespace FireHub\Aplikacija\Administrator\Kontroler;
 
 use FireHub\Aplikacija\Administrator\Model\Artikl_Model;
 use FireHub\Aplikacija\Administrator\Model\Artikli_Model;
+use FireHub\Aplikacija\Administrator\Model\Kategorije_Model;
 use FireHub\Aplikacija\Administrator\Model\Reklame_Model;
 use FireHub\Jezgra\Greske\Greska;
 use FireHub\Jezgra\HTTP\Atributi\Zaglavlja;
@@ -39,19 +40,27 @@ final class Reklame_Kontroler extends Master_Kontroler {
      */
     public function index ():Sadrzaj {
 
-        // artikli
-        $artikli_model = $this->model(Artikli_Model::class);
-        $artikli_model->limit_zapisa_po_stranici = 10000;
-        $artikli = $artikli_model->lista();
-        $artikli_html = '';
-        foreach ($artikli as $artikl) {
+        // kategorije
+        $kategorije_model = $this->model(Kategorije_Model::class);
+        $kategorije = $kategorije_model->lista(limit_zapisa_po_stranici: 100);
+        $kategorije_html = '';
+        foreach ($kategorije as $kategorija) {
 
-            $artikli_html .= "<option value='{$artikl['ID']}'>{$artikl['Naziv']}</option>";
+            $kategorije_html .= "<option value='{$kategorija['ID']},0'>{$kategorija['Kategorija']}</option>";
+
+            // podkategorije
+            $podkategorije = $kategorije_model->podkategorije($kategorija['ID']);
+
+            foreach ($podkategorije as $podkategorija) {
+
+                $kategorije_html .= "<option value='{$kategorija['ID']},{$podkategorija['ID']}'>{$kategorija['Kategorija']} ->> {$podkategorija['Podkategorija']}</option>";
+
+            }
 
         }
 
         return sadrzaj()->datoteka('reklame.html')->podatci([
-            'artikli' => $artikli_html
+            'kategorije' => $kategorije_html
         ]);
 
     }
