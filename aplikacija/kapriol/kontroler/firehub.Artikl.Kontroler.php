@@ -122,7 +122,7 @@ final class Artikl_Kontroler extends Master_Kontroler {
 
                 $artikl_zaliha_html .= '
                 <li>
-                    <div class="radio">
+                    <div class="sifraArtikla radio" data-tippy-content="'.$zaliha['artiklikarakteristikeSifra'].'">
                         <input id="'.$zaliha['Velicina'].'" type="radio" name="velicina" value="'.$zaliha['artiklikarakteristikeSifra'].'">
                         <label for="'.$zaliha['Velicina'].'">'.$zaliha['Velicina'].'</label>
                     </div>
