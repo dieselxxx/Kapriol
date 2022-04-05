@@ -64,7 +64,10 @@ final class Reklame_Model extends Master_Model {
 
         $id = Validacija::String(_('ID reklame'), $id, 1, 10);
 
-        $artikal = $_REQUEST[$id];
+        $kategorija_stavke = $_REQUEST[$id];
+        $kategorija_stavke = explode(',', $kategorija_stavke);
+        empty($kategorija_stavke[0]) ? $kategorija = 0 : $kategorija = Validacija::Broj(_('Kategorija artikla'), $kategorija_stavke[0], 1, 7);
+        empty($kategorija_stavke[1]) ? $podkategorija = 0 : $podkategorija = Validacija::Broj(_('Podkategorija artikla'), $kategorija_stavke[1], 1, 7);
 
         $reklama = $this->bazaPodataka
             ->sirovi("
