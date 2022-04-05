@@ -69,24 +69,6 @@ final class Naslovna_Kontroler extends Master_Kontroler {
 
         }
 
-        // reklame
-        $reklame = $bazaPodataka->tabela('reklame')
-            ->sirovi("
-                SELECT
-                    (CASE
-                        WHEN reklame.KategorijaID = 0 THEN 'sve'
-                        ELSE kategorijeview.Link
-                    END) AS KategorijaLink,
-                    (CASE
-                        WHEN reklame.PodKategorijaID = 0 THEN 'sve'
-                        ELSE podkategorijeview.Link
-                    END) AS PodKategorijaLink
-                FROM reklame
-                LEFT JOIN kategorijeview ON kategorijeview.ID = reklame.KategorijaID
-                LEFT JOIN podkategorijeview ON podkategorijeview.ID = reklame.PodKategorijaID
-            ")->napravi();
-        $reklame_niz = $reklame->niz();
-
         return sadrzaj()->datoteka('naslovna.html')->podatci([
             'predlozak_naslov' => 'Naslovna',
             'facebook_link' => Domena::facebook(),
@@ -106,12 +88,7 @@ final class Naslovna_Kontroler extends Master_Kontroler {
             'dostavaLimit' => ''.Domena::dostavaLimit().'',
             'valuta' => ''.Domena::valuta().'',
             'obavijesti' => $obavijest_html,
-            'reklama1vrijeme' => ''.filemtime(APLIKACIJA_ROOT.'../../'.konfiguracija('sustav.putanje.web').'kapriol/resursi/grafika/reklame/reklama1.jpg').'',
-            'reklama2vrijeme' => ''.filemtime(APLIKACIJA_ROOT.'../../'.konfiguracija('sustav.putanje.web').'kapriol/resursi/grafika/reklame/reklama2.jpg').'',
-            'reklama3vrijeme' => ''.filemtime(APLIKACIJA_ROOT.'../../'.konfiguracija('sustav.putanje.web').'kapriol/resursi/grafika/reklame/reklama3.jpg').'',
-            'reklama1link' => $reklame_niz[0]['KategorijaLink'] !== 'sve' ? 'href="/rezultat/'.$reklame_niz[0]['KategorijaLink'].'/'.$reklame_niz[0]['PodKategorijaLink'].'/sve velicine/svi artikli/"' : '',
-            'reklama2link' => $reklame_niz[1]['KategorijaLink'] !== 'sve' ? 'href="/rezultat/'.$reklame_niz[1]['KategorijaLink'].'/'.$reklame_niz[1]['PodKategorijaLink'].'/sve velicine/svi artikli/"' : '',
-            'reklama3link' => $reklame_niz[2]['KategorijaLink'] !== 'sve' ? 'href="/rezultat/'.$reklame_niz[2]['KategorijaLink'].'/'.$reklame_niz[2]['PodKategorijaLink'].'/sve velicine/svi artikli/"' : ''
+            'reklama1vrijeme' => ''.filemtime(APLIKACIJA_ROOT.'../../'.konfiguracija('sustav.putanje.web').'kapriol/resursi/grafika/reklame/reklama1.jpg').''
         ]);
 
     }
