@@ -123,7 +123,12 @@ final class Kosarica_Kontroler extends Master_Kontroler {
                 }
 
                 // ukupno
-                $total_kolicina += $artikal['Kolicina'];
+                if ($artikal['Naziv'] !== 'Dostava') {
+
+                    // ukupno količina
+                    $total_kolicina += $artikal['Kolicina'];
+
+                }
                 $total_cijena += $artikal['CijenaUkupno'];
 
                 $kosarica_artikli_ukupno = '
