@@ -96,34 +96,4 @@ final class Reklame_Kontroler extends Master_Kontroler {
 
     }
 
-    /**
-     * ## Spremi reklamu
-     * @since 0.1.2.pre-alpha.M1
-     *
-     * @return Sadrzaj Sadržaj stranice.
-     */
-    public function spremi (string $kontroler = '', string $metoda = '', string $id = '') {
-
-        try {
-
-            // model
-            $artikl = $this->model(Reklame_Model::class);
-            $artikl->spremi($id);
-
-            return sadrzaj()->format(Sadrzaj_Vrsta::JSON)->podatci([
-                'Validacija' => 'da',
-                'Poruka' => _('Postavke spremljene')
-            ]);
-
-        } catch (Greska $greska) {
-
-            return sadrzaj()->format(Sadrzaj_Vrsta::JSON)->podatci([
-                'Validacija' => 'ne',
-                'Poruka' => $greska->getMessage()
-            ]);
-
-        }
-
-    }
-
 }
