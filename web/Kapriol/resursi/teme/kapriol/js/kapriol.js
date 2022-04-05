@@ -143,7 +143,8 @@ $(document).ready(function () {
         content: 'Plaćanje pouzećem / gotovina : plaćanje se vrši gotovinski prilikom preuzimanja pošiljke!',
     });
     tippy('.sifraArtikla', {
-        delay: [1000, 20]
+        delay: [1000, 20],
+        touch: ["hold", 500]
     });
 
 });
