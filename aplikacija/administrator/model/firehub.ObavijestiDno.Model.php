@@ -119,7 +119,8 @@ final class ObavijestiDno_Model extends Master_Model {
             foreach ($trazi as $stavka) {
                 
                 $trazi_array .= "
-                    
+                    AND (
+                    )
                 ";
 
             }
