@@ -114,6 +114,13 @@ final class ObavijestiDno_Model extends Master_Model {
          if (isset($_POST['pretraga'])) {
              
             $trazi = explode(' ', (string)$_POST['pretraga']);
+             
+            $trazi_array = '';
+            foreach ($trazi as $stavka) {
+
+            }
+
+            return $trazi_array;
 
          }
 
