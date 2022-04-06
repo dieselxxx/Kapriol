@@ -106,7 +106,7 @@ $(document).ready(function () {
     $('.slika > img').slika_zumiranje();
 
 
-    var swiper = new Swiper(".mySwiper", {
+    var swiper = new Swiper(".rotator", {
         spaceBetween: 30,
         centeredSlides: true,
         autoplay: {
