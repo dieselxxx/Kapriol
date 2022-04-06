@@ -916,6 +916,205 @@ $_ObavijestIzbrisi = function (element) {
 };
 
 /**
+ * Dohvati obavijesti.
+ *
+ * @param {object} element
+ * @param {int} $broj_stranice
+ * @param {string} $poredaj
+ * @param {string} $redoslijed
+ */
+$_ObavijestiDno = function (element = '', $broj_stranice = 1, $poredaj = 'Obavijest', $redoslijed = 'asc') {
+
+    let podatci = $('form[data-oznaka="obavijestidno_lista"]').serializeArray();
+
+    $.ajax({
+        type: 'POST',
+        url: '/administrator/obavijestidno/lista/' + $broj_stranice + '/' + $poredaj + '/' + $redoslijed,
+        dataType: 'json',
+        data: podatci,
+        success: function (odgovor) {
+            $('form[data-oznaka="obavijestidno_lista"] > section table tbody').empty();
+            let ObavijestiDno = odgovor.ObavijestiDno;
+            $.each(ObavijestiDno, function (a, ObavijestDno) {
+                if (ObavijestDno.Aktivan === "1") {ObavijestDno.Aktivan = '\
+                    <label data-boja="boja" class="kontrolni_okvir">\
+                        <input type="checkbox" disabled checked><span class="kontrolni_okvir"><span class="ukljuceno"></span></span>\
+                    </label>\
+                ';} else {ObavijestDno.Aktivan = '\
+                    <label data-boja="boja" class="kontrolni_okvir">\
+                        <input type="checkbox" disabled><span class="kontrolni_okvir"><span class="ukljuceno"></span></span>\
+                    </label>\
+                ';}
+                $('form[data-oznaka="obavijestidno_lista"] > section table tbody').append('\
+                    <tr onclick="$_ObavijestDno(\''+ ObavijestDno.ID +'\')">\
+                        <td class="uredi">'+ ObavijestDno.ID +'</td>\
+                        <td class="uredi">'+ ObavijestDno.Obavijest +'</td>\
+                        <td class="uredi"><img src="/slika/banerdno/'+ ObavijestDno.Obavijest +'" /></td>\
+                        <td class="uredi">'+ ObavijestDno.Redoslijed +'</td>\
+                    </tr>\
+                ');
+            });
+            // zaglavlje
+            let Zaglavlje = odgovor.Zaglavlje;
+            $('form[data-oznaka="obavijestidno_lista"] > section div.sadrzaj > table thead').empty().append(Zaglavlje);
+            // navigacija
+            let Navigacija = odgovor.Navigacija;
+            $('form[data-oznaka="obavijestidno_lista"] > section div.kontrole').empty().append('<ul class="navigacija">' + Navigacija.pocetak + '' + Navigacija.stranice + '' + Navigacija.kraj + '</ul>');
+        },
+        error: function () {
+        }
+    });
+
+    return false;
+
+};
+
+/**
+ * Uredi obavijest.
+ *
+ * @param {int} $id
+ */
+$_ObavijestDno = function ($id) {
+
+    // dialog prozor
+    let dialog = new Dialog();
+
+    $.ajax({
+        type: 'GET',
+        url: '/administrator/obavijestidno/uredi/' + $id,
+        dataType: 'html',
+        context: this,
+        beforeSend: function () {
+            Dialog.dialogOtvori(true);
+            dialog.sadrzaj(Loader_Krug);
+        },
+        success: function (odgovor) {
+            Dialog.dialogOcisti();
+            dialog.naslov('Obavijest: ' + $id);
+            dialog.sadrzaj(odgovor);
+            dialog.kontrole('<button data-boja="boja" onclick="Dialog.dialogZatvori()">Zatvori</button>');
+            dialog.kontrole('<button type="button" class="ikona" onclick="$_ObavijestDnoSpremi(this, \'forma\');"><svg><use xlink:href="/kapriol/resursi/grafika/simboli/simbol.ikone.svg#spremi"></use></svg><span>Spremi</span></button>');
+            dialog.kontrole('<button type="button" class="ikona" onclick="$_ObavijestDnoIzbrisi(this,  \'forma\');"><svg><use xlink:href="/kapriol/resursi/grafika/simboli/simbol.ikone.svg#izbrisi"></use></svg><span>Izbrisi</span></button>');
+        },
+        error: function () {
+            Dialog.dialogOcisti();
+            dialog.naslov('Greška');
+            dialog.naslov('Dogodila se greška prilikom učitavanja podataka, molimo kontaktirajte administratora');
+            dialog.kontrole('<button data-boja="boja" onclick="Dialog.dialogZatvori()">Zatvori</button>');
+        },
+        complete: function (odgovor) {
+            $(function () {
+                $('.tagovi').tagovi_input({
+                    width: 'auto'
+                });
+                $(".input-select").chosen({
+                    search_contains: true,
+                    width: '100%'
+                });
+            });
+        }
+    });
+
+    return false;
+
+};
+
+/**
+ * Spremi obavijest.
+ */
+$_ObavijestDnoSpremi = function (element) {
+
+    // dialog prozor
+    let dialog = new Dialog();
+
+    let obavijestdno_forma = $('form[data-oznaka="obavijestdno"]');
+
+    let $id = obavijestdno_forma.data("sifra");
+
+    let $podatci = obavijestdno_forma.serializeArray();
+
+    $.ajax({
+        type: 'POST',
+        url: '/administrator/obavijestidno/spremi/' + $id,
+        dataType: 'json',
+        data: $podatci,
+        beforeSend: function () {
+            $(element).closest('form').find('table tr.poruka td').empty();
+        },
+        success: function (odgovor) {
+            if (odgovor.Validacija === "da") {
+
+                Dialog.dialogOcisti();
+                dialog.naslov('Uspješno spremljeno');
+                dialog.sadrzaj('Postavke obavijesti su spremljene!');
+                dialog.kontrole('<button data-boja="boja" onclick="Dialog.dialogZatvori()">Zatvori</button>');
+
+            } else {
+                $(element).closest('form').find('table tr.poruka td').append(odgovor.Poruka);
+            }
+        },
+        error: function () {
+            Dialog.dialogOcisti();
+            dialog.naslov('Greška');
+            dialog.naslov('Dogodila se greška prilikom učitavanja podataka, molimo kontaktirajte administratora');
+            dialog.kontrole('<button data-boja="boja" onclick="Dialog.dialogZatvori()">Zatvori</button>');
+        },
+        complete: function (odgovor) {
+            $_ObavijestiDno();
+        }
+    });
+
+    return false;
+
+};
+
+/**
+ * Izbriši obavijest.
+ */
+$_ObavijestDnoIzbrisi = function (element) {
+
+    // dialog prozor
+    let dialog = new Dialog();
+
+    let obavijestdno_forma = $('form[data-oznaka="obavijestdno"]');
+
+    let $id = obavijestdno_forma.data("sifra");
+
+    $.ajax({
+        type: 'POST',
+        url: '/administrator/obavijestidno/izbrisi/' + $id,
+        dataType: 'json',
+        beforeSend: function () {
+            $(element).closest('form').find('table tr.poruka td').empty();
+        },
+        success: function (odgovor) {
+            if (odgovor.Validacija === "da") {
+
+                Dialog.dialogOcisti();
+                dialog.naslov('Uspješno izbrisano');
+                dialog.sadrzaj('Obavijest je izbrisana!');
+                dialog.kontrole('<button data-boja="boja" onclick="Dialog.dialogZatvori()">Zatvori</button>');
+
+            } else {
+                $(element).closest('form').find('table tr.poruka td').append(odgovor.Poruka);
+            }
+        },
+        error: function () {
+            Dialog.dialogOcisti();
+            dialog.naslov('Greška');
+            dialog.sadrzaj('Dogodila se greška prilikom učitavanja podataka, molimo kontaktirajte administratora');
+            dialog.kontrole('<button data-boja="boja" onclick="Dialog.dialogZatvori()">Zatvori</button>');
+        },
+        complete: function (odgovor) {
+            $_ObavijestiDno();
+        }
+    });
+
+    return false;
+
+};
+
+/**
  * Dohvati kategorije.
  *
  * @param {object} element
