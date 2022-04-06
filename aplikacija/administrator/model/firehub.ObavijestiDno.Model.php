@@ -102,7 +102,7 @@ final class ObavijestiDno_Model extends Master_Model {
         return $rezultat->niz() ?: [];
 
     }
-    
+
     /**
      * ### Traži obavijest
      * @since 0.1.2.pre-alpha.M1
@@ -110,17 +110,17 @@ final class ObavijestiDno_Model extends Master_Model {
      * @return string Upit za traženje.
      */
     private function trazi ():string {
-        
-         if (isset($_POST['pretraga'])) {
-             
+
+        if (isset($_POST['pretraga'])) {
+
             $trazi = explode(' ', (string)$_POST['pretraga']);
-             
+
             $trazi_array = '';
             foreach ($trazi as $stavka) {
-                
+
                 $trazi_array .= "
                     AND (
-                        Obavijest LIKE '$stavka'
+                        Obavijest LIKE '{$stavka}'
                     )
                 ";
 
@@ -128,12 +128,12 @@ final class ObavijestiDno_Model extends Master_Model {
 
             return $trazi_array;
 
-         }
+        }
 
         return '';
-        
+
     }
-    
+
     /**
      * Zaglavlje artikala.
      *
