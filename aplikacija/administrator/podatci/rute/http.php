@@ -39,7 +39,7 @@ Rute::sve('obavijesti/uredi', [\FireHub\Aplikacija\Administrator\Kontroler\Obavi
 Rute::sve('obavijesti/spremi', [\FireHub\Aplikacija\Administrator\Kontroler\Obavijesti_Kontroler::class, 'spremi']);
 Rute::sve('obavijesti/izbrisi', [\FireHub\Aplikacija\Administrator\Kontroler\Obavijesti_Kontroler::class, 'izbrisi']);
 Rute::sve('obavijesti/dodaj', [\FireHub\Aplikacija\Administrator\Kontroler\Obavijesti_Kontroler::class, 'dodaj']);
-Rute::sve('obavijestidno/index', [\FireHub\Aplikacija\Administrator\Kontroler\ObavijestiDno_Kontroler::class, 'index']);
+Rute::sve('obavijestidno', [\FireHub\Aplikacija\Administrator\Kontroler\ObavijestiDno_Kontroler::class, 'index']);
 Rute::sve('obavijestidno/lista', [\FireHub\Aplikacija\Administrator\Kontroler\ObavijestiDno_Kontroler::class, 'lista']);
 Rute::sve('obavijestidno/uredi', [\FireHub\Aplikacija\Administrator\Kontroler\ObavijestiDno_Kontroler::class, 'uredi']);
 Rute::sve('obavijestidno/spremi', [\FireHub\Aplikacija\Administrator\Kontroler\ObavijestiDno_Kontroler::class, 'spremi']);
