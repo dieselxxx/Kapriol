@@ -21,6 +21,7 @@ Rute::sve('slika/malaslika', [\FireHub\Aplikacija\Kapriol\Kontroler\Slika_Kontro
 Rute::sve('slika/velikaslika', [\FireHub\Aplikacija\Kapriol\Kontroler\Slika_Kontroler::class, 'velikaslika']);
 Rute::sve('slika/kategorija', [\FireHub\Aplikacija\Kapriol\Kontroler\Slika_Kontroler::class, 'kategorija']);
 Rute::sve('slika/baner', [\FireHub\Aplikacija\Kapriol\Kontroler\Slika_Kontroler::class, 'baner']);
+Rute::sve('slika/banerdno', [\FireHub\Aplikacija\Kapriol\Kontroler\Slika_Kontroler::class, 'banerdno']);
 Rute::sve('slika/reklama', [\FireHub\Aplikacija\Kapriol\Kontroler\Slika_Kontroler::class, 'reklama']);
 Rute::sve('slika/usluga', [\FireHub\Aplikacija\Kapriol\Kontroler\Slika_Kontroler::class, 'usluga']);
 Rute::sve('kosarica/index', [\FireHub\Aplikacija\Kapriol\Kontroler\Kosarica_Kontroler::class, 'index']);
