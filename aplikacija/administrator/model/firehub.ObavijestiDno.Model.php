@@ -110,6 +110,13 @@ final class ObavijestiDno_Model extends Master_Model {
      * @return string Upit za traženje.
      */
     private function trazi ():string {
+        
+         if (isset($_POST['pretraga'])) {
+
+         }
+
+        return '';
+        
     }
     
     /**
