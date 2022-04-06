@@ -112,6 +112,8 @@ final class ObavijestiDno_Model extends Master_Model {
     private function trazi ():string {
         
          if (isset($_POST['pretraga'])) {
+             
+            $trazi = explode(' ', (string)$_POST['pretraga']);
 
          }
 
