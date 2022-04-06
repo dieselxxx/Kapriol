@@ -104,6 +104,15 @@ final class ObavijestiDno_Model extends Master_Model {
     }
     
     /**
+     * ### Traži obavijest
+     * @since 0.1.2.pre-alpha.M1
+     *
+     * @return string Upit za traženje.
+     */
+    private function trazi ():string {
+    }
+    
+    /**
      * Zaglavlje artikala.
      *
      * @return string
