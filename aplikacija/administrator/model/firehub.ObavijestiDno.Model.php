@@ -117,6 +117,10 @@ final class ObavijestiDno_Model extends Master_Model {
              
             $trazi_array = '';
             foreach ($trazi as $stavka) {
+                
+                $trazi_array .= "
+                    
+                ";
 
             }
 
