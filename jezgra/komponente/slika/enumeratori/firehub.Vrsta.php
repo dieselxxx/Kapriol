@@ -25,5 +25,6 @@ enum Vrsta:string {
     case JPEG = 'jpeg';
     case PNG = 'png';
     case GIF = 'gif';
+    case AVIF = 'avif';
 
 }
