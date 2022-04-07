@@ -144,9 +144,9 @@ final class Artikli_Kontroler extends Master_Kontroler {
             'izdvojeno' => $artikl['Izdvojeno'],
             'ba' => $artikl['Ba'],
             'hr' => $artikl['Hr'],
-            'kategorija' => $artikl['KategorijaID'],
+            'kategorija' => ''.$artikl['KategorijaID'].'',
             'kategorija_naziv' => $artikl['Kategorija'],
-            'podkategorija' => $artikl['PodKategorijaID'] ?? '0',
+            'podkategorija' => ''.$artikl['PodKategorijaID'].'' ?? '0',
             'podkategorija_naziv' => $artikl['PodKategorija'] ? ' ->> '.$artikl['PodKategorija'] : '',
             'kategorije' => $kategorije_html,
             'slike' => $slike_html
