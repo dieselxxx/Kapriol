@@ -26,6 +26,7 @@ enum Vrsta:string {
     case ABW = 'application/x-abiword';
     case ARC = 'application/x-freearc';
     case AVI = 'video/x-msvideo';
+    case AVIF = 'image/avif';
     case AZW = 'application/vnd.amazon.ebook';
     case BIN = 'application/octet-stream';
     case BMP = 'image/bmp';
