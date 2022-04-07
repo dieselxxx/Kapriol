@@ -571,7 +571,8 @@ footer > div.info > span {grid-column: 3 / 5; grid-row: 2 / 3; justify-self: cen
 
     main > div#sadrzaj > div.vi_ste_ovdje {font-size: 0.6rem;}
     main > div#sadrzaj.naslovna > div.kategorije {grid-template-columns: 1fr 1fr 1fr; grid-gap: 15px;}
-    main > div#sadrzaj.naslovna > div.kategorije > a.kategorija > img {border: 1px solid #000;}
+    main > div#sadrzaj.naslovna > div.kategorije > a.kategorija > img {border-width: 1px;}
+    main > div#sadrzaj.naslovna > div.kategorije > a.kategorija > img:hover {border-width: 1px;}
     main > div#sadrzaj.naslovna > div.kategorije > a.kategorija > span {grid-row: 2 / 3; height: 20px; font-size: 0.6rem;}
     main > div#sadrzaj.naslovna > div.kategorije > a.kategorija:hover > span {height: 20px;}
     main > div#sadrzaj.rezultat > div.meni {grid-column: 1 / 5; grid-row: 2 / 3; grid-template-columns: 1fr; grid-template-rows: max-content; grid-row-gap: 30px;}
