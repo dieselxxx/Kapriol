@@ -135,7 +135,8 @@ final class Kategorije_Model extends Master_Model {
                 <a class="kategorija" href="/rezultat/{$kategorija['Link']}">
                     <img
                         srcset="
-                            /slika/kategorija/{$kategorija['Slika']}/300/400 1024w,
+                            slika/kategorija/{$kategorija['Slika']}/300/400 1400px,
+                            /slika/kategorija/{$kategorija['Slika']}/200/250 1024w,
                             /slika/kategorija/{$kategorija['Slika']}/125/150 768w"
                         src="/slika/kategorija/{$kategorija['Slika']}/125/150 768w"
                         alt="" loading="lazy"
