@@ -120,7 +120,7 @@ final class ObavijestiDno_Model extends Master_Model {
 
                 $trazi_array .= "
                     AND (
-                        
+                        Obavijest LIKE '%{$stavka}%'
                     )
                 ";
 
