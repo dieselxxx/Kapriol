@@ -69,6 +69,35 @@ final class Naslovna_Kontroler extends Master_Kontroler {
 
         }
 
+        // obavijestidno
+        $obavijestdno_html = '';
+        $obavijestidno = $bazaPodataka->tabela('obavijesti')
+            ->sirovi("
+                SELECT 
+                    obavijestidno.Obavijest,
+                    kategorijeview.Link AS KategorijaLink, podkategorijeview.Link AS PodKategorijaLink
+                FROM obavijestidno
+                LEFT JOIN kategorijeview ON kategorijeview.ID = obavijestidno.KategorijaID
+                LEFT JOIN podkategorijeview ON podkategorijeview.ID = obavijestidno.PodKategorijaID
+                WHERE obavijestidno.".Domena::sqlTablica()." = 1
+                ORDER BY obavijestidno.Redoslijed ASC
+            ")->napravi();
+
+        $obavijestidno = $obavijestidno->niz() ?: [];
+
+        foreach ($obavijestidno as $obavijest) {
+
+            $kategorija_link = $obavijest['KategorijaLink'] ?: 'sve' ;
+            $podkategorija_link = $obavijest['PodKategorijaLink'] ?: 'sve' ;
+
+            $obavijestdno_html .= "
+            <a class='swiper-slide' href='/rezultat/".$kategorija_link."/".$podkategorija_link."'>
+                <img src='/slika/banerdno/{$obavijest['Obavijest']}' />
+            </a>
+            ";
+
+        }
+
         return sadrzaj()->datoteka('naslovna.html')->podatci([
             'predlozak_naslov' => 'Naslovna',
             'facebook_link' => Domena::facebook(),
@@ -88,6 +117,7 @@ final class Naslovna_Kontroler extends Master_Kontroler {
             'dostavaLimit' => ''.Domena::dostavaLimit().'',
             'valuta' => ''.Domena::valuta().'',
             'obavijesti' => $obavijest_html,
+            'obavijestidno' => $obavijestdno_html,
             'reklama1vrijeme' => ''.filemtime(APLIKACIJA_ROOT.'../../'.konfiguracija('sustav.putanje.web').'kapriol/resursi/grafika/reklame/reklama1.jpg').''
         ]);
 
