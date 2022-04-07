@@ -81,8 +81,6 @@ $(document).ready(function () {
 
     $('form[data-oznaka="trazi_artikal"]').submit(function (odgovor) {
 
-        odgovor.preventDefault();
-
         let vrijednost = $('form[data-oznaka="trazi_artikal"] input[name="trazi"]').val();
 
         vrijednost = vrijednost.replace('/', ' ');
