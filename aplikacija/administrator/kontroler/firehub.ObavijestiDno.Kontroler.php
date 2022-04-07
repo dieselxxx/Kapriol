@@ -14,7 +14,7 @@
 
 namespace FireHub\Aplikacija\Administrator\Kontroler;
 
-use FireHub\Aplikacija\Administrator\Model\Artikli_Model;
+use FireHub\Aplikacija\Administrator\Model\Kategorije_Model;
 use FireHub\Aplikacija\Administrator\Model\ObavijestDno_Model;
 use FireHub\Aplikacija\Administrator\Model\ObavijestiDno_Model;
 use FireHub\Jezgra\Greske\Greska;
@@ -91,9 +91,33 @@ final class ObavijestiDno_Kontroler extends Master_Kontroler {
         if ($obavijest['Ba'] === true) {$obavijest['Ba'] = 'checked';} else {$obavijest['Ba'] = '';}
         if ($obavijest['Hr'] === true) {$obavijest['Hr'] = 'checked';} else {$obavijest['Hr'] = '';}
 
+        // kategorije
+        $kategorije_model = $this->model(Kategorije_Model::class);
+        $kategorije = $kategorije_model->lista(limit_zapisa_po_stranici: 100);
+        $kategorije_html = '';
+        foreach ($kategorije as $kategorija) {
+
+            $kategorije_html .= "<option value='{$kategorija['ID']},0'>{$kategorija['Kategorija']}</option>";
+
+            // podkategorije
+            $podkategorije = $kategorije_model->podkategorije($kategorija['ID']);
+
+            foreach ($podkategorije as $podkategorija) {
+
+                $kategorije_html .= "<option value='{$kategorija['ID']},{$podkategorija['ID']}'>{$kategorija['Kategorija']} ->> {$podkategorija['Podkategorija']}</option>";
+
+            }
+
+        }
+
         return sadrzaj()->format(Sadrzaj_Vrsta::HTMLP)->datoteka('obavijestidno/uredi.html')->podatci([
             'id' => $obavijest['ID'],
             'redoslijed' => $obavijest['Redoslijed'],
+            'kategorija' => ''.$obavijest['KategorijaID'].'',
+            'kategorija_naziv' => ''.$obavijest['Kategorija'].'',
+            'podkategorija' => ''.$obavijest['PodKategorijaID'].'' ?? '0',
+            'podkategorija_naziv' => ''.$obavijest['PodKategorija'].'' ? ' ->> '.$obavijest['PodKategorija'] : '',
+            'kategorije' => $kategorije_html,
             'ba' => $obavijest['Ba'],
             'hr' => $obavijest['Hr']
         ]);
