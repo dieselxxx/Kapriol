@@ -11,7 +11,7 @@ footer {display: grid; grid-area: podnozje; grid-template-columns: 1fr repeat(5,
 
 @media only screen and (max-width: 1024px) {
 
-    body {grid-template-rows: max-content auto 600px;}
+    body {grid-template-rows: max-content max-content 600px;}
     header {grid-template-rows: 60px 100px max-content 50px;}
     footer {grid-template-rows: 200px 400px;}
 
@@ -25,7 +25,7 @@ footer {display: grid; grid-area: podnozje; grid-template-columns: 1fr repeat(5,
 
 @media only screen and (max-width: 600px) {
 
-    body {grid-template-rows: max-content auto 800px;}
+    body {grid-template-rows: max-content max-content 800px;}
     footer {grid-template-rows: 200px 600px;}
 
 }
