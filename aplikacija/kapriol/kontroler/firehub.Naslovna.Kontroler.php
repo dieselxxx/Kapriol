@@ -61,11 +61,9 @@ final class Naslovna_Kontroler extends Master_Kontroler {
 
             $link = $obavijest['Link'] ? 'href="/artikl/'.$obavijest['Link'].'"' : '' ;
 
-            // srcset='elva-fairy-480w.jpg 480w, elva-fairy-800w.jpg 800w' sizes='(max-width: 600px) 480px, 800px' src='elva-fairy-800w.jpg'
-
             $obavijest_html .= "
             <a class='swiper-slide' $link>
-                <img sizes='(max-width: 600px) 600px, 1024px' srcset='/slika/baner/{$obavijest['Obavijest']}/700/1400 1024w, /slika/baner/{$obavijest['Obavijest']}/300/600 600w' src='/slika/baner/{$obavijest['Obavijest']}/300/600' />
+                <img sizes='(max-width: 600px) 600px, 768px, 1024px' srcset='/slika/baner/{$obavijest['Obavijest']}/700/1400 1024w, /slika/baner/{$obavijest['Obavijest']}/350/700 768w, /slika/baner/{$obavijest['Obavijest']}/300/600 600w' src='/slika/baner/{$obavijest['Obavijest']}/300/600' />
             </a>
             ";
 
@@ -94,7 +92,7 @@ final class Naslovna_Kontroler extends Master_Kontroler {
 
             $obavijestdno_html .= "
             <a class='swiper-slide' href='/rezultat/".$kategorija_link."/".$podkategorija_link."'>
-                <img sizes='(max-width: 600px) 600px, 1024px' srcset='/slika/banerdno/{$obavijest['Obavijest']}/700/1400 1024w, /slika/banerdno/{$obavijest['Obavijest']}/300/600 600w' src='/slika/banerdno/{$obavijest['Obavijest']}/300/600' />
+                <img sizes='(max-width: 600px) 600px, 768px, 1024px' srcset='/slika/banerdno/{$obavijest['Obavijest']}/700/1400 1024w, /slika/banerdno/{$obavijest['Obavijest']}/350/700 768w, /slika/banerdno/{$obavijest['Obavijest']}/300/600 600w' src='/slika/banerdno/{$obavijest['Obavijest']}/300/600' />
             </a>
             ";
 
