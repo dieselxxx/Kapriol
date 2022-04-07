@@ -87,9 +87,9 @@ final class Podkategorije_Kontroler extends Master_Kontroler {
         $kategorija = $kategorija_model->podkategorija($id);
 
         return sadrzaj()->format(Sadrzaj_Vrsta::HTMLP)->datoteka('podkategorije/uredi.html')->podatci([
-            'id' => $kategorija['ID'],
-            'naziv' => $kategorija['PodKategorija'],
-            'kategorija' => $kategorija['Kategorija']
+            'id' =>''.$kategorija['ID'].'',
+            'naziv' => ''.$kategorija['PodKategorija'].'',
+            'kategorija' => ''.$kategorija['Kategorija'].''
         ]);
 
     }
