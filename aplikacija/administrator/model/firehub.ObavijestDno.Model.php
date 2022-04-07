@@ -54,8 +54,12 @@ final class ObavijestDno_Model extends Master_Model {
             ->sirovi("
                 SELECT
                     obavijestidno.ID, obavijestidno.Obavijest, obavijestidno.Redoslijed,
-                    obavijestidno.Ba, obavijestidno.Hr
+                    obavijestidno.Ba, obavijestidno.Hr,
+                    obavijestidno.KategorijaID, kategorije.Kategorija,
+                    obavijestidno.PodKategorijaID, podkategorije.PodKategorija
                 FROM obavijestidno
+                LEFT JOIN kategorije ON kategorije.ID = obavijestidno.KategorijaID
+                LEFT JOIN podkategorije ON podkategorije.ID = obavijestidno.PodKategorijaID
                 WHERE obavijestidno.ID = $id
                 LIMIT 1
             ")
@@ -89,10 +93,15 @@ final class ObavijestDno_Model extends Master_Model {
         $hr = Validacija::Potvrda(_('HR'), $hr);
         if ($hr == "on") {$hr = 1;} else {$hr = 0;}
 
+        $kategorija_stavke= $_REQUEST['kategorija'];
+        $kategorija_stavke = explode(',', $kategorija_stavke);
+        $kategorija = Validacija::Broj(_('Kategorija artikla'), $kategorija_stavke[0], 1, 7);
+        $podkategorija = Validacija::Broj(_('Podkategorija artikla'), $kategorija_stavke[1], 1, 7);
+
         $obavijest = $this->bazaPodataka
             ->sirovi("
                 UPDATE obavijestidno
-                    SET Redoslijed = $redoslijed, Ba = $ba, Hr = $hr
+                    SET Redoslijed = $redoslijed, Ba = $ba, Hr = $hr, KategorijaID = $kategorija, PodKategorijaID = $podkategorija
                 WHERE obavijestidno.ID = $id
             ")
             ->napravi();
