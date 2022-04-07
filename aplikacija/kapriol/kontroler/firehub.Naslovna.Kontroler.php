@@ -70,6 +70,7 @@ final class Naslovna_Kontroler extends Master_Kontroler {
                         /slika/baner/{$obavijest['Obavijest']}/350/700 768w,
                         /slika/baner/{$obavijest['Obavijest']}/300/600 600w\"
                     src=\"/slika/baner/{$obavijest['Obavijest']}/300/600 600w\"
+                    alt=\"\" loading=\"lazy\"
                 />
             </a>
             ";
@@ -106,6 +107,7 @@ final class Naslovna_Kontroler extends Master_Kontroler {
                         /slika/banerdno/{$obavijest['Obavijest']}/350/700 768w,
                         /slika/banerdno/{$obavijest['Obavijest']}/300/600 600w\"
                     src=\"/slika/banerdno/{$obavijest['Obavijest']}/300/600 600w\"
+                    alt=\"\" loading=\"lazy\"
                 />
             </a>
             ";
