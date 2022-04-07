@@ -163,7 +163,7 @@ final class Artikl_Model extends Master_Model {
         $kategorija_stavke= $_REQUEST['kategorija'];
         $kategorija_stavke = explode(',', $kategorija_stavke);
         $kategorija = Validacija::Broj(_('Kategorija artikla'), $kategorija_stavke[0], 1, 7);
-        $podkategorija = Validacija::Broj(_('Podkategorija artikla'), $kategorija_stavke[1], 1, 7);
+        $podkategorija = Validacija::Broj(_('Podkategorija artikla'), (int)$kategorija_stavke[1], 1, 7);
 
         if ($id !== 0) {
 
