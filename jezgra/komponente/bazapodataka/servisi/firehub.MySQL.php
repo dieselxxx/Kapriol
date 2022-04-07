@@ -223,6 +223,8 @@ final class MySQL implements BazaPodataka_Interface {
      * @return void
      */
     private function transakcija ():void {
+        
+        $this->konekcija->set_charset('utf8');
 
         if (!mysqli_begin_transaction($this->konekcija)) {
 
