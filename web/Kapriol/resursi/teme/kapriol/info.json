@@ -6,8 +6,5 @@
         "css/kapriol.css",
         "css/swiper-bundle.min.css"
     ],
-    "javascript": [
-        "js/biblioteke.js",
-        "js/kapriol.min.js"
-    ]
+    "javascript": []
 }
