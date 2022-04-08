@@ -129,8 +129,22 @@ final class Domena {
 
             return '
                 <ul>
-                    <li><span>Besplatna dostava za narudzbe preko 400 HRK.</span></li>
-                    <li><span>Dostava za narudzbe manje od 400 HRK iznosi 25 HRK.</span></li>
+                    <li>
+                        <svg><use xlink:href="/kapriol/resursi/grafika/simboli/simbol.ikone.svg#strelica_desno_duplo2"></use></svg>
+                        <span>Besplatna dostava za narudzbe preko 400 HRK.</span>
+                    </li>
+                    <li>
+                        <svg><use xlink:href="/kapriol/resursi/grafika/simboli/simbol.ikone.svg#strelica_desno_duplo2"></use></svg>
+                        <span>Dostava za narudzbe manje od 400 HRK iznosi 25 HRK.</span>
+                    </li>
+                    <li>
+                        <svg><use xlink:href="/kapriol/resursi/grafika/simboli/simbol.ikone.svg#strelica_desno_duplo2"></use></svg>
+                        <span>Dostava brzom poštom u roku 24-48 h.</span>
+                    </li>
+                    <li>
+                        <svg><use xlink:href="/kapriol/resursi/grafika/simboli/simbol.ikone.svg#strelica_desno_duplo2"></use></svg>
+                        <span>Mogućnost plaćanja pouzećem, općom uplatnicom, internet bankarstvom.</span>
+                    </li>
                 </ul>
             ';
 
@@ -138,8 +152,22 @@ final class Domena {
 
         return '
                 <ul>
-                    <li><span>Besplatna dostava za narudzbe preko 79 KM.</span></li>
-                    <li><span>Dostava za narudzbe manje od 79 KM iznosi 5 KM.</span></li>
+                    <li>
+                        <svg><use xlink:href="/kapriol/resursi/grafika/simboli/simbol.ikone.svg#strelica_desno_duplo2"></use></svg>
+                        <span>Besplatna dostava za narudzbe preko 79 KM.</span>
+                    </li>
+                    <li>
+                        <svg><use xlink:href="/kapriol/resursi/grafika/simboli/simbol.ikone.svg#strelica_desno_duplo2"></use></svg>
+                        <span>Dostava za narudzbe manje od 79 KM iznosi 5 MB.</span>
+                    </li>
+                    <li>
+                        <svg><use xlink:href="/kapriol/resursi/grafika/simboli/simbol.ikone.svg#strelica_desno_duplo2"></use></svg>
+                        <span>Dostava brzom poštom u roku 24-48 h.</span>
+                    </li>
+                    <li>
+                        <svg><use xlink:href="/kapriol/resursi/grafika/simboli/simbol.ikone.svg#strelica_desno_duplo2"></use></svg>
+                        <span>Mogućnost plaćanja pouzećem, općom uplatnicom, internet bankarstvom.</span>
+                    </li>
                 </ul>
             ';
 
