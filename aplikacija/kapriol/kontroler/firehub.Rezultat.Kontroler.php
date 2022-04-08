@@ -74,9 +74,9 @@ final class Rezultat_Kontroler extends Master_Kontroler {
         $trenutna_podkategorija = $kategorije->podkategorija($podkategorija);
 
         // navigacija
-        $limit = 12;
+        $limit = 18;
         $artikli = $this->model(Artikli_Model::class)->artikli($trenutna_kategorija['ID'], $trenutna_podkategorija['ID'], ($stranica - 1) * $limit, $limit, $velicina, $trazi, $poredaj, $poredaj_redoslijed);
-        $navigacija = $this->model(Artikli_Model::class)->ukupnoRedakaHTML($trenutna_kategorija['ID'], $trenutna_podkategorija['ID'], $velicina, $trazi, 12, '/rezultat/'.$trenutna_kategorija['Link'].'/'.$trenutna_podkategorija['Link'].'/'.$velicina.'/'.$trazi.'/'.$poredaj.'/'.$poredaj_redoslijed, $stranica);
+        $navigacija = $this->model(Artikli_Model::class)->ukupnoRedakaHTML($trenutna_kategorija['ID'], $trenutna_podkategorija['ID'], $velicina, $trazi, $limit, '/rezultat/'.$trenutna_kategorija['Link'].'/'.$trenutna_podkategorija['Link'].'/'.$velicina.'/'.$trazi.'/'.$poredaj.'/'.$poredaj_redoslijed, $stranica);
         $navigacija_html = implode('', $navigacija);
 
         // artikli
