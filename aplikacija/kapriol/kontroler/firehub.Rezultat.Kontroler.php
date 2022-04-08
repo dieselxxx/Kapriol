@@ -63,7 +63,7 @@ final class Rezultat_Kontroler extends Master_Kontroler {
      *
      * @return Sadrzaj Sadržaj stranice.
      */
-    public function index (string $kontroler = '', string $kategorija = 'sve', string $podkategorija = 'sve', int|string $velicina = 'sve velicine', int|string $trazi = 'svi artikli', string $poredaj = 'cijenafinal', string $poredaj_redoslijed = 'asc', int $stranica = 1):Sadrzaj {
+    public function index (string $kontroler = '', string $kategorija = 'sve', string $podkategorija = 'sve', int|string $velicina = 'sve velicine', int|string $trazi = 'svi artikli', string $poredaj = 'cijenafinal', string $poredaj_redoslijed = 'custom', int $stranica = 1):Sadrzaj {
 
         $gdpr = $this->model(Gdpr_Model::class);
 
@@ -72,6 +72,21 @@ final class Rezultat_Kontroler extends Master_Kontroler {
         $trenutna_kategorija = $kategorije->kategorija($kategorija);
 
         $trenutna_podkategorija = $kategorije->podkategorija($podkategorija);
+
+        // posebno redanje po kategoriji
+        if ($poredaj_redoslijed === 'custom') {
+
+            if (
+                $trenutna_kategorija['ID'] === '20027'
+                || $trenutna_kategorija['ID'] === '20010'
+                || $trenutna_kategorija['ID'] === '20016'
+            ) {
+                $poredaj_redoslijed = 'asc';
+            } else {
+                $poredaj_redoslijed = 'desc';
+            }
+
+        }
 
         // navigacija
         $limit = 18;
