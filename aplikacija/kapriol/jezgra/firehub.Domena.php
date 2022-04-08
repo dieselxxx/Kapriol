@@ -221,7 +221,12 @@ final class Domena {
 
         if (self::Hr()) {
 
-            return '<li><span><a href="/opciuvjeti">Opći uvjeti</a></span></li>';
+            return '
+                <li>
+                    <svg><use xlink:href="/kapriol/resursi/grafika/simboli/simbol.ikone.svg#strelica_desno_duplo2"></use></svg>
+                    <span><a href="/opciuvjeti">Opći uvjeti</a></span>
+                </li>'
+            ;
 
         }
 
