@@ -616,6 +616,7 @@ footer > div.info > span {grid-column: 3 / 5; grid-row: 2 / 3; justify-self: cen
 
     footer > nav {grid-template-columns: 10px 1fr;}
     footer > nav > div.dostava {grid-column: 2 / 3; grid-row: 1 / 2;}
+    footer > nav > div.dostava > ul > li {font-size: 0.7rem;}
     footer > div.info {grid-template-rows: 100px 500px 50px;}
     footer > div.info > ul {grid-template-columns: 1fr; grid-template-rows: 1fr 1fr; justify-items: center;}
     footer > div.info > ul.onama {grid-column: 1 / 6; grid-row: 2 / 3; justify-self: left; align-self: start; padding-left: 50px; border-right: 0;}
