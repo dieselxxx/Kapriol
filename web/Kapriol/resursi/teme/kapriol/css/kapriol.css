@@ -452,7 +452,7 @@ footer > nav > div > ul > li {margin-top: 20px;}
 footer > nav > div > ul > li > div {display: flex;}
 footer > nav > div > ul > li > div > svg {fill: var(--boja-kapriol); height: 30px; width: 30px;}
 footer > nav > div > ul > li > div > span {line-height: 30px; text-indent: 10px; color: #ffffff;}
-footer > div.info {grid-column: 1 / 8; grid-row: 2 / 3; background-color: #000; display: grid; grid-template-columns: 1fr repeat(4, 350px) 1fr; grid-template-rows: 150px 50px; align-content: center; border-width: 1px 0 0 0; border-style: solid; border-color: var(--boja-granica-tamnije); box-shadow: 0 3px 39px 0 rgba(0,0,0,0.04); -webkit-box-shadow: 0 3px 39px 0 rgba(0,0,0,0.04); -moz-box-shadow: 0 3px 39px 0 rgba(0,0,0,0.04);}
+footer > div.info {grid-column: 1 / 8; grid-row: 2 / 3; background-color: #000; display: grid; grid-template-columns: 1fr repeat(4, 350px) 1fr; grid-template-rows: 250px 50px; align-content: center; border-width: 1px 0 0 0; border-style: solid; border-color: var(--boja-granica-tamnije); box-shadow: 0 3px 39px 0 rgba(0,0,0,0.04); -webkit-box-shadow: 0 3px 39px 0 rgba(0,0,0,0.04); -moz-box-shadow: 0 3px 39px 0 rgba(0,0,0,0.04);}
 footer > div.info > a.logo {grid-column: 2 / 3; grid-row: 1 / 3; display: block; background-image: url('/kapriol/resursi/grafika/logo/logo.svg'); background-position: center center; background-repeat: no-repeat; height: 120px; width: 270px; align-self: center; justify-self: left;}
 footer > div.info > ul {align-self: end; padding: 20px;}
 footer > div.info > ul.onama {grid-column: 3 / 4; grid-row: 1 / 2; justify-self: end;}
@@ -614,10 +614,10 @@ footer > div.info > span {grid-column: 3 / 5; grid-row: 2 / 3; justify-self: cen
 
     footer > nav {grid-template-columns: 10px 1fr;}
     footer > nav > div.dostava {grid-column: 2 / 3; grid-row: 1 / 2;}
-    footer > div.info {grid-template-rows: 100px 450px 50px;}
+    footer > div.info {grid-template-rows: 100px 500px 50px;}
     footer > div.info > ul {grid-template-columns: 1fr; grid-template-rows: 1fr 1fr; justify-items: center;}
     footer > div.info > ul.onama {grid-column: 1 / 6; grid-row: 2 / 3; justify-self: left; align-self: start; padding-left: 50px; border-right: 0;}
-    footer > div.info > ul.adresa {grid-column: 1 / 6; grid-row: 2 / 3; justify-self: left; align-self: center; padding-left: 50px; border-right: 0;}
+    footer > div.info > ul.adresa {grid-column: 1 / 6; grid-row: 2 / 3; justify-self: left; align-self: center; margin-top: 50px; padding-left: 50px; border-right: 0;}
     footer > div.info > ul.kontakt {grid-column: 1 / 6; grid-row: 2 / 3; justify-self: left; align-self: end; padding-left: 50px;}
     footer > div.info > ul > li {height: auto;}
     footer > div.info > span {font-size: 0.7rem;}

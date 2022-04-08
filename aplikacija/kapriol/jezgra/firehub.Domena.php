@@ -225,8 +225,12 @@ final class Domena {
                 <li>
                     <svg><use xlink:href="/kapriol/resursi/grafika/simboli/simbol.ikone.svg#strelica_desno_duplo2"></use></svg>
                     <span><a href="/opciuvjeti">Opći uvjeti</a></span>
-                </li>'
-            ;
+                </li>
+                <li>
+                    <svg><use xlink:href="/kapriol/resursi/grafika/simboli/simbol.ikone.svg#strelica_desno_duplo2"></use></svg>
+                    <span><a target="_blank" href="/kapriol/resursi/datoteke/Obrazac_za_jednostrani_raskid_ugovora.pdf">Obrazac za jednostrani raskid ugovora</a></span>
+                </li>
+            ';
 
         }
 
