@@ -45,23 +45,25 @@
 </div>
 <script type="text/javascript" src="/kapriol/resursi/teme/kapriol/js/popperjs.js"></script>
 <script type="text/javascript" src="/kapriol/resursi/teme/kapriol/js/tippy.js"></script>
-<script type="text/javascript" src="/kapriol/resursi/teme/kapriol/js/zumiranje.js"></script>
+<script async type="text/javascript" src="/kapriol/resursi/teme/kapriol/js/zumiranje.js"></script>
 <script type="text/javascript">
 tippy('.sifraArtikla', {
     delay: [1000, 20],
     touch: ["hold", 500]
 });
 </script>
-<script type="text/javascript">
-    $("ul.slike a").on('click', function () {
+<script async type="text/javascript">
+    window.onload = function () {
+        $("ul.slike a").on('click', function () {
 
-        let slika = $(this).attr("href");
-        let okvir = $(this).parent().parent().parent().find('div.slika > img');
+            let slika = $(this).attr("href");
+            let okvir = $(this).parent().parent().parent().find('div.slika > img');
 
-        $(okvir).attr("src", slika);
+            $(okvir).attr("src", slika);
 
-        return false;
+            return false;
 
-    });
-    $('.slika > img').slika_zumiranje();
+        });
+        $('.slika > img').slika_zumiranje();
+    }
 </script>
