@@ -92,19 +92,6 @@ $(document).ready(function () {
 
     });
 
-    $("ul.slike a").on('click', function () {
-
-        let slika = $(this).attr("href");
-        let okvir = $(this).parent().parent().parent().find('div.slika > img');
-
-        $(okvir).attr("src", slika);
-
-        return false;
-
-    });
-    $('.slika > img').slika_zumiranje();
-
-
     var swiper = new Swiper(".rotator", {
         spaceBetween: 30,
         centeredSlides: true,
