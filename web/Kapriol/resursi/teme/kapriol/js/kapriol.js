@@ -135,15 +135,4 @@ $(document).ready(function () {
 
     });
 
-    tippy('#popup1', {
-        content: 'Virman / opća uplatnica : plaćanje se vrši općom uplatnicom na temelju predračuna ili ponude koji će biti dostavljen nakon provjere dostupnosti naručenih artikala!',
-    });
-    tippy('#popup2', {
-        content: 'Plaćanje pouzećem / gotovina : plaćanje se vrši gotovinski prilikom preuzimanja pošiljke!',
-    });
-    tippy('.sifraArtikla', {
-        delay: [1000, 20],
-        touch: ["hold", 500]
-    });
-
 });
