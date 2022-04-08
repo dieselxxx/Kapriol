@@ -64,7 +64,8 @@ $_Cookie = function ($odgovor) {
 
 $(document).ready(function () {
 
-    $('header > a.trazi').click(function() {
+    $('header > a.trazi').click(function(event) {
+        event.preventDefault();
         $('header > form[data-oznaka="trazi_artikal"]').slideToggle("fast");
     });
 
