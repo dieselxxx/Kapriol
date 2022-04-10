@@ -34,7 +34,7 @@ final class PrijenosDatoteka {
 
         $this->ime_input = $ime_input;
 
-        $this->novo_ime = $this->_Ime();
+        $this->novo_ime = strtolower($this->_Ime());
 
     }
 
