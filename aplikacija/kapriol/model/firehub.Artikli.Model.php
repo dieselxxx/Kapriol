@@ -86,7 +86,7 @@ final class Artikli_Model extends Master_Model {
                        (SELECT Slika FROM slikeartikal WHERE slikeartikal.ClanakID = artikliview.ID ORDER BY slikeartikal.Zadana DESC LIMIT 1) AS Slika
                     FROM artikliview
                     LEFT JOIN artiklikarakteristike ON artiklikarakteristike.ArtikalID = artikliview.ID
-                    WHERE Aktivan = 1 AND ".Domena::sqlTablica()." = 1 AND Izdvojeno = 1
+                    WHERE Aktivan = 1 AND ".Domena::sqlTablica()." = 1 AND Izdvojeno = 1 AND ".Domena::sqlCijena()." > 0
                     GROUP BY artikliview.ID
                     ORDER BY ".ucwords($poredaj)." $poredaj_redoslijed
                     LIMIT 12
@@ -104,7 +104,7 @@ final class Artikli_Model extends Master_Model {
                        (SELECT Slika FROM slikeartikal WHERE slikeartikal.ClanakID = artikliview.ID ORDER BY slikeartikal.Zadana DESC LIMIT 1) AS Slika
                     FROM artikliview
                     LEFT JOIN artiklikarakteristike ON artiklikarakteristike.ArtikalID = artikliview.ID
-                    WHERE Aktivan = 1 AND ".Domena::sqlTablica()." = 1
+                    WHERE Aktivan = 1 AND ".Domena::sqlTablica()." = 1 AND ".Domena::sqlCijena()." > 0
                     {$this->trazi($trazi)}
                     GROUP BY artikliview.ID
                     {$this->velicineUpit($velicina)}
@@ -124,7 +124,7 @@ final class Artikli_Model extends Master_Model {
                        (SELECT Slika FROM slikeartikal WHERE slikeartikal.ClanakID = artikliview.ID ORDER BY slikeartikal.Zadana DESC LIMIT 1) AS Slika
                     FROM artikliview
                     LEFT JOIN artiklikarakteristike ON artiklikarakteristike.ArtikalID = artikliview.ID
-                    WHERE Aktivan = 1 AND ".Domena::sqlTablica()." = 1 AND Zadana = 1 AND ".Domena::sqlCijenaAkcija()." > 0
+                    WHERE Aktivan = 1 AND ".Domena::sqlTablica()." = 1 AND ".Domena::sqlCijenaAkcija()." > 0
                     {$this->trazi($trazi)}
                     GROUP BY artikliview.ID
                     {$this->velicineUpit($velicina)}
@@ -144,7 +144,7 @@ final class Artikli_Model extends Master_Model {
                     (SELECT Slika FROM slikeartikal WHERE slikeartikal.ClanakID = artikliview.ID ORDER BY slikeartikal.Zadana DESC LIMIT 1) AS Slika
                 FROM artikliview
                 LEFT JOIN artiklikarakteristike ON artiklikarakteristike.ArtikalID = artikliview.ID
-                WHERE KategorijaID = '$kategorija' AND Aktivan = 1 AND ".Domena::sqlTablica()." = 1
+                WHERE KategorijaID = '$kategorija' AND Aktivan = 1 AND ".Domena::sqlTablica()." = 1 AND ".Domena::sqlCijena()." > 0
                 {$this->trazi($trazi)}
                 GROUP BY artikliview.ID
                 {$this->velicineUpit($velicina)}
@@ -164,7 +164,7 @@ final class Artikli_Model extends Master_Model {
                     (SELECT Slika FROM slikeartikal WHERE slikeartikal.ClanakID = artikliview.ID ORDER BY slikeartikal.Zadana DESC LIMIT 1) AS Slika
                 FROM artikliview
                 LEFT JOIN artiklikarakteristike ON artiklikarakteristike.ArtikalID = artikliview.ID
-                WHERE KategorijaID = '$kategorija' AND PodKategorijaID = '$podkategorija' AND Aktivan = 1 AND ".Domena::sqlTablica()." = 1
+                WHERE KategorijaID = '$kategorija' AND PodKategorijaID = '$podkategorija' AND Aktivan = 1 AND ".Domena::sqlTablica()." = 1 AND ".Domena::sqlCijena()." > 0
                 {$this->trazi($trazi)}
                 GROUP BY artikliview.ID
                 {$this->velicineUpit($velicina)}
@@ -315,7 +315,7 @@ final class Artikli_Model extends Master_Model {
                 SELECT Naziv, GROUP_CONCAT(DISTINCT artiklikarakteristike.Velicina) AS Velicine
                 FROM artikliview
                 LEFT JOIN artiklikarakteristike ON artiklikarakteristike.ArtikalID = artikliview.ID
-                WHERE Aktivan = 1 AND ".Domena::sqlTablica()." = 1
+                WHERE Aktivan = 1 AND ".Domena::sqlTablica()." = 1 AND ".Domena::sqlCijena()." > 0
                 {$this->trazi($trazi)}
                 GROUP BY artikliview.ID
                 {$this->velicineUpit($velicina)}
@@ -331,7 +331,7 @@ final class Artikli_Model extends Master_Model {
                 SELECT Naziv, GROUP_CONCAT(DISTINCT artiklikarakteristike.Velicina) AS Velicine
                 FROM artikliview
                 LEFT JOIN artiklikarakteristike ON artiklikarakteristike.ArtikalID = artikliview.ID
-                WHERE Aktivan = 1 AND ".Domena::sqlTablica()." = 1 AND ".Domena::sqlCijenaAkcija()." > 1
+                WHERE Aktivan = 1 AND ".Domena::sqlTablica()." = 1 AND ".Domena::sqlCijenaAkcija()." > 1 AND ".Domena::sqlCijena()." > 0
                 {$this->trazi($trazi)}
                 GROUP BY artikliview.ID
                 {$this->velicineUpit($velicina)}
@@ -349,7 +349,7 @@ final class Artikli_Model extends Master_Model {
                 SELECT Naziv, GROUP_CONCAT(DISTINCT artiklikarakteristike.Velicina) AS Velicine
                 FROM artikliview
                 LEFT JOIN artiklikarakteristike ON artiklikarakteristike.ArtikalID = artikliview.ID
-                WHERE KategorijaID = $kategorija AND Aktivan = 1 AND ".Domena::sqlTablica()." = 1
+                WHERE KategorijaID = $kategorija AND Aktivan = 1 AND ".Domena::sqlTablica()." = 1 AND ".Domena::sqlCijena()." > 0
                 {$this->trazi($trazi)}
                 GROUP BY artikliview.ID
                 {$this->velicineUpit($velicina)}
@@ -363,7 +363,7 @@ final class Artikli_Model extends Master_Model {
                 SELECT Naziv, GROUP_CONCAT(DISTINCT artiklikarakteristike.Velicina) AS Velicine
                 FROM artikliview
                 LEFT JOIN artiklikarakteristike ON artiklikarakteristike.ArtikalID = artikliview.ID
-                WHERE KategorijaID = '$kategorija' AND PodKategorijaID = '$podkategorija' AND Aktivan = 1 AND ".Domena::sqlTablica()." = 1
+                WHERE KategorijaID = '$kategorija' AND PodKategorijaID = '$podkategorija' AND Aktivan = 1 AND ".Domena::sqlTablica()." = 1 AND ".Domena::sqlCijena()." > 0
                 {$this->trazi($trazi)}
                 GROUP BY artikliview.ID
                 {$this->velicineUpit($velicina)}
