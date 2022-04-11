@@ -160,18 +160,37 @@ final class Kosarica_Model extends Master_Model {
      */
     public function dodaj (string $velicina = '', int $vrijednost = 0):bool {
 
-        $velicina_baza = $this->bazaPodataka->tabela('artiklikarakteristike')
-            ->sirovi("
+        if (Domena::Hr()) {
+
+            $velicina_baza = $this->bazaPodataka->tabela('artiklikarakteristike')
+                ->sirovi("
                 SELECT
                     SUM(StanjeSkladiste) AS StanjeSkladiste
                 FROM artiklikarakteristike
                 LEFT JOIN stanjeskladista ON stanjeskladista.Sifra = artiklikarakteristike.Sifra
                 WHERE artiklikarakteristike.Sifra = $velicina
+                AND (SkladisteID = 3)
                 GROUP BY Velicina
             ")
-            ->napravi();
+                ->napravi();
 
-        if (!$velicina_baza->redak()['StanjeSkladiste'] > 1) {
+        } else {
+
+            $velicina_baza = $this->bazaPodataka->tabela('artiklikarakteristike')
+                ->sirovi("
+                SELECT
+                    SUM(StanjeSkladiste) AS StanjeSkladiste
+                FROM artiklikarakteristike
+                LEFT JOIN stanjeskladista ON stanjeskladista.Sifra = artiklikarakteristike.Sifra
+                WHERE artiklikarakteristike.Sifra = $velicina
+                AND (SkladisteID = 1 OR SkladisteID = 2)
+                GROUP BY Velicina
+            ")
+                ->napravi();
+
+        }
+
+        if ((int)$velicina_baza->redak()['StanjeSkladiste'] < 1) {
 
             zapisnik(Level::KRITICNO, sprintf(_('Šifre artikla: "%s" nema na stanju!'), $velicina_baza));
             throw new Kontroler_Greska(_('Ne mogu pokrenuti sustav, obratite se administratoru.'));
