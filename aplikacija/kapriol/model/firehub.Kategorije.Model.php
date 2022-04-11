@@ -138,7 +138,7 @@ final class Kategorije_Model extends Master_Model {
                             slika/kategorija/{$kategorija['Slika']}/300/400,
                             /slika/kategorija/{$kategorija['Slika']}/200/250,
                             /slika/kategorija/{$kategorija['Slika']}/125/150"
-                        src="/slika/kategorija/{$kategorija['Slika']}/125/150"
+                        src="/slika/kategorija/{$kategorija['Slika']}/300/400"
                         alt="" loading="lazy"
                     />
                     <span class="naslov">{$kategorija['Kategorija']}</span>
