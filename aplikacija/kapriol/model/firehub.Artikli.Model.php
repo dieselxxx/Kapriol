@@ -81,12 +81,12 @@ final class Artikli_Model extends Master_Model {
                 ->sirovi("
                     SELECT
                        artikliview.ID, Naziv, Link, Opis, ".Domena::sqlCijena()." AS Cijena, ".Domena::sqlCijenaAkcija()." AS CijenaAkcija,
-                       IF(".Domena::sqlCijenaAkcija()." > 0, ".Domena::sqlCijenaAkcija().", ".Domena::sqlCijena().") AS Cijenafinal, Slika,
-                       GROUP_CONCAT(DISTINCT artiklikarakteristike.Velicina) AS Velicine
+                       IF(".Domena::sqlCijenaAkcija()." > 0, ".Domena::sqlCijenaAkcija().", ".Domena::sqlCijena().") AS Cijenafinal,
+                       GROUP_CONCAT(DISTINCT artiklikarakteristike.Velicina) AS Velicine,
+                       (SELECT Slika FROM slikeartikal WHERE slikeartikal.ClanakID = artikliview.ID ORDER BY slikeartikal.Zadana DESC LIMIT 1) AS Slika
                     FROM artikliview
-                    LEFT JOIN slikeartikal ON ClanakID = artikliview.ID
                     LEFT JOIN artiklikarakteristike ON artiklikarakteristike.ArtikalID = artikliview.ID
-                    WHERE Aktivan = 1 AND ".Domena::sqlTablica()." = 1 AND Zadana = 1 AND Izdvojeno = 1
+                    WHERE Aktivan = 1 AND ".Domena::sqlTablica()." = 1 AND Izdvojeno = 1
                     GROUP BY artikliview.ID
                     ORDER BY ".ucwords($poredaj)." $poredaj_redoslijed
                     LIMIT 12
@@ -99,12 +99,12 @@ final class Artikli_Model extends Master_Model {
                 ->sirovi("
                     SELECT
                        artikliview.ID, Naziv, Link, Opis, ".Domena::sqlCijena()." AS Cijena, ".Domena::sqlCijenaAkcija()." AS CijenaAkcija,
-                       IF(".Domena::sqlCijenaAkcija()." > 0, ".Domena::sqlCijenaAkcija().", ".Domena::sqlCijena().") AS Cijenafinal, Slika,
-                       GROUP_CONCAT(DISTINCT artiklikarakteristike.Velicina) AS Velicine
+                       IF(".Domena::sqlCijenaAkcija()." > 0, ".Domena::sqlCijenaAkcija().", ".Domena::sqlCijena().") AS Cijenafinal,
+                       GROUP_CONCAT(DISTINCT artiklikarakteristike.Velicina) AS Velicine,
+                       (SELECT Slika FROM slikeartikal WHERE slikeartikal.ClanakID = artikliview.ID ORDER BY slikeartikal.Zadana DESC LIMIT 1) AS Slika
                     FROM artikliview
-                    LEFT JOIN slikeartikal ON ClanakID = artikliview.ID
                     LEFT JOIN artiklikarakteristike ON artiklikarakteristike.ArtikalID = artikliview.ID
-                    WHERE Aktivan = 1 AND ".Domena::sqlTablica()." = 1 AND Zadana = 1
+                    WHERE Aktivan = 1 AND ".Domena::sqlTablica()." = 1
                     {$this->trazi($trazi)}
                     GROUP BY artikliview.ID
                     {$this->velicineUpit($velicina)}
@@ -119,10 +119,10 @@ final class Artikli_Model extends Master_Model {
                 ->sirovi("
                     SELECT
                        artikliview.ID, Naziv, Link, Opis, ".Domena::sqlCijena()." AS Cijena, ".Domena::sqlCijenaAkcija()." AS CijenaAkcija,
-                       IF(".Domena::sqlCijenaAkcija()." > 0, ".Domena::sqlCijenaAkcija().", ".Domena::sqlCijena().") AS Cijenafinal, Slika,
-                       GROUP_CONCAT(DISTINCT artiklikarakteristike.Velicina) AS Velicine
+                       IF(".Domena::sqlCijenaAkcija()." > 0, ".Domena::sqlCijenaAkcija().", ".Domena::sqlCijena().") AS Cijenafinal,
+                       GROUP_CONCAT(DISTINCT artiklikarakteristike.Velicina) AS Velicine,
+                       (SELECT Slika FROM slikeartikal WHERE slikeartikal.ClanakID = artikliview.ID ORDER BY slikeartikal.Zadana DESC LIMIT 1) AS Slika
                     FROM artikliview
-                    LEFT JOIN slikeartikal ON ClanakID = artikliview.ID
                     LEFT JOIN artiklikarakteristike ON artiklikarakteristike.ArtikalID = artikliview.ID
                     WHERE Aktivan = 1 AND ".Domena::sqlTablica()." = 1 AND Zadana = 1 AND ".Domena::sqlCijenaAkcija()." > 0
                     {$this->trazi($trazi)}
@@ -139,12 +139,12 @@ final class Artikli_Model extends Master_Model {
                 ->sirovi("
                 SELECT
                     artikliview.ID, Naziv, Link, Opis, ".Domena::sqlCijena()." AS Cijena, ".Domena::sqlCijenaAkcija()." AS CijenaAkcija,
-                    IF(".Domena::sqlCijenaAkcija()." > 0, ".Domena::sqlCijenaAkcija().", ".Domena::sqlCijena().") AS Cijenafinal, Slika,
-                    GROUP_CONCAT(DISTINCT artiklikarakteristike.Velicina) AS Velicine
+                    IF(".Domena::sqlCijenaAkcija()." > 0, ".Domena::sqlCijenaAkcija().", ".Domena::sqlCijena().") AS Cijenafinal,
+                    GROUP_CONCAT(DISTINCT artiklikarakteristike.Velicina) AS Velicine,
+                    (SELECT Slika FROM slikeartikal WHERE slikeartikal.ClanakID = artikliview.ID ORDER BY slikeartikal.Zadana DESC LIMIT 1) AS Slika
                 FROM artikliview
-                LEFT JOIN slikeartikal ON ClanakID = artikliview.ID
                 LEFT JOIN artiklikarakteristike ON artiklikarakteristike.ArtikalID = artikliview.ID
-                WHERE KategorijaID = '$kategorija' AND Aktivan = 1 AND ".Domena::sqlTablica()." = 1 AND Zadana = 1
+                WHERE KategorijaID = '$kategorija' AND Aktivan = 1 AND ".Domena::sqlTablica()." = 1
                 {$this->trazi($trazi)}
                 GROUP BY artikliview.ID
                 {$this->velicineUpit($velicina)}
@@ -159,12 +159,12 @@ final class Artikli_Model extends Master_Model {
                 ->sirovi("
                 SELECT
                     artikliview.ID, Naziv, Link, Opis, ".Domena::sqlCijena()." AS Cijena, ".Domena::sqlCijenaAkcija()." AS CijenaAkcija,
-                    IF(".Domena::sqlCijenaAkcija()." > 0, ".Domena::sqlCijenaAkcija().", ".Domena::sqlCijena().") AS Cijenafinal, Slika,
-                    GROUP_CONCAT(DISTINCT artiklikarakteristike.Velicina) AS Velicine
+                    IF(".Domena::sqlCijenaAkcija()." > 0, ".Domena::sqlCijenaAkcija().", ".Domena::sqlCijena().") AS Cijenafinal,
+                    GROUP_CONCAT(DISTINCT artiklikarakteristike.Velicina) AS Velicine,
+                    (SELECT Slika FROM slikeartikal WHERE slikeartikal.ClanakID = artikliview.ID ORDER BY slikeartikal.Zadana DESC LIMIT 1) AS Slika
                 FROM artikliview
-                LEFT JOIN slikeartikal ON ClanakID = artikliview.ID
                 LEFT JOIN artiklikarakteristike ON artiklikarakteristike.ArtikalID = artikliview.ID
-                WHERE KategorijaID = '$kategorija' AND PodKategorijaID = '$podkategorija' AND Aktivan = 1 AND ".Domena::sqlTablica()." = 1 AND Zadana = 1
+                WHERE KategorijaID = '$kategorija' AND PodKategorijaID = '$podkategorija' AND Aktivan = 1 AND ".Domena::sqlTablica()." = 1
                 {$this->trazi($trazi)}
                 GROUP BY artikliview.ID
                 {$this->velicineUpit($velicina)}
