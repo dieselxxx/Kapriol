@@ -61,8 +61,9 @@ final class Artikl_Model extends Master_Model {
                     kategorije.Kategorija, kategorije.Link as KategorijaLink, slikeartikal.Slika
                 FROM artikliview
                 LEFT JOIN kategorije ON kategorije.ID = artikliview.KategorijaID
-                LEFT JOIN slikeartikal ON slikeartikal.ClanakID = artikliview.ID AND slikeartikal.Zadana = 1
+                LEFT JOIN slikeartikal ON slikeartikal.ClanakID = artikliview.ID
                 WHERE artikliview.Link = '$link' AND artikliview.Aktivan = 1 AND artikliview.".Domena::sqlTablica()." = 1
+                ORDER BY slikeartikal.Zadana DESC
                 LIMIT 1
             ")
             ->napravi();
