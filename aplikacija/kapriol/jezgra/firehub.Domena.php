@@ -28,14 +28,31 @@ final class Domena {
 
     public static function Hr ():bool {
 
-        if (Server::Domena() === 'privremenadomena.lin77.host25.com') {
+        if (Server::Domena() === 'kapriol.ba') {
 
-            return true;
+            return false;
 
         }
 
-        return false;
+        return true;
 
+
+    }
+
+    public static function emailNarudzbe ():array {
+
+        if (self::Hr()) {
+
+            return array(
+                array("adresa" => 'imotski@kapriol-point.com', "ime" => 'Kapriol Imotski'),
+                array("adresa" => 'kapriol@kapriol-point.com', "ime" => 'Kapriol')
+            );
+        }
+
+        return array(
+            array("adresa" => 'mostar@kapriol-point.com', "ime" => 'Kapriol Mostar'),
+            array("adresa" => 'kapriol@kapriol-point.com', "ime" => 'Kapriol')
+        );
 
     }
 
