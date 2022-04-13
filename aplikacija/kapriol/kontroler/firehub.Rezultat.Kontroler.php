@@ -101,7 +101,7 @@ final class Rezultat_Kontroler extends Master_Kontroler {
             // cijene
             if ($artikal['CijenaAkcija'] > 0) {
 
-                $artikal_popust = -($artikal['Cijena'] - $artikal['CijenaAkcija']) / ($artikal['Cijena']) * 100;
+                $artikal_popust = -($artikal['Cijena'] - $artikal['CijenaAkcija']) / (max($artikal['Cijena'], 1)) * 100;
 
                 $artikl_cijena = '
                 <span class="prekrizi">'.number_format((float)$artikal['Cijena'], 2, ',', '.').' '.Domena::valuta().'</span>

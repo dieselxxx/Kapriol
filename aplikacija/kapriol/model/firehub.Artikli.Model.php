@@ -124,7 +124,7 @@ final class Artikli_Model extends Master_Model {
                        (SELECT Slika FROM slikeartikal WHERE slikeartikal.ClanakID = artikliview.ID ORDER BY slikeartikal.Zadana DESC LIMIT 1) AS Slika
                     FROM artikliview
                     LEFT JOIN artiklikarakteristike ON artiklikarakteristike.ArtikalID = artikliview.ID
-                    WHERE Aktivan = 1 AND ".Domena::sqlTablica()." = 1 AND ".Domena::sqlCijenaAkcija()." > 0
+                    WHERE Aktivan = 1 AND ".Domena::sqlTablica()." = 1 AND ".Domena::sqlCijenaAkcija()." > 0 AND ".Domena::sqlCijena()." > 0
                     {$this->trazi($trazi)}
                     GROUP BY artikliview.ID
                     {$this->velicineUpit($velicina)}
