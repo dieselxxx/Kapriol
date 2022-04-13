@@ -18,24 +18,26 @@ final class Domena {
 
     public static function Ba ():bool {
 
-        if (Server::Domena() === 'localhost:223') {
+        if (Server::Domena() !== 'www.kapriol-point.hr') {
 
             return true;
 
         }
 
+        return false;
+
     }
 
     public static function Hr ():bool {
 
-        if (Server::Domena() === 'kapriol.ba') {
+        if (Server::Domena() === 'www.kapriol-point.hr') {
 
-            return false;
+
+            return true;
 
         }
 
-        return true;
-
+        return false;
 
     }
 
