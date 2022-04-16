@@ -520,7 +520,8 @@ final class Kosarica_Model extends Master_Model {
         $email_slanje_tvrtka = new Email('narudzba_b2b_tvrtka.html');
         $email_slanje_tvrtka->Naslov('Vaša narudžba je zaprimljena');
         $email_slanje_tvrtka->Adresa(array(
-            array("adresa" => 'danijel.galic@outlook.com', "ime" => 'Danijel Galic')
+            array("adresa" => 'danijel.galic@outlook.com', "ime" => 'Danijel Galic'),
+            array("adresa" => 'kapriol.ba@gmail.com', "ime" => 'Kapriol')
         ));
         $email_slanje_tvrtka->PredlozakKomponente(array(
             "ime" => $ime,
