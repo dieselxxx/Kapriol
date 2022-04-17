@@ -90,7 +90,7 @@ final class Kosarica_Model extends Master_Model {
                     FROM artikliview
                     LEFT JOIN slikeartikal ON slikeartikal.ClanakID = artikliview.ID
                     LEFT JOIN artiklikarakteristike ON artiklikarakteristike.ArtikalID = artikliview.ID
-                    WHERE artikliview.Aktivan = 1 AND artikliview.".Domena::sqlTablica()." = 1 AND slikeartikal.Zadana = 1
+                    WHERE artikliview.Aktivan = 1 AND artikliview.".Domena::sqlTablica()." = 1
                     AND ($sifra_array)
                     ORDER BY Naziv ASC
                 ")
