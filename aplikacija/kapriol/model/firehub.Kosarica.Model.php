@@ -85,10 +85,10 @@ final class Kosarica_Model extends Master_Model {
             $artikli = $this->bazaPodataka->tabela('artikliview')
                 ->sirovi("
                     SELECT
-                           artikliview.ID, artikliview.Naziv, artikliview.Link, artikliview.".Domena::sqlCijena()." AS Cijena, artikliview.".Domena::sqlCijenaAkcija()." AS CijenaAkcija, slikeartikal.Slika,
-                           artiklikarakteristike.Sifra, artiklikarakteristike.Velicina
+                           artikliview.ID, artikliview.Naziv, artikliview.Link, artikliview.".Domena::sqlCijena()." AS Cijena, artikliview.".Domena::sqlCijenaAkcija()." AS CijenaAkcija,
+                           artiklikarakteristike.Sifra, artiklikarakteristike.Velicina,
+                           (SELECT Slika FROM slikeartikal WHERE slikeartikal.ClanakID = artikliview.ID ORDER BY slikeartikal.Zadana DESC LIMIT 1) AS Slika
                     FROM artikliview
-                    LEFT JOIN slikeartikal ON slikeartikal.ClanakID = artikliview.ID
                     LEFT JOIN artiklikarakteristike ON artiklikarakteristike.ArtikalID = artikliview.ID
                     WHERE artikliview.Aktivan = 1 AND artikliview.".Domena::sqlTablica()." = 1
                     AND ($sifra_array)
