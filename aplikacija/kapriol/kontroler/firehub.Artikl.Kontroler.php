@@ -64,6 +64,7 @@ final class Artikl_Kontroler extends Master_Kontroler {
         if ($trenutni_artikl['ID'] === 0 || empty($artikl_zaliha)) {
 
             return sadrzaj()->datoteka('artikl_ne_postoji.html')->podatci([
+                'predlozak_opis' => Domena::opis(),
                 'predlozak_naslov' => $trenutni_artikl['Naziv'],
                 'facebook_link' => Domena::facebook(),
                 'instagram_link' => Domena::instagram(),
@@ -188,6 +189,7 @@ final class Artikl_Kontroler extends Master_Kontroler {
             : '';
 
         return sadrzaj()->datoteka('artikl.html')->podatci([
+            'predlozak_opis' => Domena::opis(),
             'predlozak_naslov' => $trenutni_artikl['Naziv'],
             'facebook_link' => Domena::facebook(),
             'instagram_link' => Domena::instagram(),

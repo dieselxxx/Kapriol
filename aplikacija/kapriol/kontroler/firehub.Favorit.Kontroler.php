@@ -92,6 +92,7 @@ final class Favorit_Kontroler extends Master_Kontroler {
         }
 
         return sadrzaj()->datoteka('favoriti.html')->podatci([
+            'predlozak_opis' => Domena::opis(),
             'predlozak_naslov' => 'Favoriti',
             'facebook_link' => Domena::facebook(),
             'instagram_link' => Domena::instagram(),

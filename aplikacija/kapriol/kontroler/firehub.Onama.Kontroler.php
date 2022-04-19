@@ -48,6 +48,7 @@ final class Onama_Kontroler extends Master_Kontroler {
         $html_onama = Domena::Hr() ? 'onama_hr.html' : 'onama_ba.html' ;
 
         return sadrzaj()->datoteka($html_onama)->podatci([
+            'predlozak_opis' => Domena::opis(),
             'predlozak_naslov' => 'O nama',
             'facebook_link' => Domena::facebook(),
             'instagram_link' => Domena::instagram(),

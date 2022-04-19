@@ -151,6 +151,7 @@ final class Kosarica_Kontroler extends Master_Kontroler {
         }
 
         return sadrzaj()->datoteka('kosarica.html')->podatci([
+            'predlozak_opis' => Domena::opis(),
             'predlozak_naslov' => 'Košarica',
             'facebook_link' => Domena::facebook(),
             'instagram_link' => Domena::instagram(),
@@ -213,6 +214,7 @@ final class Kosarica_Kontroler extends Master_Kontroler {
         }
 
         return sadrzaj()->datoteka('narudzba.html')->podatci([
+            'predlozak_opis' => Domena::opis(),
             'predlozak_naslov' => 'Narudžba',
             'facebook_link' => Domena::facebook(),
             'mobitel' => Domena::mobitel(),
@@ -279,6 +281,7 @@ final class Kosarica_Kontroler extends Master_Kontroler {
         }
 
         return sadrzaj()->datoteka('narudzba_b2b.html')->podatci([
+            'predlozak_opis' => Domena::opis(),
             'predlozak_naslov' => 'Narudžba',
             'facebook_link' => Domena::facebook(),
             'instagram_link' => Domena::instagram(),
@@ -324,6 +327,7 @@ final class Kosarica_Kontroler extends Master_Kontroler {
         $kategorije = $this->model(Kategorije_Model::class);
 
         return sadrzaj()->datoteka('narudzba_vrsta.html')->podatci([
+            'predlozak_opis' => Domena::opis(),
             'predlozak_naslov' => 'Vrsta narudžbe',
             'facebook_link' => Domena::facebook(),
             'instagram_link' => Domena::instagram(),
@@ -356,6 +360,7 @@ final class Kosarica_Kontroler extends Master_Kontroler {
         $kategorije = $this->model(Kategorije_Model::class);
 
         return sadrzaj()->datoteka('narudzba_ispravno.html')->podatci([
+            'predlozak_opis' => Domena::opis(),
             'predlozak_naslov' => 'Naslovna',
             'facebook_link' => Domena::facebook(),
             'instagram_link' => Domena::instagram(),

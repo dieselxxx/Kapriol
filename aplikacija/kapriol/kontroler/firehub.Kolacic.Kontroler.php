@@ -74,6 +74,7 @@ final class Kolacic_Kontroler extends Master_Kontroler {
         $kategorije = $this->model(Kategorije_Model::class);
 
         return sadrzaj()->datoteka('osobni_podatci.html')->podatci([
+            'predlozak_opis' => Domena::opis(),
             'predlozak_naslov' => 'Osobni podatci',
             'facebook_link' => Domena::facebook(),
             'instagram_link' => Domena::instagram(),

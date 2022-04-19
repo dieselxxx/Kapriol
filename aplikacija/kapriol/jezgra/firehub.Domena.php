@@ -285,4 +285,16 @@ final class Domena {
 
     }
 
+    public static function opis ():string {
+
+        if (self::Hr()) {
+
+            return 'KAPRIOL POINT d.o.o. Imotski, zastupnik i distributer branda Kapriol na tržištu Hrvatske. Glavina Donja 336, 21260 | Imotski | Tel.: +385 21 486 385 | kapriol(at)kapriol-point.com';
+
+        }
+
+        return 'KAPRIOL POINT d.o.o. Mostar, zastupnik i distributer branda Kapriol na tržištu Bosne i Hercegovine. Kneza Višesalava bb (SPC Mljekara, Lamela A) | Mostar | Tel.: +387 36 349 223 | kapriol(at)kapriol-point.com';
+
+    }
+
 }

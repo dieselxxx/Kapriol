@@ -182,6 +182,7 @@ final class Rezultat_Kontroler extends Master_Kontroler {
         //}
 
         return sadrzaj()->datoteka('rezultat.html')->podatci([
+            'predlozak_opis' => Domena::opis(),
             'predlozak_naslov' => $trenutna_kategorija['Kategorija'],
             'facebook_link' => Domena::facebook(),
             'instagram_link' => Domena::instagram(),

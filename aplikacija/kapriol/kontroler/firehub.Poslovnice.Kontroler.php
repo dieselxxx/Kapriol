@@ -45,6 +45,7 @@ final class Poslovnice_Kontroler extends Master_Kontroler {
         $kategorije = $this->model(Kategorije_Model::class);
 
         return sadrzaj()->datoteka(Domena::poslovnice())->podatci([
+            'predlozak_opis' => Domena::opis(),
             'predlozak_naslov' => 'Poslovnice',
             'facebook_link' => Domena::facebook(),
             'instagram_link' => Domena::instagram(),
