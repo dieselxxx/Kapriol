@@ -75,6 +75,7 @@ final class Kolacic_Kontroler extends Master_Kontroler {
 
         return sadrzaj()->datoteka('osobni_podatci.html')->podatci([
             'predlozak_opis' => Domena::opis(),
+            'predlozak_GA' => Domena::GA(),
             'predlozak_naslov' => 'Osobni podatci',
             'facebook_link' => Domena::facebook(),
             'instagram_link' => Domena::instagram(),

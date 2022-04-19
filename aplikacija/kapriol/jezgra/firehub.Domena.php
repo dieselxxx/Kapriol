@@ -297,4 +297,16 @@ final class Domena {
 
     }
 
+    public static function GA ():string {
+
+        if (self::Hr()) {
+
+            return 'G-NJ1TDD52J1';
+
+        }
+
+        return '';
+
+    }
+
 }
