@@ -89,7 +89,6 @@ button.mali, .gumb.mali {padding: 0 20px; height: 30px;}
 button.ikona, .gumb.ikona {display: inline-flex; justify-content: center;}
 button.ikona > svg, .gumb.ikona > svg {fill: var(--boja-kapriol); height: 30px; width: 30px;}
 button.ikona > span, .gumb.ikona > span {text-indent: 15px;}
-button.ikona[data-boja] > svg, .gumb.ikona > svg {fill: var(--boja-tekst-svjetlije);}
 .gumb {display: inline-block;}
 .gumb:hover {text-decoration: none;}
 .gumb:hover svg {fill: var(--boja-kapriol);}
