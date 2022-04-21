@@ -118,11 +118,16 @@ final class Artikl_Kontroler extends Master_Kontroler {
         }
 
         // zaliha
-        $artikl_zaliha_html = '';
+        $artikl_zaliha_html = '<h3>Odaberite veličinu :</h3>';
         $artikl_kosarica_velicine = '';
         foreach ($artikl_zaliha as $zaliha) {
 
-            if ((int)$zaliha['StanjeSkladisteTF'] === 1) {
+            if ((int)$zaliha['StanjeSkladisteTF'] === 1 && count($artikl_zaliha) === 1 && $artikl_zaliha[0]['Velicina'] === 'uni') {
+
+                $artikl_zaliha_html = '';
+                $artikl_kosarica_velicine .= '';
+
+            } else if ((int)$zaliha['StanjeSkladisteTF'] === 1) {
 
                 $artikl_zaliha_html .= '
                 <li>
@@ -155,13 +160,25 @@ final class Artikl_Kontroler extends Master_Kontroler {
 
                 if (isset($_POST['velicina'])) {
 
-                    $velicina =  Validacija::String('Veličina', $_POST['velicina'], 1, 10);
+                    $velicina = Validacija::String('Veličina', $_POST['velicina'], 1, 10);
 
                     $this->model(Kosarica_Model::class)->dodaj($velicina, (int)$_POST['vrijednost'] ?? 0);
 
+                    header("Location: ".$_SERVER['REQUEST_URI']);
+
                 } else {
 
-                    throw new Kontroler_Greska('Molimo odaberite veličinu artikla!');
+                    if (count($artikl_zaliha) === 1 && $artikl_zaliha[0]['Velicina'] === 'uni') {
+
+                        $this->model(Kosarica_Model::class)->dodaj($artikl_zaliha[0]['artiklikarakteristikeSifra'], (int)$_POST['vrijednost'] ?? 0);
+
+                        header("Location: ".$_SERVER['REQUEST_URI']);
+
+                    } else {
+
+                        throw new Kontroler_Greska('Molimo odaberite veličinu artikla!');
+
+                    }
 
                 }
 

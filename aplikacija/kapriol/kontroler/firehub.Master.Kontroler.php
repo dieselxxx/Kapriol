@@ -14,6 +14,7 @@
 
 namespace FireHub\Aplikacija\Kapriol\Kontroler;
 
+use FireHub\Aplikacija\Kapriol\Jezgra\Server;
 use FireHub\Aplikacija\Kapriol\Model\Favorit_Model;
 use FireHub\Jezgra\Kontroler\Kontroler;
 use FireHub\Aplikacija\Kapriol\Model\Kosarica_Model;
@@ -46,6 +47,8 @@ abstract class Master_Kontroler extends Kontroler {
 
                 $this->model(Kosarica_Model::class)->izmijeni($velicina, (int)$_POST['vrijednost'] ?? 0);
 
+                header("Location: ".$_SERVER['REQUEST_URI']);
+
             }
 
         }
@@ -57,6 +60,8 @@ abstract class Master_Kontroler extends Kontroler {
                 $velicina =  Validacija::String('Veličina', $_POST['velicina'], 1, 10);
 
                 $this->model(Kosarica_Model::class)->izbrisi($velicina);
+
+                header("Location: ".$_SERVER['REQUEST_URI']);
 
             }
 
