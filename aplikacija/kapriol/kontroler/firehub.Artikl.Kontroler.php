@@ -14,6 +14,7 @@
 
 namespace FireHub\Aplikacija\Kapriol\Kontroler;
 
+use FireHub\Aplikacija\Kapriol\Jezgra\Server;
 use FireHub\Aplikacija\Kapriol\Model\Favorit_Model;
 use FireHub\Aplikacija\Kapriol\Model\Gdpr_Model;
 use FireHub\Jezgra\Sadrzaj\Sadrzaj;
@@ -79,6 +80,7 @@ final class Artikl_Kontroler extends Master_Kontroler {
                 'zaglavlje_adresa' => Domena::adresa(),
                 'podnozje_dostava' => Domena::podnozjeDostava(),
                 'gdpr' => $gdpr->html(),
+                "google_artikal" => '',
                 'vi_ste_ovdje' => 'Vi ste ovdje : <a href="/">Kapriol Web Trgovina</a> \\\\ '.$trenutni_artikl['Kategorija'].' \\\\ ' . $trenutni_artikl['Naziv']
             ]);
 
@@ -216,8 +218,54 @@ final class Artikl_Kontroler extends Master_Kontroler {
             'artikl_kosarica_velicine' => $artikl_kosarica_velicine,
             'artikl_opis' => $trenutni_artikl['Opis'],
             'calc_velicina' => $calc_velicina,
+            "google_artikal" => $this->GoogleArtikal($trenutni_artikl, $artikl_model->slike($trenutni_artikl['ID'])),
             'kosarica_greska' => $kosarica_greska
         ]);
+
+    }
+
+    /**
+     * Google artikal
+     */
+    private function GoogleArtikal ($trenutni_artikl, $slike):string {
+
+        // slike za google artikal
+        $google_artikal_slike = array();
+        foreach ($slike as $artikal_slika) {
+
+            $google_artikal_slike[] = Server::URL() . '/slika/velikaslika/'.$artikal_slika['Slika'];
+
+        }
+        $google_artikal_slike_vrijednosti = array_values($google_artikal_slike);
+        $slike = json_encode($google_artikal_slike_vrijednosti, JSON_UNESCAPED_SLASHES);
+
+        return '
+        <!--google obogaćeni podatci-->
+        <script type="application/ld+json">
+            {
+                "@context": "https://schema.org/",
+                "@type": "Product",
+                "name": "'.$trenutni_artikl["Naziv"].'",
+                "image": '.$slike.',
+                "description": "'.$trenutni_artikl["Opis"].'",
+                "sku": "'.$trenutni_artikl["ID"].'",
+                "brand": {
+                    "@type": "Brand",
+                    "name": "Kapriol"
+                },
+                "offers": {
+                    "@type": "Offer",
+                    "url": "'. Server::URL() . '/artikl/' . $trenutni_artikl["Link"] .'",
+                    "priceCurrency": "'.Domena::Valuta().'",
+                    "price": "'.$trenutni_artikl["Cijena"].'",
+                    "priceValidUntil": "'.date("Y-m-d").'",
+                    "itemCondition": "http://schema.org/NewCondition",
+                    "availability": "http://schema.org/InStock"
+                }
+
+            }
+        </script>
+        ';
 
     }
 

@@ -58,7 +58,7 @@ final class Artikl_Model extends Master_Model {
             ->sirovi("
                 SELECT
                     artikliview.ID, artikliview.Naziv, artikliview.Opis, artikliview.".Domena::sqlCijena()." AS Cijena, artikliview.".Domena::sqlCijenaAkcija()." AS CijenaAkcija,
-                    kategorije.Kategorija, kategorije.Link as KategorijaLink, slikeartikal.Slika
+                    kategorije.Kategorija, kategorije.Link as KategorijaLink, slikeartikal.Slika, artikliview.Link
                 FROM artikliview
                 LEFT JOIN kategorije ON kategorije.ID = artikliview.KategorijaID
                 LEFT JOIN slikeartikal ON slikeartikal.ClanakID = artikliview.ID
