@@ -135,7 +135,7 @@ class Dialog {
             $("html, body").animate({ scrollTop: 0 }, 300);
             $('#dialog_okolo').fadeIn(300).css('position', 'absolute');
         } else {
-            $('#dialog_okolo').fadeIn(300).css('position', 'fixed').css('overflow', 'hidden');
+            $('#dialog_okolo').fadeIn(300).css('position', 'fixed');
         }
         $('#dialog').slideDown(300).css('display', 'grid');
 
