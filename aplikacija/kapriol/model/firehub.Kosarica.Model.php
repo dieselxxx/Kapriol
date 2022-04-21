@@ -69,13 +69,13 @@ final class Kosarica_Model extends Master_Model {
                 if ($kljuc === array_key_first($id)) {
 
                     $sifra_array .= "
-                        artiklikarakteristike.Sifra = $vrijednost
+                        artiklikarakteristike.Sifra = '$vrijednost'
                     ";
 
                 } else {
 
                     $sifra_array .= "
-                        OR artiklikarakteristike.Sifra = $vrijednost
+                        OR artiklikarakteristike.Sifra = '$vrijednost'
                     ";
 
                 }
@@ -168,7 +168,7 @@ final class Kosarica_Model extends Master_Model {
                     SUM(StanjeSkladiste) AS StanjeSkladiste
                 FROM artiklikarakteristike
                 LEFT JOIN stanjeskladista ON stanjeskladista.Sifra = artiklikarakteristike.Sifra
-                WHERE artiklikarakteristike.Sifra = $velicina
+                WHERE artiklikarakteristike.Sifra = '$velicina'
                 AND (SkladisteID = 3)
                 GROUP BY Velicina
             ")
@@ -182,7 +182,7 @@ final class Kosarica_Model extends Master_Model {
                     SUM(StanjeSkladiste) AS StanjeSkladiste
                 FROM artiklikarakteristike
                 LEFT JOIN stanjeskladista ON stanjeskladista.Sifra = artiklikarakteristike.Sifra
-                WHERE artiklikarakteristike.Sifra = $velicina
+                WHERE artiklikarakteristike.Sifra = '$velicina'
                 AND (SkladisteID = 1 OR SkladisteID = 2)
                 GROUP BY Velicina
             ")
@@ -234,7 +234,7 @@ final class Kosarica_Model extends Master_Model {
                     SUM(StanjeSkladiste) AS StanjeSkladiste
                 FROM artiklikarakteristike
                 LEFT JOIN stanjeskladista ON stanjeskladista.Sifra = artiklikarakteristike.Sifra
-                WHERE artiklikarakteristike.Sifra = $velicina
+                WHERE artiklikarakteristike.Sifra = '$velicina'
                 GROUP BY Velicina
             ")
             ->napravi();
