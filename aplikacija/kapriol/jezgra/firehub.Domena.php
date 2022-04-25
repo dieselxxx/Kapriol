@@ -177,7 +177,7 @@ final class Domena {
                     </li>
                     <li>
                         <svg><use xlink:href="/kapriol/resursi/grafika/simboli/simbol.ikone.svg#strelica_desno_duplo2"></use></svg>
-                        <span>Dostava za narudzbe manje od 79 KM iznosi 5 MB.</span>
+                        <span>Dostava za narudzbe manje od 79 KM iznosi 5 KM.</span>
                     </li>
                     <li>
                         <svg><use xlink:href="/kapriol/resursi/grafika/simboli/simbol.ikone.svg#strelica_desno_duplo2"></use></svg>
