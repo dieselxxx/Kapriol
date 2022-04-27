@@ -17,6 +17,7 @@ namespace FireHub\Aplikacija\Kapriol\Kontroler;
 use FireHub\Aplikacija\Kapriol\Jezgra\Server;
 use FireHub\Aplikacija\Kapriol\Model\Artikli_Model;
 use FireHub\Aplikacija\Kapriol\Model\Kategorije_Model;
+use FireHub\Aplikacija\Kapriol\Model\Sitemap_Model;
 use FireHub\Jezgra\HTTP\Atributi\Zaglavlja;
 use FireHub\Jezgra\HTTP\Zahtjev;
 use FireHub\Jezgra\Kontejner\Greske\Kontejner_Greska;
@@ -174,6 +175,23 @@ final class Sitemap_Kontroler extends Master_Kontroler {
 
         return sadrzaj()->format(Sadrzaj_Vrsta::HTMLP)->datoteka('xml.html')->podatci([
             'podatci' => $podatci
+        ]);
+
+    }
+
+    /**
+     * ## Posalji sitemap
+     * @since 0.1.0.pre-alpha.M1
+     *
+     * @return Sadrzaj Sadržaj stranice.
+     */
+    #[Zaglavlja(vrsta: Vrsta::JSON)]
+    public function posalji ():Sadrzaj {
+
+        $sitemap_model = $this->model(Sitemap_Model::class);
+
+        return sadrzaj()->format(Sadrzaj_Vrsta::JSON)->podatci([
+            'Poruka' => $sitemap_model->posalji()
         ]);
 
     }
