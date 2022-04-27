@@ -35,3 +35,7 @@ Rute::sve('kontakt/ispravno', [\FireHub\Aplikacija\Kapriol\Kontroler\Kontakt_Kon
 Rute::sve('favorit/index', [\FireHub\Aplikacija\Kapriol\Kontroler\Favorit_Kontroler::class, 'ispravno']);
 Rute::sve('kolacic/index', [\FireHub\Aplikacija\Kapriol\Kontroler\Kolacic_Kontroler::class, 'index']);
 Rute::sve('kolacic/osobnipodatci', [\FireHub\Aplikacija\Kapriol\Kontroler\Kolacic_Kontroler::class, 'osobnipodatci']);
+Rute::sve('sitemap/index', [\FireHub\Aplikacija\Kapriol\Kontroler\Sitemap_Kontroler::class, 'index']);
+Rute::sve('sitemap/osnovno', [\FireHub\Aplikacija\Kapriol\Kontroler\Sitemap_Kontroler::class, 'osnovno']);
+Rute::sve('sitemap/kategorije', [\FireHub\Aplikacija\Kapriol\Kontroler\Sitemap_Kontroler::class, 'kategorije']);
+Rute::sve('sitemap/artikli', [\FireHub\Aplikacija\Kapriol\Kontroler\Sitemap_Kontroler::class, 'artikli']);

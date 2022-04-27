@@ -222,7 +222,7 @@ final class Kategorije_Model extends Master_Model {
      *
      * @return array Niz kategorija.
      */
-    private function kategorije ():array {
+    public function kategorije ():array {
 
         $kategorije = $this->bazaPodataka->tabela('kategorijeview')
             ->sirovi("
