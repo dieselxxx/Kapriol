@@ -224,7 +224,7 @@ final class Artikl_Kontroler extends Master_Kontroler {
             'zaglavlje_adresa' => Domena::adresa(),
             'podnozje_dostava' => Domena::podnozjeDostava(),
             'gdpr' => $gdpr->html(),
-            'vi_ste_ovdje' => 'Vi ste ovdje : <a href="/">Kapriol Web Trgovina</a> \\\\ '.$trenutni_artikl['Kategorija'].' \\\\ ' . $trenutni_artikl['Naziv'],
+            'vi_ste_ovdje' => 'Vi ste ovdje : <a href="/">Kapriol Web Trgovina</a> \\\\ <a href="/rezultat/'.$trenutni_artikl['KategorijaLink'].'">' . $trenutni_artikl['Kategorija'] . '</a> \\\\ <a href="/rezultat/'.$trenutni_artikl['KategorijaLink'].'/'.$trenutni_artikl['PodkategorijaLink'].'">' . $trenutni_artikl['Podkategorija'] . '</a> \\\\ ' . $trenutni_artikl['Naziv'],
             'opci_uvjeti' => Domena::opciUvjeti(),
             'artikl_id' => $trenutni_artikl['ID'],
             'artikl_slika' => ''.$trenutni_artikl['Slika'].'',

@@ -197,7 +197,7 @@ final class Rezultat_Kontroler extends Master_Kontroler {
             'zaglavlje_adresa' => Domena::adresa(),
             'podnozje_dostava' => Domena::podnozjeDostava(),
             'gdpr' => $gdpr->html(),
-            'vi_ste_ovdje' => 'Vi ste ovdje : <a href="/">Kapriol Web Trgovina</a> \\\\ ' . $trenutna_kategorija['Kategorija'] . ' \\\\ ' . $trenutna_podkategorija['Podkategorija'] . ' \\\\ ' . $velicina . ' \\\\ ' . $trazi,
+            'vi_ste_ovdje' => 'Vi ste ovdje : <a href="/">Kapriol Web Trgovina</a> \\\\ <a href="/rezultat/'.$trenutna_kategorija['Link'].'">' . $trenutna_kategorija['Kategorija'] . '</a> \\\\ <a href="/rezultat/'.$trenutna_kategorija['Link'].'/'.$trenutna_podkategorija['Link'].'">' . $trenutna_podkategorija['Podkategorija'] . '</a> \\\\ ' . $trazi,
             'opci_uvjeti' => Domena::opciUvjeti(),
             //'izdvojeno' => $izdvojeno_html,
             'artikli' => $artikli_html,
