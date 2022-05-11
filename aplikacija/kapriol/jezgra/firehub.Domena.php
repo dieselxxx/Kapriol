@@ -30,7 +30,7 @@ final class Domena {
 
     public static function Hr ():bool {
 
-        if (Server::Domena() === 'www.kapriol-point.hr') {
+        if (Server::Domena() === 'www.kapriol-point.hr' || Server::Domena() === 'kapriol-point.hr') {
 
 
             return true;
@@ -150,11 +150,11 @@ final class Domena {
                 <ul>
                     <li>
                         <svg><use xlink:href="/kapriol/resursi/grafika/simboli/simbol.ikone.svg#strelica_desno_duplo2"></use></svg>
-                        <span>Besplatna dostava za narudzbe preko 400 HRK.</span>
+                        <span>Besplatna dostava za narudzbe preko 399 HRK.</span>
                     </li>
                     <li>
                         <svg><use xlink:href="/kapriol/resursi/grafika/simboli/simbol.ikone.svg#strelica_desno_duplo2"></use></svg>
-                        <span>Dostava za narudzbe manje od 400 HRK iznosi 25 HRK.</span>
+                        <span>Dostava za narudzbe manje od 399 HRK iznosi 25 HRK.</span>
                     </li>
                     <li>
                         <svg><use xlink:href="/kapriol/resursi/grafika/simboli/simbol.ikone.svg#strelica_desno_duplo2"></use></svg>
@@ -208,7 +208,7 @@ final class Domena {
 
         if (self::Hr()) {
 
-            return 400;
+            return 399;
 
         }
 
