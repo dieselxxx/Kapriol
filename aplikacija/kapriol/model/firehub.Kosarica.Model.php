@@ -415,8 +415,9 @@ final class Kosarica_Model extends Master_Model {
         //$telefon = Validacija::Telefon(_('Vaš broj telefona'), $telefon, 1, 15);
         //$adresa = Validacija::String(_('Vaša adresa'), $adresa, 5, 300);
         //$zip = Validacija::Broj(_('Vaš poštanski broj'), $zip, 5, 5);
-        if($tvrtka <> '') {$tvrtka = Validacija::Prilagodjen('/^[a-zšđčćžA-ZŠĐČĆŽ0-9-. ]+$/i', _('Vaša tvrtka'), $tvrtka, 4, 100);}
-        if($oib <> '') {$oib = Validacija::Broj(_('Vaš OIB \ PDV \ ID tvrtke'), $oib, 1, 100);}
+        //if($tvrtka <> '') {$tvrtka = Validacija::Prilagodjen('/^[a-zšđčćžA-ZŠĐČĆŽ0-9-. ]+$/i', _('Vaša tvrtka'), $tvrtka, 4, 100);}
+        if($tvrtka <> '') {$tvrtka = Validacija::String(_('Vaša tvrtka'), $tvrtka, 4, 100);}
+        if($oib <> '') {$oib = Validacija::String(_('Vaš OIB \ PDV \ ID tvrtke'), $oib, 1, 20);}
         if($tvrtkaadresa <> '') {$tvrtkaadresa = Validacija::String(_('Vaša adresa tvrtka'), $tvrtkaadresa, 4, 100);}
         $placanje = Validacija::Broj(_('Plaćanje'), $placanje, 1, 1);
         $napomena = Validacija::String("Vaša napomena", $napomena, 0, 1000);
