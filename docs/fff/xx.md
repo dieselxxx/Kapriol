@@ -130,5 +130,4 @@ f
 f
 
 <div class="anchor">class</div>
-<div id="anchor">id</div>
-<div name="anchor">name</div>
+
