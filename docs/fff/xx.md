@@ -6,8 +6,8 @@ nav_order: 2
 ---
 # Container
 
-- [Introduction](/fff/xx.html#anchor)
-- https://dieselxxx.github.io/Kapriol/fff/xx.html#anchor
+- [Introduction](/Kapriol/fff/xx.html#anchor)
+- [https://dieselxxx.github.io/Kapriol/fff/xx.html#anchor]
 
 Container is a tool for managing and injecting class dependencies
 
@@ -129,4 +129,6 @@ f
 
 f
 
-<div class="anchor">xxx</div>
+<div class="anchor">class</div>
+<div id="anchor">id</div>
+<div name="anchor">name</div>
