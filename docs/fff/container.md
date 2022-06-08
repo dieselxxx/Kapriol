@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Container
-parent: Core
+parent: Index
 nav_order: 1
 ---
 # Container
