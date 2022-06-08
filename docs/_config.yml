@@ -1,2 +1,8 @@
 remote_theme: just-the-docs/just-the-docs
 color_scheme: dark
+
+navigation:
+  - title: Home
+    url: /
+  - title: Setup
+    url: setup
