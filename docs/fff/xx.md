@@ -129,5 +129,5 @@ f
 
 f
 
-<div class="anchor">class</div>
+<div id="anchor">class</div>
 
