@@ -93,9 +93,9 @@ final class Email {
         $this->email->SMTPDebug = $debug;
         $this->email->IsSMTP();
         $this->email->SMTPKeepAlive = true;
-        $this->email->Host = 'smtp.gmail.com';
-        $this->email->Port = 587;
-        $this->email->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
+        $this->email->Host = 'mail.kapriol-point.com';
+        $this->email->Port = 465;
+        $this->email->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;
         $this->email->SMTPOptions = [
             'ssl' => [
                 'verify_peer' => false,
@@ -104,9 +104,9 @@ final class Email {
             ]
         ];
         $this->email->SMTPAuth = true;
-        $this->email->Username = 'kapriolwebservis@gmail.com';
+        $this->email->Username = 'kapriolwebservis@kapriol-point.com';
         $this->email->Password = 'Kapriol357!!';
-        $this->email->SetFrom('kapriolwebservis@gmail.com', 'Kapriol Web Trgovina');
+        $this->email->SetFrom('kapriolwebservis@kapriol-point.com', 'Kapriol Web Trgovina');
         $this->email->CharSet = 'UTF-8';
         $this->email->Encoding = 'base64';
         $this->email->IsHTML(true);
