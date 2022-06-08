@@ -2,8 +2,7 @@
 // Typography
 //
 
-$body-font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
-  Roboto, "Helvetica Neue", Arial, sans-serif !default;
+$body-font-family: Roboto, "Segoe UI", "Helvetica Neue", Arial, sans-serif;
 $mono-font-family: "SFMono-Regular", Menlo, Consolas, Monospace !default;
 $root-font-size: 16px !default; // Base font-size for rems
 $body-line-height: 1.4 !default;
@@ -71,19 +70,20 @@ $red-200: #e94c4c !default;
 $red-300: #dd2e2e !default;
 
 $body-background-color: $grey-dk-300;
-$sidebar-color: $grey-lt-000 !default;
-$search-background-color: $white !default;
-$table-background-color: $white !default;
-$code-background-color: $grey-lt-000 !default;
-$feedback-color: darken($sidebar-color, 3%) !default;
+$sidebar-color: $grey-dk-300;
+$search-background-color: $grey-dk-250;
+$table-background-color: $grey-dk-250;
+$code-background-color: $grey-dk-250;
+$feedback-color: darken($sidebar-color, 3%);
+$border-color: $grey-dk-200;
 
-$body-text-color: $grey-dk-100 !default;
-$body-heading-color: $grey-dk-300 !default;
-$search-result-preview-color: $grey-dk-000 !default;
-$nav-child-link-color: $grey-dk-100 !default;
-$link-color: $purple-000 !default;
-$btn-primary-color: $purple-100 !default;
-$base-button-color: #f7f7f7 !default;
+$body-text-color: $grey-lt-300;
+$body-heading-color: $grey-lt-000;
+$search-result-preview-color: $grey-dk-000;
+$nav-child-link-color: $grey-dk-000;
+$link-color: $red-300;
+$btn-primary-color: $red-300;
+$base-button-color: $grey-dk-250;
 
 //
 // Spacing
