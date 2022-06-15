@@ -236,8 +236,44 @@ final class Artikl_Kontroler extends Master_Kontroler {
             'artikl_opis' => $trenutni_artikl['Opis'],
             'calc_velicina' => $calc_velicina,
             "google_artikal" => $this->GoogleArtikal($trenutni_artikl, $artikl_model->slike($trenutni_artikl['ID'])),
+            "ga4_artikal" => $this->GA4artikal($trenutni_artikl),
             'kosarica_greska' => $kosarica_greska
         ]);
+
+    }
+
+    /**
+     * GA4 artikal
+     */
+    private function GA4artikal ($trenutni_artikl):string {
+
+        // cijene
+        $cijena = $trenutni_artikl['CijenaAkcija'] > 0 ? $trenutni_artikl['CijenaAkcija']: $trenutni_artikl['Cijena'];
+
+        $artikal_popust = $trenutni_artikl['Cijena'] - $trenutni_artikl['CijenaAkcija'];
+
+        return '
+        <!--GA4 podatci-->
+        <script>
+            gtag("event", "view_item", {
+              currency: "'.Domena::valutaISO().'",
+              value: '.$cijena.',
+              items: [
+                {
+                  item_id: "'.$trenutni_artikl['ID'].'",
+                  item_name: "'.$trenutni_artikl['Naziv'].'",
+                  currency: "'.Domena::valutaISO().'",
+                  discount: '.$artikal_popust.',
+                  index: 0,
+                  item_category: "'.$trenutni_artikl['Kategorija'].'",
+                  item_category2: "'.$trenutni_artikl['Podkategorija'].'",
+                  price: '.$trenutni_artikl['Cijena'].',
+                  quantity: 1
+                }
+              ]
+            });
+        </script>
+        ';
 
     }
 

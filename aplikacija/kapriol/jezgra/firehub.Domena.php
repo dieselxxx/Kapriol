@@ -106,6 +106,18 @@ final class Domena {
 
     }
 
+    public static function valutaISO ():string {
+
+        if (self::Hr()) {
+
+            return 'HRK';
+
+        }
+
+        return 'BAM';
+
+    }
+
     public static function telefon ():string {
 
         if (self::Hr()) {
