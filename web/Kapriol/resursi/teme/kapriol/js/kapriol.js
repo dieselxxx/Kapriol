@@ -122,4 +122,17 @@ $(document).ready(function () {
 
     });
 
+    $('#sadrzaj.narudzba form').submit(function (odgovor) {
+
+        $.ajax({
+            type: 'GET',
+            url: '/kosarica/ga4purchase/',
+            dataType: 'json',
+            success: function (odgovor) {},
+            error: function () {},
+            complete: function (odgovor) {}
+        });
+
+    });
+
 });

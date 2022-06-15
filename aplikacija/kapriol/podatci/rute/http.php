@@ -27,6 +27,7 @@ Rute::sve('slika/usluga', [\FireHub\Aplikacija\Kapriol\Kontroler\Slika_Kontroler
 Rute::sve('kosarica/index', [\FireHub\Aplikacija\Kapriol\Kontroler\Kosarica_Kontroler::class, 'index']);
 Rute::sve('kosarica/narudzba', [\FireHub\Aplikacija\Kapriol\Kontroler\Kosarica_Kontroler::class, 'narudzba']);
 Rute::sve('kosarica/narudzbab2b', [\FireHub\Aplikacija\Kapriol\Kontroler\Kosarica_Kontroler::class, 'narudzbab2b']);
+Rute::sve('kosarica/ga4purchase', [\FireHub\Aplikacija\Kapriol\Kontroler\Kosarica_Kontroler::class, 'ga4purchase']);
 Rute::sve('kosarica/odabir', [\FireHub\Aplikacija\Kapriol\Kontroler\Kosarica_Kontroler::class, 'odabir']);
 Rute::sve('kosarica/ispravno', [\FireHub\Aplikacija\Kapriol\Kontroler\Kosarica_Kontroler::class, 'ispravno']);
 Rute::sve('poslovnice/index', [\FireHub\Aplikacija\Kapriol\Kontroler\Poslovnice_Kontroler::class, 'index']);

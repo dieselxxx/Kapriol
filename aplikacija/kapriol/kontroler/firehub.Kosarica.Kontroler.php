@@ -318,6 +318,77 @@ final class Kosarica_Kontroler extends Master_Kontroler {
     }
 
     /**
+     * ### GA4 kupnja
+     * @since 0.1.2.pre-alpha.M1
+     *
+     * @return Sadrzaj Sadržaj stranice.
+     */
+    public function ga4purchase ():Sadrzaj {
+
+        $gdpr = $this->model(Gdpr_Model::class);
+
+        $kosarica_model = $this->model(Kosarica_Model::class);
+
+        $artikli = $this->model(Kosarica_Model::class)->artikli();
+
+        $items = '';
+        $total_cijena = 0;
+        $index = 0;
+        foreach ($artikli as $item) {
+
+            $artikal_popust = $item['CijenaAkcija'] > 0 ? $item['Cijena'] - $item['CijenaAkcija'] : $item['CijenaAkcija'];
+
+            $total_cijena += $item['CijenaUkupno'];
+
+            $items .= '
+                {
+                  item_id: "'.$item['ID'].'",
+                  item_name: "'.$item['Naziv'].'",
+                  currency: "'.Domena::valutaISO().'",
+                  discount: '.$artikal_popust.',
+                  index: '.$index++.',
+                  price: '.$item['Cijena'].',
+                  quantity: '.$item['Kolicina'].'
+                },
+            ';
+        }
+
+        $gap = '
+        <script>
+            gtag("event", "purchase", {
+                transaction_id: "'.time().'",
+                value: '.$total_cijena.',
+                currency: "'.Domena::valutaISO().'",
+                items: [
+                    '.$items.'
+                    ]
+            });
+        </script>
+        ';
+
+        return sadrzaj()->datoteka('ga4purchase.html')->podatci([
+            'predlozak_opis' => Domena::opis(),
+            'predlozak_GA' => Domena::GA(),
+            'predlozak_naslov' => 'Narudžba',
+            'facebook_link' => Domena::facebook(),
+            'instagram_link' => Domena::instagram(),
+            'zaglavlje_kosarica_artikli' => $this->kosaricaArtikli(),
+            'zaglavlje_kosarica_artikli_html' => $this->kosaricaArtikliHTML(),
+            'zaglavlje_favorit_artikli' => $this->favoritArtikli(),
+            'zaglavlje_tel' => Domena::telefon(),
+            'zaglavlje_adresa' => Domena::adresa(),
+            'podnozje_dostava' => Domena::podnozjeDostava(),
+            'gdpr' => $gdpr->html(),
+            'vi_ste_ovdje' => '<a href="/">Kapriol Web Trgovina</a> \\\\ Narudžba',
+            'opci_uvjeti' => Domena::opciUvjeti(),
+            'domena_oibpdv' => Domena::OIBPDV(),
+            'domena_valuta' => Domena::valuta(),
+            'ga4purchase' => $gap
+        ]);
+
+    }
+
+    /**
      * ### Odabir vrste narudžbe
      * @since 0.1.2.pre-alpha.M1
      *

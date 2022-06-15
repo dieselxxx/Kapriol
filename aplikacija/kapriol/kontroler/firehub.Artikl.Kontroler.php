@@ -250,7 +250,7 @@ final class Artikl_Kontroler extends Master_Kontroler {
         // cijene
         $cijena = $trenutni_artikl['CijenaAkcija'] > 0 ? $trenutni_artikl['CijenaAkcija']: $trenutni_artikl['Cijena'];
 
-        $artikal_popust = $trenutni_artikl['Cijena'] - $trenutni_artikl['CijenaAkcija'];
+        $artikal_popust = $trenutni_artikl['CijenaAkcija'] > 0 ? $trenutni_artikl['Cijena'] - $trenutni_artikl['CijenaAkcija'] : $trenutni_artikl['CijenaAkcija'];
 
         return '
         <!--GA4 podatci-->
