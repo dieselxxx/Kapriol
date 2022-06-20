@@ -265,22 +265,54 @@ final class Kosarica_Kontroler extends Master_Kontroler {
 
         $kosarica_model = $this->model(Kosarica_Model::class);
 
-        $narudzba_greska = '';
-        if (isset($_POST['naruci'])) {
+        return sadrzaj()->datoteka('narudzba_b2b.html')->podatci([
+            'predlozak_opis' => Domena::opis(),
+            'predlozak_GA' => Domena::GA(),
+            'predlozak_naslov' => 'Narudžba',
+            'facebook_link' => Domena::facebook(),
+            'instagram_link' => Domena::instagram(),
+            'glavni_meni' => $kategorije->glavniMeni(),
+            'glavni_meni_hamburger' => $kategorije->glavniMeniHamburger(),
+            'zaglavlje_kosarica_artikli' => $this->kosaricaArtikli(),
+            'zaglavlje_kosarica_artikli_html' => $this->kosaricaArtikliHTML(),
+            'zaglavlje_favorit_artikli' => $this->favoritArtikli(),
+            'zaglavlje_tel' => Domena::telefon(),
+            'zaglavlje_adresa' => Domena::adresa(),
+            'podnozje_dostava' => Domena::podnozjeDostava(),
+            'gdpr' => $gdpr->html(),
+            'vi_ste_ovdje' => '<a href="/">Kapriol Web Trgovina</a> \\\\ Narudžba',
+            'opci_uvjeti' => Domena::opciUvjeti(),
+            'domena_oibpdv' => Domena::OIBPDV(),
+            'domena_valuta' => Domena::valuta(),
+            'narudzba_greska' => '',
+            'forma_ime' => $_POST['ime'] ?? '',
+            'forma_email' => $_POST['email'] ?? '',
+            'forma_telefon' => $_POST['telefon'] ?? '',
+            'forma_grad' => $_POST['grad'] ?? '',
+            'forma_adresa' => $_POST['adresa'] ?? '',
+            'forma_zip' => $_POST['zip'] ?? '',
+            'forma_tvrtka' => $_POST['tvrtka'] ?? '',
+            'forma_oib' => $_POST['oib'] ?? '',
+            'forma_tvrtka_adresa' => $_POST['tvrtkaadresa'] ?? '',
+            'forma_placanje' => $_POST['placanje'] ?? '',
+            'forma_napomena' => $_POST['napomena'] ?? ''
+        ]);
 
-            try {
+    }
 
-                $this->model(Kosarica_Model::class)->narucib2b();
+    /**
+     * ### Naruci
+     * @since 0.1.2.pre-alpha.M1
+     *
+     * @return Sadrzaj Sadržaj stranice.
+     */
+    public function naruci ():Sadrzaj {
 
-                header("Location: ".Server::URL()."/kosarica/ispravno");
+        $gdpr = $this->model(Gdpr_Model::class);
 
-            } catch (\Throwable $greska) {
+        $kategorije = $this->model(Kategorije_Model::class);
 
-                $narudzba_greska = $greska->getMessage();
-
-            }
-
-        }
+        $this->model(Kosarica_Model::class)->narucib2b();
 
         return sadrzaj()->datoteka('narudzba_b2b.html')->podatci([
             'predlozak_opis' => Domena::opis(),
@@ -301,7 +333,6 @@ final class Kosarica_Kontroler extends Master_Kontroler {
             'opci_uvjeti' => Domena::opciUvjeti(),
             'domena_oibpdv' => Domena::OIBPDV(),
             'domena_valuta' => Domena::valuta(),
-            'narudzba_greska' => $narudzba_greska,
             'forma_ime' => $_POST['ime'] ?? '',
             'forma_email' => $_POST['email'] ?? '',
             'forma_telefon' => $_POST['telefon'] ?? '',

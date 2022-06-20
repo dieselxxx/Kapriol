@@ -127,11 +127,28 @@ $(document).ready(function () {
         $.ajax({
             type: 'GET',
             url: '/kosarica/ga4purchase/',
-            dataType: 'json',
+            dataType: 'html',
             success: function (odgovor) {},
             error: function () {},
             complete: function (odgovor) {}
         });
+
+        let podatci = $('.narudzba form').serializeArray();
+
+        $.ajax({
+            type: 'POST',
+            url: '/kosarica/naruci/',
+            dataType: 'html',
+            data: podatci,
+            success: function (odgovor) {
+            },
+            error: function () {},
+            complete: function (odgovor) {
+                window.location.href = '/kosarica/ispravno';
+            }
+        });
+
+        return false;
 
     });
 
