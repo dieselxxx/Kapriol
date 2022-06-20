@@ -489,7 +489,7 @@ final class Kosarica_Model extends Master_Model {
             "tvrtka_telefon" => Domena::telefon(),
             "tvrtka_mobitel" => Domena::mobitel()
         ));
-        //$email_slanje->Posalji();
+        $email_slanje->Posalji();
 
         $email_slanje_tvrtka = new Email('narudzba_b2b_tvrtka.html');
         $email_slanje_tvrtka->Naslov('Vaša narudžba je zaprimljena');
@@ -516,7 +516,7 @@ final class Kosarica_Model extends Master_Model {
             "tvrtka_telefon" => Domena::telefon(),
             "tvrtka_mobitel" => Domena::mobitel()
         ));
-        //$email_slanje_tvrtka->Posalji();
+        $email_slanje_tvrtka->Posalji();
 
         $email_slanje_tvrtka = new Email('narudzba_b2b_tvrtka.html');
         $email_slanje_tvrtka->Naslov('Vaša narudžba je zaprimljena');
