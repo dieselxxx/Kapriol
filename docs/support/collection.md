@@ -4,27 +4,28 @@ title: Collection
 parent: Support
 nav_order: 1
 ---
-# Container
+# Collection
 
 - [# Introduction](#-introduction)
-- [# Binding](#-binding)
-- - [# Bind instance](#-bind-instance)
-- [# Resolving](#-resolving)
-- - [# Resolve instance](#-resolve-instance)
+- [# Creating collection](#-creating-collection)
+- - [# Array collection](#-array-collection)
 
 ## # Introduction
-Container is a tool for managing and injecting class dependencies.
+Collection is a wrapper for creating and managing list of data like arrays, objects, files etc.
 
-## # Binding
+## # Creating collection
 
-### # Bind instance
-
-## # Resolving
-
-### # Resolve instance
+### # Creating array collection
 
 ```php
-use FireHub\Initializers\Response;
+use FireHub\Support\Collections\Collection;
 
-Container::instance()->resolve(Response::class);
+$create = Collection::create(function ():array {
+    $xxx = [];
+    $handle = fopen('log.log', 'r');
+    while (($line = fgets($handle)) !== false) {
+        $xxx[] = $line;
+    }
+    return $xxx;
+});
 ```
