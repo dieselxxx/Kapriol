@@ -8,7 +8,7 @@ nav_order: 1
 
 - [# Introduction](#-introduction)
 - [# Creating collection](#-creating-collection)
-- - [# Array collection](#-array-collection)
+- - [# Creating array collection](#-creating-array-collection)
 
 ## # Introduction
 Collection is a wrapper for creating and managing list of data like arrays, objects, files etc.
