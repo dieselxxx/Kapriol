@@ -9,6 +9,7 @@ nav_order: 1
 - [# Introduction](#-introduction)
 - [# Array collection](#-array-collection)
 - - [# Creating array collection](#-creating-array-collection)
+- - [# Passing array to collection](#-passing-array-to-collection)
 
 ## # Introduction
 
@@ -66,7 +67,21 @@ $example_array = [
 'age' => 25
 ];
 
-$create = Collection::create(function () use (array $example_array):array {
-    return $array;
+$create = Collection::create(function () use ($example_array):array {
+    return $example_array;
 });
+```
+
+Collection can be created in short arrow function style like so:
+
+```php
+use FireHub\Support\Collections\Collection;
+
+$example_array = [
+'firstname' => 'John',
+'lastname' => 'Doe',
+'age' => 25
+];
+
+$create = Collection::create(fn () => $example_array);
 ```
