@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Collection
-parent: Core
+parent: Support
 nav_order: 1
 ---
 # Container
