@@ -17,6 +17,8 @@ nav_order: 1
 - [# Iterating Over Collection](#-iterating-over-collection)
 - [# Method Listing](#-method-listing)
 - - [# all](#-all)
+- - [# count](#-count)
+- - [# setSize](#-setsize)
 
 ## # Introduction
 
@@ -154,25 +156,23 @@ Since our collections are _lazy_ and don't produce any results while we crete th
 them is to iterate over them.
 
 You can iterate over any collection just like you would with any other normal PHP array,
-using `foreach`, `for`, `while` etc.
+using loops `foreach`, `for`, `while` etc.
 
 ```php
 use FireHub\Support\Collections\Collection;
 
-$collection = Collection::create(function ():array {
-    return [
-        'firstname' => 'John',
-        'lastname' => 'Doe',
-        'age' => 25
-    ];
-});
+$collection = Collection::create(fn ():array => [
+    'firstname' => 'John',
+    'lastname' => 'Doe',
+    'age' => 25
+]);
 
 foreach ($collection as $key => $value) {
     echo "key = $key, value = $value; ";
 }
 
-// result
-key = firstname, value = John; key = lastname, value = Doe; key = age, value = 25; 
+// result:
+// key = firstname, value = John; key = lastname, value = Doe; key = age, value = 25; 
 ```
 
 ## # Method Listing
@@ -187,6 +187,7 @@ can use each method in separate table.
 > Available on collection:
 > - Basic
 > - Index
+> - Lazy
 
 Method all gives you ability to read underlying array represented of the collection.
 
@@ -195,15 +196,79 @@ back into normal PHP array, and you will get performance hit out of it.
 Instead, you can use this method to debug your collection.
 
 ```php
-$collection = Collection::create(function ():array {
-    return [1,2,3];
-});
+$collection = Collection::create(fn ():array => [1,2,3]);
 
-$collection->all();
+$result = $collection->all();
 
-// result
-array (size=3)
-  0 => int 1
-  1 => int 2
-  2 => int 3
+print_r($result);
+
+// result:
+// Array ( [0] => 1 [1] => 2 [2] => 3 ) 
+```
+
+### # count
+
+> Available on collection:
+> - Basic
+> - Index
+> - Lazy
+
+Count method counts all items inside collection.
+
+You can count items in two different ways:
+
+- using count method
+
+```php
+$collection = Collection::create(fn ():array => [1,2,3]);
+
+echo $collection->count();
+
+// result:
+// 3
+```
+
+- using count function
+
+```php
+$collection = Collection::create(fn ():array => [1,2,3]);
+
+echo count($collection);
+
+// result:
+// 3
+```
+
+### # setSize
+
+> Available on collection:
+> - Index
+
+setSize you change the size of the Index Collection to the new size. If size is less than the current array size,
+any values after the new size will be discarded. If size is greater than the current array size,
+the array will be padded with null values.
+
+```php
+$collection = Collection::index(function ($items):void {
+    $items[0] = 0;
+    $items[1] = 1;
+    $items[2] = 2;
+}, size: 3);
+
+echo count($collection);
+
+// result:
+// 3
+
+$collection->setSize(10);
+
+echo count($collection);
+
+// result:
+// 10
+
+print_r($collection->all());
+
+// result:
+// Array ( [0] => 0 [1] => 1 [2] => 2 [3] => [4] => [5] => [6] => [7] => [8] => [9] => ) 
 ```
