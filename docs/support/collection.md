@@ -209,9 +209,9 @@ print_r($result);
 ### # count
 
 > Available on collection:
-> - Basic
-> - Index
-> - Lazy
+>> Basic | Index | Lazy
+>> ---|---|---
+>> Yes | No | No
 
 Count method counts all items inside collection.
 
