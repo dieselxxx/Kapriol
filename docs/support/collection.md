@@ -35,31 +35,30 @@ This collection can hold any type of data.
 
 ### # Creating basic array collection
 
-Basic collection, or sometime called array collection can be instantiated when calling `Create` static
+Basic collection, or sometime called array collection can be instantiated when calling `create` static
 method.
-`Create` method accepts only one argument, anonymous or arrow function.
+`create` method accepts only one argument, anonymous or arrow function.
 
-Bellow is an example how to create a collection from something complex, like reading
-large log file line by line and turning it as a collection.
+Thing to remember is that anonymous function requested by the `create` method must always return array.
 
-Thing to remember is that anonymous function requested by the `Create` method must always return array.
+Let's try to create basic collection from list of numbers.
+
 
 ```php
 use FireHub\Support\Collections\Collection;
 
 $collection = Collection::create(function ():array {
-    $handle = fopen('log.log', 'r');
-    while (($line = fgets($handle)) !== false) {
-        $lines[] = $line;
+    for($i = 0; $i < 1_000_000; $i++) {
+        $list[$i] = $i++;
     }
-    return $lines ?? [];
+    return $list ?? [];
 });
 ```
 
 ### # Passing array to collection
 
-If you already have an array that you just want to pass to collection you can do it like on the
-example bellow.
+If you already have an array that you just want to pass to collection and use of the collection features
+on it, you can do it like on the example bellow.
 
 ```php
 use FireHub\Support\Collections\Collection;
@@ -92,7 +91,7 @@ Let's try to create basic collection from list of numbers and var_dump results.
 use FireHub\Support\Collections\Collection;
 
 $collection = Collection::create(function ():array {
-    for($i = 0; $i < 1000000; $i++) {
+    for($i = 0; $i < 1_000_000; $i++) {
         $list[$i] = $i++;
     }
     return $list ?? [];
