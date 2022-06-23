@@ -14,6 +14,8 @@ nav_order: 1
 - - [# Creating Index Collection](#-creating-index-collection)
 - [# Lazy Collection](#-lazy-collection)
 - - [# Creating Lazy Collection](#-creating-lazy-collection)
+- [# Object Collection](#-object-collection)
+- - [# Creating Object Collection](#-creating-object-collection)
 - [# Iterating Over Collection](#-iterating-over-collection)
 - [# Method Listing](#-method-listing)
 - - [# all](#-all)
@@ -104,6 +106,9 @@ Index Collection can be instantiated when calling `index` static method.
 `index` method accepts two arguments, anonymous or arrow function and size argument.
 
 Anonymous function requested by the `index` method should not return any results.
+Inside out anonymous function parameter `$items` represents [SplFixedArray](https://www.php.net/manual/en/class.splfixedarray),
+which you can type-hint to get more support from your IDE.  
+Adding more data to you Index Collection is like adding to any kind of normal PHP array using `$items[$key] = $value`.
 
 Size argument is required and lets you change the size of an array to the new size of size. If size is less than the current array size,
 any values after the new size will be discarded. If size is greater than the current array size,
@@ -150,6 +155,34 @@ $collection = Collection::lazy(function ():Generator {
 });
 ```
 
+## # Object Collection
+
+While any collection can store objects, Object collection is specialized to store large amount of them.
+
+### # Creating Object Collection
+
+Object Collection can be instantiated when calling `object` static method.  
+`index` method accepts two arguments, anonymous or arrow function and size argument.  
+Adding more data to you Object Collection is done by using method `attach()` like so:  
+`$items->attach(new class {}, $info_data_for_that_object);`.
+
+Anonymous function requested by the `object` method should not return any results.
+Inside out anonymous function parameter `$items` represents [SplObjectStorage](https://www.php.net/manual/en/class.splobjectstorage),
+which you can type-hint to get more support from your IDE.
+
+Let's try to create Object Collection from list of numbers.
+
+
+```php
+use FireHub\Support\Collections\Collection;
+
+$collection = Collection::object(function ($items):void {
+    for($i = 0; $i < 1_000; $i++) {
+        $items->attach(new class {}, $i);
+    }
+});
+```
+
 ## # Iterating Over Collection
 
 Since our collections are _lazy_ and don't produce any results while we crete them, one way to invoking
@@ -185,9 +218,9 @@ can use each method in separate table.
 ### # all
 
 > Available on collection:
-> - Basic
-> - Index
-> - Lazy
+>> Basic | Index | Lazy | Object
+>> :---:|:---:|:---:|:---:
+>> yes | yes | yes | yes
 
 Method all gives you ability to read underlying array represented of the collection.
 
@@ -209,9 +242,9 @@ print_r($result);
 ### # count
 
 > Available on collection:
->> Basic | Index | Lazy
->> ---|---|---
->> Yes | No | No
+>> Basic | Index | Lazy | Object
+>> :---:|:---:|:---:|:---:
+>> yes | yes | yes | yes
 
 Count method counts all items inside collection.
 
@@ -242,7 +275,9 @@ echo count($collection);
 ### # setSize
 
 > Available on collection:
-> - Index
+>> Basic | Index | Lazy | Object
+>> :---:|:---:|:---:|:---:
+>> no | yes | no | no
 
 setSize you change the size of the Index Collection to the new size. If size is less than the current array size,
 any values after the new size will be discarded. If size is greater than the current array size,
