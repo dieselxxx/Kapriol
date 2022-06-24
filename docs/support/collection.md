@@ -17,10 +17,14 @@ nav_order: 1
 - [# Object Collection](#-object-collection)
 - - [# Creating Object Collection](#-creating-object-collection)
 - [# Iterating Over Collection](#-iterating-over-collection)
+- [# Serialize and Unserialize Collection](#-serialize-and-unserialize-collection)
+- - [# JSON Serialize](#-json-serialize)
 - [# Method Listing](#-method-listing)
 - - [# all](#-all)
 - - [# count](#-count)
+- - [# serialize](#-serialize)
 - - [# setSize](#-setsize)
+- - [# toJSON](#-tojson)
 
 ## # Introduction
 
@@ -149,7 +153,7 @@ Let's try to create Lazy Collection from list of numbers.
 use FireHub\Support\Collections\Collection;
 
 $collection = Collection::lazy(function ():Generator {
-    for($i = 0; $i < 1000000; $i++) {
+    for($i = 0; $i < 1_000_000; $i++) {
         yield $i;
     }
 });
@@ -162,9 +166,8 @@ While any collection can store objects, Object collection is specialized to stor
 ### # Creating Object Collection
 
 Object Collection can be instantiated when calling `object` static method.  
-`index` method accepts two arguments, anonymous or arrow function and size argument.  
-Adding more data to you Object Collection is done by using method `attach()` like so:  
-`$items->attach(new class {}, $info_data_for_that_object);`.
+`index` method accepts two arguments, anonymous or arrow function and size argument.
+Adding more data to you Object Collection is like adding to any kind of normal PHP array using `$items[$key] = $value`.
 
 Anonymous function requested by the `object` method should not return any results.
 Inside out anonymous function parameter `$items` represents [SplObjectStorage](https://www.php.net/manual/en/class.splobjectstorage),
@@ -178,7 +181,7 @@ use FireHub\Support\Collections\Collection;
 
 $collection = Collection::object(function ($items):void {
     for($i = 0; $i < 1_000; $i++) {
-        $items->attach(new class {}, $i);
+        $items[new class {}] = $i;
     }
 });
 ```
@@ -206,6 +209,49 @@ foreach ($collection as $key => $value) {
 
 // result:
 // key = firstname, value = John; key = lastname, value = Doe; key = age, value = 25; 
+```
+
+## # Serialize and Unserialize Collection
+
+All Collection have ability to create a string containing a byte-stream representation of any value that
+can be stored in PHP called _serialize_, and ability to recreate the original variable values
+called _unserialize_.
+
+> note: both _serialize_ and _unserialize_ only work with actual data stored inside Collection,
+so you don't need to worry about any other data leaking out from them.
+
+```php
+use FireHub\Support\Collections\Collection;
+
+$collection = Collection::create(fn ():array => [1,2,3]);
+
+$serialize = serialize($collection);
+
+echo $serialize;
+
+// result:
+// O:44:"FireHub\Support\Collections\Types\Array_Type":3:{i:0;i:1;i:1;i:2;i:2;i:3;}
+```
+
+### # JSON Serialize
+
+Collection can be serialized to JSON with `json_encode` function.
+
+```php
+use FireHub\Support\Collections\Collection;
+
+$collection = Collection::create(fn ():array => [
+    'firstname' => 'John',
+    'lastname' => 'Doe',
+    'age' => 25
+]);
+
+$json_serialize = json_encode($collection);
+
+echo $json_serialize;
+
+// result:
+// {"firstname":"John","lastname":"Doe","age":25}
 ```
 
 ## # Method Listing
@@ -272,6 +318,30 @@ echo count($collection);
 // 3
 ```
 
+### # serialize
+
+> Available on collection:
+>> Basic | Index | Lazy | Object
+>> :---:|:---:|:---:|:---:
+>> yes | yes | yes | yes
+
+Serialize generates a storable representation of the collection.
+
+```php
+$collection = Collection::create(fn ():array => [
+    'firstname' => 'John',
+    'lastname' => 'Doe',
+    'age' => 25
+]);
+
+$serialize = $collection->serialize();
+
+echo $serialize;
+
+// result:
+// O:44:"FireHub\Support\Collections\Types\Array_Type":3:{s:9:"firstname";s:4:"John";s:8:"lastname";s:3:"Doe";s:3:"age";i:25;}
+```
+
 ### # setSize
 
 > Available on collection:
@@ -306,4 +376,28 @@ print_r($collection->all());
 
 // result:
 // Array ( [0] => 0 [1] => 1 [2] => 2 [3] => [4] => [5] => [6] => [7] => [8] => [9] => ) 
+```
+
+### # toJSON
+
+> Available on collection:
+>> Basic | Index | Lazy | Object
+>> :---:|:---:|:---:|:---:
+>> yes | yes | yes | yes
+
+Generates a JSON representation of the collection.
+
+```php
+$collection = Collection::create(fn ():array => [
+    'firstname' => 'John',
+    'lastname' => 'Doe',
+    'age' => 25
+]);
+
+$json_serialize = $collection->toJSON();
+
+echo $json_serialize;
+
+// result:
+// {"firstname":"John","lastname":"Doe","age":25}
 ```
