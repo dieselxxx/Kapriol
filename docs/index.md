@@ -1,8 +1,8 @@
 ---
 layout: default
-title: Foo
-nav_order: 3
-has_children: true
+title: MainS
+nav_order: 1
+has_children: false
 ---
 
 ## Welcome to GitHub Pages
