@@ -21,10 +21,33 @@ nav_order: 1
 - - [# JSON Serialize](#-json-serialize)
 - [# Method Listing](#-method-listing)
 - - [# all](#-all)
+- - [# chunk](#-chunk)
+- - [# collapse](#-collapse)
+- - [# combine](#-combine)
+- - [# contains](#-contains)
 - - [# count](#-count)
+- - [# differenceAssoc](#-differenceassoc)
+- - [# differenceKeys](#-differencekeys)
+- - [# differenceValues](#-differencevalues)
+- - [# each](#-each)
+- - [# filter](#-filter)
+- - [# get](#-get)
+- - [# getSize](#-getsize)
+- - [# isset](#-isset)
+- - [# map](#-map)
+- - [# merge](#-merge)
+- - [# mergeRecursive](#-mergerecursive)
+- - [# pop](#-pop)
+- - [# push](#-push)
+- - [# reject](#-reject)
 - - [# serialize](#-serialize)
+- - [# set](#-set)
 - - [# setSize](#-setsize)
+- - [# shift](#-shift)
 - - [# toJSON](#-tojson)
+- - [# unset](#-unset)
+- - [# unshift](#-unshift)
+- - [# walk](#-walk)
 
 ## # Introduction
 
@@ -83,9 +106,9 @@ method.
 use FireHub\Support\Collections\Collection;
 
 $example_array = [
-'firstname' => 'John',
-'lastname' => 'Doe',
-'age' => 25
+    'firstname' => 'John',
+    'lastname' => 'Doe',
+    'age' => 25
 ];
 
 // anonymous style collection
@@ -225,12 +248,28 @@ use FireHub\Support\Collections\Collection;
 
 $collection = Collection::create(fn ():array => [1,2,3]);
 
+foreach ($collection as $key => $value) {
+    echo "key = $key, value = $value; ";
+}
+
+// result:
+// key = 0, value = 1; key = 1, value = 2; key = 2, value = 3;
+
 $serialize = serialize($collection);
 
 echo $serialize;
 
 // result:
 // O:44:"FireHub\Support\Collections\Types\Array_Type":3:{i:0;i:1;i:1;i:2;i:2;i:3;}
+
+$unserialize_collection = unserialize($serialize);
+
+foreach ($unserialize_collection as $key => $value) {
+    echo "key = $key, value = $value; ";
+}
+
+// result:
+// key = 0, value = 1; key = 1, value = 2; key = 2, value = 3; 
 ```
 
 ### # JSON Serialize
@@ -261,6 +300,32 @@ Bellow is a list of all available methods you can use on the collections.
 Not all collection types will have available all these methods, so we will list all collection that
 can use each method in separate table.
 
+### # add
+
+> Available on collection:
+>> Basic | Index | Lazy | Object
+>> :---:|:---:|:---:|:---:
+>> yes | no | no | yes
+
+Adds an item at the collection.
+
+If key already exist, method will throw error.
+
+```php
+$collection = Collection::create(fn ():array => [
+    'firstname' => 'John',
+    'lastname' => 'Doe',
+    'age' => 25
+]);
+
+$collection->add('height', '190cm');
+
+print_r($collection->all());
+
+// result:
+// Array ( [firstname] => John [lastname] => Doe [age] => 25 [height] => 190cm )
+```
+
 ### # all
 
 > Available on collection:
@@ -283,6 +348,193 @@ print_r($result);
 
 // result:
 // Array ( [0] => 1 [1] => 2 [2] => 3 ) 
+```
+___
+### # chunk
+
+```php
+> chunk(int $size, callable $callback):self
+```
+
+> Available on collection:
+>> Basic | Index | Lazy | Object
+>> :---:|:---:|:---:|:---:
+>> yes | yes | no | yes
+
+Breaks this collection into smaller collections and applies user function on each
+collection items.
+
+First parameter is size of each collection, and the second parameter is callable function
+which will be applied to each item on each collection.
+
+Each $collection parameter inside callable function is instance of new collection.
+Means that after chunking, you can apply any collection method to it.
+
+```php
+$collection = Collection::create(fn ():array => [
+    'firstname' => 'John',
+    'lastname' => 'Doe',
+    'age' => 25,
+    'height' => '190cm',
+    'gender' => 'male'
+]);
+
+$collection->chunk(2, function ($collection):void {
+    $collection->add('info', 'more info');
+    print_r($collection->all());
+});
+
+// result:
+// Array ( [firstname] => John [lastname] => Doe [info] => more info )
+// Array ( [age] => 25 [height] => 190cm [info] => more info ) 
+// Array ( [gender] => male [info] => more info ) 
+```
+
+### # collapse
+
+> Available on collection:
+>> Basic | Index | Lazy | Object
+>> :---:|:---:|:---:|:---:
+>> yes | no | no | no
+
+Collapses a collection of arrays into a single, flat collection.
+
+```php
+$collection = Collection::create(fn ():array => [
+    [1, 2, 3],
+    [4, 5, 6],
+    [7, 8, 9]
+]);
+
+$collapse = $collection->collapse();
+
+print_r($collection->all());
+
+// result:
+// Array ( [0] => 1 [1] => 2 [2] => 3 [3] => 4 [4] => 5 [5] => 6 [6] => 7 [7] => 8 [8] => 9 )
+```
+
+### # combine
+
+> Available on collection:
+>> Basic | Index | Lazy | Object
+>> :---:|:---:|:---:|:---:
+>> yes | no | no | no
+
+Creates a collection by using one collection or array for keys and another for its values.  
+Parameter `$values` can be new collection instance or normal PHP array.
+
+> note: Original collection values, the one that was used as keys for combined collection,
+> need to be either strings or integers.
+
+> note: Current and combined collection need to have the same number of items.
+
+```php
+$keys = Collection::create(fn ():array => [
+    'firstname', 'lastname', 'age'
+]);
+
+$values = Collection::create(fn ():array => [
+    'John', 'Doe', 25
+]);
+
+$combine = $collection->combine($values);
+
+print_r($combine->all());
+
+// result:
+// Array ( [firstname] => John [lastname] => Doe [age] => 25 ) 
+```
+
+You can also use normal array to combine.
+
+```php
+$keys = Collection::create(fn ():array => [
+    'firstname', 'lastname', 'age'
+]);
+
+$combine = $collection->combine(['John', 'Doe', 25]);
+
+print_r($combine->all());
+
+// result:
+// Array ( [firstname] => John [lastname] => Doe [age] => 25 ) 
+```
+
+### # contains
+
+> Available on collection:
+>> Basic | Index | Lazy | Object
+>> :---:|:---:|:---:|:---:
+>> yes | yes | no | yes
+
+Determines whether the collection contains a given item.
+
+```php
+$collection = Collection::create(fn ():array => [1,2,3]);
+
+$contains = $collection->contains(function ($key, $value):bool {
+    return $value > 2;
+});
+
+var_dump($contains);
+
+// result:
+// true
+```
+
+Other than calling method with function, you can do it with any kind of data type.
+
+```php
+$collection = Collection::create(fn ():array => [
+    'firstname' => 'John',
+    'lastname' => 'Doe',
+    'age' => 25
+]);
+
+$contains = $collection->contains('Doe');
+
+var_dump($contains);
+
+// result:
+// true
+```
+
+Example how to call method with Index Collection.
+
+```php
+$collection = Collection::index(function ($items):void {
+    $items[0] = 'one';
+    $items[1] = 'two';
+    $items[2] = 'three';
+}, size: 3);
+
+$contains = $collection->contains(function ($value):bool {
+    return $value === 'one';
+});
+
+var_dump($contains);
+
+// result:
+// true
+```
+
+Example how to call method with Object Collection.
+
+```php
+$collection = Collection::object(function ($items):void {
+    $items[new class{}] = 'first class';
+    $items[new class{}] = 'second class';
+    $items[new class{}] = 'third class';
+});
+
+$contains = $collection->contains(function ($object, $info):bool {
+    return $info === 'third class';
+});
+var_dump($contains);
+
+// result:
+// true
 ```
 
 ### # count
@@ -318,6 +570,510 @@ echo count($collection);
 // 3
 ```
 
+### # differenceAssoc
+
+> Available on collection:
+>> Basic | Index | Lazy | Object
+>> :---:|:---:|:---:|:---:
+>> yes | no | no | no
+
+Computes the difference of collections or arrays with additional index check.
+
+Compare collections or arrays against collection or array and returns the difference.  
+Unlike [differenceValues](#-differencevalues), the keys are also used in the comparison.
+
+> note: method accepts boot collections and PHP arrays.
+
+> note: you can put as many as you like collections or arrays in this method.
+
+```php
+$collection = Collection::create(fn ():array => ["a" => "green", "b" => "brown", "c" => "blue", "red"]);
+
+$new_collection = Collection::create(fn ():array => ["a" => "green", "yellow", "red"]);
+
+$diff = $collection->differenceAssoc($new_collection);
+
+print_r($diff->all());
+
+// result:
+Array ( [b] => brown [c] => blue [0] => red ) 
+```
+
+### # differenceKeys
+
+> Available on collection:
+>> Basic | Index | Lazy | Object
+>> :---:|:---:|:---:|:---:
+>> yes | no | no | no
+
+Computes the difference of collections or arrays using keys for comparison.
+
+Compares the keys from array against the keys from collection or array and returns the difference.  
+This method is like [differenceValues](#-differencevalues), except the comparison is done on the keys instead of the values.
+
+> note: method accepts boot collections and PHP arrays.
+
+> note: you can put as many as you like collections or arrays in this method.
+
+```php
+$collection = Collection::create(fn ():array => [
+    'firstname' => 'John',
+    'lastname' => 'Doe',
+    'age' => 25
+]);
+
+$new_collection = Collection::create(fn ():array => [
+    'myfirstname' => 'John',
+    'mylastname' => 'Doe',
+    'age' => 25
+]);
+
+$diff = $collection->differenceKeys($new_collection);
+
+print_r($diff->all());
+
+// result:
+// Array ( [firstname] => John [lastname] => Doe ) 
+```
+
+### # differenceValues
+
+> Available on collection:
+>> Basic | Index | Lazy | Object
+>> :---:|:---:|:---:|:---:
+>> yes | no | no | no
+
+Computes the difference of collections or arrays.
+
+Compares existing collection against one or more other collection or array
+and returns the values in the new collection that are not present in any of the other collections.
+
+> note: method accepts boot collections and PHP arrays.
+
+> note: you can put as many as you like collections or arrays in this method.
+
+```php
+$collection = Collection::create(fn ():array => [1,2,3,4,5]);
+
+$new_collection = Collection::create(fn ():array => [3,4,5,6,7]);
+
+$diff = $collection->differenceValues($new_collection);
+
+print_r($diff->all());
+
+// result:
+// Array ( [0] => 1 [1] => 2 ) 
+```
+
+### # each
+
+> Available on collection:
+>> Basic | Index | Lazy | Object
+>> :---:|:---:|:---:|:---:
+>> yes | yes | no | yes
+
+Perform function on each item from collection.
+
+> note: if you are working with large collections, it is better internal loop like `foreach`,
+> `while`, `for` etc. because of the performance benefits.
+
+```php
+$collection = Collection::create(fn ():array => [
+    'firstname' => 'John',
+    'lastname' => 'Doe',
+    'age' => 25
+]);
+
+$collection->each(function ($key, $value) {
+    echo "I'm key: $key, with value: $value";
+});
+
+// result:
+// I'm key: firstname, with value: John
+// I'm key: lastname, with value: Doe
+// I'm key: age, with value: 25
+```
+
+You can do all kind of evaluating expressions on `each` method.
+
+```php
+$collection = Collection::create(fn ():array => [
+    'firstname' => 'John',
+    'lastname' => 'Doe',
+    'age' => 25
+]);
+
+$collection->each(function ($key, $value) {
+    if ($key !== 'age') {
+        echo "I'm key: $key, with value: $value";
+    }
+   
+});
+
+// result:
+// I'm key: firstname, with value: John
+// I'm key: lastname, with value: Doe
+```
+
+You can break the loop at any time by returning false.
+
+```php
+$collection = Collection::create(fn ():array => [
+    'firstname' => 'John',
+    'lastname' => 'Doe',
+    'age' => 25
+]);
+
+$collection->each(function ($key, $value) {
+    if ($key === 'lastname') {
+        return false;
+    }
+    echo "I'm key: $key, with value: $value";
+});
+
+// result:
+// I'm key: firstname, with value: John
+```
+
+If you are using this method on fixed collection callable only required value parameter for
+`each` method.
+
+```php
+$collection = Collection::index(function ($items):void {
+    $items[0] = 'one';
+    $items[1] = 'two';
+    $items[2] = 'three';
+}, size: 3);
+
+$collection->each(function ($value) {
+    echo "I'm value: $value";
+});
+
+// result:
+// I'm value: one
+// I'm value: two
+// I'm value: three
+```
+
+### # filter
+
+> Available on collection:
+>> Basic | Index | Lazy | Object
+>> :---:|:---:|:---:|:---:
+>> yes | yes | yes | yes
+
+Filter elements of the Collection.
+
+```php
+$collection = Collection::create(fn ():array => [
+    'firstname' => 'John',
+    'lastname' => 'Doe',
+    'age' => 25
+]);
+
+$filter = $collection->filter(function ($key, $value):bool {
+    return $key === 'lastname';
+});
+
+print_r($filter->all());
+
+// result:
+// Array ( [lastname] => Doe ) 
+```
+
+Example filtering object in object collection.
+
+```php
+$collection = Collection::object(function ($items):void {
+    $items[new class{}] = 'first class';
+    $items[new class{}] = 'second class';
+    $items[new class{}] = 'third class';
+});
+
+$filter = $collection->filter(function ($object, $info):bool {
+    return $info === 'second class';
+});
+```
+
+### # get
+
+> Available on collection:
+>> Basic | Index | Lazy | Object
+>> :---:|:---:|:---:|:---:
+>> yes | yes | no | yes
+
+Gets item from collection.
+
+```php
+$collection = Collection::create(fn ():array => [
+    'firstname' => 'John',
+    'lastname' => 'Doe',
+    'age' => 25
+]);
+
+echo $collection->get('age');
+
+// result:
+// 25 
+```
+
+You can also use short PHP function.
+
+```php
+$collection = Collection::create(fn ():array => [
+    'firstname' => 'John',
+    'lastname' => 'Doe',
+    'age' => 25
+]);
+
+echo $collection['age'];
+
+// result:
+// 25 
+```
+
+### # getSize
+
+> Available on collection:
+>> Basic | Index | Lazy | Object
+>> :---:|:---:|:---:|:---:
+>> no | yes | no | no
+
+Gets the size of the array.
+
+```php
+$collection = Collection::index(function ($items):void {
+    $items[0] = 0;
+    $items[1] = 1;
+    $items[2] = 2;
+}, size: 3);
+
+echo $collection->getSize();
+
+// result:
+// 3 
+```
+
+### # isset
+
+> Available on collection:
+>> Basic | Index | Lazy | Object
+>> :---:|:---:|:---:|:---:
+>> yes | yes | no | yes
+
+Checks if item exist in the collection.
+
+```php
+$collection = Collection::create(fn ():array => [
+    'firstname' => 'John',
+    'lastname' => 'Doe',
+    'age' => 25
+]);
+
+echo $collection->isset('age');
+
+// result:
+// true 
+```
+
+You can also use short PHP isset function.
+
+```php
+$collection = Collection::create(fn ():array => [
+    'firstname' => 'John',
+    'lastname' => 'Doe',
+    'age' => 25
+]);
+
+echo isset($collection['age']);
+
+// result:
+// true 
+```
+
+### # map
+
+> Available on collection:
+>> Basic | Index | Lazy | Object
+>> :---:|:---:|:---:|:---:
+>> yes | yes | no | yes
+
+Applies the callback to the collection items.
+
+This method will create new collection.
+
+```php
+$collection = Collection::create(fn ():array => [1,2,3,4,5]);
+
+$multiplied = $collection->map(function ($key, $value) {
+    return $value * 2;
+});
+print_r($multiplied->all());
+
+// result:
+// Array ( [0] => 2 [1] => 4 [2] => 6 [3] => 8 [4] => 10 )
+```
+
+### # merge
+
+> Available on collection:
+>> Basic | Index | Lazy | Object
+>> :---:|:---:|:---:|:---:
+>> yes | yes | no | yes
+
+Merge new collection with original one.
+
+> note: If there are same keys on both collections, keys from new collection
+will replace keys from original collection.
+
+```php
+$collection = Collection::create(fn ():array => [
+    'firstname' => 'John',
+    'lastname' => 'Doe',
+    'age' => 25,
+    'gender' => 'female'
+]);
+
+$merge = $collection->merge(fn ():array => [
+    'height' => '190cm',
+    'gender' => 'male'
+]);
+
+// result:
+// Array ( [firstname] => John [lastname] => Doe [age] => 25 [gender] => male [height] => 190cm ) 
+```
+
+Merging with index collection.
+
+Here second parameter `counter` represents first available key for merging collection,
+and any subsequent key should increase by 1.
+
+```php
+$collection = Collection::index(function ($items):void {
+    $items[0] = 0;
+    $items[1] = 1;
+    $items[2] = 2;
+}, size: 3);
+
+$merge = $collection->merge(function ($items, $counter):void {
+    $items[$counter] = 0;
+    $items[++$counter] = 1;
+}, 2);
+
+// result:
+// Array ( [0] => 0 [1] => 1 [2] => 2 [3] => 0 [4] => 1 ) 
+```
+
+### # mergeRecursive
+
+> Available on collection:
+>> Basic | Index | Lazy | Object
+>> :---:|:---:|:---:|:---:
+>> yes | no | no | no
+
+Merges the elements of one or more arrays together so that the values of one are appended 
+to the end of the previous one.
+
+```php
+$collection = Collection::create(fn ():array => [
+    'firstname' => 'John',
+    'lastname' => 'Doe',
+    'age' => 25,
+    'gender' => 'female'
+]);
+
+$merge = $collection->mergeRecursive(fn ():array => [
+    'height' => '190cm',
+    'gender' => 'male'
+]);
+
+// result:
+// Array ( [firstname] => John [lastname] => Doe [age] => 25 [gender] => Array ( [0] => female [1] => male ) [height] => 190cm )  
+```
+
+### # pop
+
+> Available on collection:
+>> Basic | Index | Lazy | Object
+>> :---:|:---:|:---:|:---:
+>> yes | yes | no | no
+
+Removes an item at the end of the collection.
+
+```php
+$collection = Collection::create(fn ():array => [1,2,3,4,5]);
+
+$collection->pop();
+
+print_r($collection->all());
+
+// result:
+// Array ( [0] => 1 [1] => 2 [2] => 3 [3] => 4 ) 
+```
+
+
+### # push
+
+> Available on collection:
+>> Basic | Index | Lazy | Object
+>> :---:|:---:|:---:|:---:
+>> yes | yes | no | no
+
+Push an item at the end of the collection.
+
+```php
+$collection = Collection::create(fn ():array => [1,2,3,4,5]);
+
+$collection->push(6,7,8);
+
+print_r($collection->all());
+
+// result:
+// Array ( [0] => 1 [1] => 2 [2] => 3 [3] => 4 [4] => 5 [5] => 6 [6] => 7 [7] => 8 ) 
+```
+
+### # reject
+
+> Available on collection:
+>> Basic | Index | Lazy | Object
+>> :---:|:---:|:---:|:---:
+>> yes | yes | yes | yes
+
+Remove elements of the Collection.
+
+This method is reverse from filter method.
+
+```php
+$collection = Collection::create(fn ():array => [
+    'firstname' => 'John',
+    'lastname' => 'Doe',
+    'age' => 25
+]);
+
+$filter = $collection->reject(function ($key, $value):bool {
+    return $key === 'lastname';
+});
+
+print_r($filter->all());
+
+// result:
+// Array ( [firstname] => John [age] => 25 ) 
+```
+
+Example rejecting object in object collection.
+
+```php
+$collection = Collection::object(function ($items):void {
+    $items[new class{}] = 'first class';
+    $items[new class{}] = 'second class';
+    $items[new class{}] = 'third class';
+});
+
+$filter = $collection->reject(function ($object, $info):bool {
+    return $info === 'second class';
+});
+```
+
 ### # serialize
 
 > Available on collection:
@@ -340,6 +1096,49 @@ echo $serialize;
 
 // result:
 // O:44:"FireHub\Support\Collections\Types\Array_Type":3:{s:9:"firstname";s:4:"John";s:8:"lastname";s:3:"Doe";s:3:"age";i:25;}
+```
+
+### # set
+
+> Available on collection:
+>> Basic | Index | Lazy | Object
+>> :---:|:---:|:---:|:---:
+>> yes | yes | no | yes
+
+Sets an item at the collection.
+
+If key already exists, it will replace the original value.
+
+```php
+$collection = Collection::create(fn ():array => [
+    'firstname' => 'John',
+    'lastname' => 'Doe',
+    'age' => 25
+]);
+
+$collection->set('height', '190cm');
+
+print_r($collection->all());
+
+// result:
+// Array ( [firstname] => John [lastname] => Doe [age] => 25 [height] => 190cm )
+```
+
+You can also use short function to set the item.
+
+```php
+$collection = Collection::create(fn ():array => [
+    'firstname' => 'John',
+    'lastname' => 'Doe',
+    'age' => 25
+]);
+
+$collection['height'] = '190cm';
+
+print_r($collection->all());
+
+// result:
+// Array ( [firstname] => John [lastname] => Doe [age] => 25 [height] => 190cm )
 ```
 
 ### # setSize
@@ -378,6 +1177,26 @@ print_r($collection->all());
 // Array ( [0] => 0 [1] => 1 [2] => 2 [3] => [4] => [5] => [6] => [7] => [8] => [9] => ) 
 ```
 
+### # shift
+
+> Available on collection:
+>> Basic | Index | Lazy | Object
+>> :---:|:---:|:---:|:---:
+>> yes | no | no | no
+
+Removes an item at the beginning of the collection.
+
+```php
+$collection = Collection::create(fn ():array => [1,2,3,4,5]);
+
+$collection->shift();
+
+print_r($collection->all());
+
+// result:
+// Array ( [0] => 2 [1] => 3 [2] => 4 [3] => 5 ) 
+```
+
 ### # toJSON
 
 > Available on collection:
@@ -400,4 +1219,88 @@ echo $json_serialize;
 
 // result:
 // {"firstname":"John","lastname":"Doe","age":25}
+```
+
+### # unset
+
+> Available on collection:
+>> Basic | Index | Lazy | Object
+>> :---:|:---:|:---:|:---:
+>> yes | yes | no | yes
+
+Removes an item at the collection.
+
+```php
+$collection = Collection::create(fn ():array => [
+    'firstname' => 'John',
+    'lastname' => 'Doe',
+    'age' => 25
+]);
+
+$collection->unset('age');
+
+print_r($collection->all());
+
+// result:
+// Array ( [firstname] => John [lastname] => Doe ) 
+```
+
+You can also use short PHP unset function.
+
+```php
+$collection = Collection::create(fn ():array => [
+    'firstname' => 'John',
+    'lastname' => 'Doe',
+    'age' => 25
+]);
+
+unset($collection['age']);
+
+print_r($collection->all());
+
+// result:
+// Array ( [firstname] => John [lastname] => Doe ) 
+```
+
+### # unshift
+
+> Available on collection:
+>> Basic | Index | Lazy | Object
+>> :---:|:---:|:---:|:---:
+>> yes | no | no | no
+
+Push an item at the beginning of the collection.
+
+```php
+$collection = Collection::create(fn ():array => [1,2,3,4,5]);
+
+$collection->unshift(6,7,8);
+
+print_r($collection->all());
+
+// result:
+// Array ( [0] => 6 [1] => 7 [2] => 8 [3] => 1 [4] => 2 [5] => 3 [6] => 4 [7] => 5 ) 
+```
+
+### # walk
+
+> Available on collection:
+>> Basic | Index | Lazy | Object
+>> :---:|:---:|:---:|:---:
+>> yes | yes | no | yes
+
+Apply a user supplied function to every collection item.
+
+This method will modify your existing collection.
+
+```php
+$collection = Collection::create(fn ():array => [1,2,3,4,5]);
+
+$collection->walk(function ($key, $value) {
+    return $value * 2;
+});
+print_r($collection->all());
+
+// result:
+// Array ( [0] => 2 [1] => 4 [2] => 6 [3] => 8 [4] => 10 )
 ```
