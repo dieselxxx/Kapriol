@@ -124,15 +124,6 @@ $(document).ready(function () {
 
     $('#sadrzaj.narudzba form').submit(function (odgovor) {
 
-        $.ajax({
-            type: 'GET',
-            url: '/kosarica/ga4purchase/',
-            dataType: 'html',
-            success: function (odgovor) {},
-            error: function () {},
-            complete: function (odgovor) {}
-        });
-
         let podatci = $('.narudzba form').serializeArray();
 
         $.ajax({
@@ -140,11 +131,10 @@ $(document).ready(function () {
             url: '/kosarica/naruci/',
             dataType: 'html',
             data: podatci,
-            success: function (odgovor) {
-            },
+            success: function (odgovor) {},
             error: function () {},
             complete: function (odgovor) {
-                window.location.href = '/kosarica/ispravno';
+                window.location.href = '/kosarica/ga4purchase';
             }
         });
 

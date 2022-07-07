@@ -465,6 +465,9 @@ final class Kosarica_Kontroler extends Master_Kontroler {
 
         $kategorije = $this->model(Kategorije_Model::class);
 
+        $kosarica = $this->model(Kosarica_Model::class);
+        $kosarica->ispravno();
+
         return sadrzaj()->datoteka('narudzba_ispravno.html')->podatci([
             'predlozak_opis' => Domena::opis(),
             'predlozak_GA' => Domena::GA(),

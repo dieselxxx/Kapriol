@@ -548,6 +548,18 @@ final class Kosarica_Model extends Master_Model {
         ));
         $email_slanje_tvrtka->Posalji();
 
+        //$this->sesija->unisti();
+
+    }
+
+    /**
+     * ### Unisti sesiju.
+     * @since 0.1.2.pre-alpha.M1
+     *
+     * @return void
+     */
+    public function ispravno ():void {
+
         $this->sesija->unisti();
 
     }
