@@ -99,23 +99,26 @@ final class Rezultat_Kontroler extends Master_Kontroler {
         foreach ($artikli as $artikal) {
 
             // cijene
-            $euro_cijena = Domena::Hr() ? '<span style="font-size: 0.7rem">('.number_format((float)$artikal['Cijena'] / 7.5345, 2, ',', '.').' €)</span>' : '';
+            $euro_cijena = Domena::Hr() ? '<span>'.number_format((float)$artikal['Cijena'] / 7.5345, 2, ',', '.').' €</span>' : '';
             if ($artikal['CijenaAkcija'] > 0) {
 
                 $artikal_popust = -($artikal['Cijena'] - $artikal['CijenaAkcija']) / (max($artikal['Cijena'], 1)) * 100;
 
-                $euro_cijena_akcija = Domena::Hr() ? '<span style="font-size: 0.8rem">('.number_format((float)$artikal['CijenaAkcija'] / 7.5345, 2, ',', '.').' €)</span>' : '';
+                $euro_cijena_akcija = Domena::Hr() ? '<span>'.number_format((float)$artikal['CijenaAkcija'] / 7.5345, 2, ',', '.').' €</span>' : '';
 
                 $artikl_cijena = '
-                <span class="prekrizi">'.number_format((float)$artikal['Cijena'], 2, ',', '.').' '.Domena::valuta().$euro_cijena.'</span>
-                <h2 class="akcija">'.number_format((float)$artikal['CijenaAkcija'], 2, ',', '.').' '.Domena::valuta().$euro_cijena_akcija.'</h2>
-                <span class="popust">'.number_format($artikal_popust, 2, ',').' %</span>
-            ';
+                    <span class="prekrizi">'.number_format((float)$artikal['Cijena'], 2, ',', '.').' '.Domena::valuta().'</span>
+                    <h2 class="akcija">'.number_format((float)$artikal['CijenaAkcija'], 2, ',', '.').' '.Domena::valuta().'</h2>
+                    <span class="prekrizi">'.$euro_cijena.'</span>
+                    <h2 class="akcija">'.$euro_cijena_akcija.'</h2>
+                    <span class="popust">'.number_format($artikal_popust, 2, ',').' %</span>
+                ';
 
             } else {
 
                 $artikl_cijena = '
-                <h2>'.number_format((float)$artikal['Cijena'], 2, ',', '.').' '.Domena::valuta().$euro_cijena.'</h2>
+                <h2>'.number_format((float)$artikal['Cijena'], 2, ',', '.').' '.Domena::valuta().'</h2>
+                <h2>'.$euro_cijena.'</h2>
             ';
 
             }
