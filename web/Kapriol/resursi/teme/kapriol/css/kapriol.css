@@ -379,7 +379,7 @@ main > div#sadrzaj.kosarica > div.artikli > form.artikl > div.kosarica > * {floa
 main > div#sadrzaj.kosarica > div.artikli > form.artikl > div.kosarica > label.unos {grid-template-columns: auto;}
 main > div#sadrzaj.kosarica > div.artikli > form.artikl > div.kosarica > label.unos > input {width: 95px; text-align: center;}
 main > div#sadrzaj.kosarica > div.artikli > form.artikl > h3.ukupno {grid-column: 1 / 3; grid-row: 4 / 5;}
-main > div#sadrzaj.kosarica > div.ukupno {grid-column: 4 / 5; justify-self: center; background-color: var(--boja-tekst-tamnije); padding: 15px; height: max-content; width: 100%; max-width: 280px; text-align: right; color: var(--boja-tekst-svjetlije);}
+main > div#sadrzaj.kosarica > div.ukupno {grid-column: 4 / 5; justify-self: center; background-color: var(--boja-tekst-tamnije); padding: 15px; height: max-content; width: 100%; max-width: 330px; text-align: right; color: var(--boja-tekst-svjetlije);}
 main > div#sadrzaj.kosarica > div.ukupno > ul > li {margin: 10px;}
 main > div#sadrzaj.kosarica > div.ukupno > ul > li.ukupno {font-weight: 500;}
 main > div#sadrzaj.kosarica > div.ukupno > ul > li.ukupno > span {color: var(--boja-kapriol);}

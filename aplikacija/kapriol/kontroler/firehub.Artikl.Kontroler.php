@@ -99,20 +99,23 @@ final class Artikl_Kontroler extends Master_Kontroler {
         }
 
         // cijene
+        $euro_cijena = Domena::Hr() ? '<span style="font-size: 0.7rem">('.number_format((float)$trenutni_artikl['Cijena'] / 7.5345, 2, ',', '.').' €)</span>' : '';
         if ($trenutni_artikl['CijenaAkcija'] > 0) {
 
             $artikal_popust = -($trenutni_artikl['Cijena'] - $trenutni_artikl['CijenaAkcija']) / ($trenutni_artikl['Cijena']) * 100;
 
+            $euro_cijena_akcija = Domena::Hr() ? '<span style="font-size: 0.8rem">('.number_format((float)$trenutni_artikl['CijenaAkcija'] / 7.5345, 2, ',', '.').' €)</span>' : '';
+
             $artikl_cijena = '
-                <span class="prekrizi">'.number_format((float)$trenutni_artikl['Cijena'], 2, ',', '.').' '.Domena::valuta().'</span>
-                <h2 class="akcija">'.number_format((float)$trenutni_artikl['CijenaAkcija'], 2, ',', '.').' '.Domena::valuta().'</h2>
+                <span class="prekrizi">'.number_format((float)$trenutni_artikl['Cijena'], 2, ',', '.').' '.Domena::valuta().$euro_cijena.'</span>
+                <h2 class="akcija">'.number_format((float)$trenutni_artikl['CijenaAkcija'], 2, ',', '.').' '.Domena::valuta().$euro_cijena_akcija.'</h2>
                 <span class="popust">'.number_format($artikal_popust, 2, ',').' %</span>
             ';
 
         } else {
 
             $artikl_cijena = '
-                <h2>'.number_format((float)$trenutni_artikl['Cijena'], 2, ',', '.').' '.Domena::valuta().'</h2>
+                <h2>'.number_format((float)$trenutni_artikl['Cijena'], 2, ',', '.').' '.Domena::valuta().$euro_cijena.'</h2>
             ';
 
         }
