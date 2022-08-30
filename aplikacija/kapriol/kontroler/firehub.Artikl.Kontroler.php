@@ -117,7 +117,8 @@ final class Artikl_Kontroler extends Master_Kontroler {
         } else {
 
             $artikl_cijena = '
-                <h2>'.number_format((float)$trenutni_artikl['Cijena'], 2, ',', '.').' '.Domena::valuta().$euro_cijena.'</h2>
+                <h2>'.number_format((float)$trenutni_artikl['Cijena'], 2, ',', '.').' '.Domena::valuta().'</h2>
+                <h2>'.$euro_cijena.'</h2>
             ';
 
         }
