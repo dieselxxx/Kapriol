@@ -185,11 +185,11 @@ final class Domena {
                 <ul>
                     <li>
                         <svg><use xlink:href="/kapriol/resursi/grafika/simboli/simbol.ikone.svg#strelica_desno_duplo2"></use></svg>
-                        <span>Besplatna dostava za narudzbe preko 79 KM.</span>
+                        <span>Besplatna dostava za narudzbe preko 100 KM.</span>
                     </li>
                     <li>
                         <svg><use xlink:href="/kapriol/resursi/grafika/simboli/simbol.ikone.svg#strelica_desno_duplo2"></use></svg>
-                        <span>Dostava za narudzbe manje od 79 KM iznosi 7 KM.</span>
+                        <span>Dostava za narudzbe manje od 100 KM iznosi 7 KM.</span>
                     </li>
                     <li>
                         <svg><use xlink:href="/kapriol/resursi/grafika/simboli/simbol.ikone.svg#strelica_desno_duplo2"></use></svg>
@@ -224,7 +224,7 @@ final class Domena {
 
         }
 
-        return 79;
+        return 100;
 
     }
 
