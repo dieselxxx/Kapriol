@@ -166,7 +166,7 @@ final class Domena {
                     </li>
                     <li>
                         <svg><use xlink:href="/kapriol/resursi/grafika/simboli/simbol.ikone.svg#strelica_desno_duplo2"></use></svg>
-                        <span>Dostava za narudzbe manje od 499 HRK iznosi 25 HRK.</span>
+                        <span>Dostava za narudzbe manje od 499 HRK iznosi 35 HRK.</span>
                     </li>
                     <li>
                         <svg><use xlink:href="/kapriol/resursi/grafika/simboli/simbol.ikone.svg#strelica_desno_duplo2"></use></svg>
@@ -189,7 +189,7 @@ final class Domena {
                     </li>
                     <li>
                         <svg><use xlink:href="/kapriol/resursi/grafika/simboli/simbol.ikone.svg#strelica_desno_duplo2"></use></svg>
-                        <span>Dostava za narudzbe manje od 79 KM iznosi 5 KM.</span>
+                        <span>Dostava za narudzbe manje od 79 KM iznosi 7 KM.</span>
                     </li>
                     <li>
                         <svg><use xlink:href="/kapriol/resursi/grafika/simboli/simbol.ikone.svg#strelica_desno_duplo2"></use></svg>
@@ -232,11 +232,11 @@ final class Domena {
 
         if (self::Hr()) {
 
-            return 25;
+            return 35;
 
         }
 
-        return 5;
+        return 7;
 
     }
 
