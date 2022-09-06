@@ -321,4 +321,16 @@ final class Domena {
 
     }
 
+    public static function euroEmail (float|int $total_cijena):string {
+
+        if (self::Hr()) {
+
+            return '1 EUR = 7,53450 KN - Ukupno EUR '.number_format((float)$total_cijena / 7.5345, 2, ',', '.').'';
+
+        }
+
+        return '';
+
+    }
+
 }

@@ -460,7 +460,7 @@ final class Kosarica_Model extends Master_Model {
             </tr>";
         }
 
-        $total_cijena = number_format((float)$total_cijena, 2, ',', '.');
+        $total_cijena_format = number_format((float)$total_cijena, 2, ',', '.');
 
         $email_slanje = new Email('narudzba_b2b_korisnik.html');
         $email_slanje->Naslov('Vaša narudžba je zaprimljena');
@@ -484,7 +484,8 @@ final class Kosarica_Model extends Master_Model {
             "valuta" => Domena::valuta(),
             "artikli" => $email_artikli_korisnik,
             "total_kolicina" => $total_kolicina . ' kom',
-            "total_cijena" => $total_cijena . ' '.Domena::valuta(),
+            "total_cijena" => $total_cijena_format . ' '.Domena::valuta(),
+            "total_cijena_euro" => Domena::euroEmail($total_cijena),
             "tvrtka_adresa" => Domena::adresa(),
             "tvrtka_telefon" => Domena::telefon(),
             "tvrtka_mobitel" => Domena::mobitel()
@@ -511,7 +512,8 @@ final class Kosarica_Model extends Master_Model {
             "valuta" => Domena::valuta(),
             "artikli" => $email_artikli_korisnik,
             "total_kolicina" => $total_kolicina . ' kom',
-            "total_cijena" => $total_cijena . ' '.Domena::valuta(),
+            "total_cijena" => $total_cijena_format . ' '.Domena::valuta(),
+            "total_cijena_euro" => Domena::euroEmail($total_cijena),
             "tvrtka_adresa" => Domena::adresa(),
             "tvrtka_telefon" => Domena::telefon(),
             "tvrtka_mobitel" => Domena::mobitel()
@@ -541,7 +543,8 @@ final class Kosarica_Model extends Master_Model {
             "valuta" => Domena::valuta(),
             "artikli" => $email_artikli_korisnik,
             "total_kolicina" => $total_kolicina . ' kom',
-            "total_cijena" => $total_cijena . ' '.Domena::valuta(),
+            "total_cijena" => $total_cijena_format . ' '.Domena::valuta(),
+            "total_cijena_euro" => Domena::euroEmail($total_cijena),
             "tvrtka_adresa" => Domena::adresa(),
             "tvrtka_telefon" => Domena::telefon(),
             "tvrtka_mobitel" => Domena::mobitel()
