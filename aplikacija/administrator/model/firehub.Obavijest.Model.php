@@ -54,7 +54,7 @@ final class Obavijest_Model extends Master_Model {
             ->sirovi("
                 SELECT
                     obavijesti.ID, obavijesti.Obavijest, obavijesti.Redoslijed,
-                    obavijesti.Ba, obavijesti.Hr, obavijesti.ArtikalID, artikli.Naziv
+                    obavijesti.Ba, obavijesti.Hr, obavijesti.ArtikalID, artikli.Naziv, obavijesti.LinkBA, obavijesti.LinkHR
                 FROM obavijesti
                 LEFT JOIN artikli ON artikli.ID = obavijesti.ArtikalID
                 WHERE obavijesti.ID = $id
@@ -93,10 +93,13 @@ final class Obavijest_Model extends Master_Model {
         $artikl = $_REQUEST['artikl'];
         $artikl = empty($artikl) ? 'null' : $artikl;
 
+        $linkBA = $_REQUEST['linkBA'];
+        $linkHR = $_REQUEST['linkHR'];
+
         $obavijest = $this->bazaPodataka
             ->sirovi("
                 UPDATE obavijesti
-                    SET Redoslijed = $redoslijed, Ba = $ba, Hr = $hr, ArtikalID = $artikl
+                    SET Redoslijed = $redoslijed, Ba = $ba, Hr = $hr, ArtikalID = $artikl, LinkBA = '$linkBA', LinkHR = '$linkHR'
                 WHERE obavijesti.ID = $id
             ")
             ->napravi();
