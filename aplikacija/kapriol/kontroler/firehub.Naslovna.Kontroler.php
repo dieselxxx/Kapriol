@@ -47,19 +47,36 @@ final class Naslovna_Kontroler extends Master_Kontroler {
 
         // obavijesti
         $obavijest_html = '';
-        $obavijesti = $bazaPodataka->tabela('obavijesti')
-            ->sirovi("
+
+        if (Domena::Hr()) {
+            $obavijesti = $bazaPodataka->tabela('obavijesti')
+                ->sirovi("
                 SELECT 
-                    Obavijest, artikliview.Link
+                    Obavijest, artikliview.Link, obavijesti.LinkHR AS URL
                 FROM obavijesti
                 LEFT JOIN artikliview ON artikliview.ID = obavijesti.ArtikalID
                 WHERE obavijesti.".Domena::sqlTablica()." = 1
                 ORDER BY obavijesti.Redoslijed ASC
             ")->napravi();
+        } else {
+            $obavijesti = $bazaPodataka->tabela('obavijesti')
+                ->sirovi("
+                SELECT 
+                    Obavijest, artikliview.Link, obavijesti.LinkBA AS URL
+                FROM obavijesti
+                LEFT JOIN artikliview ON artikliview.ID = obavijesti.ArtikalID
+                WHERE obavijesti.".Domena::sqlTablica()." = 1
+                ORDER BY obavijesti.Redoslijed ASC
+            ")->napravi();
+        }
 
         foreach ($obavijesti->niz() as $obavijest) {
 
-            $link = $obavijest['Link'] ? 'href="/artikl/'.$obavijest['Link'].'"' : '' ;
+            $link = empty($obavijest['URL'])
+                ? $obavijest['Link']
+                    ? 'href="/artikl/'.$obavijest['Link'].'"'
+                    : ''
+                : 'href="'.$obavijest['URL'].'"';
 
             $obavijest_html .= "
             <a class='swiper-slide' $link>
