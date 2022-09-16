@@ -109,7 +109,9 @@ final class Obavijesti_Kontroler extends Master_Kontroler {
             'hr' => $obavijest['Hr'],
             'artikal' => is_null($obavijest['ArtikalID']) ? '' : $obavijest['ArtikalID'],
             'artikal_naziv' => is_null($obavijest['Naziv']) ? '' : $obavijest['Naziv'],
-            'artikli' => $artikli_html
+            'artikli' => $artikli_html,
+            'linkBA' => is_null($obavijest['LinkHR']) ? '' : ''.$obavijest['LinkBA'].'',
+            'linkHR' => is_null($obavijest['LinkHR']) ? '' : ''.$obavijest['LinkHR'].''
         ]);
 
     }
