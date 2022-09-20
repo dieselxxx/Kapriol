@@ -211,7 +211,7 @@ final class Artikl_Kontroler extends Master_Kontroler {
 
         // calc veličine
         $calc_velicina = $kategorije->kategorija('', $trenutni_artikl['Kategorija'])['CalcVelicina'] === '1'
-            ? '<img src="/kapriol/resursi/grafika/kapriol_size_guide.png" />'
+            ? '<img src="/kapriol/resursi/grafika/kapriol_size_guide2.png" />'
             : '';
 
         return sadrzaj()->datoteka('artikl.html')->podatci([
