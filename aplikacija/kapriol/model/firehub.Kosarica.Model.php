@@ -410,9 +410,10 @@ final class Kosarica_Model extends Master_Model {
         $placanje = $_POST['placanje'];
         $napomena = $_POST['napomena'];
 
-        $ime = Validacija::Prilagodjen('/^[a-zšđčćžA-ZŠĐČĆŽ -]+$/i', "Vaše ime", $ime, 2, 50);
+        $ime = Validacija::Prilagodjen('/^[a-zšđčćžA-ZŠĐČĆŽ -]+$/i', "Vaše ime", $ime, 2, 100);
         //$email = Validacija::Prilagodjen('', "Vaš email", $email, 2, 100);
         //$telefon = Validacija::Telefon(_('Vaš broj telefona'), $telefon, 1, 15);
+        $telefon = Validacija::String(_('Vaš broj telefona'), $telefon, 5, 20);
         //$adresa = Validacija::String(_('Vaša adresa'), $adresa, 5, 300);
         //$zip = Validacija::Broj(_('Vaš poštanski broj'), $zip, 5, 5);
         //if($tvrtka <> '') {$tvrtka = Validacija::Prilagodjen('/^[a-zšđčćžA-ZŠĐČĆŽ0-9-. ]+$/i', _('Vaša tvrtka'), $tvrtka, 4, 100);}
