@@ -109,6 +109,8 @@ final class Kosarica_Model extends Master_Model {
                 // ukupno cijena
                 if ($rezultat[$kljuc]['CijenaAkcija'] > 0) {
                     $rezultat[$kljuc]['CijenaUkupno'] = $vrijednost * $rezultat[$kljuc]['CijenaAkcija'];
+                } else if (Domena::blackFriday()) {
+                    $rezultat[$kljuc]['CijenaUkupno'] = $vrijednost * ($rezultat[$kljuc]['Cijena'] - ($rezultat[$kljuc]['Cijena'] * 0.1));
                 } else {
                     $rezultat[$kljuc]['CijenaUkupno'] = $vrijednost * $rezultat[$kljuc]['Cijena'];
                 }
@@ -438,6 +440,10 @@ final class Kosarica_Model extends Master_Model {
             if ($artikal['CijenaAkcija'] > 0) {
 
                 $artikl_cijena = number_format((float)$artikal['CijenaAkcija'], 2, ',', '.');
+
+            } else if (Domena::blackFriday()) {
+
+                $artikl_cijena = number_format((float)$artikal['Cijena'] - ((float)$artikal['Cijena'] * 0.1), 2, ',', '.');
 
             } else {
 
