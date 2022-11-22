@@ -335,7 +335,7 @@ final class Domena {
 
     public static function blackFriday ():bool {
 
-        if (date("m-d") === '11-25') {
+        if (date("m-d") >= '11-24' && date("m-d") <= '11-27') {
 
             return true;
 
