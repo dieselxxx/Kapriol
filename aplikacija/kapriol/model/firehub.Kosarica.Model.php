@@ -441,7 +441,7 @@ final class Kosarica_Model extends Master_Model {
 
                 $artikl_cijena = number_format((float)$artikal['CijenaAkcija'], 2, ',', '.');
 
-            } else if (Domena::blackFriday()) {
+            } else if (Domena::blackFriday() && $artikal['ID'] !== '0') {
 
                 $artikl_cijena = number_format((float)$artikal['Cijena'] - ((float)$artikal['Cijena'] * 0.1), 2, ',', '.');
 
