@@ -55,7 +55,7 @@ final class Artikl_Model extends Master_Model {
                 SELECT
                     artikli.ID, artikli.Naziv, artikli.Opis,
                     artikli.Cijena, artikli.CijenaAkcija, artikli.CijenaKn, artikli.CijenaAkcijaKn,
-                    artikli.Ba, artikli.Hr,
+                    artikli.Ba, artikli.Hr, artikli.Outlet,
                     artikli.Aktivan, artikli.Izdvojeno,
                     artikli.KategorijaID, kategorije.Kategorija,
                     artikli.PodKategorijaID, podkategorije.PodKategorija
@@ -77,6 +77,7 @@ final class Artikl_Model extends Master_Model {
         if ($artikl['Aktivan']) {$artikl['Aktivan'] = true;} else {$artikl['Aktivan'] = false;}
         if ($artikl['Ba']) {$artikl['Ba'] = true;} else {$artikl['Ba'] = false;}
         if ($artikl['Hr']) {$artikl['Hr'] = true;} else {$artikl['Hr'] = false;}
+        if ($artikl['Outlet']) {$artikl['Outlet'] = true;} else {$artikl['Outlet'] = false;}
 
         return $artikl;
 
@@ -144,6 +145,10 @@ final class Artikl_Model extends Master_Model {
         $cijena_akcija_hr = round((float)$cijena_akcija_hr, 2);
         $cijena_akcija_hr = Validacija::DecimalniBroj(_('Cijena artikla'), $cijena_akcija_hr);
 
+        $outlet = $_REQUEST["outlet"] ?? null;
+        $outlet = Validacija::Potvrda(_('Outlet'), $outlet);
+        if ($outlet == "on") {$outlet = 1;} else {$outlet = 0;}
+
         $izdvojeno = $_REQUEST["izdvojeno"] ?? null;
         $izdvojeno = Validacija::Potvrda(_('Izdvojeno'), $izdvojeno);
         if ($izdvojeno == "on") {$izdvojeno = 1;} else {$izdvojeno = 0;}
@@ -179,6 +184,7 @@ final class Artikl_Model extends Master_Model {
                             'CijenaAkcijaKn' => $cijena_akcija_hr,
                             'Ba' => $ba,
                             'Hr' => $hr,
+                            'Outlet' => $outlet,
                             'Izdvojeno' => $izdvojeno,
                             'Aktivan' => $aktivno,
                             'KategorijaID' => $kategorija,
@@ -201,6 +207,7 @@ final class Artikl_Model extends Master_Model {
                             'CijenaAkcijaKn' => $cijena_akcija_hr,
                             'Ba' => $ba,
                             'Hr' => $hr,
+                            'Outlet' => $outlet,
                             'Izdvojeno' => $izdvojeno,
                             'Aktivan' => $aktivno,
                             'KategorijaID' => $kategorija,
