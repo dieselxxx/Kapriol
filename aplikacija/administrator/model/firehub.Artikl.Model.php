@@ -55,7 +55,7 @@ final class Artikl_Model extends Master_Model {
                 SELECT
                     artikli.ID, artikli.Naziv, artikli.Opis,
                     artikli.Cijena, artikli.CijenaAkcija, artikli.CijenaKn, artikli.CijenaAkcijaKn,
-                    artikli.Ba, artikli.Hr, artikli.Outlet,
+                    artikli.Ba, artikli.Hr, artikli.Outlet, artikli.OutletHr,
                     artikli.Aktivan, artikli.Izdvojeno,
                     artikli.KategorijaID, kategorije.Kategorija,
                     artikli.PodKategorijaID, podkategorije.PodKategorija
@@ -78,6 +78,7 @@ final class Artikl_Model extends Master_Model {
         if ($artikl['Ba']) {$artikl['Ba'] = true;} else {$artikl['Ba'] = false;}
         if ($artikl['Hr']) {$artikl['Hr'] = true;} else {$artikl['Hr'] = false;}
         if ($artikl['Outlet']) {$artikl['Outlet'] = true;} else {$artikl['Outlet'] = false;}
+        if ($artikl['OutletHr']) {$artikl['OutletHr'] = true;} else {$artikl['OutletHr'] = false;}
 
         return $artikl;
 
@@ -149,6 +150,10 @@ final class Artikl_Model extends Master_Model {
         $outlet = Validacija::Potvrda(_('Outlet'), $outlet);
         if ($outlet == "on") {$outlet = 1;} else {$outlet = 0;}
 
+        $outlethr = $_REQUEST["outlethr"] ?? null;
+        $outlethr = Validacija::Potvrda(_('OutletHr'), $outlethr);
+        if ($outlethr == "on") {$outlethr = 1;} else {$outlethr = 0;}
+
         $izdvojeno = $_REQUEST["izdvojeno"] ?? null;
         $izdvojeno = Validacija::Potvrda(_('Izdvojeno'), $izdvojeno);
         if ($izdvojeno == "on") {$izdvojeno = 1;} else {$izdvojeno = 0;}
@@ -185,6 +190,7 @@ final class Artikl_Model extends Master_Model {
                             'Ba' => $ba,
                             'Hr' => $hr,
                             'Outlet' => $outlet,
+                            'OutletHr' => $outlethr,
                             'Izdvojeno' => $izdvojeno,
                             'Aktivan' => $aktivno,
                             'KategorijaID' => $kategorija,
@@ -208,6 +214,7 @@ final class Artikl_Model extends Master_Model {
                             'Ba' => $ba,
                             'Hr' => $hr,
                             'Outlet' => $outlet,
+                            'OutletHr' => $outlethr,
                             'Izdvojeno' => $izdvojeno,
                             'Aktivan' => $aktivno,
                             'KategorijaID' => $kategorija,
