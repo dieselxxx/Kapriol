@@ -94,6 +94,18 @@ final class Domena {
 
     }
 
+    public static function sqlOutlet ():string {
+
+        if (self::Hr()) {
+
+            return 'OutletHr';
+
+        }
+
+        return 'Outlet';
+
+    }
+
     public static function valuta ():string {
 
         if (self::Hr()) {
