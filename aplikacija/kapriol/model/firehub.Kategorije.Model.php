@@ -62,7 +62,11 @@ final class Kategorije_Model extends Master_Model {
 
         $rezultat = '
             <li>
-                <svg><use xlink:href="/kapriol/resursi/grafika/simboli/simbol.ikone.svg#akcija_novi"></use></svg>
+                <svg><use xlink:href="/kapriol/resursi/grafika/simboli/simbol.ikone.svg#akcija_sale"></use></svg>
+                <span><a href="/rezultat/outlet">Outlet</a></span>
+            </li>
+            <li>
+                <svg><use xlink:href="/kapriol/resursi/grafika/simboli/simbol.ikone.svg#akcija_novi2"></use></svg>
                 <span><a href="/rezultat/akcija">Na akciji</a></span>
             </li>
         ';
@@ -180,6 +184,14 @@ final class Kategorije_Model extends Master_Model {
                 'ID' => 'akcija',
                 'Kategorija' => 'Akcija',
                 'Link' => 'akcija'
+            ];
+
+        } else if ($kategorija === 'outlet') {
+
+            return [
+                'ID' => 'outlet',
+                'Kategorija' => 'Outlet',
+                'Link' => 'outlet'
             ];
 
         }
