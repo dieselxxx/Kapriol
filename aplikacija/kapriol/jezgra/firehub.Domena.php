@@ -333,6 +333,34 @@ final class Domena {
 
     }
 
+    public static function linkerRetargeting ():string {
+
+        if (self::Hr()) {
+
+            return '<img src="https://linker.hr/m.php?campaign=416" style="display:none">';
+
+        } else {
+
+            return '';
+
+        }
+
+    }
+
+    public static function linkerKonverzija ():string {
+
+        if (self::Hr()) {
+
+            return '<img src=https://linker.hr/c.php?id=3794 style="display:none">';
+
+        } else {
+
+            return '';
+
+        }
+
+    }
+
     public static function euroEmail (float|int $total_cijena):string {
 
         if (self::Hr()) {
