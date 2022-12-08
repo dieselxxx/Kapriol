@@ -49,6 +49,7 @@ final class OpciUvjeti_Kontroler extends Master_Kontroler {
             'predlozak_opis' => Domena::opis(),
             'predlozak_GA' => Domena::GA(),
             'predlozak_naslov' => 'Opci uvjeti',
+            'linkerRetargeting' => Domena::linkerRetargeting(),
             'facebook_link' => Domena::facebook(),
             'instagram_link' => Domena::instagram(),
             'mobitel' => Domena::mobitel(),

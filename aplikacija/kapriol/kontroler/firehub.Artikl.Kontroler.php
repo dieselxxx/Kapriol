@@ -68,6 +68,7 @@ final class Artikl_Kontroler extends Master_Kontroler {
                 'predlozak_opis' => Domena::opis(),
                 'predlozak_GA' => Domena::GA(),
                 'predlozak_naslov' => $trenutni_artikl['Naziv'],
+                'linkerRetargeting' => Domena::linkerRetargeting(),
                 'facebook_link' => Domena::facebook(),
                 'instagram_link' => Domena::instagram(),
                 'mobitel' => Domena::mobitel(),
@@ -229,6 +230,7 @@ final class Artikl_Kontroler extends Master_Kontroler {
         return sadrzaj()->datoteka('artikl.html')->podatci([
             'predlozak_opis' => Domena::opis(),
             'predlozak_GA' => Domena::GA(),
+            'linkerRetargeting' => Domena::linkerRetargeting(),
             'predlozak_naslov' => $trenutni_artikl['Naziv'],
             'facebook_link' => Domena::facebook(),
             'instagram_link' => Domena::instagram(),

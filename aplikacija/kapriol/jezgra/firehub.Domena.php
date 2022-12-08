@@ -351,7 +351,7 @@ final class Domena {
 
         if (self::Hr()) {
 
-            return '<img src=https://linker.hr/c.php?id=3794 style="display:none">';
+            return '<img src="https://linker.hr/c.php?id=3794" style="display:none">';
 
         } else {
 
