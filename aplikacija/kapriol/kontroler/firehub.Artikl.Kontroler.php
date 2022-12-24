@@ -121,8 +121,8 @@ final class Artikl_Kontroler extends Master_Kontroler {
             $bf_cijena_euro = Domena::Hr() ? '<span>'.number_format(((float)$trenutni_artikl['Cijena'] / 7.5345) - ((float)$trenutni_artikl['Cijena'] / 7.5345 * 0.1), 2, ',', '.').' €</span>' : '';
             $artikl_cijena = '
                 <img alt="bf" src="/kapriol/resursi/grafika/logo/bf.png">
-                <h2 style="margin-top: -30px; margin-left: 100px;">'.number_format((float)$bf_cijena, 2, ',', '.').' '.Domena::valuta().'</h2>
-                <h2 style="margin-top: -5px; margin-left: 100px;">'.$bf_cijena_euro.'</h2>
+                <h2 style="margin-top: 10px;">'.number_format((float)$bf_cijena, 2, ',', '.').' '.Domena::valuta().'</h2>
+                <h2 style="margin-top: -5px;">'.$bf_cijena_euro.'</h2>
                 <span class="prekrizi">'.number_format((float)$trenutni_artikl['Cijena'], 2, ',', '.').' '.Domena::valuta().'</span>
                 <span class="prekrizi">'.$euro_cijena.'</span>
             ';
