@@ -100,12 +100,12 @@ final class Artikl_Kontroler extends Master_Kontroler {
         }
 
         // cijene
-        $euro_cijena = Domena::Hr() ? '<span>'.number_format((float)$trenutni_artikl['Cijena'] / 7.5345, 2, ',', '.').' €</span>' : '';
+        $euro_cijena = Domena::Hr() ? '<span>'.number_format((float)$trenutni_artikl['Cijena'] * 7.5345, 2, ',', '.').' kn</span>' : '';
         if ($trenutni_artikl['CijenaAkcija'] > 0) {
 
             $artikal_popust = -($trenutni_artikl['Cijena'] - $trenutni_artikl['CijenaAkcija']) / ($trenutni_artikl['Cijena']) * 100;
 
-            $euro_cijena_akcija = Domena::Hr() ? '<span>'.number_format((float)$trenutni_artikl['CijenaAkcija'] / 7.5345, 2, ',', '.').' €</span>' : '';
+            $euro_cijena_akcija = Domena::Hr() ? '<span>'.number_format((float)$trenutni_artikl['CijenaAkcija'] * 7.5345, 2, ',', '.').' kn</span>' : '';
 
             $artikl_cijena = '
                 <span class="prekrizi">'.number_format((float)$trenutni_artikl['Cijena'], 2, ',', '.').' '.Domena::valuta().'</span>
@@ -118,7 +118,7 @@ final class Artikl_Kontroler extends Master_Kontroler {
         } else if (Domena::blackFriday()) {
 
             $bf_cijena = $trenutni_artikl['Cijena'] - ($trenutni_artikl['Cijena'] * 0.1);
-            $bf_cijena_euro = Domena::Hr() ? '<span>'.number_format(((float)$trenutni_artikl['Cijena'] / 7.5345) - ((float)$trenutni_artikl['Cijena'] / 7.5345 * 0.1), 2, ',', '.').' €</span>' : '';
+            $bf_cijena_euro = Domena::Hr() ? '<span>'.number_format(((float)$trenutni_artikl['Cijena'] * 7.5345) - ((float)$trenutni_artikl['Cijena'] * 7.5345 * 0.1), 2, ',', '.').' kn</span>' : '';
             $artikl_cijena = '
                 <img alt="bf" src="/kapriol/resursi/grafika/logo/bf.png">
                 <h2 style="margin-top: 10px;">'.number_format((float)$bf_cijena, 2, ',', '.').' '.Domena::valuta().'</h2>

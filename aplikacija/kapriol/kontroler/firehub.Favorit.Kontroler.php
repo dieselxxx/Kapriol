@@ -56,10 +56,10 @@ final class Favorit_Kontroler extends Master_Kontroler {
             foreach ($favorit_artikli as $artikal) {
 
                 // cijene
-                $euro_cijena = Domena::Hr() ? '<span style="font-size: 0.7rem">('.number_format((float)$artikal['Cijena'] / 7.5345, 2, ',', '.').' €)</span>' : '';
+                $euro_cijena = Domena::Hr() ? '<span style="font-size: 0.7rem">('.number_format((float)$artikal['Cijena'] * 7.5345, 2, ',', '.').' kn)</span>' : '';
                 if ($artikal['CijenaAkcija'] > 0) {
 
-                    $euro_cijena_akcija = Domena::Hr() ? '<span style="font-size: 0.8rem">('.number_format((float)$artikal['CijenaAkcija'] / 7.5345, 2, ',', '.').' €)</span>' : '';
+                    $euro_cijena_akcija = Domena::Hr() ? '<span style="font-size: 0.8rem">('.number_format((float)$artikal['CijenaAkcija'] * 7.5345, 2, ',', '.').' kn)</span>' : '';
 
                     $artikl_cijena = '
                         <span class="akcija">'.number_format((float)$artikal['CijenaAkcija'], 2, ',', '.').' '.Domena::valuta().$euro_cijena_akcija.'</span>

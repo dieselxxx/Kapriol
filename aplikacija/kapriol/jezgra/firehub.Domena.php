@@ -110,7 +110,7 @@ final class Domena {
 
         if (self::Hr()) {
 
-            return 'kn';
+            return '€';
 
         }
 
@@ -122,7 +122,7 @@ final class Domena {
 
         if (self::Hr()) {
 
-            return 'HRK';
+            return 'EUR';
 
         }
 
@@ -174,11 +174,11 @@ final class Domena {
                 <ul>
                     <li>
                         <svg><use xlink:href="/kapriol/resursi/grafika/simboli/simbol.ikone.svg#strelica_desno_duplo2"></use></svg>
-                        <span>Besplatna dostava za narudzbe preko 750 HRK.</span>
+                        <span>Besplatna dostava za narudzbe preko 99.50 €.</span>
                     </li>
                     <li>
                         <svg><use xlink:href="/kapriol/resursi/grafika/simboli/simbol.ikone.svg#strelica_desno_duplo2"></use></svg>
-                        <span>Dostava za narudzbe manje od 750 HRK iznosi 35 HRK.</span>
+                        <span>Dostava za narudzbe manje od 99.50 € iznosi 4.65 €.</span>
                     </li>
                     <li>
                         <svg><use xlink:href="/kapriol/resursi/grafika/simboli/simbol.ikone.svg#strelica_desno_duplo2"></use></svg>
@@ -232,7 +232,7 @@ final class Domena {
 
         if (self::Hr()) {
 
-            return 750;
+            return 99.50;
 
         }
 
@@ -240,11 +240,11 @@ final class Domena {
 
     }
 
-    public static function dostavaIznos ():int {
+    public static function dostavaIznos ():int|float {
 
         if (self::Hr()) {
 
-            return 35;
+            return 4.65;
 
         }
 
@@ -365,7 +365,7 @@ final class Domena {
 
         if (self::Hr()) {
 
-            return '1 EUR = 7,53450 KN - Ukupno EUR '.number_format((float)$total_cijena / 7.5345, 2, ',', '.').'';
+            return '1 EUR = 7,53450 KN - Ukupno HRK '.number_format((float)$total_cijena * 7.5345, 2, ',', '.').'';
 
         }
 

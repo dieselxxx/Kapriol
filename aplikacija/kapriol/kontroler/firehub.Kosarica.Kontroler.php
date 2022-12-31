@@ -59,10 +59,10 @@ final class Kosarica_Kontroler extends Master_Kontroler {
             foreach ($kosarica_artikli as $artikal) {
 
                 // cijene
-                $euro_cijena = Domena::Hr() ? '<span style="font-size: 0.7rem">('.number_format((float)$artikal['Cijena'] / 7.5345, 2, ',', '.').' €)</span>' : '';
+                $euro_cijena = Domena::Hr() ? '<span style="font-size: 0.7rem">('.number_format((float)$artikal['Cijena'] * 7.5345, 2, ',', '.').' kn)</span>' : '';
                 if ($artikal['CijenaAkcija'] > 0) {
 
-                    $euro_cijena_akcija = Domena::Hr() ? '<span style="font-size: 0.8rem">('.number_format((float)$artikal['CijenaAkcija'] / 7.5345, 2, ',', '.').' €)</span>' : '';
+                    $euro_cijena_akcija = Domena::Hr() ? '<span style="font-size: 0.8rem">('.number_format((float)$artikal['CijenaAkcija'] * 7.5345, 2, ',', '.').' kn)</span>' : '';
 
                     $artikl_cijena = '
                         <span class="akcija">'.number_format((float)$artikal['CijenaAkcija'], 2, ',', '.').' '.Domena::valuta().$euro_cijena_akcija.'</span>
@@ -71,7 +71,7 @@ final class Kosarica_Kontroler extends Master_Kontroler {
 
                 } else if (Domena::blackFriday()) {
 
-                    $euro_cijena = Domena::Hr() ? '<span style="font-size: 0.7rem">('.number_format(((float)$artikal['Cijena'] / 7.5345) - ((float)$artikal['Cijena'] / 7.5345 * 0.1), 2, ',', '.').' €)</span>' : '';
+                    $euro_cijena = Domena::Hr() ? '<span style="font-size: 0.7rem">('.number_format(((float)$artikal['Cijena'] * 7.5345) - ((float)$artikal['Cijena'] * 7.5345 * 0.1), 2, ',', '.').' kn)</span>' : '';
                     $artikl_cijena = '
                         <span>'.number_format((float)$artikal['Cijena'] - ((float)$artikal['Cijena'] * 0.1), 2, ',', '.').' '.Domena::valuta().$euro_cijena.'</span>
                     ';
@@ -87,7 +87,7 @@ final class Kosarica_Kontroler extends Master_Kontroler {
                 // ako nije dostava
                 if ($artikal['ID'] !== '0') {
 
-                    $euro_cijena_ukupno = Domena::Hr() ? '<span style="font-size: 0.8rem">('.number_format((float)$artikal['CijenaUkupno'] / 7.5345, 2, ',', '.').' €)</span>' : '';
+                    $euro_cijena_ukupno = Domena::Hr() ? '<span style="font-size: 0.8rem">('.number_format((float)$artikal['CijenaUkupno'] * 7.5345, 2, ',', '.').' kn)</span>' : '';
 
                     // artikli
                     $artikli_html .= '
@@ -143,7 +143,7 @@ final class Kosarica_Kontroler extends Master_Kontroler {
                 }
                 $total_cijena += $artikal['CijenaUkupno'];
 
-                $euro_cijena_total = Domena::Hr() ? '<span style="font-size: 0.7rem">('.number_format((float)$total_cijena / 7.5345, 2, ',', '.').' €)</span>' : '';
+                $euro_cijena_total = Domena::Hr() ? '<span style="font-size: 0.7rem">('.number_format((float)$total_cijena * 7.5345, 2, ',', '.').' kn)</span>' : '';
 
                 $kosarica_artikli_ukupno = '
                     <ul>
