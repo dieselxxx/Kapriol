@@ -207,7 +207,7 @@ final class PrijenosDatoteka {
 
         } else if ($this->Vrsta() == 'image/webp') { // webp
 
-            imagewebp($tn, $datoteka,90);
+            imagewebp($tn, $datoteka,100);
             imagedestroy($tn);
 
         } else {
