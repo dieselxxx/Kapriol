@@ -82,6 +82,11 @@ final class Slika_Servis implements Slika_Interface {
             imagepng($this->slika, NULL, $this->posluzitelj->kvaliteta);
             imagedestroy($this->slika);
 
+        } else if ($this->posluzitelj->vrsta->value == 'webp') { // webp
+
+            imagewebp($this->slika, NULL, $this->posluzitelj->kvaliteta);
+            imagedestroy($this->slika);
+
         } else if ($this->posluzitelj->vrsta->value == 'avif') { // avif
 
             imageavif($this->slika, NULL, $this->posluzitelj->kvaliteta);
@@ -119,6 +124,10 @@ final class Slika_Servis implements Slika_Interface {
         } else if ($vrsta === IMAGETYPE_PNG) { // png
 
             $this->slika = imagecreatefrompng($this->posluzitelj->slika);
+
+        } else if ($vrsta === IMAGETYPE_WEBP) { // webp
+
+            $this->slika = imagecreatefromwebp($this->posluzitelj->slika);
 
         } else if ($vrsta === IMAGETYPE_AVIF) { // avif
 
