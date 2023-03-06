@@ -153,7 +153,7 @@ final class ObavijestDno_Model extends Master_Model {
         $datoteka = new PrijenosDatoteka($naziv_datoteke);
         $datoteka->Putanja(FIREHUB_ROOT.konfiguracija('sustav.putanje.web').'kapriol'.RAZDJELNIK_MAPE.'resursi'.RAZDJELNIK_MAPE.'grafika'.RAZDJELNIK_MAPE.'baneridno'.RAZDJELNIK_MAPE);
         $datoteka->NovoIme($naziv_datoteke, true);
-        $datoteka->DozvoljeneVrste(array('image/jpeg'));
+        $datoteka->DozvoljeneVrste(array('image/jpeg', 'image/webp'));
         $datoteka->DozvoljenaVelicina(5000);
         $datoteka->PrijenosDatoteke();
         $datoteka->SlikaDimenzije(2000, 1000);

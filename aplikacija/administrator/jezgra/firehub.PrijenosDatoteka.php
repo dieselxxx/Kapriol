@@ -174,6 +174,10 @@ final class PrijenosDatoteka {
 
             $slika = imagecreatefrompng($datoteka);
 
+        } else if ($this->Vrsta() == 'image/webp') { // png
+
+            $slika = imagecreatefromwebp($datoteka);
+
         } else {
 
             throw new Greska(_('Slika nije u podržanom formatu!'));
@@ -199,6 +203,11 @@ final class PrijenosDatoteka {
         } else if ($this->Vrsta() == 'image/png') { // png
 
             imagepng($tn, $datoteka,9);
+            imagedestroy($tn);
+
+        } else if ($this->Vrsta() == 'image/webp') { // webp
+
+            imagewebp($tn, $datoteka,90);
             imagedestroy($tn);
 
         } else {
