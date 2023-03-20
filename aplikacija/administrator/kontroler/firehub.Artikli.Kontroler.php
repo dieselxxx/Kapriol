@@ -134,6 +134,16 @@ final class Artikli_Kontroler extends Master_Kontroler {
 
         }
 
+        // gratis
+        $gratis_model = $this->model(Artikli_Model::class);
+        $gratis_artikli = $gratis_model->listaGratis();
+        $gratis_artikli_html = '';
+        foreach ($gratis_artikli as $artikl_gratis) {
+
+            $gratis_artikli_html .= "<option value='{$artikl_gratis['ID']}'>{$artikl_gratis['Naziv']}</option>";
+
+        }
+
         return sadrzaj()->format(Sadrzaj_Vrsta::HTMLP)->datoteka('artikli/uredi.html')->podatci([
             'id' => $artikl['ID'],
             'naziv' => $artikl['Naziv'],
@@ -153,7 +163,12 @@ final class Artikli_Kontroler extends Master_Kontroler {
             'podkategorija' => ''.$artikl['PodKategorijaID'].'' ?? '0',
             'podkategorija_naziv' => $artikl['PodKategorija'] ? ' ->> '.$artikl['PodKategorija'] : '',
             'kategorije' => $kategorije_html,
-            'slike' => $slike_html
+            'slike' => $slike_html,
+            'gratisBa' => ''.$artikl['GratisBa'].'' ?? 0,
+            'gratisBa_naziv' => $artikl['GratisBaNaziv'] ?? '== bez gratis artikla ==',
+            'gratisHr' => ''.$artikl['GratisHr'].'' ?? 0,
+            'gratisHr_naziv' => $artikl['GratisHrNaziv'] ?? '== bez gratis artikla ==',
+            'gratis_artikli' => $gratis_artikli_html
         ]);
 
     }
