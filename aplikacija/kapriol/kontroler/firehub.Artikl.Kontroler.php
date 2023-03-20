@@ -197,8 +197,8 @@ final class Artikl_Kontroler extends Master_Kontroler {
                     $artikl_gratis_zaliha_html .= '
                     <li>
                         <div class="sifraArtikla radio" data-tippy-content="'.$zaliha['artiklikarakteristikeSifra'].'">
-                            <input id="'.$zaliha['Velicina'].'" type="radio" name="gratis" value="'.$zaliha['artiklikarakteristikeSifra'].'">
-                            <label for="'.$zaliha['Velicina'].'">'.$zaliha['Velicina'].'</label>
+                            <input id="gratis-'.$zaliha['Velicina'].'" type="radio" name="gratis" value="'.$zaliha['artiklikarakteristikeSifra'].'">
+                            <label for="gratis-'.$zaliha['Velicina'].'">'.$zaliha['Velicina'].'</label>
                         </div>
                     </li>';
 
@@ -209,8 +209,8 @@ final class Artikl_Kontroler extends Master_Kontroler {
                     $artikl_gratis_zaliha_html .= '
                     <li>
                         <div class="radio">
-                            <input id="'.$zaliha['Velicina'].'" type="radio" name="gratis" value="'.$zaliha['artiklikarakteristikeSifra'].'" disabled>
-                            <label for="'.$zaliha['Velicina'].'">'.$zaliha['Velicina'].'</label>
+                            <input id="gratis-'.$zaliha['Velicina'].'" type="radio" name="gratis" value="'.$zaliha['artiklikarakteristikeSifra'].'" disabled>
+                            <label for="gratis-'.$zaliha['Velicina'].'">'.$zaliha['Velicina'].'</label>
                         </div>
                     </li>';
 
