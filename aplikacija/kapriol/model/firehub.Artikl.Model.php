@@ -58,11 +58,14 @@ final class Artikl_Model extends Master_Model {
             ->sirovi("
                 SELECT
                     artikliview.ID, artikliview.Naziv, artikliview.Opis, artikliview.".Domena::sqlCijena()." AS Cijena, artikliview.".Domena::sqlCijenaAkcija()." AS CijenaAkcija,
-                    kategorijeview.Kategorija, kategorijeview.Link as KategorijaLink, IFNULL(podkategorijeview.Podkategorija, 'Sve podkategorije') as Podkategorija, IFNULL(podkategorijeview.Link, 'sve') as PodkategorijaLink, slikeartikal.Slika, artikliview.Link
+                    kategorijeview.Kategorija, kategorijeview.Link as KategorijaLink, IFNULL(podkategorijeview.Podkategorija, 'Sve podkategorije') as Podkategorija, IFNULL(podkategorijeview.Link, 'sve') as PodkategorijaLink, slikeartikal.Slika, artikliview.Link,
+                    ".(Domena::Hr() ? 'artikliview.GratisHr' : 'artikliview.GratisBa')." AS GratisID, gratis.Naziv AS GratisNaziv, gratisslika.Slika AS GratisSlika, gratis.Link AS GratisLink
                 FROM artikliview
                 LEFT JOIN kategorijeview ON kategorijeview.ID = artikliview.KategorijaID
                 LEFT JOIN podkategorijeview ON podkategorijeview.ID = artikliview.PodKategorijaID
                 LEFT JOIN slikeartikal ON slikeartikal.ClanakID = artikliview.ID
+                LEFT JOIN artikliview gratis ON gratis.ID = ".(Domena::Hr() ? 'artikliview.GratisHr' : 'artikliview.GratisBa')." AND gratis.Aktivan = 1 AND ".(Domena::Hr() ? 'gratis.Hr' : 'gratis.Ba')." = 1
+                LEFT JOIN slikeartikal gratisslika ON gratisslika.ClanakID = gratis.ID
                 WHERE artikliview.Link = '$link' AND artikliview.Aktivan = 1 AND artikliview.".Domena::sqlTablica()." = 1
                 ORDER BY slikeartikal.Zadana DESC
                 LIMIT 1
