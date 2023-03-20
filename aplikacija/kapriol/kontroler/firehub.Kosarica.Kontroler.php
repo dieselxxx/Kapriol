@@ -89,15 +89,20 @@ final class Kosarica_Kontroler extends Master_Kontroler {
 
                     $euro_cijena_ukupno = Domena::Hr() ? '<span style="font-size: 0.8rem">('.number_format((float)$artikal['CijenaUkupno'] * 7.5345, 2, ',', '.').' kn)</span>' : '';
 
-                    // artikli
-                    $artikli_html .= '
-                    <form class="artikl" method="post" enctype="multipart/form-data" action="">
-                        <img src="/slika/malaslika/'.$artikal['Slika'].'" alt="" loading="lazy"/>
-                        <a class="naslov" href="/artikl/'.$artikal['Link'].'">'.$artikal['Naziv'].'</a>
-                        <span class="velicina">Veličina: '.$artikal['Velicina'].'</span>
-                        <span class="cijena">'.$artikl_cijena.'</span>
-                        <h3 class="ukupno">Ukupno: '.number_format((float)$artikal['CijenaUkupno'], 2, ',', '.').' '.Domena::valuta().$euro_cijena_ukupno.'</h3>
-                        <div class="kosarica">
+                    // gratis
+                    $gumbovi = '
+                        <span>Ima gratis artikl, ukoliko želite izmjene, izbrišite ga i ponovo odaberite artikl sa gratisom!</span>
+                        <label data-boja="boja" class="unos">
+                            <input type="hidden" name="velicina" value="'.$artikal['Sifra'].'">
+                            <input type="number" name="vrijednost" value="'.$artikal['Kolicina'].'" data-pakiranje="1" data-maxpakiranje="1000" value="0" min="0" max="100" step="1" autocomplete="off" pattern="0-9" readonly>
+                            <span class="naslov">
+                                <span></span>
+                            </span>
+                            <span class="granica"></span>
+                        </label>
+                        ';
+                    if ($artikal['GratisID'] === null || $artikal['GratisID'] === '0') {
+                        $gumbovi = '
                             <button type="button" class="gumb" onclick="ArtikalPlusMinus(this, $vrsta = \'minus\');">-</button>
                             <label data-boja="boja" class="unos">
                                 <input type="hidden" name="velicina" value="'.$artikal['Sifra'].'">
@@ -112,6 +117,19 @@ final class Kosarica_Kontroler extends Master_Kontroler {
                                 <svg><use xlink:href="/kapriol/resursi/grafika/simboli/simbol.ikone.svg#uredi"></use></svg>
                                 <span>Izmijeni</span>
                             </button>
+                        ';
+                    }
+
+                    // artikli
+                    $artikli_html .= '
+                    <form class="artikl" method="post" enctype="multipart/form-data" action="">
+                        <img src="/slika/malaslika/'.$artikal['Slika'].'" alt="" loading="lazy"/>
+                        <a class="naslov" href="/artikl/'.$artikal['Link'].'">'.$artikal['Naziv'].'</a>
+                        <span class="velicina">Veličina: '.$artikal['Velicina'].'</span>
+                        <span class="cijena">'.$artikl_cijena.'</span>
+                        <h3 class="ukupno">Ukupno: '.number_format((float)$artikal['CijenaUkupno'], 2, ',', '.').' '.Domena::valuta().$euro_cijena_ukupno.'</h3>
+                        <div class="kosarica">
+                            '.$gumbovi.'
                             <button type="submit" class="gumb ikona" name="kosarica_izbrisi">
                                 <svg><use xlink:href="/kapriol/resursi/grafika/simboli/simbol.ikone.svg#izbrisi"></use></svg>
                                 <span>Izbriši</span>
@@ -164,6 +182,36 @@ final class Kosarica_Kontroler extends Master_Kontroler {
 
         }
 
+        // artikli gratis
+        $kosarica_artikli_gratis = $kosarica_model->artikliGratis();
+        $artikli_gratis_html = '';
+        if (!empty($kosarica_artikli_gratis)) {
+
+            foreach ($kosarica_artikli_gratis as $artikal) {
+
+                $artikli_gratis_html .= '
+                    <form class="artikl" method="post" enctype="multipart/form-data" action="">
+                        <img src="/slika/malaslika/'.$artikal['Slika'].'" alt="" loading="lazy"/>
+                        <a class="naslov" href="/artikl/'.$artikal['Link'].'">'.$artikal['Naziv'].'</a>
+                        <span class="velicina">Veličina: '.$artikal['Velicina'].'</span>
+                        <span class="cijena">GRATIS</span>
+                        <div class="kosarica">
+                            <label data-boja="boja" class="unos">
+                                <input type="hidden" name="velicina" value="'.$artikal['Sifra'].'">
+                                <input type="number" name="vrijednost" value="'.$artikal['Kolicina'].'" data-pakiranje="1" data-maxpakiranje="1000" value="0" min="0" max="100" step="1" autocomplete="off" pattern="0-9" readonly>
+                                <span class="naslov">
+                                    <span></span>
+                                </span>
+                                <span class="granica"></span>
+                            </label>
+                        </div>
+                    </form>
+                ';
+
+            }
+
+        }
+
         return sadrzaj()->datoteka('kosarica.html')->podatci([
             'predlozak_opis' => Domena::opis(),
             'predlozak_GA' => Domena::GA(),
@@ -184,6 +232,7 @@ final class Kosarica_Kontroler extends Master_Kontroler {
             'vi_ste_ovdje' => '<a href="/">Kapriol Web Trgovina</a> \\\\ Košarica',
             'opci_uvjeti' => Domena::opciUvjeti(),
             'kosarica_artikli' => $artikli_html,
+            'kosarica_artikli_gratis' => $artikli_gratis_html,
             'kosarica_artikli_ukupno' => $kosarica_artikli_ukupno
         ]);
 

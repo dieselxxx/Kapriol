@@ -135,12 +135,21 @@ final class Rezultat_Kontroler extends Master_Kontroler {
 
             }
 
+            // gratis
+            $gratis = '';
+            if ($artikal['GratisID'] <> '0') {
+                $gratis = '<svg><use xlink:href="/kapriol/resursi/grafika/simboli/simbol.ikone.svg#gratis"></use></svg>';
+            }
+
             $artikli_html .= <<<Artikal
             
                 <form class="artikal" method="post" enctype="multipart/form-data" action="">
                         <input type="hidden" name="ID" value="{$artikal['ID']}" />
                         <button class="favorit gumb ikona" type="submit" name="favorit"></button>
-                        <a href="/artikl/{$artikal['Link']}"><img src="/slika/malaslika/{$artikal['Slika']}" alt="" loading="lazy"/></a>
+                        <a href="/artikl/{$artikal['Link']}">
+                            <img src="/slika/malaslika/{$artikal['Slika']}" alt="" loading="lazy"/>
+                        </a>
+                        <span class="gratis">$gratis</span>
                         <a class="naslov" href="/artikl/{$artikal['Link']}">{$artikal['Naziv']}</a>
                         <a href="/artikl/{$artikal['Link']}" class="cijena">$artikl_cijena</a>
                         <span class="zaliha"></span>

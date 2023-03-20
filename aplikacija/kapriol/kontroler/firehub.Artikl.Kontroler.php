@@ -172,16 +172,79 @@ final class Artikl_Kontroler extends Master_Kontroler {
 
         }
 
+        // gratis
+        $artikl_gratis_zaliha_html = '';
+        $artikl_gratis_html = '';
+        if ($trenutni_artikl['GratisNaziv']) {
+
+            $artikl_gratis_zaliha_html = '
+                <span><b style="font-size: 1rem;">KOD NARUČIVANJA MORATE ODABRATI OBAVEZNO I VELIČINU GRATIS ARTIKLA!</b> <br><h4>'.$trenutni_artikl['GratisNaziv'].'</h4></span>
+            
+                <div class="gratis_slika">
+                    <h4>GRATIS</h4>
+                    <img src="/slika/malaslika/'.$trenutni_artikl['GratisSlika'].'" alt="" loading="lazy"/>
+                    <span><svg><use xlink:href="/kapriol/resursi/grafika/simboli/simbol.ikone.svg#gratis"></use></svg></span>
+                </div>
+            ';
+
+            $artikl_gratis_html = '<svg><use xlink:href="/kapriol/resursi/grafika/simboli/simbol.ikone.svg#gratis"></use></svg>';
+
+            $artikl_gratis_zaliha = $artikl_model->zaliha($trenutni_artikl['GratisID']);
+            foreach ($artikl_gratis_zaliha as $zaliha) {
+
+                if ((int)$zaliha['StanjeSkladisteTF'] === 1) {
+
+                    $artikl_gratis_zaliha_html .= '
+                    <li>
+                        <div class="sifraArtikla radio" data-tippy-content="'.$zaliha['artiklikarakteristikeSifra'].'">
+                            <input id="'.$zaliha['Velicina'].'" type="radio" name="gratis" value="'.$zaliha['artiklikarakteristikeSifra'].'">
+                            <label for="'.$zaliha['Velicina'].'">'.$zaliha['Velicina'].'</label>
+                        </div>
+                    </li>';
+
+                    $artikl_kosarica_velicine .= '<option value="'.$zaliha['artiklikarakteristikeSifra'].'">'.$zaliha['Velicina'].'</option>';
+
+                } else {
+
+                    $artikl_gratis_zaliha_html .= '
+                    <li>
+                        <div class="radio">
+                            <input id="'.$zaliha['Velicina'].'" type="radio" name="gratis" value="'.$zaliha['artiklikarakteristikeSifra'].'" disabled>
+                            <label for="'.$zaliha['Velicina'].'">'.$zaliha['Velicina'].'</label>
+                        </div>
+                    </li>';
+
+                }
+
+            }
+        }
+
+        // greške
         $kosarica_greska = '';
         if (isset($_POST['kosarica_dodaj'])) {
 
             try {
 
+                if ($trenutni_artikl['GratisNaziv'] && !isset($_POST['gratis'])) {
+
+                    throw new Kontroler_Greska('Molimo odaberite veličinu gratis artikla!');
+
+                }
+
                 if (isset($_POST['velicina'])) {
 
                     $velicina = Validacija::String('Veličina', $_POST['velicina'], 1, 10);
 
-                    $this->model(Kosarica_Model::class)->dodaj($velicina, (int)$_POST['vrijednost'] ?? 0);
+                    if (isset($_POST['gratis'])) {
+
+                        $velicina_gratis = Validacija::String('Gratis veličina', $_POST['gratis'], 1, 10);
+                        $this->model(Kosarica_Model::class)->dodaj($velicina, (int)$_POST['vrijednost'] ?? 0, $velicina_gratis, (int)$_POST['vrijednost'] ?? 0);
+
+                    } else {
+
+                        $this->model(Kosarica_Model::class)->dodaj($velicina, (int)$_POST['vrijednost'] ?? 0);
+
+                    }
 
                     header("Location: ".$_SERVER['REQUEST_URI']);
 
@@ -252,6 +315,8 @@ final class Artikl_Kontroler extends Master_Kontroler {
             'artikl_naziv' => $trenutni_artikl['Naziv'],
             'artikl_cijena' => $artikl_cijena,
             'artikl_zaliha' => $artikl_zaliha_html,
+            'artikl_gratis' => $artikl_gratis_html,
+            'artikl_gratis_zaliha' => $artikl_gratis_zaliha_html,
             'artikl_kosarica_velicine' => $artikl_kosarica_velicine,
             'artikl_opis' => $trenutni_artikl['Opis'],
             'calc_velicina' => $calc_velicina,

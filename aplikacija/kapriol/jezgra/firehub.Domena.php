@@ -30,7 +30,7 @@ final class Domena {
 
     public static function Hr ():bool {
 
-        if (Server::Domena() === 'www.kapriol-point.hr' || Server::Domena() === 'kapriol-point.hr' || Server::Domena() === 'test.kapriol-point.hr' || Server::Domena() === 'localhost:223') {
+        if (Server::Domena() === 'www.kapriol.hr' || Server::Domena() === 'www.kapriol-point.hr' || Server::Domena() === 'kapriol-point.hr' || Server::Domena() === 'test.kapriol-point.hr' || Server::Domena() === 'localhost:223') {
 
 
             return true;
