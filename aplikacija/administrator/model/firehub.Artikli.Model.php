@@ -49,6 +49,21 @@ final class Artikli_Model extends Master_Model {
 
     }
 
+    public function listaGratis ():array {
+
+        $rezultat = $this->bazaPodataka
+                ->sirovi("
+                SELECT
+                    ID, Naziv
+                FROM artikli
+                ORDER BY Naziv
+            ")
+                ->napravi();
+
+        return $rezultat->niz() ?: [];
+
+    }
+
     /**
      * Lista kategorija.
      *
