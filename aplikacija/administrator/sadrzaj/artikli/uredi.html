@@ -103,6 +103,34 @@
                 </tr>
                 <tr>
                     <td>
+                        <label data-boja="boja" class="select">
+                            <select class="input-select" name="gratisBa">
+                                <option value="{{gratisBa}}">{{gratisBa_naziv}}</option>
+                                <option value="0">== bez gratis artikla ==</option>
+                                {{gratis_artikli}}
+                            </select>
+                            <span class="select-odabrano"></span>
+                            <span class="select-granica"></span>
+                            <label class="select-odaberite">Gratis BA</label>
+                        </label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label data-boja="boja" class="select">
+                            <select class="input-select" name="gratisHr">
+                                <option value="{{gratisHr}}">{{gratisHr_naziv}}</option>
+                                <option value="0">== bez gratis artikla ==</option>
+                                {{gratis_artikli}}
+                            </select>
+                            <span class="select-odabrano"></span>
+                            <span class="select-granica"></span>
+                            <label class="select-odaberite">Gratis HR</label>
+                        </label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
                         <label>
                             <label data-boja="boja" class="kontrolni_okvir">
                                 <span>Prikaži na BA stranici</span>
