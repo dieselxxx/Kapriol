@@ -58,10 +58,13 @@ final class Artikl_Model extends Master_Model {
                     artikli.Ba, artikli.Hr, artikli.Outlet, artikli.OutletHr,
                     artikli.Aktivan, artikli.Izdvojeno,
                     artikli.KategorijaID, kategorije.Kategorija,
-                    artikli.PodKategorijaID, podkategorije.PodKategorija
+                    artikli.PodKategorijaID, podkategorije.PodKategorija,
+                    artikli.GratisBa, gratisBa.Naziv AS GratisBaNaziv, artikli.GratisHr, gratisHr.Naziv AS GratisHrNaziv
                 FROM artikli
                 LEFT JOIN kategorije ON kategorije.ID = artikli.KategorijaID
                 LEFT JOIN podkategorije ON podkategorije.ID = artikli.PodKategorijaID
+                LEFT JOIN artikli gratisBa ON gratisBa.ID = artikli.GratisBa
+                LEFT JOIN artikli gratisHr ON gratisHr.ID = artikli.GratisHr
                 WHERE artikli.ID = $id
                 LIMIT 1
             ")
@@ -175,6 +178,11 @@ final class Artikl_Model extends Master_Model {
         $kategorija = Validacija::Broj(_('Kategorija artikla'), $kategorija_stavke[0], 1, 7);
         $podkategorija = Validacija::Broj(_('Podkategorija artikla'), (int)$kategorija_stavke[1], 1, 7);
 
+        $gratis_ba = $_REQUEST['gratisBa'];
+        $gratis_ba = Validacija::Broj(_('Gratis BA'), $gratis_ba, 1, 7);
+        $gratis_hr = $_REQUEST['gratisHr'];
+        $gratis_hr = Validacija::Broj(_('Gratis HR'), $gratis_hr, 1, 7);
+
         if ($id !== 0) {
 
             $spremi = $this->bazaPodataka
@@ -194,7 +202,9 @@ final class Artikl_Model extends Master_Model {
                             'Izdvojeno' => $izdvojeno,
                             'Aktivan' => $aktivno,
                             'KategorijaID' => $kategorija,
-                            'PodKategorijaID' => $podkategorija
+                            'PodKategorijaID' => $podkategorija,
+                            'GratisBa' => $gratis_ba,
+                            'GratisHr' => $gratis_hr
                         ])
                         ->gdje('ID', '=', $id)
                 )->napravi();
