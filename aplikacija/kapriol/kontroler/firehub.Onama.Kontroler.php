@@ -55,6 +55,7 @@ final class Onama_Kontroler extends Master_Kontroler {
             'facebook_link' => Domena::facebook(),
             'instagram_link' => Domena::instagram(),
             'mobitel' => Domena::mobitel(),
+            'prodajni_predstavik' => Domena::prodajniPredstavnik(),
             'glavni_meni' => $kategorije->glavniMeni(),
             'glavni_meni_hamburger' => $kategorije->glavniMeniHamburger(),
             'zaglavlje_kosarica_artikli' => $this->kosaricaArtikli(),

@@ -30,7 +30,7 @@ final class Domena {
 
     public static function Hr ():bool {
 
-        if (Server::Domena() === 'www.kapriol.hr' || Server::Domena() === 'www.kapriol-point.hr' || Server::Domena() === 'kapriol-point.hr' || Server::Domena() === 'test.kapriol-point.hr' || Server::Domena() === 'localhost:223') {
+        if (Server::Domena() === 'www.kapriol.hr' || Server::Domena() === 'www.kapriol-point.hr' || Server::Domena() === 'kapriol-point.hr' || Server::Domena() === 'test.kapriol-point.hr') {
 
 
             return true;
@@ -382,6 +382,28 @@ final class Domena {
         }
 
         return false;
+
+    }
+
+    public static function prodajniPredstavnik ():string {
+
+        if (self::Hr()) {
+
+            return '';
+
+        }
+
+        return '
+        <li>
+            <svg><use xlink:href="/kapriol/resursi/grafika/simboli/simbol.ikone.svg#korisnik"></use></svg>
+            <ul>
+                <li>Selma Šalaka</li>
+                <li>- prodajni predstavik</li>
+                <li>- 063/282-370</li>
+                <li>- selma@kapriol-point.com</li>
+            </ul>
+        </li>
+        ';
 
     }
 

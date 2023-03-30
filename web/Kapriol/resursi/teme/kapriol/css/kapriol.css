@@ -429,6 +429,8 @@ main > div#sadrzaj.poslovnice ul > li > div {display: flex; align-items: center;
 main > div#sadrzaj.poslovnice ul > li > div > svg {float: left; fill: var(--boja-kapriol); height: 20px; width: 20px;}
 main > div#sadrzaj.poslovnice ul > li.naslov > div > svg {height: 50px; width: 50px;}
 main > div#sadrzaj.poslovnice ul > li > div > span {float: left; height: 20px; line-height: 20px; text-indent: 7px;}
+main > div#sadrzaj.poslovnice ul > li > svg {float: left; fill: var(--boja-kapriol); height: 20px; width: 20px;}
+main > div#sadrzaj.poslovnice ul > li > ul {margin-top: -10px; margin-left: 20px;}
 main > div#sadrzaj.opci_uvjeti ul {grid-column: 1 / 5;}
 main > div#sadrzaj.opci_uvjeti ul > li {padding: 10px;}
 main > div#sadrzaj.opci_uvjeti ul > li.naslov {text-indent: 10px;}
@@ -478,8 +480,9 @@ footer > div.info > ul.adresa {grid-column: 4 / 5; grid-row: 1 / 2; justify-self
 footer > div.info > ul.kontakt {grid-column: 5 / 6; grid-row: 1 / 2; justify-self: start;}
 footer > div.info > ul > li {display: flex; align-items: center; padding-top: 15px;}
 footer > div.info > ul > li > svg {float: left; fill: var(--boja-kapriol); height: 20px; width: 20px;}
-footer > div.info > ul > li > span, footer > div.info > ul > li > a {float: left; height: 20px; font-size: 0.8rem; line-height: 20px; text-indent: 7px; color: white;}
+footer > div.info > ul > li > span, footer > div.info > ul > li > a, footer > div.info > ul > li > ul > li {float: left; height: 20px; font-size: 0.8rem; line-height: 20px; text-indent: 7px; color: white;}
 footer > div.info > span {grid-column: 3 / 5; grid-row: 2 / 3; justify-self: center; color: #ffffff;}
+footer > div.info > ul > li > ul > li {float: none;}
 
 @media only screen and (max-width: 1400px) {
 
