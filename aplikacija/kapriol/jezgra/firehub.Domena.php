@@ -397,10 +397,9 @@ final class Domena {
         <li>
             <svg><use xlink:href="/kapriol/resursi/grafika/simboli/simbol.ikone.svg#korisnik"></use></svg>
             <ul>
-                <li>Selma Šalaka</li>
-                <li>- prodajni predstavik</li>
-                <li>- 063/282-370</li>
-                <li>- selma@kapriol-point.com</li>
+                <li>Selma Šalaka, prodajni predstavik</li>
+                <li>Mob: 063/282-370</li>
+                <li>Email: selma@kapriol-point.com</li>
             </ul>
         </li>
         ';

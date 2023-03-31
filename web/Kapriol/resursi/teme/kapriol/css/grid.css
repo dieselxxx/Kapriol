@@ -26,6 +26,6 @@ footer {display: grid; grid-area: podnozje; grid-template-columns: 1fr repeat(5,
 @media only screen and (max-width: 600px) {
 
     body {grid-template-rows: max-content auto 800px;}
-    footer {grid-template-rows: 200px 650px;}
+    footer {grid-template-rows: 200px 750px;}
 
 }
