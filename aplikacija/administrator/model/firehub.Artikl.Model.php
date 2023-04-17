@@ -178,9 +178,9 @@ final class Artikl_Model extends Master_Model {
         $kategorija = Validacija::Broj(_('Kategorija artikla'), $kategorija_stavke[0], 1, 7);
         $podkategorija = Validacija::Broj(_('Podkategorija artikla'), (int)$kategorija_stavke[1], 1, 7);
 
-        $gratis_ba = $_REQUEST['gratisBa'];
+        $gratis_ba = $_REQUEST['gratisBa'] ?? 0;
         $gratis_ba = Validacija::Broj(_('Gratis BA'), $gratis_ba, 1, 7);
-        $gratis_hr = $_REQUEST['gratisHr'];
+        $gratis_hr = $_REQUEST['gratisHr'] ?? 0;
         $gratis_hr = Validacija::Broj(_('Gratis HR'), $gratis_hr, 1, 7);
 
         if ($id !== 0) {
