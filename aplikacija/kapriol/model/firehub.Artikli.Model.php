@@ -366,6 +366,22 @@ final class Artikli_Model extends Master_Model {
 
             return $ukupno_redaka->broj_zapisa();
 
+        } else if ($kategorija === 'outlet') {
+
+            $ukupno_redaka = $this->bazaPodataka->tabela('artikliview')
+                ->sirovi("
+                SELECT Naziv, GROUP_CONCAT(DISTINCT artiklikarakteristike.Velicina) AS Velicine
+                FROM artikliview
+                LEFT JOIN artiklikarakteristike ON artiklikarakteristike.ArtikalID = artikliview.ID
+                WHERE Aktivan = 1 AND ".Domena::sqlTablica()." = 1 AND ".Domena::sqlCijena()." > 0 AND ".Domena::sqlOutlet()." = 1
+                {$this->trazi($trazi)}
+                GROUP BY artikliview.ID
+                {$this->velicineUpit($velicina)}
+                ")
+                ->napravi();
+
+            return $ukupno_redaka->broj_zapisa();
+
         }
 
         if ($podkategorija === 'sve') {
