@@ -96,6 +96,7 @@ final class Artikli_Kontroler extends Master_Kontroler {
         if ($artikl['Hr'] === true) {$artikl['Hr'] = 'checked';} else {$artikl['Hr'] = '';}
         if ($artikl['Outlet'] === true) {$artikl['Outlet'] = 'checked';} else {$artikl['Outlet'] = '';}
         if ($artikl['OutletHr'] === true) {$artikl['OutletHr'] = 'checked';} else {$artikl['OutletHr'] = '';}
+        if ($artikl['Novo'] === true) {$artikl['Novo'] = 'checked';} else {$artikl['Novo'] = '';}
 
         // kategorije
         $kategorije_model = $this->model(Kategorije_Model::class);
@@ -158,6 +159,7 @@ final class Artikli_Kontroler extends Master_Kontroler {
             'hr' => $artikl['Hr'],
             'outlet' => $artikl['Outlet'],
             'outlethr' => $artikl['OutletHr'],
+            'novo' => $artikl['Novo'],
             'kategorija' => ''.$artikl['KategorijaID'].'',
             'kategorija_naziv' => $artikl['Kategorija'],
             'podkategorija' => ''.$artikl['PodKategorijaID'].'' ?? '0',
