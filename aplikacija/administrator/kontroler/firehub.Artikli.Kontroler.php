@@ -120,6 +120,7 @@ final class Artikli_Kontroler extends Master_Kontroler {
         // slike
         $slike = $artikl_model->slike($id);
         $slike_html = '';
+        $slikeOpcija = '';
         foreach ($slike as $slika) {
 
             $slike_html .= '
@@ -128,10 +129,15 @@ final class Artikli_Kontroler extends Master_Kontroler {
                         <img src="/slika/malaslika/'.$slika['Slika'].'" alt="'.$slika['Slika'].'" />
                     </td>
                     <td>
+                        '.$slika['Slika'].'
+                    </td>
+                    <td>
                         <a class="gumb" data-boja="boja" onclick="$_ArtiklIzbrisiSliku(\''.$slika['ID'].'\')">Izbriši sliku</a>
                     </td>
                 </tr>
             ';
+
+            $slikeOpcija .= "<option value='{$slika['ID']}'>{$slika['Slika']}</option>";
 
         }
 
@@ -166,6 +172,9 @@ final class Artikli_Kontroler extends Master_Kontroler {
             'podkategorija_naziv' => $artikl['PodKategorija'] ? ' ->> '.$artikl['PodKategorija'] : '',
             'kategorije' => $kategorije_html,
             'slike' => $slike_html,
+            'slikeOpcija' => $slikeOpcija,
+            'zadanaSlika' => ''.$artikl['Slika'].'' ?? 0,
+            'zadanaSlika_naziv' => $artikl['SlikaNaziv'] ?? '== bez gratis artikla ==',
             'gratisBa' => ''.$artikl['GratisBa'].'' ?? 0,
             'gratisBa_naziv' => $artikl['GratisBaNaziv'] ?? '== bez gratis artikla ==',
             'gratisHr' => ''.$artikl['GratisHr'].'' ?? 0,

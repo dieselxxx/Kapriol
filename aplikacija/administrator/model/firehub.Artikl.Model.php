@@ -59,7 +59,9 @@ final class Artikl_Model extends Master_Model {
                     artikli.Aktivan, artikli.Izdvojeno,
                     artikli.KategorijaID, kategorije.Kategorija,
                     artikli.PodKategorijaID, podkategorije.PodKategorija,
-                    artikli.GratisBa, gratisBa.Naziv AS GratisBaNaziv, artikli.GratisHr, gratisHr.Naziv AS GratisHrNaziv
+                    artikli.GratisBa, gratisBa.Naziv AS GratisBaNaziv, artikli.GratisHr, gratisHr.Naziv AS GratisHrNaziv,
+                    (SELECT ID FROM slikeartikal WHERE ClanakID = $id ORDER BY Zadana DESC, ID LIMIT 1) AS Slika,
+                    (SELECT Slika FROM slikeartikal WHERE ClanakID = $id ORDER BY Zadana DESC, ID LIMIT 1) AS SlikaNaziv
                 FROM artikli
                 LEFT JOIN kategorije ON kategorije.ID = artikli.KategorijaID
                 LEFT JOIN podkategorije ON podkategorije.ID = artikli.PodKategorijaID
@@ -102,7 +104,7 @@ final class Artikl_Model extends Master_Model {
         $slike = $this->bazaPodataka
             ->sirovi("
                 SELECT
-                    slikeartikal.ID, slikeartikal.Slika
+                    slikeartikal.ID, slikeartikal.Slika, slikeartikal.Zadana
                 FROM slikeartikal
                 WHERE slikeartikal.ClanakID = $id
             ")
@@ -188,6 +190,9 @@ final class Artikl_Model extends Master_Model {
         $gratis_hr = $_REQUEST['gratisHr'] ?? 0;
         $gratis_hr = Validacija::Broj(_('Gratis HR'), $gratis_hr, 1, 7);
 
+        $zadanaSlika = $_REQUEST['zadanaSlika'] ?? 0;
+        $zadanaSlika = Validacija::Broj(_('Zadana slika'), $zadanaSlika, 1, 7);
+
         if ($id !== 0) {
 
             $spremi = $this->bazaPodataka
@@ -213,7 +218,25 @@ final class Artikl_Model extends Master_Model {
                             'GratisHr' => $gratis_hr
                         ])
                         ->gdje('ID', '=', $id)
-                )->napravi();
+                )
+                ->transakcija(
+                    (new BazaPodataka())->tabela('slikeartikal')
+                        ->azuriraj([
+                            'Zadana' => 0
+                        ])
+                        ->gdje('ClanakID', '=', $id)
+                )
+                ->napravi();
+
+            $spremi = $this->bazaPodataka
+                ->transakcija(
+                    (new BazaPodataka())->tabela('slikeartikal')
+                        ->azuriraj([
+                            'Zadana' => 1
+                        ])
+                        ->gdje('ID', '=', $zadanaSlika)
+                )
+                ->napravi();
 
         } else {
 
