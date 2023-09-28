@@ -141,6 +141,12 @@ final class Rezultat_Kontroler extends Master_Kontroler {
                 $gratis = '<svg><use xlink:href="/kapriol/resursi/grafika/simboli/simbol.ikone.svg#gratis"></use></svg>';
             }
 
+            // novo
+            $novo = '';
+            if ($artikal['Novo'] === '1') {
+                $novo = '<span class="novo"><svg><use xlink:href="/kapriol/resursi/grafika/simboli/simbol.ikone.svg#novo"></use></svg></span>';
+            }
+
             $artikli_html .= <<<Artikal
             
                 <form class="artikal" method="post" enctype="multipart/form-data" action="">
@@ -153,6 +159,7 @@ final class Rezultat_Kontroler extends Master_Kontroler {
                         <a class="naslov" href="/artikl/{$artikal['Link']}">{$artikal['Naziv']}</a>
                         <a href="/artikl/{$artikal['Link']}" class="cijena">$artikl_cijena</a>
                         <span class="zaliha"></span>
+                        $novo
                 </form>
 
             Artikal;

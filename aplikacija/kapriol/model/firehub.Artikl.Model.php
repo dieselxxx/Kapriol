@@ -57,7 +57,7 @@ final class Artikl_Model extends Master_Model {
         $artikl = $this->bazaPodataka->tabela('artikliview')
             ->sirovi("
                 SELECT
-                    artikliview.ID, artikliview.Naziv, artikliview.Opis, artikliview.".Domena::sqlCijena()." AS Cijena, artikliview.".Domena::sqlCijenaAkcija()." AS CijenaAkcija,
+                    artikliview.ID, artikliview.Naziv, artikliview.Opis, artikliview.".Domena::sqlCijena()." AS Cijena, artikliview.".Domena::sqlCijenaAkcija()." AS CijenaAkcija, artikliview.Novo,
                     kategorijeview.Kategorija, kategorijeview.Link as KategorijaLink, IFNULL(podkategorijeview.Podkategorija, 'Sve podkategorije') as Podkategorija, IFNULL(podkategorijeview.Link, 'sve') as PodkategorijaLink, slikeartikal.Slika, artikliview.Link,
                     ".(Domena::Hr() ? 'artikliview.GratisHr' : 'artikliview.GratisBa')." AS GratisID, gratis.Naziv AS GratisNaziv, gratisslika.Slika AS GratisSlika, gratis.Link AS GratisLink
                 FROM artikliview
