@@ -219,6 +219,9 @@ final class Artikl_Model extends Master_Model {
                         ])
                         ->gdje('ID', '=', $id)
                 )
+                ->napravi();
+
+            $spremi = $this->bazaPodataka
                 ->transakcija(
                     (new BazaPodataka())->tabela('slikeartikal')
                         ->azuriraj([
