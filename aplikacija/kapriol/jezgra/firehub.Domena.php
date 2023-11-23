@@ -385,6 +385,12 @@ final class Domena {
 
     }
 
+    public static function blackFridayPopust ():float {
+
+        return 0.15;
+
+    }
+
     public static function prodajniPredstavnik ():string {
 
         if (self::Hr()) {

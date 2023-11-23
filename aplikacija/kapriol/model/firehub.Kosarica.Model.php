@@ -111,7 +111,7 @@ final class Kosarica_Model extends Master_Model {
                 if ($rezultat[$kljuc]['CijenaAkcija'] > 0) {
                     $rezultat[$kljuc]['CijenaUkupno'] = $vrijednost * $rezultat[$kljuc]['CijenaAkcija'];
                 } else if (Domena::blackFriday()) {
-                    $rezultat[$kljuc]['CijenaUkupno'] = $vrijednost * ($rezultat[$kljuc]['Cijena'] - ($rezultat[$kljuc]['Cijena'] * 0.1));
+                    $rezultat[$kljuc]['CijenaUkupno'] = $vrijednost * ($rezultat[$kljuc]['Cijena'] - ($rezultat[$kljuc]['Cijena'] * Domena::blackFridayPopust()));
                 } else {
                     $rezultat[$kljuc]['CijenaUkupno'] = $vrijednost * $rezultat[$kljuc]['Cijena'];
                 }
@@ -620,7 +620,7 @@ final class Kosarica_Model extends Master_Model {
 
             } else if (Domena::blackFriday() && $artikal['ID'] !== '0') {
 
-                $artikl_cijena = number_format((float)$artikal['Cijena'] - ((float)$artikal['Cijena'] * 0.1), 2, ',', '.');
+                $artikl_cijena = number_format((float)$artikal['Cijena'] - ((float)$artikal['Cijena'] * Domena::blackFridayPopust()), 2, ',', '.');
 
             } else {
 

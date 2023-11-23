@@ -71,9 +71,9 @@ final class Kosarica_Kontroler extends Master_Kontroler {
 
                 } else if (Domena::blackFriday()) {
 
-                    $euro_cijena = Domena::Hr() ? '<span style="font-size: 0.7rem">('.number_format(((float)$artikal['Cijena'] * 7.5345) - ((float)$artikal['Cijena'] * 7.5345 * 0.1), 2, ',', '.').' kn)</span>' : '';
+                    $euro_cijena = Domena::Hr() ? '<span style="font-size: 0.7rem">('.number_format(((float)$artikal['Cijena'] * 7.5345) - ((float)$artikal['Cijena'] * 7.5345 * Domena::blackFridayPopust()), 2, ',', '.').' kn)</span>' : '';
                     $artikl_cijena = '
-                        <span>'.number_format((float)$artikal['Cijena'] - ((float)$artikal['Cijena'] * 0.1), 2, ',', '.').' '.Domena::valuta().$euro_cijena.'</span>
+                        <span>'.number_format((float)$artikal['Cijena'] - ((float)$artikal['Cijena'] * Domena::blackFridayPopust()), 2, ',', '.').' '.Domena::valuta().$euro_cijena.'</span>
                     ';
 
                 } else {

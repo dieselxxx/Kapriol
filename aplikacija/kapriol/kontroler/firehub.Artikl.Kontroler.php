@@ -118,8 +118,8 @@ final class Artikl_Kontroler extends Master_Kontroler {
 
         } else if (Domena::blackFriday()) {
 
-            $bf_cijena = $trenutni_artikl['Cijena'] - ($trenutni_artikl['Cijena'] * 0.1);
-            $bf_cijena_euro = Domena::Hr() ? '<span>'.number_format(((float)$trenutni_artikl['Cijena'] * 7.5345) - ((float)$trenutni_artikl['Cijena'] * 7.5345 * 0.1), 2, ',', '.').' kn</span>' : '';
+            $bf_cijena = $trenutni_artikl['Cijena'] - ($trenutni_artikl['Cijena'] * Domena::blackFridayPopust());
+            $bf_cijena_euro = Domena::Hr() ? '<span>'.number_format(((float)$trenutni_artikl['Cijena'] * 7.5345) - ((float)$trenutni_artikl['Cijena'] * 7.5345 * Domena::blackFridayPopust()), 2, ',', '.').' kn</span>' : '';
             $artikl_cijena = '
                 <img alt="bf" src="/kapriol/resursi/grafika/logo/bf.png">
                 <h2 style="margin-top: 10px;">'.number_format((float)$bf_cijena, 2, ',', '.').' '.Domena::valuta().'</h2>
