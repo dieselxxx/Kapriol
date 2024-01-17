@@ -89,6 +89,7 @@ final class Podkategorije_Kontroler extends Master_Kontroler {
         return sadrzaj()->format(Sadrzaj_Vrsta::HTMLP)->datoteka('podkategorije/uredi.html')->podatci([
             'id' =>''.$kategorija['ID'].'',
             'naziv' => ''.$kategorija['PodKategorija'].'',
+            'slika' => $kategorija['Slika'] ?? '',
             'kategorija' => ''.$kategorija['Kategorija'].''
         ]);
 
@@ -170,6 +171,37 @@ final class Podkategorije_Kontroler extends Master_Kontroler {
             return sadrzaj()->format(Sadrzaj_Vrsta::JSON)->podatci([
                 'Validacija' => 'da',
                 'Poruka' => _('Postavke spremljene')
+            ]);
+
+        } catch (Greska $greska) {
+
+            return sadrzaj()->format(Sadrzaj_Vrsta::JSON)->podatci([
+                'Validacija' => 'ne',
+                'Poruka' => $greska->getMessage()
+            ]);
+
+        }
+
+    }
+
+    /**
+     * ### Spremi sliku podkateogrije
+     * @since 0.1.2.pre-alpha.M1
+     *
+     * @return Sadrzaj
+     */
+    #[Zaglavlja(vrsta: Vrsta::JSON)]
+    public function dodajSliku (string $kontroler = '', string $metoda = '', int $id = 0):Sadrzaj {
+
+        try {
+
+            // model
+            $artikl = $this->model(PodKategorija_Model::class);
+            $artikl->dodajSliku($id);
+
+            return sadrzaj()->format(Sadrzaj_Vrsta::JSON)->podatci([
+                'Validacija' => 'da',
+                'Poruka' => _('Uspješno spremljeno')
             ]);
 
         } catch (Greska $greska) {

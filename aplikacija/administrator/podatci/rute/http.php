@@ -58,3 +58,4 @@ Rute::sve('podkategorije/uredi', [\FireHub\Aplikacija\Administrator\Kontroler\Po
 Rute::sve('podkategorije/spremi', [\FireHub\Aplikacija\Administrator\Kontroler\Podkategorije_Kontroler::class, 'spremi']);
 Rute::sve('podkategorije/nova', [\FireHub\Aplikacija\Administrator\Kontroler\Podkategorije_Kontroler::class, 'nova']);
 Rute::sve('podkategorije/izbrisi', [\FireHub\Aplikacija\Administrator\Kontroler\Podkategorije_Kontroler::class, 'izbrisi']);
+Rute::sve('podkategorije/dodajsliku', [\FireHub\Aplikacija\Administrator\Kontroler\PodKategorije_Kontroler::class, 'dodajsliku']);

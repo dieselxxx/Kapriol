@@ -1,4 +1,4 @@
-<form data-oznaka="podkategorija" data-sifra="{{id}}" method="post" enctype="multipart/form-data" action="/">
+<form data-oznaka="podkategorija" data-sifra="{{id}}" method="post" enctype="multipart/form-data" action="/administrator/podkategorije/dodajsliku/{{id}}">
 
     <fieldset class="detalji">
         <legend>Kategorija</legend>
@@ -34,8 +34,33 @@
                     </label>
                 </td>
             </tr>
+            <tr>
+                <td>
+                    <label>
+                        <div class="input_slika">
+                            <label for="slika">
+                                <a class="gumb" data-boja="boja">Zamijeni sliku</a>
+                            </label>
+                            <input type="file" name="slika" id="slika" accept="image/jpeg,image/png">
+                        </div>
+                    </label>
+                </td>
+            </tr>
             <tr class="poruka">
                 <td>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </fieldset>
+
+    <fieldset class="detalji">
+        <legend>Slike kategorije (800x600)</legend>
+        <table class="tabela">
+            <tbody>
+            <tr>
+                <td>
+                    <img src="/slika/podkategorija/{{slika}}" alt="" width="300px" height="200px" />
                 </td>
             </tr>
             </tbody>

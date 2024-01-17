@@ -54,7 +54,7 @@ final class PodKategorija_Model extends Master_Model {
         $kategorija = $this->bazaPodataka
             ->sirovi("
                 SELECT
-                    podkategorije.ID, podkategorije.PodKategorija, kategorije.Kategorija
+                    podkategorije.ID, podkategorije.PodKategorija, kategorije.Kategorija, podkategorije.Slika
                 FROM podkategorije
                 LEFT JOIN kategorije ON kategorije.ID = podkategorije.KategorijaID
                 WHERE podkategorije.ID = $id
@@ -131,6 +131,30 @@ final class PodKategorija_Model extends Master_Model {
                 DELETE FROM podkategorije
                 WHERE podkategorije.ID = $id
             ")
+            ->napravi();
+
+    }
+
+    /**
+     * ### Dodaj sliku podkategorije
+     * @since 0.1.2.pre-alpha.M1
+     */
+    public function dodajSliku (int $id) {
+
+        // prenesi sliku
+        $datoteka = new PrijenosDatoteka('slika');
+        $datoteka->Putanja(FIREHUB_ROOT.konfiguracija('sustav.putanje.web').'kapriol'.RAZDJELNIK_MAPE.'resursi'.RAZDJELNIK_MAPE.'grafika'.RAZDJELNIK_MAPE.'podkategorije'.RAZDJELNIK_MAPE);
+        $datoteka->DozvoljeneVrste(array('image/jpeg', 'image/png'));
+        $datoteka->DozvoljenaVelicina(1000);
+        $datoteka->PrijenosDatoteke();
+        $datoteka->SlikaDimenzije(800, 600);
+
+        $this->bazaPodataka
+            ->sirovi("
+            UPDATE podkategorije
+            SET Slika = '{$datoteka->ImeDatoteke()}'
+            WHERE podkategorije.ID = $id
+        ")
             ->napravi();
 
     }

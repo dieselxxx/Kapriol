@@ -193,4 +193,29 @@ final class Slika_Kontroler extends Master_Kontroler {
 
     }
 
+    /**
+     * ### PodKategorija
+     * @since 0.1.1.pre-alpha.M1
+     *
+     * @param string $kontroler [optional] <p>
+     * Trenutni kontroler.
+     * </p>
+     * @param string $metoda [optional] <p>
+     * Trenutna metoda.
+     * </p>
+     * @param string $slika [optional] <p>
+     * Trenutna slika.
+     * </p>
+     *
+     * @throws Kontejner_Greska Ukoliko se ne može spremiti instanca Slike.
+     *
+     * @return Slika_Interface Objekt slike.
+     */
+    #[Zaglavlja(vrsta: Vrsta::AVIF, predmemorija: [Predmemorija::JAVNO])]
+    public function podkategorija (string $kontroler = '', string $metoda = '', string $slika = '', int $visina = 250, int $sirina = 300):Slika_Interface {
+
+        return (new Slika())->slika(FIREHUB_ROOT.'web'.RAZDJELNIK_MAPE.'kapriol'.RAZDJELNIK_MAPE.'resursi'.RAZDJELNIK_MAPE.'grafika'.RAZDJELNIK_MAPE.'podkategorije'.RAZDJELNIK_MAPE.$slika)->dimenzije($visina, $sirina)->kvaliteta(9)->vrsta(\FireHub\Jezgra\Komponente\Slika\Enumeratori\Vrsta::PNG)->napravi();
+
+    }
+
 }
