@@ -332,7 +332,7 @@ final class Kategorije_Model extends Master_Model {
         $podkategorije = $this->bazaPodataka->tabela('podkategorijeview')
             ->sirovi("
                 SELECT 
-                    podkategorijeview.ID, podkategorijeview.PodKategorija, podkategorijeview.Link
+                    podkategorijeview.ID, podkategorijeview.PodKategorija, podkategorijeview.Link, podkategorijeview.Slika
                 FROM podkategorijeview
                 LEFT JOIN kategorijeview ON kategorijeview.ID = podkategorijeview.KategorijaID
                 LEFT JOIN artikli ON artikli.KategorijaID = kategorijeview.ID AND artikli.".Domena::sqlTablica()." = 1
@@ -345,6 +345,42 @@ final class Kategorije_Model extends Master_Model {
             ")->napravi();
 
         return $podkategorije->niz() ?: [];
+
+    }
+
+    /**
+     * ### Sve podkategorije za kategoriju
+     * @since 0.1.2.pre-alpha.M1
+     *
+     * @throws Kontejner_Greska Ukoliko se ne može spremiti instanca objekta.
+     *
+     * @return string Ketegorije za naslovnu.
+     */
+    public function podkategorijeKategorija (int|string $id):string {
+
+        // kategorije
+        $podkategorija_html = '';
+        foreach ($this->podkategorije($id) as $podkategorija) {
+
+            $podkategorija_html .= <<<PodKategorija
+            
+                <a class="podkategorija" href="/rezultat/{$podkategorija['Link']}">
+                    <img
+                        srcset="
+                            slika/podkategorija/{$podkategorija['Slika']}/300/400,
+                            /slika/podkategorija/{$podkategorija['Slika']}/200/250,
+                            /slika/podkategorija/{$podkategorija['Slika']}/125/150"
+                        src="/slika/podkategorija/{$podkategorija['Slika']}/300/400"
+                        alt="" loading="lazy"
+                    />
+                    <span class="naslov">{$podkategorija['Podkategorija']}</span>
+                </a>
+
+            PodKategorija;
+
+        }
+
+        return $podkategorija_html;
 
     }
 
