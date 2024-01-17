@@ -366,10 +366,6 @@ final class Kategorije_Model extends Master_Model {
             
                 <a class="podkategorija" href="/rezultat/{$podkategorija['Link']}">
                     <img
-                        srcset="
-                            slika/podkategorija/{$podkategorija['Slika']}/300/400,
-                            /slika/podkategorija/{$podkategorija['Slika']}/200/250,
-                            /slika/podkategorija/{$podkategorija['Slika']}/125/150"
                         src="/slika/podkategorija/{$podkategorija['Slika']}/300/400"
                         alt="" loading="lazy"
                     />
