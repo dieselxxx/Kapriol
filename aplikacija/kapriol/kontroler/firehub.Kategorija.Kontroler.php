@@ -17,7 +17,6 @@ namespace FireHub\Aplikacija\Kapriol\Kontroler;
 use FireHub\Aplikacija\Kapriol\Jezgra\Domena;
 use FireHub\Aplikacija\Kapriol\Model\Gdpr_Model;
 use FireHub\Aplikacija\Kapriol\Model\Kategorije_Model;
-use FireHub\Jezgra\Komponente\BazaPodataka\BazaPodataka;
 use FireHub\Jezgra\Sadrzaj\Sadrzaj;
 use FireHub\Jezgra\Kontejner\Greske\Kontejner_Greska;
 use FireHub\Jezgra\Kontroler\Greske\Kontroler_Greska;

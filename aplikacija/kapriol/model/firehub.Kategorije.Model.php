@@ -358,7 +358,7 @@ final class Kategorije_Model extends Master_Model {
      */
     public function podkategorijeKategorija (int|string $id, string $link):string {
 
-        // kategorije
+        // podkategorije
         $podkategorija_html = '';
         foreach ($this->podkategorije($id) as $podkategorija) {
 
