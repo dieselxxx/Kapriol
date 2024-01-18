@@ -460,7 +460,8 @@ main > div#sadrzaj.favorit > div.artikli > form.artikl > span.cijena > span.popu
 main > div#sadrzaj.favorit > div.artikli > form.artikl > div.kosarica {grid-column: 3 / 5; grid-row: 1 / 4; justify-self: end;}
 main > div#sadrzaj.favorit > div.artikli > form.artikl > div.kosarica > * {float: left; margin: 5px;}
 main > div#sadrzaj.osobni_podatci {grid-template-columns: 1fr;}
-main > div#sadrzaj.kategorija > div.podkategorije {grid-column: 2 / 7; grid-row: 4 / 5; display: grid; grid-template-columns: repeat(4, 1fr); grid-gap: 25px; background-image: url('/kapriol/resursi/grafika/logo/cipele.jpg'); background-position: center; background-size: cover; padding: 15px;}
+main > div#sadrzaj.kategorija {grid-column: 2 / 7; grid-template-columns: auto repeat(5, 268px) auto; grid-template-rows: auto;}
+main > div#sadrzaj.kategorija > div.podkategorije {grid-column: 2 / 7; grid-row: 4 / 5; display: grid; grid-template-columns: repeat(4, 1fr); grid-gap: 25px; padding: 15px;}
 main > div#sadrzaj.kategorija > div.podkategorije > a.podkategorija {position: relative; display: grid; grid-template-columns: minmax(100px, 1fr); grid-template-rows: 1fr; transition: all .3s ease; transition-property: transform, border-color; box-shadow: 0 3px 39px 0 rgba(0,0,0,0.04); -webkit-box-shadow: 0 3px 39px 0 rgba(0,0,0,0.04); -moz-box-shadow: 0 3px 39px 0 rgba(0,0,0,0.04);}
 main > div#sadrzaj.kategorija > div.podkategorije > a.podkategorija:hover > img {border: 3px solid var(--boja-kapriol);}
 main > div#sadrzaj.kategorija > div.podkategorije > a.podkategorija > img {grid-column: 1 / 2; grid-row: 1 / 2; object-fit: contain; height: auto; width: 100%; border: 3px solid #000;}
@@ -514,6 +515,9 @@ footer > div.info > span {grid-column: 3 / 5; grid-row: 2 / 3; justify-self: cen
     main > div#sadrzaj.naslovna > div.reklama1 {grid-column: 1 / 6;}
     main > div#sadrzaj.naslovna > div.usluge {grid-column: 1 / 6;}
     main > div#sadrzaj.naslovna > div.reklama2 {grid-column: 1 / 6;}
+    main > div#sadrzaj.kategorija {grid-column: 1 / 8; grid-template-columns: repeat(5, 1fr);}
+    main > div#sadrzaj.kategorija > div.podkategorije {grid-column: 1 / 6;}
+    main > div#sadrzaj.kategorija > div.podkategorije > a.podkategorija > span {font-size: 0.7rem;}
 
     footer nav {grid-column: 1 / 7; grid-template-columns: repeat(2, auto);}
     footer > div.info {grid-column: 1 / 7; grid-template-columns: repeat(5, 1fr);}
@@ -565,6 +569,7 @@ footer > div.info > span {grid-column: 3 / 5; grid-row: 2 / 3; justify-self: cen
     main > div#sadrzaj.favorit > div.artikli > form.artikl > span.velicina {grid-column: 2 / 4;}
     main > div#sadrzaj.favorit > div.artikli > form.artikl > span.cijena {grid-column: 2 / 4;}
     main > div#sadrzaj.favorit > div.artikli > form.artikl > div.kosarica {grid-column: 1 / 4; grid-row: 4 / 5; justify-self: start;}
+    main > div#sadrzaj.kategorija > div.podkategorije {grid-template-columns: repeat(3, 1fr);}
 
     footer > nav {justify-items: left;}
     footer > nav > div.dostava {grid-column: 1 / 4; grid-row: 1 / 2;}
@@ -624,6 +629,11 @@ footer > div.info > span {grid-column: 3 / 5; grid-row: 2 / 3; justify-self: cen
     main > div#sadrzaj.poslovnice {grid-template-columns: 1fr;}
     main > div#sadrzaj.poslovnice div.vi_ste_ovdje {grid-column: 1 / 2;}
     main > div#sadrzaj.poslovnice iframe {grid-column: 1 / 2; grid-row: 2 / 3;}
+    main > div#sadrzaj.kategorija > div.podkategorije {grid-template-columns: 1fr 1fr 1fr; grid-gap: 15px;}
+    main > div#sadrzaj.kategorija > div.podkategorije > a.podkategorija > img {border-width: 1px;}
+    main > div#sadrzaj.kategorija > div.podkategorije > a.podkategorija > img:hover {border-width: 1px;}
+    main > div#sadrzaj.kategorija > div.podkategorije > a.podkategorija > span {grid-row: 2 / 3; height: 30px; font-size: 0.6rem;}
+    main > div#sadrzaj.kategorija > div.podkategorije > a.podkategorija:hover > span {height: 30px;}
 
 }
 
@@ -640,6 +650,7 @@ footer > div.info > span {grid-column: 3 / 5; grid-row: 2 / 3; justify-self: cen
     main > div#sadrzaj.artikl > form.artikl > span.kosarica > button.plus {grid-column: 3 / 4;}
     main > div#sadrzaj.artikl > form.artikl > span.kosarica > button.gumb.ikona {grid-column: 4 / 5;}
     main > div#sadrzaj.kosarica > div.artikli > form.artikl > div.kosarica > button.ikona > span {display: none;}
+    main > div#sadrzaj.kategorija > div.podkategorije > a.podkategorija > span {font-size: 0.4rem;}
 
     footer > nav {grid-template-columns: 10px 1fr;}
     footer > nav > div.dostava {grid-column: 2 / 3; grid-row: 1 / 2;}

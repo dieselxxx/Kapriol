@@ -356,7 +356,7 @@ final class Kategorije_Model extends Master_Model {
      *
      * @return string Ketegorije za naslovnu.
      */
-    public function podkategorijeKategorija (int|string $id):string {
+    public function podkategorijeKategorija (int|string $id, string $link):string {
 
         // kategorije
         $podkategorija_html = '';
@@ -364,7 +364,7 @@ final class Kategorije_Model extends Master_Model {
 
             $podkategorija_html .= <<<PodKategorija
             
-                <a class="podkategorija" href="/rezultat/{$podkategorija['Link']}">
+                <a class="podkategorija" href="/rezultat/{$link}/{$podkategorija['Link']}">
                     <img
                         src="/slika/podkategorija/{$podkategorija['Slika']}/300/400"
                         alt="" loading="lazy"

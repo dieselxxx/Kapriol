@@ -65,7 +65,7 @@ final class Kategorija_Kontroler extends Master_Kontroler {
             'zaglavlje_adresa' => Domena::adresa(),
             'podnozje_dostava' => Domena::podnozjeDostava(),
             'kategorija' => $trenutna_kategorija['Kategorija'],
-            'podkategorije' => $kategorije->podkategorijeKategorija($trenutna_kategorija['ID']),
+            'podkategorije' => $kategorije->podkategorijeKategorija($trenutna_kategorija['ID'], $trenutna_kategorija['Link']),
             'gdpr' => $gdpr->html(),
             'vi_ste_ovdje' => 'Vi ste ovdje : <a href="/">Kapriol Web Trgovina</a> \\\\ ' . $trenutna_kategorija['Kategorija'],
             'opci_uvjeti' => Domena::opciUvjeti()
