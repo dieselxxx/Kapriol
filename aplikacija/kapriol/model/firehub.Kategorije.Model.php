@@ -134,9 +134,11 @@ final class Kategorije_Model extends Master_Model {
         $kategorija_html = '';
         foreach ($this->kategorije() as $kategorija) {
 
+            $href = $kategorija['Podkategorija'] > 0 ? "/kategorija/{$kategorija['Link']}" : "/rezultat/{$kategorija['Link']}";
+
             $kategorija_html .= <<<Kategorija
             
-                <a class="kategorija" href="/rezultat/{$kategorija['Link']}">
+                <a class="kategorija" href=$href>
                     <img
                         srcset="
                             slika/kategorija/{$kategorija['Slika']}/300/400,
@@ -239,8 +241,9 @@ final class Kategorije_Model extends Master_Model {
         $kategorije = $this->bazaPodataka->tabela('kategorijeview')
             ->sirovi("
                 SELECT 
-                    kategorijeview.Kategorija, kategorijeview.Link, kategorijeview.Slika, kategorijeview.Ikona, kategorijeview.Meni
+                    kategorijeview.Kategorija, COUNT(podkategorijeview.KategorijaID) AS Podkategorija, kategorijeview.Link, kategorijeview.Slika, kategorijeview.Ikona, kategorijeview.Meni
                 FROM kategorijeview
+                LEFT JOIN podkategorijeview ON podkategorijeview.KategorijaID = kategorijeview.ID
                 LEFT JOIN artikli ON artikli.KategorijaID = kategorijeview.ID AND artikli.".Domena::sqlTablica()." = 1
                 LEFT JOIN artiklikarakteristike ON artiklikarakteristike.ArtikalID = artikli.ID
                 LEFT JOIN stanjeskladista ON stanjeskladista.Sifra = artiklikarakteristike.Sifra
