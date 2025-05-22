@@ -47,13 +47,15 @@ final class Domena {
 
             return array(
                 array("adresa" => 'imotski@kapriol-point.com', "ime" => 'Kapriol Imotski'),
-                array("adresa" => 'kapriol@kapriol-point.com', "ime" => 'Kapriol')
+                array("adresa" => 'kapriol@kapriol-point.com', "ime" => 'Kapriol'),
+                array("adresa" => 'gordana@kapriol-point.com', "ime" => 'Gordana')
             );
         }
 
         return array(
             array("adresa" => 'mostar@kapriol-point.com', "ime" => 'Kapriol Mostar'),
-            array("adresa" => 'kapriol@kapriol-point.com', "ime" => 'Kapriol')
+            array("adresa" => 'kapriol@kapriol-point.com', "ime" => 'Kapriol'),
+            array("adresa" => 'gordana@kapriol-point.com', "ime" => 'Gordana')
         );
 
     }
