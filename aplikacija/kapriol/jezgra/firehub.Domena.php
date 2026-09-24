@@ -377,6 +377,8 @@ final class Domena {
 
     public static function blackFriday ():bool {
 
+        return false;
+
         if (date("m-d") >= '11-29' && date("m-d") <= '11-30') {
 
             return false;
@@ -405,9 +407,9 @@ final class Domena {
         <li>
             <svg><use xlink:href="/kapriol/resursi/grafika/simboli/simbol.ikone.svg#korisnik"></use></svg>
             <ul>
-                <li>Selma Šalaka, prodajni predstavik</li>
-                <li>Mob: 063/282-370</li>
-                <li>Email: selma@kapriol-point.com</li>
+                <li>Josip Šimić , direktor</li>
+                <li>Mob: 063/375 975 </li>
+                <li>Email: josip@kapriol-point.com</li>
             </ul>
         </li>
         ';
