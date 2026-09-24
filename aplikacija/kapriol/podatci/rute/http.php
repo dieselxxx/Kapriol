@@ -44,3 +44,4 @@ Rute::sve('sitemap/osnovno', [\FireHub\Aplikacija\Kapriol\Kontroler\Sitemap_Kont
 Rute::sve('sitemap/kategorije', [\FireHub\Aplikacija\Kapriol\Kontroler\Sitemap_Kontroler::class, 'kategorije']);
 Rute::sve('sitemap/artikli', [\FireHub\Aplikacija\Kapriol\Kontroler\Sitemap_Kontroler::class, 'artikli']);
 Rute::sve('sitemap/posalji', [\FireHub\Aplikacija\Kapriol\Kontroler\Sitemap_Kontroler::class, 'posalji']);
+Rute::sve('sidrenacijenacsv/index', [\FireHub\Aplikacija\Kapriol\Kontroler\SidrenaCijenaCSV_Kontroler::class, 'index']);
