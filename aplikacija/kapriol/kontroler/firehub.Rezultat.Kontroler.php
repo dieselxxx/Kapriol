@@ -100,13 +100,13 @@ final class Rezultat_Kontroler extends Master_Kontroler {
 
             // cijene
             $najnize_cijena = Domena::Hr()
-                ? '<span style="font-size: 0.7rem">
+                ? '<span style="font-size: 0.7rem; color: var(--boja-tekst);">
                     najniža cijena u posljednih 30 dana: '.$artikal['Cijena30Dana'] .' '.Domena::valuta().'
                     </span>'
                 : '';
 
             $sidrena_cijena = Domena::Hr()
-                ? '<span style="font-size: 0.7rem">
+                ? '<span style="font-size: 0.7rem; color: var(--boja-tekst);">
                     10.9.2026. : '.$artikal['SidrenaCijena'] .' '.Domena::valuta().'
                     </span>'
                 : '';
