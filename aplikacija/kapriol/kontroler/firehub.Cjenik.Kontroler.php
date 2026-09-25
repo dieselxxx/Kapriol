@@ -44,6 +44,34 @@ final class Cjenik_Kontroler extends Master_Kontroler {
 
         $kategorije = $this->model(Kategorije_Model::class);
 
+        $putanja = FIREHUB_ROOT.konfiguracija('sustav.putanje.web')
+            .'kapriol'.RAZDJELNIK_MAPE
+            .'resursi'.RAZDJELNIK_MAPE
+            .'cjenik'.RAZDJELNIK_MAPE;
+
+        $datoteke = '<table>';
+
+        foreach (glob($putanja.'*.csv') as $file) {
+
+            $naziv = basename($file);
+
+            $href = 'kapriol/resursi/cjenik/'
+                .$naziv;
+
+            $datoteke .= '
+                <tr>
+                    <td>
+                        <a href="'.htmlspecialchars($href).'" target="_blank" rel="noopener noreferrer">
+                            '.htmlspecialchars($naziv).'
+                        </a>
+                    </td>
+                </tr>
+            ';
+
+        }
+
+        $datoteke .= '</table>';
+
         return sadrzaj()->datoteka('cjenik.html')->podatci([
             'predlozak_opis' => Domena::opis(),
             'predlozak_GA' => Domena::GA(),
@@ -64,6 +92,7 @@ final class Cjenik_Kontroler extends Master_Kontroler {
             'gdpr' => $gdpr->html(),
             'vi_ste_ovdje' => '<a href="/">Kapriol Web Trgovina</a> \\\\ Cjenik',
             'opci_uvjeti' => Domena::opciUvjeti(),
+            'datoteke' => $datoteke
         ]);
 
     }
