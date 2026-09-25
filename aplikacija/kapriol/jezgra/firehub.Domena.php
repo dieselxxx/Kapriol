@@ -303,6 +303,10 @@ final class Domena {
                     <svg><use xlink:href="/kapriol/resursi/grafika/simboli/simbol.ikone.svg#strelica_desno_duplo2"></use></svg>
                     <span><a target="_blank" href="/kapriol/resursi/datoteke/Obrazac_za_jednostrani_raskid_ugovora.pdf">Obrazac za jednostrani raskid ugovora</a></span>
                 </li>
+                <li>
+                    <svg><use xlink:href="/kapriol/resursi/grafika/simboli/simbol.ikone.svg#strelica_desno_duplo2"></use></svg>
+                    <span><a target="_blank" href="/cjenik">Digitalni cjenik</a></span>
+                </li>
             ';
 
         }
