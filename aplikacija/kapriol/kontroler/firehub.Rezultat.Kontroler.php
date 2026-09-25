@@ -105,6 +105,12 @@ final class Rezultat_Kontroler extends Master_Kontroler {
                     </span>'
                 : '';
 
+            $sidrena_cijena = Domena::Hr()
+                ? '<span style="font-size: 0.7rem">
+                    10.9.2026. : '.$artikal['SidrenaCijena'] .' '.Domena::valuta().'
+                    </span>'
+                : '';
+
             if ($artikal['CijenaAkcija'] > 0) {
 
                 $artikal_popust = -($artikal['Cijena'] - $artikal['CijenaAkcija']) / (max($artikal['Cijena'], 1)) * 100;
@@ -113,6 +119,7 @@ final class Rezultat_Kontroler extends Master_Kontroler {
                     <span class="prekrizi">'.number_format((float)$artikal['Cijena'], 2, ',', '.').' '.Domena::valuta().'</span>
                     <h2 class="akcija">'.number_format((float)$artikal['CijenaAkcija'], 2, ',', '.').' '.Domena::valuta().'</h2>
                     '.$najnize_cijena.'
+                    <br>'.$sidrena_cijena.'
  
                     <span class="popust">'.number_format($artikal_popust, 2, ',').' %</span>
                 ';
@@ -124,6 +131,7 @@ final class Rezultat_Kontroler extends Master_Kontroler {
                 <img style="height: 40%;" alt="bf" src="/kapriol/resursi/grafika/logo/bf.png">
                 <h2 style="margin: 20px 0 0 0;">'.number_format((float)$bf_cijena, 2, ',', '.').' '.Domena::valuta().'</h2>
                 '.$najnize_cijena.'
+                <br>'.$sidrena_cijena.'
                 <span class="prekrizi">'.number_format((float)$artikal['Cijena'], 2, ',', '.').' '.Domena::valuta().'</span>
             ';
 
@@ -132,6 +140,7 @@ final class Rezultat_Kontroler extends Master_Kontroler {
                 $artikl_cijena = '
                     <h2>'.number_format((float)$artikal['Cijena'], 2, ',', '.').' '.Domena::valuta().'</h2>
                     '.$najnize_cijena.'
+                    <br>'.$sidrena_cijena.'
                 ';
 
             }

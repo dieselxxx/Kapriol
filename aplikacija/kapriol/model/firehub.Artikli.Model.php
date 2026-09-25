@@ -86,7 +86,8 @@ final class Artikli_Model extends Master_Model {
                        (SELECT Slika FROM slikeartikal WHERE slikeartikal.ClanakID = artikliview.ID ORDER BY slikeartikal.Zadana DESC LIMIT 1) AS Slika,
                        ".(Domena::Hr() ? 'artikliview.GratisHr' : 'artikliview.GratisBa')." AS GratisID,
                        artikliview.Novo,
-                       artikliview.Cijena30Dana".Domena::sqlTablica()." AS Cijena30Dana
+                       artikliview.Cijena30Dana".Domena::sqlTablica()." AS Cijena30Dana,
+                       artikliview.SidrenaCijena".Domena::sqlTablica()." AS SidrenaCijena
                     FROM artikliview
                     LEFT JOIN artiklikarakteristike ON artiklikarakteristike.ArtikalID = artikliview.ID
                     WHERE Aktivan = 1 AND ".Domena::sqlTablica()." = 1 AND Izdvojeno = 1 AND ".Domena::sqlCijena()." > 0
@@ -107,7 +108,8 @@ final class Artikli_Model extends Master_Model {
                        (SELECT Slika FROM slikeartikal WHERE slikeartikal.ClanakID = artikliview.ID ORDER BY slikeartikal.Zadana DESC LIMIT 1) AS Slika,
                        ".(Domena::Hr() ? 'artikliview.GratisHr' : 'artikliview.GratisBa')." AS GratisID,
                        artikliview.Novo,
-                       artikliview.Cijena30Dana".Domena::sqlTablica()." AS Cijena30Dana
+                       artikliview.Cijena30Dana".Domena::sqlTablica()." AS Cijena30Dana,
+                       artikliview.SidrenaCijena".Domena::sqlTablica()." AS SidrenaCijena
                     FROM artikliview
                     LEFT JOIN artiklikarakteristike ON artiklikarakteristike.ArtikalID = artikliview.ID
                     WHERE Aktivan = 1 AND ".Domena::sqlTablica()." = 1 AND ".Domena::sqlCijena()." > 0
@@ -130,7 +132,8 @@ final class Artikli_Model extends Master_Model {
                        (SELECT Slika FROM slikeartikal WHERE slikeartikal.ClanakID = artikliview.ID ORDER BY slikeartikal.Zadana DESC LIMIT 1) AS Slika,
                        ".(Domena::Hr() ? 'artikliview.GratisHr' : 'artikliview.GratisBa')." AS GratisID,
                        artikliview.Novo,
-                       artikliview.Cijena30Dana".Domena::sqlTablica()." AS Cijena30Dana
+                       artikliview.Cijena30Dana".Domena::sqlTablica()." AS Cijena30Dana,
+                       artikliview.SidrenaCijena".Domena::sqlTablica()." AS SidrenaCijena
                     FROM artikliview
                     LEFT JOIN artiklikarakteristike ON artiklikarakteristike.ArtikalID = artikliview.ID
                     WHERE Aktivan = 1 AND ".Domena::sqlTablica()." = 1 AND ".Domena::sqlCijenaAkcija()." > 0 AND ".Domena::sqlCijena()." > 0
@@ -153,7 +156,8 @@ final class Artikli_Model extends Master_Model {
                        (SELECT Slika FROM slikeartikal WHERE slikeartikal.ClanakID = artikliview.ID ORDER BY slikeartikal.Zadana DESC LIMIT 1) AS Slika,
                        ".(Domena::Hr() ? 'artikliview.GratisHr' : 'artikliview.GratisBa')." AS GratisID,
                        artikliview.Novo,
-                       artikliview.Cijena30Dana".Domena::sqlTablica()." AS Cijena30Dana
+                       artikliview.Cijena30Dana".Domena::sqlTablica()." AS Cijena30Dana,
+                       artikliview.SidrenaCijena".Domena::sqlTablica()." AS SidrenaCijena
                     FROM artikliview
                     LEFT JOIN artiklikarakteristike ON artiklikarakteristike.ArtikalID = artikliview.ID
                     WHERE Aktivan = 1 AND ".Domena::sqlTablica()." = 1 AND ".Domena::sqlCijena()." > 0 AND ".Domena::sqlOutlet()." = 1
@@ -176,7 +180,8 @@ final class Artikli_Model extends Master_Model {
                        (SELECT Slika FROM slikeartikal WHERE slikeartikal.ClanakID = artikliview.ID ORDER BY slikeartikal.Zadana DESC LIMIT 1) AS Slika,
                        ".(Domena::Hr() ? 'artikliview.GratisHr' : 'artikliview.GratisBa')." AS GratisID,
                        artikliview.Novo,
-                       artikliview.Cijena30Dana".Domena::sqlTablica()." AS Cijena30Dana
+                       artikliview.Cijena30Dana".Domena::sqlTablica()." AS Cijena30Dana,
+                       artikliview.SidrenaCijena".Domena::sqlTablica()." AS SidrenaCijena
                     FROM artikliview
                     LEFT JOIN artiklikarakteristike ON artiklikarakteristike.ArtikalID = artikliview.ID
                     WHERE Aktivan = 1 AND ".Domena::sqlTablica()." = 1 AND ".Domena::sqlCijena()." > 0 AND Novo = 1
@@ -199,7 +204,8 @@ final class Artikli_Model extends Master_Model {
                     (SELECT Slika FROM slikeartikal WHERE slikeartikal.ClanakID = artikliview.ID ORDER BY slikeartikal.Zadana DESC LIMIT 1) AS Slika,
                     ".(Domena::Hr() ? 'artikliview.GratisHr' : 'artikliview.GratisBa')." AS GratisID,
                     artikliview.Novo,
-                    artikliview.Cijena30Dana".Domena::sqlTablica()." AS Cijena30Dana
+                    artikliview.Cijena30Dana".Domena::sqlTablica()." AS Cijena30Dana,
+                    artikliview.SidrenaCijena".Domena::sqlTablica()." AS SidrenaCijena
                 FROM artikliview
                 LEFT JOIN artiklikarakteristike ON artiklikarakteristike.ArtikalID = artikliview.ID
                 WHERE KategorijaID = '$kategorija' AND Aktivan = 1 AND ".Domena::sqlTablica()." = 1 AND ".Domena::sqlCijena()." > 0
@@ -222,7 +228,8 @@ final class Artikli_Model extends Master_Model {
                     (SELECT Slika FROM slikeartikal WHERE slikeartikal.ClanakID = artikliview.ID ORDER BY slikeartikal.Zadana DESC LIMIT 1) AS Slika,
                     ".(Domena::Hr() ? 'artikliview.GratisHr' : 'artikliview.GratisBa')." AS GratisID,
                     artikliview.Novo,
-                    artikliview.Cijena30Dana".Domena::sqlTablica()." AS Cijena30Dana
+                    artikliview.Cijena30Dana".Domena::sqlTablica()." AS Cijena30Dana,
+                    artikliview.SidrenaCijena".Domena::sqlTablica()." AS SidrenaCijena
                 FROM artikliview
                 LEFT JOIN artiklikarakteristike ON artiklikarakteristike.ArtikalID = artikliview.ID
                 WHERE KategorijaID = '$kategorija' AND PodKategorijaID = '$podkategorija' AND Aktivan = 1 AND ".Domena::sqlTablica()." = 1 AND ".Domena::sqlCijena()." > 0
