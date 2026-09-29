@@ -110,6 +110,7 @@ final class Rezultat_Kontroler extends Master_Kontroler {
                     10.9.2026. : '.$artikal['SidrenaCijena'] .' '.Domena::valuta().'
                     </span>'
                 : '';
+            $sidrena_cijena = ''; // sid cijene
 
             if ($artikal['CijenaAkcija'] > 0) {
 
