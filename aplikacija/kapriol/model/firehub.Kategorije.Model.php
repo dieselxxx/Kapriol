@@ -202,6 +202,14 @@ final class Kategorije_Model extends Master_Model {
                 'Link' => 'outlet'
             ];
 
+        } else if ($kategorija === 'rasprodaja') {
+
+            return [
+                'ID' => 'rasprodaja',
+                'Kategorija' => 'Rasprodaja',
+                'Link' => 'rasprodaja'
+            ];
+
         } else if ($kategorija === 'novo') {
 
             return [
