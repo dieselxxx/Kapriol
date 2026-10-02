@@ -112,6 +112,18 @@ final class Domena {
 
     }
 
+    public static function sqlRasprodaja ():string {
+
+        if (self::Hr()) {
+
+            return 'RasprodajaHr';
+
+        }
+
+        return 'RasprodajaBa';
+
+    }
+
     public static function valuta ():string {
 
         if (self::Hr()) {

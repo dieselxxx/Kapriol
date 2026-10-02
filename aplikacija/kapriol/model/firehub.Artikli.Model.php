@@ -169,6 +169,30 @@ final class Artikli_Model extends Master_Model {
                 ")
                 ->napravi();
 
+        } else if ($kategorija === 'rasprodaja') {
+
+            $artikli = $this->bazaPodataka->tabela('artikliview')
+                ->sirovi("
+                    SELECT
+                       artikliview.ID, Naziv, Link, Opis, ".Domena::sqlCijena()." AS Cijena, ".Domena::sqlCijenaAkcija()." AS CijenaAkcija,
+                       IF(".Domena::sqlCijenaAkcija()." > 0, ".Domena::sqlCijenaAkcija().", ".Domena::sqlCijena().") AS Cijenafinal,
+                       GROUP_CONCAT(DISTINCT artiklikarakteristike.Velicina) AS Velicine,
+                       (SELECT Slika FROM slikeartikal WHERE slikeartikal.ClanakID = artikliview.ID ORDER BY slikeartikal.Zadana DESC LIMIT 1) AS Slika,
+                       ".(Domena::Hr() ? 'artikliview.GratisHr' : 'artikliview.GratisBa')." AS GratisID,
+                       artikliview.Novo,
+                       artikliview.Cijena30Dana".Domena::sqlTablica()." AS Cijena30Dana,
+                       artikliview.SidrenaCijena".Domena::sqlTablica()." AS SidrenaCijena
+                    FROM artikliview
+                    LEFT JOIN artiklikarakteristike ON artiklikarakteristike.ArtikalID = artikliview.ID
+                    WHERE Aktivan = 1 AND ".Domena::sqlTablica()." = 1 AND ".Domena::sqlCijena()." > 0 AND ".Domena::sqlRasprodaja()." = 1
+                    {$this->trazi($trazi)}
+                    GROUP BY artikliview.ID
+                    {$this->velicineUpit($velicina)}
+                    ORDER BY ".ucwords($poredaj)." $poredaj_redoslijed
+                    LIMIT $pomak, $limit
+                ")
+                ->napravi();
+
         } else if ($kategorija === 'novo') {
 
             $artikli = $this->bazaPodataka->tabela('artikliview')
