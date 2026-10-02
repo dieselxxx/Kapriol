@@ -96,6 +96,8 @@ final class Artikli_Kontroler extends Master_Kontroler {
         if ($artikl['Hr'] === true) {$artikl['Hr'] = 'checked';} else {$artikl['Hr'] = '';}
         if ($artikl['Outlet'] === true) {$artikl['Outlet'] = 'checked';} else {$artikl['Outlet'] = '';}
         if ($artikl['OutletHr'] === true) {$artikl['OutletHr'] = 'checked';} else {$artikl['OutletHr'] = '';}
+        if ($artikl['RasprodajaBa'] === true) {$artikl['RasprodajaBa'] = 'checked';} else {$artikl['RasprodajaBa'] = '';}
+        if ($artikl['RasprodajaHr'] === true) {$artikl['RasprodajaHr'] = 'checked';} else {$artikl['RasprodajaHr'] = '';}
         if ($artikl['Novo'] === true) {$artikl['Novo'] = 'checked';} else {$artikl['Novo'] = '';}
 
         // kategorije
@@ -183,6 +185,8 @@ final class Artikli_Kontroler extends Master_Kontroler {
             'hr' => $artikl['Hr'],
             'outlet' => $artikl['Outlet'],
             'outlethr' => $artikl['OutletHr'],
+            'rasprodajaba' => $artikl['RasprodajaBa'],
+            'rasprodajahr' => $artikl['RasprodajaHr'],
             'novo' => $artikl['Novo'],
             'kategorija' => ''.$artikl['KategorijaID'].'',
             'kategorija_naziv' => $artikl['Kategorija'],

@@ -55,7 +55,7 @@ final class Artikl_Model extends Master_Model {
                 SELECT
                     artikli.ID, artikli.Naziv, artikli.Opis,
                     artikli.Cijena, artikli.CijenaAkcija, artikli.CijenaKn, artikli.CijenaAkcijaKn,
-                    artikli.Ba, artikli.Hr, artikli.Outlet, artikli.OutletHr, artikli.Novo,
+                    artikli.Ba, artikli.Hr, artikli.Outlet, artikli.OutletHr, artikli.RasprodajaBa, artikli.RasprodajaHr, artikli.Novo,
                     artikli.Aktivan, artikli.Izdvojeno,
                     artikli.KategorijaID, kategorije.Kategorija,
                     artikli.PodKategorijaID, podkategorije.PodKategorija,
@@ -84,6 +84,8 @@ final class Artikl_Model extends Master_Model {
         if ($artikl['Hr']) {$artikl['Hr'] = true;} else {$artikl['Hr'] = false;}
         if ($artikl['Outlet']) {$artikl['Outlet'] = true;} else {$artikl['Outlet'] = false;}
         if ($artikl['OutletHr']) {$artikl['OutletHr'] = true;} else {$artikl['OutletHr'] = false;}
+        if ($artikl['RasprodajaBa']) {$artikl['RasprodajaBa'] = true;} else {$artikl['RasprodajaBa'] = false;}
+        if ($artikl['RasprodajaHr']) {$artikl['RasprodajaHr'] = true;} else {$artikl['RasprodajaHr'] = false;}
         if ($artikl['Novo']) {$artikl['Novo'] = true;} else {$artikl['Novo'] = false;}
 
         return $artikl;
@@ -186,6 +188,14 @@ final class Artikl_Model extends Master_Model {
         $outlethr = Validacija::Potvrda(_('OutletHr'), $outlethr);
         if ($outlethr == "on") {$outlethr = 1;} else {$outlethr = 0;}
 
+        $rasprodajaba = $_REQUEST["rasprodajaba"] ?? null;
+        $rasprodajaba = Validacija::Potvrda(_('RasprodajaBa'), $rasprodajaba);
+        if ($rasprodajaba == "on") {$rasprodajaba = 1;} else {$rasprodajaba = 0;}
+
+        $rasprodajahr = $_REQUEST["rasprodajahr"] ?? null;
+        $rasprodajahr = Validacija::Potvrda(_('RasprodajaHr'), $rasprodajahr);
+        if ($rasprodajahr == "on") {$rasprodajahr = 1;} else {$rasprodajahr = 0;}
+
         $novo = $_REQUEST["novo"] ?? null;
         $novo = Validacija::Potvrda(_('Novo'), $novo);
         if ($novo == "on") {$novo = 1;} else {$novo = 0;}
@@ -235,6 +245,8 @@ final class Artikl_Model extends Master_Model {
                             'Hr' => $hr,
                             'Outlet' => $outlet,
                             'OutletHr' => $outlethr,
+                            'RasprodajaBa' => $rasprodajaba,
+                            'RasprodajaHr' => $rasprodajahr,
                             'Novo' => $novo,
                             'Izdvojeno' => $izdvojeno,
                             'Aktivan' => $aktivno,
@@ -305,6 +317,8 @@ final class Artikl_Model extends Master_Model {
                             'Hr' => $hr,
                             'Outlet' => $outlet,
                             'OutletHr' => $outlethr,
+                            'RasprodajaBa' => $rasprodajaba,
+                            'RasprodajaHr' => $rasprodajahr,
                             'Novo' => $novo,
                             'Izdvojeno' => $izdvojeno,
                             'Aktivan' => $aktivno,
