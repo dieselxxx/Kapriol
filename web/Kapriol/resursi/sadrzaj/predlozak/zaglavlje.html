@@ -37,8 +37,16 @@
         </label>
     </form>
 
-    <a data-boja="boja" id="rasprodaja" href="/rezultat/rasprodaja" style="display: none;">
-        <span>{{zaglavlje_rasprodaja}}</span>
+    <a id="rasprodaja" href="/rezultat/rasprodaja" style="display: none;">
+        <svg class="rasprodaja_ikona">
+            <use xlink:href="/kapriol/resursi/grafika/simboli/simbol.ikone.svg#akcija_sale"></use>
+        </svg>
+
+        <span class="rasprodaja_tekst">
+        {{zaglavlje_rasprodaja}}
+    </span>
+
+        <!--<span class="rasprodaja_strelica">→</span>-->
     </a>
 
     <a data-boja="boja" id="kosarica" href="/kosarica">
