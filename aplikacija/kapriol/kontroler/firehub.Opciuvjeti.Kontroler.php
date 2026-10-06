@@ -61,6 +61,7 @@ final class OpciUvjeti_Kontroler extends Master_Kontroler {
             'zaglavlje_favorit_artikli' => $this->favoritArtikli(),
             'zaglavlje_tel' => Domena::telefon(),
             'zaglavlje_adresa' => Domena::adresa(),
+            'zaglavlje_rasprodaja' => Domena::rasprodaja(),
             'podnozje_dostava' => Domena::podnozjeDostava(),
             'gdpr' => $gdpr->html(),
             'vi_ste_ovdje' => '<a href="/">Kapriol Web Trgovina</a> \\\\ Opći uvjeti',

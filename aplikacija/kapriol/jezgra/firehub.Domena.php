@@ -184,6 +184,18 @@ final class Domena {
 
     }
 
+    public static function rasprodaja ():string {
+
+        if (self::Hr()) {
+
+            return '9.99 '.self::valuta();
+
+        }
+
+        return '19.99 '.self::valuta();
+
+    }
+
     public static function podnozjeDostava ():string {
 
         if (self::Hr()) {

@@ -244,6 +244,7 @@ final class Rezultat_Kontroler extends Master_Kontroler {
             'zaglavlje_favorit_artikli' => $this->favoritArtikli(),
             'zaglavlje_tel' => Domena::telefon(),
             'zaglavlje_adresa' => Domena::adresa(),
+            'zaglavlje_rasprodaja' => Domena::rasprodaja(),
             'podnozje_dostava' => Domena::podnozjeDostava(),
             'gdpr' => $gdpr->html(),
             'vi_ste_ovdje' => 'Vi ste ovdje : <a href="/">Kapriol Web Trgovina</a> \\\\ <a href="'.$href.'">' . $trenutna_kategorija['Kategorija'] . '</a> \\\\ <a href="/rezultat/'.$trenutna_kategorija['Link'].'/'.$trenutna_podkategorija['Link'].'">' . $trenutna_podkategorija['Podkategorija'] . '</a> \\\\ ' . $trazi,
