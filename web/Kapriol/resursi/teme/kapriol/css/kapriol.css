@@ -254,10 +254,10 @@ header > form[data-oznaka="trazi_artikal"] > label > .naslov {text-indent: 5px;}
 header > form[data-oznaka="trazi_artikal"] > label > svg {fill: var(--boja-granica);}
 header > a#prijava {grid-column: 5 / 6; grid-row: 2 / 3; align-self: center;}
 header > a#rasprodaja {grid-column: 6 / 7; grid-row: 2 / 3; justify-self: right; align-self: center; margin-right: 140px; text-align: center;}
-header > a#rasprodaja {display: inline-flex;align-items: center;justify-content: center;gap: 9px;height: 62px;padding: 0 10px;background: var(--boja-kapriol);color: #fff;border-radius: 22px;font-size: 10px;font-weight: 600;line-height: 1;text-decoration: none;white-space: nowrap;box-shadow: 0 4px 12px rgba(227, 6, 19, .25);transition: background-color .2s ease, box-shadow .2s ease, transform .2s ease;}
+header > a#rasprodaja {display: inline-flex;align-items: center;justify-content: center;gap: 9px;height: 42px;padding: 0 10px;background: var(--boja-kapriol);color: #fff;border-radius: 22px;font-size: 9px;font-weight: 600;line-height: 0;text-decoration: none;white-space: nowrap;box-shadow: 0 4px 12px rgba(227, 6, 19, .25);transition: background-color .2s ease, box-shadow .2s ease, transform .2s ease;}
 header > a#rasprodaja .rasprodaja_ikona {width: 20px;height: 20px;fill: #fff;flex: 0 0 auto;}
-header > a#rasprodaja .rasprodaja_tekst {display: inline-flex;;gap: 5px;flex-direction: column;}
-header > a#rasprodaja .rasprodaja_tekst strong {font-size: 14px;font-weight: 700}
+header > a#rasprodaja .rasprodaja_tekst {display: inline-flex;gap: 5px;}
+header > a#rasprodaja .rasprodaja_tekst strong {font-size: 12px;font-weight: 700}
 header > a#rasprodaja .rasprodaja_strelica {display: inline-block;margin-left: 2px;font-size: 20px;font-weight: 400;line-height: 1;transition: transform .2s ease;}
 header > a#rasprodaja:hover {background: var(--boja-kapriol-tamnije);color: #fff;transform: translateY(-1px);box-shadow: 0 6px 16px rgba(227, 6, 19, .35);}
 header > a#rasprodaja:hover .rasprodaja_strelica {transform: translateX(3px);}
@@ -603,7 +603,7 @@ footer > div.info > span {grid-column: 3 / 5; grid-row: 2 / 3; justify-self: cen
     header > div#info > a.instagram {grid-column: 1 / 2; justify-self: left; margin-left: 150px;}
     header a.logo {grid-column: 1 / 4; justify-self: center; background-size: contain; height: 60px; width: 135px;}
     header > a#prijava {grid-column: 1 / 4; grid-row: 2 / 3;}
-    header > a#rasprodaja {grid-column: 4 / 6; grid-row: 2 / 3; justify-self: center; align-self: center; align-content: center; flex-direction: column; text-align: center;}
+    header > a#rasprodaja {grid-column: 4 / 6; grid-row: 2 / 3; justify-self: center; align-self: center; align-content: center; text-align: center;}
     header > a#kosarica {grid-column: 6 / 7; grid-row: 2 / 3; justify-self: center; margin: 0;}
     header > a#kosarica > span {text-indent: 5px;}
     header > a#outlet {display: initial; grid-column: 5 / 6; grid-row: 1 / 2; justify-self: center; align-self: center; height: 30px; width: 30px;}
