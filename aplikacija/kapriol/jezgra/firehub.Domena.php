@@ -188,11 +188,11 @@ final class Domena {
 
         if (self::Hr()) {
 
-            return '9.99 '.self::valuta();
+            return 'Sve po <span><br>9.99 '.self::valuta().'</span>';
 
         }
 
-        return '19.99 '.self::valuta();
+        return 'Sve po <span><br>19.99 '.self::valuta().'</span>';
 
     }
 
