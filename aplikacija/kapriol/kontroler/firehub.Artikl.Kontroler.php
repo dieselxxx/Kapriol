@@ -113,7 +113,6 @@ final class Artikl_Kontroler extends Master_Kontroler {
                     10.9.2026. : '.$trenutni_artikl['SidrenaCijena'] .' '.Domena::valuta().'
                     </span>'
             : '';
-        $sidrena_cijena = ''; // sid cijene
 
         if ($trenutni_artikl['CijenaAkcija'] > 0) {
 
